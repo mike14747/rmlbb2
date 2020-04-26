@@ -1,8 +1,15 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
-router.get('/test', (req, res) => {
-    res.send('Sending this from the api/test route');
+router.use('/teams', require('./teamsController'));
+
+router.use((req, res, next) => {
+    const error = new Error('Route not found');
+    error.status = 404;
+    next(error);
+});
+
+router.use((error, req, res, next) => {
+    res.status(error.status || 500).send('An error occurred!\n' + error.message);
 });
 
 module.exports = router;

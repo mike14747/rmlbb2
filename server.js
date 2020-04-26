@@ -1,3 +1,4 @@
+/*
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -51,4 +52,32 @@ mongoInit().then(db => {
     console.error('Failed to make database connection!');
     console.error(err);
     process.exit(1);
+});
+*/
+
+// test server.js
+
+require('dotenv').config();
+const express = require('express');
+const app = express();
+
+const mongodbConnect = require('./config/mongodbConnect');
+
+const PORT = process.env.PORT || 3001;
+
+app.get('/', (req, res) => {
+    res.send('Sending this from the homepage');
+});
+
+mongodbConnect.serverConnect()
+    .then(() => {
+        app.use('/api', require('./controllers'));
+    })
+    .catch((error) => {
+        console.error('Failed to connect to the database!\n' + error);
+        app.use('/api', require('./controllers/errorController'));
+    });
+
+app.listen(PORT, () => {
+    console.log('Server is listening on port ' + PORT);
 });
