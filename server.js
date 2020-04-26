@@ -60,14 +60,11 @@ mongoInit().then(db => {
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const mongodbConnect = require('./config/mongodbConnect');
 
-const PORT = process.env.PORT || 3001;
-
-app.get('/', (req, res) => {
-    res.send('Sending this from the homepage');
-});
+const { PORT, NODE_ENV } = process.env;
 
 mongodbConnect.serverConnect()
     .then(() => {
@@ -75,7 +72,17 @@ mongodbConnect.serverConnect()
     })
     .catch((error) => {
         console.error('Failed to connect to the database!\n' + error);
-        app.use('/api', require('./controllers/errorController'));
+        app.get('*', (req, res) => {
+            res.status(500).send('There is no connection to MongoDB!');
+        });
+    })
+    .finally(() => {
+        if (NODE_ENV === 'production') {
+            app.use(express.static('./client/build'));
+            app.get('*', (req, res) => {
+                res.sendFile(path.join(__dirname, './client/build/index.html'));
+            });
+        }
     });
 
 app.listen(PORT, () => {
