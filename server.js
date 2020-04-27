@@ -9,7 +9,9 @@ const { PORT, NODE_ENV } = process.env;
 
 mongodbConnect.serverConnect()
     .then(() => {
-        app.use('/api', require('./controllers'));
+        app.use('/api/public', require('./controllers/public'));
+        app.use('/api/private', require('./controllers/public'));
+        app.use('/api/admin', require('./controllers/admin'));
     })
     .catch((error) => {
         console.error('Failed to connect to the database!\n' + error);

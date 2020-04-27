@@ -1,9 +1,11 @@
 const router = require('express').Router();
 
-router.use('/teams', require('./teamsController'));
+router.use('/news', require('./newsController'));
+
+router.use('/events', require('./eventsController'));
 
 router.use((req, res, next) => {
-    const error = new Error('Route not found');
+    const error = new Error('Route not found!');
     error.status = 404;
     next(error);
 });
