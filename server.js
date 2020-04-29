@@ -3,14 +3,14 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const mongodbConnect = require('./config/mongodbConnect');
+const connection = require('./config/connection');
 
 const { PORT, NODE_ENV } = process.env;
 
-mongodbConnect.serverConnect()
+connection.mongodbConnect()
     .then(() => {
         app.use('/api/public', require('./controllers/public'));
-        app.use('/api/private', require('./controllers/public'));
+        app.use('/api/private', require('./controllers/private'));
         app.use('/api/admin', require('./controllers/admin'));
     })
     .catch((error) => {
@@ -26,8 +26,7 @@ mongodbConnect.serverConnect()
                 res.sendFile(path.join(__dirname, './client/build/index.html'));
             });
         }
+        app.listen(PORT, () => {
+            console.log('Server is listening on port ' + PORT);
+        });
     });
-
-app.listen(PORT, () => {
-    console.log('Server is listening on port ' + PORT);
-});

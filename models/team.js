@@ -1,4 +1,4 @@
-const db = require('../config/mongodbConnect').getDb();
+const db = require('../config/connection').getDb();
 const ObjectID = require('mongodb').ObjectID;
 
 const Team = {

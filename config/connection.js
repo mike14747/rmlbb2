@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const uri = process.env.MONGODB_URI;
 let db;
 
-const serverConnect = async () => {
+const mongodbConnect = async () => {
     const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     db = client.db();
     return db;
@@ -10,4 +10,4 @@ const serverConnect = async () => {
 
 const getDb = () => db;
 
-module.exports = { serverConnect, getDb };
+module.exports = { mongodbConnect, getDb };
