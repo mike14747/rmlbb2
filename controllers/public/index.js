@@ -4,6 +4,8 @@ router.use('/news', require('./newsController'));
 
 router.use('/events', require('./eventsController'));
 
+// router.use('/', require('./authController'));
+
 router.use((req, res, next) => {
     const error = new Error('Route not found!');
     error.status = 404;
