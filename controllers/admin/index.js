@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 router.use('/teams', require('./teamsController'));
+router.use('/users', require('./usersController'));
 
 router.use((req, res, next) => {
     const error = new Error('Route not found!');

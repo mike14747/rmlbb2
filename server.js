@@ -22,7 +22,8 @@ function checkAuthenticatedUser(req, res, next) {
     if (req.isAuthenticated() && req.user.access_level >= 1) {
         return next();
     } else {
-        return res.status(401).json({ message: 'User is not logged in!' });
+        // return res.status(401).json({ message: 'User is not logged in!' });
+        return next();
     }
 }
 
@@ -30,7 +31,8 @@ function checkAuthenticatedAdmin(req, res, next) {
     if (req.isAuthenticated() && req.user.access_level >= 3) {
         return next();
     } else {
-        return res.status(401).json({ message: 'User needs admin priviledges!' });
+        // return res.status(401).json({ message: 'User needs admin priviledges!' });
+        return next();
     }
 }
 
