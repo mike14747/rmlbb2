@@ -20,6 +20,20 @@ const User = {
             return [false, error];
         }
     },
+    addNewUser: async (paramsObj) => {
+        const document = {
+            username: paramsObj.username,
+            hashed_password: paramsObj.hashed_password,
+            access_level: paramsObj.access_level,
+            email: paramsObj.email,
+        };
+        try {
+            const result = await db.collection('users').insertOne(document);
+            return [true, result];
+        } catch (error) {
+            return [false, error];
+        }
+    },
 };
 
 module.exports = User;

@@ -1,16 +1,18 @@
 const passport = require('passport');
 const User = require('../models/user');
 
-const LocalStrategy = require('./localStrategy');
-passport.use('local', LocalStrategy);
+const LoginStrategy = require('./loginStrategy');
+passport.use('login', LoginStrategy);
 
 passport.serializeUser((user, done) => {
     // console.log('serializeUser:', user);
+    // this takes in the whole user object from localStrategy, then returns just the user id to be serialized
     done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
     // console.log('deserializeUser:', id);
+    // this takes in the user id that was serialized, then try to match it with a user in the database
     try {
         const data = await User.getUserById({ id: id });
         if (data[0] && data[1].length > 0) {
