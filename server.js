@@ -18,45 +18,30 @@ app.use(session({
     keys: ['key1', 'key2'],
 }));
 
+function checkAuthenticatedUser(req, res, next) {
+    if (req.isAuthenticated() && req.user.access_level >= 1) {
+        return next();
+    } else {
+        return res.status(401).json({ message: 'User is not logged in!' });
+    }
+}
+
+function checkAuthenticatedAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.access_level >= 3) {
+        return next();
+    } else {
+        return res.status(401).json({ message: 'User needs admin priviledges!' });
+    }
+}
+
 connection.mongodbConnect()
     .then(() => {
-        app.use('/api/public', require('./controllers/public'));
-        app.use('/api/private', require('./controllers/private'));
-        app.use('/api/admin', require('./controllers/admin'));
-        const passport = require('./passport/passport');
+        const passport = require('./passport/passportFunctions');
         app.use(passport.initialize());
         app.use(passport.session());
-        app.post('/login', function (req, res, next) {
-            if (req.isAuthenticated()) {
-                res.send('user is already logged in');
-            } else {
-                passport.authenticate('local', function (error, user, info) {
-                    // console.log('auth user', user);
-                    if (error) return res.status(500).send('server.js... failed to authenticate user', error);
-                    if (user === 'no user was found') return res.status(400).send('server.js... no user found');
-                    if (user === 'password does not match') return res.status(400).send('server.js... password does not match');
-                    req.login(user, function (error) {
-                        if (error) console.log(error);
-                        // console.log('login:', req.user);
-                    });
-                    // console.log('req.user', req.user);
-                    return res.status(200).json({ user: user });
-                })(req, res, next);
-            }
-        });
-        app.get('/logout', (req, res) => {
-            if (!req.isAuthenticated()) {
-                res.send('user is not logged in');
-            }
-            console.log(req.user);
-            req.logOut();
-            req.session = null;
-            res.send('user has been logged out');
-        });
-        app.get('/', (req, res) => {
-            console.log(req.user);
-            res.send('Sending this from the homepage!');
-        });
+        app.use('/api/public', require('./controllers/public'));
+        app.use('/api/private', checkAuthenticatedUser, require('./controllers/private'));
+        app.use('/api/admin', checkAuthenticatedAdmin, require('./controllers/admin'));
     })
     .catch((error) => {
         console.error('Failed to connect to the database!\n' + error);
