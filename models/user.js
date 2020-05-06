@@ -6,18 +6,18 @@ const User = {
         const id = paramsObj.id;
         try {
             const result = await db.collection('users').find({ _id: ObjectID(id) }).toArray();
-            return [true, result];
+            return [result, null];
         } catch (error) {
-            return [false, error];
+            return [null, error];
         }
     },
     getUserByUsername: async (paramsObj) => {
         const username = paramsObj.username;
         try {
             const result = await db.collection('users').find({ username: username }).toArray();
-            return [true, result];
+            return [result, null];
         } catch (error) {
-            return [false, error];
+            return [null, error];
         }
     },
     addNewUser: async (paramsObj) => {
@@ -29,9 +29,9 @@ const User = {
         };
         try {
             const result = await db.collection('users').insertOne(document);
-            return [true, result];
+            return [result, null];
         } catch (error) {
-            return [false, error];
+            return [null, error];
         }
     },
 };

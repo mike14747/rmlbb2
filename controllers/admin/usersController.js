@@ -18,7 +18,7 @@ router.post('/', async (req, res, next) => {
     };
     try {
         const data = await User.addNewUser(paramsObj);
-        data[0] ? res.json({ insertedCount: data[1].insertedCount }) : next(data[1]);
+        data[0] ? res.json({ insertedCount: data[1].insertedCount || 0 }) : next(data[1]);
     } catch (error) {
         next(error);
     }
