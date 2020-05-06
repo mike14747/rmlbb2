@@ -15,19 +15,19 @@ passport.deserializeUser(async (id, done) => {
     // this takes in the user id that was serialized, then try to match it with a user in the database
     try {
         const data = await User.getUserById({ id: id });
-        if (data[0] && data[1].length > 0) {
-            const user = { id: data[1][0]._id, username: data[1][0].username, access_level: data[1][0].access_level };
+        if (data[0] && data[0].length > 0) {
+            const user = { id: data[0][0]._id, username: data[0][0].username, access_level: data[0][0].access_level };
             // console.log('found a user with that id in passport deserializeUser:', user);
             return done(null, user);
-        } else if (data[0] && data[1].length === 0) {
+        } else if (data[0] && data[0].length === 0) {
             // console.log('could not find a valid user in passport deserializeUser');
-            return done(null, null);
+            return done(null, false, { message: 'Could not find a valid user!' });
         } else {
             // console.log('an error occurred with the query in passport deserializeUser');
-            return done(data[1], null);
+            return done(data[1]);
         }
     } catch (error) {
-        return done(error, null);
+        return done(error);
     }
 });
 
