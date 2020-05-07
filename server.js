@@ -2,21 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
+const { PORT, NODE_ENV } = process.env;
+
+const connection = require('./config/connectionPool');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const connection = require('./config/connectionPool');
-
-const session = require('cookie-session');
-
-const { PORT, NODE_ENV } = process.env;
-
-app.use(session({
-    maxAge: 2592000000, // maxAge: 2592000000 is 30 days
-    name: 'rmlbb_session',
-    keys: ['key1', 'key2'],
-}));
+app.use(require('./passport/cookieSession'));
 
 function checkAuthenticatedUser(req, res, next) {
     if (req.isAuthenticated() && req.user.access_level >= 1) {
