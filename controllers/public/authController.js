@@ -25,4 +25,13 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
+router.get('/status', (req, res) => {
+    if (req.isAuthenticated()) {
+        // if the user is logged in, it will return the req.user object from the session
+        res.status(200).json({ user: req.user });
+    } else {
+        res.status(299).json({ error: 'User is not logged in!' });
+    }
+});
+
 module.exports = router;
