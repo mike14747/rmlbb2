@@ -1,32 +1,31 @@
 {
+    "env": {
+        "browser": true,
+        "es2020": true,
+        "node": true
+    },
     "extends": [
-        "standard",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings"
+        "standard"
     ],
-    "env": {
-        "node": true,
-        "browser": true,
-        "commonjs": true,
-        "es6": true
-    },
     "parserOptions": {
-        "ecmaVersion": 6,
         "ecmaFeatures": {
             "jsx": true
-        }
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
     },
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parser": "babel-eslint",
+    "plugins": [
+        "react"
+    ],
     "rules": {
         "indent": [
             "error",
-            4
+            4,
+            {
+                "SwitchCase": 1
+            }
         ],
         "semi": [
             "error",
@@ -41,7 +40,7 @@
             "single"
         ],
         "comma-dangle": [
-            "error",
+            "warn",
             {
                 "arrays": "always-multiline",
                 "objects": "always-multiline",
@@ -60,7 +59,7 @@
             }
         ],
         "react/jsx-filename-extension": [
-            1,
+            "warn",
             {
                 "extensions": [
                     ".js",
@@ -69,8 +68,17 @@
             }
         ],
         "react/jsx-indent": [
-            2,
+            "error",
             4
-        ]
+        ],
+        "no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "args": "none",
+                "ignoreRestSiblings": true
+            }
+        ],
+        "react/react-in-jsx-scope": "off"
     }
 }
