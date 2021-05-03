@@ -9,7 +9,7 @@
 #__next {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 html,
 body {
@@ -204,7 +204,7 @@ a:link {
 }
 
 a:visited {
-    color: #b200e9;
+    color: #5067ff;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -450,7 +450,6 @@ template {
     margin: 1rem auto;
     max-width: 1334px;
     background-color: rgba(255, 255, 255, 1);
-    background: linear-gradient(150deg, rgba(233, 238, 238, 0.25), rgba(233, 238, 238, 0.10));
     padding: 1rem;
 }
 

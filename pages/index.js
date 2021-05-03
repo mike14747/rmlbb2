@@ -10,7 +10,9 @@ const Home = () => {
                     RML Baseball Homepage
                 </title>
             </Head>
-            This is the homepage.
+            <p>This is the homepage.</p>
+            <p>;lksdjfhglkjskdl</p>
+            <p>hawgefhahjks</p>
         </>
     );
 };

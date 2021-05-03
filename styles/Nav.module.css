@@ -1,0 +1,75 @@
+.nav {
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.nav::before {
+    color: rgba(0, 0, 0, 0.80);
+    content: "\2630";
+    font-weight: normal;
+    font-size: 2.5rem;
+    padding: 0.5rem;
+}
+
+.navdropdownContent {
+    text-align: left;
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+.navdropdownContent a {
+    color: #216290;
+    padding: 1rem 0.5rem;
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s;
+}
+
+.navdropdownContent a:hover {
+    background-color: rgba(27, 82, 120, 0.75);
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav:hover .navdropdownContent {
+    display: block;
+}
+
+.nav:hover {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.75));
+    color: #216290;
+    transition: 0.3s;
+}
+
+.item {
+    border-bottom: 1px #d3d3d3 solid;
+}
+
+.item:last-child {
+    border: 0;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.viewing {
+    cursor: default;
+    color: #7c8787 !important;
+}
+
+.viewing:hover {
+    background-color: #ffffff !important;
+}
+
+.current-text {
+    margin-left: 0.50rem;
+}

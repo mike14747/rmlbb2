@@ -1,6 +1,57 @@
 .header {
-    width: 100%;
     background-color: rgba(255, 255, 255, 1);
     color: #666666;
     border-bottom: 2px #ddeeee solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.headerLeft {
+    flex: 1;
+    text-align: left;
+    padding: 0.5rem;
+}
+
+.heading {
+    color: #C11B17;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
+    font-size: 1.75rem;
+}
+
+.subHeading {
+    color: #000080;
+    font-style: italic;
+    line-height: 1.25;
+    font-size: 0.8rem;
+}
+
+.subHeading::before {
+    content: "\2014\00A0";
+}
+
+.subHeading::after {
+    content: "\00A0\2014";
+}
+
+@media (min-width: 480px) {
+    .heading {
+        font-size: 2rem;
+    }
+
+    .subHeading {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    .subHeading {
+        font-size: 1rem;
+    }
 }
