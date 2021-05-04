@@ -1,20 +1,20 @@
 import Head from 'next/head';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Directory.module.css';
 
-const Home = () => {
+const Directory = () => {
     return (
         <>
             <Head>
                 <title>
-                    RML Baseball - Homepage
+                    RML Baseball - Manager Directory
                 </title>
             </Head>
             <h2>
-                RML News
+                Manager Directory
             </h2>
         </>
     );
 };
 
-export default Home;
+export default Directory;

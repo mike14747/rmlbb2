@@ -1,20 +1,20 @@
 import Head from 'next/head';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/MessageBoard.module.css';
 
-const Home = () => {
+const MessageBoard = () => {
     return (
         <>
             <Head>
                 <title>
-                    RML Baseball - Homepage
+                    RML Baseball - Message Board
                 </title>
             </Head>
             <h2>
-                RML News
+                Message Board
             </h2>
         </>
     );
 };
 
-export default Home;
+export default MessageBoard;

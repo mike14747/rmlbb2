@@ -1,20 +1,20 @@
 import Head from 'next/head';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Champions.module.css';
 
-const Home = () => {
+const Champions = () => {
     return (
         <>
             <Head>
                 <title>
-                    RML Baseball - Homepage
+                    RML Baseball - Champions
                 </title>
             </Head>
             <h2>
-                RML News
+                Champions
             </h2>
         </>
     );
 };
 
-export default Home;
+export default Champions;

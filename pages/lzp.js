@@ -1,20 +1,20 @@
 import Head from 'next/head';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Lzp.module.css';
 
-const Home = () => {
+const Lzp = () => {
     return (
         <>
             <Head>
                 <title>
-                    RML Baseball - Homepage
+                    RML Baseball - LZP Archive
                 </title>
             </Head>
             <h2>
-                RML News
+                LZP Archive
             </h2>
         </>
     );
 };
 
-export default Home;
+export default Lzp;
