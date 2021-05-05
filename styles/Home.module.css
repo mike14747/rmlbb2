@@ -1,0 +1,32 @@
+.newsItem {
+    border-bottom: 1px rgba(0, 0, 0, 0.25) solid;
+    overflow: auto;
+    margin-bottom: 1rem;
+    padding-bottom: 0.50rem
+}
+
+.newsItem:last-child {
+    border: 0;
+}
+
+.newsItem > ul {
+    list-style-type: circle;
+}
+
+.newsHeading {
+    font-size: 1.1rem;
+    font-weight: bolder;
+    margin: 0.50rem 0;
+    color: #ee6611;
+    text-transform: uppercase;
+}
+
+.newsDate {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.50);
+    margin-bottom: 0.50rem;
+}
+
+.newsDate::before {
+    content: "DATE: ";
+}

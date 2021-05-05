@@ -10,7 +10,7 @@ const CurrentSeason = () => {
                     RML Baseball - Current Season
                 </title>
             </Head>
-            <h2>
+            <h2 className="pageHeading">
                 Current Season
             </h2>
         </>

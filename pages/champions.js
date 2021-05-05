@@ -10,7 +10,7 @@ const Champions = () => {
                     RML Baseball - Champions
                 </title>
             </Head>
-            <h2>
+            <h2 className="pageHeading">
                 Champions
             </h2>
         </>

@@ -251,7 +251,7 @@ pre code {
 
 code {
     font-size: 0.875em;
-    color: #d63384;
+    color: #333333;
     word-wrap: break-word;
 }
 
@@ -444,6 +444,11 @@ template {
     display: none !important;
 }
 
+.pageHeading {
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 1.50rem;
+}
+
 .main-container {
     flex: 1;
     width: 100%;
@@ -471,12 +476,20 @@ template {
     .container {
         width: calc(100% - 1rem);
     }
+
+    .pageHeading {
+        font-size: 1.75rem;
+    }
 }
 
 @media (min-width: 768px) {
     .main-container,
     .container {
         width: calc(100% - 2rem);
+    }
+
+    .pageHeading {
+        font-size: 2rem;
     }
 }
 

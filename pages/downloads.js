@@ -10,7 +10,7 @@ const Downloads = () => {
                     RML Baseball - Downloads
                 </title>
             </Head>
-            <h2>
+            <h2 className="pageHeading">
                 Downloads
             </h2>
         </>

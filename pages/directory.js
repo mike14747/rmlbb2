@@ -10,7 +10,7 @@ const Directory = () => {
                     RML Baseball - Manager Directory
                 </title>
             </Head>
-            <h2>
+            <h2 className="pageHeading">
                 Manager Directory
             </h2>
         </>

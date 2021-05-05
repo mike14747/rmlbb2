@@ -10,7 +10,7 @@ const Constitution = () => {
                     RML Baseball - Constitution
                 </title>
             </Head>
-            <h2>
+            <h2 className="pageHeading">
                 Constitution
             </h2>
         </>

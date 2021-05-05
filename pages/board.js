@@ -10,7 +10,7 @@ const MessageBoard = () => {
                     RML Baseball - Message Board
                 </title>
             </Head>
-            <h2>
+            <h2 className="pageHeading">
                 Message Board
             </h2>
         </>
