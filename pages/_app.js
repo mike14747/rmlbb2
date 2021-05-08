@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import { Provider } from 'next-auth/client';
 import Layout from '../components/Layout';
 
 import '../styles/globals.css';
@@ -8,7 +8,9 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Layout>
-                <Component {...pageProps} />
+                <Provider session={pageProps.session}>
+                    <Component {...pageProps} />
+                </Provider>
             </Layout>
         </>
     );

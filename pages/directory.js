@@ -1,8 +1,13 @@
 import Head from 'next/head';
+import React from 'react';
+import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/client';
 
 import styles from '../styles/Directory.module.css';
 
 const Directory = () => {
+    const [session, loading] = useSession();
+
     return (
         <>
             <Head>
@@ -13,6 +18,19 @@ const Directory = () => {
             <h2 className="pageHeading">
                 Manager Directory
             </h2>
+            {!session &&
+                <>
+                    <div>You are not signed in.</div>
+                    <button onClick={signIn}>Sign in</button>
+                </>
+            }
+
+            {session &&
+                <>
+                    <div>Signed in as: {session.user.username}</div>
+                    <button onClick={signOut}>Sign out</button>
+                </>
+            }
         </>
     );
 };
