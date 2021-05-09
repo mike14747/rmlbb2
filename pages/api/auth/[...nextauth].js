@@ -13,17 +13,11 @@ const options = {
                 username: { label: 'Username', type: 'text' },
                 password: { label: 'Password', type: 'password' },
             },
-            session: {
-                jwt: true,
-                // Seconds - How long until an idle session expires and is no longer valid.
-                maxAge: 30 * 24 * 60 * 60, // 30 days
-            },
-            page: {
-                signIn: '/signin',
-            },
             async authorize(credentials) {
+                console.log('Credentials (in ...nextauth.js):', credentials);
                 // Add logic here to look up the user from the credentials supplied
-                const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' };
+                // const user = { id: 1, username: 'user1234' };
+                const user = undefined;
 
                 if (user) {
                     // Any object returned will be saved in `user` property of the JWT
@@ -38,6 +32,14 @@ const options = {
             },
         }),
     ],
+    session: {
+        jwt: true,
+        // Seconds - How long until an idle session expires and is no longer valid.
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+    },
+    pages: {
+        signIn: '/signin',
+    },
 };
 
 export default (req, res) => NextAuth(req, res, options);

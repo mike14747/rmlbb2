@@ -7,6 +7,7 @@ import styles from '../styles/Directory.module.css';
 
 const Directory = () => {
     const [session, loading] = useSession();
+    console.log('Session (in directory.js):', session);
 
     return (
         <>
