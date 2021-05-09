@@ -20,9 +20,10 @@
 
 .heading {
     color: #c11b17;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.50);
+    /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.50); */
     margin-bottom: 0;
     font-size: 1.75rem;
+    font-weight: bolder;
 }
 
 .subHeading {

@@ -18,6 +18,9 @@ const options = {
                 // Seconds - How long until an idle session expires and is no longer valid.
                 maxAge: 30 * 24 * 60 * 60, // 30 days
             },
+            page: {
+                signIn: '/signin',
+            },
             async authorize(credentials) {
                 // Add logic here to look up the user from the credentials supplied
                 const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' };
