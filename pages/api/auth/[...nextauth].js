@@ -26,7 +26,6 @@ const options = {
                     .limit(1)
                     .toArray();
 
-
                 if (user && user.length === 1) {
                     // Any object returned will be saved in `user` property of the JWT
                     const matches = await bcryptjs.compare(credentials.password, user[0].password);
