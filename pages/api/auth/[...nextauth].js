@@ -2,6 +2,7 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
 import { connectToDatabase } from '../../../utils/mongodb';
+import bcryptjs from 'bcryptjs';
 
 const options = {
     providers: [
@@ -16,23 +17,21 @@ const options = {
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials) {
-                console.log('Credentials (in ...nextauth.js):', credentials);
                 // Add logic here to look up the user from the credentials supplied
-                // const user = { id: 1, username: 'user1234' };
-
                 const { db } = await connectToDatabase();
 
-                const user = await db
+                let user = await db
                     .collection('users')
                     .find({ username: credentials.username })
                     .limit(1)
                     .toArray();
 
-                console.log('User (in ...nextauth.js):', user);
 
                 if (user && user.length === 1) {
                     // Any object returned will be saved in `user` property of the JWT
-                    return user;
+                    const matches = await bcryptjs.compare(credentials.password, user[0].password);
+                    if (matches) return { name: user[0].username };
+                    return null;
                 } else {
                     // If you return null or false then the credentials will be rejected
                     return null;
@@ -49,7 +48,7 @@ const options = {
         maxAge: 30 * 24 * 60 * 60, // 30 days
     },
     // pages: {
-    //     signIn: '/signin',
+    //     signIn: '/auth/signin',
     // },
 };
 
