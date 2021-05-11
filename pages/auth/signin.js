@@ -1,34 +1,36 @@
-import React from 'react';
-import { getSession, providers, signIn } from 'next-auth/client';
 import PropTypes from 'prop-types';
+import { getCsrfToken } from 'next-auth/client';
 
-const SignIn = ({ providers }) => {
+const SignIn = ({ csrfToken }) => {
     return (
         <>
             <h2 className="pageHeading">Custom signin page.</h2>
+            <form method='post' action='/api/auth/callback/credentials'>
+                <input name='csrfToken' type='hidden' defaultValue={csrfToken} />
+                <label>
+                    Username
+                    <input name='username' type='text' />
+                </label>
+                <label>
+                    Password
+                    <input name='password' type='password' />
+                </label>
+                <button type='submit'>Sign in</button>
+            </form>
         </>
     );
 };
 
 SignIn.propTypes = {
-    providers: PropTypes.object,
+    csrfToken: PropTypes.string,
 };
 
-SignIn.getInitialProps = async (context) => {
-    const { req, res } = context;
-    const session = await (getSession({ req }));
-
-    if (session && res && session.accessToken) {
-        res.writeHead(302, {
-            location: '/',
-        });
-        return res.end();
-    }
-
+export async function getServerSideProps(context) {
     return {
-        session: undefined,
-        providers: await providers(context),
+        props: {
+            csrfToken: await getCsrfToken(context),
+        },
     };
-};
+}
 
 export default SignIn;
