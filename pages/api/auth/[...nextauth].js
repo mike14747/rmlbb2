@@ -45,6 +45,7 @@ const options = {
             if (account?.accessToken) {
                 token.accessToken = account.accessToken;
             }
+            token.randomProperty = 'blah';
             return token;
         },
     },
