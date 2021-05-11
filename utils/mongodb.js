@@ -10,7 +10,7 @@ if (!MONGODB_URI) {
 
 if (!MONGODB_DB) {
     throw new Error(
-        'Please define the MONGODB_DB environment variable inside .env.local',
+        'Please define the MONGODB_DB environment variable inside .env',
     );
 }
 
