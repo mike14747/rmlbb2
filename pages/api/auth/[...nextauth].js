@@ -36,9 +36,19 @@ const options = {
         // Seconds - How long until an idle session expires and is no longer valid.
         maxAge: 30 * 24 * 60 * 60, // 30 days
     },
-    // pages: {
-    //     signIn: '/auth/signin',
-    // },
+    pages: {
+        signIn: '/auth/signin',
+    },
+    callbacks: {
+        async jwt(token, user, account, profile, isNewUser) {
+            // Add access_token to the token right after signin
+            if (account?.accessToken) {
+                token.accessToken = account.accessToken;
+            }
+            token.randomProperty = 'blah';
+            return token;
+        },
+    },
 };
 
 export default (req, res) => NextAuth(req, res, options);
