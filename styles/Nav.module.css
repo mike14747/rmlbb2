@@ -34,6 +34,12 @@
     display: block;
     transition: color 0.3s;
     white-space: nowrap;
+    border-bottom: 1px #d3d3d3 solid;
+    line-height: 1;
+}
+
+.navdropdownContent a:last-child {
+    border-bottom: 0;
 }
 
 .navdropdownContent a:hover {
@@ -50,14 +56,6 @@
 .nav:hover {
     color: #216290;
     transition: 0.3s;
-}
-
-.item {
-    border-bottom: 1px #d3d3d3 solid;
-}
-
-.item:last-child {
-    border: 0;
 }
 
 .viewing {
@@ -99,15 +97,25 @@
     }
 
     .navdropdownContent a {
-        padding: 0;
-        margin: 0;
-        color: unset;
-        text-decoration: unset;
+        padding: 0.50rem;
+        margin: 0.25rem 0.25rem 0 0.25rem;
+        border: 0;
+        position: relative;
+        white-space: nowrap;
     }
 
     .navdropdownContent a:hover {
-        background-color: #ffffff;
         color: coral;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .navdropdownContent a:first-child {
+        margin: 0.25rem 0.25rem 0 0;
+    }
+
+    .navdropdownContent a:last-child {
+        margin: 0.25rem 0 0 0.25rem;
     }
 
     .nav:hover .navdropdownContent {
@@ -118,15 +126,7 @@
         color: unset;
     }
 
-    .item {
-        padding: 0 0 0.25rem 0;
-        margin: 0.50rem 0.50rem 0 0.50rem;
-        border: 0;
-        white-space: nowrap;
-        position: relative;
-    }
-
-    .item::after {
+    .navdropdownContent a::after {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -134,41 +134,13 @@
         height: 3px;
         content: '';
         background-color: transparent;
-        transition: width 0.30s, left 0.30s, background-color 1s;
+        transition: width 0.3s, left 0.3s, background-color 1s;
     }
 
-    .item:hover {
-        color: coral;
-        background-color: #ffffff;
-        cursor: pointer;
-    }
-    
-    .item:hover::after {
-        width: 100%;
-        left: 0;
+    .navdropdownContent a:hover::after {
+        width: calc(100% - 1rem);
+        left: 0.50rem;
         background-color: coral;
-        transition: width 0.30s, left 0.30s, background-color 1s;
-    }
-
-    .item:first-child {
-        margin: 0.50rem 0.50rem 0 0.25rem;
-    }
-
-    .item:last-child {
-        margin: 0.50rem 0.25rem 0 0.50rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .item {
-        margin: 0.50rem 0.75rem 0 0.75rem;
-    }
-
-    .item:first-child {
-        margin: 0.50rem 0.75rem 0 0.25rem;
-    }
-
-    .item:last-child {
-        margin: 0.50rem 0.25rem 0 0.75rem;
+        transition: width 0.3s, left 0.3s, background-color 1s;
     }
 }
