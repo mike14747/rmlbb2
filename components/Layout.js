@@ -15,7 +15,9 @@ const Layout = ({ children }) => {
                     <aside>
                         <EventsSidebar />
                     </aside>
-                    <aside>This will be the lower sidebar.</aside>
+                    <aside>
+                        This will be the lower sidebar.
+                    </aside>
                 </section>
             </div>
 

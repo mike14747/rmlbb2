@@ -1,21 +1,20 @@
 .header {
     background-color: rgba(255, 255, 255, 1);
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.75), 50%, rgba(255, 255, 255, 0)),
-        linear-gradient(-90deg, rgba(255, 255, 255, 0.75), 25%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
-    background-size: stretch;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.85), 40%, rgba(255, 255, 255, 0)),
+        linear-gradient(-135deg, rgba(255, 255, 255, 0.85), 25%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
+    background-size: cover;
     background-position: center;
     color: #666666;
     border-bottom: 2px #ddeeee solid;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    padding: 0.5rem;
+    padding: 0;
 }
 
 .headerLeft {
     flex: 1;
     text-align: left;
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 .heading {
@@ -24,6 +23,11 @@
     margin-bottom: 0;
     font-size: 1.75rem;
     font-weight: bolder;
+}
+
+.logoText {
+    color: #c11b17 !important;
+    text-decoration: none !important;
 }
 
 .subHeading {
@@ -51,8 +55,8 @@
     }
 
     .header {
-        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.80), 40%, rgba(255, 255, 255, 0)),
-            linear-gradient(-90deg, rgba(255, 255, 255, 0.80), 20%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.80), 35%, rgba(255, 255, 255, 0)),
+            linear-gradient(-135deg, rgba(255, 255, 255, 0.85), 20%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
     }
 }
 
@@ -66,7 +70,9 @@
     }
 
     .header {
-        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.85), 30%, rgba(255, 255, 255, 0)),
-            linear-gradient(-90deg, rgba(255, 255, 255, 0.85), 15%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.75), 30%, rgba(255, 255, 255, 0)),
+            linear-gradient(-135deg, rgba(255, 255, 255, 0.85), 15%, rgba(255, 255, 255, 0)),
+            url('/images/header_bg.jpg');
+        flex-direction: column;
     }
 }

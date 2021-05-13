@@ -7,34 +7,31 @@ const Nav = () => {
         <nav className={styles.nav}>
             <div className={styles.navdropdownContent}>
                 <div className={styles.item}>
-                    <Link href="/">Home</Link>
+                    <Link href="/current"><a>Current Season +</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/current">Current Season +</Link>
+                    <Link href="/downloads"><a>Downloads +</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/downloads">Downloads +</Link>
+                    <Link href="/constitution"><a>Constitution</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/constitution">Constitution</Link>
+                    <Link href="/directory"><a>Manager Directory</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/directory">Manager Directory</Link>
+                    <Link href="/lzp"><a>LZP Archive +</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/lzp">LZP Archive +</Link>
+                    <Link href="/events"><a>Upcoming Events</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/events">Upcoming Events</Link>
+                    <Link href="/board"><a>Message Board</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/board">Message Board</Link>
+                    <Link href="/champions"><a>Champions</a></Link>
                 </div>
                 <div className={styles.item}>
-                    <Link href="/champions">Champions</Link>
-                </div>
-                <div className={styles.item}>
-                    <Link href="/contact">Contact</Link>
+                    <Link href="/contact"><a>Contact</a></Link>
                 </div>
             </div>
         </nav>

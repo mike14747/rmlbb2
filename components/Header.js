@@ -8,7 +8,9 @@ const Header = () => {
         <header className={'container ' + styles.header}>
             <div className={styles.headerLeft}>
                 <h1 className={styles.heading}>
-                    RML Baseball
+                    <Link href="/">
+                        <a className={styles.logoText}>RML Baseball</a>
+                    </Link>
                 </h1>
                 <div className={styles.subHeading}>
                     Since 1978

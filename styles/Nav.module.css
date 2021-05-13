@@ -1,14 +1,15 @@
 .nav {
     flex: 0 0 auto;
     position: relative;
+    padding: 1rem;
 }
 
 .nav::before {
-    color: rgba(0, 0, 0, 0.80);
-    content: "\2630";
+    color: rgba(0, 0, 0, 0.8);
+    content: '\2630';
     font-weight: normal;
     font-size: 2.5rem;
-    padding: 0.50rem 0.5rem 0.50rem 3rem;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
 }
 
 .navdropdownContent {
@@ -59,11 +60,6 @@
     border: 0;
 }
 
-.down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-}
-
 .viewing {
     cursor: default;
     color: #7c8787 !important;
@@ -74,5 +70,105 @@
 }
 
 .current-text {
-    margin-left: 0.50rem;
+    margin-left: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .nav {
+        flex: 1;
+        position: unset;
+        padding: 0;
+    }
+
+    .nav::before {
+        display: none;
+        content: '';
+        padding: 0;
+    }
+
+    .navdropdownContent {
+        position: unset;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-width: auto;
+        max-width: 100%;
+        box-shadow: none;
+    }
+
+    .navdropdownContent a {
+        padding: 0;
+        margin: 0;
+        color: unset;
+        text-decoration: unset;
+    }
+
+    .navdropdownContent a:hover {
+        background-color: #ffffff;
+        color: coral;
+    }
+
+    .nav:hover .navdropdownContent {
+        display: flex;
+    }
+
+    .nav:hover {
+        color: unset;
+    }
+
+    .item {
+        padding: 0 0 0.25rem 0;
+        margin: 0.50rem 0.50rem 0 0.50rem;
+        border: 0;
+        white-space: nowrap;
+        position: relative;
+    }
+
+    .item::after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        height: 3px;
+        content: '';
+        background-color: transparent;
+        transition: width 0.30s, left 0.30s, background-color 1s;
+    }
+
+    .item:hover {
+        color: coral;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+    
+    .item:hover::after {
+        width: 100%;
+        left: 0;
+        background-color: coral;
+        transition: width 0.30s, left 0.30s, background-color 1s;
+    }
+
+    .item:first-child {
+        margin: 0.50rem 0.50rem 0 0.25rem;
+    }
+
+    .item:last-child {
+        margin: 0.50rem 0.25rem 0 0.50rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .item {
+        margin: 0.50rem 0.75rem 0 0.75rem;
+    }
+
+    .item:first-child {
+        margin: 0.50rem 0.75rem 0 0.25rem;
+    }
+
+    .item:last-child {
+        margin: 0.50rem 0.25rem 0 0.75rem;
+    }
 }
