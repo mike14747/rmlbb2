@@ -27,9 +27,8 @@
     transition: background-color 0.3s;
 }
 
-.navdropdownContent a {
-    color: #216290;
-    padding: 1rem 0.5rem;
+.navdropdownContent > a {
+    padding: 1.50rem 0.5rem;
     text-decoration: none;
     display: block;
     transition: color 0.3s;
@@ -38,24 +37,19 @@
     line-height: 1;
 }
 
-.navdropdownContent a:last-child {
+.navdropdownContent > a:last-child {
     border-bottom: 0;
 }
 
-.navdropdownContent a:hover {
+.navdropdownContent > a:hover {
     background-color: rgba(27, 82, 120, 0.75);
     color: #ffffff;
     text-decoration: none;
     transition: 0.3s;
 }
 
-.nav:hover .navdropdownContent {
+.nav:hover > .navdropdownContent {
     display: block;
-}
-
-.nav:hover {
-    color: #216290;
-    transition: 0.3s;
 }
 
 .viewing {
@@ -74,7 +68,7 @@
 @media (min-width: 768px) {
     .nav {
         flex: 1;
-        position: unset;
+        position: static;
         padding: 0;
     }
 
@@ -85,7 +79,7 @@
     }
 
     .navdropdownContent {
-        position: unset;
+        position: static;
         display: flex;
         align-content: center;
         justify-content: center;
@@ -96,7 +90,7 @@
         box-shadow: none;
     }
 
-    .navdropdownContent a {
+    .navdropdownContent > a {
         padding: 0.50rem;
         margin: 0.25rem 0.25rem 0 0.25rem;
         border: 0;
@@ -104,29 +98,25 @@
         white-space: nowrap;
     }
 
-    .navdropdownContent a:hover {
+    .navdropdownContent > a:hover {
         color: coral;
         background-color: transparent;
         cursor: pointer;
     }
 
-    .navdropdownContent a:first-child {
+    .navdropdownContent > a:first-child {
         margin: 0.25rem 0.25rem 0 0;
     }
 
-    .navdropdownContent a:last-child {
+    .navdropdownContent > a:last-child {
         margin: 0.25rem 0 0 0.25rem;
     }
 
-    .nav:hover .navdropdownContent {
+    .nav:hover > .navdropdownContent {
         display: flex;
     }
 
-    .nav:hover {
-        color: unset;
-    }
-
-    .navdropdownContent a::after {
+    .navdropdownContent > a::after {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -137,7 +127,7 @@
         transition: width 0.3s, left 0.3s, background-color 1s;
     }
 
-    .navdropdownContent a:hover::after {
+    .navdropdownContent > a:hover::after {
         width: calc(100% - 1rem);
         left: 0.50rem;
         background-color: coral;
