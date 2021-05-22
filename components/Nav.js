@@ -5,27 +5,27 @@ import styles from '../styles/Nav.module.css';
 const Nav = () => {
     return (
         <nav className={styles.nav}>
-            <div className={styles.navdropdownContent}>
+            <ul className={styles.navdropdownContent}>
 
-                <Link href="/current"><a>Current Season +</a></Link>
+                <li><Link href="/current"><a>Current Season +</a></Link></li>
 
-                <Link href="/downloads"><a>Downloads +</a></Link>
+                <li><Link href="/downloads"><a>Downloads +</a></Link></li>
 
-                <Link href="/constitution"><a>Constitution</a></Link>
+                <li><Link href="/constitution"><a>Constitution</a></Link></li>
 
-                <Link href="/directory"><a>Manager Directory</a></Link>
+                <li><Link href="/directory"><a>Manager Directory</a></Link></li>
 
-                <Link href="/lzp"><a>LZP Archive +</a></Link>
+                <li><Link href="/lzp"><a>LZP Archive +</a></Link></li>
 
-                <Link href="/events"><a>Upcoming Events</a></Link >
+                <li><Link href="/events"><a>Upcoming Events</a></Link ></li>
 
-                <Link href="/board"><a>Message Board</a></Link >
+                <li><Link href="/board"><a>Message Board</a></Link ></li>
 
-                <Link href="/champions"><a>Champions</a></Link >
+                <li><Link href="/champions"><a>Champions</a></Link ></li>
 
-                <Link href="/contact"><a>Contact</a></Link>
+                <li><Link href="/contact"><a>Contact</a></Link></li>
 
-            </div >
+            </ul >
         </nav >
     );
 };
