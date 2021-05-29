@@ -2,7 +2,8 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import noContainer from '../lib/noContainer';
-import { basePublicQueryUrl } from '../lib/settings';
+// import { basePublicQueryUrl } from '../lib/settings';
+import { getAllNewsItems } from '../lib/api/news';
 
 import styles from '../styles/Home.module.css';
 
@@ -18,7 +19,7 @@ const Home = ({ news }) => {
                 Latest News
             </h2>
 
-            {news && news.length > 0
+            {news.length > 0
                 ? news.map((item, index) => (
                     <article key={index} className={styles.newsItem}>
                         <h4 className={styles.newsHeading}>{item.title}</h4>
@@ -39,15 +40,11 @@ Home.propTypes = {
     news: PropTypes.array,
 };
 
-export async function getStaticProps(context) {
-    const query = encodeURIComponent('*[_type == "newsItem"]{title, date, content} | order(date desc)');
-    const url = `${basePublicQueryUrl}${query}`;
-    const newsJSON = await fetch(url).then(res => res.json().catch(error => console.log(error)));
+export async function getStaticProps() {
+    const news = await getAllNewsItems();
 
     return {
-        props: {
-            news: (newsJSON?.result) || [],
-        },
+        props: { news },
         revalidate: 600, // page regeneration can occur in 10 minutes
     };
 }
