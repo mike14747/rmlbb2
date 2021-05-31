@@ -12,9 +12,9 @@ const Header = () => {
                         <a className={styles.logoText}>RML Baseball</a>
                     </Link>
                 </h1>
-                <div className={styles.subHeading}>
+                <p className={'m-0 ' + styles.subHeading}>
                     Since 1978
-                </div>
+                </p>
             </div>
 
             <Nav />
