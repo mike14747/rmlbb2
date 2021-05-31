@@ -444,6 +444,14 @@ template {
     display: none !important;
 }
 
+.p-0 {
+    padding: 0;
+}
+
+.m-0 {
+    margin: 0;
+}
+
 .pageHeading {
     color: rgba(0, 0, 0, 0.75);
     font-size: 1.5rem;
