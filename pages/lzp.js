@@ -10,7 +10,7 @@ const Lzp = () => {
                     RML Baseball - LZP Archive
                 </title>
             </Head>
-            <h2>
+            <h2 data-testid="pageHeading" className="pageHeading">
                 LZP Archive
             </h2>
         </>

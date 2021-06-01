@@ -7,7 +7,7 @@ const NoMatch = () => {
                 <title>Page Not Found</title>
             </Head>
 
-            <h2 className="error">
+            <h2 dtat-testid="error" className="error">
                 Error 404!
             </h2>
             <p>An error has occurred.</p>

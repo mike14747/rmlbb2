@@ -16,7 +16,7 @@ const Directory = () => {
                     RML Baseball - Manager Directory
                 </title>
             </Head>
-            <h2 className="pageHeading">
+            <h2 data-testid="pageHeading" className="pageHeading">
                 Manager Directory
             </h2>
             {!session &&

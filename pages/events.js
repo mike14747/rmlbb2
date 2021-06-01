@@ -10,7 +10,7 @@ const Events = () => {
                     RML Baseball - Upcoming Events
                 </title>
             </Head>
-            <h2 className="pageHeading">
+            <h2 data-testid="pageHeading" className="pageHeading">
                 Upcoming Events
             </h2>
         </>

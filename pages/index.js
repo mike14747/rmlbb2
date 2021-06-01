@@ -15,7 +15,7 @@ const Home = ({ news }) => {
                     RML Baseball - Homepage
                 </title>
             </Head>
-            <h2 className="pageHeading">
+            <h2 data-testid="pageHeading" className="pageHeading">
                 Latest News
             </h2>
 

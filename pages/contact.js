@@ -10,7 +10,7 @@ const Contact = () => {
                     RML Baseball - Contact
                 </title>
             </Head>
-            <h2 className="pageHeading">
+            <h2 data-testid="pageHeading" className="pageHeading">
                 Contact
             </h2>
         </>
