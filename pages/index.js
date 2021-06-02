@@ -22,16 +22,16 @@ const Home = ({ news }) => {
 
             {news?.length > 0
                 ? news.map((item, index) => (
-                    <article key={index} className={styles.newsItem}>
-                        <h4 className={styles.newsHeading}>{item.title}</h4>
-                        <div className={styles.newsDate}>{item.date}</div>
+                    <article key={index} data-testid="newsArticle" className={styles.newsItem}>
+                        <h4 data-testid="newsHeading" className={styles.newsHeading}>{item.title}</h4>
+                        <p data-testid="newsDate" className={'m-0 ' + styles.newsDate}>{item.date}</p>
                         <BlockContent
                             blocks={item.content}
                             serializers={noContainer}
                         />
                     </article>
                 ))
-                : <div>An error occurred fetching the news.</div>
+                : <p>An error occurred fetching the news.</p>
             }
         </>
     );
