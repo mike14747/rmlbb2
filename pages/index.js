@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import noContainer from '../lib/noContainer';
 // import { basePublicQueryUrl } from '../lib/settings';
-import { getAllNewsItems } from '../lib/api/news';
+import { getSomeNewsItems, getAllNewsItems } from '../lib/api/news';
 
 import styles from '../styles/Home.module.css';
 
 const Home = ({ news }) => {
+    console.log(news);
     return (
         <>
             <Head>
@@ -19,7 +20,7 @@ const Home = ({ news }) => {
                 Latest News
             </h2>
 
-            {news.length > 0
+            {news?.length > 0
                 ? news.map((item, index) => (
                     <article key={index} className={styles.newsItem}>
                         <h4 className={styles.newsHeading}>{item.title}</h4>
@@ -41,7 +42,7 @@ Home.propTypes = {
 };
 
 export async function getStaticProps() {
-    const news = await getAllNewsItems();
+    const news = await getSomeNewsItems();
 
     return {
         props: { news },
