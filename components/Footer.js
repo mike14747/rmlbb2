@@ -2,7 +2,7 @@ import styles from '../styles/Footer.module.css';
 
 const Footer = () => {
     return (
-        <footer data-testid="footer" className={'container ' + styles.footer}>
+        <footer className={'container ' + styles.footer}>
             <p className="m-0">
                 &copy; 2015 RML Baseball
             </p>

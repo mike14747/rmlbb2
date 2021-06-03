@@ -8,7 +8,7 @@ import { getSomeNewsItems, getAllNewsItems } from '../lib/api/news';
 import styles from '../styles/Home.module.css';
 
 const Home = ({ news }) => {
-    console.log(news);
+    // console.log(news);
     return (
         <>
             <Head>
@@ -16,15 +16,15 @@ const Home = ({ news }) => {
                     RML Baseball - Homepage
                 </title>
             </Head>
-            <h2 data-testid="pageHeading" className="pageHeading">
+            <h2 className="pageHeading">
                 Latest News
             </h2>
 
             {news?.length > 0
                 ? news.map((item, index) => (
-                    <article key={index} data-testid="newsArticle" className={styles.newsItem}>
-                        <h4 data-testid="newsHeading" className={styles.newsHeading}>{item.title}</h4>
-                        <p data-testid="newsDate" className={'m-0 ' + styles.newsDate}>{item.date}</p>
+                    <article key={index} className={styles.newsItem}>
+                        <h4 className={styles.newsHeading}>{item.title}</h4>
+                        <p data-testid="news-date" className={'m-0 ' + styles.newsDate}>{item.date}</p>
                         <BlockContent
                             blocks={item.content}
                             serializers={noContainer}

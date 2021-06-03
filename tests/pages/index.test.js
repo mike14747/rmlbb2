@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import Home from '../../pages/index';
@@ -39,29 +39,49 @@ const news = [{
 }];
 
 describe('Test that the homepage renders properly', () => {
-    const component = render(<Home news={news} />);
+    beforeEach(() => {
+        render(<Home news={news} />);
+    });
 
-    test('Check that the page heading renders', () => {
-        const headingElement = component.getByTestId('pageHeading');
-        expect(headingElement).toHaveTextContent(/latest news$/i);
+    test('Check that the page heading and mocked news item renders', () => {
+        expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^latest news$/i);
     });
 
     test('Check that the mocked news item renders in an article tag', () => {
-        const articleElement = component.getByTestId('newsArticle');
-        expect(articleElement).toBeInTheDocument();
+        expect(screen.getByRole('article')).toBeInTheDocument();
+    });
+
+    test('Check that the mocked news item heading renders', () => {
+        expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent(/^Test Title$/i);
+    });
+
+    test('Check that the mocked news item date renders', () => {
+        expect(screen.getByTestId('news-date')).toHaveTextContent('2015-12-31');
+    });
+
+    test('Check that the first block of block content is rendering', () => {
+        expect(screen.getByText(/^first text block$/i)).toBeInTheDocument();
+    });
+
+    test('Check that the second block of block content is rendering', () => {
+        expect(screen.getByText(/^second text block$/i)).toBeInTheDocument();
     });
 });
 
-describe('Test that the homepage renders properly without props', () => {
-    const component2 = render(<Home news={null} />);
+describe('Test that the homepage renders properly without the news props', () => {
+    beforeEach(() => {
+        render(<Home news={null} />);
+    });
 
     test('Check that the page heading renders', () => {
-        const headingElement = component2.getByTestId('pageHeading');
-        expect(headingElement).toHaveTextContent(/latest news$/i);
+        expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^latest news$/i);
     });
 
     test('Check that there are no article tags without props', () => {
-        const articleElement = component2.getByTestId('newsArticle');
-        expect(articleElement).not.toBeInTheDocument();
+        expect(screen.queryByRole('article')).not.toBeInTheDocument();
+    });
+
+    test('Check that the no-news error message renders', () => {
+        expect(screen.getByText(/^an error occurred fetching the news.$/i)).toBeInTheDocument();
     });
 });
