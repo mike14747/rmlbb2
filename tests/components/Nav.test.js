@@ -7,14 +7,13 @@ describe('Check that the nav', () => {
     test('Make sure all the nav links render', () => {
         render(<Nav />);
 
-        expect(screen.getByRole('navigation')).toBeInTheDocument();
-        expect(screen.getByRole('list')).toBeInTheDocument();
-
-        const navList = screen.getByRole('list');
+        const navElement = screen.getByRole('navigation');
+        const navList = within(navElement).getByRole('list');
         const items = within(navList).getAllByRole('listitem');
+
         expect(items.length).toBe(9);
 
-        const links = screen.getAllByRole('link');
+        const links = within(navList).getAllByRole('link');
         expect(links.length).toBe(9);
         expect(links[0]).toHaveTextContent(/^current season \+/i);
         expect(links[0]).toHaveAttribute('href', '/current');
@@ -34,7 +33,5 @@ describe('Check that the nav', () => {
         expect(links[7]).toHaveAttribute('href', '/champions');
         expect(links[8]).toHaveTextContent(/^contact/i);
         expect(links[8]).toHaveAttribute('href', '/contact');
-
-        expect(1).toBe(1);
     });
 });
