@@ -1,5 +1,5 @@
 const config = {
-    setupFiles: [
+    setupFilesAfterEnv: [
         './setupJest.js',
     ],
     moduleNameMapper: {
