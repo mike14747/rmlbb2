@@ -8,9 +8,12 @@ describe('Test the nav component', () => {
         render(<Nav />);
 
         const navElement = screen.getByRole('navigation');
-        const navList = within(navElement).getByRole('list');
-        const items = within(navList).getAllByRole('listitem');
+        expect(navElement).toBeInTheDocument();
 
+        const navList = within(navElement).getByRole('list');
+        expect(navList).toBeInTheDocument();
+
+        const items = within(navList).getAllByRole('listitem');
         expect(items.length).toBe(9);
 
         const links = within(navList).getAllByRole('link');
