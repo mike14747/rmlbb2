@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { deleteAllEvents } from '../lib/api/events';
 
 import styles from '../styles/Events.module.css';
 
