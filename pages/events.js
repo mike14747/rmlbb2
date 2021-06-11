@@ -1,9 +1,12 @@
 import Head from 'next/head';
-import { deleteAllEvents } from '../lib/api/events';
+import PropTypes from 'prop-types';
+
+import { getAllActiveUpcomingEvents } from '../lib/api/events';
 
 import styles from '../styles/Events.module.css';
 
-const Events = () => {
+const Events = ({ events }) => {
+    console.log(events);
     return (
         <>
             <Head>
@@ -14,8 +17,27 @@ const Events = () => {
             <h2 data-testid="pageHeading" className="pageHeading">
                 Upcoming Events
             </h2>
+            {events?.length > 0
+                ? events.map((event, i) => (
+                    <div key={i}>{event.eventDate} - {event.event}{event.details && <>({event.details})</>}</div>
+                ))
+                : <p>An error occurred fetching the upcoming events.</p>
+            }
         </>
     );
 };
+
+Events.propTypes = {
+    events: PropTypes.array,
+};
+
+export async function getStaticProps() {
+    const events = await getAllActiveUpcomingEvents();
+
+    return {
+        props: { events },
+        revalidate: 600, // page regeneration can occur in 10 minutes
+    };
+}
 
 export default Events;
