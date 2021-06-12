@@ -9,9 +9,10 @@ describe('Champions page tests', () => {
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^champions$/i);
     });
 
-    test('Make sure the champions page renders properly with the champions prop as null', () => {
+    test('Make sure the champions page renders properly with the champions prop being null', () => {
         render(<Champions champions={null} />);
 
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^champions$/i);
+        // expect(screen.getByTestId('error')).toHaveTextContent(/an error occurred fetching data/i);
     });
 });

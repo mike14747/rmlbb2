@@ -6,7 +6,6 @@ import { getAllActiveUpcomingEvents } from '../lib/api/events';
 import styles from '../styles/Events.module.css';
 
 const Events = ({ events }) => {
-    console.log(events);
     return (
         <>
             <Head>
@@ -18,10 +17,12 @@ const Events = ({ events }) => {
                 Upcoming Events
             </h2>
             {events?.length > 0
-                ? events.map((event, i) => (
-                    <div key={i}>{event.eventDate} - {event.event}{event.details && <>({event.details})</>}</div>
-                ))
-                : <p>An error occurred fetching the upcoming events.</p>
+                ? <ul>
+                    {events.map((event, i) => (
+                        <li key={i}>{event.eventDate} - {event.event}{event.details && <>({event.details})</>}</li>
+                    ))}
+                </ul>
+                : <p data-testid="error">An error occurred fetching data.</p>
             }
         </>
     );
