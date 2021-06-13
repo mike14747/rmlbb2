@@ -17,12 +17,18 @@ const Events = ({ events }) => {
                 Upcoming Events
             </h2>
             {events?.length > 0
-                ? <ul>
-                    {events.map((event, i) => (
-                        <li key={i}>{event.eventDate} - {event.event}{event.details && <>({event.details})</>}</li>
-                    ))}
-                </ul>
-                : <p data-testid="error">An error occurred fetching data.</p>
+                ? <article>
+                    <ul>
+                        {events.map((event, i) => (
+                            <li key={i}>{event.eventDate} - {event.event}{event.details && <>({event.details})</>}</li>
+                        ))}
+                    </ul>
+                </article>
+                : events?.length === 0
+                    ? <article>
+                        <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
+                    </article>
+                    : <p data-testid="error">An error occurred fetching data.</p>
             }
         </>
     );

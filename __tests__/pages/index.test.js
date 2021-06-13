@@ -49,11 +49,19 @@ describe('Homepage tests', () => {
         expect(screen.getByText(/^second text block$/i)).toBeInTheDocument();
     });
 
+    test('Make sure the homepage renders properly with the news prop being an empty array', () => {
+        render(<Home news={[]} />);
+
+        expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^latest news$/i);
+        expect(screen.getByRole('article')).toBeInTheDocument();
+        expect(screen.getByTestId('empty')).toHaveTextContent(/there are no news items to display. check back again soon./i);
+    });
+
     test('Check that the homepage renders properly with the news prop as null', () => {
         render(<Home news={null} />);
 
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^latest news$/i);
         expect(screen.queryByRole('article')).not.toBeInTheDocument();
-        expect(screen.getByText(/^an error occurred fetching the news.$/i)).toBeInTheDocument();
+        expect(screen.getByText(/^an error occurred fetching data.$/i)).toBeInTheDocument();
     });
 });

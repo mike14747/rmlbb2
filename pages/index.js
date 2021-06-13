@@ -31,7 +31,11 @@ const Home = ({ news }) => {
                         />
                     </article>
                 ))
-                : <p>An error occurred fetching the news.</p>
+                : news?.length === 0
+                    ? <article>
+                        <p data-testid="empty">There are no news items to display. Check back again soon.</p>
+                    </article>
+                    : <p data-testid="error">An error occurred fetching data.</p>
             }
         </>
     );
