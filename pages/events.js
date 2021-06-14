@@ -1,11 +1,24 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 
-import { getAllActiveUpcomingEvents } from '../lib/api/events';
+import { getAllActiveUpcomingEvents, getAllActiveEvents } from '../lib/api/events';
 
 import styles from '../styles/Events.module.css';
 
 const Events = ({ events }) => {
+    const [eventsToDisplay, setEventsToDisplay] = useState(null);
+    const [showPastEvents, setShowPastEvents] = useState(false);
+
+    // useEffect(() => {
+    //     getAllActiveEvents()
+    //         .then(res => {
+    //             console.log(res);
+    //             setEventsToDisplay(res);
+    //         })
+    //         .catch(error => console.log(error));
+    // }, [showPastEvents]);
+
     return (
         <>
             <Head>
