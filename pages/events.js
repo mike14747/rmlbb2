@@ -7,17 +7,20 @@ import { getAllActiveUpcomingEvents, getAllActiveEvents } from '../lib/api/event
 import styles from '../styles/Events.module.css';
 
 const Events = ({ events }) => {
-    const [eventsToDisplay, setEventsToDisplay] = useState(null);
+    console.log('the whole component rerendered');
+    const [allEvents, setAllEvents] = useState(null);
     const [showPastEvents, setShowPastEvents] = useState(false);
 
-    // useEffect(() => {
-    //     getAllActiveEvents()
-    //         .then(res => {
-    //             console.log(res);
-    //             setEventsToDisplay(res);
-    //         })
-    //         .catch(error => console.log(error));
-    // }, [showPastEvents]);
+    useEffect(() => {
+        if (showPastEvents && !allEvents) {
+            getAllActiveEvents()
+                .then(res => {
+                    console.log(res);
+                    setAllEvents(res);
+                })
+                .catch(error => console.log(error));
+        }
+    }, [showPastEvents, allEvents]);
 
     return (
         <>
@@ -29,11 +32,12 @@ const Events = ({ events }) => {
             <h2 data-testid="pageHeading" className="pageHeading">
                 Upcoming Events
             </h2>
+            <p onClick={() => setShowPastEvents(!showPastEvents)}>...include past events...</p>
             {events?.length > 0
                 ? <article>
                     <ul>
                         {events.map((event, i) => (
-                            <li key={i}>{event.eventDate} - {event.event}{event.details && <>({event.details})</>}</li>
+                            <li key={i}>{event.eventDate} - {event.event}{event.details && <> ({event.details})</>}</li>
                         ))}
                     </ul>
                 </article>
