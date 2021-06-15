@@ -2,6 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 
+import EventsNoTable from '../components/EventsNoTable';
 import { getAllActiveUpcomingEvents, getAllActiveEvents } from '../lib/api/events';
 
 import styles from '../styles/Events.module.css';
@@ -9,15 +10,17 @@ import styles from '../styles/Events.module.css';
 const Events = ({ events }) => {
     const [allEvents, setAllEvents] = useState(null);
     const [showPastEvents, setShowPastEvents] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (showPastEvents && !allEvents) {
+            setIsLoading(true);
             getAllActiveEvents()
                 .then(res => {
-                    console.log(res);
                     setAllEvents(res);
                 })
-                .catch(error => console.log(error));
+                .catch(error => console.log(error))
+                .finally(() => setIsLoading(false));
         }
     }, [showPastEvents, allEvents]);
 
@@ -42,40 +45,7 @@ const Events = ({ events }) => {
                 </span>
             </div>
 
-            {showPastEvents
-                ? <>
-                    {allEvents?.length > 0
-                        ? <article>
-                            <ul>
-                                {allEvents.map((event, i) => (
-                                    <li key={i}>{event.eventDate} - {event.event}{event.details && <> ({event.details})</>}</li>
-                                ))}
-                            </ul>
-                        </article>
-                        : allEvents?.length === 0
-                            ? <article>
-                                <p data-testid="empty">There are no events to display. Check back again soon.</p>
-                            </article>
-                            : <p data-testid="error">An error occurred fetching data.</p>
-                    }
-                </>
-                : <>
-                    {events?.length > 0
-                        ? <article>
-                            <ul>
-                                {events.map((event, i) => (
-                                    <li key={i}>{event.eventDate} - {event.event}{event.details && <> ({event.details})</>}</li>
-                                ))}
-                            </ul>
-                        </article>
-                        : events?.length === 0
-                            ? <article>
-                                <p data-testid="empty">There are no events to display. Check back again soon.</p>
-                            </article>
-                            : <p data-testid="error">An error occurred fetching data.</p>
-                    }
-                </>
-            }
+            <EventsNoTable eventsArr={showPastEvents ? allEvents : events} arePastEventsIncluded={showPastEvents} isLoading={isLoading} />
         </>
     );
 };
