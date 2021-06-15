@@ -7,7 +7,6 @@ import { getAllActiveUpcomingEvents, getAllActiveEvents } from '../lib/api/event
 import styles from '../styles/Events.module.css';
 
 const Events = ({ events }) => {
-    console.log('the whole component rerendered');
     const [allEvents, setAllEvents] = useState(null);
     const [showPastEvents, setShowPastEvents] = useState(false);
 
@@ -29,23 +28,53 @@ const Events = ({ events }) => {
                     RML Baseball - Upcoming Events
                 </title>
             </Head>
+
             <h2 data-testid="pageHeading" className="pageHeading">
                 Upcoming Events
             </h2>
-            <p onClick={() => setShowPastEvents(!showPastEvents)}>...include past events...</p>
-            {events?.length > 0
-                ? <article>
-                    <ul>
-                        {events.map((event, i) => (
-                            <li key={i}>{event.eventDate} - {event.event}{event.details && <> ({event.details})</>}</li>
-                        ))}
-                    </ul>
-                </article>
-                : events?.length === 0
-                    ? <article>
-                        <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
-                    </article>
-                    : <p data-testid="error">An error occurred fetching data.</p>
+
+            <div className={styles.showPastDiv} onClick={() => setShowPastEvents(!showPastEvents)}>
+                <span className={styles.showPast}>
+                    {!showPastEvents
+                        ? <>Include past events.</>
+                        : <>Do not include past events.</>
+                    }
+                </span>
+            </div>
+
+            {showPastEvents
+                ? <>
+                    {allEvents?.length > 0
+                        ? <article>
+                            <ul>
+                                {allEvents.map((event, i) => (
+                                    <li key={i}>{event.eventDate} - {event.event}{event.details && <> ({event.details})</>}</li>
+                                ))}
+                            </ul>
+                        </article>
+                        : allEvents?.length === 0
+                            ? <article>
+                                <p data-testid="empty">There are no events to display. Check back again soon.</p>
+                            </article>
+                            : <p data-testid="error">An error occurred fetching data.</p>
+                    }
+                </>
+                : <>
+                    {events?.length > 0
+                        ? <article>
+                            <ul>
+                                {events.map((event, i) => (
+                                    <li key={i}>{event.eventDate} - {event.event}{event.details && <> ({event.details})</>}</li>
+                                ))}
+                            </ul>
+                        </article>
+                        : events?.length === 0
+                            ? <article>
+                                <p data-testid="empty">There are no events to display. Check back again soon.</p>
+                            </article>
+                            : <p data-testid="error">An error occurred fetching data.</p>
+                    }
+                </>
             }
         </>
     );
