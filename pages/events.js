@@ -2,27 +2,27 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 
-import EventsNoTable from '../components/EventsNoTable';
-import { getAllActiveUpcomingEvents, getAllActiveEvents } from '../lib/api/events';
+import EventsNoTables from '../components/EventsNoTables';
+import { getAllActiveUpcomingEvents, getAllActivePastEvents } from '../lib/api/events';
 
 import styles from '../styles/Events.module.css';
 
 const Events = ({ events }) => {
-    const [allEvents, setAllEvents] = useState(null);
+    const [pastEvents, setPastEvents] = useState(null);
     const [showPastEvents, setShowPastEvents] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        if (showPastEvents && !allEvents) {
+        if (showPastEvents && !pastEvents) {
             setIsLoading(true);
-            getAllActiveEvents()
+            getAllActivePastEvents()
                 .then(res => {
-                    setAllEvents(res);
+                    setPastEvents(res);
                 })
                 .catch(error => console.log(error))
                 .finally(() => setIsLoading(false));
         }
-    }, [showPastEvents, allEvents]);
+    }, [showPastEvents, pastEvents]);
 
     return (
         <>
@@ -36,16 +36,16 @@ const Events = ({ events }) => {
                 Upcoming Events
             </h2>
 
+            <EventsNoTables events={events} arePastEventsIncluded={showPastEvents} pastEvents={pastEvents} isLoading={isLoading} />
+
             <div className={styles.showPastDiv} onClick={() => setShowPastEvents(!showPastEvents)}>
                 <span className={styles.showPast}>
                     {!showPastEvents
-                        ? <>Include past events.</>
-                        : <>Do not include past events.</>
+                        ? <>Show past events.</>
+                        : <>Hide past events.</>
                     }
                 </span>
             </div>
-
-            <EventsNoTable eventsArr={showPastEvents ? allEvents : events} arePastEventsIncluded={showPastEvents} isLoading={isLoading} />
         </>
     );
 };
