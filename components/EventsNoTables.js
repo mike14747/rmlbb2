@@ -10,7 +10,6 @@ const EventsNoTable = ({ events }) => {
     const [pastEvents, setPastEvents] = useState(null);
     const [showPastEvents, setShowPastEvents] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const today = new Date();
 
     useEffect(() => {
         if (showPastEvents && !pastEvents) {
@@ -24,20 +23,14 @@ const EventsNoTable = ({ events }) => {
         }
     }, [showPastEvents, pastEvents]);
 
-    // const now = new Date();
-    // const offset = new Date().getTimezoneOffset();
-    // let formattedEvents = null;
-    // if (events?.length > 0) {
-    //     formattedEvents = events.map(event => {
-    //         return {
-    //             eventDate: new Date(new Date(event.eventDate).getTime() + offset * 60000),
-    //             event: event.event,
-    //             details: event.details,
-    //         };
-    //     });
-    // } else if (events?.length === 0) {
-    //     formattedEvents = [];
-    // }
+    const now = new Date();
+    const offset = new Date().getTimezoneOffset();
+
+    if (events?.length > 0) {
+        events.forEach(event => {
+            event.eventDate = new Date(new Date(event.eventDate).getTime() + offset * 60000);
+        });
+    }
 
     return (
         <>
@@ -55,16 +48,16 @@ const EventsNoTable = ({ events }) => {
 
                     {events.map((event, i) => (
                         <div key={i} className={styles.row + ' ' + styles.bodyRow}>
-                            {console.log(event.eventDate)}
                             <div className={styles.td + ' ' + styles.td1}>
-                                {new Date(JSON.parse(event.eventDate)).toISOString().slice(0, 10)}
+                                {event.eventDate.toISOString().slice(0, 10)}
+                                {/* test date */}
                             </div>
                             <div className={styles.td + ' ' + styles.td2}>
                                 {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
                             </div>
                             <div className={styles.td + ' ' + styles.td3 + ' ' + styles.urgent}>
                                 {/* <div className={styles.urgent}>0</div> */}
-                                {Math.ceil((new Date(JSON.parse(event.eventDate)) - today) / (1000 * 60 * 60 * 24))}
+                                {Math.ceil((event.eventDate - now) / (1000 * 60 * 60 * 24))}
                             </div>
                         </div>
                     ))}
