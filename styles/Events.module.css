@@ -9,6 +9,7 @@
 
 .showPast::before {
     content: '\2BC8\2BC8 \0020';
+    font-size: 0.75rem;
 }
 
 .showPast:hover {

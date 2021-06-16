@@ -1,0 +1,64 @@
+.details {
+    color: rgba(32, 64, 32, 1);
+    font-size: 100%;
+}
+
+.table {
+    margin: 2rem 0;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    min-width: 50%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.headingRow {
+    font-size: 1.25rem;
+    font-weight: bolder;
+    background-color: rgba(0, 128, 0, 0.25);
+}
+
+.bodyRow {
+    background-color: rgba(255, 127, 80, 0.10);
+}
+
+.bodyRow:nth-of-type(2n) {
+    background-color: #ffffff;
+}
+
+.td {
+    margin: 0;
+    padding: 0.50rem;
+}
+
+.td1 {
+    flex: 1;
+}
+
+.td2 {
+    flex: 2;
+}
+
+.td3::before {
+    content: '\25CF';
+}
+
+.urgent {
+    color: red;
+}
+
+.soon {
+    color: orange;
+}
+
+.normal {
+    color: rgba(0, 128, 0, 0.75);
+}
+
+.past {
+    color: rgba(0, 0, 0, 0.50);
+}
