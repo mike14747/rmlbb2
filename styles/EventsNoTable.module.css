@@ -1,3 +1,27 @@
+.showPast {
+    color: #5067ff;
+    text-decoration: none;
+    transition: 0.3s;
+    text-align: center;
+    transition: color 0.3s;
+    padding: 0.50rem;
+}
+
+.showPast::before {
+    content: '\2BC8\2BC8 \0020';
+    font-size: 0.75rem;
+}
+
+.showPast:hover {
+    color: #ff7f50;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.showPastDiv {
+    text-align: center;
+}
+
 .details {
     color: rgba(32, 64, 32, 1);
     font-size: 100%;
