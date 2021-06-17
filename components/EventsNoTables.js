@@ -34,8 +34,16 @@ const EventsNoTable = ({ events }) => {
 
     return (
         <>
-            {events?.length > 0
-                ? <article className={styles.table}>
+            {!events && <p data-testid="error">An error occurred fetching data.</p>}
+
+            {events?.length === 0 &&
+                <article>
+                    <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
+                </article>
+            }
+
+            {events?.length > 0 &&
+                <article className={styles.table}>
                     <div className={styles.row + ' ' + styles.headingRow}>
                         <div className={styles.td + ' ' + styles.td1}>
                             Date
@@ -62,11 +70,6 @@ const EventsNoTable = ({ events }) => {
                         </div>
                     ))}
                 </article>
-                : events?.length === 0
-                    ? <article>
-                        <p data-testid="empty">There are no{!showPastEvents && <> upcoming</>} events to display. Check back again soon.</p>
-                    </article>
-                    : <p data-testid="error">An error occurred fetching data.</p>
             }
 
             <div className={styles.showPastDiv} onClick={() => setShowPastEvents(!showPastEvents)}>
@@ -79,7 +82,36 @@ const EventsNoTable = ({ events }) => {
             </div>
 
             {showPastEvents && !pastEvents && isLoading && <Loading />}
-            {showPastEvents && pastEvents && <div>Past events have been loaded.</div>}
+            {showPastEvents && !pastEvents && !isLoading && <p data-testid="pastError">An error occurred fetching data.</p>}
+
+            {showPastEvents && pastEvents?.length === 0 &&
+                <article>
+                    <p data-testid="pastEmpty">There are no past events to display. Check back again soon.</p>
+                </article>
+            }
+            {showPastEvents && pastEvents?.length > 0 &&
+                <article className={styles.pastTable}>
+                    <div className={styles.row + ' ' + styles.pastHeadingRow}>
+                        <div className={styles.td + ' ' + styles.td1}>
+                            Date
+                        </div>
+                        <div className={styles.td + ' ' + styles.td2}>
+                            Past Event
+                        </div>
+                    </div>
+
+                    {pastEvents.map((event, i) => (
+                        <div key={i} className={styles.row + ' ' + styles.pastBodyRow}>
+                            <div className={styles.td + ' ' + styles.td1}>
+                                {event.eventDate}
+                            </div>
+                            <div className={styles.td + ' ' + styles.td2}>
+                                {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
+                            </div>
+                        </div>
+                    ))}
+                </article>
+            }
         </>
     );
 };
