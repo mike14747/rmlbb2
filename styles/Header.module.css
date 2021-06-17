@@ -28,6 +28,16 @@
 .logoText {
     color: #c11b17 !important;
     text-decoration: none !important;
+    transition: 0.3s;
+}
+
+.logoText:focus,
+.logoText:hover {
+    color: #eb211c !important;
+    text-decoration: none !important;
+    outline: 1px rgba(0, 0, 0, 0.25) dashed;
+    outline-offset: 0.50rem;
+    transition: 0.6s;
 }
 
 .subHeading {
