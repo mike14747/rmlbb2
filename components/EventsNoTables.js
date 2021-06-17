@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Loading from './Loading';
 import { getAllActivePastEvents } from '../lib/api/events';
 
-import styles from '../styles/EventsNoTable.module.css';
+import styles from '../styles/EventsNoTables.module.css';
 
 const EventsNoTable = ({ events }) => {
     const [pastEvents, setPastEvents] = useState(null);
@@ -26,49 +26,66 @@ const EventsNoTable = ({ events }) => {
     const now = new Date();
     const offset = new Date().getTimezoneOffset();
 
+    let modifiedEvents = null;
     if (events?.length > 0) {
-        events.forEach(event => {
-            event.eventDate = new Date(new Date(event.eventDate).getTime() + offset * 60000);
+        modifiedEvents = events.map(event => {
+            const eventDate = new Date(new Date(event.eventDate).getTime() + offset * 60000);
+            return {
+                eventDate,
+                daysUntil: Math.ceil((eventDate - now) / (1000 * 60 * 60 * 24)),
+                event: event.event,
+                details: event.details,
+            };
         });
     }
 
     return (
         <>
-            {!events && <p data-testid="error">An error occurred fetching data.</p>}
+            {!modifiedEvents && <p data-testid="error">An error occurred fetching data.</p>}
 
-            {events?.length === 0 &&
+            {modifiedEvents?.length === 0 &&
                 <article>
                     <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
                 </article>
             }
 
-            {events?.length > 0 &&
-                <article className={styles.table}>
-                    <div className={styles.row + ' ' + styles.headingRow}>
-                        <div className={styles.td + ' ' + styles.td1}>
-                            Date
-                        </div>
-                        <div className={styles.td + ' ' + styles.td2}>
-                            Event
-                        </div>
-                        <div className={styles.td}></div>
+            {modifiedEvents?.length > 0 &&
+                <article>
+                    <div className={styles.iconLegend}>
+                        Urgency icons: <span className={styles.td3 + ' ' + styles.urgent}></span> 0-2 | <span className={styles.td3 + ' ' + styles.soon}></span> 3-6 | <span className={styles.td3 + ' ' + styles.normal}></span> 7+ (days until event)
                     </div>
-
-                    {events.map((event, i) => (
-                        <div key={i} className={styles.row + ' ' + styles.bodyRow}>
+                    <div className={styles.table}>
+                        <div className={styles.row + ' ' + styles.headingRow}>
                             <div className={styles.td + ' ' + styles.td1}>
-                                {event.eventDate.toISOString().slice(0, 10)}
-                                {/* test date */}
+                                Date
                             </div>
                             <div className={styles.td + ' ' + styles.td2}>
-                                {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
+                                Event
                             </div>
-                            <div className={styles.td + ' ' + styles.td3 + ' ' + styles.urgent}>
-                                {/* <div className={styles.urgent}>0</div> */}
-                                {Math.ceil((event.eventDate - now) / (1000 * 60 * 60 * 24))}
-                            </div>
+                            <div className={styles.td}></div>
                         </div>
-                    ))}
+
+                        {modifiedEvents.map((event, i) => (
+                            <div key={i} className={styles.row + ' ' + styles.bodyRow}>
+                                <div className={styles.td + ' ' + styles.td1}>
+                                    {event.eventDate.toISOString().slice(0, 10)}
+                                    {/* test date */}
+                                </div>
+                                <div className={styles.td + ' ' + styles.td2}>
+                                    {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
+                                </div>
+                                <div className={styles.td}>
+                                    {event.daysUntil >= 7
+                                        ? <span className={styles.td3 + ' ' + styles.normal}></span>
+                                        : event.daysUntil <= 2
+                                            ? <span className={styles.td3 + ' ' + styles.urgent}></span>
+                                            : <span className={styles.td3 + ' ' + styles.soon}></span>
+                                    }
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
                 </article>
             }
 
