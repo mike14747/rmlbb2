@@ -78,10 +78,8 @@ const EventsNoTable = ({ events }) => {
                 </span>
             </div>
 
-            {isLoading
-                ? <Loading />
-                : <>Testing</>
-            }
+            {showPastEvents && !pastEvents && isLoading && <Loading />}
+            {showPastEvents && pastEvents && <div>Past events have been loaded.</div>}
         </>
     );
 };
@@ -91,8 +89,3 @@ EventsNoTable.propTypes = {
 };
 
 export default EventsNoTable;
-
-// const date1 = new Date();
-// const offset = new Date().getTimezoneOffset();
-// const date2 = new Date(new Date('2021-06-16').getTime() + offset * 60000);
-// const diffDays = Math.ceil((date2 - date1) / (1000 * 60 * 60 * 24));

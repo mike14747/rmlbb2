@@ -1,3 +1,8 @@
+:root {
+    --theme-color-1: rgb(255, 127, 80, 1);
+    --theme-color-2: rgba(0, 128, 0, 0.25);
+}
+
 *,
 *::before,
 *::after {
@@ -215,6 +220,7 @@ a:focus {
     transition: 0.3s;
 }
 
+a:focus,
 a:hover {
     color: #ff7f50;
     text-decoration: underline;
