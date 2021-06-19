@@ -80,10 +80,12 @@
 }
 
 .td2 {
-    flex: 2;
+    flex: 3;
 }
 
-.td3::before {
+.urgent::before,
+.soon::before,
+.normal::before {
     content: '\25CF';
 }
 
@@ -102,4 +104,12 @@
 .iconLegend {
     text-align: center;
     margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.notice {
+    text-align: center;
+    font-size: 80%;
+    color: rgba(0, 0, 0, 0.50);
+    margin-bottom: 0;
 }

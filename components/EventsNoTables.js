@@ -23,37 +23,41 @@ const EventsNoTable = ({ events }) => {
         }
     }, [showPastEvents, pastEvents]);
 
-    const now = new Date();
-    const offset = new Date().getTimezoneOffset();
-
-    let modifiedEvents = null;
-    if (events?.length > 0) {
-        modifiedEvents = events.map(event => {
-            const eventDate = new Date(new Date(event.eventDate).getTime() + offset * 60000);
-            return {
-                eventDate,
-                daysUntil: Math.ceil((eventDate - now) / (1000 * 60 * 60 * 24)),
-                event: event.event,
-                details: event.details,
-            };
-        });
-    }
+    const months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'June',
+        'July',
+        'Aug',
+        'Sept',
+        'Oct',
+        'Nov',
+        'Dec',
+    ];
 
     return (
         <>
-            {!modifiedEvents && <p data-testid="error">An error occurred fetching data.</p>}
+            {!events && <p data-testid="error">An error occurred fetching data.</p>}
 
-            {modifiedEvents?.length === 0 &&
+            {events?.length === 0 &&
                 <article>
                     <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
                 </article>
             }
 
-            {modifiedEvents?.length > 0 &&
+            {events?.length > 0 &&
                 <article>
-                    <div className={styles.iconLegend}>
+                    <p className={styles.iconLegend}>
                         Urgency icons: <span className={styles.td3 + ' ' + styles.urgent}></span> 0-2 | <span className={styles.td3 + ' ' + styles.soon}></span> 3-6 | <span className={styles.td3 + ' ' + styles.normal}></span> 7+ (days until event)
-                    </div>
+                    </p>
+
+                    <p className={styles.notice}>
+                        Due dates are assumed to be due at midnight EST (unless otherwise noted).
+                    </p>
+
                     <div className={styles.table}>
                         <div className={styles.row + ' ' + styles.headingRow}>
                             <div className={styles.td + ' ' + styles.td1}>
@@ -65,22 +69,21 @@ const EventsNoTable = ({ events }) => {
                             <div className={styles.td}></div>
                         </div>
 
-                        {modifiedEvents.map((event, i) => (
+                        {events.map((event, i) => (
                             <div key={i} className={styles.row + ' ' + styles.bodyRow}>
                                 <div className={styles.td + ' ' + styles.td1}>
-                                    {event.eventDate.toISOString().slice(0, 10)}
-                                    {/* test date */}
+                                    {months[parseInt(event.eventDate.slice(5, 7)) - 1]} {event.eventDate.slice(8, 10)}, {event.eventDate.slice(0, 4)}
                                 </div>
                                 <div className={styles.td + ' ' + styles.td2}>
                                     {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
                                 </div>
                                 <div className={styles.td}>
-                                    {event.daysUntil >= 7
-                                        ? <span className={styles.td3 + ' ' + styles.normal}></span>
+                                    <span className={event.daysUntil >= 7
+                                        ? styles.normal
                                         : event.daysUntil <= 2
-                                            ? <span className={styles.td3 + ' ' + styles.urgent}></span>
-                                            : <span className={styles.td3 + ' ' + styles.soon}></span>
-                                    }
+                                            ? styles.urgent
+                                            : styles.soon}>
+                                    </span>
                                 </div>
                             </div>
                         ))}
@@ -120,10 +123,10 @@ const EventsNoTable = ({ events }) => {
                     {pastEvents.map((event, i) => (
                         <div key={i} className={styles.row + ' ' + styles.pastBodyRow}>
                             <div className={styles.td + ' ' + styles.td1}>
-                                {event.eventDate}
+                                {months[parseInt(event.eventDate.slice(5, 7)) - 1]} {event.eventDate.slice(8, 10)}, {event.eventDate.slice(0, 4)}
                             </div>
                             <div className={styles.td + ' ' + styles.td2}>
-                                {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
+                                {event.event}{event.details && <> ({event.details})</>}
                             </div>
                         </div>
                     ))}
