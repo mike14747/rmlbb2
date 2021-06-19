@@ -9,12 +9,12 @@ const Events = ({ events }) => {
         <>
             <Head>
                 <title>
-                    RML Baseball - Upcoming Events
+                    RML Baseball - Events
                 </title>
             </Head>
 
             <h2 data-testid="pageHeading" className="pageHeading">
-                Upcoming Events
+                Events
             </h2>
 
             <EventsNoTables events={events} />

@@ -36,11 +36,11 @@ const EventsNoTable = ({ events }) => {
             {events?.length > 0 &&
                 <article>
                     <p className={styles.iconLegend}>
-                        Urgency icons: <span className={styles.td3 + ' ' + styles.urgent}></span> 0-2 | <span className={styles.td3 + ' ' + styles.soon}></span> 3-6 | <span className={styles.td3 + ' ' + styles.normal}></span> 7+ (days until event)
+                        Urgency icons:<span className={styles.break}></span><span className={styles.td3 + ' ' + styles.urgent}></span> 0-2 | <span className={styles.td3 + ' ' + styles.soon}></span> 3-6 | <span className={styles.td3 + ' ' + styles.normal}></span> 7+ days until event.
                     </p>
 
                     <p className={styles.notice}>
-                        Due dates are assumed to be due at midnight EST (unless otherwise noted).
+                        Due dates are assumed to be due at midnight EST<span className={styles.break}></span>(unless otherwise noted).
                     </p>
 
                     <div className={styles.table}>

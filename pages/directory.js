@@ -13,11 +13,11 @@ const Directory = () => {
         <>
             <Head>
                 <title>
-                    RML Baseball - Manager Directory
+                    RML Baseball - Directory
                 </title>
             </Head>
             <h2 data-testid="pageHeading" className="pageHeading">
-                Manager Directory
+                Directory
             </h2>
             {!session &&
                 <>

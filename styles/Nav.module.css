@@ -67,19 +67,6 @@ ul.navdropdownContent > li > a.disabled::before {
     display: block;
 }
 
-.viewing {
-    cursor: default;
-    color: #7c8787 !important;
-}
-
-.viewing:hover {
-    background-color: #ffffff !important;
-}
-
-.current-text {
-    margin-left: 0.5rem;
-}
-
 /* this media query could be changed to 480px if there weren't too many nav links */
 @media (min-width: 768px) {
     .nav {

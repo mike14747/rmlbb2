@@ -10,13 +10,17 @@ const Nav = () => {
     return (
         <nav className={styles.nav}>
             <ul className={styles.navdropdownContent}>
-
                 {NavLinks?.length > 0 &&
                     NavLinks.map((item, index) => (
-                        <li key={index}><Link href={item.href}><a className={router.pathname === item.href ? styles.disabled : ''}>{item.text}</a></Link></li>
+                        <li key={index}>
+                            <Link href={item.href}>
+                                <a className={router.pathname === item.href ? styles.disabled : ''}>
+                                    {item.text}
+                                </a>
+                            </Link>
+                        </li>
                     ))
                 }
-
             </ul >
         </nav >
     );
