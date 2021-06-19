@@ -1,4 +1,3 @@
-import { isTSEnumMember } from '@babel/types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import NavLinks from '../lib/navLinks';
@@ -14,9 +13,7 @@ const Nav = () => {
 
                 {NavLinks?.length > 0 &&
                     NavLinks.map((item, index) => (
-                        router.pathname === item.href
-                            ? <li key={index}><Link href={item.href}><a>{item.text}</a></Link></li>
-                            : <li key={index}><Link href={item.href}><a>{item.text}</a></Link></li>
+                        <li key={index}><Link href={item.href}><a className={router.pathname === item.href ? styles.disabled : ''}>{item.text}</a></Link></li>
                     ))
                 }
 
