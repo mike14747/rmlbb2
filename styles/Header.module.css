@@ -27,8 +27,8 @@
 
 .logoText {
     color: #c11b17 !important;
-    padding: 0.50rem;
-    margin: 0;
+    /* padding: 0.50rem;
+    margin: 0; */
     text-decoration: none !important;
     transition: 0.3s;
 }
@@ -38,7 +38,7 @@
     color: #eb211c !important;
     text-decoration: none !important;
     outline: 1px rgba(0, 0, 0, 0.25) dashed;
-    outline-offset: 0;
+    outline-offset: 0.50rem;
     transition: 0.6s;
 }
 

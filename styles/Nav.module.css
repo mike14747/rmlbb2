@@ -76,6 +76,7 @@ ul.navdropdownContent > li > a:hover {
         flex: 1;
         position: static;
         padding: 0;
+        cursor: initial;
     }
 
     .nav::before {
@@ -133,7 +134,6 @@ ul.navdropdownContent > li > a:hover {
         transition: width 0.3s, left 0.3s, background-color 1s;
     }
 
-    /* ul.navdropdownContent > li > a:focus::after, */
     ul.navdropdownContent > li > a:hover::after {
         width: calc(
             100% - 1rem
