@@ -216,11 +216,11 @@ a:visited {
 
 a:focus {
     outline: 1px rgba(0, 0, 0, 0.15) dashed;
-    outline-offset: 0.25rem;
+    outline-offset: 0;
     transition: 0.3s;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-a:focus,
 a:hover {
     color: #ff7f50;
     text-decoration: underline;
@@ -462,6 +462,7 @@ template {
     color: rgba(0, 0, 0, 0.75);
     font-size: 1.5rem;
     text-align: center;
+    margin: 1.5rem 0 1rem 0;
 }
 
 .wrapper {

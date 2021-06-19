@@ -23,21 +23,6 @@ const EventsNoTable = ({ events }) => {
         }
     }, [showPastEvents, pastEvents]);
 
-    const months = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'June',
-        'July',
-        'Aug',
-        'Sept',
-        'Oct',
-        'Nov',
-        'Dec',
-    ];
-
     return (
         <>
             {!events && <p data-testid="error">An error occurred fetching data.</p>}
@@ -72,7 +57,7 @@ const EventsNoTable = ({ events }) => {
                         {events.map((event, i) => (
                             <div key={i} className={styles.row + ' ' + styles.bodyRow}>
                                 <div className={styles.td + ' ' + styles.td1}>
-                                    {months[parseInt(event.eventDate.slice(5, 7)) - 1]} {event.eventDate.slice(8, 10)}, {event.eventDate.slice(0, 4)}
+                                    {event.eventDate}
                                 </div>
                                 <div className={styles.td + ' ' + styles.td2}>
                                     {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
@@ -123,7 +108,7 @@ const EventsNoTable = ({ events }) => {
                     {pastEvents.map((event, i) => (
                         <div key={i} className={styles.row + ' ' + styles.pastBodyRow}>
                             <div className={styles.td + ' ' + styles.td1}>
-                                {months[parseInt(event.eventDate.slice(5, 7)) - 1]} {event.eventDate.slice(8, 10)}, {event.eventDate.slice(0, 4)}
+                                {event.eventDate}
                             </div>
                             <div className={styles.td + ' ' + styles.td2}>
                                 {event.event}{event.details && <> ({event.details})</>}
