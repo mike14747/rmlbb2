@@ -25,7 +25,7 @@ const EventsNoTable = ({ events }) => {
 
     return (
         <>
-            {!events && <p data-testid="error">An error occurred fetching data.</p>}
+            {!events && <p data-testid="error" className={styles.error}>An error occurred fetching data.</p>}
 
             {events?.length === 0 &&
                 <article>
@@ -87,7 +87,7 @@ const EventsNoTable = ({ events }) => {
             </div>
 
             {showPastEvents && !pastEvents && isLoading && <Loading />}
-            {showPastEvents && !pastEvents && !isLoading && <p data-testid="pastError">An error occurred fetching data.</p>}
+            {showPastEvents && !pastEvents && !isLoading && <p data-testid="pastError" className={styles.error}>An error occurred fetching data.</p>}
 
             {showPastEvents && pastEvents?.length === 0 &&
                 <article>
