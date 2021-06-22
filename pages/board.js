@@ -13,9 +13,12 @@ const MessageBoard = ({ isConnected }) => {
                     RML Baseball - Message Board
                 </title>
             </Head>
-            <h2 data-testid="pageHeading" className="pageHeading">
-                Message Board
-            </h2>
+
+            <main>
+                <h2 data-testid="pageHeading" className="pageHeading">
+                    Message Board
+                </h2>
+            </main>
         </>
     );
 };

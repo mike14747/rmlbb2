@@ -13,11 +13,13 @@ const Events = ({ events }) => {
                 </title>
             </Head>
 
-            <h2 data-testid="pageHeading" className="pageHeading">
-                Events
-            </h2>
+            <main>
+                <h2 data-testid="pageHeading" className="pageHeading">
+                    Events
+                </h2>
 
-            <EventsNoTables events={events} />
+                <EventsNoTables events={events} />
+            </main>
         </>
     );
 };

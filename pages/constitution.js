@@ -10,9 +10,12 @@ const Constitution = () => {
                     RML Baseball - Constitution
                 </title>
             </Head>
-            <h2 data-testid="pageHeading" className="pageHeading">
-                Constitution
-            </h2>
+
+            <main>
+                <h2 data-testid="pageHeading" className="pageHeading">
+                    Constitution
+                </h2>
+            </main>
         </>
     );
 };

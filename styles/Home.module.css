@@ -1,3 +1,17 @@
+.homeContainer {
+    display: flex;
+}
+
+.main {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.sidebar {
+    flex: 0 0 200px;
+    padding: 1rem;
+}
+
 .newsItem {
     border-bottom: 1px rgba(0, 0, 0, 0.25) solid;
     overflow: auto;

@@ -10,9 +10,12 @@ const Downloads = () => {
                     RML Baseball - Downloads
                 </title>
             </Head>
-            <h2 data-testid="pageHeading" className="pageHeading">
-                Downloads
-            </h2>
+
+            <main>
+                <h2 data-testid="pageHeading" className="pageHeading">
+                    Downloads
+                </h2>
+            </main>
         </>
     );
 };

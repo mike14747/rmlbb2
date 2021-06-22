@@ -16,22 +16,25 @@ const Directory = () => {
                     RML Baseball - Directory
                 </title>
             </Head>
-            <h2 data-testid="pageHeading" className="pageHeading">
-                Directory
-            </h2>
-            {!session &&
-                <>
-                    <div>You are not signed in.</div>
-                    <button onClick={signIn}>Sign in</button>
-                </>
-            }
 
-            {session &&
-                <>
-                    <div>Signed in as: {session.user.username}</div>
-                    <button onClick={signOut}>Sign out</button>
-                </>
-            }
+            <main>
+                <h2 data-testid="pageHeading" className="pageHeading">
+                    Directory
+                </h2>
+                {!session &&
+                    <>
+                        <div>You are not signed in.</div>
+                        <button onClick={signIn}>Sign in</button>
+                    </>
+                }
+
+                {session &&
+                    <>
+                        <div>Signed in as: {session.user.username}</div>
+                        <button onClick={signOut}>Sign out</button>
+                    </>
+                }
+            </main>
         </>
     );
 };
