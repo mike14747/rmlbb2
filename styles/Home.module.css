@@ -9,7 +9,7 @@
 
 .sidebar {
     flex: 0 0 200px;
-    padding: 1rem;
+    padding: 1rem 0 1rem 1rem;
 }
 
 .newsItem {
@@ -43,4 +43,8 @@
 
 .newsDate::before {
     content: "DATE: ";
+}
+
+.homepageHeading {
+    text-align: left;
 }

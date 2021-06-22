@@ -21,7 +21,7 @@ const Home = ({ news }) => {
 
             <div className={styles.homeContainer}>
                 <main className={styles.main}>
-                    <h2 className="pageHeading">
+                    <h2 className={'pageHeading ' + styles.homepageHeading}>
                         Latest News
                     </h2>
 
@@ -45,9 +45,7 @@ const Home = ({ news }) => {
                 </main>
 
                 <section className={styles.sidebar}>
-                    <aside>
-                        <EventsSidebar />
-                    </aside>
+                    <EventsSidebar />
                     <aside>
                         <BoardSidebar />
                     </aside>

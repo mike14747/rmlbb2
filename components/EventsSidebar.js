@@ -11,6 +11,7 @@ const EventsSidebar = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         getNextUpcomingEvents()
             .then(res => {
                 setNextEvents(res);
@@ -20,7 +21,7 @@ const EventsSidebar = () => {
     }, []);
 
     return (
-        <>
+        <aside className={styles.eventsSidebarContainer}>
             {isLoading && <Loading />}
             {!isLoading && !nextEvents && <p>An error occurred fetching data.</p>}
             {!isLoading && nextEvents?.length === 0 && <p>There are no events to display. Check back again soon.</p>}
@@ -30,7 +31,7 @@ const EventsSidebar = () => {
                     <div key={index}>{event.event}</div>
                 ))
             }
-        </>
+        </aside>
     );
 };
 

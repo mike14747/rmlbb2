@@ -17,26 +17,25 @@
     padding: 1rem 0.50rem 1rem 1rem;
 }
 
-.heading {
+h1.heading {
     color: #c11b17;
-    /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.50); */
     margin-bottom: 0;
     font-size: 2rem;
     font-weight: bolder;
 }
 
-.logoText {
+a.logoText {
     color: #c11b17 !important;
     /* padding: 0.50rem;
     margin: 0; */
-    text-decoration: none !important;
+    text-decoration: none;
     transition: 0.3s;
 }
 
-.logoText:focus,
-.logoText:hover {
+a.logoText:focus,
+a.logoText:hover {
     color: #eb211c !important;
-    text-decoration: none !important;
+    text-decoration: none;
     outline: 1px rgba(0, 0, 0, 0.25) dashed;
     outline-offset: 0.50rem;
     transition: 0.6s;
@@ -58,14 +57,14 @@
 }
 
 @media (min-width: 480px) {
-    .header {
+    h1.header {
         background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.80), 35%, rgba(255, 255, 255, 0)),
             linear-gradient(-135deg, rgba(255, 255, 255, 0.85), 20%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
     }
 }
 
 @media (min-width: 768px) {
-    .heading {
+    h1.heading {
         font-size: 2.5rem;
     }
 
