@@ -5,9 +5,9 @@ import styles from '../styles/EventsSidebar.module.css';
 const EventsSidebar = ({ events }) => {
     return (
         <aside className={styles.eventsSidebarContainer}>
+            <p className={styles.eventsHeading}>Upcoming Events</p>
             {!events && <p>An error occurred fetching data.</p>}
             {events?.length === 0 && <p>There are no upcoming events to display. Check back again soon.</p>}
-            {events && <p className={styles.eventsHeading}>Upcoming Events</p>}
 
             {events?.length > 0 &&
                 events.map((event, index) => (

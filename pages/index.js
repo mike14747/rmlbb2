@@ -65,8 +65,8 @@ Home.propTypes = {
 };
 
 export async function getStaticProps() {
-    const news = await getSomeNewsItems().catch(error => console.log(error));
-    const events = await getNextUpcomingEvents().catch(error => console.log(error));
+    const news = await getSomeNewsItems().catch(error => console.log(error)) || null;
+    const events = await getNextUpcomingEvents().catch(error => console.log(error)) || null;
 
     return {
         props: { news, events },
