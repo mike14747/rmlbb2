@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
@@ -6,11 +7,14 @@ import EventsSidebar from '../components/EventsSidebar';
 import BoardSidebar from '../components/BoardSidebar';
 // import { basePublicQueryUrl } from '../lib/settings';
 import { getSomeNewsItems, getAllNewsItems } from '../lib/api/news';
+import { getNextUpcomingEvents } from '../lib/api/events';
 
 import styles from '../styles/Home.module.css';
 
-const Home = ({ news }) => {
-    // console.log(news);
+const Home = ({ news, events }) => {
+    const [allNews, setAllNews] = useState(null);
+    const [showAllNews, setShowAllNews] = useState(false);
+
     return (
         <>
             <Head>
@@ -45,7 +49,7 @@ const Home = ({ news }) => {
                 </main>
 
                 <section className={styles.sidebar}>
-                    <EventsSidebar />
+                    <EventsSidebar events={events} />
                     <aside>
                         <BoardSidebar />
                     </aside>
@@ -57,13 +61,15 @@ const Home = ({ news }) => {
 
 Home.propTypes = {
     news: PropTypes.array,
+    events: PropTypes.array,
 };
 
 export async function getStaticProps() {
-    const news = await getSomeNewsItems();
+    const news = await getSomeNewsItems().catch(error => console.log(error));
+    const events = await getNextUpcomingEvents().catch(error => console.log(error));
 
     return {
-        props: { news },
+        props: { news, events },
         revalidate: 600, // page regeneration can occur in 10 minutes
     };
 }

@@ -1,38 +1,29 @@
-import { useState, useEffect } from 'react';
-
-import { getNextUpcomingEvents } from '../lib/api/events';
-import Loading from './Loading';
+import PropTypes from 'prop-types';
 
 import styles from '../styles/EventsSidebar.module.css';
 
-const EventsSidebar = () => {
-    console.log('EventsSidebar rerendered!');
-    const [nextEvents, setNextEvents] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        getNextUpcomingEvents()
-            .then(res => {
-                setNextEvents(res);
-            })
-            .catch(error => console.log(error))
-            .finally(() => setIsLoading(false));
-    }, []);
-
+const EventsSidebar = ({ events }) => {
     return (
         <aside className={styles.eventsSidebarContainer}>
-            {isLoading && <Loading />}
-            {!isLoading && !nextEvents && <p>An error occurred fetching data.</p>}
-            {!isLoading && nextEvents?.length === 0 && <p>There are no events to display. Check back again soon.</p>}
+            {!events && <p>An error occurred fetching data.</p>}
+            {events?.length === 0 && <p>There are no upcoming events to display. Check back again soon.</p>}
+            {events && <p className={styles.eventsHeading}>Upcoming Events</p>}
 
-            {nextEvents?.length > 0 &&
-                nextEvents.map((event, index) => (
-                    <div key={index}>{event.event}</div>
+            {events?.length > 0 &&
+                events.map((event, index) => (
+                    <div key={index} className={styles.eventDiv}>
+                        <p className={styles.eventDate}>{event.eventDate}</p>
+                        <p className={styles.eventDetails}>{event.event}</p>
+                    </div>
                 ))
             }
+
         </aside>
     );
+};
+
+EventsSidebar.propTypes = {
+    events: PropTypes.array,
 };
 
 export default EventsSidebar;

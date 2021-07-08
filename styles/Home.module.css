@@ -28,7 +28,8 @@
 }
 
 .newsHeading {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.50rem);
     font-weight: bolder;
     margin: 0.50rem 0;
     color: #ee6611;

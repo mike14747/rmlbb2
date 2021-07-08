@@ -37,7 +37,7 @@ const news = [{
     'title': 'Test Title',
 }];
 
-describe('Homepage tests', () => {
+describe('Homepage news item tests', () => {
     test('Check that the homepage renders properly with a mocked news item', () => {
         render(<Home news={news} />);
 
@@ -63,5 +63,11 @@ describe('Homepage tests', () => {
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^latest news$/i);
         expect(screen.queryByRole('article')).not.toBeInTheDocument();
         expect(screen.getByText(/^an error occurred fetching data.$/i)).toBeInTheDocument();
+    });
+});
+
+describe('Homepage upcoming events tests', () => {
+    test('', () => {
+        render(<Home />);
     });
 });

@@ -80,26 +80,32 @@ h6 {
 
 h1 {
     font-size: 2.5rem;
+    font-size: clamp(2rem, 1.5vw + 1.25rem, 3rem);
 }
 
 h2 {
     font-size: 2rem;
+    font-size: clamp(1.6rem, 1.2vw + 1rem, 2.4rem);
 }
 
 h3 {
     font-size: 1.75rem;
+    font-size: clamp(1.4rem, 1vw + 0.9rem, 2.1rem);
 }
 
 h4 {
     font-size: 1.5rem;
+    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
 }
 
 h5 {
     font-size: 1.25rem;
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.50rem);
 }
 
 h6 {
     font-size: 1rem;
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
 }
 
 p {
@@ -457,9 +463,36 @@ template {
     margin: 0;
 }
 
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.static {
+    position: static;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.sticky {
+    position: sticky;
+}
+
 .pageHeading {
     color: rgba(0, 0, 0, 0.75);
-    font-size: 1.5rem;
     text-align: center;
     margin: 0rem 0 1rem 0;
 }
@@ -491,15 +524,8 @@ template {
     margin-right: auto;
 }
 
-@media (min-width: 480px) {
-    .pageHeading {
-        font-size: 1.75rem;
-    }
-}
-
 @media (min-width: 768px) {
     .pageHeading {
-        font-size: 2rem;
         margin-top: 0.50rem;
     }
 }

@@ -1,5 +1,38 @@
 .eventsSidebarContainer {
     margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.eventsHeading {
+    background-color: rgba(0, 128, 0, 0.25);
+    font-size: 1rem;
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.10rem);
+    font-weight: bolder;
+    padding: 0.25rem 0.50rem;
+    margin: 0 0 0.50rem 0;
+}
+
+.eventDiv {
+    background-color: #ffffff;
+    padding: 0.25rem 0.50rem;
+    margin: 0 0 0.50rem 0;
+}
+
+.eventDiv:nth-of-type(2n) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.eventDiv:last-child {
+    margin-bottom: 1rem;
+}
+
+.eventDate {
+    margin: 0;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.eventDetails {
+    margin: 0;
+    font-size: 0.9rem;
 }
