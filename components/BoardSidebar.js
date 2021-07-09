@@ -3,7 +3,8 @@ import styles from '../styles/BoardSidebar.module.css';
 const BoardSidebar = () => {
     return (
         <>
-            This will be the recent message board posts sidebar.
+            <p className={styles.postsHeading}>Recent Posts</p>
+            <p>This will be the recent message board posts sidebar.</p>
         </>
     );
 };

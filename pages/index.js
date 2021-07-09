@@ -49,8 +49,10 @@ const Home = ({ news, events }) => {
                 </main>
 
                 <section className={styles.sidebar}>
-                    <EventsSidebar events={events} />
-                    <aside>
+                    <aside className={styles.eventsSidebarContainer}>
+                        <EventsSidebar events={events} />
+                    </aside>
+                    <aside className={styles.boardSidebarContainer}>
                         <BoardSidebar />
                     </aside>
                 </section>

@@ -14,6 +14,6 @@ describe('Make sure all the news items data functions are working', () => {
     // });
 
     test('temp', () => {
-        expect(1).toEqual(1);
+        expect(1).toBe(1);
     });
 });
