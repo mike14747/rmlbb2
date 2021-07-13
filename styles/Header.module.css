@@ -43,14 +43,25 @@ a.logoText:hover {
     font-style: italic;
     line-height: 1.25;
     font-size: 1rem;
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
 }
 
-.subHeading::before {
+.subHeadingIcon::before {
     content: '\2014\00A0';
 }
 
-.subHeading::after {
+.subHeadingIcon::after {
     content: '\00A0\2014';
+}
+
+.quote {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-left: 8px solid coral;
+    background-color: beige;
+    font-size: 1rem;
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
 }
 
 @media (min-width: 480px) {

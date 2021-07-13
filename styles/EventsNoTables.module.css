@@ -1,13 +1,16 @@
 .showPast {
-    color: #5067ff;
+    color: #024dbc;
     text-decoration: none;
-    transition: 0.3s;
     text-align: center;
     transition: color 0.3s;
     padding: 0.5rem;
 }
 
-.showPast::before {
+.showPast:focus {
+    outline: 1px rgba(0, 0, 0, 0.25) dashed;
+}
+
+.showPastIcon::before {
     content: '\2BC8\2BC8 \0020';
     font-size: 0.75rem;
 }

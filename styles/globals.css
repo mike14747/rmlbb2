@@ -203,19 +203,19 @@ sup {
 }
 
 a {
-    color: #5067ff;
+    color: #024dbc;
     text-decoration: none;
     transition: 0.3s;
 }
 
 a:link {
-    color: #5067ff;
+    color: #024dbc;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:visited {
-    color: #5067ff;
+    color: #024dbc;
     text-decoration: none;
     transition: color 0.3s;
 }

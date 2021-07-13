@@ -33,7 +33,7 @@ const Home = ({ news, events }) => {
                         ? news.map((item, index) => (
                             <article key={index} className={styles.newsItem}>
                                 <h4 className={styles.newsHeading}>{item.title}</h4>
-                                <p data-testid="news-date" className={'m-0 ' + styles.newsDate}>{item.date}</p>
+                                <p data-testid="news-date" className={'m-0 ' + styles.newsDate}>DATE: {item.date}</p>
                                 <BlockContent
                                     blocks={item.content}
                                     serializers={noContainer}

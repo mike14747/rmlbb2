@@ -77,13 +77,15 @@ const EventsNoTable = ({ events }) => {
                 </article>
             }
 
-            <div className={styles.showPastDiv} onClick={() => setShowPastEvents(!showPastEvents)}>
-                <span className={styles.showPast}>
+            <div className={styles.showPastDiv}>
+                <span tabIndex="0" className={styles.showPast} onClick={() => setShowPastEvents(!showPastEvents)}>
+                    <span aria-hidden="true" className={styles.showPastIcon}></span>
                     {!showPastEvents
                         ? <>Show past events.</>
                         : <>Hide past events.</>
                     }
                 </span>
+
             </div>
 
             {showPastEvents && !pastEvents && isLoading && <Loading />}

@@ -56,12 +56,8 @@
 
 .newsDate {
     font-size: 0.875rem;
-    color: rgba(0, 0, 0, 0.50);
-    margin-bottom: 0.50rem;
-}
-
-.newsDate::before {
-    content: "DATE: ";
+    color: rgba(0, 0, 0, 0.60);
+    margin-bottom: 1rem;
 }
 
 .homepageHeading {

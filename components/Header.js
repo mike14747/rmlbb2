@@ -13,7 +13,7 @@ const Header = () => {
                     </Link>
                 </h1>
                 <p data-testid="sub-heading" className={'m-0 ' + styles.subHeading}>
-                    Since 1978
+                    <span aria-hidden="true" className={styles.subHeadingIcon}>Since 1978</span>
                 </p>
             </div>
 
