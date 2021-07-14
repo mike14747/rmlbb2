@@ -94,12 +94,6 @@
     flex: 3;
 }
 
-.urgent::before,
-.soon::before,
-.normal::before {
-    content: '\25CF';
-}
-
 .urgent {
     color: rgba(192, 0, 0, 1);
 }
