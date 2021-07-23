@@ -14,7 +14,7 @@ const Nav = () => {
                     NavLinks.map((item, index) => (
                         <li key={index}>
                             <Link href={item.href}>
-                                <a className={router.pathname === item.href ? styles.disabled : ''}>
+                                <a className={router?.pathname === item.href ? styles.disabled : ''}>
                                     {item.text}
                                 </a>
                             </Link>
