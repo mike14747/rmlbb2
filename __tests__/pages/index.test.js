@@ -57,13 +57,14 @@ describe('Homepage news item tests', () => {
         expect(screen.getByTestId('empty')).toHaveTextContent(/there are no news items to display. check back again soon./i);
     });
 
-    // test('Check that the homepage renders properly with the news prop as null', () => {
-    //     render(<Home news={null} />);
+    test('Check that the homepage renders properly with the news prop as null', () => {
+        render(<Home news={null} />);
 
-    //     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^latest news$/i);
-    //     expect(screen.queryByRole('article')).not.toBeInTheDocument();
-    //     expect(screen.getByText(/^an error occurred fetching data.$/i)).toBeInTheDocument();
-    // });
+        expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^latest news$/i);
+        expect(screen.queryByRole('article')).not.toBeInTheDocument();
+        const errors = screen.getAllByText(/^an error occurred fetching data.$/i);
+        expect(errors).toHaveLength(2);
+    });
 });
 
 describe('Homepage upcoming events tests', () => {
