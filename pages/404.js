@@ -8,7 +8,7 @@ const NoMatch = () => {
             </Head>
 
             <main id="no-match">
-                <h2 dtat-testid="error" className="error">
+                <h2 className="error">
                     Error 404!
                 </h2>
 
