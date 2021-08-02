@@ -12,7 +12,7 @@ const Header = () => {
                         <a data-testid="logo-link" className={styles.logoText}>RML Baseball</a>
                     </Link>
                 </h1>
-                <p data-testid="sub-heading" className={'m-0 ' + styles.subHeading}>
+                <p data-testid="sub-heading" className={styles.subHeading}>
                     <span aria-hidden="true" className={styles.subHeadingIcon}>Since 1978</span>
                 </p>
             </div>

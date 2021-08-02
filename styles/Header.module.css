@@ -1,10 +1,5 @@
 .header {
-    background-color: rgba(255, 255, 255, 1);
-    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.85), 40%, rgba(255, 255, 255, 0)),
-        linear-gradient(-135deg, rgba(255, 255, 255, 0.85), 25%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #666666;
+    background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url('/images/header_bg.jpg') center / cover, #ffffff;
     border-bottom: none;
     display: flex;
     flex-direction: row;
@@ -44,6 +39,7 @@ a.logoText:hover {
     line-height: 1.25;
     font-size: 1rem;
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
+    margin: 0;
 }
 
 .subHeadingIcon::before {
@@ -65,18 +61,12 @@ a.logoText:hover {
 }
 
 @media (min-width: 480px) {
-    h1.header {
-        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.80), 35%, rgba(255, 255, 255, 0)),
-            linear-gradient(-135deg, rgba(255, 255, 255, 0.85), 20%, rgba(255, 255, 255, 0)), url('/images/header_bg.jpg');
-    }
+    
 }
 
 @media (min-width: 768px) {
     .header {
         border-bottom: 2px #ddeeee solid;
-        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.75), 30%, rgba(255, 255, 255, 0)),
-            linear-gradient(-135deg, rgba(255, 255, 255, 0.85), 15%, rgba(255, 255, 255, 0)),
-            url('/images/header_bg.jpg');
         flex-direction: column;
     }
 }
