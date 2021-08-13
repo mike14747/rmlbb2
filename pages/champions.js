@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import styles from '../styles/Champions.module.css';
+// import styles from '../styles/Champions.module.css';
 
 const Champions = () => {
     return (

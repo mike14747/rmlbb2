@@ -1,11 +1,9 @@
 import Head from 'next/head';
-import { connectToDatabase } from '../utils/mongodb';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import styles from '../styles/MessageBoard.module.css';
+// import styles from '../styles/MessageBoard.module.css';
 
-const MessageBoard = ({ isConnected }) => {
-    console.log('Is their a connection to mongodb?', isConnected);
+const MessageBoard = () => {
     return (
         <>
             <Head>
@@ -15,7 +13,7 @@ const MessageBoard = ({ isConnected }) => {
             </Head>
 
             <main>
-                <h2 data-testid="pageHeading" className="pageHeading">
+                <h2 className="pageHeading">
                     Message Board
                 </h2>
             </main>
@@ -24,16 +22,11 @@ const MessageBoard = ({ isConnected }) => {
 };
 
 MessageBoard.propTypes = {
-    isConnected: PropTypes.bool,
 };
 
-export async function getServerSideProps(context) {
-    const { client } = await connectToDatabase();
-
-    const isConnected = await client.isConnected(); // Returns true or false
-
+export async function getServerSideProps() {
     return {
-        props: { isConnected },
+        props: {},
     };
 };
 

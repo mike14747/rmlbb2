@@ -33,7 +33,7 @@ const Events = ({ events }) => {
             </Head>
 
             <main>
-                <h2 data-testid="pageHeading" className="pageHeading">
+                <h2 className="pageHeading">
                     Events
                 </h2>
 
