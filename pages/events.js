@@ -75,9 +75,9 @@ const Events = ({ events }) => {
                                         {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
                                     </div>
                                     <div className={styles.td}>
-                                        {event.daysUntil >= 7 && <span aria-label="Urgency level" aria-description="Due in 7 or more days" title="Due in 7 or more days" className={styles.normal}>&#9679;</span>}
-                                        {event.daysUntil > 2 && event.daysUntil < 7 && <span aria-label="Urgency level" aria-description="Due in 3 to 6 days" title="Due in 3 to 6 days" className={styles.soon}>&#9679;</span>}
-                                        {event.daysUntil <= 2 && <span aria-label="Urgency level" aria-description="Due in 2 or less days" title="Due in 2 or less days" className={styles.urgent}>&#9679;</span>}
+                                        {event.daysUntil >= 7 && <span aria-label="Urgency level" title="Due in 7 or more days" className={styles.normal}>&#9679;</span>}
+                                        {event.daysUntil > 2 && event.daysUntil < 7 && <span aria-label="Urgency level" title="Due in 3 to 6 days" className={styles.soon}>&#9679;</span>}
+                                        {event.daysUntil <= 2 && <span aria-label="Urgency level" title="Due in 2 or less days" className={styles.urgent}>&#9679;</span>}
                                     </div>
                                 </div>
                             ))}

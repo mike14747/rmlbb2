@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
-import { Provider } from 'next-auth/client';
+import { Provider, getSession } from 'next-auth/client';
 import Layout from '../components/Layout';
 
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ test, session, Component, pageProps }) {
+    // console.log('test:', test?.property);
+    // console.log('pageProps:', pageProps);
+    console.log('session:', session);
+
     return (
         <>
             <Layout>
-                <Provider session={pageProps.session}>
+                <Provider session={session}>
                     <Component {...pageProps} />
                 </Provider>
             </Layout>
@@ -19,6 +23,24 @@ function MyApp({ Component, pageProps }) {
 MyApp.propTypes = {
     Component: PropTypes.func,
     pageProps: PropTypes.any,
+    test: PropTypes.object,
+    session: PropTypes.object,
 };
 
 export default MyApp;
+
+MyApp.getInitialProps = async (context) => {
+    const session = await getSession(context);
+
+    if (context.ctx.req) {
+        console.log('This is being run on the SERVER!');
+    } else {
+        console.log('This is being run on the CLIENT!');
+    }
+
+    const test = {
+        property: 'value',
+    };
+
+    return { test, session };
+};
