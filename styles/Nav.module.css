@@ -1,33 +1,33 @@
 .nav {
     flex: 0 0 auto;
     position: relative;
-    padding: 1rem 1rem 1rem 0.50rem;
+    padding: 0.50rem 0.50rem 0.50rem 0;
     background-color: transparent;
     cursor: pointer;
 }
 
 .nav::before {
-    color: rgba(0, 0, 0, 0.8);
+    color: var(--mg-dark);
     content: '\2630';
     font-weight: normal;
     font-size: 2.5rem;
-    padding: 0.5rem 0.5rem 0.5rem 3rem; /* the large padding-left value is assuming the nav 'sandwich' is on the right and it allows for more hover space to the left of it  */
+    padding: 0 0 0 2.5rem; /* the large padding-left value is assuming the nav 'sandwich' is on the right and it allows for more hover space to the left of it  */
 }
 
 ul.navdropdownContent {
     display: none;
     position: absolute;
-    right: 0;
+    right: 1rem;
     padding: 0;
     margin: 0;
-    background-color: #ffffff;
+    background-color: var(--mg-white);
     list-style-type: none;
     width: auto;
     min-width: 200px;
     max-width: 300px;
     text-align: left;
     overflow: hidden;
-    box-shadow: -4px 8px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 8px 8px 0px var(--mg-gray-2);
     transition: background-color 0.3s;
 }
 
@@ -37,7 +37,7 @@ ul.navdropdownContent > li > a {
     text-decoration: none;
     display: block;
     white-space: nowrap;
-    border-bottom: 1px #d3d3d3 solid;
+    border-bottom: 1px var(--mg-gray-2) solid;
     line-height: 1; /* since this text is not allowed to wrap, setting the line-height to 1 gives more control over the vertical padding */
     transition: color 0.3s;
 }
@@ -48,14 +48,14 @@ ul.navdropdownContent > li:last-child > a {
 
 ul.navdropdownContent > li > a:hover {
     background-color: rgba(27, 82, 120, 0.75);
-    color: #ffffff;
+    color: var(--mg-white);
     text-decoration: none;
     transition: color 0.3s, background-color 0.3s;
 }
 
 ul.navdropdownContent > li > a.disabled {
     pointer-events: none;
-    color:rgba(0, 0, 0, 0.60);
+    color: var(--mg-gray-6);
 }
 
 ul.navdropdownContent > li > a.disabled::before {
@@ -103,8 +103,8 @@ ul.navdropdownContent > li > a.disabled::before {
     }
 
     ul.navdropdownContent > li > a:hover {
-        color: coral;
-        background-color: #ffffff;
+        color: var(--theme-color-orange);
+        background-color: var(--mg-white);
         cursor: pointer;
     }
 
@@ -137,12 +137,12 @@ ul.navdropdownContent > li > a.disabled::before {
             100% - 1rem
         ); /* necessary because the <a> element has 0.50rem horizontal padding times 2 for both sides */
         left: 0.5rem; /* necessary because the <a> element has 0.50rem padding-left */
-        background-color: coral;
+        background-color: var(--theme-color-orange);
         transition: width 0.3s, left 0.3s, background-color 1s;
     }
 
     ul.navdropdownContent > li > a:hover::after {
-        background-color: coral;
+        background-color: var(--theme-color-orange);
     }
 
     ul.navdropdownContent > li > a.disabled {

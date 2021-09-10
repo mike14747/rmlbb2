@@ -33,7 +33,7 @@ const Events = ({ events }) => {
             </Head>
 
             <main>
-                <h2 className="pageHeading">
+                <h2 className="page-heading">
                     Events
                 </h2>
 

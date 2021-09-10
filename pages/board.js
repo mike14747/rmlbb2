@@ -13,7 +13,7 @@ const MessageBoard = () => {
             </Head>
 
             <main>
-                <h2 className="pageHeading">
+                <h2 className="page-heading">
                     Message Board
                 </h2>
             </main>
@@ -28,6 +28,6 @@ export async function getServerSideProps() {
     return {
         props: {},
     };
-};
+}
 
 export default MessageBoard;

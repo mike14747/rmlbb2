@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import React from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
-import styles from '../styles/Directory.module.css';
+// import styles from '../styles/Directory.module.css';
 
 const Directory = () => {
     const [session, loading] = useSession();
@@ -18,7 +18,7 @@ const Directory = () => {
             </Head>
 
             <main>
-                <h2 data-testid="pageHeading" className="pageHeading">
+                <h2 className="page-heading">
                     Directory
                 </h2>
                 {!session &&

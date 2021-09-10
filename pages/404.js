@@ -7,7 +7,7 @@ const NoMatch = () => {
                 <title>Page Not Found</title>
             </Head>
 
-            <main id="no-match">
+            <article id="no-match">
                 <h2 className="error">
                     Error 404!
                 </h2>
@@ -16,19 +16,21 @@ const NoMatch = () => {
                 <p>The page you are looking for does not exist!</p>
                 <style jsx>{`
                     #no-match {
-                        margin: 1.5rem;
+                        margin: 1.5rem auto;
+                        max-width: 80ch;
                     }
 
                     p {
-                        font-size: 120%;
+                        font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
                     }
 
                     .error {
-                        color: #dc3545;
+                        font-size: clamp(1.4rem, 1vw + 0.9rem, 2.1rem);
+                        color: var(--mg-red);
                         margin-bottom: 1rem;
                     }
                 `}</style>
-            </main>
+            </article>
         </>
     );
 };

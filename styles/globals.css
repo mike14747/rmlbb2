@@ -9,6 +9,9 @@
 
     /* end theme colors specific to this app */
 
+    --container-min-width: 320px;
+    --container-max-width: 1334px;
+
     --mg-beige: #f5f5dc;
     --mg-black: #000000; /* html black */
     --mg-blue: #214fc6;
@@ -59,6 +62,7 @@ body {
     line-height: 1.5;
     color: var(--mg-dark);
     background-color: #ffffff;
+    background-image: url('/images/seamless_bg_sand.jpg');
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -193,7 +197,7 @@ blockquote {
     text-align: left;
     padding: 1rem 1.25rem;
     margin: 1.5rem 0;
-    border-left: 8px solid coral;
+    border-left: 8px solid var(--theme-color-red);
     background-color: beige;
     font-size: 1.25rem;
 }
@@ -247,8 +251,8 @@ a:link {
 }
 
 a:visited {
-    /* color: var(--mg-blue); */
-    color: var(--mg-purple);
+    color: var(--mg-blue);
+    /* color: var(--mg-purple); */
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -260,14 +264,14 @@ a:focus {
 }
 
 a:hover {
-    color: var(--mg-orange);
+    color: var(--theme-color-orange);
     /* text-decoration: none; */
     text-decoration: underline;
     transition: color 0.3s;
 }
 
 a:active {
-    color: var(--mg-orange);
+    color: var(--theme-color-orange);
     /* text-decoration: none; */
     text-decoration: underline;
 }
@@ -295,12 +299,12 @@ a:not([href]):hover {
 a[href]:hover::after {
     width: 100%;
     left: 0;
-    background-color: var(--mg-orange);
+    background-color: var(--theme-color-orange);
     transition: width 0.3s, left 0.3s, background-color 1s;
 }
 
 a[href]:active::after {
-    background-color: var(--mg-orange);
+    background-color: var(--theme-color-orange);
     transition: background-color 1s;
 } */
 
@@ -326,7 +330,7 @@ a[href]:active::after {
 }
 
 .link:hover {
-    color: var(--mg-orange);
+    color: var(--theme-color-orange);
     transition: 0.3s;
     text-decoration: none;
 }
@@ -334,7 +338,7 @@ a[href]:active::after {
 .link:hover::after {
     width: 100%;
     left: 0;
-    background-color: var(--mg-orange);
+    background-color: var(--theme-color-orange);
     transition: width 0.3s, left 0.3s, background-color 1s;
 } */
 
@@ -601,7 +605,8 @@ template {
 .main-container {
     flex: 1;
     width: 100%;
-    max-width: 1334px;
+    min-width: var(--container-min-width);
+    max-width: var(--container-max-width);
     margin-left: auto;
     margin-right: auto;
     background-color: #ffffff;
@@ -611,7 +616,8 @@ template {
 /* use with elements like <header>, <nav> and <footer> */
 .container {
     width: 100%;
-    max-width: 1334px;
+    min-width: var(--container-min-width);
+    max-width: var(--container-max-width);
     margin-left: auto;
     margin-right: auto;
 }

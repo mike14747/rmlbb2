@@ -1,45 +1,23 @@
 {
     "env": {
         "browser": true,
-        "es2020": true,
+        "es2021": true,
         "node": true,
         "jest": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "standard"
-    ],
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-        "requireConfigFile": false,
-        "sourceType": "module",
-        "babelOptions": {
-            "presets": ["next/babel"]
-        }
-    },
-    "plugins": [
-        "react"
+        "eslint:recommended",
+        "plugin:jsx-a11y/recommended",
+        "next",
+        "next/core-web-vitals"
     ],
     "rules": {
-        "indent": [
+        "@next/next/no-img-element": "off",
+        "camelcase": [
             "error",
-            4,
             {
-                "SwitchCase": 1
+                "properties": "never"
             }
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "eol-last": [
-            "error",
-            "always"
-        ],
-        "quotes": [
-            "error",
-            "single"
         ],
         "comma-dangle": [
             "warn",
@@ -51,14 +29,54 @@
                 "functions": "always-multiline"
             }
         ],
-        "no-console": "off",
-        "space-before-function-paren": [
+        "comma-spacing": [
             "error",
             {
-                "anonymous": "always",
-                "named": "never",
-                "asyncArrow": "always"
+                "before": false,
+                "after": true
             }
+        ],
+        "eol-last": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "keyword-spacing": [
+            "error",
+            {
+                "before": true
+            }
+        ],
+        "no-console": "off",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxEOF": 0
+            }
+        ],
+        "no-trailing-spaces": "error",
+        "no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "args": "none",
+                "ignoreRestSiblings": true
+            }
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "single"
         ],
         "react/jsx-filename-extension": [
             "warn",
@@ -73,14 +91,29 @@
             "error",
             4
         ],
-        "no-unused-vars": [
-            "warn",
+        "react/react-in-jsx-scope": "off",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "semi-spacing": [
+            "error",
             {
-                "vars": "all",
-                "args": "none",
-                "ignoreRestSiblings": true
+                "before": false,
+                "after": true
             }
         ],
-        "react/react-in-jsx-scope": "off"
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "always",
+                "named": "never",
+                "asyncArrow": "always"
+            }
+        ],
+        "space-in-parens": [
+            "error",
+            "never"
+        ]
     }
 }

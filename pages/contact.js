@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import styles from '../styles/Contact.module.css';
+// import styles from '../styles/Contact.module.css';
 
 const Contact = () => {
     return (
@@ -12,7 +12,7 @@ const Contact = () => {
             </Head>
 
             <main>
-                <h2 data-testid="pageHeading" className="pageHeading">
+                <h2 className="page-heading">
                     Contact
                 </h2>
             </main>

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import styles from '../styles/Lzp.module.css';
+// import styles from '../styles/Lzp.module.css';
 
 const Lzp = () => {
     return (
@@ -12,7 +12,7 @@ const Lzp = () => {
             </Head>
 
             <main>
-                <h2 data-testid="pageHeading" className="pageHeading">
+                <h2 className="page-heading">
                     LZP Archive
                 </h2>
             </main>

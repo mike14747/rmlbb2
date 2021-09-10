@@ -12,7 +12,7 @@ const Champions = () => {
             </Head>
 
             <main>
-                <h2 className="pageHeading">
+                <h2 className="page-heading">
                     Champions
                 </h2>
             </main>

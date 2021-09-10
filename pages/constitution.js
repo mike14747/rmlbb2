@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import styles from '../styles/Constitution.module.css';
+// import styles from '../styles/Constitution.module.css';
 
 const Constitution = () => {
     return (
@@ -12,7 +12,7 @@ const Constitution = () => {
             </Head>
 
             <main>
-                <h2 data-testid="pageHeading" className="pageHeading">
+                <h2 className="page-heading">
                     Constitution
                 </h2>
             </main>

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import styles from '../styles/CurrentSeason.module.css';
+// import styles from '../styles/CurrentSeason.module.css';
 
 const CurrentSeason = () => {
     return (
@@ -12,7 +12,7 @@ const CurrentSeason = () => {
             </Head>
 
             <main>
-                <h2 data-testid="pageHeading" className="pageHeading">
+                <h2 className="page-heading">
                     Current Season
                 </h2>
             </main>
