@@ -1,6 +1,36 @@
 :root {
-    --theme-color-1: rgb(255, 127, 80, 1);
-    --theme-color-2: rgba(0, 128, 0, 0.25);
+    /* start theme colors specific to this app */
+
+    --theme-color-orange: #ee6611;
+    --theme-color-red: #c11b17;
+    --theme-color-green: #006E33;
+    --theme-color-dirt: #e1cbbd;
+    --theme-color-dirt-faded: #ebe3df;
+
+    /* end theme colors specific to this app */
+
+    --mg-beige: #f5f5dc;
+    --mg-black: #000000; /* html black */
+    --mg-blue: #214fc6;
+    --mg-cream: #fffdd0;
+    --mg-dark: #232323;
+    --mg-green: #228b22; /* html forestgreen */
+    --mg-gray: #808080; /* html gray */
+    --mg-gray-1: #f5f5f5; /* html whitesmoke */
+    --mg-gray-2: #d3d3d3; /* html lightgray */
+    --mg-gray-3: #c0c0c0; /* html silver */
+    --mg-gray-4: #a9a9a9; /* html darkgray... it's a bug that its lighter than regular gray */
+    --mg-gray-5: #808080; /* html gray */
+    --mg-gray-6: #585858;
+    --mg-gray-7: #232323;
+    --mg-orange: #ff7518; /* html pumpkin */
+    --mg-orange-soft: #fcd581;
+    --mg-purple: #6f42c1;
+    --mg-red: #dc143c; /* html crimson */
+    --mg-red-dark: #b22222; /* html firebrick */
+    --mg-white: #ffffff; /* html white */
+    --mg-yellow: #fff44f; /* html lemon */
+    --mg-yellow-pale: #ffffd5;
 }
 
 *,
@@ -14,18 +44,20 @@
 #__next {
     display: flex;
     flex-direction: column;
-    min-height: 80vh;
+    min-height: 100vh;
 }
 
 html,
 body {
-    height: 100%;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     font-size: 1rem;
     font-weight: 400;
+    height: 100%;
     line-height: 1.5;
-    color: #212529;
+    color: var(--mg-dark);
     background-color: #ffffff;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -100,12 +132,12 @@ h4 {
 
 h5 {
     font-size: 1.25rem;
-    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.50rem);
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
 }
 
 h6 {
     font-size: 1rem;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
 }
 
 p {
@@ -203,33 +235,41 @@ sup {
 }
 
 a {
-    color: #024dbc;
+    color: var(--mg-blue);
     text-decoration: none;
     transition: 0.3s;
 }
 
 a:link {
-    color: #024dbc;
+    color: var(--mg-blue);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:visited {
-    color: #024dbc;
+    /* color: var(--mg-blue); */
+    color: var(--mg-purple);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:focus {
-    outline: 1px rgba(0, 0, 0, 0.25) dashed;
-    outline-offset: 0;
+    outline: 1px rgba(0, 0, 0, 0.15) dashed;
+    outline-offset: 0.25rem;
     transition: 0.3s;
 }
 
 a:hover {
-    color: #ff7f50;
+    color: var(--mg-orange);
+    /* text-decoration: none; */
     text-decoration: underline;
     transition: color 0.3s;
+}
+
+a:active {
+    color: var(--mg-orange);
+    /* text-decoration: none; */
+    text-decoration: underline;
 }
 
 a:not([href]),
@@ -238,11 +278,73 @@ a:not([href]):hover {
     text-decoration: none;
 }
 
+/* the following is the animated underline effect... disabled by default */
+/* if you enable it, change the above "a:hover" and "a:active" to "text-decoration: none;" and use the ".relative" class in <a> tags */
+
+/* a[href]::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    content: "";
+    background-color: transparent;
+    transition: width 0.3s, left 0.3s, background-color 1s;
+}
+
+a[href]:hover::after {
+    width: 100%;
+    left: 0;
+    background-color: var(--mg-orange);
+    transition: width 0.3s, left 0.3s, background-color 1s;
+}
+
+a[href]:active::after {
+    background-color: var(--mg-orange);
+    transition: background-color 1s;
+} */
+
+/* you could alternatively only use the .link pseudo-elements on select links and not all of them by default by applying the .link class to just those links */
+
+/* .link {
+    position: relative;
+    padding-top: 0.25rem;
+    display: inline-block;
+    transition: 0.3s;
+    color: var(--mg-blue);
+}
+
+.link::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    content: '';
+    background-color: transparent;
+    transition: width 0.3s, left 0.3s, background-color 1s;
+}
+
+.link:hover {
+    color: var(--mg-orange);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.link:hover::after {
+    width: 100%;
+    left: 0;
+    background-color: var(--mg-orange);
+    transition: width 0.3s, left 0.3s, background-color 1s;
+} */
+
+/* end link classes */
+
 pre,
 code,
 kbd,
 samp {
-    font-family: Consolas, 'Courier New', monospace;
+    font-family: Consolas, 'Courier New', Courier, monospace;
     font-size: 1em;
 }
 
@@ -252,6 +354,9 @@ pre {
     margin-bottom: 1rem;
     overflow: auto;
     font-size: 0.875em;
+    color: rgb(57, 58, 52);
+    background-color: rgb(238, 238, 238);
+    border: 1px solid rgb(221, 221, 221);
 }
 
 pre code {
@@ -262,7 +367,7 @@ pre code {
 
 code {
     font-size: 0.875em;
-    color: #333333;
+    color: rgb(57, 58, 52);
     word-wrap: break-word;
 }
 
@@ -285,7 +390,7 @@ kbd kbd {
 }
 
 figure {
-    margin: 0 0 1rem;
+    margin: 0;
 }
 
 img {
@@ -362,6 +467,7 @@ button,
 [type='reset'],
 [type='submit'] {
     -webkit-appearance: button;
+    padding: 0 0.25rem;
 }
 
 button:not(:disabled),
@@ -390,7 +496,7 @@ textarea {
 
 fieldset {
     min-width: 0;
-    padding: 0.50rem;
+    padding: 0.5rem;
     border: 1px rgba(0, 0, 0, 0.25) solid;
     margin: 1rem auto;
 }
@@ -400,7 +506,7 @@ legend {
     border: 1px rgba(0, 0, 0, 0.25) solid;
     padding: 0.25rem 1rem;
     margin-bottom: 1rem;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     line-height: inherit;
     color: inherit;
     white-space: normal;
@@ -491,31 +597,23 @@ template {
     position: sticky;
 }
 
-.pageHeading {
-    color: rgba(0, 0, 0, 0.75);
-    text-align: center;
-    margin: 0rem 0 1rem 0;
-}
-
-.wrapper {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1334px;
-    /* display: flex; */
+/* use with the <main> element on pages */
+.main-container {
     flex: 1;
-}
-
-.pageContainer {
-    /* flex: 1; */
-    background-color: rgba(255, 255, 255, 1);
+    width: 100%;
+    max-width: 1334px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
     padding: 1rem;
 }
 
+/* use with elements like <header>, <nav> and <footer> */
 .container {
     width: 100%;
+    max-width: 1334px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1334px;
 }
 
 .container-fluid {
@@ -524,8 +622,26 @@ template {
     margin-right: auto;
 }
 
+/* add custom css for site-wide use here */
+
+h2.page-heading {
+    font-size: clamp(1.6rem, 1.2vw + 1rem, 2.4rem);
+    text-align: left;
+    border-bottom: 2px var(--mg-gray-2) solid;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* end site-wide custom css */
+
+@media (min-width: 480px) {
+}
+
 @media (min-width: 768px) {
-    .pageHeading {
-        margin-top: 0.50rem;
-    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1366px) {
 }

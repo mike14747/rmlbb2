@@ -7,14 +7,22 @@ const Header = () => {
     return (
         <header className={'container ' + styles.header}>
             <div className={styles.headerLeft}>
-                <h1 className={styles.heading}>
+                <div className={styles.logoContainer}>
                     <Link href="/">
-                        <a data-testid="logo-link" className={styles.logoText}>RML Baseball</a>
+                        <a className={styles.logoText}>
+                            <img src="/images/logo.png" alt="RML Baseball" className={styles.logo} />
+                        </a>
                     </Link>
-                </h1>
-                <p data-testid="sub-heading" className={styles.subHeading}>
-                    <span aria-hidden="true" className={styles.subHeadingIcon}>Since 1978</span>
-                </p>
+                </div>
+                <div>
+
+                    <h1 className={styles.heading}>
+                        RML Baseball
+                    </h1>
+                    <p className={styles.subHeading}>
+                        Since 1978
+                    </p>
+                </div>
             </div>
 
             <Nav />

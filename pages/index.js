@@ -23,22 +23,22 @@ const Home = ({ news, events }) => {
                 </title>
             </Head>
 
-            <div className={styles.homeContainer}>
-                <main className={styles.main}>
-                    <h2 className={'pageHeading ' + styles.homepageHeading}>
+            <article className={styles.homeContainer}>
+                <div className={styles.newsContainer}>
+                    <h2 className="page-heading">
                         Latest News
                     </h2>
 
                     {news?.length > 0
                         ? news.map((item, index) => (
-                            <article key={index} className={styles.newsItem}>
-                                <h4 className={styles.newsHeading}>{item.title}</h4>
-                                <p data-testid="news-date" className={'m-0 ' + styles.newsDate}>DATE: {item.date}</p>
+                            <section key={index} className={styles.newsItem}>
+                                <h3 className={styles.newsHeading}>{item.title}</h3>
+                                <p data-testid="news-date" className={styles.newsDate}><small>DATE: {item.date}</small></p>
                                 <BlockContent
                                     blocks={item.content}
                                     serializers={noContainer}
                                 />
-                            </article>
+                            </section>
                         ))
                         : news?.length === 0
                             ? <article>
@@ -46,17 +46,18 @@ const Home = ({ news, events }) => {
                             </article>
                             : <p data-testid="error">An error occurred fetching data.</p>
                     }
-                </main>
+                </div>
 
-                <section className={styles.sidebar}>
-                    <aside className={styles.eventsSidebarContainer}>
+                <div className={styles.sidebar}>
+                    <div className={styles.eventsSidebarContainer}>
                         <EventsSidebar events={events} />
-                    </aside>
-                    <aside className={styles.boardSidebarContainer}>
+                    </div>
+
+                    <div className={styles.boardSidebarContainer}>
                         <BoardSidebar />
-                    </aside>
-                </section>
-            </div>
+                    </div>
+                </div>
+            </article>
         </>
     );
 };
