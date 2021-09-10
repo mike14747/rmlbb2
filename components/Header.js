@@ -9,8 +9,9 @@ const Header = () => {
             <div className={styles.headerLeft}>
                 <div className={styles.logoContainer}>
                     <Link href="/">
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <a className={styles.logoText}>
-                            <img src="/images/logo.png" alt="RML Baseball" className={styles.logo} />
+                            <img src="/images/logo1.png" alt="RML Baseball" className={styles.logo} />
                         </a>
                     </Link>
                 </div>

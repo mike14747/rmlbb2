@@ -17,14 +17,14 @@
 
 h1.heading {
     font-size: clamp(1.4rem, 1vw + 0.9rem, 2.1rem);
-    color: var(--mg-dark);
+    color: var(--theme-color-red);
     margin: 0;
     font-weight: bolder;
 }
 
 .subHeading {
     color: var(--mg-gray-7);
-    font-style: italic;
+    /* font-style: italic; */
     font-size: 1rem;
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
     margin: 0;
