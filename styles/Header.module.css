@@ -25,35 +25,51 @@ h1.heading {
 
 .subHeading {
     color: var(--mg-gray-7);
-    /* font-style: italic; */
     font-size: 1rem;
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.20rem);
     margin: 0;
 }
 
 .logoContainer {
-    background-color: var(--theme-color-dirt-faded);
-    border: 1px rgba(0, 0, 0, .25) solid;
+    background-color: var(--theme-color-dirt);
     border-radius: 50%;
     width: 20%;
     min-width: 60px;
     max-width: 80px;
     height: auto;
-    box-shadow: 5px 5px 5px 0px var(--mg-gray-4);
+    box-shadow: 0 0 0 1px var(--mg-gray-5), 5px 5px 5px 0px var(--mg-gray-4);
     margin-right: 0.75rem;
     text-align: center;
-    padding: 0.25rem;
+    padding: 0;
+    transition: .3s;
 }
 
 .logoContainer:hover {
-    background-color: var(--theme-color-dirt);
-    box-shadow: 5px 5px 5px 0px var(--mg-gray-5);
+    background-color: var(--theme-color-dirt-faded);
+    box-shadow: 0 0 0 1px var(--mg-gray-6), 5px 5px 5px 0px var(--mg-gray-5);
+    transition: .3s;
 }
 
 .logo {
     width: 100%;
     max-width: 80px;
     height: auto;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.logoContainer:hover .logo {
+    animation: rotate 0.25s linear;
 }
 
 @media (min-width: 480px) {
