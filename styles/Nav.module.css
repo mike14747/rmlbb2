@@ -20,7 +20,7 @@ ul.navdropdownContent {
     right: 0.50rem;
     padding: 0;
     margin: 0;
-    background-color: var(--mg-white);
+    background-color: #ffffff;
     list-style-type: none;
     width: auto;
     min-width: 200px;
@@ -48,7 +48,7 @@ ul.navdropdownContent > li:last-child > a {
 
 ul.navdropdownContent > li > a:hover {
     background-color: rgba(27, 82, 120, 0.75);
-    color: var(--mg-white);
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.3s, background-color 0.3s;
 }
@@ -104,7 +104,7 @@ ul.navdropdownContent > li > a.disabled::before {
 
     ul.navdropdownContent > li > a:hover {
         color: var(--theme-color-orange);
-        background-color: var(--mg-white);
+        background-color: #ffffff;
         cursor: pointer;
     }
 
