@@ -17,7 +17,7 @@ const Directory = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Directory
                 </h2>
@@ -34,7 +34,7 @@ const Directory = () => {
                         <button onClick={signOut}>Sign out</button>
                     </>
                 }
-            </main>
+            </article>
         </>
     );
 };

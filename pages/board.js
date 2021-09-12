@@ -12,11 +12,11 @@ const MessageBoard = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Message Board
                 </h2>
-            </main>
+            </article>
         </>
     );
 };

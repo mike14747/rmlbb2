@@ -11,11 +11,11 @@ const Downloads = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Downloads
                 </h2>
-            </main>
+            </article>
         </>
     );
 };

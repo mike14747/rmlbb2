@@ -9,7 +9,7 @@ const TopInfo = () => {
     return (
         <>
             {showPanel &&
-                <div className={'container ' + styles.infoContainer}>
+                <aside aria-label="New Managers" className={'container ' + styles.infoContainer}>
                     <div className={styles.content}>
                         The RML has an opening!
                         <span className={styles.moreInfoSpan}></span>
@@ -24,7 +24,7 @@ const TopInfo = () => {
                     <button className={styles.close} onClick={() => setShowPanel(false)}>
                         &times;
                     </button>
-                </div>
+                </aside>
             }
         </>
     );

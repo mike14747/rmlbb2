@@ -11,11 +11,11 @@ const Contact = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Contact
                 </h2>
-            </main>
+            </article>
         </>
     );
 };

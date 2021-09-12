@@ -11,11 +11,11 @@ const Champions = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Champions
                 </h2>
-            </main>
+            </article>
         </>
     );
 };

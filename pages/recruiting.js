@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 import noContainer from '../lib/noContainer';
-import { getNewManagerContent } from '../lib/api/miscPortableText';
+import { getRecruitingContent } from '../lib/api/miscPortableText';
 
 import styles from '../styles/recruiting.module.css';
 
 const Recruiting = ({ content }) => {
-    console.log(content);
     return (
         <>
             <Head>
@@ -39,7 +38,7 @@ Recruiting.propTypes = {
 };
 
 export async function getStaticProps() {
-    const content = await getNewManagerContent();
+    const content = await getRecruitingContent();
 
     return {
         props: { content },

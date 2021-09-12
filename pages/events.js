@@ -32,7 +32,7 @@ const Events = ({ events }) => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Events
                 </h2>
@@ -40,13 +40,11 @@ const Events = ({ events }) => {
                 {!events && <p data-testid="error" className={styles.error}>An error occurred fetching data.</p>}
 
                 {events?.length === 0 &&
-                    <article>
-                        <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
-                    </article>
+                    <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
                 }
 
                 {events?.length > 0 &&
-                    <article>
+                    <>
                         <p aria-hidden="true" className={styles.iconLegend}>
                             Urgency icons:<span className={styles.break}></span><span className={styles.td3 + ' ' + styles.urgent}>&#9679;</span> 0-2 | <span className={styles.td3 + ' ' + styles.soon}>&#9679;</span> 3-6 | <span className={styles.td3 + ' ' + styles.normal}>&#9679;</span> 7+ days until event.
                         </p>
@@ -83,7 +81,7 @@ const Events = ({ events }) => {
                             ))}
                         </div>
 
-                    </article>
+                    </>
                 }
 
                 <div className={styles.showPastDiv}>
@@ -100,12 +98,10 @@ const Events = ({ events }) => {
                 {showPastEvents && !pastEvents && !isLoading && <p data-testid="pastError" className={styles.error}>An error occurred fetching data.</p>}
 
                 {showPastEvents && pastEvents?.length === 0 &&
-                    <article>
-                        <p data-testid="pastEmpty">There are no past events to display. Check back again soon.</p>
-                    </article>
+                    <p data-testid="pastEmpty">There are no past events to display. Check back again soon.</p>
                 }
                 {showPastEvents && pastEvents?.length > 0 &&
-                    <article className={styles.pastTable}>
+                    <div className={styles.pastTable}>
                         <div className={styles.row + ' ' + styles.pastHeadingRow}>
                             <div className={styles.td + ' ' + styles.td1}>
                                 Date
@@ -125,9 +121,9 @@ const Events = ({ events }) => {
                                 </div>
                             </div>
                         ))}
-                    </article>
+                    </div>
                 }
-            </main>
+            </article>
         </>
     );
 };

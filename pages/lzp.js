@@ -11,11 +11,11 @@ const Lzp = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     LZP Archive
                 </h2>
-            </main>
+            </article>
         </>
     );
 };

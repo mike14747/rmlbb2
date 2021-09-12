@@ -3,7 +3,6 @@
     position: relative;
     padding: 0.50rem 0.50rem 0.50rem 0;
     background-color: transparent;
-    cursor: pointer;
 }
 
 .nav::before {
@@ -12,6 +11,7 @@
     font-weight: normal;
     font-size: 2.5rem;
     padding: 0 0 0 2.5rem; /* the large padding-left value is assuming the nav 'sandwich' is on the right and it allows for more hover space to the left of it  */
+    cursor: pointer;
 }
 
 ul.navdropdownContent {
@@ -33,7 +33,7 @@ ul.navdropdownContent {
 
 ul.navdropdownContent > li > a {
     margin: 0;
-    padding: 1.5rem 0.5rem;
+    padding: 1rem 0.5rem;
     text-decoration: none;
     display: block;
     white-space: nowrap;
@@ -73,13 +73,13 @@ ul.navdropdownContent > li > a.disabled::before {
         flex: 1;
         position: static;
         padding: 0;
-        cursor: initial;
     }
 
     .nav::before {
         display: none;
         content: '';
         padding: 0;
+        cursor: initial;
     }
 
     ul.navdropdownContent {
@@ -95,7 +95,7 @@ ul.navdropdownContent > li > a.disabled::before {
     }
 
     ul.navdropdownContent > li > a {
-        padding: 0.5rem;
+        padding: 0.75rem 0.50rem;
         margin: 0.25rem 0.25rem 0 0.25rem;
         border: 0;
         position: relative;

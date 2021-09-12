@@ -11,11 +11,11 @@ const CurrentSeason = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Current Season
                 </h2>
-            </main>
+            </article>
         </>
     );
 };
