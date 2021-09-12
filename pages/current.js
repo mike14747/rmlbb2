@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-// import styles from '../styles/CurrentSeason.module.css';
+// import styles from '../styles/current.module.css';
 
 const CurrentSeason = () => {
     return (

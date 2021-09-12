@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import noContainer from '../lib/noContainer';
 import { getConstitutionContent } from '../lib/api/miscPortableText';
 
-import styles from '../styles/Constitution.module.css';
+import styles from '../styles/constitution.module.css';
 
 const Constitution = ({ content }) => {
     return (

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-// import styles from '../styles/Lzp.module.css';
+// import styles from '../styles/lzp.module.css';
 
 const Lzp = () => {
     return (

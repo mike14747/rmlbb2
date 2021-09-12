@@ -9,7 +9,7 @@ import BoardSidebar from '../components/BoardSidebar';
 import { getSomeNewsItems, getAllNewsItems } from '../lib/api/news';
 import { getNextUpcomingEvents } from '../lib/api/events';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/home.module.css';
 
 const Home = ({ news, events }) => {
     const [allNews, setAllNews] = useState(null);
@@ -33,7 +33,7 @@ const Home = ({ news, events }) => {
                         ? news.map((item, index) => (
                             <section key={index} className={styles.newsItem}>
                                 <h3 className={styles.newsHeading}>{item.title}</h3>
-                                <p data-testid="news-date" className={styles.newsDate}><small>DATE: {item.date}</small></p>
+                                <p data-testid="news-date" className={styles.newsDate}><small>Date: {item.date}</small></p>
                                 <BlockContent
                                     blocks={item.content}
                                     serializers={noContainer}

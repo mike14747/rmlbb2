@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../components/Loading';
 import { getAllActiveUpcomingEvents, getAllActivePastEvents } from '../lib/api/events';
 
-import styles from '../styles/Events.module.css';
+import styles from '../styles/events.module.css';
 
 const Events = ({ events }) => {
     const [pastEvents, setPastEvents] = useState(null);

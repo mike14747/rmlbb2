@@ -32,6 +32,7 @@ ul.navdropdownContent {
 }
 
 ul.navdropdownContent > li > a {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     margin: 0;
     padding: 1rem 0.5rem;
     text-decoration: none;
@@ -95,8 +96,8 @@ ul.navdropdownContent > li > a.disabled::before {
     }
 
     ul.navdropdownContent > li > a {
-        padding: 0.75rem 0.50rem;
-        margin: 0.25rem 0.25rem 0 0.25rem;
+        padding: 0.50rem 0 0.75rem 0;
+        margin: 0 0.50rem;
         border: 0;
         position: relative;
         white-space: nowrap;
@@ -109,11 +110,11 @@ ul.navdropdownContent > li > a.disabled::before {
     }
 
     ul.navdropdownContent > li:first-child > a {
-        margin: 0.25rem 0.25rem 0 0;
+        margin-left: 0.25rem;
     }
 
     ul.navdropdownContent > li:last-child > a {
-        margin: 0.25rem 0 0 0.25rem;
+        margin-right: 0.25rem;
     }
 
     .nav:hover > ul.navdropdownContent {
@@ -133,10 +134,8 @@ ul.navdropdownContent > li > a.disabled::before {
 
     ul.navdropdownContent > li > a.disabled::after,
     ul.navdropdownContent > li > a:hover::after {
-        width: calc(
-            100% - 1rem
-        ); /* necessary because the <a> element has 0.50rem horizontal padding times 2 for both sides */
-        left: 0.5rem; /* necessary because the <a> element has 0.50rem padding-left */
+        width: 100%;
+        left: 0;
         background-color: var(--theme-color-orange);
         transition: width 0.3s, left 0.3s, background-color 1s;
     }

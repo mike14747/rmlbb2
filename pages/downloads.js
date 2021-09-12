@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-// import styles from '../styles/Downloads.module.css';
+// import styles from '../styles/downloads.module.css';
 
 const Downloads = () => {
     return (
