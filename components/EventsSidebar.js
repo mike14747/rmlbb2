@@ -4,7 +4,7 @@ import styles from '../styles/EventsSidebar.module.css';
 
 const EventsSidebar = ({ events }) => {
     return (
-        <>
+        <section>
             <h4 className={styles.eventsHeading}>Upcoming Events</h4>
             {!events && <p>An error occurred fetching data.</p>}
             {events?.length === 0 && <p>There are no upcoming events to display. Check back again soon.</p>}
@@ -18,7 +18,7 @@ const EventsSidebar = ({ events }) => {
                 ))
             }
 
-        </>
+        </section>
     );
 };
 
