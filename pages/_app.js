@@ -32,12 +32,6 @@ export default MyApp;
 MyApp.getInitialProps = async (context) => {
     const session = await getSession(context);
 
-    if (context.ctx.req) {
-        console.log('This is being run on the SERVER!');
-    } else {
-        console.log('This is being run on the CLIENT!');
-    }
-
     const test = {
         property: 'value',
     };

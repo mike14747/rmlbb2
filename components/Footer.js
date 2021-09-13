@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import styles from '../styles/Footer.module.css';
 
 const Footer = ({ contactEmail, links }) => {
-    console.log(links);
     return (
         <footer className={'container ' + styles.footer}>
             {contactEmail &&
                 <p>
-                    <a href={'mailto:' + contactEmail}>
+                    <a href={contactEmail}>
                         Contact Us
                     </a>
                 </p>

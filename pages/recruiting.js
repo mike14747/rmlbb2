@@ -24,10 +24,6 @@ const Recruiting = ({ content }) => {
                     blocks={content.content}
                     serializers={noContainer}
                 />
-
-                <p>
-                    <a href="mailto:mike4747@oh.rr.com">Contact us</a> for more info.
-                </p>
             </article>
         </>
     );
