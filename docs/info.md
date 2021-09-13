@@ -21,7 +21,7 @@ Burger Menu:
 ```css
 #header #nav_trigger a::before {
     color: #cf2036;
-    content: "\2630";
+    content: '\2630';
     font-weight: normal;
     font-size: 1.5rem;
 }
@@ -31,7 +31,7 @@ Downward pointing arrow:
 
 ```css
 .someClass::before {
-    content: "\25BC";
+    content: '\25BC';
 }
 ```
 
@@ -39,3 +39,4 @@ Downward pointing arrow:
 275E - Close Quote
 
 ---
+

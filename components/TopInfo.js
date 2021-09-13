@@ -1,17 +1,18 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 
 import styles from '../styles/TopInfo.module.css';
 
-const TopInfo = () => {
+const TopInfo = ({ topInfo }) => {
     const [showPanel, setShowPanel] = useState(true);
 
     return (
         <>
-            {showPanel &&
+            {showPanel && topInfo?.active &&
                 <aside aria-label="New Managers" className={'container ' + styles.infoContainer}>
                     <div className={styles.content}>
-                        The RML has an opening!
+                        {topInfo?.text}
                         <span className={styles.moreInfoSpan}></span>
                         <Link href="/recruiting">
                             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -28,6 +29,10 @@ const TopInfo = () => {
             }
         </>
     );
+};
+
+TopInfo.propTypes = {
+    topInfo: PropTypes.object,
 };
 
 export default TopInfo;

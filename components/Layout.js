@@ -9,21 +9,23 @@ import Header from './Header';
 import Footer from './Footer';
 
 const Layout = ({ children }) => {
-    const { data: settings, error } = useSWR('/api/settings', fetcher);
+    const { data: settings, error: error1 } = useSWR('/api/settings', fetcher);
+    const { data: topInfo, error: error2 } = useSWR('/api/topinfo', fetcher);
+    const { data: links, error: error3 } = useSWR('/api/links', fetcher);
 
-    if (error) return <h1>An error has occurred!</h1>;
-    if (!settings) return <Loading />;
+    if (error1 || error2 || error3) return <h1>An error has occurred!</h1>;
+    if (!settings || !topInfo || !links) return <Loading />;
 
     return (
         <>
-            <TopInfo setting={settings} />
+            <TopInfo topInfo={topInfo} />
             <Header />
 
             <main className="main-container">
                 {children}
             </main>
 
-            <Footer contactEmail={settings.find(setting => setting.name === 'Contact Email')} />
+            <Footer contactEmail={settings.find(setting => setting.name === 'Contact Email').value} links={links} />
         </>
     );
 };
