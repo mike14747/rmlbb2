@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: var(--mg-white);
+    color: #ffffff;
     background-color: var(--mg-dark);
     font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     padding: 0.25rem;
@@ -16,14 +16,14 @@
 
 .moreInfoSpan::before {
     content: '\203A \203A \203A';
-    color: var(--mg-white);
+    color: #ffffff;
     padding: 0 0.25rem 0 1rem;
 }
 
 a.link,
 a.link:link,
 a.link:visited {
-    color: var(--mg-white);
+    color: #ffffff;
     text-decoration: none;
     transition: .3s;
 }
@@ -35,7 +35,7 @@ a.link:hover {
 }
 
 .close {
-    color: var(--mg-white);
+    color: #ffffff;
     background-color: var(--mg-dark);
     font-size: 1.5rem;
     padding: 0 0.25rem 0.25rem 0.25rem;

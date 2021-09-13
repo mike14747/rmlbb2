@@ -3,7 +3,7 @@ import React from 'react';
 // import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
-// import styles from '../styles/Directory.module.css';
+// import styles from '../styles/directory.module.css';
 
 const Directory = () => {
     const [session, loading] = useSession();
@@ -17,7 +17,7 @@ const Directory = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Directory
                 </h2>
@@ -34,7 +34,7 @@ const Directory = () => {
                         <button onClick={signOut}>Sign out</button>
                     </>
                 }
-            </main>
+            </article>
         </>
     );
 };

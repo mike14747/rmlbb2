@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-// import styles from '../styles/Champions.module.css';
+// import styles from '../styles/champions.module.css';
 
 const Champions = () => {
     return (
@@ -11,11 +11,11 @@ const Champions = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Champions
                 </h2>
-            </main>
+            </article>
         </>
     );
 };

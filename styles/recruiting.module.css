@@ -1,4 +1,11 @@
+.recruitingContainer > ol,
+.recruitingContainer > ul,
 .recruitingContainer > p {
     max-width: 80ch;
     margin: 0 auto 1.5rem auto;
+}
+
+.recruitingContainer > p + ol,
+.recruitingContainer > p + ul {
+    margin-top: -1rem;
 }

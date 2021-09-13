@@ -55,8 +55,6 @@
     max-width: 60ch;
     margin: 0;
     color: var(--theme-color-orange);
-    /* font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem); */
-    /* font-variant: small-caps; */
 }
 
 .newsDate {
@@ -70,16 +68,17 @@
     }
 
     .newsContainer {
-        flex: 1;
+        flex: 2;
         order: 1;
         padding-right: 1rem;
     }
     
     .sidebar {
         display: block;
-        flex: 0 0 200px;
+        flex: 1;
+        min-width: 250px;
         order: 2;
-        padding: 1rem 0 1rem 1rem;
+        padding: 1rem 0 1rem 0;
         border: none;
     }
 

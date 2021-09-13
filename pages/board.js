@@ -1,7 +1,7 @@
 import Head from 'next/head';
 // import PropTypes from 'prop-types';
 
-// import styles from '../styles/MessageBoard.module.css';
+// import styles from '../styles/board.module.css';
 
 const MessageBoard = () => {
     return (
@@ -12,11 +12,11 @@ const MessageBoard = () => {
                 </title>
             </Head>
 
-            <main>
+            <article>
                 <h2 className="page-heading">
                     Message Board
                 </h2>
-            </main>
+            </article>
         </>
     );
 };

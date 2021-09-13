@@ -9,7 +9,7 @@ import BoardSidebar from '../components/BoardSidebar';
 import { getSomeNewsItems, getAllNewsItems } from '../lib/api/news';
 import { getNextUpcomingEvents } from '../lib/api/events';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/home.module.css';
 
 const Home = ({ news, events }) => {
     const [allNews, setAllNews] = useState(null);
@@ -23,32 +23,34 @@ const Home = ({ news, events }) => {
                 </title>
             </Head>
 
-            <article className={styles.homeContainer}>
-                <div className={styles.newsContainer}>
-                    <h2 className="page-heading">
-                        Latest News
-                    </h2>
+            <div className={styles.homeContainer}>
+                <article>
+                    <div className={styles.newsContainer}>
+                        <h2 className="page-heading">
+                            Latest News
+                        </h2>
 
-                    {news?.length > 0
-                        ? news.map((item, index) => (
-                            <section key={index} className={styles.newsItem}>
-                                <h3 className={styles.newsHeading}>{item.title}</h3>
-                                <p data-testid="news-date" className={styles.newsDate}><small>DATE: {item.date}</small></p>
-                                <BlockContent
-                                    blocks={item.content}
-                                    serializers={noContainer}
-                                />
-                            </section>
-                        ))
-                        : news?.length === 0
-                            ? <article>
-                                <p data-testid="empty">There are no news items to display. Check back again soon.</p>
-                            </article>
-                            : <p data-testid="error">An error occurred fetching data.</p>
-                    }
-                </div>
+                        {news?.length > 0
+                            ? news.map((item, index) => (
+                                <section key={index} className={styles.newsItem}>
+                                    <h3 className={styles.newsHeading}>{item.title}</h3>
+                                    <p data-testid="news-date" className={styles.newsDate}><small>Date: {item.date}</small></p>
+                                    <BlockContent
+                                        blocks={item.content}
+                                        serializers={noContainer}
+                                    />
+                                </section>
+                            ))
+                            : news?.length === 0
+                                ? <article>
+                                    <p data-testid="empty">There are no news items to display. Check back again soon.</p>
+                                </article>
+                                : <p data-testid="error">An error occurred fetching data.</p>
+                        }
+                    </div>
+                </article>
 
-                <div className={styles.sidebar}>
+                <aside className={styles.sidebar}>
                     <div className={styles.eventsSidebarContainer}>
                         <EventsSidebar events={events} />
                     </div>
@@ -56,8 +58,8 @@ const Home = ({ news, events }) => {
                     <div className={styles.boardSidebarContainer}>
                         <BoardSidebar />
                     </div>
-                </div>
-            </article>
+                </aside>
+            </div>
         </>
     );
 };

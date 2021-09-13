@@ -258,7 +258,7 @@ a:visited {
 }
 
 a:focus {
-    outline: 1px rgba(0, 0, 0, 0.15) dashed;
+    outline: 1px var(--mg-gray-2) dashed;
     outline-offset: 0.25rem;
     transition: 0.3s;
 }
@@ -631,7 +631,7 @@ template {
 /* add custom css for site-wide use here */
 
 h2.page-heading {
-    font-size: clamp(1.6rem, 1.2vw + 1rem, 2.4rem);
+    font-size: clamp(1.4rem, 1vw + 0.9rem, 2.1rem);
     text-align: left;
     border-bottom: 2px var(--mg-gray-2) solid;
     padding-bottom: 1rem;

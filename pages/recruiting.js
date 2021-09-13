@@ -1,9 +1,12 @@
+import PropTypes from 'prop-types';
 import Head from 'next/head';
-// import Link from 'next/link';
+import BlockContent from '@sanity/block-content-to-react';
+import noContainer from '../lib/noContainer';
+import { getRecruitingContent } from '../lib/api/miscPortableText';
 
 import styles from '../styles/recruiting.module.css';
 
-const Recruiting = () => {
+const Recruiting = ({ content }) => {
     return (
         <>
             <Head>
@@ -17,16 +20,30 @@ const Recruiting = () => {
                     New Managers
                 </h2>
 
-                <p>
-                    The RML has an opening for a new manager.
-                </p>
+                <BlockContent
+                    blocks={content.content}
+                    serializers={noContainer}
+                />
 
                 <p>
-                    There will be info about the league here and a link to contact me for more info.
+                    <a href="mailto:mike4747@oh.rr.com">Contact us</a> for more info.
                 </p>
             </article>
         </>
     );
 };
+
+Recruiting.propTypes = {
+    content: PropTypes.object,
+};
+
+export async function getStaticProps() {
+    const content = await getRecruitingContent();
+
+    return {
+        props: { content },
+        revalidate: 600, // page regeneration can occur in 10 minutes
+    };
+}
 
 export default Recruiting;
