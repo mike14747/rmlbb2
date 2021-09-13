@@ -3,6 +3,7 @@
     position: relative;
     padding: 0.50rem 0.50rem 0.50rem 0;
     background-color: transparent;
+    z-index: 3;
 }
 
 .nav::before {

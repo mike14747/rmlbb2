@@ -1,0 +1,117 @@
+.sidebar {
+    display: flex;
+    flex-direction: row;
+    order: 1;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.eventsSidebarContainer {
+    flex: 1;
+    margin-right: 0.50rem;
+    margin-bottom: 0;
+}
+
+.boardSidebarContainer {
+    flex: 1;
+    margin-left: 0.50rem;
+}
+
+.cardContainer {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px 0 var(--mg-gray-4);
+    padding: 0.50rem;
+    width: 100%;
+    z-index: initial;
+}
+
+.smallScreen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.normalScreen {
+    display: none;
+}
+
+.card:hover {
+    position: absolute;
+    min-width: 250px;
+    z-index: 2;
+}
+
+.card:hover > .normalScreen {
+    display: block;
+}
+
+.card:hover > .smallScreen {
+    display: none;
+}
+
+h4.heading {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-weight: bolder;
+    margin: 0;
+}
+
+.head {
+    margin: 0 0 2rem 0;
+}
+
+
+@media (min-width: 768px) {
+    .sidebar {
+        flex-direction: column;
+        align-self: flex-start;
+        flex: 1;
+        min-width: 250px;
+        order: 2;
+        padding: 1rem 0 1rem 0;
+    }
+
+    .eventsSidebarContainer {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .boardSidebarContainer {
+        margin-left: 0;
+    }
+
+    .cardContainer {
+        max-width: 100%;
+    }
+
+    .card {
+        padding: 1rem;
+        position: initial;
+        max-width: 100%;
+    }
+
+    .cardContainer,
+    .card {
+        position: static;
+    }
+
+    .smallScreen {
+        display: none;
+    }
+
+    .normalScreen {
+        display: block;
+    }
+
+    .card:hover {
+        position: static;
+        z-index: initial;
+    }
+}

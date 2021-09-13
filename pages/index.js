@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import noContainer from '../lib/noContainer';
-import EventsSidebar from '../components/EventsSidebar';
-import BoardSidebar from '../components/BoardSidebar';
-// import { basePublicQueryUrl } from '../lib/settings';
+import Sidebar from '../components/Sidebar';
 import { getSomeNewsItems, getAllNewsItems } from '../lib/api/news';
 import { getNextUpcomingEvents } from '../lib/api/events';
 
 import styles from '../styles/home.module.css';
 
 const Home = ({ news, events }) => {
-    console.log('events:', events);
-    const [allNews, setAllNews] = useState(null);
-    const [showAllNews, setShowAllNews] = useState(false);
+    // const [allNews, setAllNews] = useState(null);
+    // const [showAllNews, setShowAllNews] = useState(false);
 
     return (
         <>
@@ -49,15 +46,7 @@ const Home = ({ news, events }) => {
                     }
                 </article>
 
-                <aside className={styles.sidebar}>
-                    <div className={styles.eventsSidebarContainer}>
-                        <EventsSidebar events={events} />
-                    </div>
-
-                    <div className={styles.boardSidebarContainer}>
-                        <BoardSidebar />
-                    </div>
-                </aside>
+                <Sidebar events={events} posts={null} />
             </div>
         </>
     );
