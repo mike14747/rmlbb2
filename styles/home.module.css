@@ -14,15 +14,13 @@
     flex-direction: row;
     order: 1;
     padding: 0;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--mg-gray-5);
+    margin-bottom: 2rem;
 }
 
 .eventsSidebarContainer {
     flex: 1;
     margin-right: 0.50rem;
     margin-bottom: 0;
-    border-bottom: none;
 }
 
 .boardSidebarContainer {
@@ -74,18 +72,17 @@
     }
     
     .sidebar {
-        display: block;
+        flex-direction: column;
+        align-self: flex-start;
         flex: 1;
         min-width: 250px;
         order: 2;
         padding: 1rem 0 1rem 0;
-        border: none;
     }
 
     .eventsSidebarContainer {
         margin-right: 0;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid var(--mg-gray-5);
+        margin-bottom: 3rem;
     }
 
     .boardSidebarContainer {
