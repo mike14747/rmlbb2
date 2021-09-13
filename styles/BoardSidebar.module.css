@@ -1,8 +1,63 @@
-.postsHeading {
-    background-color: rgba(128, 0, 128, 0.25);
-    font-size: 1rem;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.10rem);
+.card {
+    border-top: 4px var(--theme-color-green) solid;
+    box-shadow: 0 3px 6px 0 var(--mg-gray-4);
+    padding: 0.50rem;
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.smallScreenHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.down::after {
+    content: '\25BC';
+    color: var(--theme-color-green);
+}
+
+.head {
+    display: none;
+}
+
+.body {
+    display: none;
+}
+
+h4.postsHeading {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     font-weight: bolder;
-    padding: 0.25rem 0.50rem;
-    margin: 0 0 0.50rem 0;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 1rem;
+        position: initial;
+        max-width: 100%;
+    }
+
+    .card:hover {
+        cursor: initial;
+    }
+
+    .smallScreenHead {
+        display: none;
+    }
+
+    .head {
+        display: block;
+    }
+
+    .body {
+        display: block;
+    }
 }

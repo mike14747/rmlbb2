@@ -1,22 +1,56 @@
 .card {
     border-top: 4px var(--theme-color-orange) solid;
     box-shadow: 0 3px 6px 0 var(--mg-gray-4);
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 0.50rem;
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.smallScreenHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.down::after {
+    content: '\25BC';
+    color: var(--theme-color-orange);
+}
+
+.head {
+    display: none;
+}
+
+.body {
+    display: none;
 }
 
 h4.eventsHeading {
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     font-weight: bolder;
-    margin: 0 0 2rem 0;
+    margin: 0;
+}
+
+.subHeading {
+    font-size: clamp(0.9rem, 0.55vw + 0.55rem, 1rem);
+    color: var(--mg-gray-6);
+    margin: 0;
 }
 
 .eventDiv {
     background-color: #ffffff;
-    margin: 0 0 0.50rem 0;
+    margin: 0 0 1rem 0;
     padding: 0.25rem 0.50rem;
-    border: 1px var(--mg-gray-3) solid;
+    border-top: 3px var(--theme-color-dirt) solid;
     border-radius: 0.50rem;
-    box-shadow: 2px 2px 4px 0 var(--mg-gray-3);
+    box-shadow: 0 2px 4px 0 var(--mg-gray-3);
 }
 
 h5.eventDate {
@@ -25,9 +59,14 @@ h5.eventDate {
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
 }
 
-p.eventDetails {
+p.eventName {
     margin: 0;
     font-size: clamp(0.9rem, 0.55vw + 0.55rem, 1.1rem);
+}
+
+span.eventDetails {
+    font-size: clamp(0.8rem, 0.55vw + 0.5rem, 1rem);
+    color: var(--mg-gray-6);
 }
 
 .viewAll {
@@ -36,16 +75,37 @@ p.eventDetails {
     margin-top: 2rem;
 }
 
-/* .viewAll::after {
-    content: '\1F4C5';
-    font-size: 2rem;
-    color: #ffffff;
-    padding-left: 0.50rem;
-} */
-
 .icon {
     width: 100%;
     max-width: 60px;
     height: auto;
     margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 1rem;
+        position: initial;
+        max-width: 100%;
+    }
+
+    .card:hover {
+        cursor: initial;
+    }
+
+    .smallScreenHead {
+        display: none;
+    }
+
+    .head {
+        display: block;
+    }
+
+    .body {
+        display: block;
+    }
+
+    .subHeading {
+        margin: 0 0 2rem 0;
+    }
 }

@@ -12,6 +12,7 @@ import { getNextUpcomingEvents } from '../lib/api/events';
 import styles from '../styles/home.module.css';
 
 const Home = ({ news, events }) => {
+    console.log('events:', events);
     const [allNews, setAllNews] = useState(null);
     const [showAllNews, setShowAllNews] = useState(false);
 
