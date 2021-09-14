@@ -15,7 +15,7 @@
     order: 2;
     padding-right: 0;
     margin-bottom: 1rem;
-    border-bottom: 1px var(--mg-gray-5) solid;
+    border-bottom: 1px var(--mg-gray-3) solid;
 }
 
 .left > p {
@@ -33,7 +33,7 @@
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     padding-left: 0;
     margin-bottom: 1rem;
-    border-bottom: 1px var(--mg-gray-5) solid;
+    border-bottom: 1px var(--mg-gray-3) solid;
 }
 
 .right > p {
