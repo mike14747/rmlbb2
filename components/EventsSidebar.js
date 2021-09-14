@@ -16,7 +16,7 @@ const EventsSidebar = ({ events }) => {
                 <div className={sidebarStyles.normalScreen}>
                     <div className={sidebarStyles.head}>
                         <h4 className={sidebarStyles.heading}>Upcoming Events</h4>
-                        <p className={styles.subHeading}>
+                        <p className={sidebarStyles.subHeading}>
                             Next 60 days
                         </p>
                     </div>

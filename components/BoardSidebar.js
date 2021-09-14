@@ -15,6 +15,9 @@ const BoardSidebar = ({ posts }) => {
                 <div className={sidebarStyles.normalScreen}>
                     <div className={sidebarStyles.head}>
                         <h4 className={sidebarStyles.heading}>Recent Posts</h4>
+                        <p className={sidebarStyles.subHeading}>
+                            Most recent 5
+                        </p>
                     </div>
 
                     <div className={sidebarStyles.body}>

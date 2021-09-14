@@ -56,14 +56,20 @@
     display: none;
 }
 
+.head {
+    margin: 0 0 2rem 0;
+}
+
 h4.heading {
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     font-weight: bolder;
     margin: 0;
 }
 
-.head {
-    margin: 0 0 2rem 0;
+.subHeading {
+    font-size: clamp(0.9rem, 0.55vw + 0.55rem, 1rem);
+    color: var(--mg-gray-6);
+    margin: 0;
 }
 
 

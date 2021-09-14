@@ -10,12 +10,6 @@
     color: var(--theme-color-orange);
 }
 
-.subHeading {
-    font-size: clamp(0.9rem, 0.55vw + 0.55rem, 1rem);
-    color: var(--mg-gray-6);
-    margin: 0;
-}
-
 .eventDiv {
     background-color: #ffffff;
     margin: 0 0 1rem 0;
