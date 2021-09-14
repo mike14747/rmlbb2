@@ -37,10 +37,10 @@ const Events = ({ events }) => {
                     Events
                 </h2>
 
-                {!events && <p data-testid="error" className={styles.error}>An error occurred fetching data.</p>}
+                {!events && <p className={styles.error}>An error occurred fetching data.</p>}
 
                 {events?.length === 0 &&
-                    <p data-testid="empty">There are no upcoming events to display. Check back again soon.</p>
+                    <p>There are no upcoming events to display. Check back again soon.</p>
                 }
 
                 {events?.length > 0 &&
@@ -53,34 +53,23 @@ const Events = ({ events }) => {
                             Due dates are assumed to be due at midnight EST<span aria-hidden="true" className={styles.break}></span>(unless otherwise noted).
                         </p>
 
-                        <div className={styles.table}>
-                            <div className={styles.row + ' ' + styles.headingRow}>
-                                <div className={styles.td + ' ' + styles.td1}>
-                                    Date
-                                </div>
-                                <div className={styles.td + ' ' + styles.td2}>
-                                    Event
-                                </div>
-                                <div className={styles.td}></div>
+                        {events?.length > 0 &&
+                            <div className={styles.eventsContainer}>
+                                {events.map((event, index) => (
+                                    <div key={index} className={styles.eventRow}>
+                                        <div className={styles.eventDiv}>
+                                            <h5 className={styles.eventDate}>{event.eventDate}</h5>
+                                            <p className={styles.eventName}>{event.event}{event.details && <span className={styles.eventDetails}> ({event.details})</span>}</p>
+                                        </div>
+                                        <div className={styles.eventRight}>
+                                            {event.daysUntil >= 7 && <p aria-label="Urgency level" title="Due in 7 or more days" className={styles.normal}>&#9679;</p>}
+                                            {event.daysUntil > 2 && event.daysUntil < 7 && <p aria-label="Urgency level" title="Due in 3 to 6 days" className={styles.soon}>&#9679;</p>}
+                                            {event.daysUntil <= 2 && <p aria-label="Urgency level" title="Due in 2 or less days" className={styles.urgent}>&#9679;</p>}
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-
-                            {events.map((event, i) => (
-                                <div key={i} className={styles.row + ' ' + styles.bodyRow}>
-                                    <div className={styles.td + ' ' + styles.td1}>
-                                        {event.eventDate}
-                                    </div>
-                                    <div className={styles.td + ' ' + styles.td2}>
-                                        {event.event}{event.details && <span className={styles.details}> ({event.details})</span>}
-                                    </div>
-                                    <div className={styles.td}>
-                                        {event.daysUntil >= 7 && <span aria-label="Urgency level" title="Due in 7 or more days" className={styles.normal}>&#9679;</span>}
-                                        {event.daysUntil > 2 && event.daysUntil < 7 && <span aria-label="Urgency level" title="Due in 3 to 6 days" className={styles.soon}>&#9679;</span>}
-                                        {event.daysUntil <= 2 && <span aria-label="Urgency level" title="Due in 2 or less days" className={styles.urgent}>&#9679;</span>}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
+                        }
                     </>
                 }
 
