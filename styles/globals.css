@@ -13,7 +13,6 @@
     --container-max-width: 1334px;
 
     --mg-beige: #f5f5dc;
-    --mg-black: #000000; /* html black */
     --mg-blue: #214fc6;
     --mg-cream: #fffdd0;
     --mg-dark: #232323;
@@ -31,7 +30,6 @@
     --mg-purple: #6f42c1;
     --mg-red: #dc143c; /* html crimson */
     --mg-red-dark: #b22222; /* html firebrick */
-    --mg-white: #ffffff; /* html white */
     --mg-yellow: #fff44f; /* html lemon */
     --mg-yellow-pale: #ffffd5;
 }
