@@ -3,6 +3,7 @@ import { Provider, getSession } from 'next-auth/client';
 import Layout from '../components/Layout';
 
 import '../styles/globals.css';
+import '../styles/my_tables.css';
 
 function MyApp({ test, session, Component, pageProps }) {
     // console.log('test:', test?.property);

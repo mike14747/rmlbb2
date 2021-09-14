@@ -1,1 +1,33 @@
+.headingRow {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.3rem);
+    background-color: var(--theme-color-dirt-faded);
+    letter-spacing: 0.50px;
+}
 
+tr.verticalMiddle > td {
+    vertical-align: middle;
+}
+
+.year {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+}
+
+.team {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    margin: 0;
+    letter-spacing: 0.50px;
+}
+
+.manager {
+    font-size: clamp(0.9rem, 0.55vw + 0.55rem, 1.1rem);
+    color: var(--mg-gray-6);
+    margin: 0;
+}
+
+.winner {
+    color: var(--theme-color-green);
+}
+
+.runnerUp {
+    color: var(--theme-color-red);
+}

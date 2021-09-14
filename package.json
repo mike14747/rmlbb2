@@ -35,11 +35,13 @@
     "dependencies": {
         "@sanity/block-content-to-react": "^2.0.7",
         "bcryptjs": "^2.4.3",
+        "csv-parse": "^4.16.3",
         "mongodb": "^3.6.6",
         "next": "^11.1.2",
         "next-auth": "^3.20.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "swr": "^1.0.1"
+        "swr": "^1.0.1",
+        "uuid": "^8.3.2"
     }
 }
