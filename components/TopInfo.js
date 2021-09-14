@@ -13,7 +13,7 @@ const TopInfo = ({ topInfo }) => {
                 <aside aria-label="New Managers" className={'container ' + styles.infoContainer}>
                     <div className={styles.content}>
                         {topInfo?.text}
-                        <span className={styles.moreInfoSpan}></span>
+                        <span aria-hidden="true" className={styles.moreInfoSpan}></span>
                         <Link href="/recruiting">
                             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                             <a className={styles.link}>

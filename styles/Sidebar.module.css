@@ -25,7 +25,6 @@
 }
 
 .card {
-    background-color: #ffffff;
     box-shadow: 0 3px 6px 0 var(--mg-gray-4);
     padding: 0.50rem;
     width: 100%;

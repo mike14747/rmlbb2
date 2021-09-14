@@ -1,6 +1,7 @@
 .eventsCard {
     top: 0;
     left: 0;
+    background-color: var(--mg-yellow-pale);
     border-top: 4px var(--theme-color-orange) solid;
 }
 
@@ -18,15 +19,15 @@
 .eventDiv {
     background-color: #ffffff;
     margin: 0 0 1rem 0;
-    padding: 0.25rem 0.50rem;
-    border-top: 3px var(--theme-color-dirt) solid;
-    border-radius: 0.50rem;
+    padding: 0.25rem 0.5rem;
+    border-top: 4px var(--mg-orange-soft) solid;
+    /* border-radius: 0.50rem; */
     box-shadow: 0 2px 4px 0 var(--mg-gray-3);
 }
 
 h5.eventDate {
     color: var(--theme-color-red);
-    margin: 0 0 0.50rem 0;
+    margin: 0 0 0.5rem 0;
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
 }
 
