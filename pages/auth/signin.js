@@ -5,7 +5,6 @@ import Head from 'next/head';
 import styles from '../../styles/signin.module.css';
 
 const SignIn = ({ csrfToken }) => {
-    console.log(csrfToken);
     return (
         <>
             <Head>

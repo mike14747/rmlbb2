@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import React from 'react';
-// import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/client';
 import Loading from '../components/Loading';
 import SignInOutButton from '../components/SignInOutButton';
