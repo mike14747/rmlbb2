@@ -23,6 +23,7 @@ const options = {
 
                 if (user && user.length === 1) {
                     const matches = await bcryptjs.compare(credentials.password, user[0].password);
+                    // console.log('user[0]:', user[0]);
                     if (matches) return { name: user[0].username };
                     return null;
                 } else {
@@ -51,4 +52,6 @@ const options = {
     },
 };
 
-export default (req, res) => NextAuth(req, res, options);
+export default function nextAuth(req, res) {
+    NextAuth(req, res, options);
+}

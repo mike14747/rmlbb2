@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Loading from './Loading';
 import Error from './Error';
 import TopInfo from './TopInfo';
+import Authbar from './Authbar';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <TopInfo topInfo={{ text: settings?.topInfoText, active: settings?.topInfoActive }} />
+            <Authbar />
             <Header />
 
             <main className="main-container">

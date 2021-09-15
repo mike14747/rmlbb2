@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import React from 'react';
 // import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, useSession } from 'next-auth/client';
+import Loading from '../components/Loading';
+import SignInOutButton from '../components/SignInOutButton';
 
 // import styles from '../styles/directory.module.css';
 
@@ -21,10 +23,13 @@ const Directory = () => {
                 <h2 className="page-heading">
                     Directory
                 </h2>
-                {!session &&
+
+                {loading && <Loading />}
+
+                {!session && !loading &&
                     <>
-                        <p>You are NOT signed in.</p>
-                        <p>You are NOT allowed to view the secret contents of this page.</p>
+                        <p>You must be signed in to view this page.</p>
+                        <SignInOutButton func={signIn} text={'Sign in'}/>
                     </>
                 }
 

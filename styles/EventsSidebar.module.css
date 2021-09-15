@@ -1,7 +1,7 @@
 .eventsCard {
     top: 0;
     left: 0;
-    background-color: var(--mg-yellow-pale);
+    background-color: var(--theme-color-yellow-pale);
     border-top: 4px var(--theme-color-orange) solid;
 }
 
