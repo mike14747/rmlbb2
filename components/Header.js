@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Nav from './Nav';
+import Auth from './Auth';
 
 import styles from '../styles/Header.module.css';
 
@@ -26,6 +27,7 @@ const Header = () => {
                 </div>
             </div>
 
+            {/* <Auth /> */}
             <Nav />
         </header >
     );

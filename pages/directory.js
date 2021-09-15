@@ -23,15 +23,15 @@ const Directory = () => {
                 </h2>
                 {!session &&
                     <>
-                        <div>You are not signed in.</div>
-                        <button onClick={signIn}>Sign in</button>
+                        <p>You are NOT signed in.</p>
+                        <p>You are NOT allowed to view the secret contents of this page.</p>
                     </>
                 }
 
                 {session &&
                     <>
-                        <div>Signed in as: {session.user.username}</div>
-                        <button onClick={signOut}>Sign out</button>
+                        <p>You are signed in.</p>
+                        <p>Welcome to the secret contents of this page.</p>
                     </>
                 }
             </article>
