@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import SignInOutButton from './SignInOutButton';
 
@@ -6,13 +7,22 @@ import styles from '../styles/Authbar.module.css';
 
 const Authbar = () => {
     const [session, loading] = useSession();
-    console.log('Session (in Auth.js):', session);
+    // console.log('Session (in Auth.js):', session);
 
     return (
         <div className={'container ' + styles.authbarContainer}>
             {!session && !loading &&
                 <>
-                    <SignInOutButton func={signIn} text={'Sign in'} />
+                    <span className={styles.linkArrows}>
+                        <Link href="/auth/signin">
+                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                            <a>
+                                Sign in
+                            </a>
+                        </Link>
+                    </span>
+                    {/* <SignInOutButton func={() => signIn()} text={'Sign in'} /> */}
+                    {/* <SignInOutButton func={() => signIn('credentials', { redirect: false, username: 'mike4747', password: '' })} text={'Sign in'} /> */}
                 </>
             }
 
@@ -20,7 +30,7 @@ const Authbar = () => {
                 <>
                     User: <strong className={styles.username}>{session.user.name}</strong>
 
-                    <SignInOutButton func={signOut} text={'Sign out'} />
+                    <SignInOutButton func={() => signOut()} text={'Sign out'} />
                 </>
             }
         </div>
