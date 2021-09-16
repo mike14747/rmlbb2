@@ -5,7 +5,10 @@ import styles from '../styles/SignInOutButton.module.css';
 const SignInOutButton = ({ func, text }) => {
     return (
         <>
-            <span aria-hidden="true" className={styles.buttonsSpan}></span><button onClick={func} className={styles.buttons}>{text}</button>
+            <span aria-hidden="true" className={styles.buttonsSpan}></span>
+            <button onClick={func} className={styles.buttons}>
+                {text}
+            </button>
         </>
     );
 };
