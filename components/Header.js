@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Nav from './Nav';
-import Auth from './Auth';
 
 import styles from '../styles/Header.module.css';
 
@@ -17,7 +16,6 @@ const Header = () => {
                     </Link>
                 </div>
                 <div>
-
                     <h1 className={styles.heading}>
                         RML Baseball
                     </h1>
@@ -27,7 +25,6 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* <Auth /> */}
             <Nav />
         </header >
     );

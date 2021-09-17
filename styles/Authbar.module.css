@@ -1,0 +1,12 @@
+.authbarContainer {
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    background-color: var(--theme-color-yellow-pale);
+    text-align: right;
+    padding: 0 0.50rem 0.25rem 0.50rem ;
+}
+
+.linkArrows::before {
+    content: '\203A \203A \203A';
+    color: var(--mg-dark);
+    padding: 0 0.50rem 0 1rem;
+}

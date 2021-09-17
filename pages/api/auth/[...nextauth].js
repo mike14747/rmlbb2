@@ -4,7 +4,7 @@ import Providers from 'next-auth/providers';
 import { connectToDatabase } from '../../../utils/mongodb';
 import bcryptjs from 'bcryptjs';
 
-const options = {
+export default NextAuth({
     providers: [
         Providers.Credentials({
             name: 'username/password',
@@ -23,6 +23,7 @@ const options = {
 
                 if (user && user.length === 1) {
                     const matches = await bcryptjs.compare(credentials.password, user[0].password);
+                    // console.log('user[0]:', user[0]);
                     if (matches) return { name: user[0].username };
                     return null;
                 } else {
@@ -33,22 +34,18 @@ const options = {
     ],
     session: {
         jwt: true,
-        // Seconds - How long until an idle session expires and is no longer valid.
-        maxAge: 30 * 24 * 60 * 60, // 30 days
+        signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
+        // how many seconds until an idle session expires and is no longer valid
+        maxAge: 30 * 24 * 60 * 60, // 30 * 24 * 60 * 60 is 30 days
     },
     pages: {
         signIn: '/auth/signin',
     },
     callbacks: {
-        async jwt(token, user, account, profile, isNewUser) {
-            // Add access_token to the token right after signin
-            if (account?.accessToken) {
-                token.accessToken = account.accessToken;
+        redirect: async (url, baseUrl) => {
+            if (url === '/api/auth/signin') {
+                return Promise.resolve('/');
             }
-            token.randomProperty = 'blah';
-            return token;
         },
     },
-};
-
-export default (req, res) => NextAuth(req, res, options);
+});

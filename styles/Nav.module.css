@@ -93,6 +93,7 @@ ul.navdropdownContent > li > a.disabled::before {
         flex-wrap: wrap;
         min-width: auto;
         max-width: 100%;
+        background-color: #ffffff;
         box-shadow: none;
     }
 
@@ -106,7 +107,7 @@ ul.navdropdownContent > li > a.disabled::before {
 
     ul.navdropdownContent > li > a:hover {
         color: var(--theme-color-orange);
-        background-color: #ffffff;
+        background-color: transparent;
         cursor: pointer;
     }
 

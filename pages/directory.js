@@ -1,13 +1,12 @@
 import Head from 'next/head';
-import React from 'react';
-// import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
+import Loading from '../components/Loading';
+import Signin from '../components/Signin';
 
 // import styles from '../styles/directory.module.css';
 
 const Directory = () => {
     const [session, loading] = useSession();
-    // console.log('Session (in directory.js):', session);
 
     return (
         <>
@@ -21,17 +20,22 @@ const Directory = () => {
                 <h2 className="page-heading">
                     Directory
                 </h2>
-                {!session &&
+
+                {loading && <Loading />}
+
+                {!session && !loading &&
                     <>
-                        <p>You are NOT signed in.</p>
-                        <p>You are NOT allowed to view the secret contents of this page.</p>
+                        <p>You must be signed in to view this page.</p>
+
+                        <Signin />
                     </>
                 }
 
                 {session &&
                     <>
-                        <p>You are signed in.</p>
-                        <p>Welcome to the secret contents of this page.</p>
+                        <p>You are signed in {session.user.name}.</p>
+
+                        <p>Manager directory will be here.</p>
                     </>
                 }
             </article>

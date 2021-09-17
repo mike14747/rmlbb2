@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { signIn, useSession } from 'next-auth/client';
-import Head from 'next/head';
 
-import styles from '../../styles/signin.module.css';
+import styles from '../styles/signin.module.css';
 
 const SignIn = () => {
     const [session, loading] = useSession();
@@ -13,12 +12,10 @@ const SignIn = () => {
     const handleSignIn = async (e) => {
         e.preventDefault();
         const status = await signIn('credentials', {
-            // redirect: false,
+            redirect: false,
             username: username,
             password: password,
         });
-
-        console.log('status:', status);
 
         (!status.ok || status.status !== 200) ? setError('Login Failed... check your credentials and try again.') : setError(null);
     };
@@ -29,14 +26,6 @@ const SignIn = () => {
 
             {!session &&
                 <>
-                    <Head>
-                        <title>
-                            Login
-                        </title>
-                    </Head>
-
-                    <h2 className="page-heading">Login</h2>
-
                     {error &&
                         <p className={styles.error}>
                             {error}

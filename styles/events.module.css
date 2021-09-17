@@ -3,7 +3,7 @@
     max-width: 632px;
     margin: 2rem auto;
     padding: 1rem;
-    background-color: var(--mg-yellow-pale);
+    background-color: var(--theme-color-yellow-pale);
     border-top: 4px var(--theme-color-orange) solid;
     box-shadow: 0 3px 6px 0 var(--mg-gray-4);
 }
