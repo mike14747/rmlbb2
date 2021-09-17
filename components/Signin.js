@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { signIn, useSession } from 'next-auth/client';
+import PropTypes from 'prop-types';
+import { signIn } from 'next-auth/client';
 
 import styles from '../styles/signin.module.css';
 
-const SignIn = () => {
-    const [session, loading] = useSession();
+const SignIn = ({ showSignin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -17,15 +17,21 @@ const SignIn = () => {
             password: password,
         });
 
-        (!status.ok || status.status !== 200) ? setError('Login Failed... check your credentials and try again.') : setError(null);
+        if (!status.ok || status.status !== 200) {
+            setError('Login Failed... check your credentials and try again.');
+        } else {
+            setError(null);
+            setUsername('');
+            setPassword('');
+        }
     };
 
     return (
         <>
-            {loading && <p>Loading...</p>}
-
-            {!session &&
+            {showSignin &&
                 <>
+                    <p>You must be signed in to view this page.</p>
+
                     {error &&
                         <p className={styles.error}>
                             {error}
@@ -63,6 +69,10 @@ const SignIn = () => {
             }
         </>
     );
+};
+
+SignIn.propTypes = {
+    showSignin: PropTypes.bool,
 };
 
 export default SignIn;

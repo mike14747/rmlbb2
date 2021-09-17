@@ -34,9 +34,11 @@ export default NextAuth({
     ],
     session: {
         jwt: true,
-        signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
         // how many seconds until an idle session expires and is no longer valid
         maxAge: 30 * 24 * 60 * 60, // 30 * 24 * 60 * 60 is 30 days
+    },
+    jwt: {
+        signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
     },
     pages: {
         signIn: '/auth/signin',
