@@ -1,12 +1,11 @@
-import React from 'react';
 import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/client';
-import SignInOutButton from './SignInOutButton';
+import { signOut, useSession } from 'next-auth/react';
 
 import styles from '../styles/Authbar.module.css';
 
 const Authbar = () => {
-    const [session, loading] = useSession();
+    const { data: session, status } = useSession();
+    const loading = status === 'loading';
 
     return (
         <div className={'container ' + styles.authbarContainer}>
@@ -34,7 +33,10 @@ const Authbar = () => {
                         </Link>
                     </strong>
 
-                    <SignInOutButton func={() => signOut({ redirect: false, callbackUrl: '/' })} text={'Sign out'} />
+                    <span className={styles.linkArrows}></span>
+                    <button onClick={() => signOut({ redirect: false })} className={styles.signout}>
+                        Sign out
+                    </button>
                 </>
             }
         </div>

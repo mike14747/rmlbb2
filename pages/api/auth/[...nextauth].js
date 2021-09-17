@@ -1,29 +1,22 @@
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import Credentials from 'next-auth/providers/credentials';
 
-import { connectToDatabase } from '../../../utils/mongodb';
+import { getUserForSignin } from '../../../lib/api/user';
 import bcryptjs from 'bcryptjs';
 
 export default NextAuth({
     providers: [
-        Providers.Credentials({
+        Credentials({
             name: 'username/password',
             credentials: {
                 username: { label: 'Username', type: 'text' },
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials) {
-                const { db } = await connectToDatabase().catch(error => console.log(error));
-
-                let user = await db
-                    .collection('users')
-                    .find({ username: credentials.username })
-                    .limit(1)
-                    .toArray();
+                const user = await getUserForSignin(credentials.username);
 
                 if (user && user.length === 1) {
                     const matches = await bcryptjs.compare(credentials.password, user[0].password);
-                    // console.log('user[0]:', user[0]);
                     if (matches) return { name: user[0].username };
                     return null;
                 } else {
