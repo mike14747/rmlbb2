@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/client';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
@@ -7,6 +8,13 @@ import Signin from '../components/Signin';
 
 const Directory = () => {
     const [session, loading] = useSession();
+    const [showLogin, setShowLogin] = useState(false);
+
+    useEffect(() => {
+        console.log('session inside useEffect in directory page:', session);
+
+        return !session ? setShowLogin(true) : setShowLogin(false);
+    }, [session]);
 
     return (
         <>
@@ -27,7 +35,7 @@ const Directory = () => {
                     <>
                         <p>You must be signed in to view this page.</p>
 
-                        <Signin />
+                        {showLogin && <Signin />}
                     </>
                 }
 
