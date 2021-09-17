@@ -5,10 +5,6 @@
     padding: 0 0.50rem 0.25rem 0.50rem ;
 }
 
-.username {
-    color: var(--theme-color-green);
-}
-
 .linkArrows::before {
     content: '\203A \203A \203A';
     color: var(--mg-dark);

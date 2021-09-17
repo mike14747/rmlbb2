@@ -28,10 +28,13 @@ const SignIn = ({ csrfToken }) => {
             password: password,
         });
         console.log('status in signin.js:', status);
+        if (!status.ok || status.status !== 200) setError('Login Failed... check your credentials and try again.');
     };
 
     return (
         <>
+            {loading && <p>Loading...</p>}
+
             {!session &&
                 <>
                     <Head>
@@ -41,6 +44,12 @@ const SignIn = ({ csrfToken }) => {
                     </Head>
 
                     <h2 className="page-heading">Login</h2>
+
+                    {error &&
+                        <p className={styles.error}>
+                            {error}
+                        </p>
+                    }
 
                     {/* <form method="post" action="/api/auth/callback/credentials" className={styles.form}> */}
                     <form method="post" onSubmit={handleSignIn} className={styles.form}>

@@ -47,3 +47,9 @@ button.submitButton:hover {
     border: 1px var(--theme-color-orange) solid;
     box-shadow: 0 0 4px 4px var(--theme-color-dirt);
 }
+
+.error {
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    color: var(--theme-color-red);
+    text-align: center;
+}

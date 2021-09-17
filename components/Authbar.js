@@ -28,9 +28,16 @@ const Authbar = () => {
 
             {session &&
                 <>
-                    User: <strong className={styles.username}>{session.user.name}</strong>
+                    User: <strong className={styles.username}>
+                        <Link href="/profile">
+                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                            <a>
+                                {session.user.name}
+                            </a>
+                        </Link>
+                    </strong>
 
-                    <SignInOutButton func={() => signOut()} text={'Sign out'} />
+                    <SignInOutButton func={() => signOut({ redirect: false, callbackUrl: '/' })} text={'Sign out'} />
                 </>
             }
         </div>
