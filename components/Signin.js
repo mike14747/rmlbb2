@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { signIn } from 'next-auth/client';
+import { signIn } from 'next-auth/react';
 
 import styles from '../styles/signin.module.css';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
@@ -7,7 +7,8 @@ import Signin from '../components/Signin';
 // import styles from '../styles/directory.module.css';
 
 const Directory = () => {
-    const [session, loading] = useSession();
+    const { data: session, status } = useSession();
+    const loading = status === 'loading';
     const [showSignin, setShowSignin] = useState(false);
 
     useEffect(() => {

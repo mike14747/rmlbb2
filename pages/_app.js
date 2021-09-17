@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import { Provider } from 'next-auth/client';
+import { SessionProvider } from 'next-auth/react';
 import Layout from '../components/Layout';
 
 import '../styles/globals.css';
 import '../styles/my_tables.css';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     return (
-        <Provider session={pageProps.session}>
+        <SessionProvider session={session}>
             <Layout>
                 <Component {...pageProps} />
             </Layout>
-        </Provider>
+        </SessionProvider>
     );
 }
 

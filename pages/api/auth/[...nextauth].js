@@ -1,12 +1,12 @@
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import Credentials from 'next-auth/providers/credentials';
 
 import { connectToDatabase } from '../../../utils/mongodb';
 import bcryptjs from 'bcryptjs';
 
 export default NextAuth({
     providers: [
-        Providers.Credentials({
+        Credentials({
             name: 'username/password',
             credentials: {
                 username: { label: 'Username', type: 'text' },
@@ -23,7 +23,6 @@ export default NextAuth({
 
                 if (user && user.length === 1) {
                     const matches = await bcryptjs.compare(credentials.password, user[0].password);
-                    // console.log('user[0]:', user[0]);
                     if (matches) return { name: user[0].username };
                     return null;
                 } else {
