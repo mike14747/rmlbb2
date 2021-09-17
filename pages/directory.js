@@ -1,13 +1,12 @@
 import Head from 'next/head';
-import { signIn, useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
 import Loading from '../components/Loading';
-import SignInOutButton from '../components/SignInOutButton';
+import Signin from '../components/Signin';
 
 // import styles from '../styles/directory.module.css';
 
 const Directory = () => {
     const [session, loading] = useSession();
-    // console.log('Session (in directory.js):', session);
 
     return (
         <>
@@ -27,14 +26,16 @@ const Directory = () => {
                 {!session && !loading &&
                     <>
                         <p>You must be signed in to view this page.</p>
-                        <SignInOutButton func={signIn} text={'Sign in'}/>
+
+                        <Signin />
                     </>
                 }
 
                 {session &&
                     <>
-                        <p>You are signed in.</p>
-                        <p>Welcome to the secret contents of this page.</p>
+                        <p>You are signed in {session.user.name}.</p>
+
+                        <p>Manager directory will be here.</p>
                     </>
                 }
             </article>

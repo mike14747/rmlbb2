@@ -7,7 +7,6 @@ import styles from '../styles/Authbar.module.css';
 
 const Authbar = () => {
     const [session, loading] = useSession();
-    // console.log('Session (in Auth.js):', session);
 
     return (
         <div className={'container ' + styles.authbarContainer}>
@@ -21,8 +20,6 @@ const Authbar = () => {
                             </a>
                         </Link>
                     </span>
-                    {/* <SignInOutButton func={() => signIn()} text={'Sign in'} /> */}
-                    {/* <SignInOutButton func={() => signIn('credentials', { redirect: false, username: 'mike4747', password: '' })} text={'Sign in'} /> */}
                 </>
             }
 

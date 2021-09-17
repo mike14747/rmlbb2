@@ -42,27 +42,10 @@ export default NextAuth({
         signIn: '/auth/signin',
     },
     callbacks: {
-        // async jwt(token, user, account, profile, isNewUser) {
-        //     // Add access_token to the token right after signin
-        //     if (account?.accessToken) {
-        //         token.accessToken = account.accessToken;
-        //     }
-        //     return token;
-        // },
-
-        // redirect: async (url, baseUrl) => {
-        //     return Promise.resolve('http://localhost:3000/');
-        // },
-
-        // redirect: async (url, baseUrl) => {
-        //     return url.startsWith(baseUrl)
-        //         ? Promise.resolve(url)
-        //         : Promise.resolve(baseUrl);
-        // },
-
-        // async signIn(user, account, profile) { return true },
-        // async redirect(url, baseUrl) { return baseUrl },
-        // async session(session, user) { return session },
-        // async jwt(token, user, account, profile, isNewUser) { return token }
+        redirect: async (url, baseUrl) => {
+            if (url === '/api/auth/signin') {
+                return Promise.resolve('/');
+            }
+        },
     },
 });

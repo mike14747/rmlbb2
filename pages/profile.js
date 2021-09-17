@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { signIn, useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
 import Loading from '../components/Loading';
-import SignInOutButton from '../components/SignInOutButton';
+import Signin from '../components/Signin';
 
-import styles from '../styles/profile.module.css';
+// import styles from '../styles/profile.module.css';
 
 const Profile = () => {
     const [session, loading] = useSession();
@@ -25,7 +25,8 @@ const Profile = () => {
             {!session && !loading &&
                 <>
                     <p>You must be signed in to view this page.</p>
-                    <SignInOutButton func={signIn} text={'Sign in'} />
+
+                    <Signin />
                 </>
             }
 
