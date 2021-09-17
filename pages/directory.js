@@ -7,10 +7,12 @@ import Signin from '../components/Signin';
 // import styles from '../styles/directory.module.css';
 
 const Directory = () => {
-    const { session, loading } = useSession();
+    const [session, loading] = useSession();
     const [showSignin, setShowSignin] = useState(false);
 
     useEffect(() => {
+        console.log('session inside useEffect in directory page:', session);
+
         return !session ? setShowSignin(true) : setShowSignin(false);
     }, [session]);
 
