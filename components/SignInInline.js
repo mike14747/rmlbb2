@@ -2,9 +2,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
 
-import styles from '../styles/SignIn.module.css';
+import styles from '../styles/SignInInline.module.css';
 
-const SignIn = ({ showSignin }) => {
+const SignInInline = ({ showSignin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ const SignIn = ({ showSignin }) => {
         });
 
         if (!status.ok || status.status !== 200) {
-            setError('Login Failed... check your credentials and try again.');
+            setError('Login Failed!');
         } else {
             setError(null);
             setUsername('');
@@ -30,8 +30,6 @@ const SignIn = ({ showSignin }) => {
         <>
             {showSignin &&
                 <>
-                    <p>You must be signed in to view this page.</p>
-
                     {error &&
                         <p className={styles.error}>
                             {error}
@@ -40,23 +38,25 @@ const SignIn = ({ showSignin }) => {
 
                     <form method="post" onSubmit={handleSignIn} className={styles.form}>
                         <label>
-                            Username
+                            {/* Username: */}
                             <input
                                 required
                                 name="username"
                                 type="text"
                                 value={username}
+                                placeholder="Username"
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                         </label>
 
                         <label>
-                            Password
+                            {/* Password: */}
                             <input
                                 required
                                 name="password"
                                 type="password"
                                 value={password}
+                                placeholder="Password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </label>
@@ -71,8 +71,8 @@ const SignIn = ({ showSignin }) => {
     );
 };
 
-SignIn.propTypes = {
+SignInInline.propTypes = {
     showSignin: PropTypes.bool,
 };
 
-export default SignIn;
+export default SignInInline;

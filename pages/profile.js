@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
-import Signin from '../components/Signin';
+import SignIn from '../components/SignIn';
 
 // import styles from '../styles/profile.module.css';
 
@@ -10,22 +10,23 @@ const Profile = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
     const [showSignin, setShowSignin] = useState(false);
-    const [user, setUser] = useState(null);
-    const [isUserLoaded, setIsUserLoaded] = useState(false);
+    const [user, setContent] = useState(null);
+    const [isContentLoaded, setIsContentLoaded] = useState(false);
 
     useEffect(() => {
-        console.log('session inside useEffect in directory page:', session);
-
         if (session) {
-            setIsUserLoaded(false);
-            fetch('/api/user/' + session.user.name)
-                .then(res => res.json())
-                .then(userArr => (userArr?.length === 1) ? setUser(userArr[0]) : setUser(null))
-                .catch(error => console.log(error))
-                .finally(() => setIsUserLoaded(true));
+            setIsContentLoaded(false);
+
+            const fetchData = async () => {
+                const res = await fetch('/api/user/' + session.user.name);
+                const data = await res.json();
+                data?.length === 1 ? setContent(data[0]) : setContent(null);
+                setIsContentLoaded(true);
+            };
+            fetchData();
         } else {
-            setUser(null);
-            setIsUserLoaded(false);
+            setContent(null);
+            setIsContentLoaded(false);
         }
 
         return !session ? setShowSignin(true) : setShowSignin(false);
@@ -45,15 +46,15 @@ const Profile = () => {
 
             {loading && <Loading />}
 
-            <Signin showSignin={showSignin} />
+            <SignIn showSignin={showSignin} />
 
             {session &&
                 <>
                     <p>You are signed in. Here is your current profile information.</p>
 
-                    {!isUserLoaded && <Loading />}
+                    {!isContentLoaded && <Loading />}
 
-                    {user && isUserLoaded &&
+                    {user && isContentLoaded &&
                         <>
                             <p>Username: {user?.username}</p>
 

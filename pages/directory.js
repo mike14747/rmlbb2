@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
-import Signin from '../components/Signin';
+import SignIn from '../components/SignIn';
 
 // import styles from '../styles/directory.module.css';
 
@@ -12,8 +12,6 @@ const Directory = () => {
     const [showSignin, setShowSignin] = useState(false);
 
     useEffect(() => {
-        // console.log('session inside useEffect in directory page:', session);
-
         return !session ? setShowSignin(true) : setShowSignin(false);
     }, [session]);
 
@@ -32,7 +30,7 @@ const Directory = () => {
 
                 {loading && <Loading />}
 
-                <Signin showSignin={showSignin} />
+                <SignIn showSignin={showSignin} />
 
                 {session &&
                     <>

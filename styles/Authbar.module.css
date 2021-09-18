@@ -11,6 +11,7 @@
     padding: 0 0.5rem 0 1rem;
 }
 
+button.showSignin,
 button.signout {
     background-color: transparent;
     border: 0;
@@ -19,6 +20,7 @@ button.signout {
     margin: 0;
 }
 
+button.showSignin:hover,
 button.signout:hover {
     background-color: transparent;
     border: 0;
