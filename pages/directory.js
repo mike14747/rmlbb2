@@ -15,14 +15,6 @@ const Directory = () => {
         return !session ? setShowSignin(true) : setShowSignin(false);
     }, [session]);
 
-    useEffect(() => {
-        const deletion = async () => {
-            await fetch('/api/managers');
-        };
-
-        deletion();
-    }, []);
-
     return (
         <>
             <Head>
