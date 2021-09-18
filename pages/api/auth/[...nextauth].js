@@ -33,14 +33,4 @@ export default NextAuth({
     jwt: {
         signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
     },
-    pages: {
-        signIn: '/auth/signin',
-    },
-    callbacks: {
-        redirect: async (url, baseUrl) => {
-            if (url === '/api/auth/signin') {
-                return Promise.resolve('/');
-            }
-        },
-    },
 });
