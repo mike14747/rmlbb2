@@ -12,7 +12,7 @@ const Directory = () => {
     const [showSignin, setShowSignin] = useState(false);
 
     useEffect(() => {
-        console.log('session inside useEffect in directory page:', session);
+        // console.log('session inside useEffect in directory page:', session);
 
         return !session ? setShowSignin(true) : setShowSignin(false);
     }, [session]);

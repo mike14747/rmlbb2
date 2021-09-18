@@ -10,9 +10,23 @@ const Profile = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
     const [showSignin, setShowSignin] = useState(false);
+    const [user, setUser] = useState(null);
+    const [isUserLoaded, setIsUserLoaded] = useState(false);
 
     useEffect(() => {
         console.log('session inside useEffect in directory page:', session);
+
+        if (session) {
+            setIsUserLoaded(false);
+            fetch('/api/user/' + session.user.name)
+                .then(res => res.json())
+                .then(userArr => (userArr?.length === 1) ? setUser(userArr[0]) : setUser(null))
+                .catch(error => console.log(error))
+                .finally(() => setIsUserLoaded(true));
+        } else {
+            setUser(null);
+            setIsUserLoaded(false);
+        }
 
         return !session ? setShowSignin(true) : setShowSignin(false);
     }, [session]);
@@ -35,9 +49,17 @@ const Profile = () => {
 
             {session &&
                 <>
-                    <p>You are signed in {session.user.name}.</p>
+                    <p>You are signed in. Here is your current profile information.</p>
 
-                    <p>This is where you will be able to change your username, email or password.</p>
+                    {!isUserLoaded && <Loading />}
+
+                    {user && isUserLoaded &&
+                        <>
+                            <p>Username: {user?.username}</p>
+
+                            <p>Username: {user?.email}</p>
+                        </>
+                    }
                 </>
             }
         </>

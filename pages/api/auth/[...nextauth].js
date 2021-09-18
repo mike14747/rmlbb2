@@ -15,7 +15,7 @@ export default NextAuth({
             async authorize(credentials) {
                 const user = await getUserForSignin(credentials.username);
 
-                if (user && user.length === 1) {
+                if (user?.length === 1) {
                     const matches = await bcryptjs.compare(credentials.password, user[0].password);
                     if (matches) return { name: user[0].username };
                     return null;
