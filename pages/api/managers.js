@@ -1,4 +1,5 @@
 import { getManagers } from '../../lib/api/directory';
+// import { deleteAllManagers } from '../../lib/api/mutationFunctions';
 
 module.exports = async (req, res) => {
     switch (req.method) {
