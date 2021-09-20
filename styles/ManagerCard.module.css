@@ -1,0 +1,36 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 0 1rem 0;
+    box-shadow: 1px 1px 4px 2px var(--mg-gray-5);
+}
+
+.card:last-of-type {
+    margin: 0;
+}
+
+.american {
+    border-color: var(--theme-color-red);
+}
+
+.national {
+    border-color: var(--mg-blue);
+}
+
+.americanHeading {
+    color: #ffffff;
+    background-color: var(--theme-color-red);
+}
+
+.nationalHeading {
+    color: #ffffff;
+    background-color: var(--mg-blue);
+}
+
+@media (min-width: 480px) {
+    .card {
+        flex-direction: row;
+    }
+}
