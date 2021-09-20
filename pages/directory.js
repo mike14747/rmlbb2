@@ -20,7 +20,6 @@ const Directory = () => {
             const fetchManagers = async () => {
                 const res = await fetch('/api/managers').catch(error => console.log(error));
                 const data = await res.json();
-                console.log('data in fetch call:', data);
                 if (data) {
                     setManagers(data);
                     setError(null);
@@ -65,7 +64,7 @@ const Directory = () => {
                                 {managers.map(conf => (
                                     <div key={conf.conference} className={styles.conferenceContainer}>
                                         <h3 className={styles.conferenceHeading}>
-                                            {conf.conference}
+                                            {conf.conference} Conference
                                         </h3>
                                         {conf.divisions.map(div => (
                                             <div key={div.division} className={styles.divisionContainer}>

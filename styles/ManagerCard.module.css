@@ -1,36 +1,50 @@
 .card {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    max-width: 450px;
+    max-width: 475px;
     margin: 0 0 1rem 0;
-    box-shadow: 1px 1px 4px 2px var(--mg-gray-5);
+    padding: 0.5rem;
+    border: 1px var(--mg-gray-4) solid;
+    box-shadow: 3px 3px 6px 0 var(--mg-gray-4);
 }
 
 .card:last-of-type {
     margin: 0;
 }
 
-.american {
-    border-color: var(--theme-color-red);
+.americanCard {
+    border-left: 8px var(--theme-color-red) solid;
 }
 
-.national {
-    border-color: var(--mg-blue);
+.nationalCard {
+    border-left: 8px var(--mg-blue) solid;
+}
+
+.heading > h5 {
+    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+    text-align: center;
+}
+
+.body {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+}
+
+.footing > p {
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    color: var(--mg-gray-6);
+    text-align: center;
+    margin: 1rem 0 0 0;
+    border-top: 1px var(--mg-gray-4) solid;
 }
 
 .americanHeading {
-    color: #ffffff;
-    background-color: var(--theme-color-red);
+    color: var(--theme-color-red);
 }
 
 .nationalHeading {
-    color: #ffffff;
-    background-color: var(--mg-blue);
+    color: var(--mg-blue);
 }
 
-@media (min-width: 480px) {
-    .card {
-        flex-direction: row;
-    }
+.abbrev {
+    margin-left: 0.50rem;
+    font-size: 80%;
 }

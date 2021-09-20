@@ -15,7 +15,7 @@
 
 .divisionContainer {
     width: 100%;
-    max-width: 450px;
+    max-width: 475px;
     margin: 0 auto 2rem auto;
 }
 
@@ -43,7 +43,11 @@
         align-items: flex-start;
     }
 
-    .conferenceContainer {
-        margin: 0;
+    .conferenceContainer:first-of-type {
+        margin: 0 1rem 0 0;
+    }
+
+    .conferenceContainer:last-of-type {
+        margin: 0 0 0 1rem;
     }
 }
