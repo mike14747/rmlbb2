@@ -15,12 +15,18 @@ const Events = ({ events }) => {
     useEffect(() => {
         if (showPastEvents && !pastEvents) {
             setIsLoading(true);
-            getAllActivePastEvents()
-                .then(res => {
-                    setPastEvents(res);
-                })
-                .catch(error => console.log(error))
-                .finally(() => setIsLoading(false));
+            const fetchPastEvents = async () => {
+                const res = await fetch('/api/past-events').catch(error => console.log(error));
+                const data = await res.json();
+                if (data) {
+                    setPastEvents(data);
+                } else {
+                    setPastEvents(null);
+                }
+                setIsLoading(false);
+            };
+
+            fetchPastEvents();
         }
     }, [showPastEvents, pastEvents]);
 
