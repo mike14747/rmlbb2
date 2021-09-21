@@ -30,7 +30,7 @@ const SignIn = ({ showSignin }) => {
         <>
             {showSignin &&
                 <>
-                    <p>You must be signed in to view this page.</p>
+                    <p className={styles.warning}>You must be signed in to view this page.</p>
 
                     {error &&
                         <p className={styles.error}>

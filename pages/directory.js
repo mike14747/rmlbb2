@@ -13,11 +13,13 @@ const Directory = () => {
     const [showSignin, setShowSignin] = useState(false);
 
     const [managers, setManagers] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         if (session) {
             const fetchManagers = async () => {
+                setIsLoading(true);
                 const res = await fetch('/api/managers').catch(error => console.log(error));
                 const data = await res.json();
                 if (data) {
@@ -27,6 +29,7 @@ const Directory = () => {
                     setManagers(null);
                     setError('An error occurred fetching manager data.');
                 }
+                setIsLoading(false);
             };
 
             fetchManagers();
@@ -59,6 +62,9 @@ const Directory = () => {
                                 {error}
                             </p>
                         }
+
+                        {isLoading && <Loading />}
+
                         {managers?.length > 0 &&
                             <div className={styles.directoryContainer}>
                                 {managers.map(conf => (
@@ -69,7 +75,7 @@ const Directory = () => {
                                         {conf.divisions.map(div => (
                                             <div key={div.division} className={styles.divisionContainer}>
                                                 <h4 className={styles.divisionHeading}>
-                                                    {div.division}
+                                                    <span className={styles.divisionPrefix}>Division: </span> {div.division}
                                                 </h4>
                                                 {div.teams.map(team => (
                                                     <ManagerCard key={team.team} manager={team} />

@@ -15,7 +15,101 @@ export default function ManagerCard({ manager }) {
             </div>
 
             <div className={styles.body}>
-                {manager.manager1}
+                <div className={styles.manager}>
+                    {manager.description1 &&
+                        <p className={styles.description}>
+                            {manager.description1}
+                        </p>
+                    }
+
+                    <p>
+                        {manager.manager1}
+                    </p>
+
+                    <p>
+                        {manager.address1a}
+                    </p>
+
+                    <p>
+                        {manager.address1b}
+                    </p>
+
+                    <p>
+                        {manager.city1}
+                        {manager.city1 && manager.state1 ? <>, </> : <> </>}
+                        {manager.state1}
+                        <> </>
+                        {manager.country1}
+                        <> </>
+                        {manager.zip1}
+                    </p>
+
+                    <p>
+                        {manager.phone1a}
+                    </p>
+
+                    <p>
+                        {manager.phone1b}
+                    </p>
+
+                    <p>
+                        <a href={'mailto:' + manager.email1a}>
+                            {manager.email1a}
+                        </a>
+                    </p>
+
+                    <p>
+                        {manager.email1b}
+                    </p>
+                </div>
+
+                <div className={styles.manager}>
+                    {manager.description2 &&
+                        <p className={styles.description}>
+                            {manager.description2}
+                        </p>
+                    }
+
+                    <p>
+                        {manager.manager2}
+                    </p>
+
+                    <p>
+                        {manager.address2a}
+                    </p>
+
+                    <p>
+                        {manager.address2b}
+                    </p>
+
+                    <p>
+                        {manager.city2}
+                        <> </>
+                        {manager.state2}
+                        <> </>
+                        {manager.country2}
+                        <> </>
+                        {manager.zip2}
+                    </p>
+
+                    <p>
+                        {manager.phone2a}
+                    </p>
+
+                    <p>
+                        {manager.phone2b}
+                    </p>
+
+                    <p>
+                        <a href={'mailto:' + manager.email2a}>
+                            {manager.email2a}
+                        </a>
+                    </p>
+
+                    <p>
+                        {manager.email2b}
+                    </p>
+                </div>
             </div>
 
             <div className={styles.footing}>

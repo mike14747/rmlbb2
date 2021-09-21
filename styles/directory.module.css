@@ -6,7 +6,7 @@
 
 .conferenceContainer {
     flex: 1;
-    margin: 0 0 2rem 0;
+    margin: 0 0 4rem 0;
 }
 
 .conferenceContainer:last-of-type {
@@ -16,19 +16,26 @@
 .divisionContainer {
     width: 100%;
     max-width: 475px;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 3rem auto;
 }
 
 .divisionContainer:last-of-type {
     margin: 0 auto;
 }
 
-.conferenceHeading {
+.divisionPrefix {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    color: var(--mg-gray-6);
+}
+
+h3.conferenceHeading {
+    margin-bottom: 2rem;
     text-align: center;
 }
 
-.divisionHeading {
+h4.divisionHeading {
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 .error {

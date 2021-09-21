@@ -53,3 +53,14 @@ button.submitButton:hover {
     color: var(--theme-color-red);
     text-align: center;
 }
+
+.warning {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.warning::before {
+    content: '\26D4';
+    padding-right: 0.50rem;
+}

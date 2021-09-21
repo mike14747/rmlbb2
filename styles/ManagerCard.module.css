@@ -1,7 +1,7 @@
 .card {
     width: 100%;
     max-width: 475px;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
     padding: 0.5rem;
     border: 1px var(--mg-gray-4) solid;
     box-shadow: 3px 3px 6px 0 var(--mg-gray-4);
@@ -19,21 +19,34 @@
     border-left: 8px var(--mg-blue) solid;
 }
 
+.heading {
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.50rem;
+    border-bottom: 1px var(--mg-gray-3) solid;
+}
+
 .heading > h5 {
     font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
     text-align: center;
+    margin-bottom: 0;
 }
 
-.body {
+.body p {
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    margin: 0;
+}
+
+.footing {
+    margin: 1rem 0 0 0;
+    padding-top: 0.50rem;
+    border-top: 1px var(--mg-gray-3) solid;
 }
 
 .footing > p {
     font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     color: var(--mg-gray-6);
     text-align: center;
-    margin: 1rem 0 0 0;
-    border-top: 1px var(--mg-gray-4) solid;
+    margin: 0;
 }
 
 .americanHeading {
@@ -47,4 +60,25 @@
 .abbrev {
     margin-left: 0.50rem;
     font-size: 80%;
+}
+
+.description {
+    color: var(--mg-gray-6);
+}
+
+.description::before {
+    content: '\2139';
+    padding-right: 0.50rem;
+    background-color: #ffffff;
+}
+
+.manager {
+    max-width: 50ch;
+    margin: 0 auto 1.5rem auto;
+    padding-left: 1rem;
+    border-left: 3px var(--mg-dark) solid;
+}
+
+.manager:last-of-type {
+    margin-bottom: 0;
 }
