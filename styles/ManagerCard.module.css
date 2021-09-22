@@ -60,6 +60,7 @@
 .abbrev {
     margin-left: 0.50rem;
     font-size: 80%;
+    color: var(--mg-gray-6);
 }
 
 .description {

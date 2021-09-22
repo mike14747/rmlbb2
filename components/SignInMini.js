@@ -2,9 +2,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
 
-import styles from '../styles/SignInInline.module.css';
+import styles from '../styles/SignInMini.module.css';
 
-const SignInInline = ({ showSignin }) => {
+const SignInMini = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -28,14 +28,13 @@ const SignInInline = ({ showSignin }) => {
 
     return (
         <>
-            {showSignin &&
-                <>
-                    {error &&
-                        <p className={styles.error}>
-                            {error}
-                        </p>
-                    }
+            <div className={styles.dropdown}>
+                <button className={styles.signIn}>
+                    Sign in
+                </button>
 
+                {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+                <div tabIndex="0" className={styles.dropdownContent}>
                     <form method="post" onSubmit={handleSignIn} className={styles.form}>
                         <label>
                             {/* Username: */}
@@ -65,14 +64,21 @@ const SignInInline = ({ showSignin }) => {
                             Sign in
                         </button>
                     </form>
-                </>
-            }
+
+                    {error &&
+                        <p className={styles.error}>
+                            {error}
+                        </p>
+                    }
+                </div>
+
+            </div>
         </>
     );
 };
 
-SignInInline.propTypes = {
+SignInMini.propTypes = {
     showSignin: PropTypes.bool,
 };
 
-export default SignInInline;
+export default SignInMini;
