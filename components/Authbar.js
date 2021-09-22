@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
-import SignInInline from './SignInInline';
+import SignInMini from './SignInMini';
 
 import styles from '../styles/Authbar.module.css';
 
 const Authbar = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
-    const [showSignin, setShowSignin] = useState(false);
 
     return (
         <div className={'container ' + styles.authbarContainer}>
@@ -16,15 +15,7 @@ const Authbar = () => {
 
             {!session && !loading &&
                 <>
-                    {showSignin
-                        ? <SignInInline showSignin={showSignin} />
-                        : <>
-                            <span className={styles.linkArrows}></span>
-                            <button onClick={() => setShowSignin(true)} className={styles.showSignin}>
-                                Sign in
-                            </button>
-                        </>
-                    }
+                    <SignInMini />
                 </>
             }
 

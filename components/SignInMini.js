@@ -2,9 +2,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
 
-import styles from '../styles/SignInInline.module.css';
+import styles from '../styles/SignInMini.module.css';
 
-const SignInInline = ({ showSignin }) => {
+const SignInMini = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -28,17 +28,20 @@ const SignInInline = ({ showSignin }) => {
 
     return (
         <>
-            {showSignin &&
-                <>
+            <div className={styles.dropdown}>
+                <button className={styles.signIn}>
+                    Sign in
+                </button>
+
+                <div className={styles.dropdownContent}>
                     {error &&
                         <p className={styles.error}>
                             {error}
                         </p>
                     }
-
                     <form method="post" onSubmit={handleSignIn} className={styles.form}>
                         <label>
-                            {/* Username: */}
+                            Username:
                             <input
                                 required
                                 name="username"
@@ -50,7 +53,7 @@ const SignInInline = ({ showSignin }) => {
                         </label>
 
                         <label>
-                            {/* Password: */}
+                            Password:
                             <input
                                 required
                                 name="password"
@@ -65,14 +68,15 @@ const SignInInline = ({ showSignin }) => {
                             Sign in
                         </button>
                     </form>
-                </>
-            }
+                </div>
+
+            </div>
         </>
     );
 };
 
-SignInInline.propTypes = {
+SignInMini.propTypes = {
     showSignin: PropTypes.bool,
 };
 
-export default SignInInline;
+export default SignInMini;

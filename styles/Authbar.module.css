@@ -1,8 +1,9 @@
 .authbarContainer {
+    display: flex;
+    justify-content: flex-end;
     font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     background-color: var(--theme-color-yellow-pale);
-    text-align: right;
-    padding: 0 0.5rem 0.25rem 0.5rem;
+    padding: 0 0.5rem;
 }
 
 .linkArrows::before {
