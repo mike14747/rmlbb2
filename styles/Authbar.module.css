@@ -3,13 +3,13 @@
     justify-content: flex-end;
     font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     background-color: var(--theme-color-yellow-pale);
-    padding: 0 0.5rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .linkArrows::before {
     content: '\203A \203A \203A';
     color: var(--mg-dark);
-    padding: 0 0.5rem 0 1rem;
+    padding-right: 0.25rem;
 }
 
 button.showSignin,
@@ -26,4 +26,9 @@ button.signout:hover {
     background-color: transparent;
     border: 0;
     color: var(--theme-color-orange);
+}
+
+.username {
+    margin-left: 0.25rem;
+    margin-right: 1.5rem;
 }

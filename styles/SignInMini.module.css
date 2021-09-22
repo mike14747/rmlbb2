@@ -10,15 +10,16 @@
     background-color: #ffffff;
     border: 1px var(--mg-gray-2) solid;
     box-shadow: 1px 1px 3px 0 var(--mg-gray-3);
-    padding: 1rem;
+    padding: 1rem 2rem;
     pointer-events: none;
     opacity: 0;
     transform: translateY(-1rem);
     transition: .3s;
 }
 
-.dropdown > .signIn:focus + .dropdownContent,
-.dropdownContent:focus {
+.dropdown:focus-within > .dropdownContent,
+.dropdownContent:focus,
+.dropdown > .signIn:focus + .dropdownContent {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -33,7 +34,7 @@
     line-height: 1;
 }
 
-.signIn:focus,
+.dropdown:focus-within > .signIn,
 .signIn:hover {
     color: var(--theme-color-orange);
     outline: 1px var(--mg-gray-2) dashed;
@@ -94,4 +95,5 @@ button.submitButton:hover {
     font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     color: var(--theme-color-red);
     text-align: center;
+    margin: 1.5rem 0 0 0;
 }

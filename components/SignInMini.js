@@ -33,15 +33,11 @@ const SignInMini = () => {
                     Sign in
                 </button>
 
-                <div className={styles.dropdownContent}>
-                    {error &&
-                        <p className={styles.error}>
-                            {error}
-                        </p>
-                    }
+                {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+                <div tabIndex="0" className={styles.dropdownContent}>
                     <form method="post" onSubmit={handleSignIn} className={styles.form}>
                         <label>
-                            Username:
+                            {/* Username: */}
                             <input
                                 required
                                 name="username"
@@ -53,7 +49,7 @@ const SignInMini = () => {
                         </label>
 
                         <label>
-                            Password:
+                            {/* Password: */}
                             <input
                                 required
                                 name="password"
@@ -68,6 +64,12 @@ const SignInMini = () => {
                             Sign in
                         </button>
                     </form>
+
+                    {error &&
+                        <p className={styles.error}>
+                            {error}
+                        </p>
+                    }
                 </div>
 
             </div>
