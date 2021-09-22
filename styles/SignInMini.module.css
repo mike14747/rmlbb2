@@ -5,16 +5,23 @@
 
 .dropdownContent {
     position: absolute;
-    top: calc(100% + 0.50rem);
-    right: 0;
+    /* top: calc(100% + 0.50rem); */
+    top: 100%;
+    right: -1px;
     background-color: #ffffff;
-    border: 1px var(--mg-gray-2) solid;
-    box-shadow: 1px 1px 3px 0 var(--mg-gray-3);
-    padding: 1rem 2rem;
+    /* border: 1px var(--mg-gray-2) solid; */
+    border-right: 1px var(--mg-gray-2) solid;
+    border-left: 1px var(--mg-gray-2) solid;
+    border-bottom: 1px var(--mg-gray-2) solid;
+    border-top-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    box-shadow: 2px 2px 2px 0 var(--mg-gray-3);
+    padding: 1.5rem 2rem 1rem 2rem;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(-1rem);
-    transition: .3s;
+    transform: translateY(-2rem);
+    transition: opacity .4s, transform .2s;
 }
 
 .dropdown:focus-within > .dropdownContent,
@@ -37,8 +44,16 @@
 .dropdown:focus-within > .signIn,
 .signIn:hover {
     color: var(--theme-color-orange);
-    outline: 1px var(--mg-gray-2) dashed;
-    outline-offset: 0;
+    outline: 0;
+}
+
+.dropdown:focus-within {
+    background-color: #ffffff;
+    border-top: 1px var(--mg-gray-2) solid;
+    border-right: 1px var(--mg-gray-2) solid;
+    border-left: 1px var(--mg-gray-2) solid;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
 }
 
 .form {
