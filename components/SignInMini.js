@@ -44,6 +44,7 @@ const SignInMini = () => {
                                 type="text"
                                 value={username}
                                 placeholder="Username"
+                                aria-label="username"
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                         </label>
@@ -56,6 +57,7 @@ const SignInMini = () => {
                                 type="password"
                                 value={password}
                                 placeholder="Password"
+                                aria-label="password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </label>
