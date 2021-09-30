@@ -31,7 +31,7 @@ const Home = ({ news, events }) => {
                         ? news.map((item, index) => (
                             <section key={index} className={styles.newsItem}>
                                 <h3 className={styles.newsHeading}>{item.title}</h3>
-                                <p data-testid="news-date" className={styles.newsDate}><small>Date: {item.date}</small></p>
+                                <p className={styles.newsDate}><small>Date: {item.date}</small></p>
                                 <BlockContent
                                     blocks={item.content}
                                     serializers={noContainer}
@@ -39,10 +39,8 @@ const Home = ({ news, events }) => {
                             </section>
                         ))
                         : news?.length === 0
-                            ? <article>
-                                <p data-testid="empty">There are no news items to display. Check back again soon.</p>
-                            </article>
-                            : <p data-testid="error">An error occurred fetching data.</p>
+                            ? <p>There are no news items to display. Check back again soon.</p>
+                            : <p>An error occurred fetching data.</p>
                     }
                 </article>
 

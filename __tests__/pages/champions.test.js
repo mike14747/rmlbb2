@@ -13,6 +13,6 @@ describe('Champions page tests', () => {
         render(<Champions champions={null} />);
 
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^champions$/i);
-        // expect(screen.getByTestId('error')).toHaveTextContent(/an error occurred fetching data/i);
+        // expect(screen.getByText(/an error occurred fetching data/i)).toBeInTheDocument();
     });
 });

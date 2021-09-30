@@ -90,10 +90,10 @@ const Events = ({ events }) => {
                 </div>
 
                 {showPastEvents && !pastEvents && isLoading && <Loading />}
-                {showPastEvents && !pastEvents && !isLoading && <p data-testid="pastError" className={styles.error}>An error occurred fetching data.</p>}
+                {showPastEvents && !pastEvents && !isLoading && <p className={styles.error}>An error occurred fetching data.</p>}
 
                 {showPastEvents && pastEvents?.length === 0 &&
-                    <p data-testid="pastEmpty">There are no past events to display. Check back again soon.</p>
+                    <p>There are no past events to display. Check back again soon.</p>
                 }
                 {showPastEvents && pastEvents?.length > 0 &&
                     <div className={styles.pastTable}>
