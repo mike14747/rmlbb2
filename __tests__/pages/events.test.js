@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import Events from '../../pages/events';
 
@@ -23,6 +24,14 @@ const events = [
     },
 ];
 
+const pastEvents = [
+    {
+        eventDate: '2020-05-19',
+        event: 'Some past test event',
+        details: 'details of the past test event',
+    },
+];
+
 describe('Events page tests', () => {
     test('Make sure the events page renders properly with a mock events prop', () => {
         render(<Events events={events} />);
@@ -30,10 +39,16 @@ describe('Events page tests', () => {
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^events$/i);
         expect(screen.getByRole('article')).toBeInTheDocument();
 
-        expect(screen.getByText(/Due dates are assumed to be due at midnight EST/i));
-        expect(screen.getByText(/(unless otherwise noted)./i));
+        expect(screen.getByText(/Due dates are assumed to be due at midnight EST/i)).toBeInTheDocument();
+        expect(screen.getByText(/(unless otherwise noted)./i)).toBeInTheDocument();
 
-        screen.debug(screen.getByRole('article'));
+        expect(screen.getByRole('button', { name: 'Show past events.' })).toBeInTheDocument();
+        expect(screen.queryByRole('button', { name: 'Hide past events.' })).not.toBeInTheDocument();
+        // userEvent.click(screen.getByRole('button', { name: 'Show past events.' }));
+        fireEvent.click(screen.getByRole('button', { name: 'Show past events.' }));
+        expect(screen.getByRole('button', { name: 'Hide past events.' })).toBeInTheDocument();
+
+        // screen.debug(screen.getByRole('article'));
     });
 
     test('Make sure the page renders properly with the events prop being an empty array', () => {
@@ -42,8 +57,10 @@ describe('Events page tests', () => {
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^events$/i);
         expect(screen.getByRole('article')).toBeInTheDocument();
 
-        expect(screen.getByText(/Due dates are assumed to be due at midnight EST/i));
-        expect(screen.getByText(/(unless otherwise noted)./i));
+        expect(screen.queryByText(/Due dates are assumed to be due at midnight EST/i)).not.toBeInTheDocument();
+        expect(screen.queryByText(/(unless otherwise noted)./i)).not.toBeInTheDocument();
+
+        expect(screen.getByRole('button', { name: 'Show past events.' })).toBeInTheDocument();
 
         expect(screen.getByText(/there are no upcoming events to display. check back again soon./i)).toBeInTheDocument();
     });
@@ -54,8 +71,10 @@ describe('Events page tests', () => {
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^events$/i);
         expect(screen.getByRole('article')).toBeInTheDocument();
 
-        expect(screen.getByText(/Due dates are assumed to be due at midnight EST/i));
-        expect(screen.getByText(/(unless otherwise noted)./i));
+        expect(screen.queryByText(/Due dates are assumed to be due at midnight EST/i)).not.toBeInTheDocument();
+        expect(screen.queryByText(/(unless otherwise noted)./i)).not.toBeInTheDocument();
+
+        expect(screen.getByRole('button', { name: 'Show past events.' })).toBeInTheDocument();
 
         expect(screen.getByText(/an error occurred fetching data./i)).toBeInTheDocument();
     });
