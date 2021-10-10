@@ -2,12 +2,9 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
 import { getConstitutionContent } from '../lib/api/miscPortableText';
+import serializers from '../lib/serializers';
 
 import styles from '../styles/constitution.module.css';
-
-const small = (props) => {
-    return <span style={{ fontSize: '75%' }}>{props.children}</span>;
-};
 
 const Constitution = ({ content }) => {
     return (
@@ -25,9 +22,7 @@ const Constitution = ({ content }) => {
 
                 <BlockContent
                     blocks={content.content}
-                    // eslint-disable-next-line react/display-name
-                    serializers={{ container: props => <>{props.children}</>, marks: { small } }}
-                // serializers={noContainer}
+                    serializers={serializers}
                 />
             </article>
         </>
@@ -43,7 +38,7 @@ export async function getStaticProps() {
 
     return {
         props: { content },
-        revalidate: 600, // page regeneration can occur in 10 minutes
+        revalidate: 1, // page regeneration can occur in 10 minutes
     };
 }
 

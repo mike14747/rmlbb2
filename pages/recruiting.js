@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
-import noContainer from '../lib/noContainer';
+import serializers from '../lib/serializers';
 import { getRecruitingContent } from '../lib/api/miscPortableText';
 
 import styles from '../styles/recruiting.module.css';
@@ -22,7 +22,7 @@ const Recruiting = ({ content }) => {
 
                 <BlockContent
                     blocks={content.content}
-                    serializers={noContainer}
+                    serializers={serializers}
                 />
             </article>
         </>

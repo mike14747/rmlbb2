@@ -1,6 +1,7 @@
 .constitutionContainer > ol,
 .constitutionContainer > ul,
 .constitutionContainer > p {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     max-width: 80ch;
     margin: 0 auto 1.5rem auto;
 }
@@ -12,7 +13,8 @@
 
 .constitutionContainer > h3 {
     font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
-    max-width: 60ch;
+    letter-spacing: 1px;
+    max-width: 80ch;
     margin: 2rem auto 1rem auto;
     padding: 2rem 0 0 0;
     border-top: 1px var(--mg-gray-3) solid;
@@ -20,13 +22,26 @@
 
 .constitutionContainer > h3:first-of-type {
     border-top: 0;
+    padding-top: 0;
 }
 
-.constitutionContainer > h3 > span {
-    color: var(--theme-color-green);
+.constitutionContainer > h3 > span:first-of-type {
+    font-weight: bolder;
+    color: var(--theme-color-red);
 }
 
 .constitutionContainer > h4 {
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
-    margin: 0 auto 0.50rem auto;
+    margin: 0 auto 0.5rem auto;
+}
+
+.constitutionContainer > p > em:first-of-type {
+    font-size: 90%;
+    font-weight: bolder;
+    font-style: normal;
+    margin-right: 0.5rem;
+}
+
+.constitutionContainer > p > em:first-of-type::before {
+    content: '\00A7';
 }

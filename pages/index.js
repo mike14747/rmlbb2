@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
-import noContainer from '../lib/noContainer';
+import serializers from '../lib/serializers';
 import Sidebar from '../components/Sidebar';
 import { getSomeNewsItems, getAllNewsItems } from '../lib/api/news';
 import { getNextUpcomingEvents } from '../lib/api/events';
@@ -34,7 +34,7 @@ const Home = ({ news, events }) => {
                                 <p className={styles.newsDate}><small>Date: {item.date}</small></p>
                                 <BlockContent
                                     blocks={item.content}
-                                    serializers={noContainer}
+                                    serializers={serializers}
                                 />
                             </section>
                         ))
