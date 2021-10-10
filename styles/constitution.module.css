@@ -9,3 +9,24 @@
 .constitutionContainer > p + ul {
     margin-top: -1rem;
 }
+
+.constitutionContainer > h3 {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    max-width: 60ch;
+    margin: 2rem auto 1rem auto;
+    padding: 2rem 0 0 0;
+    border-top: 1px var(--mg-gray-3) solid;
+}
+
+.constitutionContainer > h3:first-of-type {
+    border-top: 0;
+}
+
+.constitutionContainer > h3 > span {
+    color: var(--theme-color-green);
+}
+
+.constitutionContainer > h4 {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    margin: 0 auto 0.50rem auto;
+}

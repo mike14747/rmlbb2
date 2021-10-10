@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import BlockContent from '@sanity/block-content-to-react';
-import noContainer from '../lib/noContainer';
 import { getConstitutionContent } from '../lib/api/miscPortableText';
 
 import styles from '../styles/constitution.module.css';
+
+const small = (props) => {
+    return <span style={{ fontSize: '75%' }}>{props.children}</span>;
+};
 
 const Constitution = ({ content }) => {
     return (
@@ -22,7 +25,9 @@ const Constitution = ({ content }) => {
 
                 <BlockContent
                     blocks={content.content}
-                    serializers={noContainer}
+                    // eslint-disable-next-line react/display-name
+                    serializers={{ container: props => <>{props.children}</>, marks: { small } }}
+                // serializers={noContainer}
                 />
             </article>
         </>
