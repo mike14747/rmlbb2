@@ -1,6 +1,6 @@
 .headingRow {
     font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.3rem);
-    background-color: var(--theme-color-dirt-faded);
+    background-color: var(--mg-gray-1);
     letter-spacing: 0.50px;
 }
 

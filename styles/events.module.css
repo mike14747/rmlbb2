@@ -117,7 +117,7 @@ span.eventDetails {
 .pastHeadingRow {
     font-size: 1.25rem;
     font-weight: bolder;
-    background-color: var(--theme-color-dirt-faded);
+    background-color: var(--mg-gray-1);
 }
 
 .pastBodyRow {
