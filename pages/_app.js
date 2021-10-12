@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 
 import '../styles/globals.css';
 import '../styles/my_tables.css';
+import '../styles/block_content.css';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     return (
