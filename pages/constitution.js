@@ -38,7 +38,7 @@ export async function getStaticProps() {
 
     return {
         props: { content },
-        revalidate: 1, // page regeneration can occur in 10 minutes
+        revalidate: 600, // page regeneration can occur in 10 minutes
     };
 }
 

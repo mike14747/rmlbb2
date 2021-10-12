@@ -1,1 +1,103 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
 
+.typeContainer {
+    flex: 1;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 2rem auto;
+}
+
+.typeContainer:last-of-type {
+    margin-bottom: 0;
+}
+
+.typeContainer > h3 {
+    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+.downloadContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    border: 1px var(--mg-gray-2) solid;
+}
+
+.typeContainer > .downloadContainer:last-of-type {
+    margin-bottom: 0;
+}
+
+.downloadInfo > h4 {
+    color: var(--theme-color-green);
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    margin: 0;
+}
+
+.downloadDesc {
+    color: var(--mg-gray-6);
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    margin: 0;
+}
+
+.filenameText {
+    color: var(--mg-gray-6);
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    margin: 1rem 0 0 0;
+}
+
+.filenameText > a:hover {
+    outline: 1px var(--theme-color-dirt) dashed;
+    outline-offset: 0.25rem;
+    transition: 0.3s;
+}
+
+.downloadIcon {
+    width: clamp(48px, calc(42px + 1vw), 60px);
+    height: auto;
+    padding: 0.75rem;
+    transition: 0.3s;
+}
+
+.downloadIcon:hover {
+    padding: 0.5rem;
+    /* filter: invert(36%) sepia(89%) saturate(995%) hue-rotate(355deg) brightness(108%) contrast(92%); */
+    filter: invert(46%) sepia(77%) saturate(4160%) hue-rotate(3deg) brightness(106%) contrast(87%);
+}
+
+.downloadLink:hover {
+    outline: 1px var(--theme-color-dirt) dashed;
+    /* outline-offset: 0.25rem; */
+    transition: 0.3s;
+}
+
+.fileTypeIcon {
+    width: clamp(36px, calc(30px + 1vw), 40px);
+    height: auto;
+    vertical-align: middle;
+    padding: 0 0.50rem 0 0;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .typeContainer {
+        max-width: 566px;
+        margin: 0 1rem;
+    }
+
+    .downloadContainer {
+        margin: 1rem;
+    }
+}
