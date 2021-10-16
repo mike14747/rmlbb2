@@ -33,7 +33,7 @@ const DownloadType = ({ downloads, label }) => {
 
 DownloadType.propTypes = {
     downloads: PropTypes.array,
-    label: PropTypes.string
+    label: PropTypes.string,
 };
 
 export default DownloadType;
