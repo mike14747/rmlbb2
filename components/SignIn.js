@@ -28,45 +28,41 @@ const SignIn = ({ showSignin }) => {
 
     return (
         <>
-            {showSignin &&
-                <>
-                    <p className={styles.warning}>You must be signed in to view this page.</p>
+            <p className={styles.warning}>You must be signed in to view this page.</p>
 
-                    {error &&
-                        <p className={styles.error}>
-                            {error}
-                        </p>
-                    }
-
-                    <form method="post" onSubmit={handleSignIn} className={styles.form}>
-                        <label>
-                            Username
-                            <input
-                                required
-                                name="username"
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </label>
-
-                        <label>
-                            Password
-                            <input
-                                required
-                                name="password"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </label>
-
-                        <button type="submit" className={styles.submitButton}>
-                            Sign in
-                        </button>
-                    </form>
-                </>
+            {error &&
+                <p className={styles.error}>
+                    {error}
+                </p>
             }
+
+            <form method="post" onSubmit={handleSignIn} className={styles.form}>
+                <label>
+                    Username
+                    <input
+                        required
+                        name="username"
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </label>
+
+                <label>
+                    Password
+                    <input
+                        required
+                        name="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+
+                <button type="submit" className={styles.submitButton}>
+                    Sign in
+                </button>
+            </form>
         </>
     );
 };

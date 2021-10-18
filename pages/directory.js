@@ -10,7 +10,6 @@ import styles from '../styles/directory.module.css';
 const Directory = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
-    const [showSignin, setShowSignin] = useState(false);
 
     const [managers, setManagers] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -33,10 +32,12 @@ const Directory = () => {
             };
 
             fetchManagers();
+        } else {
+            setManagers(null);
         }
-
-        !session ? setShowSignin(true) : setShowSignin(false);
     }, [session]);
+
+    if (typeof window !== 'undefined' && loading) return null;
 
     return (
         <>
@@ -53,7 +54,7 @@ const Directory = () => {
 
                 {loading && <Loading />}
 
-                <SignIn showSignin={showSignin} />
+                {!session && <SignIn />}
 
                 {session &&
                     <>
