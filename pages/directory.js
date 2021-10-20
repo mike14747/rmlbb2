@@ -19,8 +19,9 @@ const Directory = () => {
         if (session) {
             const fetchManagers = async () => {
                 setIsLoading(true);
-                const res = await fetch('/api/managers').catch(error => console.log(error));
-                const data = await res.json();
+                const data = await fetch('/api/managers')
+                    .then(res => res.json())
+                    .catch(error => console.log('My error logging:', error));
                 if (data) {
                     setManagers(data);
                     setError(null);
@@ -30,7 +31,6 @@ const Directory = () => {
                 }
                 setIsLoading(false);
             };
-
             fetchManagers();
         } else {
             setManagers(null);

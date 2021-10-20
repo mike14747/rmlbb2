@@ -16,10 +16,10 @@ const Profile = () => {
     useEffect(() => {
         if (session) {
             setIsContentLoaded(false);
-
             const fetchData = async () => {
-                const res = await fetch('/api/user/' + session.user.name);
-                const data = await res.json();
+                const data = await fetch('/api/user/' + session.user.name)
+                    .then(res => res.json())
+                    .catch(error => console.log('My error logging:', error));
                 data?.length === 1 ? setContent(data[0]) : setContent(null);
                 setIsContentLoaded(true);
             };

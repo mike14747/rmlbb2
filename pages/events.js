@@ -16,8 +16,9 @@ const Events = ({ events }) => {
         if (showPastEvents && !pastEvents) {
             setIsLoading(true);
             const fetchPastEvents = async () => {
-                const res = await fetch('/api/past-events').catch(error => console.log(error));
-                const data = await res.json();
+                const data = await fetch('/api/past-events')
+                    .then(res => res.json())
+                    .catch(error => console.log('My error logging:', error));
                 if (data) {
                     setPastEvents(data);
                 } else {
@@ -25,7 +26,6 @@ const Events = ({ events }) => {
                 }
                 setIsLoading(false);
             };
-
             fetchPastEvents();
         }
     }, [showPastEvents, pastEvents]);
