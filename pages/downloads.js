@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { getDownloads } from '../lib/api/downloads';
+import { getDownloadsList } from '../lib/api/downloads';
 import DownloadType from '../components/DownloadType';
 
 import styles from '../styles/downloads.module.css';
@@ -48,7 +48,7 @@ Downloads.propTypes = {
 };
 
 export async function getStaticProps() {
-    const downloads = await getDownloads();
+    const downloads = await getDownloadsList();
 
     return {
         props: { downloads },
