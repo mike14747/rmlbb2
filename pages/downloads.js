@@ -24,13 +24,9 @@ const Downloads = ({ downloads }) => {
 
                 {(!downloads?.files || !downloads?.lzps) && <p className={styles.error}>An error occurred fetching data.</p>}
 
-                {downloads.files?.length === 0 &&
-                    <p>There are no file downloads to display. Check back again soon.</p>
-                }
+                {downloads.files?.length === 0 && <p>There are no file downloads to display. Check back again soon.</p>}
 
-                {downloads.lzps?.length === 0 &&
-                    <p>There are no lzp downloads to display. Check back again soon.</p>
-                }
+                {downloads.lzps?.length === 0 && <p>There are no lzp downloads to display. Check back again soon.</p>}
 
                 <div className={styles.wrapper}>
                     {downloads.files?.length > 0 && <DownloadType downloads={downloads.files} label="File Downloads" />}
@@ -57,8 +53,3 @@ export async function getStaticProps() {
 }
 
 export default Downloads;
-
-// https://cdn.sanity.io/files/tmt0dwwl/production/b4dad8ec532c2a58a874d041542837c61fec24e7.xlsx
-// file-b4dad8ec532c2a58a874d041542837c61fec24e7-xlsx
-//  return `https://cdn.sanity.io/files/${PROJECT_ID}/${DATASET}/${id}.${extension}`
-// file.asset._ref.split('-').slice(1).join(".")

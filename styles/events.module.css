@@ -95,12 +95,6 @@ span.eventDetails {
     text-align: center;
 }
 
-.error {
-    text-align: center;
-    margin: 1rem 0;
-    color: var(--theme-color-red);
-}
-
 .pastTable {
     color: var(--mg-gray-6);
     width: 100%;

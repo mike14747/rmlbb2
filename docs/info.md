@@ -385,13 +385,24 @@ const initial = [
 ];
 
 const formatted = managers.reduce((acc, cur) => {
-    let confKey = acc.findIndex(element => element.conference === cur.conference[0]);
-    let divKey = acc[confKey].divisions.findIndex(element => element.division === cur.division[0]);
+    let confKey = acc.findIndex((element) => element.conference === cur.conference[0]);
+    let divKey = acc[confKey].divisions.findIndex((element) => element.division === cur.division[0]);
     acc[confKey].divisions[divKey].teams.push(cur);
     return acc;
 }, initial);
 
 console.log(formatted);
+```
+
+---
+
+### Sanity asset download info
+
+```js
+// https://cdn.sanity.io/files/tmt0dwwl/production/b4dad8ec532c2a58a874d041542837c61fec24e7.xlsx
+// file-b4dad8ec532c2a58a874d041542837c61fec24e7-xlsx
+//  return `https://cdn.sanity.io/files/${PROJECT_ID}/${DATASET}/${id}.${extension}`
+// file.asset._ref.split('-').slice(1).join(".")
 ```
 
 ---

@@ -38,11 +38,6 @@ h4.divisionHeading {
     margin-bottom: 1rem;
 }
 
-.error {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
-    color: var(--theme-color-red);
-}
-
 @media (min-width: 768px) {
     .directoryContainer {
         flex-direction: row;

@@ -27,6 +27,8 @@ const Home = ({ news, events }) => {
                         Latest News
                     </h2>
 
+                    {!news && <p className="error">An error occurred fetching data.</p>}
+
                     {news?.length > 0
                         ? news.map((item, index) => (
                             <section key={index} className={styles.newsItem}>

@@ -14,14 +14,14 @@ const DownloadType = ({ downloads, label }) => {
                         {file.description && <p className={styles.downloadDesc}>{file.description}</p>}
                         <p className={styles.filenameText}>
                             <img className={styles.fileTypeIcon} aria-hidden="true" src={`/images/file-type-icons/${getFileTypeIcon(file.filename)}`} alt="" />
-                            <a href={`${process.env.NEXT_PUBLIC_BASE_DOWNLOAD_URL}${file.ref.split('-').slice(1).join('.')}?dl=${file.filename}`}>
+                            <a href={`${process.env.NEXT_PUBLIC_BASE_FILE_DOWNLOAD_URL}${file.ref.split('-').slice(1).join('.')}?dl=${file.filename}`}>
                                 {file.filename}
                             </a>
                         </p>
                     </div>
 
                     <div>
-                        <a className={styles.downloadLink} href={`${process.env.NEXT_PUBLIC_BASE_DOWNLOAD_URL}${file.ref.split('-').slice(1).join('.')}?dl=${file.filename}`}>
+                        <a className={styles.downloadLink} href={`${process.env.NEXT_PUBLIC_BASE_FILE_DOWNLOAD_URL}${file.ref.split('-').slice(1).join('.')}?dl=${file.filename}`}>
                             <img className={styles.downloadIcon} src="/images/download_icon.png" alt={`Download ${file.filename}`} title={`Download ${file.filename}`} />
                         </a>
                     </div>

@@ -43,11 +43,9 @@ const Events = ({ events }) => {
                     Events
                 </h2>
 
-                {!events && <p className={styles.error}>An error occurred fetching data.</p>}
+                {!events && <p className="error">An error occurred fetching data.</p>}
 
-                {events?.length === 0 &&
-                    <p>There are no upcoming events to display. Check back again soon.</p>
-                }
+                {events?.length === 0 && <p>There are no upcoming events to display. Check back again soon.</p>}
 
                 {events?.length > 0 &&
                     <>

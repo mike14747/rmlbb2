@@ -18,11 +18,9 @@ const Champions = ({ champions }) => {
                     Champions
                 </h2>
 
-                {!champions && <p className={styles.error}>An error occurred fetching data.</p>}
+                {!champions && <p className="error">An error occurred fetching data.</p>}
 
-                {champions?.length === 0 &&
-                    <p>There are no champions to display. Check back again soon.</p>
-                }
+                {champions?.length === 0 && <p>There are no champions to display. Check back again soon.</p>}
 
                 {champions?.length > 0 &&
                     <>

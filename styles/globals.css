@@ -637,6 +637,12 @@ h2.page-heading {
     margin-bottom: 2rem;
 }
 
+.error {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    color: var(--theme-color-red);
+    text-align: center;
+}
+
 /* end site-wide custom css */
 
 @media (min-width: 480px) {
