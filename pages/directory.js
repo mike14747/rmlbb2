@@ -35,6 +35,9 @@ const Directory = () => {
         } else {
             setManagers(null);
         }
+        return () => {
+            console.log('Cleanup has run.');
+        };
     }, [session]);
 
     if (typeof window !== 'undefined' && loading) return null;
