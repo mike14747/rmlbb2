@@ -26,11 +26,11 @@
         "@testing-library/jest-dom": "^5.12.0",
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^13.2.1",
-        "babel-jest": "^26.6.3",
+        "babel-jest": "^27.3.1",
         "eslint": "^7.25.0",
         "eslint-config-next": "^11.0.1",
         "identity-obj-proxy": "^3.0.0",
-        "jest": "^26.6.3",
+        "jest": "^27.3.1",
         "node-fetch": "^2.6.1"
     },
     "dependencies": {
@@ -42,7 +42,6 @@
         "next-auth": "4.0.0-beta.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "swr": "^1.0.1",
-        "uuid": "^8.3.2"
+        "swr": "^1.0.1"
     }
 }

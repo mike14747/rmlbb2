@@ -21,7 +21,7 @@ const Directory = () => {
         if (session) {
             setIsLoading(true);
 
-            fetch('/api/managers', { signal: abortController.signal })
+            fetch('/api/directory', { signal: abortController.signal })
                 .then(res => res.json())
                 .then(data => {
                     setManagers(data);

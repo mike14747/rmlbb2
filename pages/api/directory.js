@@ -2,7 +2,7 @@ import { getSession } from 'next-auth/react';
 import { getManagers } from '../../lib/api/directory';
 // import { deleteAllManagers } from '../../lib/api/mutationFunctions';
 
-export default async function managers(req, res) {
+export default async function directory(req, res) {
     if (req.method === 'GET') {
         const session = await getSession({ req });
         if (!session) res.status(401).end();
