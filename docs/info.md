@@ -396,13 +396,3 @@ console.log(formatted);
 
 ---
 
-### Sanity asset download info
-
-```js
-// https://cdn.sanity.io/files/tmt0dwwl/production/b4dad8ec532c2a58a874d041542837c61fec24e7.xlsx
-// file-b4dad8ec532c2a58a874d041542837c61fec24e7-xlsx
-//  return `https://cdn.sanity.io/files/${PROJECT_ID}/${DATASET}/${id}.${extension}`
-// file.asset._ref.split('-').slice(1).join(".")
-```
-
----
