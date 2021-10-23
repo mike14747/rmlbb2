@@ -5,7 +5,7 @@ import { getManagers } from '../../lib/api/directory';
 export default async function managers(req, res) {
     if (req.method === 'GET') {
         const session = await getSession({ req });
-        if (!session) res.send('Unauthorized').status(401).end();
+        if (!session) res.status(401).end();
 
         try {
             const response = await getManagers();

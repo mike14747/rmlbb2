@@ -16,28 +16,33 @@ const Directory = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         if (session) {
-            const fetchManagers = async () => {
-                setIsLoading(true);
-                const data = await fetch('/api/managers')
-                    .then(res => res.json())
-                    .catch(error => console.log('My error logging:', error));
-                if (data) {
+            setIsLoading(true);
+
+            fetch('/api/managers', { signal: abortController.signal })
+                .then(res => res.json())
+                .then(data => {
                     setManagers(data);
                     setError(null);
-                } else {
-                    setManagers(null);
-                    setError('An error occurred fetching manager data.');
-                }
-                setIsLoading(false);
-            };
-            fetchManagers();
+                    setIsLoading(false);
+                })
+                .catch(error => {
+                    if (error.name === 'AbortError') {
+                        console.log('Data fetching was aborted!');
+                    } else {
+                        console.log('My error logging:', error);
+                        setManagers(null);
+                        setError('An error occurred fetching manager data.');
+                        setIsLoading(false);
+                    }
+                });
         } else {
             setManagers(null);
         }
-        return () => {
-            console.log('Cleanup has run.');
-        };
+
+        return () => abortController.abort();
     }, [session]);
 
     if (typeof window !== 'undefined' && loading) return null;
