@@ -83,13 +83,12 @@ Home.propTypes = {
     events: PropTypes.array,
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const { total, newsItems: initialNewsItems } = await getInitialNewsItems().catch(error => console.log(error));
     const events = await getNextUpcomingEvents().catch(error => console.log(error)) || null;
 
     return {
         props: { total, initialNewsItems, events },
-        revalidate: 600, // page regeneration can occur in 10 minutes
     };
 }
 
