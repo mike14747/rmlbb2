@@ -1,4 +1,5 @@
 const config = {
+    testEnvironment: 'jsdom',
     setupFilesAfterEnv: [
         './setupJest.js',
     ],

@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react';
 
 import styles from '../styles/SignIn.module.css';
 
-const SignIn = ({ showSignin }) => {
+const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -19,10 +19,6 @@ const SignIn = ({ showSignin }) => {
 
         if (!status.ok || status.status !== 200) {
             setError('Login Failed... check your credentials and try again.');
-        } else {
-            setError(null);
-            setUsername('');
-            setPassword('');
         }
     };
 

@@ -19,10 +19,6 @@ const SignInMini = () => {
 
         if (!status.ok || status.status !== 200) {
             setError('Login Failed!');
-        } else {
-            setError(null);
-            setUsername('');
-            setPassword('');
         }
     };
 

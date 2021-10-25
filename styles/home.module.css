@@ -17,7 +17,7 @@
     padding-bottom: 0.50rem;
 }
 
-.newsItem:last-child {
+.newsItem:last-of-type {
     border: 0;
 }
 

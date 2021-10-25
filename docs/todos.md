@@ -4,4 +4,4 @@ Figure out a new message board solution that can have our old board imported int
 
 Add a "to top" button to all pages.
 
-Make sure all protected pages are secure enough.
+Figure out how to get the homepage test working in jest.
