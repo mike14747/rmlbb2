@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import useInView from 'react-cool-inview';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
@@ -15,24 +14,16 @@ const Home = ({ total, initialNewsItems, events }) => {
     const [newsItems, setNewsItems] = useState(initialNewsItems);
     const [isLoading, setIsLoading] = useState(false);
 
-    const { observe } = useInView({
-        onEnter: ({ unobserve, observe }) => {
-            unobserve();
-            if (total > newsItems.length) {
-                setIsLoading(true);
-                fetch('/api/news?start=' + newsItems?.length)
-                    .then(res => res.json())
-                    .then(newNews => {
-                        if (newsItems?.length > 0) {
-                            setNewsItems([...new Set([...newsItems, ...newNews])]);
-                        }
-                        observe();
-                    })
-                    .catch(error => console.log(error))
-                    .finally(() => setIsLoading(false));
-            }
-        },
-    });
+    const handleClick = () => {
+        if (total > newsItems.length) {
+            setIsLoading(true);
+            fetch('/api/news?start=' + newsItems?.length)
+                .then(res => res.json())
+                .then(newNews => newsItems?.length > 0 && setNewsItems([...new Set([...newsItems, ...newNews])]))
+                .catch(error => console.log(error))
+                .finally(() => setIsLoading(false));
+        }
+    };
 
     return (
         <>
@@ -66,9 +57,13 @@ const Home = ({ total, initialNewsItems, events }) => {
                             : <p>An error occurred fetching data.</p>
                     }
 
-                    <div ref={observe}></div>
-
                     {isLoading && <Loading />}
+
+                    {total > newsItems.length &&
+                        <div className={styles.showMore}>
+                            <button className={styles.showMoreButton} onClick={handleClick}>More News</button>
+                        </div>
+                    }
                 </article>
 
                 <Sidebar events={events} posts={null} />

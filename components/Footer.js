@@ -25,7 +25,7 @@ const Footer = ({ contactEmail, links }) => {
 
                 <div className={styles.right}>
                     {contactEmail &&
-                        <p>
+                        <p className={styles.contact}>
                             <a href={contactEmail}>
                                 Contact Us
                             </a>

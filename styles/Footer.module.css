@@ -50,6 +50,11 @@ h5.resourcesHeading {
     margin: 0;
 }
 
+.contact::before {
+    content: '\1F4EC';
+    margin-right: 0.5rem;
+}
+
 @media (min-width: 480px) {
     .upper {
         flex-direction: row;

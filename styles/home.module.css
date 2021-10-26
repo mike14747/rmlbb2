@@ -41,6 +41,38 @@
     margin-bottom: 1rem;
 }
 
+.showMore {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.showMore::before {
+    content: '\203A \203A \203A';
+    color: var(--mg-dark);
+    padding-right: 0.25rem;
+}
+
+.showMoreButton {
+    color: var(--mg-blue);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: color 0.3s;
+}
+
+.showMoreButton:hover {
+    color: var(--theme-color-orange);
+    text-decoration: underline;
+    outline: none;
+    transition: color 0.3s;
+}
+
+.showMoreButton:focus {
+    outline: 1px var(--mg-gray-2) dashed;
+    transition: color 0.3s;
+}
+
 @media (min-width: 768px) {
     .homeContainer {
         flex-direction: row;
