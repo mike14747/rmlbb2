@@ -19,7 +19,7 @@ const Home = ({ total, initialNewsItems, events }) => {
             setIsLoading(true);
             fetch('/api/news?start=' + newsItems?.length)
                 .then(res => res.json())
-                .then(newNews => newsItems?.length > 0 && setNewsItems([...new Set([...newsItems, ...newNews])]))
+                .then(newNews => newsItems?.length > 0 && setNewsItems(Array.from(new Set([...initialNewsItems, ...newNews].map(JSON.stringify))).map(JSON.parse)))
                 .catch(error => console.log(error))
                 .finally(() => setIsLoading(false));
         }

@@ -43,6 +43,11 @@
     padding: 0;
 }
 
+::selection {
+    background-color: var(--theme-color-green);
+    color: #ffffff;
+}
+
 #__next {
     display: flex;
     flex-direction: column;
