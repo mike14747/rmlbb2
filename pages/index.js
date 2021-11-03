@@ -19,7 +19,20 @@ const Home = ({ total, initialNewsItems, events }) => {
             setIsLoading(true);
             fetch('/api/news?start=' + newsItems?.length)
                 .then(res => res.json())
-                .then(newNews => newsItems?.length > 0 && setNewsItems(Array.from(new Set([...initialNewsItems, ...newNews].map(JSON.stringify))).map(JSON.parse)))
+                .then(newNews => {
+                    // this method works, but I've commented it out in favor of just checking the _id field for uniqueness using reduce
+                    // newsItems?.length > 0 && setNewsItems(Array.from(new Set([...initialNewsItems, ...newNews].map(JSON.stringify))).map(JSON.parse));
+                    const mergedNews = [...initialNewsItems, ...newNews];
+                    const uniqueNewsItems = [];
+                    mergedNews.reduce((acc, cur) => {
+                        if (acc.indexOf(cur._id) === -1) {
+                            acc.push(cur._id);
+                            uniqueNewsItems.push(cur);
+                        }
+                        return acc;
+                    }, []);
+                    setNewsItems(mergedNews);
+                })
                 .catch(error => console.log(error))
                 .finally(() => setIsLoading(false));
         }
@@ -45,7 +58,7 @@ const Home = ({ total, initialNewsItems, events }) => {
                         ? newsItems.map((item, index) => (
                             <section key={index} className={styles.newsItem}>
                                 <h3 className={styles.newsHeading}>{item.title}</h3>
-                                <p className={styles.newsDate}><small>Date: {item.date}</small></p>
+                                <p className={styles.newsDate}><small>{item.date}</small></p>
                                 <BlockContent
                                     blocks={item.content}
                                     serializers={serializers}

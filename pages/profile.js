@@ -9,7 +9,7 @@ import SignIn from '../components/SignIn';
 const Profile = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
-    const [showSignin, setShowSignin] = useState(false);
+
     const [user, setContent] = useState(null);
     const [isContentLoaded, setIsContentLoaded] = useState(false);
 
@@ -28,8 +28,6 @@ const Profile = () => {
             setContent(null);
             setIsContentLoaded(false);
         }
-
-        return !session ? setShowSignin(true) : setShowSignin(false);
     }, [session]);
 
     return (
@@ -40,29 +38,31 @@ const Profile = () => {
                 </title>
             </Head>
 
-            <h2 className="page-heading">
-                Profile
-            </h2>
+            <article>
+                <h2 className="page-heading">
+                    Profile
+                </h2>
 
-            {loading && <Loading />}
+                {loading && <Loading />}
 
-            <SignIn showSignin={showSignin} />
+                {!session && <SignIn />}
 
-            {session &&
-                <>
-                    <p>You are signed in. Here is your current profile information.</p>
+                {session &&
+                    <>
+                        <p>You are signed in. Here is your current profile information.</p>
 
-                    {!isContentLoaded && <Loading />}
+                        {!isContentLoaded && <Loading />}
 
-                    {user && isContentLoaded &&
-                        <>
-                            <p>Username: {user?.username}</p>
+                        {user && isContentLoaded &&
+                            <>
+                                <p>Username: {user?.username}</p>
 
-                            <p>Username: {user?.email}</p>
-                        </>
-                    }
-                </>
-            }
+                                <p>Username: {user?.email}</p>
+                            </>
+                        }
+                    </>
+                }
+            </article>
         </>
     );
 };
