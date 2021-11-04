@@ -10,23 +10,28 @@ const Profile = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
 
-    const [user, setContent] = useState(null);
-    const [isContentLoaded, setIsContentLoaded] = useState(false);
+    const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (session) {
-            setIsContentLoaded(false);
+            setIsLoading(true);
             const fetchData = async () => {
                 const data = await fetch('/api/user/' + session.user.name)
                     .then(res => res.json())
-                    .catch(error => console.log('My error logging:', error));
-                data?.length === 1 ? setContent(data[0]) : setContent(null);
-                setIsContentLoaded(true);
+                    .catch(error => console.log(error));
+                if (data?.length === 1) {
+                    setUser(data[0]);
+                } else {
+                    setUser(null);
+                    setError('An error occurred fetching user profile data.');
+                }
+                setIsLoading(false);
             };
             fetchData();
         } else {
-            setContent(null);
-            setIsContentLoaded(false);
+            setUser(null);
         }
     }, [session]);
 
@@ -49,14 +54,14 @@ const Profile = () => {
 
                 {session &&
                     <>
-                        <p>You are signed in. Here is your current profile information.</p>
+                        {error && <p className="error">{error}</p>}
 
-                        {!isContentLoaded && <Loading />}
+                        {isLoading && <Loading />}
 
-                        {user && isContentLoaded &&
+                        {user &&
                             <>
+                                <p>You are signed in. Here is your current profile information.</p>
                                 <p>Username: {user?.username}</p>
-
                                 <p>Username: {user?.email}</p>
                             </>
                         }

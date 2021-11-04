@@ -32,7 +32,7 @@ const Directory = () => {
                     if (error.name === 'AbortError') {
                         console.log('Data fetching was aborted!');
                     } else {
-                        console.log('My error logging:', error);
+                        console.log(error);
                         setManagers(null);
                         setError('An error occurred fetching manager data.');
                         setIsLoading(false);
