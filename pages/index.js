@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar';
 import { getInitialNewsItems } from '../lib/api/news';
 import { getNextUpcomingEvents } from '../lib/api/events';
 import Loading from '../components/Loading';
+import Button from '../components/Button';
 
 import styles from '../styles/home.module.css';
 
@@ -77,6 +78,8 @@ const Home = ({ total, initialNewsItems, events }) => {
                             <button className={styles.showMoreButton} onClick={handleClick}>load more news</button>
                         </div>
                     }
+
+                    <Button text="testing the button" />
                 </article>
 
                 <Sidebar events={events} posts={null} />
