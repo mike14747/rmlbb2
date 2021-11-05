@@ -33,7 +33,7 @@
     font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
     max-width: 60ch;
     margin: 0;
-    color: var(--theme-color-orange);
+    color: var(--theme-color-green);
 }
 
 .newsDate {
