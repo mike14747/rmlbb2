@@ -42,35 +42,39 @@
 }
 
 .showMore {
-    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
     text-align: center;
     margin-top: 3rem;
 }
 
-.showMore::before {
-    content: '\203A \203A \203A';
-    color: var(--mg-dark);
-    padding-right: 0.25rem;
+.showMoreButton {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    color: var(--mg-blue);
+    background-color: #ffffff;
+    border: 0;
+    box-shadow: 0 0 2px 2px var(--theme-color-dirt-faded);
+    padding: 0.5rem 1rem;
+    outline: none;
+    transition: 0.3s;
 }
 
-.showMoreButton {
-    color: var(--mg-blue);
-    background-color: transparent;
-    border: none;
-    outline: none;
-    transition: color 0.3s;
+.showMoreButton::before {
+    content: '\203A \203A \203A';
+    padding-right: 0.25rem;
 }
 
 .showMoreButton:hover {
     color: var(--theme-color-orange);
-    text-decoration: underline;
+    background-color: #ffffff;
+    text-decoration: none;
     outline: none;
-    transition: color 0.3s;
+    box-shadow: 0 0 2px 1px var(--theme-color-orange);
+    transition: 0.3s;
 }
 
 .showMoreButton:focus {
     outline: 1px var(--mg-gray-2) dashed;
-    transition: color 0.3s;
+    outline-offset: 0.5rem;;
+    transition: 0.3s;
 }
 
 @media (min-width: 768px) {

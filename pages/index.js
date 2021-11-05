@@ -74,7 +74,7 @@ const Home = ({ total, initialNewsItems, events }) => {
 
                     {total > newsItems.length &&
                         <div className={styles.showMore}>
-                            <button className={styles.showMoreButton} onClick={handleClick}>More News</button>
+                            <button className={styles.showMoreButton} onClick={handleClick}>more news</button>
                         </div>
                     }
                 </article>
