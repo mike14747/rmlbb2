@@ -79,7 +79,7 @@ const Home = ({ total, initialNewsItems, events }) => {
                         </div>
                     }
 
-                    <Button text="testing the button" />
+                    <Button>Testing</Button>
                 </article>
 
                 <Sidebar events={events} posts={null} />

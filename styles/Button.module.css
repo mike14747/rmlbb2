@@ -1,11 +1,23 @@
-.default {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.1rem);
-    font-weight: bolder;
-    color: #ffffff;
-    background-color: var(--theme-color-green);
-    border: 1px var(--mg-gray-6) solid;
+.btn {
     border-radius: 0.25rem;
-    padding: 0.25rem 0.50rem;
-    margin: 2rem 0;
-    letter-spacing: 1px;
+    cursor: pointer;
+    border: 0;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    box-shadow: 2px 2px 4px 0 var(--mg-gray-5);
+}
+
+.btnSmall {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+}
+
+.btnMedium {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    padding: 0.5rem 1rem;
+}
+
+.btnLarge {
+    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
 }
