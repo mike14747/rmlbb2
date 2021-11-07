@@ -75,11 +75,9 @@ const Home = ({ total, initialNewsItems, events }) => {
 
                     {total > newsItems.length &&
                         <div className={styles.showMore}>
-                            <button className={styles.showMoreButton} onClick={handleClick}>load more news</button>
+                            <Button onClick={handleClick} size="btnMedium" variant="btnContained">Load More News</Button>
                         </div>
                     }
-
-                    <Button onClick={() => {alert('the button was clicked');}} variant="btnText" size="btnLarge">onClick Testing</Button>
                 </article>
 
                 <Sidebar events={events} posts={null} />

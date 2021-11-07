@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
+import Button from '../components/Button';
 
 import styles from '../styles/SignIn.module.css';
 
@@ -55,9 +56,9 @@ const SignIn = () => {
                     />
                 </label>
 
-                <button type="submit" className={styles.submitButton}>
-                    Sign in
-                </button>
+                <div className={styles.btnContainer}>
+                    <Button type="submit" size="btnLarge" variant="btnContained">Sign In</Button>
+                </div>
             </form>
         </>
     );

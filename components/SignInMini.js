@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
+import Button from '../components/Button';
 
 import styles from '../styles/SignInMini.module.css';
 
@@ -25,9 +26,7 @@ const SignInMini = () => {
     return (
         <>
             <div className={styles.dropdown}>
-                <button className={styles.signIn}>
-                    Sign in
-                </button>
+                <Button size="btnSmall" variant="btnText">Sign In</Button>
 
                 {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
                 <div tabIndex="0" className={styles.dropdownContent}>
@@ -58,9 +57,9 @@ const SignInMini = () => {
                             />
                         </label>
 
-                        <button type="submit" className={styles.submitButton}>
-                            Sign in
-                        </button>
+                        <div className={styles.submitBtnContainer}>
+                            <Button type="submit" size="btnMedium" variant="btnContained">Sign In</Button>
+                        </div>
                     </form>
 
                     {error &&

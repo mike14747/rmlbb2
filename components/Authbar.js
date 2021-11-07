@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import SignInMini from './SignInMini';
+import Button from '../components/Button';
 
 import styles from '../styles/Authbar.module.css';
 
@@ -20,7 +21,8 @@ const Authbar = () => {
 
             {session &&
                 <>
-                    User: <span className={styles.username}>
+                    <span className={styles.username}>
+                        <>User: </>
                         <Link href="/profile">
                             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                             <a>
@@ -29,10 +31,7 @@ const Authbar = () => {
                         </Link>
                     </span>
 
-                    <span className={styles.linkArrows}></span>
-                    <button onClick={() => signOut({ redirect: false })} className={styles.signout}>
-                        Sign out
-                    </button>
+                    <Button onClick={() => signOut({ redirect: false })} size="btnSmall" variant="btnText">Sign Out</Button>
                 </>
             }
         </div>

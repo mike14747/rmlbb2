@@ -33,18 +33,3 @@ a.link:hover {
     text-decoration: underline;
     transition: .3s;
 }
-
-.close {
-    color: #ffffff;
-    background-color: var(--mg-dark);
-    font-size: 1.5rem;
-    padding: 0 0.25rem 0.25rem 0.25rem;
-    margin: 0;
-    border: 0;
-    line-height: 1;
-}
-
-.close:hover {
-    cursor: pointer;
-    filter: invert();
-}

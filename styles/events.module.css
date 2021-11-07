@@ -67,32 +67,9 @@ span.eventDetails {
     color: var(--theme-color-green);
 }
 
-.showPast {
-    color: var(--mg-blue);
-    text-decoration: none;
-    text-align: center;
-    transition: color 0.3s;
-    padding: 0.5rem;
-    border: 0;
-    background-color: transparent;
-}
-
-.showPast:focus {
-    outline: 1px var(--mg-gray-3) dashed;
-}
-
-.showPastIcon::before {
-    content: '\203A\203A \0020';
-}
-
-.showPast:hover {
-    color: var(--theme-color-orange);
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
 .showPastDiv {
     text-align: center;
+    margin: 4rem 0 2rem 0;
 }
 
 .pastTable {

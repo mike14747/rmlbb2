@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
 import Loading from '../components/Loading';
+import Button from '../components/Button';
 import { getAllActiveUpcomingEvents } from '../lib/api/events';
 
 import styles from '../styles/events.module.css';
@@ -78,13 +79,12 @@ const Events = ({ events }) => {
                 }
 
                 <div className={styles.showPastDiv}>
-                    <button className={styles.showPast} onClick={() => setShowPastEvents(!showPastEvents)}>
-                        <span aria-hidden="true" className={styles.showPastIcon}></span>
+                    <Button onClick={() => setShowPastEvents(!showPastEvents)} size="btnMedium" variant="btnContained">
                         {!showPastEvents
-                            ? <>Show past events.</>
-                            : <>Hide past events.</>
+                            ? <>Show Past Events</>
+                            : <>Hide Past Events</>
                         }
-                    </button>
+                    </Button>
                 </div>
 
                 {showPastEvents && !pastEvents && isLoading && <Loading />}

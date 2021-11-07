@@ -82,28 +82,8 @@
     box-shadow: 0 0 4px 4px var(--theme-color-dirt);
 }
 
-button.submitButton {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.1rem);
-    font-weight: bolder;
-    color: #ffffff;
-    background-color: var(--theme-color-green);
-    border: 1px var(--mg-gray-6) solid;
-    border-radius: 0.25rem;
-    padding: 0.25rem 0.50rem;
-    margin: 0;
-    letter-spacing: 1px;
-}
-
-button.submitButton:focus:not(:hover) {
-    outline: 1px var(--mg-gray-3) dashed;
-    outline-offset: 0.25rem;
-}
-
-button.submitButton:hover {
-    color: var(--mg-dark);
-    background-color: var(--mg-yellow-pale);
-    border: 1px var(--theme-color-orange) solid;
-    box-shadow: 0 0 4px 4px var(--theme-color-dirt);
+.submitBtnContainer {
+    margin: 2rem 0 0 0;
 }
 
 .error {

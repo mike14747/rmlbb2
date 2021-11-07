@@ -1,19 +1,19 @@
-.btn {
-    border-radius: 0.25rem;
+button.btn {
     cursor: pointer;
     border: 0;
     transition: 0.3s;
 }
 
-.btn:focus {
+button.btn:focus {
     outline: 1px var(--mg-gray-3) dashed;
+    outline-offset: 0.5rem;
 }
 
-.btnOutlined {
+button.btnOutlined {
 
 }
 
-.btnText {
+button.btnText {
     color: var(--mg-blue);
     background-color: transparent;
     border: 0;
@@ -21,33 +21,51 @@
     margin: 0;
 }
 
-.btnContained {
+button.btnContained {
     color: #ffffff;
     background-color: var(--theme-color-green);
-    border: 1px var(--mg-gray-6) solid;
+    border: 1px var(--mg-gray-5) solid;
 }
 
-.btnText:hover {
+button.btnSpecial {
+    color: #ffffff;
+    background-color: var(--mg-dark);
+    padding: 0 0.25rem 0.25rem 0.25rem;
+    margin: 0;
+    border: 0;
+}
+
+button.btnText:hover {
     color: var(--theme-color-orange);
     outline: 1px var(--mg-gray-3) dashed;
 }
 
-.btnOutlined:hover,
-.btnContained:hover {
-    box-shadow: 2px 2px 4px 0 var(--mg-gray-5);
+button.btnOutlined:hover,
+button.btnContained:hover {
+    box-shadow: 3px 3px 6px 0 var(--mg-gray-5);
 }
 
-.btnSmall {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+button.btnSpecial:hover {
+    cursor: pointer;
+    filter: invert();
+}
+
+button.btnSpecialSize {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+button.btnSmall {
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     padding: 0.25rem 0.5rem;
 }
 
-.btnMedium {
-    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+button.btnMedium {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     padding: 0.5rem 1rem;
 }
 
-.btnLarge {
-    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+button.btnLarge {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
     padding: 0.75rem 1.5rem;
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Button from '../components/Button';
 
 import styles from '../styles/TopInfo.module.css';
 
@@ -22,9 +23,7 @@ const TopInfo = ({ topInfo }) => {
                         </Link>
                     </div>
 
-                    <button className={styles.close} onClick={() => setShowPanel(false)}>
-                        &times;
-                    </button>
+                    <Button onClick={() => setShowPanel(false)} size="btnSpecialSize" variant="btnSpecial">&times;</Button>
                 </aside>
             }
         </>

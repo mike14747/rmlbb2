@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 import styles from '../styles/Button.module.css';
 
-const sizes = ['btnSmall', 'btnMedium', 'btnLarge'];
-const variants = ['btnOutlined', 'btnText', 'btnContained'];
+const sizes = ['btnSmall', 'btnMedium', 'btnLarge', 'btnSpecialSize'];
+const variants = ['btnOutlined', 'btnText', 'btnContained', 'btnSpecial'];
 const types = ['submit'];
 
 export default function Button({ children, size, variant, onClick, type }) {
@@ -13,9 +13,6 @@ export default function Button({ children, size, variant, onClick, type }) {
 
     return (
         <button {...(onClick && { onClick })} {...(type && { type: btnType })} className={`${styles.btn} ${styles[`${btnSize}`]} ${styles[`${btnVariant}`]}`}>{children}</button>
-        // {...(condition && {className: 'btn btn-primary'})}
-        // {...(onClick && { onClick })}
-        // {...(type && { type: btnType })}
     );
 }
 
