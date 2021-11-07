@@ -79,7 +79,7 @@ const Home = ({ total, initialNewsItems, events }) => {
                         </div>
                     }
 
-                    <Button>Testing</Button>
+                    <Button onClick={() => {alert('the button was clicked');}} variant="btnText" size="btnLarge">onClick Testing</Button>
                 </article>
 
                 <Sidebar events={events} posts={null} />

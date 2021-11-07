@@ -5,12 +5,41 @@
     transition: 0.3s;
 }
 
-.btn:hover {
+.btn:focus {
+    outline: 1px var(--mg-gray-3) dashed;
+}
+
+.btnOutlined {
+
+}
+
+.btnText {
+    color: var(--mg-blue);
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.btnContained {
+    color: #ffffff;
+    background-color: var(--theme-color-green);
+    border: 1px var(--mg-gray-6) solid;
+}
+
+.btnText:hover {
+    color: var(--theme-color-orange);
+    outline: 1px var(--mg-gray-3) dashed;
+}
+
+.btnOutlined:hover,
+.btnContained:hover {
     box-shadow: 2px 2px 4px 0 var(--mg-gray-5);
 }
 
 .btnSmall {
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    padding: 0.25rem 0.5rem;
 }
 
 .btnMedium {
@@ -20,4 +49,5 @@
 
 .btnLarge {
     font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+    padding: 0.75rem 1.5rem;
 }
