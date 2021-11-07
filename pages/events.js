@@ -79,7 +79,7 @@ const Events = ({ events }) => {
                 }
 
                 <div className={styles.showPastDiv}>
-                    <Button onClick={() => setShowPastEvents(!showPastEvents)} size="btnMedium" variant="btnContained">
+                    <Button onClick={() => setShowPastEvents(!showPastEvents)} size="medium" variant="contained">
                         {!showPastEvents
                             ? <>Show Past Events</>
                             : <>Hide Past Events</>

@@ -26,7 +26,7 @@ const SignInMini = () => {
     return (
         <>
             <div className={styles.dropdown}>
-                <Button size="btnSmall" variant="btnText">Sign In</Button>
+                <Button size="small" variant="text">Sign In</Button>
 
                 {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
                 <div tabIndex="0" className={styles.dropdownContent}>
@@ -58,7 +58,7 @@ const SignInMini = () => {
                         </label>
 
                         <div className={styles.submitBtnContainer}>
-                            <Button type="submit" size="btnMedium" variant="btnContained">Sign In</Button>
+                            <Button type="submit" size="medium" variant="contained">Sign In</Button>
                         </div>
                     </form>
 

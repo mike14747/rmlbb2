@@ -57,7 +57,7 @@ const SignIn = () => {
                 </label>
 
                 <div className={styles.btnContainer}>
-                    <Button type="submit" size="btnLarge" variant="btnContained">Sign In</Button>
+                    <Button type="submit" size="large" variant="contained">Sign In</Button>
                 </div>
             </form>
         </>

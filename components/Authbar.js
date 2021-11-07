@@ -31,7 +31,7 @@ const Authbar = () => {
                         </Link>
                     </span>
 
-                    <Button onClick={() => signOut({ redirect: false })} size="btnSmall" variant="btnText">Sign Out</Button>
+                    <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Sign Out</Button>
                 </>
             }
         </div>

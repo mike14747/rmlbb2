@@ -9,11 +9,11 @@ button.btn:focus {
     outline-offset: 0.5rem;
 }
 
-button.btnOutlined {
+button.outlined {
 
 }
 
-button.btnText {
+button.text {
     color: var(--mg-blue);
     background-color: transparent;
     border: 0;
@@ -21,13 +21,13 @@ button.btnText {
     margin: 0;
 }
 
-button.btnContained {
+button.contained {
     color: #ffffff;
     background-color: var(--theme-color-green);
     border: 1px var(--mg-gray-5) solid;
 }
 
-button.btnSpecial {
+button.special {
     color: #ffffff;
     background-color: var(--mg-dark);
     padding: 0 0.25rem 0.25rem 0.25rem;
@@ -35,37 +35,37 @@ button.btnSpecial {
     border: 0;
 }
 
-button.btnText:hover {
+button.text:hover {
     color: var(--theme-color-orange);
     outline: 1px var(--mg-gray-3) dashed;
 }
 
-button.btnOutlined:hover,
-button.btnContained:hover {
+button.outlined:hover,
+button.contained:hover {
     box-shadow: 3px 3px 6px 0 var(--mg-gray-5);
 }
 
-button.btnSpecial:hover {
+button.special:hover {
     cursor: pointer;
     filter: invert();
 }
 
-button.btnSpecialSize {
+button.specialSize {
     font-size: 1.5rem;
     line-height: 1;
 }
 
-button.btnSmall {
+button.small {
     font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     padding: 0.25rem 0.5rem;
 }
 
-button.btnMedium {
+button.medium {
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     padding: 0.5rem 1rem;
 }
 
-button.btnLarge {
+button.large {
     font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
     padding: 0.75rem 1.5rem;
 }

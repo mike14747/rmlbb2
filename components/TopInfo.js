@@ -23,7 +23,7 @@ const TopInfo = ({ topInfo }) => {
                         </Link>
                     </div>
 
-                    <Button onClick={() => setShowPanel(false)} size="btnSpecialSize" variant="btnSpecial">&times;</Button>
+                    <Button onClick={() => setShowPanel(false)} size="specialSize" variant="special">&times;</Button>
                 </aside>
             }
         </>
