@@ -5,12 +5,11 @@ button.btn {
 }
 
 button.btn:focus {
-    outline: 1px var(--mg-gray-3) dashed;
+    outline: 1px var(--mg-gray-4) dashed;
     outline-offset: 0.5rem;
 }
 
 button.outlined {
-
 }
 
 button.text {
@@ -24,7 +23,6 @@ button.text {
 button.contained {
     color: #ffffff;
     background-color: var(--theme-color-green);
-    border: 1px var(--mg-gray-5) solid;
 }
 
 button.special {
@@ -33,21 +31,6 @@ button.special {
     padding: 0 0.25rem 0.25rem 0.25rem;
     margin: 0;
     border: 0;
-}
-
-button.text:hover {
-    color: var(--theme-color-orange);
-    outline: 1px var(--mg-gray-3) dashed;
-}
-
-button.outlined:hover,
-button.contained:hover {
-    box-shadow: 3px 3px 6px 0 var(--mg-gray-5);
-}
-
-button.special:hover {
-    cursor: pointer;
-    filter: invert();
 }
 
 button.specialSize {
@@ -68,4 +51,23 @@ button.medium {
 button.large {
     font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
     padding: 0.75rem 1.5rem;
+}
+
+button.text:hover {
+    color: var(--theme-color-orange);
+    outline: 1px var(--mg-gray-3) dashed;
+}
+
+button.small.contained:hover {
+    box-shadow: 0 0 0 1px var(--theme-color-green), 3px 3px 6px 2px var(--mg-gray-5);
+}
+
+button.medium.contained:hover,
+button.large.contained:hover {
+    box-shadow: 0 0 0 1px var(--theme-color-green), 4px 4px 8px 2px var(--mg-gray-5);
+}
+
+button.special:hover {
+    cursor: pointer;
+    filter: invert();
 }
