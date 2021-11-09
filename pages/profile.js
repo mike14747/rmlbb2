@@ -3,8 +3,9 @@ import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
 import SignIn from '../components/SignIn';
+import Button from '../components/Button';
 
-// import styles from '../styles/profile.module.css';
+import styles from '../styles/profile.module.css';
 
 const Profile = () => {
     const { data: session, status } = useSession();
@@ -60,9 +61,17 @@ const Profile = () => {
 
                         {user &&
                             <>
-                                <p>You are signed in. Here is your current profile information.</p>
+                                <h3 className={styles.currentHeading}>Current profile information</h3>
+
                                 <p>Username: {user?.username}</p>
-                                <p>Username: {user?.email}</p>
+
+                                <p>Email: {user?.email}</p>
+
+                                <h3 className={styles.updateHeading}>Update your profile information</h3>
+
+                                <label htmlFor="username" className={styles.label}>Update username:</label>
+                                <input id="username" type="text" name="username" className={styles.input}></input>
+                                <Button size="small" variant="contained">Apply</Button>
                             </>
                         }
                     </>

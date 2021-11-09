@@ -1,0 +1,17 @@
+.currentHeading {
+    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+    color: var(--theme-color-green);
+}
+
+.updateHeading {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    color: var(--theme-color-red);
+}
+
+.label {
+    display: block;
+}
+
+.input {
+
+}
