@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
 import Button from '../components/Button';
-import ForgotUsername from '../components/ForgotUsername';
+import ForgotLoginInfo from '../components/ForgotLoginInfo';
 
 import styles from '../styles/SignIn.module.css';
 
@@ -62,7 +62,7 @@ const SignIn = () => {
                 </div>
             </form>
 
-            <ForgotUsername />
+            <ForgotLoginInfo />
         </>
     );
 };
