@@ -605,6 +605,10 @@ template {
     position: sticky;
 }
 
+.bigger {
+    font-size: larger;
+}
+
 /* use with the <main> element on pages */
 .main-container {
     flex: 1;
