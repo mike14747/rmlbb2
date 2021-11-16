@@ -10,31 +10,34 @@ const Authbar = () => {
     const loading = status === 'loading';
 
     return (
-        <div className={'container ' + styles.authbarContainer}>
-            {loading && <>Loading...</>}
+        <div className={'container-fluid ' + styles.authbarWrapper}>
+            <div className={'container ' + styles.authbarContainer}>
+                {loading && <>Loading...</>}
 
-            {!session && !loading &&
-                <>
-                    <SignInMini />
-                </>
-            }
+                {!session && !loading &&
+                    <>
+                        <SignInMini />
+                    </>
+                }
 
-            {session &&
-                <>
-                    <span className={styles.username}>
-                        <>User: </>
-                        <Link href="/profile">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>
-                                {session.user.name}
-                            </a>
-                        </Link>
-                    </span>
+                {session &&
+                    <>
+                        <span className={styles.username}>
+                            <>User: </>
+                            <Link href="/profile">
+                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                <a>
+                                    {session.user.name}
+                                </a>
+                            </Link>
+                        </span>
 
-                    <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Sign Out</Button>
-                </>
-            }
+                        <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Sign Out</Button>
+                    </>
+                }
+            </div>
         </div>
+
     );
 };
 

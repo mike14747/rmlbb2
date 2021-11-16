@@ -1,10 +1,13 @@
+.infoWrapper {
+    background-color: var(--mg-dark);
+}
+
 .infoContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    background-color: var(--mg-dark);
     font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
     padding: 0.25rem;
     text-align: center;

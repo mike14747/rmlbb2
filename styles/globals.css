@@ -618,7 +618,7 @@ template {
     margin-left: auto;
     margin-right: auto;
     background-color: #ffffff;
-    padding: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
 }
 
 /* use with elements like <header>, <nav> and <footer> */

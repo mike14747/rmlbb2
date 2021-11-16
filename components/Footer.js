@@ -4,7 +4,7 @@ import styles from '../styles/Footer.module.css';
 
 const Footer = ({ contactEmail, links }) => {
     return (
-        <footer className={'container ' + styles.footer}>
+        <footer className={'container-fluid ' + styles.footer}>
             <div className={styles.upper}>
                 <div className={styles.left}>
                     {links?.length > 0 &&
@@ -14,7 +14,7 @@ const Footer = ({ contactEmail, links }) => {
                             </h5>
                             {links.map((link, index) => (
                                 <p key={index}>
-                                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                                    <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.link}>
                                         {link.name}
                                     </a>
                                 </p>
@@ -26,7 +26,7 @@ const Footer = ({ contactEmail, links }) => {
                 <div className={styles.right}>
                     {contactEmail &&
                         <p className={styles.contact}>
-                            <a href={contactEmail}>
+                            <a href={contactEmail}  className={styles.link}>
                                 Contact Us
                             </a>
                         </p>
