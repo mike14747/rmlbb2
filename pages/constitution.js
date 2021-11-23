@@ -20,12 +20,13 @@ const Constitution = ({ content }) => {
                     Constitution
                 </h2>
 
-                {!content && <p className="error">An error occurred fetching data.</p>}
-
-                <BlockContent
-                    blocks={content.content}
-                    serializers={serializers}
-                />
+                {!content?.content
+                    ? <p className="error">An error occurred fetching data.</p>
+                    : <BlockContent
+                        blocks={content.content}
+                        serializers={serializers}
+                    />
+                }
             </article>
         </>
     );
