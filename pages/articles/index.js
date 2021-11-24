@@ -4,14 +4,13 @@ import Link from 'next/link';
 import BlockContent from '@sanity/block-content-to-react';
 import { getArticlesHomeText } from '../../lib/api/miscPortableText';
 import serializers from '../../lib/serializers';
-import { getAllArticlesForIndex } from '../../lib/api/articles';
+import { getActiveArticlesForIndex } from '../../lib/api/articles';
 
 export default function Articles({ content, articlesList }) {
-    console.log(articlesList);
     return (
         <>
             <Head>
-                <title>Articles</title>
+                <title>Articles Home</title>
             </Head>
 
             <article>
@@ -56,7 +55,7 @@ Articles.propTypes = {
 
 export async function getStaticProps() {
     const content = await getArticlesHomeText();
-    const articlesList = await getAllArticlesForIndex();
+    const articlesList = await getActiveArticlesForIndex();
 
     return {
         props: { content, articlesList },
