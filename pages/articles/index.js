@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import Link from 'next/link';
 import BlockContent from '@sanity/block-content-to-react';
 import { getArticlesHomeText } from '../../lib/api/miscPortableText';
 import serializers from '../../lib/serializers';
 import { getActiveArticlesForIndex } from '../../lib/api/articles';
+import ArticleIndex from '../../components/ArticleIndex';
+
+import styles from '../../styles/article.module.css';
 
 export default function Articles({ content, articlesList }) {
     return (
@@ -13,7 +15,7 @@ export default function Articles({ content, articlesList }) {
                 <title>Articles Home</title>
             </Head>
 
-            <article>
+            <article className={styles.articleContainer}>
                 <h2 className="page-heading">Articles Home</h2>
 
                 {!content?.content
@@ -25,25 +27,7 @@ export default function Articles({ content, articlesList }) {
                 }
             </article>
 
-            <section>
-                <h5>Article Index</h5>
-
-                {articlesList?.length > 0
-                    ? <>
-                        {articlesList.map(article => (
-                            <p key={article.slug}>
-                                <Link href={'/articles/' + article.slug}>
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>
-                                        {article.title}
-                                    </a>
-                                </Link>
-                            </p>
-                        ))}
-                    </>
-                    : <p className="error">There are no articles. Check back again soon.</p>
-                }
-            </section>
+            <ArticleIndex links={articlesList} />
         </>
     );
 }
