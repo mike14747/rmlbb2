@@ -1,0 +1,9 @@
+.privacyContainer {
+    max-width: 90ch;
+    margin: 0 auto;
+}
+
+.privacyContainer > h3 {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    margin: 2rem 0 0.75rem 0;
+}
