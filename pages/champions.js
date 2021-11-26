@@ -13,7 +13,7 @@ const Champions = ({ champions }) => {
                 </title>
             </Head>
 
-            <article>
+            <article className={styles.championsContainer}>
                 <h2 className="page-heading">
                     Champions
                 </h2>

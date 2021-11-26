@@ -39,7 +39,7 @@ const Events = ({ events }) => {
                 </title>
             </Head>
 
-            <article>
+            <article className={styles.eventsContainer}>
                 <h2 className="page-heading">
                     Events
                 </h2>
@@ -59,7 +59,7 @@ const Events = ({ events }) => {
                         </p>
 
                         {events?.length > 0 &&
-                            <div className={styles.eventsContainer}>
+                            <div className={styles.eventsDiv}>
                                 {events.map((event, index) => (
                                     <div key={index} className={styles.eventRow}>
                                         <div className={styles.eventDiv}>

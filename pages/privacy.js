@@ -6,7 +6,7 @@ import serializers from '../lib/serializers';
 
 import styles from '../styles/privacy.module.css';
 
-export default function Privacy({ content }){
+export default function Privacy({ content }) {
     return (
         <>
             <Head>

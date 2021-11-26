@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import styles from '../styles/Footer.module.css';
 
@@ -26,11 +27,20 @@ const Footer = ({ contactEmail, links }) => {
                 <div className={styles.right}>
                     {contactEmail &&
                         <p className={styles.contact}>
-                            <a href={contactEmail}  className={styles.link}>
+                            <a href={contactEmail} className={styles.link}>
                                 Contact Us
                             </a>
                         </p>
                     }
+
+                    <p className={styles.privacy}>
+                        <Link href="/privacy">
+                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                            <a className={styles.link}>
+                                Privacy Policy
+                            </a>
+                        </Link>
+                    </p>
                 </div>
             </div>
 

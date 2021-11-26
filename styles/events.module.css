@@ -1,4 +1,9 @@
 .eventsContainer {
+    max-width: 90ch;
+    margin: 0 auto;
+}
+
+.eventsDiv {
     width: 100%;
     max-width: 632px;
     margin: 2rem auto;
