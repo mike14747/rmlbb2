@@ -1,0 +1,22 @@
+.articlePageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.articleContainer {
+    flex: 1;
+    order: 2;
+    padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+    .articlePageContainer {
+        flex-direction: row;
+    }
+
+    .articleContainer {
+        flex: 2;
+        order: 1;
+        padding-right: 1rem;
+    }
+}

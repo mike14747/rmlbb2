@@ -15,19 +15,23 @@ export default function Articles({ content, articlesList }) {
                 <title>Articles Home</title>
             </Head>
 
-            <article className={styles.articleContainer}>
-                <h2 className="page-heading">Articles Home</h2>
+            <div className={styles.articlePageContainer}>
+                <article className={styles.articleContainer}>
+                    <h2 className="page-heading">Articles Home</h2>
 
-                {!content?.content
-                    ? <p className="error">An error occurred fetching data.</p>
-                    : <BlockContent
-                        blocks={content.content}
-                        serializers={serializers}
-                    />
-                }
-            </article>
+                    {!content?.content
+                        ? <p className="error">An error occurred fetching data.</p>
+                        : <BlockContent
+                            blocks={content.content}
+                            serializers={serializers}
+                        />
+                    }
+                </article>
 
-            <ArticleIndex links={articlesList} />
+                <div className={styles.articleIndexContainer}>
+                    <ArticleIndex links={articlesList} />
+                </div>
+            </div>
         </>
     );
 }
