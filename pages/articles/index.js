@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import Link from 'next/link';
 import BlockContent from '@sanity/block-content-to-react';
 import { getArticlesHomeText } from '../../lib/api/miscPortableText';
 import serializers from '../../lib/serializers';
 import { getActiveArticlesForIndex } from '../../lib/api/articles';
 import ArticleIndex from '../../components/ArticleIndex';
+import SidebarCard from '../../components/SidebarCard';
 
 import styles from '../../styles/article.module.css';
 
@@ -28,9 +30,25 @@ export default function Articles({ content, articlesList }) {
                     }
                 </article>
 
-                <div className={styles.articleIndexContainer}>
-                    <ArticleIndex links={articlesList} />
-                </div>
+                {/* <ArticleIndex links={articlesList} /> */}
+
+                <SidebarCard color="orange" heading="Testing the card" subheading="subheading text">
+                    {articlesList?.length > 0
+                        ? <>
+                            {articlesList.map(article => (
+                                <p key={article.slug}>
+                                    <Link href={'/articles/' + article.slug}>
+                                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                        <a>
+                                            {article.title}
+                                        </a>
+                                    </Link>
+                                </p>
+                            ))}
+                        </>
+                        : <p className="error">There are no articles.Check back again soon.</p>
+                    }
+                </SidebarCard>
             </div>
         </>
     );

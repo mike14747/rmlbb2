@@ -1,0 +1,26 @@
+.cardContainer {
+}
+
+.card {
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    padding: 0.50rem;
+    box-shadow: 0 3px 6px 0 var(--mg-gray-4);
+}
+
+.green {
+    border-top: 4px var(--theme-color-green) solid;
+}
+
+.orange {
+    border-top: 4px var(--theme-color-orange) solid;
+}
+
+.blue {
+    border-top: 4px var(--mg-blue) solid;
+}
+
+.brown {
+    border-top: 4px var(--theme-color-dirt) solid;
+}

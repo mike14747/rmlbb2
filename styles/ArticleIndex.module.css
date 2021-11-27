@@ -1,11 +1,8 @@
-.articlePageContainer {
-    display: flex;
-}
-
 .articleIndexContainer {
     flex: 1;
-    margin-right: 0.50rem;
-    margin-bottom: 0;
+    order: 1;
+    max-width: 50%;
+    margin-left: auto;
 }
 
 .articleIndexCard {
@@ -15,55 +12,21 @@
     border-top: 4px var(--theme-color-green) solid;
 }
 
+h4.heading {
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-weight: bolder;
+    margin: 0 0 1rem 0;
+}
+
 .down::after {
     content: '\25BC';
     color: var(--theme-color-green);
 }
 
 @media (min-width: 768px) {
-    .sidebar {
-        flex-direction: column;
-        align-self: flex-start;
+    .articleIndexContainer {
         flex: 1;
-        min-width: 250px;
         order: 2;
-        padding: 1rem 0 1rem 0;
-    }
-
-    .eventsSidebarContainer {
-        margin-right: 0;
-        margin-bottom: 3rem;
-    }
-
-    .boardSidebarContainer {
         margin-left: 0;
-    }
-
-    .cardContainer {
-        max-width: 100%;
-    }
-
-    .card {
-        padding: 1rem;
-        position: initial;
-        max-width: 100%;
-    }
-
-    .cardContainer,
-    .card {
-        position: static;
-    }
-
-    .smallScreen {
-        display: none;
-    }
-
-    .normalScreen {
-        display: block;
-    }
-
-    .card:hover {
-        position: static;
-        z-index: initial;
     }
 }
