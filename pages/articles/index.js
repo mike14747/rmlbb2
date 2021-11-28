@@ -32,7 +32,7 @@ export default function Articles({ content, articlesList }) {
 
                 {/* <ArticleIndex links={articlesList} /> */}
 
-                <SidebarCard color="orange" heading="Testing the card" subheading="subheading text">
+                <SidebarCard color="green" heading="Article Index" subheading="...enjoy the read">
                     {articlesList?.length > 0
                         ? <>
                             {articlesList.map(article => (
