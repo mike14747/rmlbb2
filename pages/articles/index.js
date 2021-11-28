@@ -5,7 +5,6 @@ import BlockContent from '@sanity/block-content-to-react';
 import { getArticlesHomeText } from '../../lib/api/miscPortableText';
 import serializers from '../../lib/serializers';
 import { getActiveArticlesForIndex } from '../../lib/api/articles';
-import ArticleIndex from '../../components/ArticleIndex';
 import SidebarCard from '../../components/SidebarCard';
 
 import styles from '../../styles/article.module.css';
@@ -29,8 +28,6 @@ export default function Articles({ content, articlesList }) {
                         />
                     }
                 </article>
-
-                {/* <ArticleIndex links={articlesList} /> */}
 
                 <SidebarCard color="green" heading="Article Index" subheading="...enjoy the read">
                     {articlesList?.length > 0
