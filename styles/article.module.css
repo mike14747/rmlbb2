@@ -9,6 +9,12 @@
     padding-right: 0;
 }
 
+.articleIndexContainer {
+    flex: 1;
+    order: 1;
+    padding-right: 0;
+}
+
 @media (min-width: 768px) {
     .articlePageContainer {
         flex-direction: row;
@@ -18,5 +24,11 @@
         flex: 2;
         order: 1;
         padding-right: 1rem;
+    }
+
+    .articleIndexContainer {
+        flex: 1;
+        order: 2;
+        /* padding-right: 0; */
     }
 }

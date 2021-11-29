@@ -29,23 +29,25 @@ export default function Articles({ content, articlesList }) {
                     }
                 </article>
 
-                <SidebarCard color="green" heading="Article Index" subheading="...enjoy the read">
-                    {articlesList?.length > 0
-                        ? <>
-                            {articlesList.map(article => (
-                                <p key={article.slug}>
-                                    <Link href={'/articles/' + article.slug}>
-                                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                        <a>
-                                            {article.title}
-                                        </a>
-                                    </Link>
-                                </p>
-                            ))}
-                        </>
-                        : <p className="error">There are no articles.Check back again soon.</p>
-                    }
-                </SidebarCard>
+                <div className={styles.articleIndexContainer}>
+                    <SidebarCard color="green" heading="Article Index" subheading="...enjoy the read">
+                        {articlesList?.length > 0
+                            ? <>
+                                {articlesList.map(article => (
+                                    <p key={article.slug}>
+                                        <Link href={'/articles/' + article.slug}>
+                                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                            <a>
+                                                {article.title}
+                                            </a>
+                                        </Link>
+                                    </p>
+                                ))}
+                            </>
+                            : <p className="error">There are no articles.Check back again soon.</p>
+                        }
+                    </SidebarCard>
+                </div>
             </div>
         </>
     );

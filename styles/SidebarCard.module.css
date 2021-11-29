@@ -87,6 +87,11 @@ h4.heading {
 }
 
 @media (min-width: 768px) {
+    .card {
+        width: auto;
+        max-width: none;
+    }
+
     .subheading,
     .body {
         display: block;
