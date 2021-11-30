@@ -3,6 +3,7 @@
 }
 
 .card {
+    position: relative;
     width: 50%;
     max-width: 250px;
     margin-left: auto;
@@ -12,11 +13,19 @@
 }
 
 .card:hover {
-    position: absolute;
     top: 0;
     right: 0;
-    min-width: 250px;
+    /* min-width: 250px; */
     z-index: 2;
+}
+
+.belowHeading {
+    display: none;
+}
+
+.belowHeading:hover {
+    position: absolute;
+    display: block;
 }
 
 .green {
@@ -104,6 +113,17 @@ h4.heading {
 
     .cardContainer,
     .card {
+        /* position: static; */
+    }
+
+    .down::after {
+        content: '';
+        margin-left: 0;
+    }
+
+    .belowHeading,
+    .belowHeading:hover {
         position: static;
+        display: block;
     }
 }

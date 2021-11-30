@@ -15,10 +15,12 @@ export default function SidebarCard({ heading = null, subheading = null, color, 
                     <div className={styles.down}></div>
                 </div>
 
-                {subheading && <p className={styles.subHeading}>{subheading}</p>}
+                <div className={styles.belowHeading}>
+                    {subheading && <p className={styles.subHeading}>{subheading}</p>}
 
-                <div className={styles.body}>
-                    {children}
+                    <div className={styles.body}>
+                        {children}
+                    </div>
                 </div>
             </div>
         </div>
