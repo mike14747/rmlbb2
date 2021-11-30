@@ -1,31 +1,21 @@
 .cardContainer {
     position: relative;
+    cursor: pointer;
 }
 
 .card {
-    position: relative;
-    width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
     max-width: 250px;
     margin-left: auto;
     padding: 0.5rem;
     box-shadow: 0 3px 6px 0 var(--mg-gray-4);
-    z-index: initial;
-}
-
-.card:hover {
-    top: 0;
-    right: 0;
-    /* min-width: 250px; */
     z-index: 2;
 }
 
 .belowHeading {
     display: none;
-}
-
-.belowHeading:hover {
-    position: absolute;
-    display: block;
 }
 
 .green {
@@ -80,40 +70,24 @@ h4.heading {
 }
 
 .subHeading {
-    display: none;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: clamp(0.9rem, 0.55vw + 0.55rem, 1rem);
+    color: var(--mg-gray-7);
     margin: 0;
 }
 
 .body {
-    display: none;
     margin-top: 1rem;
 }
 
-.card:hover > .subHeading,
-.card:hover > .body {
+.card:hover > .belowHeading {
     display: block;
 }
 
 @media (min-width: 768px) {
     .card {
-        width: auto;
+        width: 100%;
         max-width: none;
-    }
-
-    .subheading,
-    .body {
-        display: block;
-    }
-
-    h4.heading::after {
-        content: '';
         margin-left: 0;
-    }
-
-    .cardContainer,
-    .card {
-        /* position: static; */
     }
 
     .down::after {
@@ -121,9 +95,7 @@ h4.heading {
         margin-left: 0;
     }
 
-    .belowHeading,
-    .belowHeading:hover {
-        position: static;
+    .belowHeading {
         display: block;
     }
 }

@@ -6,6 +6,7 @@
 .articleContainer {
     flex: 1;
     order: 2;
+    margin-top: 50px;
     padding-right: 0;
 }
 
@@ -23,6 +24,7 @@
     .articleContainer {
         flex: 2;
         order: 1;
+        margin-top: 0;
         padding-right: 1rem;
     }
 
