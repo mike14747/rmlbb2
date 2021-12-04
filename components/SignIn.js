@@ -4,8 +4,6 @@ import { signIn } from 'next-auth/react';
 import Button from '../components/Button';
 import ForgotLoginInfo from '../components/ForgotLoginInfo';
 
-import styles from '../styles/SignIn.module.css';
-
 const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -26,15 +24,15 @@ const SignIn = () => {
 
     return (
         <>
-            <p className={styles.warning}>You must be signed in to view this page.</p>
+            <p className="warning">You must be signed in to view this page.</p>
 
             {error &&
-                <p className={styles.error}>
+                <p className="validation-error">
                     {error}
                 </p>
             }
 
-            <form method="post" onSubmit={handleSignIn} className={styles.form}>
+            <form method="post" onSubmit={handleSignIn} className="form">
                 <label>
                     Username
                     <input
@@ -57,7 +55,7 @@ const SignIn = () => {
                     />
                 </label>
 
-                <div className={styles.btnContainer}>
+                <div className="btn-container">
                     <Button type="submit" size="large" variant="contained">Sign In</Button>
                 </div>
             </form>
