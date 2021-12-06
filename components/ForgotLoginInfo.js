@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Button from './Button';
 
+import styles from '../styles/ForgotLoginInfo.module.css';
+
 export default function ForgottenUsername() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -40,76 +42,85 @@ export default function ForgottenUsername() {
     };
 
     return (
-        <>
-            <div>
-                {showForgotUsername
-                    ? <Button onClick={() => setShowForgotUsername(false)} size="medium" variant="text">Hide forgot my username</Button>
-                    : <Button onClick={() => {
-                        setShowForgotUsername(true);
-                        setShowForgotPassword(false);
-                    }} size="medium" variant="text">I forgot my Username</Button>}
-            </div>
-
+        <div className={styles.container}>
             {error && <p className="error">{error}</p>}
 
             {success && <p>An email has been sent to the email address you entered.</p>}
 
+            <div className={styles.upper}>
+                <div className={styles.btnContainer}>
+                    {showForgotUsername
+                        ? <Button onClick={() => setShowForgotUsername(false)} size="medium" variant="text">Hide forgot my username</Button>
+                        : <Button onClick={() => {
+                            setShowForgotUsername(true);
+                            setShowForgotPassword(false);
+                        }} size="medium" variant="text">I forgot my Username</Button>}
+
+                    {/* <span className={styles.divider}>&#11020;</span> */}
+                    {/* <span className={styles.divider}>&#10074;</span> */}
+                    <span aria-hidden="true" className={styles.divider}>&#8612;&#10073;&#8614;</span>
+                </div>
+
+                <div className={styles.btnContainer}>
+                    {showForgotPassword
+                        ? <Button onClick={() => setShowForgotPassword(false)} size="medium" variant="text">Hide forgot my password</Button>
+                        : <Button onClick={() => {
+                            setShowForgotPassword(true);
+                            setShowForgotUsername(false);
+                        }} size="medium" variant="text">I forgot my Password</Button>}
+                </div>
+            </div>
+
             {showForgotUsername &&
-                <>
-                    <p>
+                <div className={styles.lower}>
+                    <p className="text-left">
                         Enter the email address associated with your account(s) and an email will be sent with the username(s) linked to your email address.
                     </p>
 
-                    <form method="post" onSubmit={handleUsernameSubmit}>
-                        <label htmlFor="email">Email address:</label>
-                        <input
-                            id="email"
-                            name="email"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                        />
+                    <form method="post" onSubmit={handleUsernameSubmit} className="form">
+                        <label htmlFor="email">Email address
+                            <input
+                                id="email"
+                                name="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
+                        </label>
 
                         <Button type="submit">Submit</Button>
                     </form>
-                </>
+                </div>
             }
 
-            <div>
-                {showForgotPassword
-                    ? <Button onClick={() => setShowForgotPassword(false)} size="medium" variant="text">Hide forgot my password</Button>
-                    : <Button onClick={() => {
-                        setShowForgotPassword(true);
-                        setShowForgotUsername(false);
-                    }} size="medium" variant="text">I forgot my Password</Button>}
-            </div>
-
             {showForgotPassword &&
-                <>
-                    <p>
+                <div className={styles.lower}>
+                    <p className="text-left">
                         Enter the username and email address associated with your account and an email will be sent to you with a link to reset your password.
                     </p>
 
-                    <form method="post" onSubmit={handlePasswordSubmit}>
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            id="username"
-                            name="username"
-                            onChange={(e) => setUsername(e.target.value)}
-                            value={username}
-                        />
+                    <form method="post" onSubmit={handlePasswordSubmit} className="form">
+                        <label htmlFor="username">Username
+                            <input
+                                id="username"
+                                name="username"
+                                onChange={(e) => setUsername(e.target.value)}
+                                value={username}
+                            />
+                        </label>
 
-                        <label htmlFor="email">Email address:</label>
-                        <input
-                            id="email"
-                            name="email"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                        />
+                        <label htmlFor="email">Email address
+                            <input
+                                id="email"
+                                name="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
+                        </label>
 
                         <Button type="submit">Submit</Button>
                     </form>
-                </>
+                </div>
             }
-        </>
+        </div>
     );
 }
