@@ -13,7 +13,7 @@ export default function Button({ children, size, variant, onClick, type }) {
 
     return (
         <button
-            onClick={onClick }
+            onClick={onClick}
             type={btnType}
             className={`${styles.btn} ${styles[`${btnSize}`]} ${styles[`${btnVariant}`]}`}
         >
