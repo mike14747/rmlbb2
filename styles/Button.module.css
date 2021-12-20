@@ -1,6 +1,9 @@
 button.btn {
+    --bg-img-light: linear-gradient(rgba(255, 255, 255, 0.1) 100%, transparent 100%);
+    --bg-img-dark: linear-gradient(rgba(0, 0, 0, 0.2) 100%, transparent 100%);
     cursor: pointer;
     border: 0;
+    border-radius: 0.1rem;
     transition: 0.3s;
 }
 
@@ -29,11 +32,11 @@ button.contained.primary {
 }
 
 button.contained.secondary {
-    color: var(--theme-color-green);
-    background-color: var(--theme-color-dirt-faded);
+    color: #ffffff;
+    background-color: var(--theme-color-orange);
 }
 
-button.contained.tertiary {
+button.contained.danger {
     color: #ffffff;
     background-color: var(--theme-color-red);
 }
@@ -73,30 +76,27 @@ button.text:hover {
 
 button.small.contained.primary:hover {
     box-shadow: 0 0 0 1px var(--theme-color-green), 3px 3px 6px 2px var(--mg-gray-5);
+    background-image: var(--bg-img-dark);
 }
 
 button.small.contained.secondary:hover {
     box-shadow: 0 0 0 1px var(--theme-color-dirt-faded), 3px 3px 6px 2px var(--mg-gray-5);
 }
 
-button.small.contained.tertiary:hover {
+button.small.contained.danger:hover {
     box-shadow: 0 0 0 1px var(--theme-color-red), 3px 3px 6px 2px var(--mg-gray-5);
 }
 
 button.medium.contained.primary:hover,
-button.large.contained.primary:hover {
-    box-shadow: 0 0 0 1px var(--theme-color-green), 4px 4px 8px 2px var(--mg-gray-5);
-}
-
+button.large.contained.primary:hover,
 button.medium.contained.secondary:hover,
-button.large.contained.secondary:hover {
-    box-shadow: 0 0 0 1px var(--theme-color-dirt-faded), 4px 4px 8px 2px var(--mg-gray-5);
+button.large.contained.secondary:hover,
+button.medium.contained.danger:hover,
+button.large.contained.danger:hover {
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px var(--mg-dark), 4px 4px 8px 2px var(--mg-gray-5);
+    background-image: var(--bg-img-dark);
 }
 
-button.medium.contained.tertiary:hover,
-button.large.contained.tertiary:hover {
-    box-shadow: 0 0 0 1px var(--theme-color-red), 4px 4px 8px 2px var(--mg-gray-5);
-}
 
 button.special:hover {
     cursor: pointer;

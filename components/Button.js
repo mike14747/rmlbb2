@@ -5,7 +5,7 @@ import styles from '../styles/Button.module.css';
 const sizes = ['small', 'medium', 'large', 'specialSize'];
 const variants = ['outlined', 'text', 'contained', 'special'];
 const types = ['button', 'submit', 'reset'];
-const themes = ['primary', 'secondary', 'tertiary'];
+const themes = ['primary', 'secondary', 'danger'];
 
 export default function Button({ children, size, variant, type, theme, onClick }) {
     const btnSize = sizes.includes(size) ? size : 'medium';
