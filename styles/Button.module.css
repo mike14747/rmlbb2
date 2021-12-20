@@ -23,9 +23,19 @@ button.text {
     margin: 0;
 }
 
-button.contained {
+button.contained.primary {
     color: #ffffff;
     background-color: var(--theme-color-green);
+}
+
+button.contained.secondary {
+    color: var(--theme-color-green);
+    background-color: var(--theme-color-dirt-faded);
+}
+
+button.contained.tertiary {
+    color: #ffffff;
+    background-color: var(--theme-color-red);
 }
 
 button.special {
@@ -61,13 +71,31 @@ button.text:hover {
     outline: 1px var(--mg-gray-3) dashed;
 }
 
-button.small.contained:hover {
+button.small.contained.primary:hover {
     box-shadow: 0 0 0 1px var(--theme-color-green), 3px 3px 6px 2px var(--mg-gray-5);
 }
 
-button.medium.contained:hover,
-button.large.contained:hover {
+button.small.contained.secondary:hover {
+    box-shadow: 0 0 0 1px var(--theme-color-dirt-faded), 3px 3px 6px 2px var(--mg-gray-5);
+}
+
+button.small.contained.tertiary:hover {
+    box-shadow: 0 0 0 1px var(--theme-color-red), 3px 3px 6px 2px var(--mg-gray-5);
+}
+
+button.medium.contained.primary:hover,
+button.large.contained.primary:hover {
     box-shadow: 0 0 0 1px var(--theme-color-green), 4px 4px 8px 2px var(--mg-gray-5);
+}
+
+button.medium.contained.secondary:hover,
+button.large.contained.secondary:hover {
+    box-shadow: 0 0 0 1px var(--theme-color-dirt-faded), 4px 4px 8px 2px var(--mg-gray-5);
+}
+
+button.medium.contained.tertiary:hover,
+button.large.contained.tertiary:hover {
+    box-shadow: 0 0 0 1px var(--theme-color-red), 4px 4px 8px 2px var(--mg-gray-5);
 }
 
 button.special:hover {

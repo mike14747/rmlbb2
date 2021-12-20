@@ -5,17 +5,19 @@ import styles from '../styles/Button.module.css';
 const sizes = ['small', 'medium', 'large', 'specialSize'];
 const variants = ['outlined', 'text', 'contained', 'special'];
 const types = ['button', 'submit', 'reset'];
+const themes = ['primary', 'secondary', 'tertiary'];
 
-export default function Button({ children, size, variant, onClick, type }) {
+export default function Button({ children, size, variant, type, theme, onClick }) {
     const btnSize = sizes.includes(size) ? size : 'medium';
     const btnVariant = variants.includes(variant) ? variant : 'contained';
     const btnType = types.includes(type) ? type : 'button';
+    const btnTheme = themes.includes(theme) ? theme : 'primary';
 
     return (
         <button
             onClick={onClick}
             type={btnType}
-            className={`${styles.btn} ${styles[`${btnSize}`]} ${styles[`${btnVariant}`]}`}
+            className={`${styles.btn} ${styles[`${btnSize}`]} ${styles[`${btnVariant}`]} ${styles[`${btnTheme}`]}`}
         >
             {children}
         </button>
@@ -23,9 +25,16 @@ export default function Button({ children, size, variant, onClick, type }) {
 }
 
 Button.propTypes = {
-    children: PropTypes.string,
     size: PropTypes.string,
     variant: PropTypes.string,
-    onClick: PropTypes.func,
     type: PropTypes.string,
+    theme: PropTypes.string,
+    onClick: PropTypes.func,
+};
+
+Button.defaultProps = {
+    size: 'medium',
+    variant: 'contained',
+    type: 'button',
+    theme: 'primary',
 };
