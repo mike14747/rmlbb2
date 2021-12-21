@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FormInput from './FormInput';
 import Button from './Button';
 
 import styles from '../styles/ForgotLoginInfo.module.css';
@@ -50,20 +51,19 @@ export default function ForgottenUsername() {
             <div className={styles.upper}>
                 <div className={styles.btnContainer}>
                     {showForgotUsername
-                        ? <Button onClick={() => setShowForgotUsername(false)} size="medium" variant="text">Hide forgot my username</Button>
+                        ? <Button onClick={() => setShowForgotUsername(false)} size="medium" variant="text">Hide forgot my Username</Button>
                         : <Button onClick={() => {
                             setShowForgotUsername(true);
                             setShowForgotPassword(false);
                         }} size="medium" variant="text">I forgot my Username</Button>}
 
-                    {/* <span className={styles.divider}>&#11020;</span> */}
-                    {/* <span className={styles.divider}>&#10074;</span> */}
-                    <span aria-hidden="true" className={styles.divider}>&#8612;&#10073;&#8614;</span>
+                    {/* <span aria-hidden="true" className={styles.divider}>&#8612;&#10073;&#8614;</span> */}
+                    <span aria-hidden="true" className={styles.divider}>¯ \ _ (ツ) _ / ¯</span>
                 </div>
 
                 <div className={styles.btnContainer}>
                     {showForgotPassword
-                        ? <Button onClick={() => setShowForgotPassword(false)} size="medium" variant="text">Hide forgot my password</Button>
+                        ? <Button onClick={() => setShowForgotPassword(false)} size="medium" variant="text">Hide forgot my Password</Button>
                         : <Button onClick={() => {
                             setShowForgotPassword(true);
                             setShowForgotUsername(false);
@@ -73,19 +73,23 @@ export default function ForgottenUsername() {
 
             {showForgotUsername &&
                 <div className={styles.lower}>
+                    <h3>Forgot my Username</h3>
                     <p className="text-left">
                         Enter the email address associated with your account(s) and an email will be sent with the username(s) linked to your email address.
                     </p>
 
                     <form method="post" onSubmit={handleUsernameSubmit} className="form">
-                        <label htmlFor="email">Email address
-                            <input
-                                id="email"
-                                name="email"
-                                onChange={(e) => setEmail(e.target.value)}
-                                value={email}
-                            />
-                        </label>
+                        <FormInput
+                            id="email"
+                            label="Email address"
+                            name="email"
+                            type="email"
+                            required={true}
+                            pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
+                            value={email}
+                            handleChange={(e) => setEmail(e.target.value)}
+                            errorMsg="Please enter a valid email address."
+                        />
 
                         <Button type="submit">Submit</Button>
                     </form>
@@ -94,28 +98,36 @@ export default function ForgottenUsername() {
 
             {showForgotPassword &&
                 <div className={styles.lower}>
+                    <h3>Forgot my Password</h3>
                     <p className="text-left">
                         Enter the username and email address associated with your account and an email will be sent to you with a link to reset your password.
                     </p>
 
                     <form method="post" onSubmit={handlePasswordSubmit} className="form">
-                        <label htmlFor="username">Username
-                            <input
-                                id="username"
-                                name="username"
-                                onChange={(e) => setUsername(e.target.value)}
-                                value={username}
-                            />
-                        </label>
+                        <FormInput
+                            id="username"
+                            label="Username"
+                            name="username"
+                            type="text"
+                            required={true}
+                            pattern="^[a-zA-Z0-9_-]{6,15}$"
+                            value={username}
+                            handleChange={(e) => setUsername(e.target.value)}
+                            errorMsg="Username is required and must be from 6 to 15 characters in length."
+                            step="any"
+                        />
 
-                        <label htmlFor="email">Email address
-                            <input
-                                id="email"
-                                name="email"
-                                onChange={(e) => setEmail(e.target.value)}
-                                value={email}
-                            />
-                        </label>
+                        <FormInput
+                            id="email"
+                            label="Email address"
+                            name="email"
+                            type="email"
+                            required={true}
+                            pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
+                            value={email}
+                            handleChange={(e) => setEmail(e.target.value)}
+                            errorMsg="Please enter a valid email address."
+                        />
 
                         <Button type="submit">Submit</Button>
                     </form>

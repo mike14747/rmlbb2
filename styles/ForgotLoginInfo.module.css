@@ -1,5 +1,5 @@
 .container {
-    max-width: 60ch;
+    max-width: 75ch;
     margin: 3rem auto 0 auto;
 }
 
@@ -11,6 +11,11 @@
 .lower {
     padding-top: 1rem;
     border-top: 1px var(--mg-gray-4) solid;
+}
+
+.lower > h3 {
+    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    color: var(--theme-color-orange);
 }
 
 .btnContainer {
