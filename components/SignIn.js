@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
+import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import ForgotLoginInfo from '../components/ForgotLoginInfo';
 
@@ -33,30 +34,32 @@ const SignIn = () => {
             }
 
             <form method="post" onSubmit={handleSignIn} className="form">
-                <label>
-                    Username
-                    <input
-                        required
-                        name="username"
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label>
+                <FormInput
+                    id="username"
+                    label="Username"
+                    name="username"
+                    type="text"
+                    value={username}
+                    required={true}
+                    pattern="^[a-zA-Z0-9_-]{6,15}$"
+                    onChange={(e) => setUsername(e.target.value)}
+                    errorMsg="Username is required and must be from 6 to 15 characters in length."
+                />
 
-                <label>
-                    Password
-                    <input
-                        required
-                        name="password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
+                <FormInput
+                    id="password"
+                    label="Password"
+                    name="password"
+                    type="password"
+                    value={password}
+                    required={true}
+                    pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{8,20}$"
+                    onChange={(e) => setPassword(e.target.value)}
+                    errorMsg="Password is required and must be from 8 to 20 characters in length."
+                />
 
                 <div className="btn-container">
-                    <Button type="submit" size="large" variant="contained">Sign In</Button>
+                    <Button type="submit" size="medium" variant="contained">Sign In</Button>
                 </div>
             </form>
 

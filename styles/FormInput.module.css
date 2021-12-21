@@ -1,0 +1,70 @@
+/* the css color variables could/should be in your global css */
+
+/* form {
+    --mg-gray-4: #a9a9a9;
+    --mg-gray-6: #585858;
+    --mg-red-dark: #b22222;
+} */
+
+/* the below form.form class will be in the css of the page/component that imports this input component */
+
+/* form.form {
+    max-width: 60ch;
+    margin: 5rem auto 0 auto;
+    padding: 2rem;
+    border: 2px var(--mg-gray-4) solid;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 4px 0 var(--mg-gray-4);
+} */
+
+/* start necessary css for this component */
+
+.inputWrapper {
+    margin: 1rem 0;
+}
+
+label.label,
+label.label + input.input {
+    display: block;
+}
+
+label.label {
+    max-width: 30ch;
+    margin: 0;
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+}
+
+input.input {
+    max-width: 30ch;
+    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px var(--mg-gray-6) solid;
+}
+
+input.input:focus {
+    border: 1px var(--theme-color-orange) solid;
+    outline: 0;
+    box-shadow: 0 0 4px 4px var(--theme-color-dirt);
+}
+
+.errorMessage {
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    color: var(--mg-red-dark);
+    display: none;
+    margin: 0;
+}
+
+input.input:not(:placeholder-shown):not(:focus):invalid + .errorMessage {
+    display: block;
+}
+
+input.submit {
+    margin: 2rem 0 1rem 0;
+}
+
+label > .required {
+    font-size: 80%;
+    color: var(--mg-red-dark);
+    margin-left: 1rem;
+}
