@@ -1,6 +1,6 @@
 button.btn {
-    --bg-img-light: linear-gradient(rgba(255, 255, 255, 0.1) 100%, transparent 100%);
-    --bg-img-dark: linear-gradient(rgba(0, 0, 0, 0.2) 100%, transparent 100%);
+    --bg-img-lighten: linear-gradient(rgba(255, 255, 255, 0.1) 100%, transparent 100%);
+    --bg-img-darken: linear-gradient(rgba(0, 0, 0, 0.1) 100%, transparent 100%);
     cursor: pointer;
     border: 0;
     border-radius: 0.1rem;
@@ -13,17 +13,6 @@ button.btn:focus {
 
 button.btn:not(.text):focus {
     outline-offset: 0.5rem;
-}
-
-button.outlined {
-}
-
-button.text {
-    color: var(--mg-blue);
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    margin: 0;
 }
 
 button.contained.primary {
@@ -41,17 +30,38 @@ button.contained.danger {
     background-color: var(--theme-color-red);
 }
 
+button.outlined.primary {
+    color: var(--theme-color-green);
+    background-color: #ffffff;
+    border: 1px var(--theme-color-green) solid;
+}
+
+button.outlined.secondary {
+    color: var(--theme-color-orange);
+    background-color: #ffffff;
+    border: 1px var(--theme-color-orange) solid;
+}
+
+button.outlined.danger {
+    color: var(--theme-color-red);
+    background-color: #ffffff;
+    border: 1px var(--theme-color-red) solid;
+}
+
+button.text {
+    color: var(--mg-blue);
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
 button.special {
     color: #ffffff;
     background-color: var(--mg-dark);
     padding: 0 0.25rem 0.25rem 0.25rem;
     margin: 0;
     border: 0;
-}
-
-button.specialSize {
-    font-size: 1.5rem;
-    line-height: 1;
 }
 
 button.small {
@@ -69,34 +79,35 @@ button.large {
     padding: 0.75rem 1.5rem;
 }
 
+button.specialSize {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+button.small.contained:hover {
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px var(--mg-dark), 3px 3px 6px 2px var(--mg-gray-5);
+    background-image: var(--bg-img-darken);
+}
+
+button:not(.small).contained:hover {
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px var(--mg-dark), 4px 4px 8px 2px var(--mg-gray-5);
+    background-image: var(--bg-img-darken);
+}
+
+button.small.outlined:hover {
+    box-shadow: 1px 1px 3px 1px var(--mg-gray-3);
+    background-image: var(--bg-img-darken);
+}
+
+button:not(.small).outlined:hover {
+    box-shadow: 2px 2px 4px 2px var(--mg-gray-3);
+    background-image: var(--bg-img-darken);
+}
+
 button.text:hover {
     color: var(--theme-color-orange);
     outline: 1px var(--mg-gray-3) dashed;
 }
-
-button.small.contained.primary:hover {
-    box-shadow: 0 0 0 1px var(--theme-color-green), 3px 3px 6px 2px var(--mg-gray-5);
-    background-image: var(--bg-img-dark);
-}
-
-button.small.contained.secondary:hover {
-    box-shadow: 0 0 0 1px var(--theme-color-dirt-faded), 3px 3px 6px 2px var(--mg-gray-5);
-}
-
-button.small.contained.danger:hover {
-    box-shadow: 0 0 0 1px var(--theme-color-red), 3px 3px 6px 2px var(--mg-gray-5);
-}
-
-button.medium.contained.primary:hover,
-button.large.contained.primary:hover,
-button.medium.contained.secondary:hover,
-button.large.contained.secondary:hover,
-button.medium.contained.danger:hover,
-button.large.contained.danger:hover {
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px var(--mg-dark), 4px 4px 8px 2px var(--mg-gray-5);
-    background-image: var(--bg-img-dark);
-}
-
 
 button.special:hover {
     cursor: pointer;
