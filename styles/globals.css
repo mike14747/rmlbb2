@@ -69,6 +69,7 @@ body {
     background-image: url('/images/seamless_bg_sand.jpg');
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    scroll-behavior: smooth;
 }
 
 /* HTML5 display-role reset for older browsers */
