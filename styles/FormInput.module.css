@@ -42,10 +42,6 @@ input.input:not(.small) {
     border: 1px var(--mg-gray-6) solid;
 }
 
-
-
-
-
 label.label.small {
     max-width: 20ch;
     margin: 0;
@@ -59,10 +55,6 @@ input.input.small {
     padding: 0.5rem;
     border: 1px var(--mg-gray-6) solid;
 }
-
-
-
-
 
 input.input:focus {
     border: 1px var(--theme-color-orange) solid;

@@ -66,28 +66,6 @@
     margin: 0 auto;
 }
 
-/* .form > label,
-.form > label > input {
-    display: block;
-}
-
-.form > label {
-    margin: 0 0 1rem 0;
-    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
-}
-
-.form > label > input {
-    max-width: 20ch;
-    padding: 0.50rem;
-    border: 1px var(--mg-gray-6) solid;
-}
-
-.form > label > input:focus {
-    border: 1px var(--theme-color-orange) solid;
-    outline: 0;
-    box-shadow: 0 0 4px 4px var(--theme-color-dirt);
-} */
-
 .submitBtnContainer {
     margin: 2rem 0 0 0;
 }

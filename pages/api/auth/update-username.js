@@ -3,7 +3,7 @@ import { updateUserProfile } from '../../../lib/api/user';
 export default async function forgotUsername(req, res) {
     if (req.method === 'POST') {
         try {
-            if (!req.body.username && !req.body.password && !req.body.email) return res.status(400).end();
+            if (!req.body.newUsername && !req.body.newPassword && !req.body.newEmail) return res.status(400).end();
             const response = await updateUserProfile(req.body);
             response ? res.status(200).end() : res.status(500).end();
         } catch (error) {

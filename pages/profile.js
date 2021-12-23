@@ -22,8 +22,6 @@ const Profile = () => {
     const handleUpdateUsernameSubmit = async (e) => {
         e.preventDefault();
 
-        console.log('submitted new username of:', newUsername);
-
         const res = await fetch('/api/auth/update-username', {
             method: 'POST',
             headers: {
@@ -105,7 +103,7 @@ const Profile = () => {
                                         errorMsg="New Username must be from 6 to 15 characters in length and not include any special characters."
                                     />
 
-                                    <Button size="small" variant="contained">Apply</Button>
+                                    <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
                                 </form>
                             </>
                         }
