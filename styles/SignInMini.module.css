@@ -22,7 +22,7 @@
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
     box-shadow: 2px 2px 2px 0 var(--mg-gray-3);
-    padding: 1.5rem 2rem 1rem 2rem;
+    padding: 1rem 2rem;
     pointer-events: none;
     opacity: 0;
     transform: translateY(-2rem);
@@ -66,7 +66,7 @@
     margin: 0 auto;
 }
 
-.form > label,
+/* .form > label,
 .form > label > input {
     display: block;
 }
@@ -86,7 +86,7 @@
     border: 1px var(--theme-color-orange) solid;
     outline: 0;
     box-shadow: 0 0 4px 4px var(--theme-color-dirt);
-}
+} */
 
 .submitBtnContainer {
     margin: 2rem 0 0 0;

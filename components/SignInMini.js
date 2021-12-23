@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { signIn } from 'next-auth/react';
+import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 
 import styles from '../styles/SignInMini.module.css';
@@ -31,31 +32,29 @@ const SignInMini = () => {
                 {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
                 <div tabIndex="0" className={styles.dropdownContent}>
                     <form method="post" onSubmit={handleSignIn} className={styles.form}>
-                        <label>
-                            {/* Username: */}
-                            <input
-                                required
-                                name="username"
-                                type="text"
-                                value={username}
-                                placeholder="Username"
-                                aria-label="username"
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </label>
+                        <FormInput
+                            name="username"
+                            placeholder="Username"
+                            type="text"
+                            value={username}
+                            required={true}
+                            pattern="^[a-zA-Z0-9_-]{6,15}$"
+                            handleChange={(e) => setUsername(e.target.value)}
+                            errorMsg="Username is required and must be from 6 to 15 characters in length."
+                            size="small"
+                        />
 
-                        <label>
-                            {/* Password: */}
-                            <input
-                                required
-                                name="password"
-                                type="password"
-                                value={password}
-                                placeholder="Password"
-                                aria-label="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </label>
+                        <FormInput
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            value={password}
+                            required={true}
+                            pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{8,20}$"
+                            handleChange={(e) => setPassword(e.target.value)}
+                            errorMsg="Password is required and must be from 8 to 20 characters in length."
+                            size="small"
+                        />
 
                         <div className={styles.submitBtnContainer}>
                             <Button type="submit" size="medium" variant="contained">Sign In</Button>

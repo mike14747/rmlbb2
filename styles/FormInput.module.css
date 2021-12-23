@@ -28,19 +28,41 @@ label.label + input.input {
     display: block;
 }
 
-label.label {
+label.label:not(.small) {
     max-width: 30ch;
     margin: 0;
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
 }
 
-input.input {
+input.input:not(.small) {
     max-width: 30ch;
     font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     margin: 0;
     padding: 0.5rem;
     border: 1px var(--mg-gray-6) solid;
 }
+
+
+
+
+
+label.label.small {
+    max-width: 20ch;
+    margin: 0;
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+}
+
+input.input.small {
+    max-width: 20ch;
+    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    margin: 0;
+    padding: 0.5rem;
+    border: 1px var(--mg-gray-6) solid;
+}
+
+
+
+
 
 input.input:focus {
     border: 1px var(--theme-color-orange) solid;
