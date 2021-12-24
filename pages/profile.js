@@ -30,8 +30,14 @@ const Profile = () => {
             body: JSON.stringify({ newUsername }),
         });
 
-        if (res.status !== 200) setError('An error occurred. Please submit your new username again.');
-        if (res.status === 200) setSuccess(true);
+        if (res.status !== 200) {
+            setSuccess(false);
+            setError('An error occurred. Please submit your new username again.');
+        }
+        if (res.status === 200) {
+            setError(null);
+            setSuccess(true);
+        }
     };
 
     useEffect(() => {
