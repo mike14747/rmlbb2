@@ -25,11 +25,12 @@ export default function Button({ children, size, variant, type, theme, onClick }
 }
 
 Button.propTypes = {
+    children: PropTypes.string.isRequired,
     size: PropTypes.string,
     variant: PropTypes.string,
     type: PropTypes.string,
     theme: PropTypes.string,
-    onClick: PropTypes.func,
+    onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
