@@ -16,7 +16,8 @@
 }
 
 .typeContainer > h3 {
-    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+    font-size: 1.44rem;
+    font-size: var(--step-2);
     margin: 0 0 1.5rem 0;
     text-align: center;
 }
@@ -38,19 +39,20 @@
 
 .downloadInfo > h4 {
     color: var(--theme-color-green);
-    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    font-size: 1.2rem;
+    font-size: var(--step-1);
     margin: 0;
 }
 
 .downloadDesc {
     color: var(--mg-gray-6);
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
     margin: 0;
 }
 
 .filenameText {
     color: var(--mg-gray-6);
-    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    font-size: 83.3%;
+    font-size: var(--step--1);
     margin: 1rem 0 0 0;
 }
 

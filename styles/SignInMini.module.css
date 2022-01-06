@@ -71,7 +71,8 @@
 }
 
 .error {
-    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    font-size: .833rem;
+    font-size: var(--step--1);
     color: var(--theme-color-red);
     text-align: center;
     margin: 1.5rem 0 0 0;

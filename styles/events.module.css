@@ -35,10 +35,11 @@
 
 .eventRight {
     flex: 0 0 auto;
-    font-size: clamp(1.6rem, 1.2vw + 1rem, 2.4rem);
 }
 
 .eventRight > p {
+    font-size: 1.728rem;
+    font-size: var(--step-3);
     line-height: 1;
     margin: 0;
     padding-bottom: 0.50rem;
@@ -47,17 +48,20 @@
 h5.eventDate {
     color: var(--theme-color-red);
     margin: 0 0 0.5rem 0;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
 }
 
 p.eventName {
     margin: 0;
-    font-size: clamp(0.9rem, 0.55vw + 0.55rem, 1.1rem);
 }
 
-span.eventDetails {
-    font-size: clamp(0.8rem, 0.55vw + 0.5rem, 1rem);
+span.eventDetails,
+p.eventDetails {
+    font-size: .833rem;
+    font-size: var(--step--1);
     color: var(--mg-gray-6);
+    margin: 0;
 }
 
 .urgent {
@@ -91,7 +95,8 @@ span.eventDetails {
 }
 
 .pastHeadingRow {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    font-size: var(--step-1);
     font-weight: bolder;
     background-color: var(--mg-gray-1);
 }
@@ -126,7 +131,8 @@ span.eventDetails {
 
 .notice {
     text-align: center;
-    font-size: clamp(0.8rem, 0.55vw + 0.5rem, 1rem);
+    font-size: .833rem;
+    font-size: var(--step--1);
     color: var(--mg-gray-6);
     margin-top: 0.5rem;
     margin-bottom: 0;

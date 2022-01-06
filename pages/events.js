@@ -64,7 +64,8 @@ const Events = ({ events }) => {
                                     <div key={index} className={styles.eventRow}>
                                         <div className={styles.eventDiv}>
                                             <h5 className={styles.eventDate}>{event.eventDate}</h5>
-                                            <p className={styles.eventName}>{event.event}{event.details && <span className={styles.eventDetails}> ({event.details})</span>}</p>
+                                            <p className={styles.eventName}>{event.event}</p>
+                                            {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
                                         </div>
                                         <div className={styles.eventRight}>
                                             {event.daysUntil >= 7 && <p aria-label="Urgency level" title="Due in 7 or more days" className={styles.normal}>&#9679;</p>}
@@ -110,7 +111,7 @@ const Events = ({ events }) => {
                                     {event.eventDate}
                                 </div>
                                 <div className={styles.td + ' ' + styles.td2}>
-                                    {event.event}{event.details && <> ({event.details})</>}
+                                    {event.event}{event.details && <><br /><span className={styles.eventDetails}> ({event.details})</span></>}
                                 </div>
                             </div>
                         ))}

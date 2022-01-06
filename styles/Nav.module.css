@@ -10,7 +10,8 @@
     color: var(--mg-dark);
     content: '\2630';
     font-weight: normal;
-    font-size: 2.5rem;
+    font-size: 2.488rem;
+    font-size: var(--step-5);
     padding: 0 0 0 2.5rem; /* the large padding-left value is assuming the nav 'sandwich' is on the right and it allows for more hover space to the left of it  */
     cursor: pointer;
 }
@@ -33,7 +34,8 @@ ul.navdropdownContent {
 }
 
 ul.navdropdownContent > li > a {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
     margin: 0;
     padding: 1rem 0.5rem;
     text-decoration: none;

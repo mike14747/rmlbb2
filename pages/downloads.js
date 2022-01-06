@@ -6,9 +6,6 @@ import DownloadType from '../components/DownloadType';
 import styles from '../styles/downloads.module.css';
 
 const Downloads = ({ downloads }) => {
-    // console.log('downloads:', downloads);
-    // console.log('download files:', downloads.files);
-    // console.log('download lzps:', downloads.lzps);
     return (
         <>
             <Head>

@@ -30,7 +30,8 @@ const EventsSidebar = ({ events }) => {
                             events.map((event, index) => (
                                 <div key={index} className={styles.eventDiv}>
                                     <h5 className={styles.eventDate}>{event.eventDate}</h5>
-                                    <p className={styles.eventName}>{event.event}{event.details && <span className={styles.eventDetails}> ({event.details})</span>}</p>
+                                    <p className={styles.eventName}>{event.event}</p>
+                                    {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
                                 </div>
                             ))
                         }

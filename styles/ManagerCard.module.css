@@ -26,13 +26,15 @@
 }
 
 .heading > h5 {
-    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+    font-size: 1.2rem;
+    font-size: var(--step-1);
     text-align: center;
     margin-bottom: 0;
 }
 
 .body p {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1.2rem;
+    font-size: var(--step-1);
     margin: 0;
 }
 
@@ -43,7 +45,8 @@
 }
 
 .footing > p {
-    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    font-size: .833rem;
+    font-size: var(--step--1);
     color: var(--mg-gray-6);
     text-align: center;
     margin: 0;
@@ -59,7 +62,7 @@
 
 .abbrev {
     margin-left: 0.50rem;
-    font-size: 80%;
+    font-size: 83.3%;
     color: var(--mg-gray-6);
 }
 

@@ -6,7 +6,8 @@
 .constitutionContainer > ol,
 .constitutionContainer > ul,
 .constitutionContainer > p {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
     margin: 0 auto 1.5rem auto;
 }
 
@@ -16,7 +17,8 @@
 }
 
 .constitutionContainer > h3 {
-    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    font-size: 1.2rem;
+    font-size: var(--step-1);
     letter-spacing: 1px;
     margin: 2rem auto 1rem auto;
     padding: 2rem 0 0 0;
@@ -34,12 +36,14 @@
 }
 
 .constitutionContainer > h4 {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
     margin: 0 auto 0.5rem auto;
 }
 
 .constitutionContainer > p > em:first-of-type {
-    font-size: 90%;
+    font-size: .833rem;
+    font-size: var(--step--1);
     font-weight: bolder;
     font-style: normal;
     margin-right: 0.5rem;
