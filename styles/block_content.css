@@ -25,11 +25,13 @@
 }
 
 .blockContentTable th {
-    font-size: 80%;
+    font-size: .833rem;
+    font-size: var(--step--1);
 }
 
 .blockContentTable td {
-    font-size: 90%;
+    font-size: .833rem;
+    font-size: var(--step--1);
 }
 
 .blockContentTable tbody tr:hover {

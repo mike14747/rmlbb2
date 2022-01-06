@@ -33,6 +33,19 @@
     --mg-red-dark: #b22222; /* html firebrick */
     --mg-yellow: #fff44f; /* html lemon */
     --mg-yellow-pale: #ffffd5;
+
+    /* start font sizes */
+
+    --step--2: clamp(0.69rem, 0.65rem + 0.15vw, 0.83rem);
+    --step--1: clamp(0.83rem, 0.78rem + 0.19vw, 1rem);
+    --step-0: clamp(1rem, 0.93rem + 0.22vw, 1.2rem);
+    --step-1: clamp(1.2rem, 1.12rem + 0.27vw, 1.44rem);
+    --step-2: clamp(1.44rem, 1.34rem + 0.32vw, 1.73rem);
+    --step-3: clamp(1.73rem, 1.61rem + 0.38vw, 2.07rem);
+    --step-4: clamp(2.07rem, 1.94rem + 0.46vw, 2.49rem);
+    --step-5: clamp(2.49rem, 2.32rem + 0.55vw, 2.99rem);
+
+    /* end font sizes */
 }
 
 *,
@@ -120,36 +133,38 @@ h6 {
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-size: clamp(2rem, 1.5vw + 1.25rem, 3rem);
+    font-size: 2.488rem;
+    font-size: var(--step-5);
 }
 
 h2 {
-    font-size: 2rem;
-    font-size: clamp(1.6rem, 1.2vw + 1rem, 2.4rem);
+    font-size: 2.074rem;
+    font-size: var(--step-4);
 }
 
 h3 {
-    font-size: 1.75rem;
-    font-size: clamp(1.4rem, 1vw + 0.9rem, 2.1rem);
+    font-size: 1.728rem;
+    font-size: var(--step-3);
 }
 
 h4 {
-    font-size: 1.5rem;
-    font-size: clamp(1.2rem, 0.85vw + 0.8rem, 1.8rem);
+    font-size: 1.44rem;
+    font-size: var(--step-2);
 }
 
 h5 {
-    font-size: 1.25rem;
-    font-size: clamp(1.1rem, 0.7vw + 0.7rem, 1.5rem);
+    font-size: 1.2rem;
+    font-size: var(--step-1);
 }
 
 h6 {
     font-size: 1rem;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: var(--step-0);
 }
 
 p {
+    font-size: 1rem;
+    font-size: var(--step-0);
     margin-top: 0;
     margin-bottom: 1rem;
 }
@@ -204,12 +219,14 @@ blockquote {
     margin: 1.5rem 0;
     border-left: 8px solid var(--theme-color-red);
     background-color: beige;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    font-size: var(--step-1);
 }
 
 .blockquote-footer {
     display: block;
-    font-size: 80%;
+    font-size: 83.3%;
+    font-size: var(--step--1);
     color: #6c757d;
     margin-top: 1.5rem;
 }
@@ -224,7 +241,13 @@ strong {
 }
 
 small {
-    font-size: 0.875em;
+    font-size: .833rem;
+    font-size: var(--step--1);
+}
+
+x-small {
+    font-size: .694rem;
+    font-size: var(--step--2);
 }
 
 sub,
@@ -362,7 +385,8 @@ pre {
     margin-top: 0;
     margin-bottom: 1rem;
     overflow: auto;
-    font-size: 0.875em;
+    font-size: 0.833em;
+    font-size: var(--step--1);
     color: rgb(57, 58, 52);
     background-color: rgb(238, 238, 238);
     border: 1px solid rgb(221, 221, 221);
@@ -375,7 +399,8 @@ pre code {
 }
 
 code {
-    font-size: 0.875em;
+    font-size: 0.833em;
+    font-size: var(--step--1);
     color: rgb(57, 58, 52);
     word-wrap: break-word;
 }
@@ -515,7 +540,8 @@ legend {
     border: 1px rgba(0, 0, 0, 0.25) solid;
     padding: 0.25rem 1rem;
     margin-bottom: 1rem;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
     line-height: inherit;
     color: inherit;
     white-space: normal;
@@ -652,7 +678,6 @@ template {
 /* add custom css for site-wide use here */
 
 h2.page-heading {
-    font-size: clamp(1.4rem, 1vw + 0.9rem, 2.1rem);
     text-align: left;
     border-bottom: 2px var(--mg-gray-2) solid;
     padding-bottom: 1rem;
@@ -660,7 +685,8 @@ h2.page-heading {
 }
 
 .error {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
     color: var(--theme-color-red);
     text-align: center;
 }
@@ -679,7 +705,8 @@ h2.page-heading {
 
 .form > label {
     margin: 1rem 0;
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
 }
 
 .form > label > input {
@@ -698,13 +725,15 @@ h2.page-heading {
 }
 
 .validation-error {
-    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    font-size: .833rem;
+    font-size: var(--step--1);
     color: var(--theme-color-red);
     text-align: center;
 }
 
 .warning {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
     text-align: center;
     margin-bottom: 2rem;
 }

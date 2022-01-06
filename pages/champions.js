@@ -43,7 +43,7 @@ const Champions = ({ champions }) => {
                                             <p className={styles.team + ' ' + styles.winner}>{c.championTeam}</p>
                                             {c.championManager &&
                                                 <p className={styles.manager}>
-                                                    ({c.championManager})
+                                                    {c.championManager}
                                                 </p>
                                             }
                                         </td>
@@ -51,7 +51,7 @@ const Champions = ({ champions }) => {
                                             <p className={styles.team + ' ' + styles.runnerUp}>{c.runnerUpTeam}</p>
                                             {c.runnerUpManager &&
                                                 <p className={styles.manager}>
-                                                    ({c.runnerUpManager})
+                                                    {c.runnerUpManager}
                                                 </p>
                                             }
                                         </td>

@@ -13,7 +13,8 @@
 }
 
 h4.heading {
-    font-size: clamp(1rem, 0.55vw + 0.55rem, 1.2rem);
+    font-size: 1rem;
+    font-size: var(--step-0);
     font-weight: bolder;
     margin: 0 0 1rem 0;
 }

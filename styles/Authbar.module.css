@@ -5,7 +5,8 @@
 .authbarContainer {
     display: flex;
     justify-content: flex-end;
-    font-size: clamp(0.9rem, 0.55vw + 0.6rem, 1rem);
+    font-size: .833rem;
+    font-size: var(--step--1);
     padding: 0.25rem 0.5rem;
 }
 
