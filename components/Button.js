@@ -30,7 +30,7 @@ Button.propTypes = {
     variant: PropTypes.string,
     type: PropTypes.string,
     theme: PropTypes.string,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 Button.defaultProps = {

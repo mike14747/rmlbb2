@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
 import SignIn from '../components/SignIn';
@@ -38,6 +38,8 @@ const Profile = () => {
             setError('An error occurred. Please submit your new username again.');
         }
         if (res.status === 200) {
+            signOut({ redirect: false });
+            console.log('should be signed out at this point');
             setError(null);
             setSuccess(true);
         }
@@ -129,7 +131,7 @@ const Profile = () => {
 
                         {isLoading && <Loading />}
 
-                        {success && <p>You username has been updated.</p>}
+                        {success && <p>Your update has been applied.</p>}
 
                         {user &&
                             <>
