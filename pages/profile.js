@@ -134,14 +134,20 @@ const Profile = () => {
                         {user &&
                             <>
                                 <div className={styles.currentContainer}>
-                                    <h3 className={styles.currentHeading}>Current profile information</h3>
+                                    <h3 className={styles.currentHeading}>Current profile information:</h3>
 
-                                    <p><span className={styles.description}>Username: </span>{user?.username}</p>
+                                    <p className={styles.profileItem}><span className={styles.description}>Username: </span>{user?.username}</p>
 
-                                    <p><span className={styles.description}>Email: </span>{user?.email}</p>
+                                    <p className={styles.profileItem}><span className={styles.description}>Password is not visible for security reasons.</span></p>
+
+                                    <p className={styles.profileItem}><span className={styles.description}>Email: </span>{user?.email}</p>
                                 </div>
 
-                                <h3 className={styles.updateHeading}>Update your profile information</h3>
+                                <h3 className={styles.updateHeading}>Update your profile information:</h3>
+
+                                <p className={styles.note}>
+                                    <strong>Note:</strong> changing your username and/or password will log you out.
+                                </p>
 
                                 <form className={styles.updateGroup} onSubmit={handleUpdateUsernameSubmit}>
                                     <FormInput
@@ -154,22 +160,6 @@ const Profile = () => {
                                         handleChange={(e) => setNewUsername(e.target.value)}
                                         pattern="^[a-zA-Z0-9_-]{6,15}$"
                                         errorMsg="New Username must be from 6 to 15 characters in length and not include any special characters."
-                                    />
-
-                                    <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
-                                </form>
-
-                                <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
-                                    <FormInput
-                                        id="newEmail"
-                                        label="New Email"
-                                        name="newEmail"
-                                        type="email"
-                                        value={newEmail}
-                                        required={true}
-                                        handleChange={(e) => setNewEmail(e.target.value)}
-                                        pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1, 64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?)+$"
-                                        errorMsg="Please enter a valid email address."
                                     />
 
                                     <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
@@ -198,6 +188,22 @@ const Profile = () => {
                                         handleChange={(e) => setrepeatPassword(e.target.value)}
                                         pattern={newPassword}
                                         errorMsg="Passwords do not match."
+                                    />
+
+                                    <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
+                                </form>
+
+                                <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
+                                    <FormInput
+                                        id="newEmail"
+                                        label="New Email"
+                                        name="newEmail"
+                                        type="email"
+                                        value={newEmail}
+                                        required={true}
+                                        handleChange={(e) => setNewEmail(e.target.value)}
+                                        pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1, 64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?)+$"
+                                        errorMsg="Please enter a valid email address."
                                     />
 
                                     <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
