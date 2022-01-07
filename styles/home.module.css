@@ -12,7 +12,6 @@
 .newsItem {
     font-size: 1rem;
     font-size: var(--step-0);
-    color: var(--mg-gray-6);
     border-bottom: 1px var(--mg-gray-2) solid;
     overflow: auto;
     margin-bottom: 1rem;

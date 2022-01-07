@@ -88,12 +88,12 @@ button.specialSize {
 }
 
 button.small.contained:hover {
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px var(--mg-dark), 3px 3px 6px 2px var(--mg-gray-5);
+    box-shadow: 0 0 0 1px var(--mg-gray-3), 0 0 0 2px var(--mg-dark), 3px 3px 6px 2px var(--mg-gray-5);
     background-image: var(--bg-img-darken);
 }
 
 button:not(.small).contained:hover {
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px var(--mg-dark), 4px 4px 8px 2px var(--mg-gray-5);
+    box-shadow: 0 0 0 1px var(--mg-gray-3), 0 0 0 2px var(--mg-dark), 4px 4px 8px 2px var(--mg-gray-5);
     background-image: var(--bg-img-darken);
 }
 

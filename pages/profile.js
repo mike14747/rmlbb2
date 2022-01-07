@@ -18,6 +18,9 @@ const Profile = () => {
     const [success, setSuccess] = useState(false);
 
     const [newUsername, setNewUsername] = useState('');
+    const [newEmail, setNewEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [repeatPassword, setrepeatPassword] = useState('');
 
     const handleUpdateUsernameSubmit = async (e) => {
         e.preventDefault();
@@ -33,6 +36,48 @@ const Profile = () => {
         if (res.status !== 200) {
             setSuccess(false);
             setError('An error occurred. Please submit your new username again.');
+        }
+        if (res.status === 200) {
+            setError(null);
+            setSuccess(true);
+        }
+    };
+
+    const handleUpdateEmailSubmit = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch('/api/auth/update-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify({ newEmail }),
+        });
+
+        if (res.status !== 200) {
+            setSuccess(false);
+            setError('An error occurred. Please submit your new email again.');
+        }
+        if (res.status === 200) {
+            setError(null);
+            setSuccess(true);
+        }
+    };
+
+    const handleUpdatePasswordSubmit = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch('/api/auth/update-password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify({ newPassword }),
+        });
+
+        if (res.status !== 200) {
+            setSuccess(false);
+            setError('An error occurred. Please submit your new password again.');
         }
         if (res.status === 200) {
             setError(null);
@@ -69,7 +114,7 @@ const Profile = () => {
                 </title>
             </Head>
 
-            <article>
+            <article className={styles.profileContainer}>
                 <h2 className="page-heading">
                     Profile
                 </h2>
@@ -88,15 +133,17 @@ const Profile = () => {
 
                         {user &&
                             <>
-                                <h3 className={styles.currentHeading}>Current profile information</h3>
+                                <div className={styles.currentContainer}>
+                                    <h3 className={styles.currentHeading}>Current profile information</h3>
 
-                                <p>Username: {user?.username}</p>
+                                    <p><span className={styles.description}>Username: </span>{user?.username}</p>
 
-                                <p>Email: {user?.email}</p>
+                                    <p><span className={styles.description}>Email: </span>{user?.email}</p>
+                                </div>
 
                                 <h3 className={styles.updateHeading}>Update your profile information</h3>
 
-                                <form className="form" onSubmit={handleUpdateUsernameSubmit}>
+                                <form className={styles.updateGroup} onSubmit={handleUpdateUsernameSubmit}>
                                     <FormInput
                                         id="newUsername"
                                         label="New Username"
@@ -104,9 +151,53 @@ const Profile = () => {
                                         type="text"
                                         value={newUsername}
                                         required={true}
-                                        pattern="^[a-zA-Z0-9_-]{6,15}$"
                                         handleChange={(e) => setNewUsername(e.target.value)}
+                                        pattern="^[a-zA-Z0-9_-]{6,15}$"
                                         errorMsg="New Username must be from 6 to 15 characters in length and not include any special characters."
+                                    />
+
+                                    <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
+                                </form>
+
+                                <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
+                                    <FormInput
+                                        id="newEmail"
+                                        label="New Email"
+                                        name="newEmail"
+                                        type="email"
+                                        value={newEmail}
+                                        required={true}
+                                        handleChange={(e) => setNewEmail(e.target.value)}
+                                        pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1, 64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?)+$"
+                                        errorMsg="Please enter a valid email address."
+                                    />
+
+                                    <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
+                                </form>
+
+                                <form className={styles.updateGroup} onSubmit={handleUpdatePasswordSubmit}>
+                                    <FormInput
+                                        id="newPassword"
+                                        label="New Password"
+                                        name="newPassword"
+                                        type="password"
+                                        value={newPassword}
+                                        required={true}
+                                        handleChange={(e) => setNewPassword(e.target.value)}
+                                        pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1, 64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?)+$"
+                                        errorMsg="New Password must be from 8 to 20 characters in length."
+                                    />
+
+                                    <FormInput
+                                        id="repeatPassword"
+                                        label="Repeat New Password"
+                                        name="repeatPassword"
+                                        type="password"
+                                        value={repeatPassword}
+                                        required={true}
+                                        handleChange={(e) => setrepeatPassword(e.target.value)}
+                                        pattern={newPassword}
+                                        errorMsg="Passwords do not match."
                                     />
 
                                     <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
