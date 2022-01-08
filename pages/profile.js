@@ -39,7 +39,7 @@ const Profile = () => {
         }
         if (res.status === 200) {
             signOut({ redirect: false });
-            console.log('should be signed out at this point');
+            setNewUsername('');
             setError(null);
             setSuccess(true);
         }
@@ -61,6 +61,8 @@ const Profile = () => {
             setError('An error occurred. Please submit your new email again.');
         }
         if (res.status === 200) {
+            signOut({ redirect: false });
+            setNewEmail('');
             setError(null);
             setSuccess(true);
         }
@@ -82,6 +84,8 @@ const Profile = () => {
             setError('An error occurred. Please submit your new password again.');
         }
         if (res.status === 200) {
+            signOut({ redirect: false });
+            setNewPassword('');
             setError(null);
             setSuccess(true);
         }
