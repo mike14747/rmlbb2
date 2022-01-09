@@ -180,7 +180,7 @@ const Profile = () => {
                                         value={newPassword}
                                         required={true}
                                         handleChange={(e) => setNewPassword(e.target.value)}
-                                        pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1, 64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?)+$"
+                                        pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{8,20}$"
                                         errorMsg="New Password must be from 8 to 20 characters in length."
                                     />
 
@@ -208,7 +208,7 @@ const Profile = () => {
                                         value={newEmail}
                                         required={true}
                                         handleChange={(e) => setNewEmail(e.target.value)}
-                                        pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1, 64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?)+$"
+                                        pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
                                         errorMsg="Please enter a valid email address."
                                     />
 

@@ -56,9 +56,13 @@ FormInput.propTypes = {
 };
 
 FormInput.defaultProps = {
-    label: '',
+    id: null,
+    label: null,
+    required: null,
     type: 'text',
     placeholder: '',
     size: 'normal',
     errorMsg: '',
+    pattern: null,
+    step: null,
 };
