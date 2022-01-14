@@ -17,7 +17,6 @@ export default NextAuth({
 
                 if (user?.length === 1) {
                     const matches = await bcryptjs.compare(credentials.password, user[0].password);
-                    // console.log('_id:', user[0]._id);
                     if (matches) return { _id: user[0]._id, name: user[0].username };
                     return null;
                 } else {
