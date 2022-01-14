@@ -33,7 +33,7 @@ export default function FormInput({ id, label, handleChange, errorMsg, required,
 }
 
 FormInput.propTypes = {
-    id: (props) => props?.label.length > 0 && (!props.id || (typeof props.id !== 'string' && typeof props.id !== 'number')) && new Error('id is needed and must be in the proper format when a label is present'),
+    id: (props) => props?.label?.length > 0 && (!props.id || (typeof props.id !== 'string' && typeof props.id !== 'number')) && new Error('id is needed and must be in the proper format when a label is present'),
     label: PropTypes.string,
     handleChange: PropTypes.func.isRequired,
     errorMsg: PropTypes.string,
