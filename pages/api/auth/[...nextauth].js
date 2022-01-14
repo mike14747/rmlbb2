@@ -40,7 +40,10 @@ export default NextAuth({
             return token;
         },
         async session({ session, token, user }) {
-            if (token?._id) session.user._id = token._id;
+            if (token?._id) {
+                session.user._id = token._id;
+                delete token._id;
+            }
             return session;
         },
     },
