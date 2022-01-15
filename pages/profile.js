@@ -10,7 +10,6 @@ import styles from '../styles/profile.module.css';
 
 const Profile = () => {
     const { data: session, status } = useSession();
-    console.log(session);
     const loading = status === 'loading';
 
     const [user, setUser] = useState(null);
