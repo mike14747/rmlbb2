@@ -41,9 +41,7 @@ const SignIn = () => {
                     type="text"
                     value={username}
                     required={true}
-                    pattern="^[a-zA-Z0-9_-]{6,15}$"
                     handleChange={(e) => setUsername(e.target.value)}
-                    errorMsg="Username is required and must be from 6 to 15 characters in length."
                 />
 
                 <FormInput
@@ -53,9 +51,7 @@ const SignIn = () => {
                     type="password"
                     value={password}
                     required={true}
-                    pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{8,20}$"
                     handleChange={(e) => setPassword(e.target.value)}
-                    errorMsg="Password is required and must be from 8 to 20 characters in length."
                 />
 
                 <div className="btn-container">

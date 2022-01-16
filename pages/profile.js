@@ -15,7 +15,8 @@ const Profile = () => {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
+
+    const [emailUpdateMsg, setEmailUpdateMsg] = useState('');
 
     const [newUsername, setNewUsername] = useState('');
     const [newEmail, setNewEmail] = useState('');
@@ -34,14 +35,12 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setSuccess(false);
             setError('An error occurred. Please submit your new username again.');
         }
         if (res.status === 200) {
             signOut({ redirect: false });
             setNewUsername('');
             setError(null);
-            setSuccess(true);
         }
     };
 
@@ -57,14 +56,12 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setSuccess(false);
             setError('An error occurred. Please submit your new email again.');
         }
         if (res.status === 200) {
-            signOut({ redirect: false });
             setNewEmail('');
             setError(null);
-            setSuccess(true);
+            setEmailUpdateMsg('Your email address has been successfully updated!');
         }
     };
 
@@ -80,14 +77,12 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setSuccess(false);
             setError('An error occurred. Please submit your new password again.');
         }
         if (res.status === 200) {
             signOut({ redirect: false });
             setNewPassword('');
             setError(null);
-            setSuccess(true);
         }
     };
 
@@ -134,8 +129,6 @@ const Profile = () => {
                         {error && <p className="error">{error}</p>}
 
                         {isLoading && <Loading />}
-
-                        {success && <p>Your update has been applied.</p>}
 
                         {user &&
                             <>
@@ -200,6 +193,8 @@ const Profile = () => {
                                 </form>
 
                                 <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
+                                    {emailUpdateMsg && <p className={styles.success}>{emailUpdateMsg}</p>}
+
                                     <FormInput
                                         id="newEmail"
                                         label="New Email"
