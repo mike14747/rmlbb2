@@ -40,7 +40,7 @@
 }
 
 .updateGroup {
-    max-width: 30ch;
+    max-width: 40ch;
     margin: 0 0 2rem 0;
     border-bottom: 1px var(--mg-gray-5) solid;
     padding: 0 0 2rem 0;

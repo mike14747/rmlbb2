@@ -14,12 +14,13 @@ const Profile = () => {
 
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [profileError, setProfileError] = useState(null);
 
-    const [emailUpdateMsg, setEmailUpdateMsg] = useState('');
+    const [profileError, setProfileError] = useState(null);
     const [usernameError, setUsernameError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
     const [emailError, setEmailError] = useState(null);
+
+    const [emailUpdateMsg, setEmailUpdateMsg] = useState('');
 
     const [newUsername, setNewUsername] = useState('');
     const [newEmail, setNewEmail] = useState('');
@@ -44,6 +45,7 @@ const Profile = () => {
             signOut({ redirect: false });
             setNewUsername('');
             setUsernameError(null);
+            setEmailUpdateMsg('');
         }
     };
 
@@ -64,7 +66,7 @@ const Profile = () => {
         if (res.status === 200) {
             setNewEmail('');
             setEmailError(null);
-            setEmailUpdateMsg('Your email address has been successfully updated!');
+            setEmailUpdateMsg('Your email address has been successfully updated to: ' + newEmail + '!');
         }
     };
 
@@ -86,6 +88,7 @@ const Profile = () => {
             signOut({ redirect: false });
             setNewPassword('');
             setPasswordError(null);
+            setEmailUpdateMsg('');
         }
     };
 
@@ -108,7 +111,7 @@ const Profile = () => {
         } else {
             setUser(null);
         }
-    }, [session]);
+    }, [session, emailUpdateMsg]);
 
     return (
         <>
