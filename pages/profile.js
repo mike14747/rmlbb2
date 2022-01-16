@@ -39,8 +39,12 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setUsernameError('An error occurred. Please submit your new username again.');
+            res.status === 400 && setUsernameError('An error occurred. New username is not in the proper format.');
+            res.status === 401 && setUsernameError('An error occurred. You do not have permission to make this update.');
+            res.status === 409 && setUsernameError('An error occurred. The username you submitted is already in use.');
+            res.status === 500 && setUsernameError('A server error occurred. Please try your update again.');
         }
+
         if (res.status === 200) {
             signOut({ redirect: false });
             setNewUsername('');
@@ -61,7 +65,9 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setEmailError('An error occurred. Please submit your new email again.');
+            res.status === 400 && setEmailError('An error occurred. New email is not in the proper format.');
+            res.status === 401 && setEmailError('An error occurred. You do not have permission to make this update.');
+            res.status === 500 && setEmailError('A server error occurred. Please try your update again.');
         }
         if (res.status === 200) {
             setNewEmail('');
@@ -82,7 +88,9 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setPasswordError('An error occurred. Please submit your new password again.');
+            res.status === 400 && setPasswordError('An error occurred. New password is not in the proper format.');
+            res.status === 401 && setPasswordError('An error occurred. You do not have permission to make this update.');
+            res.status === 500 && setPasswordError('A server error occurred. Please try your update again.');
         }
         if (res.status === 200) {
             signOut({ redirect: false });
