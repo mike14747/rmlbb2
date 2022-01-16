@@ -14,9 +14,12 @@ const Profile = () => {
 
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [profileError, setProfileError] = useState(null);
 
     const [emailUpdateMsg, setEmailUpdateMsg] = useState('');
+    const [usernameError, setUsernameError] = useState(null);
+    const [passwordError, setPasswordError] = useState(null);
+    const [emailError, setEmailError] = useState(null);
 
     const [newUsername, setNewUsername] = useState('');
     const [newEmail, setNewEmail] = useState('');
@@ -35,12 +38,12 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setError('An error occurred. Please submit your new username again.');
+            setUsernameError('An error occurred. Please submit your new username again.');
         }
         if (res.status === 200) {
             signOut({ redirect: false });
             setNewUsername('');
-            setError(null);
+            setUsernameError(null);
         }
     };
 
@@ -56,11 +59,11 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setError('An error occurred. Please submit your new email again.');
+            setEmailError('An error occurred. Please submit your new email again.');
         }
         if (res.status === 200) {
             setNewEmail('');
-            setError(null);
+            setEmailError(null);
             setEmailUpdateMsg('Your email address has been successfully updated!');
         }
     };
@@ -77,12 +80,12 @@ const Profile = () => {
         });
 
         if (res.status !== 200) {
-            setError('An error occurred. Please submit your new password again.');
+            setPasswordError('An error occurred. Please submit your new password again.');
         }
         if (res.status === 200) {
             signOut({ redirect: false });
             setNewPassword('');
-            setError(null);
+            setPasswordError(null);
         }
     };
 
@@ -97,7 +100,7 @@ const Profile = () => {
                     setUser(data[0]);
                 } else {
                     setUser(null);
-                    setError('An error occurred fetching user profile data.');
+                    setProfileError('An error occurred fetching user profile data.');
                 }
                 setIsLoading(false);
             };
@@ -126,9 +129,9 @@ const Profile = () => {
 
                 {session &&
                     <>
-                        {error && <p className="error">{error}</p>}
-
                         {isLoading && <Loading />}
+
+                        {profileError && <p className={styles.error}>{profileError}</p>}
 
                         {user &&
                             <>
@@ -149,6 +152,8 @@ const Profile = () => {
                                 </p>
 
                                 <form className={styles.updateGroup} onSubmit={handleUpdateUsernameSubmit}>
+                                    {usernameError && <p className={styles.error}>{usernameError}</p>}
+
                                     <FormInput
                                         id="newUsername"
                                         label="New Username"
@@ -165,6 +170,8 @@ const Profile = () => {
                                 </form>
 
                                 <form className={styles.updateGroup} onSubmit={handleUpdatePasswordSubmit}>
+                                    {passwordError && <p className={styles.error}>{passwordError}</p>}
+
                                     <FormInput
                                         id="newPassword"
                                         label="New Password"
@@ -193,6 +200,8 @@ const Profile = () => {
                                 </form>
 
                                 <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
+                                    {emailError && <p className={styles.error}>{emailError}</p>}
+
                                     {emailUpdateMsg && <p className={styles.success}>{emailUpdateMsg}</p>}
 
                                     <FormInput

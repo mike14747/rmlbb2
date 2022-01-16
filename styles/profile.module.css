@@ -29,7 +29,7 @@
 }
 
 .description {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
     color: var(--mg-gray-5);
 }
@@ -52,7 +52,13 @@
 }
 
 .success {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
     color: var(--mg-green);
+}
+
+.error {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    color: var(--mg-red);
 }
