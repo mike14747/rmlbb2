@@ -39,8 +39,8 @@
     font-size: 120%;
     font-weight: bold;
     display: inline-block;
-    width: 1em;
-    margin-left: -1em;
+    width: 1rem;
+    margin-left: -1rem;
 }
 
 .blockContentContainer > ol {
@@ -54,10 +54,11 @@
 
 .blockContentContainer > ol li::before {
     content: counter(li) '.';
-    color: var(--theme-color-green);
+    color: var(--theme-color-orange);
+    font-size: 83.3%;
     display: inline-block;
-    width: 2em;
-    margin-left: -2em;
-    margin-right: 1em;
+    width: 2rem;
+    margin-left: -3rem;
+    margin-right: 1rem;
     text-align: right;
 }
