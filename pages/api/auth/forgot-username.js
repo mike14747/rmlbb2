@@ -2,10 +2,11 @@ import { forgottenUsername } from '../../../lib/api/user';
 
 export default async function forgotUsername(req, res) {
     if (req.method === 'POST') {
+        if (!req.body.email) return res.status(400).end();
+
         try {
-            if (!req.body.email) return res.status(400).end();
             const response = await forgottenUsername(req.body.email);
-            response ? res.status(200).end() : res.status(500).end();
+            response?.code ? res.status(response.code).end() : res.status(500).end();
         } catch (error) {
             res.status(500).end();
         }

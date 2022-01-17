@@ -95,6 +95,7 @@ const Profile = () => {
         if (res.status === 200) {
             signOut({ redirect: false });
             setNewPassword('');
+            setrepeatPassword('');
             setPasswordError(null);
             setEmailUpdateMsg('');
         }
