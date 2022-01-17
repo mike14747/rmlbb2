@@ -38,7 +38,11 @@ export default function ForgottenUsername() {
             body: JSON.stringify({ username, email }),
         });
 
-        if (res.status !== 200) setError('An error occurred. Make sure you submitted your username and/or email address correctly.');
+        if (res.status !== 200) {
+            res.status === 400 && setError('An error occurred. Your username and/or email are not valid.');
+            res.status === 401 && setError('An error occurred. You do not have permission to make this request.');
+            res.status === 500 && setError('A server error occurred. Please try your request again.');
+        }
         if (res.status === 200) setSuccess(true);
     };
 
@@ -55,9 +59,9 @@ export default function ForgottenUsername() {
                         : <Button onClick={() => {
                             setShowForgotUsername(true);
                             setShowForgotPassword(false);
-                        }} size="medium" variant="text">I forgot my Username</Button>}
+                        }} size="medium" variant="text">I forgot my Username</Button>
+                    }
 
-                    {/* <span aria-hidden="true" className={styles.divider}>&#8612;&#10073;&#8614;</span> */}
                     <span aria-hidden="true" className={styles.divider}>¯ \ _ (ツ) _ / ¯</span>
                 </div>
 
