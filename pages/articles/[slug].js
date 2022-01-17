@@ -7,6 +7,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../../lib/serializers';
 
 import styles from '../../styles/article.module.css';
+import blockContentStyles from '../../styles/blockContent.module.css';
 
 export default function Article({ article, slugs }) {
     const router = useRouter();
@@ -22,7 +23,7 @@ export default function Article({ article, slugs }) {
                 <title>Articles</title>
             </Head>
 
-            <article className={styles.articleContainer}>
+            <article className={styles.articleContainer + ' ' + blockContentStyles.blockContentContainer}>
                 {!article?.content
                     ? <p className="error">An error occurred fetching data.</p>
                     : <>

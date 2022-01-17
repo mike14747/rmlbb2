@@ -5,6 +5,7 @@ import { getConstitutionContent } from '../lib/api/miscPortableText';
 import serializers from '../lib/serializers';
 
 import styles from '../styles/constitution.module.css';
+import blockContentStyles from '../styles/blockContent.module.css';
 
 const Constitution = ({ content }) => {
     return (
@@ -15,7 +16,7 @@ const Constitution = ({ content }) => {
                 </title>
             </Head>
 
-            <article className={styles.constitutionContainer}>
+            <article className={styles.constitutionContainer + ' ' + blockContentStyles.blockContentContainer}>
                 <h2 className="page-heading">
                     Constitution
                 </h2>

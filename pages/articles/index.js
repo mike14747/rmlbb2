@@ -30,7 +30,7 @@ export default function Articles({ content, articlesList }) {
                 </article>
 
                 <div className={styles.articleIndexContainer}>
-                    <SidebarCard color="green" heading="Article Index" subheading="...enjoy the read">
+                    <SidebarCard color="green" heading="Article Index" subheading="...enjoy the reads">
                         {articlesList?.length > 0
                             ? <>
                                 {articlesList.map(article => (
