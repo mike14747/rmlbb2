@@ -29,36 +29,61 @@
     margin-top: -1rem;
 }
 
-.blockContentContainer > ul {
-    list-style: none;
-}
-
-.blockContentContainer > ul li::before {
-    content: '\2022';
+.blockContentContainer > ul li::marker {
     color: var(--theme-color-green);
     font-size: 120%;
     font-weight: bold;
-    display: inline-block;
-    width: 1rem;
-    margin-left: -1rem;
-}
-
-.blockContentContainer > ol {
-    list-style: none;
-    counter-reset: li;
 }
 
 .blockContentContainer > ol > li {
-    counter-increment: li;
+    padding-left: 0.5rem;
 }
 
-.blockContentContainer > ol li::before {
-    content: counter(li) '.';
+.blockContentContainer > ol li::marker {
     color: var(--theme-color-orange);
     font-size: 83.3%;
-    display: inline-block;
-    width: 2rem;
-    margin-left: -3rem;
-    margin-right: 1rem;
-    text-align: right;
 }
+
+/* table styles */
+
+.tableWrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.blockContentTable {
+    margin: 0 0.5rem 1rem 0.5rem;
+    border: 1px var(--mg-gray-2) solid;
+}
+
+.blockContentTable > thead {
+    background-color: var(--mg-gray-1);
+}
+
+.blockContentTable > tbody {
+    background-color: #ffffff;
+}
+
+.blockContentTable th,
+.blockContentTable td {
+    padding: 0.5rem 0.75rem;
+    vertical-align: bottom;
+    text-align: left;
+    border: 1px var(--mg-gray-2) solid;
+}
+
+.blockContentTable th {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+}
+
+.blockContentTable td {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+}
+
+.blockContentTable tbody tr:hover {
+    background-color: var(--theme-color-dirt-faded);
+}
+
+/* end table styles */
