@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -15,6 +15,14 @@ export default function Token() {
     const [passwordError, setPasswordError] = useState(null);
     const [newPassword, setNewPassword] = useState('');
     const [repeatPassword, setrepeatPassword] = useState('');
+    const [isSuccessfullyUpdated, setIsSuccessfullyUpdated] = useState(false);
+
+    useEffect(() => {
+        if (isSuccessfullyUpdated) {
+            router.push('/reset-password-success');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isSuccessfullyUpdated]);
 
     const handleUpdatePasswordSubmit = async (e) => {
         e.preventDefault();
@@ -36,6 +44,7 @@ export default function Token() {
             setNewPassword('');
             setrepeatPassword('');
             setPasswordError(null);
+            setIsSuccessfullyUpdated(true);
         }
     };
 
@@ -62,7 +71,7 @@ export default function Token() {
                     </p>
                 }
 
-                {!session &&
+                {!session && !isSuccessfullyUpdated &&
                     <>
                         <p>
                             <strong>Note:</strong> Your password reset link expires 60 minutes after your request was submitted.

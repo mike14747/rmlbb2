@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import SignIn from '../components/SignIn';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
+import PasswordResetForm from '../components/PasswordResetForm';
 
 import styles from '../styles/profile.module.css';
 
@@ -181,7 +182,7 @@ const Profile = () => {
                                     <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
                                 </form>
 
-                                <form className={styles.updateGroup} onSubmit={handleUpdatePasswordSubmit}>
+                                {/* <form className={styles.updateGroup} onSubmit={handleUpdatePasswordSubmit}>
                                     {passwordError && <p className={styles.error}>{passwordError}</p>}
 
                                     <FormInput
@@ -209,7 +210,16 @@ const Profile = () => {
                                     />
 
                                     <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
-                                </form>
+                                </form> */}
+
+                                <PasswordResetForm
+                                    handleUpdatePasswordSubmit={handleUpdatePasswordSubmit}
+                                    passwordError={passwordError}
+                                    newPassword={newPassword}
+                                    setNewPassword={setNewPassword}
+                                    repeatPassword={repeatPassword}
+                                    setrepeatPassword={setrepeatPassword}
+                                />
 
                                 <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
                                     {emailError && <p className={styles.error}>{emailError}</p>}
