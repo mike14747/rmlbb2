@@ -23,8 +23,15 @@ export default function ForgottenUsername() {
             body: JSON.stringify({ email }),
         });
 
-        if (res.status !== 200) setError('An error occurred. Make sure you submitted your email address correctly.');
-        if (res.status === 200) setSuccess(true);
+        if (res.status !== 200) {
+            setSuccess(false);
+            setError('An error occurred. Make sure you submitted your email address correctly.');
+        }
+        if (res.status === 200) {
+            setError(false);
+            setSuccess(true);
+            setEmail('');
+        }
     };
 
     const handlePasswordSubmit = async (e) => {
@@ -39,19 +46,21 @@ export default function ForgottenUsername() {
         });
 
         if (res.status !== 200) {
+            setSuccess(false);
             res.status === 400 && setError('An error occurred. Your username and/or email are not valid.');
             res.status === 401 && setError('An error occurred. You do not have permission to make this request.');
             res.status === 500 && setError('A server error occurred. Please try your request again.');
         }
-        if (res.status === 200) setSuccess(true);
+        if (res.status === 200) {
+            setError(false);
+            setSuccess(true);
+            setUsername('');
+            setEmail('');
+        }
     };
 
     return (
         <div className={styles.container}>
-            {error && <p className="error">{error}</p>}
-
-            {success && <p>An email has been sent to the email address you entered.</p>}
-
             <div className={styles.upper}>
                 <div className={styles.btnContainer}>
                     {showForgotUsername
@@ -59,6 +68,10 @@ export default function ForgottenUsername() {
                         : <Button onClick={() => {
                             setShowForgotUsername(true);
                             setShowForgotPassword(false);
+                            setError(false);
+                            setSuccess(false);
+                            setUsername('');
+                            setEmail('');
                         }} size="medium" variant="text">I forgot my Username</Button>
                     }
 
@@ -71,6 +84,10 @@ export default function ForgottenUsername() {
                         : <Button onClick={() => {
                             setShowForgotPassword(true);
                             setShowForgotUsername(false);
+                            setError(false);
+                            setSuccess(false);
+                            setUsername('');
+                            setEmail('');
                         }} size="medium" variant="text">I forgot my Password</Button>}
                 </div>
             </div>
@@ -81,6 +98,10 @@ export default function ForgottenUsername() {
                     <p className="text-left">
                         Enter the email address associated with your account(s) and an email will be sent with the username(s) linked to your email address.
                     </p>
+
+                    {error && <p className="error">{error}</p>}
+
+                    {success && <p className="success">An email has been sent to the email address you entered.</p>}
 
                     <form method="post" onSubmit={handleUsernameSubmit} className="form">
                         <FormInput
@@ -106,6 +127,10 @@ export default function ForgottenUsername() {
                     <p className="text-left">
                         Enter the username and email address associated with your account and an email will be sent to you with a link to reset your password.
                     </p>
+
+                    {error && <p className="error">{error}</p>}
+
+                    {success && <p className="success">An email has been sent to the email address you entered.</p>}
 
                     <form method="post" onSubmit={handlePasswordSubmit} className="form">
                         <FormInput
