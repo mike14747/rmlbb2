@@ -1,0 +1,98 @@
+[
+    {
+        "_id": {
+            "$oid": "61eaefa5303cc02d642088d1"
+        },
+        "name": "General Messages",
+        "description": "",
+        "active": true,
+        "order": 1,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    },
+    {
+        "_id": {
+            "$oid": "61eaf137303cc02d642088d2"
+        },
+        "name": "Unowned Player Draft",
+        "description": "",
+        "active": true,
+        "order": 2,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    },
+    {
+        "_id": {
+            "$oid": "61eaf137303cc02d642088d3"
+        },
+        "name": "Waiver Draft",
+        "description": "",
+        "active": true,
+        "order": 3,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    },
+    {
+        "_id": {
+            "$oid": "61eaf137303cc02d642088d4"
+        },
+        "name": "Minor League Draft",
+        "description": "",
+        "active": true,
+        "order": 4,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    },
+    {
+        "_id": {
+            "$oid": "61eaf137303cc02d642088d5"
+        },
+        "name": "Free Agent Draft",
+        "description": "",
+        "active": true,
+        "order": 5,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    },
+    {
+        "_id": {
+            "$oid": "61eaf137303cc02d642088d6"
+        },
+        "name": "Trades / Trading",
+        "description": "",
+        "active": true,
+        "order": 6,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    },
+    {
+        "_id": {
+            "$oid": "61eaf137303cc02d642088d7"
+        },
+        "name": "Rule Change Proposals",
+        "description": "",
+        "active": true,
+        "order": 7,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    },
+    {
+        "_id": {
+            "$oid": "61eaf233303cc02d642088da"
+        },
+        "name": "Test Inactive Forum",
+        "description": "",
+        "active": false,
+        "order": 8,
+        "topics": 0,
+        "totalPosts": 0,
+        "lastPost": {}
+    }
+]
