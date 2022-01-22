@@ -49,14 +49,36 @@ As of 2022-01-22, this is what the message forum contains:
 Queries to get the data:
 
 ```sql
-SELECT f.forum_id, f.forum_name, t.topic_id, t.topic_title, p.post_id, p.post_subject, u.user_id, u.username 
+SELECT f.forum_id, f.forum_name, t.topic_poster, t.topic_id, t.topic_title, p.post_id, p.post_subject, p.post_time, u.user_id, u.username 
 FROM phpbb_topics AS t INNER JOIN phpbb_posts AS p USING (`topic_id`) INNER JOIN phpbb_forums AS f ON t.forum_id=f.forum_id INNER JOIN phpbb_users AS u ON u.user_id=p.poster_id 
 ORDER BY t.topic_title ASC 
 LIMIT 10000;
 ```
 
+Notes:
+
+-   There are 16 posts made by user_id 1 (username: anonymous). The username associated with those posts is the Yankees. I'll have to get those integrated into the data.
+-   Anonymous (user_id 1) is the only user_type of 2 (generally the bots type) that has made any posts.
+
 ---
 
 ### MongoDB schema
 
--   Each forum should contain a property for the number of topics, posts and details of the last post (subject, username and date/time) in that forum.
+Forums collection:
+
+-   Each forum should contain a property for the number of topics, number of posts and details of the last post (subject, username and date/time) in that forum.
+
+Users collection:
+
+-   \_id (the MongoDB ObjectId)
+-   username
+-   password (hashed with bcryptjs)
+-   email
+-   resetPasswordEXpires (will only be present if a user submits a forgotten password request)
+-   resetPasswordToken (will only be present if a user submits a forgotten password request)
+-   role (user, admin, maybe more in the future)
+-   active (a boolean that will be set to false when a manager leaves the league, but we still want to keep their posts)
+-   registeredDate
+-   posts (??? not sure if this should be stored)
+
+---
