@@ -18,7 +18,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     padding: 0.25rem 0.5rem;
     border-top: 4px var(--mg-orange-soft) solid;
     box-shadow: 0 2px 4px 0 var(--mg-gray-3);
@@ -107,7 +107,7 @@ p.eventDetails {
 
 .pastBodyRow:nth-of-type(2n),
 .bodyRow:nth-of-type(2n) {
-    background-color: #ffffff;
+    background-color: var(--mg-light);
 }
 
 .td {

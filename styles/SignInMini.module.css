@@ -12,7 +12,7 @@
     /* top: calc(100% + 0.50rem); */
     top: 100%;
     right: -1px;
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     /* border: 1px var(--mg-gray-2) solid; */
     border-top: 1px var(--mg-gray-2) solid;
     border-right: 1px var(--mg-gray-2) solid;
@@ -53,13 +53,13 @@
 }
 
 .dropdown:focus-within {
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     border-top: 1px var(--mg-gray-2) solid;
     border-right: 1px var(--mg-gray-2) solid;
     border-left: 1px var(--mg-gray-2) solid;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
-    box-shadow: 0 1px 0 0 #ffffff;
+    box-shadow: 0 1px 0 0 var(--mg-light);
 }
 
 .form {

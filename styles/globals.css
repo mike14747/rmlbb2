@@ -26,6 +26,7 @@
     --mg-gray-5: #808080; /* html gray */
     --mg-gray-6: #585858;
     --mg-gray-7: #232323;
+    --mg-light: #ffffff;
     --mg-orange: #ff7518; /* html pumpkin */
     --mg-orange-soft: #fcd581;
     --mg-purple: #6f42c1;
@@ -58,7 +59,7 @@
 
 ::selection {
     background-color: var(--theme-color-green);
-    color: #ffffff;
+    color: var(--mg-light);
 }
 
 #__next {
@@ -78,7 +79,7 @@ body {
     height: 100%;
     line-height: 1.5;
     color: var(--mg-dark);
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     background-image: url('/images/seamless_bg_sand.jpg');
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -656,7 +657,7 @@ template {
     max-width: var(--container-max-width);
     margin-left: auto;
     margin-right: auto;
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     padding: 1rem 1rem 2rem 1rem;
 }
 

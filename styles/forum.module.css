@@ -21,7 +21,7 @@
 
 .forumsHeadingItem {
     font-weight: bolder;
-    color: #ffffff;
+    color: var(--mg-light);
     background-color: var(--theme-color-green);
 }
 

@@ -61,7 +61,7 @@
 }
 
 .blockContentTable > tbody {
-    background-color: #ffffff;
+    background-color: var(--mg-light);
 }
 
 .blockContentTable th,

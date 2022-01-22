@@ -1,7 +1,7 @@
 .boardCard {
     top: 0;
     right: 0;
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     border-top: 4px var(--theme-color-green) solid;
 }
 

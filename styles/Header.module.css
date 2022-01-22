@@ -1,5 +1,5 @@
 .header {
-    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('/images/header_bg.jpg') center / cover, #ffffff;
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('/images/header_bg.jpg') center / cover, var(--mg-light);
     border-bottom: none;
     display: flex;
     flex-direction: row;

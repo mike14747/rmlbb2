@@ -7,7 +7,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: var(--mg-light);
     font-size: .833rem;
     font-size: var(--step--1);
     padding: 0.25rem;
@@ -25,7 +25,7 @@
 a.link,
 a.link:link,
 a.link:visited {
-    color: #ffffff;
+    color: var(--mg-light);
     text-decoration: none;
     transition: .3s;
 }

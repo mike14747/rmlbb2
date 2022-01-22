@@ -16,35 +16,35 @@ button.btn:not(.text):focus {
 }
 
 button.contained.primary {
-    color: #ffffff;
+    color: var(--mg-light);
     background-color: var(--theme-color-green);
 }
 
 button.contained.secondary {
-    color: #ffffff;
+    color: var(--mg-light);
     background-color: var(--theme-color-orange);
 }
 
 button.contained.danger {
-    color: #ffffff;
+    color: var(--mg-light);
     background-color: var(--theme-color-red);
 }
 
 button.outlined.primary {
     color: var(--theme-color-green);
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     border: 1px var(--theme-color-green) solid;
 }
 
 button.outlined.secondary {
     color: var(--theme-color-orange);
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     border: 1px var(--theme-color-orange) solid;
 }
 
 button.outlined.danger {
     color: var(--theme-color-red);
-    background-color: #ffffff;
+    background-color: var(--mg-light);
     border: 1px var(--theme-color-red) solid;
 }
 
@@ -57,7 +57,7 @@ button.text {
 }
 
 button.special {
-    color: #ffffff;
+    color: var(--mg-light);
     background-color: var(--mg-dark);
     padding: 0 0.25rem 0.25rem 0.25rem;
     margin: 0;

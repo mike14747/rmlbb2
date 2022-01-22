@@ -73,7 +73,7 @@
 .description::before {
     content: '\2139';
     padding-right: 0.50rem;
-    background-color: #ffffff;
+    background-color: var(--mg-light);
 }
 
 .manager {
