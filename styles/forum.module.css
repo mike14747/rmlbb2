@@ -34,7 +34,7 @@
 
 .forumsIcon {
     display: grid;
-    grid-template-columns: 30px auto;
+    grid-template-columns: 40px auto;
 }
 
 .forumsName,
