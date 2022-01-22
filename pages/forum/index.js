@@ -15,7 +15,7 @@ export default function ForumHome({ forums }) {
 
             <article>
                 <h2 className="page-heading">
-                    RML Message Forum
+                    Message Forum
                 </h2>
 
                 <div className={styles.forumsContainer}>
@@ -36,7 +36,7 @@ export default function ForumHome({ forums }) {
 
                                     <div>
                                         <p className={styles.forumsName}>{forum.name}</p>
-                                        <p className={styles.forumsDescription}>description</p>
+                                        {/* <p className={styles.forumsDescription}>description</p> */}
                                     </div>
                                 </div>
                                 <div className={`text-center ${styles.forumsDataItem}`}>1</div>
@@ -44,7 +44,7 @@ export default function ForumHome({ forums }) {
                                 <div className={styles.forumsDataItem}>
                                     <p><strong>blah, blah, blah, blah, blah, blah, blah, blah, blah</strong></p>
                                     <p>by Twins</p>
-                                    <p>Fri Jan 21, 2022 7:01 pm</p>
+                                    <p>Jan 21, 2022 7:01pm</p>
                                 </div>
                             </div>
                         ))
