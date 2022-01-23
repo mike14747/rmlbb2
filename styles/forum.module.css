@@ -1,4 +1,7 @@
 .forumsContainer {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 3rem auto;
     border: 1px var(--mg-gray-6) solid;
     border-radius: 0.5rem;
     overflow: hidden;
@@ -46,6 +49,14 @@
     color: var(--mg-gray-6);
     font-size: 0.833rem;
     font-size: var(--step--1);
+}
+
+.forumsDataItem {
+    border-right: 1px var(--mg-gray-3) solid;
+}
+
+.forumsDataItem:last-of-type {
+    border-right: 0;
 }
 
 .forumsDataItem > p {

@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import Link from 'next/link';
 import { getForumList } from '../../lib/api/forum';
 
 import styles from '../../styles/forum.module.css';
 
 export default function ForumHome({ forums }) {
+    console.log('forums:', forums);
     return (
         <>
             <Head>
@@ -35,12 +37,17 @@ export default function ForumHome({ forums }) {
                                     </div>
 
                                     <div>
-                                        <p className={styles.forumsName}>{forum.name}</p>
+                                        <p className={styles.forumsName}>
+                                            <Link href={`/forum/${forum._id}`}>
+                                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                                <a><strong>{forum.name}</strong></a>
+                                            </Link>
+                                        </p>
                                         {/* <p className={styles.forumsDescription}>description</p> */}
                                     </div>
                                 </div>
-                                <div className={`text-center ${styles.forumsDataItem}`}>1</div>
-                                <div className={`text-center ${styles.forumsDataItem}`}>3</div>
+                                <div className={`text-center ${styles.forumsDataItem}`}>{forum.topics}</div>
+                                <div className={`text-center ${styles.forumsDataItem}`}>{forum.posts}</div>
                                 <div className={styles.forumsDataItem}>
                                     <p><strong>blah, blah, blah, blah, blah, blah, blah, blah, blah</strong></p>
                                     <p>by Twins</p>

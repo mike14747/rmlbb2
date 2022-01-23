@@ -68,6 +68,10 @@ Forums collection:
 
 -   Each forum should contain a property for the number of topics, number of posts and details of the last post (subject, username and date/time) in that forum.
 
+Tpoics collection:
+
+-   Each topic should contain a property for the number of replies (and possibly even views) each has.
+
 Users collection:
 
 -   \_id (the MongoDB ObjectId)

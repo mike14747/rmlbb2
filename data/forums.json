@@ -7,8 +7,8 @@
         "description": "",
         "active": true,
         "order": 1,
-        "topics": 0,
-        "totalPosts": 0,
+        "topics": 133,
+        "posts": 2212,
         "lastPost": {}
     },
     {
@@ -18,9 +18,9 @@
         "name": "Unowned Player Draft",
         "description": "",
         "active": true,
-        "order": 2,
-        "topics": 0,
-        "totalPosts": 0,
+        "order": 7,
+        "topics": 8,
+        "posts": 85,
         "lastPost": {}
     },
     {
@@ -31,8 +31,8 @@
         "description": "",
         "active": true,
         "order": 3,
-        "topics": 0,
-        "totalPosts": 0,
+        "topics": 5,
+        "posts": 28,
         "lastPost": {}
     },
     {
@@ -43,8 +43,8 @@
         "description": "",
         "active": true,
         "order": 4,
-        "topics": 0,
-        "totalPosts": 0,
+        "topics": 24,
+        "posts": 347,
         "lastPost": {}
     },
     {
@@ -55,8 +55,8 @@
         "description": "",
         "active": true,
         "order": 5,
-        "topics": 0,
-        "totalPosts": 0,
+        "topics": 7,
+        "posts": 17,
         "lastPost": {}
     },
     {
@@ -67,8 +67,8 @@
         "description": "",
         "active": true,
         "order": 6,
-        "topics": 0,
-        "totalPosts": 0,
+        "topics": 226,
+        "posts": 373,
         "lastPost": {}
     },
     {
@@ -78,9 +78,9 @@
         "name": "Rule Change Proposals",
         "description": "",
         "active": true,
-        "order": 7,
-        "topics": 0,
-        "totalPosts": 0,
+        "order": 2,
+        "topics": 43,
+        "posts": 540,
         "lastPost": {}
     },
     {
@@ -92,7 +92,7 @@
         "active": false,
         "order": 8,
         "topics": 0,
-        "totalPosts": 0,
+        "posts": 0,
         "lastPost": {}
     }
 ]
