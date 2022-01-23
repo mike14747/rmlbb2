@@ -49,9 +49,9 @@ export default function ForumHome({ forums }) {
                                 <div className={`text-center ${styles.forumsDataItem}`}>{forum.topics}</div>
                                 <div className={`text-center ${styles.forumsDataItem}`}>{forum.posts}</div>
                                 <div className={styles.forumsDataItem}>
-                                    <p><strong>blah, blah, blah, blah, blah, blah, blah, blah, blah</strong></p>
-                                    <p>by Twins</p>
-                                    <p>Jan 21, 2022 7:01pm</p>
+                                    <p><strong>{forum.lastPost.topic}</strong></p>
+                                    {forum.lastPost.username && <p>by {forum.lastPost.username}</p>}
+                                    <p>{forum.lastPost.dateTime}</p>
                                 </div>
                             </div>
                         ))

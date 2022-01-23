@@ -9,7 +9,12 @@
         "order": 1,
         "topics": 133,
         "posts": 2212,
-        "lastPost": {}
+        "lastPost": {
+            "topic": "Re: Short Hops",
+            "_id": "",
+            "username": "Highlanders",
+            "dateTime": "Jan 22, 2022 1:40 pm"
+        }
     },
     {
         "_id": {
