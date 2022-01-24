@@ -33,6 +33,8 @@ const Authbar = () => {
                         </span>
 
                         <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Sign Out</Button>
+
+                        {/* <Button onClick={() => signOut({ callbackUrl: `${window.location.origin}/forum` })} size="small" variant="text">Sign Out</Button> */}
                     </>
                 }
             </div>

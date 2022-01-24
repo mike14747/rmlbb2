@@ -17,6 +17,7 @@ export default function Article({ article, slugs }) {
             <Loading />
         );
     }
+
     return (
         <>
             <Head>
