@@ -15,11 +15,16 @@
 
 .forumsDataRow {
     min-height: 40px;
+    background-color: var(--mg-light);
     border-bottom: 1px var(--mg-gray-3) solid;
 }
 
 .forumsDataRow:last-of-type {
     border-bottom: 0;
+}
+
+.forumsDataRow:hover {
+    background-color: var(--mg-cream);
 }
 
 .forumsHeadingItem {
@@ -66,4 +71,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 0;
+}
+
+.messageIcon {
+    width: 31px;
+    height: auto;
 }

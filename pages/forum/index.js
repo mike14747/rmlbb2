@@ -33,7 +33,8 @@ export default function ForumHome({ forums }) {
                             <div className={styles.forumsDataRow} key={forum._id}>
                                 <div className={`${styles.forumsDataItem} ${styles.forumsIcon}`}>
                                     <div>
-                                        <span aria-hidden="true">&#128240;</span>
+                                        {/* <span aria-hidden="true">&#128240;</span> */}
+                                        <img aria-hidden="true" src="/images/message_icon2.png" alt="Forum" className={styles.messageIcon} />
                                     </div>
 
                                     <div>
@@ -49,7 +50,12 @@ export default function ForumHome({ forums }) {
                                 <div className={`text-center ${styles.forumsDataItem}`}>{forum.topics}</div>
                                 <div className={`text-center ${styles.forumsDataItem}`}>{forum.posts}</div>
                                 <div className={styles.forumsDataItem}>
-                                    <p><strong>{forum.lastPost.topic}</strong></p>
+                                    <p>
+                                        <Link href={`/forum/topic/${forum.lastPost._id}`}>
+                                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                            <a><strong>{forum.lastPost.topic}</strong></a>
+                                        </Link>
+                                    </p>
                                     {forum.lastPost.username && <p>by {forum.lastPost.username}</p>}
                                     <p>{forum.lastPost.dateTime}</p>
                                 </div>

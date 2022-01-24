@@ -31,7 +31,7 @@ const Profile = () => {
     const handleUpdateUsernameSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/api/auth/update-username', {
+        const res = await fetch('/api/user/update-username', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -57,7 +57,7 @@ const Profile = () => {
     const handleUpdateEmailSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/api/auth/update-email', {
+        const res = await fetch('/api/user/update-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -80,7 +80,7 @@ const Profile = () => {
     const handleUpdatePasswordSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/api/auth/update-password', {
+        const res = await fetch('/api/user/update-password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',

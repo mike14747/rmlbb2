@@ -15,7 +15,7 @@ export default function ForgottenUsername() {
     const handleUsernameSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/api/auth/forgot-username', {
+        const res = await fetch('/api/user/forgot-username', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -37,7 +37,7 @@ export default function ForgottenUsername() {
     const handlePasswordSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/api/auth/reset-password', {
+        const res = await fetch('/api/user/reset-password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
