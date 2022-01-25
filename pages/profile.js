@@ -113,7 +113,7 @@ const Profile = () => {
                     setUser(data[0]);
                 } else {
                     setUser(null);
-                    setProfileError('An error occurred fetching user profile data.');
+                    setProfileError('An error occurred fetching data.');
                 }
                 setIsLoading(false);
             };

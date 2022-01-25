@@ -13,6 +13,7 @@ export default async function user(req, res) {
             if (!response) res.status(500).end();
             response?.length === 1 ? res.status(200).json(response) : res.status(400).end();
         } catch (error) {
+            console.error(error);
             res.status(500).end();
         }
     }
