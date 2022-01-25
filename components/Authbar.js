@@ -1,6 +1,6 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
-// import SignInMini from './SignInMini';
 import Button from '../components/Button';
 
 import styles from '../styles/Authbar.module.css';
@@ -9,7 +9,7 @@ const Authbar = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
 
-    const redirectUrl = window.location;
+    const router = useRouter();
 
     return (
         <div className={'container-fluid ' + styles.authbarWrapper}>
@@ -17,10 +17,7 @@ const Authbar = () => {
                 {loading && <>Loading...</>}
 
                 {!session && !loading &&
-                    // <>
-                    //     <SignInMini />
-                    // </>
-                    <Link href={`/login?url=${redirectUrl}`}>
+                    <Link href={`/login?url=${router.pathname}`}>
                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <a>Login</a>
                     </Link>
@@ -39,8 +36,6 @@ const Authbar = () => {
                         </span>
 
                         <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Sign Out</Button>
-
-                        {/* <Button onClick={() => signOut({ callbackUrl: `${window.location.origin}/forum` })} size="small" variant="text">Sign Out</Button> */}
                     </>
                 }
             </div>

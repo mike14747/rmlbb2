@@ -14,7 +14,9 @@ const Login = () => {
     const loading = status === 'loading';
 
     const router = useRouter();
-    const redirectUrl = router.query.url || `${window.location.origin}/`;
+    // const redirectUrl = router.query.url || `${window.location.origin}/`;
+    // const redirectUrl = '/events';
+    const redirectUrl = router.query.url || '/';
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
