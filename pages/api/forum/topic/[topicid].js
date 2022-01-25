@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react';
-import { getForumTopic } from '../../../lib/api/forum';
+import { getForumTopic } from '../../../../lib/api/forum';
 
 export default async function forumTopic(req, res) {
     if (req.method === 'GET') {
