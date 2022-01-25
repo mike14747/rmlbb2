@@ -31,7 +31,7 @@
         "eslint-config-next": "^11.0.1",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^27.3.1",
-        "node-fetch": "^2.6.1"
+        "node-fetch": "^3.1.1"
     },
     "dependencies": {
         "@sanity/block-content-to-react": "^2.0.7",
