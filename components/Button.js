@@ -25,7 +25,7 @@ export default function Button({ children, size, variant, type, theme, onClick }
 }
 
 Button.propTypes = {
-    children: PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     size: PropTypes.string,
     variant: PropTypes.string,
     type: PropTypes.string,

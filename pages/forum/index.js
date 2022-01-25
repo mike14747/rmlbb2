@@ -1,12 +1,55 @@
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { getForumList } from '../../lib/api/forum';
+import Loading from '../../components/Loading';
 
 import styles from '../../styles/forum.module.css';
 
-export default function ForumHome({ forums }) {
-    console.log('forums:', forums);
+export default function ForumHome() {
+    const { data: session, status } = useSession();
+    const loading = status === 'loading';
+
+    const router = useRouter();
+
+    const [forums, setForums] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        if (session) {
+            setIsLoading(true);
+
+            fetch('/api/forum/forum-list', { signal: abortController.signal })
+                .then(res => res.json())
+                .then(data => {
+                    setForums(data);
+                    setError(null);
+                })
+                .catch(error => {
+                    if (error.name === 'AbortError') {
+                        console.error('Data fetching was aborted!');
+                    } else {
+                        console.error(error);
+                        setForums(null);
+                        setError('An error occurred fetching data.');
+                    }
+                })
+                .finally(() => setIsLoading(false));
+        }
+
+        return () => abortController.abort();
+    }, [session]);
+
+    if (typeof window !== 'undefined' && loading) return null;
+
+    if (!session) {
+        router.push('/login?url=/forum');
+    }
+
     return (
         <>
             <Head>
@@ -16,9 +59,13 @@ export default function ForumHome({ forums }) {
             </Head>
 
             <article>
-                <h2 className="page-heading">
+                <h2 className={'page-heading ' + styles.forumPageHeadding}>
                     Message Forum
                 </h2>
+
+                {error && <p className="error">{error}</p>}
+
+                {isLoading && <Loading />}
 
                 <div className={styles.forumsContainer}>
                     <div className={styles.forumsHeadingRow}>
@@ -66,17 +113,4 @@ export default function ForumHome({ forums }) {
             </article>
         </>
     );
-}
-
-ForumHome.propTypes = {
-    forums: PropTypes.array,
-};
-
-export async function getStaticProps() {
-    const forums = await getForumList();
-
-    return {
-        props: { forums },
-        revalidate: 600, // page regeneration can occur in 10 minutes
-    };
 }

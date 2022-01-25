@@ -11,6 +11,7 @@ import styles from '../styles/events.module.css';
 const Events = ({ events }) => {
     const [pastEvents, setPastEvents] = useState(null);
     const [showPastEvents, setShowPastEvents] = useState(false);
+    const btnText = !showPastEvents ? 'Show Past Events' : 'Hide Past Events';
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -80,12 +81,7 @@ const Events = ({ events }) => {
                 }
 
                 <div className={styles.showPastDiv}>
-                    <Button onClick={() => setShowPastEvents(!showPastEvents)} size="medium" variant="contained" theme="primary">
-                        {!showPastEvents
-                            ? <>Show Past Events</>
-                            : <>Hide Past Events</>
-                        }
-                    </Button>
+                    <Button onClick={() => setShowPastEvents(!showPastEvents)} size="medium" variant="contained" theme="primary">{btnText}</Button>
                 </div>
 
                 {showPastEvents && !pastEvents && isLoading && <Loading />}

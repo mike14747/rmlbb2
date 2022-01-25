@@ -34,7 +34,7 @@ const Directory = () => {
                     } else {
                         console.log(error);
                         setManagers(null);
-                        setError('An error occurred fetching manager data.');
+                        setError('An error occurred fetching data.');
                         setIsLoading(false);
                     }
                 });
