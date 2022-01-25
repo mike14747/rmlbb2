@@ -12,7 +12,6 @@ export default function Forum() {
 
     const router = useRouter();
     const forumId = router.query.forumid;
-    // console.log('router.query:', router.query);
 
     const [topicList, setTopicList] = useState(null);
 
@@ -38,12 +37,12 @@ export default function Forum() {
     if (typeof window !== 'undefined' && loading) return null;
 
     if (!session) {
-        // router.push(`/login?url=/forum/${forumId}`);
+        router.push(`/login?url=/forum/${forumId}`);
         // router.push(`/login?url=/forum/${forumId}`, '/login');
-        router.push({
-            pathname: '/login',
-            query: { url: `/forum/${forumId}`, forumname: 'Test Forum' },
-        }, '/login');
+        // router.push({
+        //     pathname: '/login',
+        //     query: { url: `/forum/${forumId}`, forumname: 'Test Forum' },
+        // }, '/login');
     }
 
     return (
@@ -56,7 +55,7 @@ export default function Forum() {
 
             <article>
                 <h2 className={'page-heading ' + styles.forumPageHeadding}>
-                    <small className={styles.forumText}>Forum: </small>{router.query.forumname}
+                    <small className={styles.forumText}>Forum: </small>Forum Name
                 </h2>
 
                 {/* <p>

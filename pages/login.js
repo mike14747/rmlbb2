@@ -14,8 +14,7 @@ const Login = () => {
     const loading = status === 'loading';
 
     const router = useRouter();
-    const { url, ...rest } = router.query;
-    const redirectUrl = url || '/';
+    const redirectUrl = router.query.url || '/';
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -25,10 +24,6 @@ const Login = () => {
 
     if (session) {
         router.push(redirectUrl);
-        // router.push({
-        //     pathname: redirectUrl,
-        //     query: { ...rest },
-        // }, redirectUrl);
     }
 
     const handleSignIn = async (e) => {
