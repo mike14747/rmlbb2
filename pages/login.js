@@ -14,9 +14,8 @@ const Login = () => {
     const loading = status === 'loading';
 
     const router = useRouter();
-    // const redirectUrl = router.query.url || `${window.location.origin}/`;
-    // const redirectUrl = '/events';
-    const redirectUrl = router.query.url || '/';
+    const { url, ...rest } = router.query;
+    const redirectUrl = url || '/';
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -26,6 +25,10 @@ const Login = () => {
 
     if (session) {
         router.push(redirectUrl);
+        // router.push({
+        //     pathname: redirectUrl,
+        //     query: { ...rest },
+        // }, redirectUrl);
     }
 
     const handleSignIn = async (e) => {
@@ -35,8 +38,6 @@ const Login = () => {
             username: username,
             password: password,
         });
-
-        console.log('loginStatus:', loginStatus);
 
         if (!loginStatus?.ok || loginStatus?.status !== 200) {
             setError('Login Failed... check your credentials and try again.');
@@ -53,7 +54,7 @@ const Login = () => {
 
             {loading && <Loading />}
 
-            {!loading && status && status === 'unauthenticated' &&
+            {!loading && status === 'unauthenticated' &&
                 <>
                     <h2 className="page-heading">
                         Login

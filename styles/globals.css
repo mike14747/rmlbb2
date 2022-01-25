@@ -242,13 +242,7 @@ strong {
 }
 
 small {
-    font-size: .833rem;
-    font-size: var(--step--1);
-}
-
-x-small {
-    font-size: .694rem;
-    font-size: var(--step--2);
+    font-size: 83.3%;
 }
 
 sub,
@@ -649,6 +643,20 @@ template {
     font-size: larger;
 }
 
+.small {
+    font-size: .833rem;
+    font-size: var(--step--1-base);
+}
+
+.x-small {
+    font-size: .694rem;
+    font-size: var(--step--2-base);
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
 /* use with the <main> element on pages */
 .main-container {
     flex: 1;
@@ -705,6 +713,11 @@ h2.page-heading {
     font-size: var(--step-2);
     color: var(--theme-color-green);
     text-align: center;
+}
+
+.break::before {
+    content: '\A';
+    white-space: pre;
 }
 
 /* start global form css */
@@ -767,6 +780,9 @@ h2.page-heading {
 }
 
 @media (min-width: 768px) {
+    .break::before {
+        content: ' ';
+    }
 }
 
 @media (min-width: 1024px) {

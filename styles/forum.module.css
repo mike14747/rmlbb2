@@ -42,7 +42,7 @@
 
 .forumsIcon {
     display: grid;
-    grid-template-columns: 40px auto;
+    grid-template-columns: 20px auto;
 }
 
 .forumsName,
@@ -74,6 +74,31 @@
 }
 
 .messageIcon {
-    width: 31px;
+    width: 80%;
+    max-width: 31px;
     height: auto;
+}
+
+.forumPageHeadding {
+    font-size: 1.44rem;
+    font-size: var(--step-2);
+}
+
+.forumText {
+    color: var(--theme-color-orange);
+}
+
+.on::before {
+    content: '';
+}
+
+@media (min-width: 768px) {
+    .forumsIcon {
+        display: grid;
+        grid-template-columns: 40px auto;
+    }
+
+    .on::before {
+        content: '@ ';
+    }
 }

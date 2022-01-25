@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+// import { useState, useEffect } from 'react';
+// import { useRouter } from 'next/router';
+// import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { getForumList } from '../../lib/api/forum';
@@ -6,7 +9,7 @@ import { getForumList } from '../../lib/api/forum';
 import styles from '../../styles/forum.module.css';
 
 export default function ForumHome({ forums }) {
-    console.log('forums:', forums);
+    // console.log('forums:', forums);
     return (
         <>
             <Head>
@@ -16,7 +19,7 @@ export default function ForumHome({ forums }) {
             </Head>
 
             <article>
-                <h2 className="page-heading">
+                <h2 className={'page-heading ' + styles.forumPageHeadding}>
                     Message Forum
                 </h2>
 
