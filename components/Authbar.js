@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
-import SignInMini from './SignInMini';
+// import SignInMini from './SignInMini';
 import Button from '../components/Button';
 
 import styles from '../styles/Authbar.module.css';
@@ -9,15 +9,21 @@ const Authbar = () => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
 
+    const redirectUrl = window.location;
+
     return (
         <div className={'container-fluid ' + styles.authbarWrapper}>
             <div className={'container ' + styles.authbarContainer}>
                 {loading && <>Loading...</>}
 
                 {!session && !loading &&
-                    <>
-                        <SignInMini />
-                    </>
+                    // <>
+                    //     <SignInMini />
+                    // </>
+                    <Link href={`/login?url=${redirectUrl}`}>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <a>Login</a>
+                    </Link>
                 }
 
                 {session &&
@@ -39,7 +45,6 @@ const Authbar = () => {
                 }
             </div>
         </div>
-
     );
 };
 

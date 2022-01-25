@@ -12,8 +12,6 @@ export default function Forum() {
 
     // if (typeof window === 'undefined') return null;
 
-
-
     // if (!session) return <p>Access Denied</p>;
 
     if (!session) return {
