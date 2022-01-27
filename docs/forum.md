@@ -108,30 +108,42 @@ GROUP BY u.user_id
 ORDER BY u.user_id ASC;
 ```
 
--   After getting all users, I'll need to manually add a "role" property to each. Everyone except myself will get a role of "user", while I'll get a role of "admin".
 -   Change my "username" from "blaze" to "Blaze".
+-   After getting all users, I'll need to manually add a "role" property to each. Everyone except myself will get a role of "user", while I'll get a role of "admin".
 -   Delete the "admin" user.
 
-user_types:
+user_types in phpbb:
 
 -   0: regular, active user
 -   1: inactive user
 -   2: bots / crawlers
 -   3: admin
 
+Get all the topics:
+
+```sql
+SELECT t.topic_id, t.topic_title, t.topic_first_post_id AS post_id, t.topic_poster AS user_id, t.topic_first_poster_name AS username, t.topic_time, t.topic_views 
+FROM phpbb_topics AS t
+ORDER BY t.topic_id ASC
+LIMIT 2000;
+```
+
 Get all the posts:
 
 ```sql
-SELECT f.forum_id, f.forum_name, t.topic_poster, t.topic_id, t.topic_title, p.post_id, p.post_subject, p.post_time, u.user_id, u.username
-FROM phpbb_topics AS t INNER JOIN phpbb_posts AS p USING (`topic_id`) INNER JOIN phpbb_forums AS f ON t.forum_id=f.forum_id INNER JOIN phpbb_users AS u ON u.user_id=p.poster_id
-ORDER BY t.topic_title ASC
-LIMIT 10000;
+SELECT p.post_id, p.post_subject, p.post_time, p.post_text, f.forum_id, f.forum_name, u.user_id, u.username, t.topic_id 
+FROM phpbb_posts AS p INNER JOIN phpbb_forums AS f USING (`forum_id`) INNER JOIN phpbb_users AS u ON p.poster_id=u.user_id INNER JOIN phpbb_topics AS t USING (`topic_id`) 
+ORDER BY p.post_id ASC
+LIMIT 5000;
 ```
 
 Get all the forum info:
 
 ```sql
-
+SELECT f.forum_id, f.forum_name, f.left_id AS `order`, f.forum_last_post_id, f.forum_last_poster_id AS user_id, f.forum_last_poster_name AS username, f.forum_last_post_subject, f.forum_last_post_time, f.forum_topics_approved AS topics, f.forum_posts_approved AS posts 
+FROM phpbb_forums AS f
+ORDER BY f.forum_id ASC
+LIMIT 100;
 ```
 
 ---
