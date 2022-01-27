@@ -122,7 +122,7 @@ user_types in phpbb:
 Get all the topics:
 
 ```sql
-SELECT t.topic_id, t.topic_title, t.topic_first_post_id AS post_id, t.topic_poster AS user_id, t.topic_first_poster_name AS username, t.topic_time, t.topic_views 
+SELECT t.topic_id, t.topic_title, t.topic_first_post_id AS post_id, t.topic_poster AS user_id, t.topic_first_poster_name AS username, t.topic_time, t.topic_views
 FROM phpbb_topics AS t
 ORDER BY t.topic_id ASC
 LIMIT 2000;
@@ -131,8 +131,8 @@ LIMIT 2000;
 Get all the posts:
 
 ```sql
-SELECT p.post_id, p.post_subject, p.post_time, p.post_text, f.forum_id, f.forum_name, u.user_id, u.username, t.topic_id 
-FROM phpbb_posts AS p INNER JOIN phpbb_forums AS f USING (`forum_id`) INNER JOIN phpbb_users AS u ON p.poster_id=u.user_id INNER JOIN phpbb_topics AS t USING (`topic_id`) 
+SELECT p.post_id, p.post_subject, p.post_time, p.post_text, f.forum_id, f.forum_name, u.user_id, u.username, t.topic_id
+FROM phpbb_posts AS p INNER JOIN phpbb_forums AS f USING (`forum_id`) INNER JOIN phpbb_users AS u ON p.poster_id=u.user_id INNER JOIN phpbb_topics AS t USING (`topic_id`)
 ORDER BY p.post_id ASC
 LIMIT 5000;
 ```
@@ -140,7 +140,7 @@ LIMIT 5000;
 Get all the forum info:
 
 ```sql
-SELECT f.forum_id, f.forum_name, f.left_id AS `order`, f.forum_last_post_id, f.forum_last_poster_id AS user_id, f.forum_last_poster_name AS username, f.forum_last_post_subject, f.forum_last_post_time, f.forum_topics_approved AS topics, f.forum_posts_approved AS posts 
+SELECT f.forum_id, f.forum_name, f.left_id AS `order`, f.forum_last_post_id, f.forum_last_poster_id AS user_id, f.forum_last_poster_name AS username, f.forum_last_post_subject, f.forum_last_post_time, f.forum_topics_approved AS topics, f.forum_posts_approved AS posts
 FROM phpbb_forums AS f
 ORDER BY f.forum_id ASC
 LIMIT 100;
@@ -148,46 +148,13 @@ LIMIT 100;
 
 ---
 
-publishedAt: { type: Date, default: Date.now() }
-
 ```js
 {
-  $jsonSchema: {
-    title: "users",
-    description: "Users for all protected pages of rmlbb.com",
-    bsonType: "object",
-    required: ["_id", "username", "password", "email"],
-    properties: {
-      _id: {
-        bsonType: "objectId"
-      },
-      username: {
-        bsonType: "string",
-        minLength: 6,
-        maxLength: 15,
-        description: "Must be a string from 6 to 15 characters in length and is required"
-      },
-      password: {
-        bsonType: "string",
-        minLength: 60,
-        maxLength: 60,
-        description: "The hashed version must be a string, 60 characters in length and is required"
-      },
-      email: {
-        bsonType: "string"
-      },
-      role: {
-        bsonType: "string",
-        enum: ["user", "admin"]
-      },
-      posts: {
-        bsonType: "number"
-      },
-      resetPasswordEXpires: {
-        bsonType: "date"
-      }
+    "_id": {
+        "$oid": "61f2222fbbae82cab404c405"
     },
-    additionalProperties: true
-  }
+    "last_used": {
+        "$date": "2018-04-15T16:54:40.000Z"
+    }
 }
 ```
