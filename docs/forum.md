@@ -89,7 +89,7 @@ As of 2022-01-22, this is what the message forum contains:
 
 **Queries to get the data:**
 
-User table notes:
+Users table notes:
 
 -   There are 11 posts (although listed as having 16) made by user_id 1 (username: anonymous). The username associated with those posts is the Yankees. I'll have to get those integrated into the data.
 -   Anonymous (user_id 1) is the only user_type of 2 (generally the bots type) that has made any posts. It seems like the easy fix for this to change the username of user_id 1 from anonymous to Yankees.
@@ -136,6 +136,10 @@ FROM phpbb_posts AS p INNER JOIN phpbb_forums AS f USING (`forum_id`) INNER JOIN
 ORDER BY p.post_id ASC
 LIMIT 5000;
 ```
+
+Forums table notes:
+
+-   Make sure the "topics" and "posts" data are correct for each forum... eg: forum_id has 136 topics, but the field in the forums table only shows that it has 133 topics.
 
 Get all the forum info:
 
