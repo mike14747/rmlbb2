@@ -39,7 +39,7 @@ Sign in and Sign out via the normal website auth system.
 
 ### MongoDB schema
 
-Forums collection. Each forum should contain a property for:
+**Forums collection.**
 
 -   \_id (the MongoDB ObjectId)
 -   name
@@ -53,9 +53,15 @@ Forums collection. Each forum should contain a property for:
     -   userId or username ???
     -   dateTime (date and time)
 
-Topics collection:
+**Topics collection.**
 
--   Each topic should contain a property for the number of replies (and possibly even views) each has.
+-   \_id (the MongoDB ObjectId)
+-   topic
+-   content
+-   forum \_id
+-   user \_id
+-   replies (number)
+-   views (number)
 
 Users collection:
 
@@ -102,6 +108,17 @@ GROUP BY u.user_id
 ORDER BY u.user_id ASC;
 ```
 
+-   After getting all users, I'll need to manually add a "role" property to each. Everyone except myself will get a role of "user", while I'll get a role of "admin".
+-   Change my "username" from "blaze" to "Blaze".
+-   Delete the "admin" user.
+
+user_types:
+
+-   0: regular, active user
+-   1: inactive user
+-   2: bots / crawlers
+-   3: admin
+
 Get all the posts:
 
 ```sql
@@ -118,3 +135,47 @@ Get all the forum info:
 ```
 
 ---
+
+publishedAt: { type: Date, default: Date.now() }
+
+```js
+{
+  $jsonSchema: {
+    title: "users",
+    description: "Users for all protected pages of rmlbb.com",
+    bsonType: "object",
+    required: ["_id", "username", "password", "email"],
+    properties: {
+      _id: {
+        bsonType: "objectId"
+      },
+      username: {
+        bsonType: "string",
+        minLength: 6,
+        maxLength: 15,
+        description: "Must be a string from 6 to 15 characters in length and is required"
+      },
+      password: {
+        bsonType: "string",
+        minLength: 60,
+        maxLength: 60,
+        description: "The hashed version must be a string, 60 characters in length and is required"
+      },
+      email: {
+        bsonType: "string"
+      },
+      role: {
+        bsonType: "string",
+        enum: ["user", "admin"]
+      },
+      posts: {
+        bsonType: "number"
+      },
+      resetPasswordEXpires: {
+        bsonType: "date"
+      }
+    },
+    additionalProperties: true
+  }
+}
+```
