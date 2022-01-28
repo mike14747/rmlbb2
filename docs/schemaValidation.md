@@ -25,9 +25,9 @@ users collection:
             },
             username: {
                 bsonType: 'string',
-                minLength: 6,
+                minLength: 4,
                 maxLength: 15,
-                description: 'username must be a string from 6 to 15 characters in length and is required'
+                description: 'username must be a string from 4 to 15 characters in length and is required'
             },
             password: {
                 bsonType: 'string',
