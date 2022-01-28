@@ -13,7 +13,7 @@ Sign in and Sign out via the normal website auth system.
 
 ### Authorization
 
--
+-   Authenticated (Logged-in) users can view the list of Forums.
 -   Authenticated (Logged-in) users can read all Topics and Comments.
 -   Authenticated (Logged-in) users can create a new Topic and leave a Comment in any Topic.
 -   Authenticated (Logged-in) users can only update or delete their own Topics or Comments.
@@ -30,7 +30,7 @@ Sign in and Sign out via the normal website auth system.
 
 ### Wish list items
 
--   Add support for drafts (saving your work before you post your message)
+-   Add support for drafts (saving your work before you post your message).
 -   Add a way to preview your post before submitting it. I'm not sure this would be necessary depending upon the WYSIWYG I settle on.
 -   Support for a Moderator group that can read, update, and delete all Topics and Comments in a certain form... even those of others.
 -   Find a way to search posts.
@@ -60,10 +60,15 @@ Sign in and Sign out via the normal website auth system.
 -   content
 -   forum \_id
 -   user \_id
--   replies (number)
+-   date (date object)
+-   totalReplies (number, tough I'm not sure this is needed)
 -   views (number)
+-   replies ...an array of post objects, with each containing:
+    -   user \_id
+    -   content
+    -   date (date object)
 
-Users collection:
+**Users collection.**
 
 -   \_id (the MongoDB ObjectId)
 -   username
@@ -92,34 +97,40 @@ As of 2022-01-22, this is what the message forum contains:
 Users table notes:
 
 -   There are 11 posts (although listed as having 16) made by user_id 1 (username: anonymous). The username associated with those posts is the Yankees. I'll have to get those integrated into the data.
--   Anonymous (user_id 1) is the only user_type of 2 (generally the bots type) that has made any posts. It seems like the easy fix for this to change the username of user_id 1 from anonymous to Yankees.
+-   Anonymous (user_id 1) is the only user_type of 2 (generally the bots type) that has made any posts. It seems like the easy fix for this to change the username of user_id 1 from "anonymous" to "Yankees".
 
 ```sql
-UPDATE phpbb_users SET user_type=1, username='Yankees', username_clean='yankees' WHERE user_id=1
-```
-
-Get all the user info:
-
-```sql
-SELECT u.user_id, u.username, u.user_email, u.user_regdate, COUNT(p.post_id) AS total_posts
-FROM phpbb_users AS u INNER JOIN phpbb_posts AS p ON u.user_id=p.poster_id
-WHERE user_type!=2
-GROUP BY u.user_id
-ORDER BY u.user_id ASC;
+UPDATE phpbb_users SET user_type=1, username="Yankees", username_clean="yankees" WHERE user_id=1;
 ```
 
 -   Change my "username" from "blaze" to "Blaze".
+
+```sql
+UPDATE phpbb_users SET username="Blaze", username_clean="Blaze" WHERE user_id=48;
+```
+
+
+**Get all the user info** (except for the bots/crawlers and admin user):
+
+```sql
+SELECT u.user_id, u.username, u.user_email, u.user_regdate, COUNT(p.post_id) AS total_posts 
+FROM phpbb_users AS u INNER JOIN phpbb_posts AS p ON u.user_id=p.poster_id 
+WHERE u.user_type!=2 AND u.username!="admin" 
+GROUP BY u.user_id 
+ORDER BY u.user_id ASC;
+```
+
 -   After getting all users, I'll need to manually add a "role" property to each. Everyone except myself will get a role of "user", while I'll get a role of "admin".
 -   Delete the "admin" user.
 
-user_types in phpbb:
+**user_types in phpbb:**
 
 -   0: regular, active user
 -   1: inactive user
 -   2: bots / crawlers
 -   3: admin
 
-Get all the topics:
+**Get all the topics:**
 
 ```sql
 SELECT t.topic_id, t.topic_title, t.topic_first_post_id AS post_id, t.topic_poster AS user_id, t.topic_first_poster_name AS username, t.topic_time, t.topic_views
@@ -128,7 +139,7 @@ ORDER BY t.topic_id ASC
 LIMIT 2000;
 ```
 
-Get all the posts:
+**Get all the posts:**
 
 ```sql
 SELECT p.post_id, p.post_subject, p.post_time, p.post_text, f.forum_id, f.forum_name, u.user_id, u.username, t.topic_id
