@@ -175,42 +175,12 @@ const Profile = () => {
                                         value={newUsername}
                                         required={true}
                                         handleChange={(e) => setNewUsername(e.target.value)}
-                                        pattern="^[a-zA-Z0-9_-]{6,15}$"
-                                        errorMsg="New Username must be from 6 to 15 characters in length and not include any special characters."
+                                        pattern="^[a-zA-Z0-9_-]{4,15}$"
+                                        errorMsg="New Username must be from 4 to 15 characters in length and not include any special characters."
                                     />
 
                                     <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
                                 </form>
-
-                                {/* <form className={styles.updateGroup} onSubmit={handleUpdatePasswordSubmit}>
-                                    {passwordError && <p className={styles.error}>{passwordError}</p>}
-
-                                    <FormInput
-                                        id="newPassword"
-                                        label="New Password"
-                                        name="newPassword"
-                                        type="password"
-                                        value={newPassword}
-                                        required={true}
-                                        handleChange={(e) => setNewPassword(e.target.value)}
-                                        pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{8,20}$"
-                                        errorMsg="New Password must be from 8 to 20 characters in length."
-                                    />
-
-                                    <FormInput
-                                        id="repeatPassword"
-                                        label="Repeat New Password"
-                                        name="repeatPassword"
-                                        type="password"
-                                        value={repeatPassword}
-                                        required={true}
-                                        handleChange={(e) => setrepeatPassword(e.target.value)}
-                                        pattern={newPassword}
-                                        errorMsg="Passwords do not match."
-                                    />
-
-                                    <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
-                                </form> */}
 
                                 <PasswordResetForm
                                     handleUpdatePasswordSubmit={handleUpdatePasswordSubmit}
