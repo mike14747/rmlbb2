@@ -104,7 +104,7 @@ export default function ForumHome() {
                                                     <a><strong>{forum.lastPost.subject}</strong></a>
                                                 </Link>
                                             </p>
-                                            {forum.lastPost.username && <p>by {forum.lastPost.username}</p>}
+                                            {forum.lastPost.username && <p className='small'><small>by:</small> {forum.lastPost.username}</p>}
                                             <p>{forum.lastPost.date}</p>
                                         </>
                                     }

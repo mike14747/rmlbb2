@@ -20,8 +20,8 @@ users collection:
         ],
         properties: {
             _id: {
-                bsonType: 'objectId',
-                description: '_id must be an objectId and is required'
+                bsonType: 'int',
+                description: '_id must be a unique integer and is required'
             },
             username: {
                 bsonType: 'string',
