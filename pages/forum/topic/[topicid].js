@@ -16,9 +16,9 @@ export default function Topic() {
 
     useEffect(() => {
         if (session) {
-            setTopic('This is topic 1');
+            setTopic('This is topic ' + topicId);
         }
-    }, [session]);
+    }, [session, topicId]);
 
     if (typeof window !== 'undefined' && loading) return null;
 

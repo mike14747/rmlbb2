@@ -91,20 +91,19 @@ export default function ForumHome() {
                                                 <a><strong>{forum.name}</strong></a>
                                             </Link>
                                         </p>
-                                        {/* <p className={styles.forumsDescription}>description</p> */}
                                     </div>
                                 </div>
                                 <div className={`text-center ${styles.forumsDataItem}`}>{forum.topics}</div>
                                 <div className={`text-center ${styles.forumsDataItem}`}>{forum.posts}</div>
                                 <div className={styles.forumsDataItem}>
                                     <p>
-                                        <Link href={`/forum/topic/${forum.lastPost._id}`}>
+                                        <Link href={`/forum/topic/${forum.lastPost.topicId}`}>
                                             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                            <a><strong>{forum.lastPost.topic}</strong></a>
+                                            <a><strong>{forum.lastPost.subject}</strong></a>
                                         </Link>
                                     </p>
                                     {forum.lastPost.username && <p>by {forum.lastPost.username}</p>}
-                                    <p>{forum.lastPost.dateTime}</p>
+                                    <p>{forum.lastPost.date}</p>
                                 </div>
                             </div>
                         ))
