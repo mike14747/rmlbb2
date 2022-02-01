@@ -2,6 +2,7 @@ import useSWR from 'swr';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import Error from './Error';
+import SkipToMain from './SkipToMain';
 import TopInfo from './TopInfo';
 import Authbar from './Authbar';
 import Header from './Header';
@@ -17,11 +18,12 @@ const Layout = ({ children }) => {
 
     return (
         <>
+            <SkipToMain />
             <TopInfo topInfo={{ text: settings?.topInfoText, active: settings?.topInfoActive }} />
             <Authbar />
             <Header />
 
-            <main className="main-container">
+            <main id="main" className="main-container">
                 {children}
             </main>
 
