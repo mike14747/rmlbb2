@@ -23,7 +23,7 @@ export default function ForumHome() {
         if (session) {
             setIsLoading(true);
 
-            fetch('/api/forum/forum-list', { signal: abortController.signal })
+            fetch('/api/forum', { signal: abortController.signal })
                 .then(res => res.json())
                 .then(data => {
                     setForums(data);

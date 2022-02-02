@@ -3,46 +3,56 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Loading from '../../../components/Loading';
 
-import styles from '../../styles/forum.module.css';
+import styles from '../../../styles/forum.module.css';
 
 export default function Forum() {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
 
     const router = useRouter();
-    const forumId = router.query.forumid;
+    const forumId = router.query.forumId;
 
     const [topicList, setTopicList] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         if (session) {
-            setTopicList([
-                {
-                    _id: '1234',
-                    subject: 'This is topic 1',
-                    username: 'Highlanders',
-                    dateTime: 'Decemeber 12, 2021 10:40pm',
-                    replies: 12,
-                    views: 23,
-                    lastPost: {
-                        username: 'Twins',
-                        dateTime: 'January 3, 2022 2:23pm',
-                    },
-                },
-            ]);
+            setIsLoading(true);
+
+            fetch('/api/forum/' + forumId, { signal: abortController.signal })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('data:', data);
+                    setTopicList(data);
+                    setError(null);
+                    setIsLoading(false);
+                })
+                .catch(error => {
+                    if (error.name === 'AbortError') {
+                        console.log('Data fetching was aborted!');
+                    } else {
+                        console.log(error);
+                        setTopicList(null);
+                        setError('An error occurred fetching data.');
+                        setIsLoading(false);
+                    }
+                });
+        } else {
+            setTopicList(null);
         }
-    }, [session]);
+
+        return () => abortController.abort();
+    }, [session, forumId]);
 
     if (typeof window !== 'undefined' && loading) return null;
 
     if (!session) {
         router.push(`/login?url=/forum/${forumId}`);
-        // router.push(`/login?url=/forum/${forumId}`, '/login');
-        // router.push({
-        //     pathname: '/login',
-        //     query: { url: `/forum/${forumId}`, forumname: 'Test Forum' },
-        // }, '/login');
     }
 
     return (
@@ -58,9 +68,9 @@ export default function Forum() {
                     <small className={styles.forumText}>Forum: </small>Forum Name
                 </h2>
 
-                {/* <p>
-                    You have selected a forum (id: {forumId}) and reached that forum&apos;s page.
-                </p> */}
+                {error && <p className="error">{error}</p>}
+
+                {isLoading && <Loading />}
 
                 <div className={styles.forumsContainer}>
                     <div className={styles.forumsHeadingRow}>
@@ -81,24 +91,26 @@ export default function Forum() {
 
                                     <div>
                                         <p className={styles.forumsName}>
-                                            <Link href={`/forum/topic/${topic._id}`}>
+                                            <Link href={`/forum/${forumId}/topic/${topic._id}`}>
                                                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                <a><strong>{topic.subject}</strong></a>
+                                                <a><strong>{topic.title}</strong></a>
                                             </Link>
                                         </p>
-                                        <p className={styles.forumsDescription}>by {topic.username}<span className="break"></span><span className={styles.on}>{topic.lastPost.dateTime}</span></p>
+                                        <p className={styles.forumsDescription}>by {topic.user_id}<span className="break"></span><span className={styles.on}>{topic.date}</span></p>
                                     </div>
                                 </div>
-                                <div className={`text-center ${styles.forumsDataItem}`}>{topic.replies}</div>
+                                <div className={`text-center ${styles.forumsDataItem}`}>10</div>
+
                                 <div className={`text-center ${styles.forumsDataItem}`}>{topic.views}</div>
                                 <div className={styles.forumsDataItem}>
-                                    <p>by {topic.lastPost.username}</p>
-                                    <p>{topic.lastPost.dateTime}</p>
+                                    <p>by {topic.user_id}</p>
+                                    <p>{topic.date}</p>
                                 </div>
                             </div>
                         ))
                     }
                 </div>
+
             </article>
         </>
     );

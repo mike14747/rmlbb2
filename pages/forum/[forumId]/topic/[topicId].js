@@ -10,15 +10,16 @@ export default function Topic() {
     const loading = status === 'loading';
 
     const router = useRouter();
-    const topicId = router.query.topicid;
+    const forumId = router.query.forumId;
+    const topicId = router.query.topicId;
 
     const [topic, setTopic] = useState(null);
 
     useEffect(() => {
         if (session) {
-            setTopic('This is topic ' + topicId);
+            setTopic('This is topic ' + topicId + ' (in forum ' + forumId + ')');
         }
-    }, [session, topicId]);
+    }, [session, forumId, topicId]);
 
     if (typeof window !== 'undefined' && loading) return null;
 
