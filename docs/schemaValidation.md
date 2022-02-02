@@ -74,3 +74,21 @@ users collection:
     }
 }
 ```
+
+forums collection:
+
+```js
+
+```
+
+topics collection:
+
+```js
+
+```
+
+replies collection:
+
+```js
+
+```
