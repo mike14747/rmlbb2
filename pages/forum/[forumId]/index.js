@@ -77,7 +77,7 @@ export default function Forum() {
                         <div className={styles.forumsHeadingItem}>Topic</div>
                         <div className={`text-center ${styles.forumsHeadingItem}`}>Replies</div>
                         <div className={`text-center ${styles.forumsHeadingItem}`}>Views</div>
-                        <div className={styles.forumsHeadingItem}>Last Post</div>
+                        <div className={styles.forumsHeadingItem}>Last Reply</div>
                     </div>
 
                     {topicList?.length > 0 &&
@@ -103,8 +103,18 @@ export default function Forum() {
 
                                 <div className={`text-center ${styles.forumsDataItem}`}>{topic.views}</div>
                                 <div className={styles.forumsDataItem}>
-                                    <p>by {topic.user_id}</p>
-                                    <p>{topic.date}</p>
+                                    {topic.lastPost &&
+                                        <>
+                                            <p>
+                                                <Link href={`/forum/${forumId}/topic/${topic._id}${topic.lastPost.postId ? `?reply=${topic.lastPost.postId}` : ''}`}>
+                                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                                    <a><strong>{topic.lastPost.subject}</strong></a>
+                                                </Link>
+                                            </p>
+                                            {topic.lastPost.username && <p className='small'><small>by:</small> {topic.lastPost.username}</p>}
+                                            <p>{topic.lastPost.date}</p>
+                                        </>
+                                    }
                                 </div>
                             </div>
                         ))
