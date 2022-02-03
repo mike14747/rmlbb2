@@ -1,5 +1,6 @@
 .card {
     width: 100%;
+    background-color: var(--theme-color-yellow-pale);
     max-width: 475px;
     margin: 0 0 1.5rem 0;
     padding: 0.5rem;
