@@ -20,8 +20,6 @@ Write schema validations for all MongoDB collections. (in progress)
 
 Add a transition effect for the TopInfo component when it's being closed.
 
-Update events in sanity.io. (I have a good flow for how to move the existing MySQL manager data to sanity. "/docs/events.md")... I haven't started this yet.
-
 ---
 
 ### Done
@@ -37,3 +35,5 @@ Change over the directory and profile pages to the new authentication system.
 Save the structure of the SignIn component to my component library as a possible dropdown menu.
 
 Update managers in sanity.io. (I have a good flow for how to move the existing MySQL manager data to sanity. "/docs/directory.md")
+
+Update events in sanity.io. (I have a good flow for how to move the existing MySQL manager data to sanity. "/docs/events.md")
