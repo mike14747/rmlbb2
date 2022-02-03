@@ -8,13 +8,17 @@ Add a "to top" button to all pages.
 
 Style the "To main content" link.
 
+Write tests for all components in /components.
+
 Figure out how to get the homepage test working in jest.
 
-Added news items to sanity.io.
+Add news items to sanity.io.
 
 Add file downloads to sanity.io.
 
 Update managers in sanity.io.
+
+Write schema validations for all MongoDB collections. (in progress)
 
 ---
 
@@ -27,3 +31,5 @@ Should the SignInMini include links for users who have forgotten their login inf
 Make the TopInfo, Authbar and Footer components not be full width.
 
 Change over the directory and profile pages to the new authentication system.
+
+Save the structure of the SignIn component to my component library as a possible dropdown menu.
