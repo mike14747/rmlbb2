@@ -66,4 +66,3 @@ sanity dataset import ./data/managers.ndjson production --replace
 -   If you get a "Session not found" error, try "sanity logout", then "sanity login", then repeat the prior import step.
 
 ---
-
