@@ -1,8 +1,7 @@
 import { getSession } from 'next-auth/react';
-import { getProtectedData } from '../../lib/api/directory';
-// import { deleteAllManagers } from '../../lib/api/mutationFunctions';
+import { getProtectedData } from '../../lib/api/protected';
 
-export default async function ProtectedRoute(req, res) {
+export default async function protectedRoute(req, res) {
     if (req.method !== 'GET') res.status(401).end();
     const session = await getSession({ req });
     if (!session) res.status(401).end();

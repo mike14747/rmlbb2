@@ -26,6 +26,7 @@ export default function Protected() {
             fetch('/api/protected-route', { signal: abortController.signal })
                 .then(res => res.json())
                 .then(data => {
+                    console.log('data', data);
                     setProtectedData(data);
                     setError(null);
                 })
@@ -68,7 +69,11 @@ export default function Protected() {
                 {isLoading && <Loading />}
 
                 {protectedData?.length > 0 &&
-                    <>Some protected info would be displayed here.</>
+                    <ul>
+                        {protectedData.map((item, index) => (
+                            <li key={index}>Name: {item.name}, Age: {item.age}</li>
+                        ))}
+                    </ul>
                 }
             </article>
         </>

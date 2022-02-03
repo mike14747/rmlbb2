@@ -1,6 +1,6 @@
 import { resetPassword } from '../../../lib/api/user';
 
-export default async function ForgotPassword(req, res) {
+export default async function forgotPassword(req, res) {
     if (req.method === 'POST') {
         if (!req.body.email) return res.status(400).end();
 

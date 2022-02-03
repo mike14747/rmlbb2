@@ -17,3 +17,5 @@ Added news items to sanity.io.
 Add file downloads to sanity.io.
 
 Change over the directory and profile pages to the new authentication system.
+
+Make the TopInfo, Authbar and Footer components not be full width.
