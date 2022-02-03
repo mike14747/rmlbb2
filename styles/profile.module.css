@@ -34,10 +34,10 @@
     color: var(--mg-gray-5);
 }
 
-.profileItem {
+/* .profileItem {
     font-size: 1.2rem;
     font-size: var(--step-1);
-}
+} */
 
 .updateGroup {
     max-width: 40ch;

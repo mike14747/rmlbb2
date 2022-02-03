@@ -5,7 +5,7 @@ import styles from '../styles/Footer.module.css';
 
 const Footer = ({ contactEmail, links }) => {
     return (
-        <footer className={'container-fluid ' + styles.footer}>
+        <footer className={'container ' + styles.footer}>
             <div className={styles.upper}>
                 <div className={styles.left}>
                     {links?.length > 0 &&

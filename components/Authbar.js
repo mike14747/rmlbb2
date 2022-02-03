@@ -12,33 +12,31 @@ const Authbar = () => {
     const router = useRouter();
 
     return (
-        <div className={'container-fluid ' + styles.authbarWrapper}>
-            <div className={'container ' + styles.authbarContainer}>
-                {loading && <>Loading...</>}
+        <div className={'container ' + styles.authbarContainer}>
+            {loading && <>Loading...</>}
 
-                {!session && !loading &&
-                    <Link href={`/login?url=${router.pathname}`}>
-                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                        <a>Login</a>
-                    </Link>
-                }
+            {!session && !loading &&
+                <Link href={`/login?url=${router.pathname}`}>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a>Login</a>
+                </Link>
+            }
 
-                {session &&
-                    <>
-                        <span className={styles.username}>
-                            <>User: </>
-                            <Link href="/profile">
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                <a>
-                                    {session.user.name}
-                                </a>
-                            </Link>
-                        </span>
+            {session &&
+                <>
+                    <span className={styles.username}>
+                        <>User: </>
+                        <Link href="/profile">
+                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                            <a>
+                                {session.user.name}
+                            </a>
+                        </Link>
+                    </span>
 
-                        <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Logout</Button>
-                    </>
-                }
-            </div>
+                    <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Logout</Button>
+                </>
+            }
         </div>
     );
 };
