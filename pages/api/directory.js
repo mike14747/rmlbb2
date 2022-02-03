@@ -9,6 +9,7 @@ export default async function directory(req, res) {
 
     try {
         const response = await getManagers();
+        // const response = await deleteAllManagers();
         response ? res.status(200).json(response) : res.status(500).end();
     } catch (error) {
         console.error(error);

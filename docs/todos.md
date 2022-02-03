@@ -20,6 +20,8 @@ Update managers in sanity.io.
 
 Write schema validations for all MongoDB collections. (in progress)
 
+Add a transition effect for the TopInfo component when it's being closed.
+
 ---
 
 ### Done
