@@ -53,7 +53,7 @@ users collection:
             },
             posts: {
                 bsonType: 'int',
-                description: 'posts must be an integer and is required'
+                description: 'posts must be a positive integer and is required'
             },
             registeredDate: {
                 bsonType: 'date',
@@ -78,7 +78,88 @@ users collection:
 forums collection:
 
 ```js
-
+{
+    $jsonSchema: {
+        title: 'forums',
+        description: 'Forum documents for the message board at rmlbb.com',
+        bsonType: 'object',
+        required: [
+            '_id',
+            'name',
+            'active',
+            'order',
+            'topics',
+            'posts',
+            'lastPost'
+        ],
+        properties: {
+            _id: {
+                bsonType: 'int',
+                description: '_id must be a unique integer and is required'
+            },
+            name: {
+                bsonType: 'string',
+                minLength: 1,
+                maxLength: 50,
+                description: 'name must be a string from 1 to 50 characters in length and is required'
+            },
+            active: {
+                bsonType: 'bool',
+                description: 'active status must be a boolean and is required'
+            },
+            order: {
+                bsonType: 'int',
+                minimum: 1,
+                description: 'order must be a positive integer and is required'
+            },
+            topics: {
+                bsonType: 'int',
+                minimum: 1,
+                description: 'topics must be a positive integer and is required'
+            },
+            posts: {
+                bsonType: 'int',
+                minimum: 1,
+                description: 'posts must be a positive integer and is required'
+            },
+            lastPost: {
+                bsonType: 'object',
+                description: 'lastPost must be an object, but can be an empty object if there are no topics in a forum',
+                properties: {
+                    topicId: {
+                        bsonType: 'int',
+                        description: 'topicId must be a positive integer and is required'
+                    },
+                    postId: {
+                        bsonType: 'int',
+                        description: 'postId must be a positive integer and is required'
+                    },
+                    subject: {
+                        bsonType: 'string',
+                        minLength: 1,
+                        maxLength: 50,
+                        description: 'subject must be a string from 1 to 50 characters in length and is required'
+                    },
+                    username: {
+                        bsonType: 'string',
+                        minLength: 1,
+                        maxLength: 50,
+                        description: 'username must be a string from 4 to 15 characters in length'
+                    },
+                    userId: {
+                        bsonType: 'int',
+                        description: 'userId must be a positive integer'
+                    },
+                    date: {
+                        bsonType: 'date',
+                        description: 'resetPasswordEXpires, when included, must be a valid ISO Date'
+                    }
+                }
+            }
+        },
+        additionalProperties: false
+    }
+}
 ```
 
 topics collection:
