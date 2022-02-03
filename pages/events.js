@@ -47,7 +47,7 @@ const Events = ({ events }) => {
 
                 {!events && <p className="error">An error occurred fetching data.</p>}
 
-                {events?.length === 0 && <p>There are no upcoming events to display. Check back again soon.</p>}
+                {events?.length === 0 && <p className="text-center">There are no upcoming events to display. Check back again soon.</p>}
 
                 {events?.length > 0 &&
                     <>
@@ -88,7 +88,7 @@ const Events = ({ events }) => {
                 {showPastEvents && !pastEvents && !isLoading && <p className={styles.error}>An error occurred fetching data.</p>}
 
                 {showPastEvents && pastEvents?.length === 0 &&
-                    <p>There are no past events to display. Check back again soon.</p>
+                    <p className="text-center">There are no past events to display. Check back again soon.</p>
                 }
                 {showPastEvents && pastEvents?.length > 0 &&
                     <div className={styles.pastTable}>
