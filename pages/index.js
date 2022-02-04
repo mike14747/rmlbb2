@@ -15,7 +15,7 @@ const Home = ({ total, initialNewsItems, events }) => {
     const [newsItems, setNewsItems] = useState(initialNewsItems);
     const [isLoading, setIsLoading] = useState(false);
 
-    console.log('total:', total, 'newsItems.length:', newsItems.length);
+    // console.log('total:', total, 'newsItems.length:', newsItems.length);
 
     const handleClick = () => {
         if (total > newsItems.length) {
@@ -25,16 +25,20 @@ const Home = ({ total, initialNewsItems, events }) => {
                 .then(newNews => {
                     // this method works, but I've commented it out in favor of just checking the _id field for uniqueness using reduce
                     // newsItems?.length > 0 && setNewsItems(Array.from(new Set([...initialNewsItems, ...newNews].map(JSON.stringify))).map(JSON.parse));
-                    const mergedNews = [...initialNewsItems, ...newNews];
-                    const uniqueNewsItems = [];
-                    mergedNews.reduce((acc, cur) => {
-                        if (acc.indexOf(cur._id) === -1) {
-                            acc.push(cur._id);
-                            uniqueNewsItems.push(cur);
-                        }
-                        return acc;
-                    }, []);
-                    setNewsItems(mergedNews);
+
+                    // I thought this method was working. but it has a bug in that it's only displaying 40 news items max
+                    // const mergedNews = [...initialNewsItems, ...newNews];
+                    // const uniqueNewsItems = [];
+                    // mergedNews.reduce((acc, cur) => {
+                    //     if (acc.indexOf(cur._id) === -1) {
+                    //         acc.push(cur._id);
+                    //         uniqueNewsItems.push(cur);
+                    //     }
+                    //     return acc;
+                    // }, []);
+                    // setNewsItems(mergedNews);
+
+                    setNewsItems([...newsItems, ...newNews]);
                 })
                 .catch(error => console.log(error))
                 .finally(() => setIsLoading(false));
@@ -100,7 +104,7 @@ export async function getStaticProps() {
 
     return {
         props: { total, initialNewsItems, events },
-        revalidate: 600, // page regeneration can occur in 10 minutes
+        revalidate: 1, // page regeneration can occur in 1 sec
     };
 }
 

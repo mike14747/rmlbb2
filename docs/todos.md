@@ -20,7 +20,10 @@ Write schema validations for all MongoDB collections. (in progress)
 
 Add a transition effect for the TopInfo component when it's being closed.
 
-The "Load more news" button on the homepage only loads news back to September 1, 2021.
+Not sure if I need any of these:
+
+-   Come up with a working way of filtering out duplicate homepage news item (in case a new item was added while someone was loading more)
+-   Add a way to more easily search old news items from years ago (have a dropdown for selecting news items from a selected year or have a way to load more than 20 more each click)
 
 ---
 

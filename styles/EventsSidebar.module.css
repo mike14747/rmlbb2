@@ -34,6 +34,7 @@ p.eventDetails {
     font-size: .833rem;
     font-size: var(--step--1);
     color: var(--mg-gray-6);
+    margin: 0;
 }
 
 .viewAll {
