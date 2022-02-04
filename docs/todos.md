@@ -20,6 +20,8 @@ Write schema validations for all MongoDB collections. (in progress)
 
 Add a transition effect for the TopInfo component when it's being closed.
 
+The "Load more news" button on the homepage only loads news back to September 1, 2021.
+
 ---
 
 ### Done

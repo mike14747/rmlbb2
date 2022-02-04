@@ -15,6 +15,8 @@ const Home = ({ total, initialNewsItems, events }) => {
     const [newsItems, setNewsItems] = useState(initialNewsItems);
     const [isLoading, setIsLoading] = useState(false);
 
+    console.log('total:', total, 'newsItems.length:', newsItems.length);
+
     const handleClick = () => {
         if (total > newsItems.length) {
             setIsLoading(true);
