@@ -78,10 +78,11 @@ export default function ForumHome() {
                     {forums?.length > 0 &&
                         forums.map(forum => (
                             <div className={styles.forumsDataRow} key={forum._id}>
-                                <div className={`${styles.forumsDataItem} ${styles.forumsIcon}`}>
-                                    <div>
+                                <div className={`${styles.forumsDataItem} ${styles.forumsTitle}`}>
+                                    <div className={styles.iconContainer}>
                                         {/* <span aria-hidden="true">&#128240;</span> */}
-                                        <img aria-hidden="true" src="/images/message_icon2.png" alt="Forum" className={styles.messageIcon} />
+                                        {/* <img aria-hidden="true" src="/images/message_icon2.png" alt="Forum" className={styles.messageIcon} /> */}
+                                        <img aria-hidden="true" src="/images/postIcon.svg" alt="Forum" className={styles.messageIcon} />
                                     </div>
 
                                     <div>

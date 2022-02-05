@@ -12,7 +12,7 @@ const TopInfo = ({ topInfo }) => {
         <>
             {showPanel && topInfo?.active &&
                 <aside aria-label="New Managers" className={'container ' + styles.infoContainer}>
-                    <div className={styles.content}>
+                    <p className={styles.content}>
                         {topInfo?.text}
                         <span className={styles.moreInfoSpan}>&#10142;</span>
                         <Link href="/recruiting">
@@ -21,7 +21,7 @@ const TopInfo = ({ topInfo }) => {
                                 more info
                             </a>
                         </Link>
-                    </div>
+                    </p>
 
                     <Button onClick={() => setShowPanel(false)} size="specialSize" variant="special">&times;</Button>
                 </aside>

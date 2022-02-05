@@ -5,18 +5,19 @@
     align-items: center;
     background-color: var(--mg-dark);
     color: var(--mg-light);
-    font-size: .833rem;
-    font-size: var(--step--1);
     padding: 0.25rem;
     text-align: center;
 }
 
 .content {
     flex: 1;
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    margin: 0 1rem 0 0;
 }
 
 .moreInfoSpan {
-    padding: 0 0.25rem 0 1rem;
+    padding: 0 0.5rem 0 1rem;
 }
 
 a.link,
@@ -24,11 +25,11 @@ a.link:link,
 a.link:visited {
     color: var(--mg-light);
     text-decoration: none;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 a.link:hover {
     color: var(--theme-color-orange);
     text-decoration: underline;
-    transition: .3s;
+    transition: 0.3s;
 }

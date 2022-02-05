@@ -75,7 +75,7 @@
     filter: invert(46%) sepia(77%) saturate(4160%) hue-rotate(3deg) brightness(106%) contrast(87%);
 }
 
-.downloadLink:hover {
+.downloadLink:hover > img {
     outline: 1px var(--theme-color-dirt) dashed;
     /* outline-offset: 0.25rem; */
     transition: 0.3s;
