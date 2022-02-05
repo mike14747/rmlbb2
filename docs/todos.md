@@ -20,11 +20,6 @@ Write schema validations for all MongoDB collections. (in progress)
 
 Add a transition effect for the TopInfo component when it's being closed.
 
-Not sure if I need any of these:
-
--   Come up with a working way of filtering out duplicate homepage news item (in case a new item was added while someone was loading more)
--   Add a way to more easily search old news items from years ago (have a dropdown for selecting news items from a selected year or have a way to load more than 20 more each click)
-
 ---
 
 ### Done
@@ -42,3 +37,5 @@ Save the structure of the SignIn component to my component library as a possible
 Update managers in sanity.io. (I have a good flow for how to move the existing MySQL manager data to sanity. "/docs/directory.md")
 
 Update events in sanity.io. (I have a good flow for how to move the existing MySQL manager data to sanity. "/docs/events.md")
+
+Come up with a working way of filtering out duplicate homepage news item (in case a new item was added while someone was loading more)

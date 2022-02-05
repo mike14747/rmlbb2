@@ -4,41 +4,45 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import serializers from '../lib/serializers';
 import Sidebar from '../components/Sidebar';
-import { getInitialNewsItems } from '../lib/api/news';
+import { getNewsItems } from '../lib/api/news';
 import { getNextUpcomingEvents } from '../lib/api/events';
 import Loading from '../components/Loading';
 import Button from '../components/Button';
 
 import styles from '../styles/home.module.css';
 
+const initial = parseInt(process.env.INITIAL_NEWS_ITEMS);
+
 const Home = ({ total, initialNewsItems, events }) => {
     const [newsItems, setNewsItems] = useState(initialNewsItems);
+    const [totalNewsItems, setTotalNewsItems] = useState(total);
     const [isLoading, setIsLoading] = useState(false);
 
-    // console.log('total:', total, 'newsItems.length:', newsItems.length);
-
     const handleClick = () => {
-        if (total > newsItems.length) {
+        if (totalNewsItems > newsItems.length) {
             setIsLoading(true);
             fetch('/api/news?start=' + newsItems?.length)
                 .then(res => res.json())
                 .then(newNews => {
                     // this method works, but I've commented it out in favor of just checking the _id field for uniqueness using reduce
-                    // newsItems?.length > 0 && setNewsItems(Array.from(new Set([...initialNewsItems, ...newNews].map(JSON.stringify))).map(JSON.parse));
+                    // newsItems?.length > 0 && setNewsItems(Array.from(new Set([...newsItems, ...newNews].map(JSON.stringify))).map(JSON.parse));
 
-                    // I thought this method was working. but it has a bug in that it's only displaying 40 news items max
-                    // const mergedNews = [...initialNewsItems, ...newNews];
-                    // const uniqueNewsItems = [];
-                    // mergedNews.reduce((acc, cur) => {
-                    //     if (acc.indexOf(cur._id) === -1) {
-                    //         acc.push(cur._id);
-                    //         uniqueNewsItems.push(cur);
-                    //     }
-                    //     return acc;
-                    // }, []);
-                    // setNewsItems(mergedNews);
+                    // this method is working. but is it necessary to check for unique news items
+                    const mergedNews = [...newsItems, ...newNews.newsItems];
+                    const uniqueNewsItems = [];
+                    mergedNews.reduce((acc, cur) => {
+                        if (acc.indexOf(cur._id) === -1) {
+                            acc.push(cur._id);
+                            uniqueNewsItems.push(cur);
+                        }
+                        return acc;
+                    }, []);
 
-                    setNewsItems([...newsItems, ...newNews]);
+                    setTotalNewsItems(newNews.total);
+                    setNewsItems(mergedNews);
+
+                    // this method works, but doesn't do any testing for unique items
+                    // setNewsItems([...newsItems, ...newNews]);
                 })
                 .catch(error => console.log(error))
                 .finally(() => setIsLoading(false));
@@ -99,7 +103,7 @@ Home.propTypes = {
 };
 
 export async function getStaticProps() {
-    const { total, newsItems: initialNewsItems } = await getInitialNewsItems().catch(error => console.log(error));
+    const { total, newsItems: initialNewsItems } = await getNewsItems(0, initial).catch(error => console.log(error));
     const events = await getNextUpcomingEvents().catch(error => console.log(error)) || null;
 
     return {
