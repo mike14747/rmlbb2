@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Loading from '../../components/Loading';
+import Icon from '../../assets/postIcon.svg';
 
 import styles from '../../styles/forum.module.css';
 
@@ -82,7 +83,9 @@ export default function ForumHome() {
                                     <div className={styles.iconContainer}>
                                         {/* <span aria-hidden="true">&#128240;</span> */}
                                         {/* <img aria-hidden="true" src="/images/message_icon2.png" alt="Forum" className={styles.messageIcon} /> */}
-                                        <img aria-hidden="true" src="/images/postIcon.svg" alt="Forum" className={styles.messageIcon} />
+                                        {/* <img aria-hidden="true" src="/images/postIcon.svg" alt="Forum" className={styles.messageIcon} /> */}
+
+                                        <Icon className={styles.messageIcon} />
                                     </div>
 
                                     <div>

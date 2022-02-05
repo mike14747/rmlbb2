@@ -75,14 +75,17 @@
 }
 
 .iconContainer {
-    text-align: center;
-    width: clamp(20px, 12px + 1.25vw, 32px);
+    /* width: clamp(20px, 12px + 1.25vw, 32px); */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .messageIcon {
-    width: 100%;
+    width: clamp(20px, 12px + 1.25vw, 32px);
     height: auto;
-    /* filter: invert(88%) sepia(21%) saturate(935%) hue-rotate(123deg) brightness(85%) contrast(97%); */
+    margin: .25rem auto;
+    fill: var(--mg-gray-5);
 }
 
 .forumPageHeadding {
