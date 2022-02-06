@@ -40,7 +40,7 @@ const Events = ({ events }) => {
                 </title>
             </Head>
 
-            <article className={styles.eventsContainer}>
+            <article className="mw-90ch">
                 <h2 className="page-heading">
                     Events
                 </h2>

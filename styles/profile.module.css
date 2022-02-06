@@ -1,8 +1,3 @@
-.profileContainer {
-    max-width: 75ch;
-    margin: 0 auto;
-}
-
 .currentContainer {
     padding-bottom: 1rem;
     margin-bottom: 2rem;
@@ -40,7 +35,6 @@
 } */
 
 .updateGroup {
-    max-width: 40ch;
     margin: 0 0 2rem 0;
     border-bottom: 1px var(--mg-gray-5) solid;
     padding: 0 0 2rem 0;

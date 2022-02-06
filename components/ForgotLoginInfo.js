@@ -60,7 +60,7 @@ export default function ForgottenUsername() {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={'mw-75ch ' + styles.container}>
             <div className={styles.upper}>
                 <div className={styles.btnContainer}>
                     {showForgotUsername

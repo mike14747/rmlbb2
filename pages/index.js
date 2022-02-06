@@ -58,7 +58,7 @@ const Home = ({ total, initialNewsItems, events }) => {
             </Head>
 
             <div className={styles.homeContainer}>
-                <article className={styles.newsContainer}>
+                <article className={styles.newsContainer + ' mw-75'}>
                     <h2 className="page-heading">
                         Latest News
                     </h2>

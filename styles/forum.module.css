@@ -79,7 +79,6 @@
     width: clamp(20px, 12px + 1.25vw, 32px);
     height: auto;
     vertical-align: text-bottom;
-    opacity: 0.75;
 }
 
 .new {
@@ -87,11 +86,11 @@
 }
 
 .med {
-    fill: var(--theme-color-green);
+    fill: var(--theme-color-orange);
 }
 
 .old {
-    fill: var(--mg-gray-5);
+    fill: var(--mg-gray-4);
 }
 
 .forumPageHeadding {

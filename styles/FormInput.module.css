@@ -1,24 +1,3 @@
-/* the css color variables could/should be in your global css */
-
-/* form {
-    --mg-gray-4: #a9a9a9;
-    --mg-gray-6: #585858;
-    --mg-red-dark: #b22222;
-} */
-
-/* the below form.form class will be in the css of the page/component that imports this input component */
-
-/* form.form {
-    max-width: 60ch;
-    margin: 5rem auto 0 auto;
-    padding: 2rem;
-    border: 2px var(--mg-gray-4) solid;
-    border-radius: 0.5rem;
-    box-shadow: 2px 2px 4px 0 var(--mg-gray-4);
-} */
-
-/* start necessary css for this component */
-
 .inputWrapper {
     margin: 1rem 0;
 }
@@ -26,36 +5,30 @@
 label.label,
 label.label + input.input {
     display: block;
-}
-
-label.label:not(.small) {
     max-width: 30ch;
     margin: 0;
+}
+
+label.label.normal {
     font-size: 1rem;
     font-size: var(--step-0);
 }
 
-input.input:not(.small) {
-    max-width: 30ch;
+input.input.normal {
     font-size: 1rem;
     font-size: var(--step-0);
-    margin: 0;
     padding: 0.5rem;
     border: 1px var(--mg-gray-6) solid;
 }
 
 label.label.small {
-    max-width: 20ch;
-    margin: 0;
     font-size: .833rem;
     font-size: var(--step--1);
 }
 
 input.input.small {
-    max-width: 20ch;
     font-size: .833rem;
     font-size: var(--step--1);
-    margin: 0;
     padding: 0.5rem;
     border: 1px var(--mg-gray-6) solid;
 }

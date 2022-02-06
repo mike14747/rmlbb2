@@ -5,12 +5,12 @@ import styles from '../styles/FormInput.module.css';
 const sizes = ['small', 'normal'];
 
 export default function FormInput({ id, label, handleChange, errorMsg, required, size, ...rest }) {
-    const inputSize = sizes.includes(size) ? size : 'normal';
+    const inputSize = sizes?.includes(size) ? size : 'normal';
 
     return (
         <div className={styles.inputWrapper}>
             {label &&
-                <label htmlFor={id} className={`${styles.label} ${styles[`${inputSize}`]}`}>
+                <label htmlFor={id} className={`${styles.label} ${styles[inputSize]}`}>
                     {label}
                     {/* you can disable the following line if you don't want to notify the user of fields being required */}
                     {/* {required && <span className={styles.required}>*required field</span>} */}
@@ -19,9 +19,10 @@ export default function FormInput({ id, label, handleChange, errorMsg, required,
 
             <input
                 id={id}
-                className={`${styles.input} ${styles[`${inputSize}`]}`}
+                className={`${styles.input} ${styles[inputSize]}`}
                 onChange={handleChange}
                 required={required}
+                size="30"
                 {...rest}
             />
 

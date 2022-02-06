@@ -15,7 +15,7 @@ export default function Privacy({ content }) {
                 </title>
             </Head>
 
-            <article className={styles.privacyContainer}>
+            <article className={styles.privacyContainer + ' mw-90ch'}>
                 <h2 className="page-heading">
                     Privacy Policy
                 </h2>

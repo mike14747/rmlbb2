@@ -6,8 +6,7 @@
 .articleContainer {
     flex: 1;
     order: 2;
-    max-width: 90ch;
-    margin: 50px auto 0 auto;
+    margin-top: 3rem;
     padding-right: 0;
 }
 

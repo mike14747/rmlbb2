@@ -15,7 +15,7 @@ const Recruiting = ({ content }) => {
                 </title>
             </Head>
 
-            <article className={styles.recruitingContainer}>
+            <article className={styles.recruitingContainer + ' mw-90ch'}>
                 <h2 className="page-heading">
                     New Managers
                 </h2>

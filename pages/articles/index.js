@@ -17,7 +17,7 @@ export default function Articles({ content, articlesList }) {
             </Head>
 
             <div className={styles.articlePageContainer}>
-                <article className={styles.articleContainer}>
+                <article className={styles.articleContainer + ' mw-90ch'}>
                     <h2 className="page-heading">Articles Home</h2>
 
                     {!content?.content

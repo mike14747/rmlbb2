@@ -39,6 +39,11 @@
     margin: 0;
 }
 
+.body p.small {
+    font-size: 0.833rem;
+    font-size: var(--step--1-base);
+}
+
 .footing {
     margin: 1rem 0 0 0;
     padding-top: 0.50rem;
@@ -67,18 +72,19 @@
     color: var(--mg-gray-6);
 }
 
-.description {
+p.description {
+    font-size: .833rem;
+    font-size: var(--step--1);
     color: var(--mg-gray-6);
 }
 
-.description::before {
+p.description::before {
     content: '\2139';
     padding-right: 0.50rem;
     background-color: var(--mg-light);
 }
 
 .manager {
-    max-width: 50ch;
     margin: 0 auto 1.5rem auto;
     padding-left: 1rem;
     border-left: 3px var(--mg-dark) solid;

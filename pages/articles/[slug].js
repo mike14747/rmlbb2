@@ -24,7 +24,7 @@ export default function Article({ article, slugs }) {
                 <title>Articles</title>
             </Head>
 
-            <article className={styles.articleContainer + ' ' + blockContentStyles.blockContentContainer}>
+            <article className={styles.articleContainer + ' mw-90ch ' + blockContentStyles.blockContentContainer}>
                 {!article?.content
                     ? <p className="error">An error occurred fetching data.</p>
                     : <>

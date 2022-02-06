@@ -139,7 +139,7 @@ const Profile = () => {
                 </title>
             </Head>
 
-            <article className={styles.profileContainer}>
+            <article className="mw-75ch">
                 <h2 className="page-heading">
                     Profile
                 </h2>

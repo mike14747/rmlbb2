@@ -1,8 +1,3 @@
-.constitutionContainer {
-    max-width: 90ch;
-    margin: 0 auto;
-}
-
 .constitutionContainer > h3 {
     font-size: 1.2rem;
     font-size: var(--step-1);

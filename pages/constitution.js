@@ -16,7 +16,7 @@ const Constitution = ({ content }) => {
                 </title>
             </Head>
 
-            <article className={styles.constitutionContainer + ' ' + blockContentStyles.blockContentContainer}>
+            <article className={styles.constitutionContainer + ' mw-90ch ' + blockContentStyles.blockContentContainer}>
                 <h2 className="page-heading">
                     Constitution
                 </h2>

@@ -1,26 +1,6 @@
-.blockContentContainer {
-    max-width: 90ch;
-    margin: 0 auto;
-}
-
 .blockContentContainer > ol,
 .blockContentContainer > ul,
 .blockContentContainer > p {
-    font-size: 1rem;
-    font-size: var(--step-0);
-    margin: 0 auto 1.5rem auto;
-}
-
-.blockContentContainer > p + ol,
-.blockContentContainer > p + ul {
-    margin-top: -1rem;
-}
-
-.blockContentContainer > ol,
-.blockContentContainer > ul,
-.blockContentContainer > p {
-    font-size: 1rem;
-    font-size: var(--step-0);
     margin: 0 auto 1.5rem auto;
 }
 

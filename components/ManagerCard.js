@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from '../styles/ManagerCard.module.css';
 
 export default function ManagerCard({ manager }) {
+    console.log('manager:', manager);
     return (
         <div className={`${styles.card} ${manager.conference[0] === 'American' ? styles.americanCard : styles.nationalCard}`}>
             <div className={`${styles.heading} ${manager.conference[0] === 'American' ? styles.americanHeading : styles.nationalHeading}`}>
@@ -26,15 +27,15 @@ export default function ManagerCard({ manager }) {
                         {manager.manager1}
                     </p>
 
-                    <p>
+                    <p className={styles.small}>
                         {manager.address1a}
                     </p>
 
-                    <p>
+                    <p className={styles.small}>
                         {manager.address1b}
                     </p>
 
-                    <p>
+                    <p className={styles.small}>
                         {manager.city1}
                         {manager.city1 && manager.state1 ? <>, </> : <> </>}
                         {manager.state1}
@@ -74,15 +75,15 @@ export default function ManagerCard({ manager }) {
                         {manager.manager2}
                     </p>
 
-                    <p>
+                    <p className={styles.small}>
                         {manager.address2a}
                     </p>
 
-                    <p>
+                    <p className={styles.small}>
                         {manager.address2b}
                     </p>
 
-                    <p>
+                    <p className={styles.small}>
                         {manager.city2}
                         <> </>
                         {manager.state2}

@@ -8,6 +8,8 @@
     --theme-color-dirt-faded: #ebe3df;
     --theme-color-yellow-pale: #ffffee;
 
+    --theme-mb-new1: #A7DA03;
+
     /* end theme colors specific to this app */
 
     --container-min-width: 320px;
@@ -188,6 +190,8 @@ address {
 
 ol,
 ul {
+    font-size: 1rem;
+    font-size: var(--step-0);
     padding-left: 2rem;
 }
 
@@ -737,6 +741,16 @@ h2.page-heading {
     transform: translateY(0);
     outline: 1px var(--mg-gray-4) dashed;
     outline-offset: 0rem;
+}
+
+.mw-75ch {
+    max-width: 75ch;
+    margin: 0 auto;
+}
+
+.mw-90ch {
+    max-width: 90ch;
+    margin: 0 auto;
 }
 
 /* start global form css */
