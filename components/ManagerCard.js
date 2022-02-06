@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from '../styles/ManagerCard.module.css';
 
 export default function ManagerCard({ manager }) {
-    console.log('manager:', manager);
     return (
         <div className={`${styles.card} ${manager.conference[0] === 'American' ? styles.americanCard : styles.nationalCard}`}>
             <div className={`${styles.heading} ${manager.conference[0] === 'American' ? styles.americanHeading : styles.nationalHeading}`}>
