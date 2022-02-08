@@ -1,0 +1,66 @@
+.container {
+    min-height: 50vh;
+    font-size: 1rem;
+    font-size: var(--step-0);
+    border: 1px var(--mg-gray-3) solid;
+    padding: 0.5rem;
+}
+
+.container textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+
+.editor blockquote {
+    position: relative;
+    color: var(--mg-dark);
+    font-size: .83rem;
+    font-size: var(--step--1);
+    background-color: var(--mg-yellow-pale);
+    text-align: left;
+    padding: 1rem 1rem 1rem 2rem;
+    margin: 1rem 2rem;
+    border-left: 0.25rem solid var(--theme-color-orange);
+}
+
+.editor blockquote::before {
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    content: '\275D';
+    color: var(--theme-color-orange);
+    font-size: var(--step-3);
+}
+
+.editor blockquote::after {
+    /* content: '\275E'; */
+}
+
+.editor pre {
+    font-family: Consolas, 'Courier New', Courier, monospace;
+}
+
+.editor pre {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 0.833em;
+    font-size: var(--step--1);
+    color: var(--mg-dark);
+    background-color: var(--mg-light);
+    border: 1px solid var(--mg-gray-1);
+}
+
+.blockTypeDropdown,
+.fontSizeDropdown {
+    width: clamp(100px, 80px + 5vw, 150px);
+}
+
+.blockTypeDropdown * {
+    font-size: 0.833em;
+    font-size: var(--step--1);
+}
