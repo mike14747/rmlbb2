@@ -11,7 +11,9 @@ import styles from '../styles/RichTextEditor.module.css';
 
 const editorLabels = {
     'components.controls.blocktype.normal': 'Paragraph',
-    'components.controls.fontsize.small': 'tiny',
+    // 'components.controls.fontsize.small': 'tiny',
+    'components.controls.fontsize.one': 'tiny',
+    'components.controls.blocktype.code': 'Monospaced',
 };
 
 export default class RichTextEditor extends Component {
@@ -34,7 +36,7 @@ export default class RichTextEditor extends Component {
         const { editorState } = this.state;
 
         const editorStyle = {
-            fontSize:'var(--step-0)',
+            fontSize: 'var(--step-0)',
         };
 
         return (
@@ -45,18 +47,18 @@ export default class RichTextEditor extends Component {
                     editorState={editorState}
                     toolbarClassName="toolbar-class"
                     wrapperClassName="wrapper-class"
-                    editorClassName="editor-class"
+                    editorClassName={styles.editor}
                     onEditorStateChange={this.onEditorStateChange}
                     placeholder="Enter text here..."
                     toolbar={{
                         // options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
-                        options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link', 'history'],
+                        options: ['inline', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'history'],
                         inline: {
                             inDropdown: false,
                             className: styles.inlineDropdown,
                             component: undefined,
                             dropdownClassName: undefined,
-                            options: ['bold', 'italic', 'underline', 'strikethrough', 'monospace', 'superscript', 'subscript'],
+                            options: ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript'],
                         },
                         blockType: {
                             inDropdown: true,
@@ -69,8 +71,9 @@ export default class RichTextEditor extends Component {
                         fontSize: {
                             icon: undefined,
                             // icon: '/images/fontSize.svg',
-                            options: ['smaller', 'medium', 'larger'],
+                            // options: ['smaller', 'medium', 'larger'],
                             // options: ['small', 'var(--step--1)', 'var(--step-0)', 'var(--step-1)'],
+                            options: ['one', 'two', 'three'],
                             className: styles.fontSizeDropdown,
                             component: undefined,
                             dropdownClassName: undefined,
@@ -132,6 +135,7 @@ export default class RichTextEditor extends Component {
                         },
                     }}
                 />
+
                 <textarea
                     width="500px"
                     disabled
