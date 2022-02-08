@@ -9,9 +9,86 @@ const Editor = dynamic(
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styles from '../styles/RichTextEditor.module.css';
 
-// import FontSize from '../assets/fontSize.svg';
-// const fontSizeIconBase64 = 'data:image/svg+xml;base64,CjxpbWcgc3R5bGU9IndpZHRoOiAxMDAlOyBoZWlnaHQ6IGF1dG87IGZsb2F0OiBsZWZ0O2JhY2tncm91bmQtaW1hZ2U6IG5vbmU7IiBzcmM9Ii8vcGljLm9ubGluZXdlYmZvbnRzLmNvbS9zdmcvaW1nXzEzMzQxNC5wbmciIGFsdD0iRm9udCBTaXplIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCI+CiAg';
-// const test = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgOTAwIDkwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOTAwIDkwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZD0iTTc1MC41LDM1MSIvPjxwYXRoIGQ9Ik01OTQuMiwyMDMuMyIvPjxwYXRoIGQ9Ik0xODkuMSw0NDkuNmw5NC4xLTMwMi41bDk0LjQsMzAyLjVIMTg5LjEgTTM2OC4xLDMxLjFIMjI0LjZMMTAsNzA4LjZoOTkuNWw1MC44LTE2MS4yaDI0OC43bDUxLjYsMTYxLjJoMTI0LjZMMzY4LjEsMzEuMSIvPjxwYXRoIGQ9Ik01OTMuNiw1NTEuNmw1NC42LTE3NS4xbDU0LjYsMTc1LjFINTkzLjYgTTY5Ny4zLDMwOS4yaC04My4xbC02Ni43LDIxMGwyOC45LDkwLjRsMC40LTEuM2gxNDQuMWwzMCwxMDAuMmg3Mkw3MDEuMywzMjEuOUw2OTcuMywzMDkuMiIvPjwvZz48L3N2Zz4=';
+const editorLabels = {
+    // Generic
+    'generic.add': 'Add',
+    'generic.cancel': 'Cancel',
+
+    // BlockType
+    'components.controls.blocktype.h1': 'Heading 1',
+    'components.controls.blocktype.h2': 'Heading 2',
+    'components.controls.blocktype.h3': 'Heading 3',
+    'components.controls.blocktype.h4': 'Heading 4',
+    'components.controls.blocktype.h5': 'Heading 5',
+    'components.controls.blocktype.h6': 'Heading 6',
+    'components.controls.blocktype.blockquote': 'Blockquote',
+    'components.controls.blocktype.code': 'Code',
+    'components.controls.blocktype.blocktype': 'Block Type',
+    'components.controls.blocktype.normal': 'Normal',
+
+    // Color Picker
+    'components.controls.colorpicker.colorpicker': 'Color Picker',
+    'components.controls.colorpicker.text': 'Text',
+    'components.controls.colorpicker.background': 'Highlight',
+
+    // Embedded
+    'components.controls.embedded.embedded': 'Embedded',
+    'components.controls.embedded.embeddedlink': 'Embedded Link',
+    'components.controls.embedded.enterlink': 'Enter link',
+
+    // Emoji
+    'components.controls.emoji.emoji': 'Emoji',
+
+    // FontFamily
+    'components.controls.fontfamily.fontfamily': 'Font',
+
+    // FontSize
+    'components.controls.fontsize.fontsize': 'Font Size',
+
+    // History
+    'components.controls.history.history': 'History',
+    'components.controls.history.undo': 'Undo',
+    'components.controls.history.redo': 'Redo',
+
+    // Image
+    'components.controls.image.image': 'Image',
+    'components.controls.image.fileUpload': 'File Upload',
+    'components.controls.image.byURL': 'URL',
+    'components.controls.image.dropFileText': 'Drop the file or click to upload',
+
+    // Inline
+    'components.controls.inline.bold': 'Bold',
+    'components.controls.inline.italic': 'Italic',
+    'components.controls.inline.underline': 'Underline',
+    'components.controls.inline.strikethrough': 'Strikethrough',
+    'components.controls.inline.monospace': 'Monospace',
+    'components.controls.inline.superscript': 'Superscript',
+    'components.controls.inline.subscript': 'Subscript',
+
+    // Link
+    'components.controls.link.linkTitle': 'Link Title',
+    'components.controls.link.linkTarget': 'Link Target',
+    'components.controls.link.linkTargetOption': 'Open link in new window',
+    'components.controls.link.link': 'Link',
+    'components.controls.link.unlink': 'Unlink',
+
+    // List
+    'components.controls.list.list': 'List',
+    'components.controls.list.unordered': 'Unordered',
+    'components.controls.list.ordered': 'Ordered',
+    'components.controls.list.indent': 'Indent',
+    'components.controls.list.outdent': 'Outdent',
+
+    // Remove
+    'components.controls.remove.remove': 'Remove',
+
+    // TextAlign
+    'components.controls.textalign.textalign': 'Text Align',
+    'components.controls.textalign.left': 'Left',
+    'components.controls.textalign.center': 'Center',
+    'components.controls.textalign.right': 'Right',
+    'components.controls.textalign.justify': 'Justify',
+};
 
 export default class RichTextEditor extends Component {
 
@@ -34,6 +111,7 @@ export default class RichTextEditor extends Component {
         return (
             <div className={styles.container + ' mw-90ch'}>
                 <Editor
+                    localization={{ locale: 'en', translations: editorLabels }}
                     editorState={editorState}
                     toolbarClassName="toolbar-class"
                     wrapperClassName="wrapper-class"
@@ -45,22 +123,25 @@ export default class RichTextEditor extends Component {
                         options: ['inline', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'history'],
                         inline: {
                             inDropdown: false,
-                            className: undefined,
+                            className: 'drop-test',
                             component: undefined,
                             dropdownClassName: undefined,
                             options: ['bold', 'italic', 'underline', 'strikethrough', 'monospace', 'superscript', 'subscript'],
                         },
                         blockType: {
-                            inDropdown: true,
+                            inDropdown: false,
                             // options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote', 'Code'],
                             options: ['Normal', 'Blockquote', 'Code'],
                             className: undefined,
                             component: undefined,
                             dropdownClassName: undefined,
+                            displayNames: [
+                                { label: 'Normally', displayName: 'Normally', style: 'unstyled' },
+                                { label: 'Blockquoted', displayName: 'Blockquoted', style: 'blockquote' },
+                            ],
                         },
                         fontSize: {
                             // icon: '/images/fontSize.svg',
-                            // icon: test;
                             options: ['smaller', 'medium', 'larger'],
                             className: undefined,
                             component: undefined,

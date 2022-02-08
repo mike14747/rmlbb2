@@ -55,3 +55,16 @@
     border-radius: 3px;
     padding: 1px 10px;
 } */
+
+.rdw-dropdown-optionwrapper {
+    z-index: 100;
+    position: relative;
+    border: 1px solid orange;
+    /* width: 98%; */
+    background: white;
+    border-radius: 2px;
+    margin: 0;
+    padding: 0;
+    max-height: 450px !important;
+    overflow-y: scroll;
+}

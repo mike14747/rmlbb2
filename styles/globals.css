@@ -809,6 +809,15 @@ h2.page-heading {
 
 /* end site-wide custom css */
 
+/* start rich text editor styles */
+
+div.drop-test {
+    width: 200px;
+    background-color: #A7DA03;
+}
+
+/* end rich text editor styles */
+
 @media (min-width: 480px) {
 }
 
