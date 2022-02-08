@@ -11,8 +11,124 @@ npm i react-draft-wysiwyg draft-js draftjs-to-html html-to-draftjs
 
 ---
 
-data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0iIzAwMCIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMS43MiAzLjQyN2MuOTUxIDAgMS43MjItLjc2OCAxLjcyMi0xLjcwOFMyLjY3LjAxIDEuNzIuMDFDLjc3LjAwOCAwIC43NzUgMCAxLjcxNWMwIC45NC43NzQgMS43MTEgMS43MiAxLjcxMXptMC0yLjYyNWMuNTEgMCAuOTIyLjQxMi45MjIuOTE0YS45Mi45MiAwIDAgMS0xLjg0MiAwIC45Mi45MiAwIDAgMSAuOTItLjkxNHpNMS43MiA4LjcwM2MuOTUxIDAgMS43MjItLjc2OCAxLjcyMi0xLjcwOFMyLjY3IDUuMjg3IDEuNzIgNS4yODdDLjc3IDUuMjg3IDAgNi4wNTIgMCA2Ljk5NXMuNzc0IDEuNzA4IDEuNzIgMS43MDh6bTAtMi42MjJjLjUxIDAgLjkyMi40MTIuOTIyLjkxNGEuOTIuOTIgMCAwIDEtMS44NDIgMGMwLS41MDUuNDE1LS45MTQuOTItLjkxNHpNMS43MiAxMy45ODJjLjk1MSAwIDEuNzIyLS43NjggMS43MjItMS43MDggMC0uOTQzLS43NzQtMS43MDgtMS43MjEtMS43MDgtLjk0NyAwLTEuNzIxLjc2OC0xLjcyMSAxLjcwOHMuNzc0IDEuNzA4IDEuNzIgMS43MDh6bTAtMi42MjVjLjUxIDAgLjkyMi40MTIuOTIyLjkxNGEuOTIuOTIgMCAxIDEtMS44NDIgMCAuOTIuOTIgMCAwIDEgLjkyLS45MTR6TTUuNzQ0IDIuMTE1aDkuODQ1YS40LjQgMCAwIDAgLjQwMS0uMzk5LjQuNCAwIDAgMC0uNDAxLS4zOTlINS43NDRhLjQuNCAwIDAgMC0uNDAyLjM5OS40LjQgMCAwIDAgLjQwMi4zOTl6TTUuNzQ0IDcuMzk0aDkuODQ1YS40LjQgMCAwIDAgLjQwMS0uMzk5LjQuNCAwIDAgMC0uNDAxLS4zOThINS43NDRhLjQuNCAwIDAgMC0uNDAyLjM5OC40LjQgMCAwIDAgLjQwMi4zOTl6TTUuNzQ0IDEyLjY3aDkuODQ1YS40LjQgMCAwIDAgLjQwMS0uMzk5LjQuNCAwIDAgMC0uNDAxLS4zOTlINS43NDRhLjQuNCAwIDAgMC0uNDAyLjQuNC40IDAgMCAwIC40MDIuMzk4eiIvPjwvZz48L3N2Zz4=
+### Labels
 
-data:image/svg+xml;base64,CjxpbWcgc3R5bGU9IndpZHRoOiAxMDAlOyBoZWlnaHQ6IGF1dG87IGZsb2F0OiBsZWZ0O2JhY2tncm91bmQtaW1hZ2U6IG5vbmU7IiBzcmM9Ii8vcGljLm9ubGluZXdlYmZvbnRzLmNvbS9zdmcvaW1nXzEzMzQxNC5wbmciIGFsdD0iRm9udCBTaXplIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCI+CiAg
+You can add custom labels to the toolbar items. These seem to be more of a "title" that shows the custom label on hover than changing the actual text that appears on an item.
 
-PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxwYXRoIGQ9Ik02NjEuNyw3NzUuN2wxNjMuOCwxOTMuMkw5OTAsNzc1LjdINjYxLjd6Ii8+PHBhdGggZD0iTTI1NC45LDU0Ni40Ii8+PHBhdGggZD0iTTc1MC41LDM1MSIvPjxwYXRoIGQ9Ik01OTQuMiwyMDMuMyIvPjxwYXRoIGQ9Ik0xODkuMSw0NDkuNmw5NC4xLTMwMi41bDk0LjQsMzAyLjVIMTg5LjEgTTM2OC4xLDMxLjFIMjI0LjZMMTAsNzA4LjZoOTkuNWw1MC44LTE2MS4yaDI0OC43bDUxLjYsMTYxLjJoMTI0LjZMMzY4LjEsMzEuMSIvPjxwYXRoIGQ9Ik01OTMuNiw1NTEuNmw1NC42LTE3NS4xbDU0LjYsMTc1LjFINTkzLjYgTTY5Ny4zLDMwOS4yaC04My4xbC02Ni43LDIxMGwyOC45LDkwLjRsMC40LTEuM2gxNDQuMWwzMCwxMDAuMmg3Mkw3MDEuMywzMjEuOUw2OTcuMywzMDkuMiIvPjwvZz48L3N2Zz4=
+Add this object before the _RichTextEditor_ class:
+
+```js
+const editorLabels = {
+    // Generic
+    'generic.add': 'Add',
+    'generic.cancel': 'Cancel',
+
+    // BlockType
+    'components.controls.blocktype.h1': 'Heading 1',
+    'components.controls.blocktype.h2': 'Heading 2',
+    'components.controls.blocktype.h3': 'Heading 3',
+    'components.controls.blocktype.h4': 'Heading 4',
+    'components.controls.blocktype.h5': 'Heading 5',
+    'components.controls.blocktype.h6': 'Heading 6',
+    'components.controls.blocktype.blockquote': 'Blockquote',
+    'components.controls.blocktype.code': 'Code',
+    'components.controls.blocktype.blocktype': 'Block Type',
+    'components.controls.blocktype.normal': 'Normal',
+
+    // Color Picker
+    'components.controls.colorpicker.colorpicker': 'Color Picker',
+    'components.controls.colorpicker.text': 'Text',
+    'components.controls.colorpicker.background': 'Highlight',
+
+    // Embedded
+    'components.controls.embedded.embedded': 'Embedded',
+    'components.controls.embedded.embeddedlink': 'Embedded Link',
+    'components.controls.embedded.enterlink': 'Enter link',
+
+    // Emoji
+    'components.controls.emoji.emoji': 'Emoji',
+
+    // FontFamily
+    'components.controls.fontfamily.fontfamily': 'Font',
+
+    // FontSize
+    'components.controls.fontsize.fontsize': 'Font Size',
+
+    // History
+    'components.controls.history.history': 'History',
+    'components.controls.history.undo': 'Undo',
+    'components.controls.history.redo': 'Redo',
+
+    // Image
+    'components.controls.image.image': 'Image',
+    'components.controls.image.fileUpload': 'File Upload',
+    'components.controls.image.byURL': 'URL',
+    'components.controls.image.dropFileText': 'Drop the file or click to upload',
+
+    // Inline
+    'components.controls.inline.bold': 'Bold',
+    'components.controls.inline.italic': 'Italic',
+    'components.controls.inline.underline': 'Underline',
+    'components.controls.inline.strikethrough': 'Strikethrough',
+    'components.controls.inline.monospace': 'Monospace',
+    'components.controls.inline.superscript': 'Superscript',
+    'components.controls.inline.subscript': 'Subscript',
+
+    // Link
+    'components.controls.link.linkTitle': 'Link Title',
+    'components.controls.link.linkTarget': 'Link Target',
+    'components.controls.link.linkTargetOption': 'Open link in new window',
+    'components.controls.link.link': 'Link',
+    'components.controls.link.unlink': 'Unlink',
+
+    // List
+    'components.controls.list.list': 'List',
+    'components.controls.list.unordered': 'Unordered',
+    'components.controls.list.ordered': 'Ordered',
+    'components.controls.list.indent': 'Indent',
+    'components.controls.list.outdent': 'Outdent',
+
+    // Remove
+    'components.controls.remove.remove': 'Remove',
+
+    // TextAlign
+    'components.controls.textalign.textalign': 'Text Align',
+    'components.controls.textalign.left': 'Left',
+    'components.controls.textalign.center': 'Center',
+    'components.controls.textalign.right': 'Right',
+    'components.controls.textalign.justify': 'Justify',
+};
+```
+
+Then add this to the _Editor_ component:
+
+```jsx
+<Editor
+    // ...
+
+    localization={{ locale: 'en', translations: editorLabels }}
+/>
+```
+
+---
+
+### Changing the names of toolbar items
+
+I saw someone trying to add the _displayNames_ object to the blockType object, but it doesn't seem to work.
+
+```jsx
+blockType: {
+    inDropdown: true,
+    // options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote', 'Code'],
+    options: ['Normal', 'Blockquote', 'Code'],
+    className: undefined,
+    component: undefined,
+    dropdownClassName: undefined,
+    displayNames: [
+        { label: 'Normally', displayName: 'Normally', style: 'unstyled' },
+        { label: 'Blockquoted', displayName: 'Blockquoted', style: 'blockquote' },
+    ],
+},
+```
+
+---
