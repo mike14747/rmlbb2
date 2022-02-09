@@ -101,6 +101,10 @@ NEWS_ITEMS_INCREMENT=50
 # ----------
 ```
 
+The difficult part about using this project yourself is in setting up the remote data sources (MongoDB and Sanity.io.).
+
+Both require very specific collections and schemas so the app can access them.
+
 ---
 
 ![rmlbb2](project_name.svg 'rmlbb2')
