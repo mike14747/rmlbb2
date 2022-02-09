@@ -1,8 +1,6 @@
 .RichEditor-root {
     background: #fff;
     border: 1px solid #ddd;
-    font-family: 'Georgia', serif;
-    font-size: 14px;
     padding: 15px;
 }
 
@@ -30,7 +28,7 @@
 .RichEditor-editor .RichEditor-blockquote {
     position: relative;
     color: var(--mg-dark);
-    font-size: .83rem;
+    font-size: 0.83rem;
     font-size: var(--step--1);
     background-color: var(--mg-yellow-pale);
     text-align: left;
@@ -65,8 +63,6 @@
 .RichEditor-styleButton {
     color: var(--mg-gray-6);
     background-color: var(--mg-yellow-pale);
-    font-size: 1rem;
-    font-size: var(--step-0);
     text-align: center;
     min-width: 25px;
     cursor: pointer;
@@ -85,18 +81,27 @@
     box-shadow: 1px 1px 1px var(--mg-gray-4) inset;
 }
 
-.btn-bold {
+.btn-text {
+    font-size: 1rem;
+    font-size: var(--step-0);
+}
+
+.btn-text-bold {
     font-weight: bold;
 }
 
-.btn-em {
+.btn-text-em {
     font-style: italic;
 }
 
-.btn-under {
+.btn-text-under {
     text-decoration: underline;
 }
 
-.btn-strike {
+.btn-text-strike {
     text-decoration: line-through;
+}
+
+.btn-text-mono {
+    /* font-family: Consolas, 'Courier New', Courier, monospace; */
 }
