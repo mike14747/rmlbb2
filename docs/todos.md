@@ -1,5 +1,7 @@
 ### Need to do
 
+Add a readme file to the project
+
 Figure out a new message board solution that can have our old board imported into it. (in progress)
 
 Add a WYSIWYG that will be used for message board posting. (I think it'll need to be able to output html instead of block content)

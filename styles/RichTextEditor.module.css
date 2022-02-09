@@ -36,10 +36,6 @@
     font-size: var(--step-3);
 }
 
-.editor blockquote::after {
-    /* content: '\275E'; */
-}
-
 .editor pre {
     font-family: Consolas, 'Courier New', Courier, monospace;
 }
