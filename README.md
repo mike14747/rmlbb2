@@ -11,7 +11,7 @@
 ![Sanity.io](https://img.shields.io/badge/S-Sanity.io-000000.svg?style=flat-square&colorA=F03E2F 'Sanity.io')
 ![Node](https://img.shields.io/badge/Node-339933?style=flat-square&logo=nodedotjs&logoColor=ffffff 'Node')
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=f5f5f5 'ESLint')
-![SVG](https://img.shields.io/badge/SVG-FFB13B?style=flat-square&logo=svg&logoColor=ffffff "SVG")
+![SVG](https://img.shields.io/badge/SVG-FFB13B?style=flat-square&logo=svg&logoColor=ffffff 'SVG')
 ![NextAuth](https://img.shields.io/badge/N-NextAuth-7C14D7.svg?style=flat-square&colorA=1BAFEF 'NextAuth')
 
 ---
@@ -27,10 +27,13 @@
 
 -   Built with Next.js and hosted on Vercel.
 -   Uses NextAuth for user authentication and authorization.
--   Files downloads.
+-   Users can change their username, password and email from their profile page.
+-   Users can also submit for a lost username and receive an email to the email associated with their account via NodeMailer with their username.
+-   Users can also submit for a lost password and receive an email with a token (which expires in an hour) and a link to reset their password.
+-   File downloads.
 -   Private message forum (which was custom built from the ground up).
 -   Private member directory.
--   The public pages are nearly all SSG pages. The private pages are static pages that use client-side hydration... which happens upon authentication verification.
+-   The public pages are nearly all SSG pages. The private pages are static pages that use client-side hydration... which happens upon authenticated.
 -   MongoDB (via Atlas) is the data storage solution for the message forum and user data.
 -   Sanity.io CMS is used for the rest of the data. The Sanity dashboard is great for easily updating website content. It was broken up into 3 separate Sanity projects. The free plan at Sanity doesn't allow for having public content mixed with private content in the same project.
     -   The first is for the public website data (block content for several pages, upcoming events list, app settings, etc).
@@ -100,8 +103,8 @@ NEWS_ITEMS_INCREMENT=50
 
 ---
 
-![rmlbb2](project_name.svg "rmlbb2")
-![by Mike Gullo](author.svg "by Mike Gullo")
+![rmlbb2](project_name.svg 'rmlbb2')
+![by Mike Gullo](author.svg 'by Mike Gullo')
 
 -   Live version: https://rmlbb2.vercel.app
 -   This project's github repo: https://github.com/mike14747/rmlbb2
