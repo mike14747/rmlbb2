@@ -11,9 +11,13 @@ import styles from '../styles/RichTextEditor.module.css';
 
 const editorLabels = {
     'components.controls.blocktype.normal': 'Paragraph',
-    // 'components.controls.fontsize.small': 'tiny',
-    'components.controls.fontsize.one': 'tiny',
     'components.controls.blocktype.code': 'Monospaced',
+    // 'components.controls.fontsize[12]': 'Small',
+    // 'components.controls.fontsize[16]': 'Normal',
+    // 'components.controls.fontsize[24]': 'Large',
+    'components.controls.fontsize[var(--mg-step--1)]': 'Small',
+    'components.controls.fontsize[var(--mg-step-0])': 'Normal',
+    'components.controls.fontsize[var(--mg-step-1)]': 'Large',
 };
 
 export default class RichTextEditor extends Component {
@@ -52,7 +56,7 @@ export default class RichTextEditor extends Component {
                     placeholder="Enter text here..."
                     toolbar={{
                         // options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
-                        options: ['inline', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'history'],
+                        options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link', 'history'],
                         inline: {
                             inDropdown: false,
                             className: styles.inlineDropdown,
@@ -72,12 +76,11 @@ export default class RichTextEditor extends Component {
                             icon: undefined,
                             // icon: '/images/fontSize.svg',
                             // options: ['smaller', 'medium', 'larger'],
-                            // options: ['small', 'var(--step--1)', 'var(--step-0)', 'var(--step-1)'],
-                            options: ['one', 'two', 'three'],
+                            options: ['var(--step--1)', 'var(--step-0)', 'var(--step-1)'],
+                            // options: [12, 16, 24],
                             className: styles.fontSizeDropdown,
                             component: undefined,
                             dropdownClassName: undefined,
-                            title: 'FS',
                         },
                         list: {
                             inDropdown: true,
