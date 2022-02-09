@@ -6,6 +6,8 @@ import '../styles/globals.css';
 import '../styles/my_tables.css';
 import '../styles/rich-text.css';
 
+import '../styles/draft.css';
+
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     return (
         <SessionProvider session={session}>

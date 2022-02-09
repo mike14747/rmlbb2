@@ -1,5 +1,5 @@
 .container {
-    min-height: 50vh;
+    /* min-height: 50vh; */
     font-size: 1rem;
     font-size: var(--step-0);
     border: 1px var(--mg-gray-3) solid;
@@ -11,7 +11,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 80%;
-    margin: 0 auto;
+    margin: 2rem auto 0 auto;
     display: block;
 }
 

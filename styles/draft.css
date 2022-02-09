@@ -1,0 +1,102 @@
+.RichEditor-root {
+    background: #fff;
+    border: 1px solid #ddd;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    padding: 15px;
+}
+
+.RichEditor-editor {
+    border-top: 1px solid #ddd;
+    cursor: text;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.RichEditor-editor .public-DraftEditorPlaceholder-root,
+.RichEditor-editor .public-DraftEditor-content {
+    margin: 0 -15px -15px;
+    padding: 15px;
+}
+
+.RichEditor-editor .public-DraftEditor-content {
+    min-height: 100px;
+}
+
+.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+    display: none;
+}
+
+.RichEditor-editor .RichEditor-blockquote {
+    position: relative;
+    color: var(--mg-dark);
+    font-size: .83rem;
+    font-size: var(--step--1);
+    background-color: var(--mg-yellow-pale);
+    text-align: left;
+    padding: 1rem 1rem 1rem 2rem;
+    margin: 1rem 2rem;
+    border-left: 0.25rem solid var(--theme-color-orange);
+}
+
+.RichEditor-editor .RichEditor-blockquote::before {
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    content: '\275D';
+    color: var(--theme-color-orange);
+    font-size: var(--step-3);
+}
+
+.RichEditor-editor .public-DraftStyleDefault-pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.RichEditor-controls {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.RichEditor-styleButton {
+    color: var(--mg-gray-6);
+    background-color: var(--mg-yellow-pale);
+    font-size: 1rem;
+    font-size: var(--step-0);
+    text-align: center;
+    min-width: 25px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    padding: 0 0.5rem;
+    display: inline-block;
+    border: 0;
+    outline: 1px var(--mg-gray-5) solid;
+    box-shadow: 2px 2px 2px var(--mg-gray-4);
+}
+
+.RichEditor-activeButton {
+    color: var(--mg-gray-4);
+    background-color: var(--mg-light);
+    outline: 1px var(--mg-gray-3) solid;
+    box-shadow: 1px 1px 1px var(--mg-gray-4) inset;
+}
+
+.btn-bold {
+    font-weight: bold;
+}
+
+.btn-em {
+    font-style: italic;
+}
+
+.btn-under {
+    text-decoration: underline;
+}
+
+.btn-strike {
+    text-decoration: line-through;
+}

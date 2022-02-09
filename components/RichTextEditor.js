@@ -139,11 +139,11 @@ export default class RichTextEditor extends Component {
                     }}
                 />
 
-                <textarea
+                {/* <textarea
                     width="500px"
                     disabled
                     value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-                />
+                /> */}
             </div>
         );
     }
