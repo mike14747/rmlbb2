@@ -43,7 +43,7 @@
 
 The biggest challenges revolved around converting the old MySQL database data into forms suitable for use in MongoDB and Sanity.io CMS.
 
-In fact, I created another app for the sole purpose of that data conversion. The conversion app was an Express server (backend-only) that accessed the MySQL data and converted in over to MongoDB _bson_ files and Sanity.io _ndjson_ files via numerous api routes and server functions.
+In fact, I created another app for the sole purpose of that data conversion. The conversion app was an Express server (backend-only) that accessed the MySQL data and converted it over to MongoDB _bson_ files and Sanity.io _ndjson_ files via numerous api routes and server functions.
 
 Accessing and converting the PHPBB message board data was the trickiest data conversion. That database had information sprawled over 68 tables and 597 columns. Properly retrieving the necessary data via joins was only part of the problem.
 
@@ -51,7 +51,7 @@ The other part was in the way the PHPBB database stored the text content from al
 
 The conversion app is in a private repo because it accesses private API data, but I can show the inner workings of it as needed.
 
-The other huge challenge in building this app was creating my own private message forum from scratch. You must be logged in to not only make posts, but also to see the posts.
+The other huge challenge in building this app was creating my own private message forum from scratch. You must be logged in to not only make posts, but also to view the posts.
 
 I ended up using _react-draft-wysiwyg_ to handle the user posts. The output is saved as HTML and uploaded to MongoDB.
 
