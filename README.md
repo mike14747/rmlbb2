@@ -103,7 +103,7 @@ NEWS_ITEMS_INCREMENT=50
 ![rmlbb2](project_name.svg "rmlbb2")
 ![by Mike Gullo](author.svg "by Mike Gullo")
 
--   Live version: [rmlbb2.vercel.com](rmlbb2.vercel.com)
+-   Live version: https://rmlbb2.vercel.com
 -   This project's github repo: https://github.com/mike14747/rmlbb2
 -   Me on github: https://github.com/mike14747
 -   Contact me at: mgullo.dev@gmail.com
