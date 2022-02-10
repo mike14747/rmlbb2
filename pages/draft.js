@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import RichTextEditor from '../components/RichTextEditor2';
+import RichTextEditor from '../components/RichTextEditor';
 
 export default function Draft() {
     return (
