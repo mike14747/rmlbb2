@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
@@ -12,38 +12,20 @@ import styles from '../styles/RichTextEditor.module.css';
 const editorLabels = {
     'components.controls.blocktype.normal': 'Paragraph',
     'components.controls.blocktype.code': 'Monospaced',
-    // 'components.controls.fontsize[12]': 'Small',
-    // 'components.controls.fontsize[16]': 'Normal',
-    // 'components.controls.fontsize[24]': 'Large',
-    'components.controls.fontsize[var(--mg-step--1)]': 'Small',
-    'components.controls.fontsize[var(--mg-step-0])': 'Normal',
-    'components.controls.fontsize[var(--mg-step-1)]': 'Large',
 };
 
-export default class RichTextEditor extends Component {
+export default function RichTextEditor2() {
 
-    constructor(props) {
-        super(props);
+    const [editorState, setEditorState] = useState(
+        () => EditorState.createEmpty(),
+    );
 
-        this.state = {
-            editorState: EditorState.createEmpty(),
-        };
-    }
-
-    onEditorStateChange = (editorState) => {
-        this.setState({
-            editorState,
-        });
+    const editorStyle = {
+        fontSize: 'var(--step-0)',
     };
 
-    render() {
-        const { editorState } = this.state;
-
-        const editorStyle = {
-            fontSize: 'var(--step-0)',
-        };
-
-        return (
+    return (
+        <>
             <div className={styles.container + ' mw-90ch'}>
                 <Editor
                     localization={{ locale: 'en', translations: editorLabels }}
@@ -52,7 +34,7 @@ export default class RichTextEditor extends Component {
                     toolbarClassName="toolbar-class"
                     wrapperClassName="wrapper-class"
                     editorClassName={styles.editor}
-                    onEditorStateChange={this.onEditorStateChange}
+                    onEditorStateChange={setEditorState}
                     placeholder="Start here..."
                     handlePastedText={() => false}
                     toolbar={{
@@ -139,13 +121,16 @@ export default class RichTextEditor extends Component {
                         },
                     }}
                 />
+            </div>
 
+            <div className={styles.container + ' ' + styles.lower + ' mw-90ch'}>
                 <textarea
                     width="500px"
                     disabled
                     value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
                 />
             </div>
-        );
-    }
+        </>
+
+    );
 }

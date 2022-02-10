@@ -11,7 +11,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 80%;
-    margin: 2rem auto 0 auto;
+    margin: 0 auto;
     display: block;
 }
 
@@ -29,7 +29,7 @@
 
 .editor blockquote::before {
     position: absolute;
-    top: -0.5rem;
+    top: 0;
     left: 0.5rem;
     content: '\275D';
     color: var(--theme-color-orange);
@@ -59,4 +59,8 @@
 .blockTypeDropdown * {
     font-size: 0.833em;
     font-size: var(--step--1);
+}
+
+.lower {
+    margin-top: 1rem;
 }

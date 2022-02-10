@@ -105,3 +105,9 @@
 .btn-text-mono {
     /* font-family: Consolas, 'Courier New', Courier, monospace; */
 }
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

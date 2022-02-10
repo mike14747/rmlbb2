@@ -59,9 +59,39 @@ export default function DraftEditor() {
         title: PropTypes.string,
     };
 
+    const StyleDropdown = ({ blockOptions, label, style, active, onToggle, title }) => {
+        const toggle = e => {
+            let value = e.target.value;
+            onToggle(value);
+        };
+
+        return (
+            <select value={active} onChange={toggle}>
+                <option value="">Paragraph</option>
+                {blockOptions.map(element => {
+                    return (
+                        <option key={element.title} value={element.style}>
+                            {element.label}
+                        </option>
+                    );
+                })}
+            </select>
+        );
+    };
+
+    StyleDropdown.propTypes = {
+        blockOptions: PropTypes.array,
+        label: PropTypes.string,
+        style: PropTypes.string,
+        active: PropTypes.string,
+        onToggle: PropTypes.func,
+        title: PropTypes.string,
+    };
+
     // const onItalicClick = () => setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'));
 
     const toggleInlineStyle = (inlineStyle) => setEditorState(RichUtils.toggleInlineStyle(editorState, inlineStyle));
+    const toggleBlockType = (blockType) => setEditorState(RichUtils.toggleBlockType(editorState, blockType));
 
     const INLINE_STYLES = [
         { label: 'B', style: 'BOLD', title: 'Bold' },
@@ -69,6 +99,19 @@ export default function DraftEditor() {
         { label: 'U', style: 'UNDERLINE', title: 'Underline' },
         { label: 'and', style: 'STRIKETHROUGH', title: 'Strikethrough' },
         { label: 'pre', style: 'CODE', title: 'Monospaced' },
+    ];
+
+    const BLOCK_TYPES = [
+        { label: 'H1', style: 'header-one', title: 'Heading 1' },
+        { label: 'H2', style: 'header-two', title: 'Heading 2' },
+        { label: 'H3', style: 'header-three', title: 'Heading 3' },
+        { label: 'H4', style: 'header-four', title: 'Heading 4' },
+        { label: 'H5', style: 'header-five', title: 'Heading 5' },
+        { label: 'H6', style: 'header-six', title: 'Heading 6' },
+        { label: 'Blockquote', style: 'blockquote', title: 'Quote' },
+        { label: 'UL', style: 'unordered-list-item', title: 'Unordered List' },
+        { label: 'OL', style: 'ordered-list-item', title: 'Ordered List' },
+        { label: '{ }', style: 'code-block', title: 'Code' },
     ];
 
     const InlineStyleControls = (props) => {
@@ -95,16 +138,77 @@ export default function DraftEditor() {
         onToggle: PropTypes.func,
     };
 
+    const BlockStyleControls = (props) => {
+        const { editorState } = props;
+        const selection = editorState.getSelection();
+        const blockType = editorState
+            .getCurrentContent()
+            .getBlockForKey(selection.getStartKey())
+            .getType();
+
+        return (
+            <div className="RichEditor-controls">
+                {BLOCK_TYPES.map((type) =>
+                    <StyleButton
+                        key={type.label}
+                        active={type.style === blockType}
+                        label={type.label}
+                        onToggle={props.onToggle}
+                        style={type.style}
+                        title={type.title}
+                    />,
+                )}
+            </div>
+        );
+    };
+
+    BlockStyleControls.propTypes = {
+        editorState: PropTypes.object,
+        onToggle: PropTypes.func,
+    };
+
+    const BlockStyleControls2 = (props) => {
+        const { editorState } = props;
+        const selection = editorState.getSelection();
+        const blockType = editorState
+            .getCurrentContent()
+            .getBlockForKey(selection.getStartKey())
+            .getType();
+
+        return (
+            <div className="RichEditor-controls">
+                <StyleDropdown
+                    blockOptions={BLOCK_TYPES}
+                    active={blockType}
+                    onToggle={props.onToggle}
+                />
+            </div>
+        );
+    };
+
+    BlockStyleControls2.propTypes = {
+        editorState: PropTypes.object,
+        onToggle: PropTypes.func,
+    };
+
     return (
         <div className={styles.container + ' mw-90ch'}>
             {/* <button onClick={onItalicClick}><em>I</em></button> */}
 
-            <InlineStyleControls
-                editorState={editorState}
-                onToggle={toggleInlineStyle}
-            />
+            <div className="toolbar">
+                <InlineStyleControls
+                    editorState={editorState}
+                    onToggle={toggleInlineStyle}
+                />
+
+                <BlockStyleControls
+                    editorState={editorState}
+                    onToggle={toggleBlockType}
+                />
+            </div>
 
             {/* <div aria-hidden="true" onClick={focus}> */}
+
             <Editor
                 editorState={editorState}
                 onChange={setEditorState}

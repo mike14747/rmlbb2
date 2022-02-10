@@ -1,35 +1,59 @@
 /* start css from react-draft-wysiwyg.css */
 
 .rdw-option-wrapper {
-    border: 1px solid #f1f1f1;
-    padding: 5px;
+    /* border: 1px solid #f1f1f1; */
+    padding: 0.5rem;
     min-width: 25px;
-    height: 20px;
+    height: 25px;
     border-radius: 2px;
-    margin: 0 4px;
+    margin: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background: white;
+    /* background: white; */
+    background-color: var(--mg-yellow-pale);
     text-transform: capitalize;
+    outline: 1px var(--mg-gray-5) solid;
+    box-shadow: 2px 2px 2px var(--mg-gray-4);
+    transition: 0.2s;
 }
 
 .rdw-option-wrapper:hover {
-    box-shadow: 1px 1px 0px #bfbdbd;
+    background-color: var(--mg-orange-soft);
 }
 
 .rdw-option-wrapper:active {
-    box-shadow: 1px 1px 0px #bfbdbd inset;
+    box-shadow: 1px 1px 2px var(--mg-gray-4) inset;
 }
 
 .rdw-option-active {
-    box-shadow: 1px 1px 0px #bfbdbd inset;
+    background-color: var(--mg-light);
+    outline: 1px var(--mg-gray-3) solid;
+    box-shadow: 1px 1px 2px var(--mg-gray-4) inset;
+}
+
+.rdw-option-active:hover {
+    box-shadow: 1px 1px 2px var(--mg-gray-4) inset;
+}
+
+.rdw-option-active img {
+    opacity: 0.5;
+}
+
+.rdw-option-active:hover img {
+    opacity: 0.6;
 }
 
 .rdw-option-disabled {
     opacity: 0.3;
     cursor: default;
+    box-shadow: none;
+    background-color: var(--mg-light);
+}
+
+.rdw-option-disabled:hover {
+    background-color: var(--mg-light);
 }
 
 .rdw-dropdown-wrapper {
@@ -411,15 +435,17 @@
     margin-left: 10px;
     width: 75px;
     height: 30px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid var(--mg-gray-3);
     border-radius: 2px;
     cursor: pointer;
-    background: white;
+    background: var(--mg-yellow-pale);
     text-transform: capitalize;
+    transition: 0.2s;
 }
 
 .rdw-link-modal-btn:hover {
-    box-shadow: 1px 1px 0px #bfbdbd;
+    background-color: var(--mg-orange-soft);
+    box-shadow: 2px 2px 2px var(--mg-gray-4);
 }
 
 .rdw-link-modal-btn:active {
@@ -431,7 +457,8 @@
 }
 
 .rdw-link-modal-btn:disabled {
-    background: #ece9e9;
+    background: var(--mg-gray-1);
+    box-shadow: none;
 }
 
 .rdw-link-dropdownoption {
