@@ -6,7 +6,7 @@
     min-width: 25px;
     height: 25px;
     border-radius: 2px;
-    margin: 0.5rem;
+    margin: 0.35rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,12 +15,13 @@
     background-color: var(--mg-yellow-pale);
     text-transform: capitalize;
     outline: 1px var(--mg-gray-5) solid;
-    box-shadow: 2px 2px 2px var(--mg-gray-4);
+    box-shadow: 2px 2px 4px var(--mg-gray-4);
     transition: 0.2s;
 }
 
 .rdw-option-wrapper:hover {
     background-color: var(--mg-orange-soft);
+    box-shadow: 2px 2px 2px var(--mg-gray-4);
 }
 
 .rdw-option-wrapper:active {

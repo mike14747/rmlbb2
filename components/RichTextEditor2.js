@@ -15,7 +15,6 @@ const editorLabels = {
 };
 
 export default function RichTextEditor2() {
-
     const [editorState, setEditorState] = useState(
         () => EditorState.createEmpty(),
     );
