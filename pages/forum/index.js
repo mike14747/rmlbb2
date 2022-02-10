@@ -4,9 +4,7 @@ import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Loading from '../../components/Loading';
-import Icon from '../../assets/postIcon.svg';
-import Icon2 from '../../assets/icon2.svg';
-import Icon3 from '../../assets/icon3.svg';
+import ParagraphRound from '../../assets/paragraphRound.svg';
 
 import styles from '../../styles/forum.module.css';
 
@@ -84,7 +82,7 @@ export default function ForumHome() {
                                 <div className={`${styles.forumsDataItem} ${styles.forumsTitle}`}>
                                     <div>
                                         {console.log('forum.lastPostDaysAgo:', forum.lastPostDaysAgo)}
-                                        <Icon2 aria-hidden="true" className={`${styles.messageIcon} ${forum.lastPostDaysAgo < 14 ? styles.new : forum.lastPostDaysAgo < 60 ? styles.med : styles.old}`} />
+                                        <ParagraphRound aria-hidden="true" className={`${styles.messageIcon} ${forum.lastPostDaysAgo < 14 ? styles.new : forum.lastPostDaysAgo < 60 ? styles.med : styles.old}`} />
                                     </div>
 
                                     <div>
