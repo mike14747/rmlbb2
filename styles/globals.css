@@ -661,6 +661,10 @@ template {
     text-transform: uppercase;
 }
 
+.muted {
+    color: var(--mg-gray-5);
+}
+
 /* use with the <main> element on pages */
 .main-container {
     flex: 1;

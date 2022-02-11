@@ -84,10 +84,9 @@ export default function Forum() {
                         topicList.map(topic => (
                             <div className={styles.forumsDataRow} key={topic._id}>
                                 <div className={`${styles.forumsDataItem} ${styles.forumsIcon}`}>
-                                    <div>
-                                        {/* <span aria-hidden="true">&#128240;</span> */}
+                                    {/* <div>
                                         <img aria-hidden="true" src="/images/message_icon2.png" alt="Forum" className={styles.messageIcon} />
-                                    </div>
+                                    </div> */}
 
                                     <div>
                                         <p className={styles.forumsName}>
