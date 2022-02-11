@@ -61,27 +61,26 @@ export default function ForumHome() {
 
             <article>
                 <h2 className={'page-heading ' + styles.forumPageHeadding}>
-                    Message Forum
+                    Forum Index
                 </h2>
 
                 {error && <p className="error">{error}</p>}
 
                 {isLoading && <Loading />}
 
-                <div className={styles.forumsContainer}>
-                    <div className={styles.forumsHeadingRow}>
-                        <div className={styles.forumsHeadingItem}>Forum</div>
-                        <div className={`text-center ${styles.forumsHeadingItem}`}>Topics</div>
-                        <div className={`text-center ${styles.forumsHeadingItem}`}>Posts</div>
-                        <div className={styles.forumsHeadingItem}>Last Post</div>
-                    </div>
+                {forums?.length > 0 &&
+                    <div className={styles.forumsContainer}>
+                        <div className={styles.forumsHeadingRow}>
+                            <div className={styles.forumsHeadingItem}>Forum</div>
+                            <div className={`text-center ${styles.forumsHeadingItem}`}>Topics</div>
+                            <div className={`text-center ${styles.forumsHeadingItem}`}>Posts</div>
+                            <div className={styles.forumsHeadingItem}>Last Post</div>
+                        </div>
 
-                    {forums?.length > 0 &&
-                        forums.map(forum => (
+                        {forums.map(forum => (
                             <div className={styles.forumsDataRow} key={forum._id}>
                                 <div className={`${styles.forumsDataItem} ${styles.forumsTitle}`}>
                                     <div>
-                                        {console.log('forum.lastPostDaysAgo:', forum.lastPostDaysAgo)}
                                         <ParagraphRound aria-hidden="true" className={`${styles.messageIcon} ${forum.lastPostDaysAgo < 14 ? styles.new : forum.lastPostDaysAgo < 60 ? styles.med : styles.old}`} />
                                     </div>
 
@@ -100,7 +99,7 @@ export default function ForumHome() {
                                     {forum.lastPost &&
                                         <>
                                             <p>
-                                                <Link href={`/forum/topic/${forum.lastPost.topicId}${forum.lastPost.postId ? `?reply=${forum.lastPost.postId}` : ''}`}>
+                                                <Link href={`/forum/${forum._id}/topic/${forum.lastPost.topicId}${forum.lastPost.replyId ? `?reply=${forum.lastPost.replyId}` : ''}`}>
                                                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                                     <a><strong>{forum.lastPost.subject}</strong></a>
                                                 </Link>
@@ -112,9 +111,9 @@ export default function ForumHome() {
 
                                 </div>
                             </div>
-                        ))
-                    }
-                </div>
+                        ))}
+                    </div>
+                }
             </article>
         </>
     );

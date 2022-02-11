@@ -130,9 +130,17 @@ forums collection:
                         bsonType: 'int',
                         description: 'topicId must be a positive integer and is required'
                     },
-                    postId: {
-                        bsonType: 'int',
-                        description: 'postId must be a positive integer and is required'
+                    replyId: {
+                        oneOf: [
+                            {
+                                bsonType: 'int',
+                                minimum: 1
+                            },
+                            {
+                                bsonType: 'null'
+                            }
+                        ],
+                        description: 'replyId must be a positive integer and is required'
                     },
                     subject: {
                         bsonType: 'string',

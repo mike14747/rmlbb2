@@ -72,16 +72,16 @@ export default function Forum() {
 
                 {isLoading && <Loading />}
 
-                <div className={styles.forumsContainer}>
-                    <div className={styles.forumsHeadingRow}>
-                        <div className={styles.forumsHeadingItem}>Topic</div>
-                        <div className={`text-center ${styles.forumsHeadingItem}`}>Replies</div>
-                        <div className={`text-center ${styles.forumsHeadingItem}`}>Views</div>
-                        <div className={styles.forumsHeadingItem}>Last Reply</div>
-                    </div>
+                {topicList?.length > 0 &&
+                    <div className={styles.forumsContainer}>
+                        <div className={styles.forumsHeadingRow}>
+                            <div className={styles.forumsHeadingItem}>Topic</div>
+                            <div className={`text-center ${styles.forumsHeadingItem}`}>Replies</div>
+                            <div className={`text-center ${styles.forumsHeadingItem}`}>Views</div>
+                            <div className={styles.forumsHeadingItem}>Last Reply</div>
+                        </div>
 
-                    {topicList?.length > 0 &&
-                        topicList.map(topic => (
+                        {topicList.map(topic => (
                             <div className={styles.forumsDataRow} key={topic._id}>
                                 <div className={`${styles.forumsDataItem} ${styles.forumsIcon}`}>
                                     {/* <div>
@@ -102,24 +102,23 @@ export default function Forum() {
 
                                 <div className={`text-center ${styles.forumsDataItem}`}>{topic.views}</div>
                                 <div className={styles.forumsDataItem}>
-                                    {topic.lastPost &&
+                                    {topic.lastReply &&
                                         <>
                                             <p>
-                                                <Link href={`/forum/${forumId}/topic/${topic._id}${topic.lastPost.postId ? `?reply=${topic.lastPost.postId}` : ''}`}>
+                                                <Link href={`/forum/${forumId}/topic/${topic._id}${topic.lastReply.replyId ? `?reply=${topic.lastReply.replyId}` : ''}`}>
                                                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                    <a><strong>{topic.lastPost.subject}</strong></a>
+                                                    <a><strong>{topic.lastReply.subject}</strong></a>
                                                 </Link>
                                             </p>
-                                            {topic.lastPost.username && <p className='small'><small>by:</small> {topic.lastPost.username}</p>}
-                                            <p>{topic.lastPost.date}</p>
+                                            {topic.lastReply.username && <p className='small'><small>by:</small> {topic.lastReply.username}</p>}
+                                            <p>{topic.lastReply.date}</p>
                                         </>
                                     }
                                 </div>
                             </div>
-                        ))
-                    }
-                </div>
-
+                        ))}
+                    </div>
+                }
             </article>
         </>
     );

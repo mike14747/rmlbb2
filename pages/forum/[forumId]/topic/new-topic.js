@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
+import Link from 'next/link';
 import Loading from '../../../../components/Loading';
 import Button from '../../../../components/Button';
 import FormInput from '../../../../components/FormInput';
@@ -102,7 +103,13 @@ export default function NewTopic() {
 
                 {forumName && !isSuccessful &&
                     <>
-                        <h3 className={styles.forumNameHeading}><span className="muted"><small><em>forum: </em></small></span>{forumName}</h3>
+                        <p>
+                            <span className="muted"><small><em>forum: </em></small></span>
+                            <Link href={`/forum/${forumId}`}>
+                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                <a>{forumName}</a>
+                            </Link>
+                        </p>
 
                         <form onSubmit={submitTopic}>
                             <FormInput
