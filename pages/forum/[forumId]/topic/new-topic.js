@@ -71,8 +71,6 @@ export default function NewTopic() {
                 setIsLoading(false);
             };
             fetchData();
-        } else {
-            setError('An error occurred fetching data.');
         }
     }, [session, forumId]);
 
