@@ -116,7 +116,7 @@ export default function Forum() {
                                                     <a><strong>{topic.title}</strong></a>
                                                 </Link>
                                             </p>
-                                            <p className={styles.forumsDescription}>by {topic.user_id}<span className="break"></span><span className={styles.on}>{topic.date}</span></p>
+                                            <p className={styles.forumsDescription}>by {topic.username}<span className="break"></span><span className={styles.on}>{topic.date}</span></p>
                                         </div>
                                     </div>
                                     <div className={`text-center ${styles.forumsDataItem}`}>{topic.replies.length}</div>
