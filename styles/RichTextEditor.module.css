@@ -37,19 +37,24 @@
     font-size: var(--step-3);
 }
 
-.editor pre {
-    font-family: Consolas, 'Courier New', Courier, monospace;
-}
 
 .editor pre {
     display: block;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    font-family: Consolas, 'Courier New', Courier, monospace;
     font-size: 0.833em;
     font-size: var(--step--1);
     color: var(--mg-dark);
     background-color: var(--mg-light);
+    margin-top: 0;
+    margin-bottom: 1rem;
     border: 1px solid var(--mg-gray-1);
+}
+
+.editor pre > div > span > span {
+    word-break: keep-all;
+    word-wrap: normal;
+    white-space: pre;
+    overflow-x: auto;
 }
 
 .blockTypeDropdown,
