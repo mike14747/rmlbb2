@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, Modifier } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
 const Editor = dynamic(
@@ -38,6 +38,42 @@ export default function RichTextEditor({ setContent }) {
         fontSize: 'var(--step-0)',
     };
 
+    // const handlePastedText = (text, html) => {
+    //     console.log('text:', text, 'html:', html);
+    //     return false;
+    // };
+
+    function handlePastedText(text, html, editorState) {
+        console.log('text:', text, 'html:', html);
+        if (text.substring(0, 4) === '<bq>') {
+            console.log('this is a quoted item');
+            const cleanedText = text.slice(4);
+            const content = editorState.getCurrentContent();
+            const selection = editorState.getSelection();
+
+            const quote = Modifier.setBlockType(
+                content,
+                selection,
+                'blockquote',
+            );
+
+            const newEditorState1 = EditorState.push(editorState, quote, 'change-block-type');
+            handleEditorChange(newEditorState1);
+
+            const newContent = Modifier.insertText(
+                newEditorState1.getCurrentContent(),
+                newEditorState1.getSelection(),
+                cleanedText,
+            );
+
+            const newEditorState2 = EditorState.push(editorState, newContent, 'insert-characters');
+            handleEditorChange(newEditorState2);
+            return 'handled';
+        } else {
+            return false;
+        }
+    }
+
     return (
         <div className={styles.container + ' mw-90ch'}>
             <Editor
@@ -49,7 +85,7 @@ export default function RichTextEditor({ setContent }) {
                 editorClassName={styles.editor}
                 onEditorStateChange={handleEditorChange}
                 placeholder="Start here..."
-                handlePastedText={() => false}
+                handlePastedText={handlePastedText}
                 toolbar={{
                     // options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
                     options: ['inline', 'colorPicker', 'link', 'blockType', 'fontSize', 'list', 'textAlign', 'history'],
