@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { EditorState, convertToRaw, Modifier } from 'draft-js';
+import { EditorState, convertToRaw, Modifier, convertFromHTML, ContentState, ContentBlock } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
 const Editor = dynamic(
     () => import('react-draft-wysiwyg').then(mod => mod.Editor),
     { ssr: false });
+const htmlToDraft = typeof window === 'object' && require('html-to-draftjs').default;
 
 // not using the default 'react-draft-wysiwyg.css', but instead am importing my modified version (rich-text.css) by importing it in _app.js
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -38,36 +39,48 @@ export default function RichTextEditor({ setContent }) {
         fontSize: 'var(--step-0)',
     };
 
-    // const handlePastedText = (text, html) => {
-    //     console.log('text:', text, 'html:', html);
-    //     return false;
-    // };
+    // https://cannibalcoder.wordpress.com/2016/12/09/draft-js-styling-a-contentblock/
 
     function handlePastedText(text, html, editorState) {
-        console.log('text:', text, 'html:', html);
+        // console.log('text:', text, 'html:', html);
         if (text.substring(0, 4) === '<bq>') {
             console.log('this is a quoted item');
             const cleanedText = text.slice(4);
-            const content = editorState.getCurrentContent();
-            const selection = editorState.getSelection();
 
-            const quote = Modifier.setBlockType(
-                content,
-                selection,
-                'blockquote',
+            // const data = '<h3>Dear member!</h3><p>This is a <b>TEST</b></p>';
+            console.log('cleanedText:', cleanedText);
+
+            let { contentBlocks, entityMap } = htmlToDraft(cleanedText);
+            let contentState = Modifier.replaceWithFragment(
+                editorState.getCurrentContent(),
+                editorState.getSelection(),
+                ContentState.createFromBlockArray(contentBlocks, entityMap).getBlockMap(),
             );
 
-            const newEditorState1 = EditorState.push(editorState, quote, 'change-block-type');
-            handleEditorChange(newEditorState1);
+            const test = EditorState.push(editorState, contentState, 'insert-fragment');
+            handleEditorChange(test);
 
-            const newContent = Modifier.insertText(
-                newEditorState1.getCurrentContent(),
-                newEditorState1.getSelection(),
-                cleanedText,
-            );
+            // const quote = Modifier.setBlockType(
+            //     editorState.getCurrentContent(),
+            //     editorState.getSelection(),
+            //     'blockquote',
+            // );
 
-            const newEditorState2 = EditorState.push(editorState, newContent, 'insert-characters');
-            handleEditorChange(newEditorState2);
+            // const newEditorState1 = EditorState.push(editorState, quote, 'change-block-type');
+            // handleEditorChange(newEditorState1);
+
+            // const newEditorState3 = EditorState.push(editorState, merged, 'change-block-data');
+            // handleEditorChange(newEditorState3);
+
+            // const newContent = Modifier.insertText(
+            //     newEditorState1.getCurrentContent(),
+            //     newEditorState1.getSelection(),
+            //     cleanedText,
+            // );
+
+            // const newEditorState2 = EditorState.push(editorState, newContent, 'insert-characters');
+            // handleEditorChange(newEditorState2);
+
             return 'handled';
         } else {
             return false;
