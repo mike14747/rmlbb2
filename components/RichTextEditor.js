@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { EditorState, convertToRaw, convertFromHTML, Modifier, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
+
+import styles from '../styles/RichTextEditor.module.css';
+// not using the default 'react-draft-wysiwyg.css', but instead am importing my modified version (rich-text.css) by importing it in _app.js
+
 const Editor = dynamic(
     () => import('react-draft-wysiwyg').then(mod => mod.Editor),
     { ssr: false });
 const htmlToDraft = typeof window === 'object' && require('html-to-draftjs').default;
 
-// not using the default 'react-draft-wysiwyg.css', but instead am importing my modified version (rich-text.css) by importing it in _app.js
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
-import styles from '../styles/RichTextEditor.module.css';
 
 const editorLabels = {
     'components.controls.blocktype.normal': 'Paragraph',
