@@ -50,7 +50,7 @@
     border: 1px solid var(--mg-gray-1);
 }
 
-.editor pre > div > span > span {
+.editor pre div span {
     word-break: keep-all;
     word-wrap: normal;
     white-space: pre;

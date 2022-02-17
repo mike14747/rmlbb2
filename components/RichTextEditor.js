@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { EditorState, convertToRaw, Modifier, convertFromHTML, ContentState, ContentBlock } from 'draft-js';
+import { EditorState, convertToRaw, convertFromHTML, Modifier, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
 const Editor = dynamic(
@@ -39,19 +39,28 @@ export default function RichTextEditor({ setContent }) {
         fontSize: 'var(--step-0)',
     };
 
-    // https://cannibalcoder.wordpress.com/2016/12/09/draft-js-styling-a-contentblock/
-
     function handlePastedText(text, html, editorState) {
         // console.log('text:', text, 'html:', html);
         if (text.substring(0, 4) === '<bq>') {
-            console.log('this is a quoted item');
-            const cleanedText = text.slice(4);
+            const cleanedText = text.slice(4) + '<p></p>';
 
-            // const data = '<h3>Dear member!</h3><p>This is a <b>TEST</b></p>';
-            console.log('cleanedText:', cleanedText);
+            // this method does not work when pasting text that has html tags in in... it only works when pasting html from something like a browser
+            // it does not support nested blockquotes... or any other nested block types for that matter
+            // it has an issue with focus in that it places the cursor at the beginning of the pasted content and not in the appended p tag
+            // const blocksFromHTML = convertFromHTML(cleanedText);
+            // const state = ContentState.createFromBlockArray(
+            //     blocksFromHTML.contentBlocks,
+            //     blocksFromHTML.entityMap,
+            // );
+            // const newState = EditorState.push(editorState, state, 'insert-fragment');
+            // handleEditorChange(newState);
 
-            let { contentBlocks, entityMap } = htmlToDraft(cleanedText);
-            let contentState = Modifier.replaceWithFragment(
+            // ------------------------------
+
+            // this method works well for pasting text that happens to have html tags in it, but it does not support nested blockquotes... or any other nested block types for that matter
+            // it places focus on the empty paragraph added to the end of the pasted text
+            const { contentBlocks, entityMap } = htmlToDraft(cleanedText);
+            const contentState = Modifier.replaceWithFragment(
                 editorState.getCurrentContent(),
                 editorState.getSelection(),
                 ContentState.createFromBlockArray(contentBlocks, entityMap).getBlockMap(),
@@ -60,6 +69,9 @@ export default function RichTextEditor({ setContent }) {
             const test = EditorState.push(editorState, contentState, 'insert-fragment');
             handleEditorChange(test);
 
+            // ------------------------------
+
+            // the following was my old way of handling custom pasted text (eg: with a <bq> prefix)
             // const quote = Modifier.setBlockType(
             //     editorState.getCurrentContent(),
             //     editorState.getSelection(),
