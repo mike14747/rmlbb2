@@ -1,6 +1,8 @@
 ### Need to do
 
-Add a readme file to the project
+Upgrade the mongodb driver from v3.6.6 to v4.3.1 (or higher)
+
+Add a $lookup to get the username for the specific forum page to display it with the original topic... or... add the username to the topic. The latter would mean more would need to happen when a user changes their username.
 
 Figure out a new message board solution that can have our old board imported into it. (in progress)
 

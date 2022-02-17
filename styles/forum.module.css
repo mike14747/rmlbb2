@@ -106,6 +106,22 @@
     content: '';
 }
 
+.success {
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+    color: var(--theme-color-green);
+    text-align: center;
+}
+
+.content r,
+.content t {
+    display: block;
+    font-size: 1rem;
+    font-size: var(--step-0);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
 @media (min-width: 480px) {
 }
 
