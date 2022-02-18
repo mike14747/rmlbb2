@@ -1,0 +1,31 @@
+.editorContainer {
+    font-size: 1rem;
+    font-size: var(--step-0);
+    margin: 0 0 1rem 0;
+    padding: 0.5rem;
+    border: 1px var(--mg-gray-3) solid;
+    border-radius: 0.25rem;
+}
+
+.toolbar {
+    /* padding: 0.5rem; */
+    border: 1px var(--mg-gray-3) solid;
+    border-radius: 0.25rem;
+}
+
+.toolbar button {
+    margin: 0.5rem;
+    cursor: pointer;
+    background: var(--theme-color-yellow-pale);
+    border: 1px solid var(--mg-gray-3);
+    border-radius: 2px;
+    /* outline: 1px var(--mg-gray-5) solid; */
+    box-shadow: 2px 2px 4px var(--mg-gray-4);
+    transition: 0.2s;
+    transition: 0.2s;
+}
+
+.toolbar button:hover {
+    background-color: var(--mg-orange-soft);
+    box-shadow: 2px 2px 2px var(--mg-gray-4);
+}
