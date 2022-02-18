@@ -6,7 +6,7 @@ export default function Tiptap() {
     const [content, setContent] = useState(null);
 
     return (
-        <section className="mw-90ch">
+        <div className="mw-90ch">
             <Head>
                 <title>
                     RML Baseball - Tiny Editor
@@ -18,7 +18,13 @@ export default function Tiptap() {
             </h2>
 
             <TiptapEditor setContent={setContent} />
-        </section>
 
+            <aside>
+                <textarea className="editor-textarea"
+                    disabled
+                    value={content}
+                />
+            </aside>
+        </div>
     );
 }

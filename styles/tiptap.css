@@ -16,6 +16,7 @@
 
 .ProseMirror ul,
 .ProseMirror ol {
+    margin: 0 1rem;
     padding: 0 1rem;
 }
 
@@ -95,6 +96,8 @@
 
 .toolbar button {
     margin: 0.5rem;
+    padding: 0;
+    line-height: 1;
     cursor: pointer;
     background: var(--theme-color-yellow-pale);
     border: 1px solid var(--mg-gray-3);
@@ -115,4 +118,10 @@
 
 .toolbar button:not(.is-active):hover {
     box-shadow: 2px 2px 2px var(--mg-gray-4);
+}
+
+.toolbar button > img {
+    width: 32px;
+    height: 32px;
+    padding: 0.25rem;
 }

@@ -79,3 +79,13 @@ const Text = Node.create({
 ```
 
 ---
+
+### Issues
+
+p tags are inserted inside other elements (blockquote, li)
+
+There doesn't seem to be an easy way to do dropdowns in the menu.
+
+I still haven't figured out how to do custom schemas.
+
+---
