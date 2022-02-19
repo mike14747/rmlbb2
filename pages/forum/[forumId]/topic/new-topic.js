@@ -127,6 +127,13 @@ export default function NewTopic() {
                         </form>
                     </>
                 }
+
+                <aside>
+                    <textarea className="editor-textarea"
+                        disabled
+                        value={content}
+                    />
+                </aside>
             </section>
         </>
     );
