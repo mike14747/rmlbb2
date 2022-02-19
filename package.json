@@ -36,6 +36,13 @@
     },
     "dependencies": {
         "@sanity/block-content-to-react": "^2.0.7",
+        "@tiptap/extension-subscript": "^2.0.0-beta.10",
+        "@tiptap/extension-superscript": "^2.0.0-beta.10",
+        "@tiptap/extension-text-align": "^2.0.0-beta.29",
+        "@tiptap/extension-text-style": "^2.0.0-beta.23",
+        "@tiptap/extension-underline": "^2.0.0-beta.23",
+        "@tiptap/react": "^2.0.0-beta.108",
+        "@tiptap/starter-kit": "^2.0.0-beta.183",
         "bcryptjs": "^2.4.3",
         "csv-parse": "^4.16.3",
         "draft-js": "^0.11.7",
@@ -48,6 +55,8 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-draft-wysiwyg": "^1.14.7",
+        "suneditor": "^2.42.0",
+        "suneditor-react": "^3.3.1",
         "swr": "^1.0.1"
     }
 }
