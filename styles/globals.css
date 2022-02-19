@@ -809,6 +809,17 @@ h2.page-heading {
     padding-right: 0.5rem;
 }
 
+.editor-textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 1rem;
+    display: block;
+    padding: 0.5rem;
+    min-height: 200px;
+}
+
 /* end global form css */
 
 /* end site-wide custom css */
