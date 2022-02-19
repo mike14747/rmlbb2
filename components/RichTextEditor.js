@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { EditorState, convertToRaw, convertFromHTML, Modifier, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
@@ -33,8 +33,11 @@ export default function RichTextEditor({ setContent }) {
 
     const handleEditorChange = (state) => {
         setEditorState(state);
-        setContent(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     };
+
+    useEffect(() => {
+        setContent(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    }, [editorState, setContent]);
 
     const editorStyle = {
         fontSize: 'var(--step-0)',
@@ -114,7 +117,7 @@ export default function RichTextEditor({ setContent }) {
                 handlePastedText={handlePastedText}
                 toolbar={{
                     // options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
-                    options: ['inline', 'colorPicker', 'link', 'blockType', 'fontSize', 'list', 'textAlign', 'history'],
+                    options: ['inline', 'colorPicker', 'emoji', 'link', 'blockType', 'fontSize', 'list', 'textAlign', 'history'],
                     inline: {
                         inDropdown: false,
                         className: styles.inlineDropdown,
@@ -196,14 +199,14 @@ export default function RichTextEditor({ setContent }) {
                 }}
             />
 
-            <textarea
+            {/* <textarea
                 disabled
                 value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-            />
+            /> */}
         </div>
     );
 }
 
 RichTextEditor.propTypes = {
-    setContent: PropTypes.func,
+    setContent: PropTypes.func.isRequired,
 };
