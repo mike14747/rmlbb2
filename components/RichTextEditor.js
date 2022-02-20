@@ -221,3 +221,7 @@ RichTextEditor.propTypes = {
     initialContent: PropTypes.string,
     setContent: PropTypes.func.isRequired,
 };
+
+RichTextEditor.defaultProps = {
+    initialContent: '<p></p>',
+};

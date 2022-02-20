@@ -72,7 +72,7 @@ export default function NewTopic() {
                 } */}
 
                 {initialContent &&
-                    <RichTextEditor initialContent={null} setContent={setContent} />
+                    <RichTextEditor initialContent={initialContent} setContent={setContent} />
                 }
 
                 <aside>
