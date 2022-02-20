@@ -26,10 +26,20 @@ const editorLabels = {
 
 const fontSizeIconBase64 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzIiIGhlaWdodD0iMTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iZm9udCBzaXplIj4KICAgIDx0aXRsZT5Gb250IFNpemUgYnkgTWlrZSBHdWxsbzwvdGl0bGU+CiAgICA8ZyBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPgogICAgICAgIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIzMiIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSIgLz4KICAgIDwvZz4KICAgIDxnIGZpbGw9Im5vbmUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSxWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjI0Ij4KICAgICAgICA8dGV4dCB4PSI3IiB5PSIxNiIgZmlsbD0iIzIzMjMyMyI+QTwvdGV4dD4KICAgIDwvZz4KICAgIDxnIGZpbGw9Im5vbmUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSxWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjE3Ij4KICAgICAgICA8dGV4dCB4PSIyMCIgeT0iMTYiIGZpbGw9IiMyMzIzMjMiPkE8L3RleHQ+CiAgICA8L2c+CiAgICA8ZyBmaWxsPSJub25lIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iU2Vnb2UgVUksVmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMCI+CiAgICAgICAgPHRleHQgeD0iMjkiIHk9IjE2IiBmaWxsPSIjMjMyMzIzIj5BPC90ZXh0PgogICAgPC9nPgo8L3N2Zz4=';
 
-export default function RichTextEditor({ setContent }) {
-    const [editorState, setEditorState] = useState(
-        () => EditorState.createEmpty(),
+export default function RichTextEditor({ initialContent, setContent }) {
+    const blocksFromHTML = convertFromHTML(initialContent || '<p></p>');
+    const state = ContentState.createFromBlockArray(
+        blocksFromHTML.contentBlocks,
+        blocksFromHTML.entityMap,
     );
+    const [editorState, setEditorState] = useState(
+        () => EditorState.createWithContent(state),
+    );
+
+    // if there's no initial content to be used with this component, use this to create an empty editor state
+    // const [editorState, setEditorState] = useState(
+    //     () => EditorState.createEmpty(),
+    // );
 
     const handleEditorChange = (state) => {
         setEditorState(state);
@@ -208,5 +218,6 @@ export default function RichTextEditor({ setContent }) {
 }
 
 RichTextEditor.propTypes = {
+    initialContent: PropTypes.string,
     setContent: PropTypes.func.isRequired,
 };

@@ -1,3 +1,8 @@
+.forumPageWrapper {
+    max-width: 90ch;
+    margin: 0 auto;
+}
+
 .forumsContainer {
     width: 100%;
     max-width: 1000px;
@@ -6,6 +11,27 @@
     border-radius: 0.5rem;
     box-shadow: 0 3px 6px 0 var(--mg-gray-4);
     overflow: hidden;
+}
+
+.forumPageWrapper blockquote {
+    position: relative;
+    color: var(--mg-dark);
+    font-size: .83rem;
+    font-size: var(--step--1);
+    background-color: var(--mg-gray-1);
+    text-align: left;
+    padding: 1rem 1rem 1rem 2rem;
+    margin: 1rem 2rem;
+    border-left: 0.25rem solid var(--mg-gray-5);
+}
+
+.forumPageWrapper blockquote::before {
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    content: '\275D';
+    color: var(--mg-gray-6);
+    font-size: var(--step-3);
 }
 
 .forumsHeadingRow,
