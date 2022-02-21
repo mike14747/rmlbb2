@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
 import RichTextEditor from '../components/RichTextEditor';
+import SunEditorComp from '../components/SunEditor';
 // import parse, { domToReact } from 'html-react-parser';
 // import DOMPurify from 'dompurify';
 
@@ -72,7 +73,7 @@ export default function NewTopic() {
                 } */}
 
                 {initialContent &&
-                    <RichTextEditor initialContent={initialContent} setContent={setContent} />
+                    <SunEditorComp initialContent={initialContent} setContent={setContent} />
                 }
 
                 <aside>

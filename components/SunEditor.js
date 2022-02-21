@@ -7,7 +7,7 @@ const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false,
 });
 
-const { fontSize, fontColor, hiliteColor, horizontalRule, blockquote, list, textStyle, formatBlock, align } = typeof window === 'object'
+const { fontSize, fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align } = typeof window === 'object'
     ? require('suneditor/src/plugins')
     : () => false;
 
@@ -17,7 +17,7 @@ function isEmpty(value) {
     );
 }
 
-const SunEditorComp = ({ setContent }) => {
+const SunEditorComp = ({ initialContent, setContent }) => {
     const editor = useRef();
 
     // The sunEditor parameter will be set to the core suneditor instance when this function is called
@@ -34,6 +34,7 @@ const SunEditorComp = ({ setContent }) => {
         <div>
             <SunEditor
                 getSunEditorInstance={getSunEditorInstance}
+                defaultValue={initialContent || '<p></p>'}
                 placeholder="...start typing"
                 height="auto"
                 // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -43,13 +44,14 @@ const SunEditorComp = ({ setContent }) => {
                 setDefaultStyle="font-size: var(--step-0); word-wrap: break-word; white-space: pre-wrap; white-space: break-spaces;"
                 setOptions={{
                     showPathLabel: false,
-                    plugins: [fontSize, fontColor, hiliteColor, horizontalRule, blockquote, list, textStyle, formatBlock, align],
+                    plugins: [fontSize, fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align],
                     // textTags: { underline: 'ins' },
                     minHeight: '200px',
+                    fontSize: ['150%', 14, 24],
                     buttonList: [
                         ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
                         // ['blockquote'],
-                        ['fontColor', 'hiliteColor', 'textStyle', 'horizontalRule'],
+                        ['fontColor', 'hiliteColor', 'horizontalRule'],
                         ['removeFormat'],
                         ['fontSize', 'formatBlock'],
                         ['list', 'align'],
@@ -67,5 +69,6 @@ const SunEditorComp = ({ setContent }) => {
 export default SunEditorComp;
 
 SunEditorComp.propTypes = {
+    initialContent: PropTypes.string,
     setContent: PropTypes.func,
 };
