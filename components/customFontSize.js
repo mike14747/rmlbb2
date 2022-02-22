@@ -1,3 +1,18 @@
+const sizeList = [
+    {
+        title: 'Small',
+        size: 'var(--step--2)',
+    },
+    {
+        title: 'Default Size',
+        size: 'var(--step-0)',
+    },
+    {
+        title: 'Large',
+        size: 'var(--step-2)',
+    },
+];
+
 const customFontSize = {
     name: 'fontSize',
     display: 'submenu',
@@ -28,27 +43,9 @@ const customFontSize = {
         const option = core.options;
         const lang = core.lang;
         lang.toolbar.fontSize = 'Size';
-        console.log('lang:', lang);
         const listDiv = core.util.createElement('DIV');
 
         listDiv.className = 'se-submenu se-list-layer se-list-font-size';
-
-        // const sizeList = !option.fontSize ? [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72] : option.fontSize;
-
-        const sizeList = [
-            {
-                title: 'Small',
-                size: 'var(--step--2)',
-            },
-            {
-                title: 'Normal',
-                size: 'var(--step--0)',
-            },
-            {
-                title: 'Large',
-                size: 'var(--step-2)',
-            },
-        ];
 
         let list = '<div class="se-list-inner">' + '<ul class="se-list-basic">';
         // '<ul class="se-list-basic">' +
@@ -70,9 +67,10 @@ const customFontSize = {
     */
     active: function (element) {
         if (!element) {
-            this.util.changeTxt(this.context.fontSize.targetText, this.hasFocus && 'Size');
+            this.util.changeTxt(this.context.fontSize.targetText, this.hasFocus && 'Default Size');
         } else if (element.style && element.style.fontSize.length > 0) {
-            this.util.changeTxt(this.context.fontSize.targetText, element.style.fontSize);
+            const title = sizeList[sizeList.findIndex((item) => item.size === element.style.fontSize)].title;
+            this.util.changeTxt(this.context.fontSize.targetText, title);
             return true;
         }
 
@@ -86,7 +84,6 @@ const customFontSize = {
         const fontSizeContext = this.context.fontSize;
         const sizeList = fontSizeContext._sizeList;
         const currentSize = fontSizeContext.targetText.textContent;
-        // console.log('sizeList:', sizeList, 'currentSize', currentSize);
 
         if (currentSize !== fontSizeContext.currentSize) {
             for (let i = 0, len = sizeList.length; i < len; i++) {
@@ -122,29 +119,3 @@ const customFontSize = {
 };
 
 export default customFontSize;
-
-// const sizeList = [
-//     {
-//         title: 'Small',
-//         size: 'var(--step--1)',
-//     },
-//     {
-//         title: 'Normal',
-//         size: 'var(--step--0)',
-//     },
-//     {
-//         title: 'Large',
-//         size: 'var(--step-1)',
-//     },
-// ];
-
-// let list = '<div class="se-list-inner">' +
-//         '<ul class="se-list-basic">' +
-//             '<li><button type="button" class="default_value se-btn-list" title="' + lang.toolbar.default + '">(' + lang.toolbar.default + ')</button></li>';
-
-// for (let i = 0, title, size; i < sizeList.length; i++) {
-//     size = sizeList[i].size;
-//     title = sizeList[i].title;
-//     list += '<li><button type="button" class="se-btn-list" data-title="' + title + '" data-size="' + size + '" data-value="' + size + '" title="' + title + '" style="font-size:' + size + ';">' + title + '</button></li>';
-// }
-// list += '</ul></div>';

@@ -223,8 +223,9 @@
 .sun-editor .se-list-layer.se-list-format ul h4 {font-size:1em; font-weight:bold; color:#333;}
 .sun-editor .se-list-layer.se-list-format ul h5 {font-size:0.83em; font-weight:bold; color:#333;}
 .sun-editor .se-list-layer.se-list-format ul h6 {font-size:0.67em; font-weight:bold; color:#333;}
-.sun-editor .se-list-layer.se-list-format ul blockquote {font-size:var(--step--1); color:var(--mg-gray-6); height:22px; margin:0; background-color:transparent; line-height:1.5; border-style:solid; border-color:var(--mg-gray-5); padding:0 0 0 7px; border-left-width:5px;}
-.sun-editor .se-list-layer.se-list-format ul pre {font-size:var(--step--1); color:var(--mg-dark); padding:0; margin:0; background:none; border:0;}
+.sun-editor .se-list-layer.se-list-format ul blockquote {position:relative; font-size:var(--step-0); color:var(--mg-gray-6); margin:0; background-color:var(--mg-gray-1); line-height:1; border-style:solid; border-color:var(--mg-gray-5); padding:0.25rem 0 0.25rem 1rem; border-left-width:3px;}
+.sun-editor .se-list-layer.se-list-format ul blockquote::before {position:absolute; font-size:var(--step-0); color:var(--mg-gray-6); top:2px; left:0.25rem; content:'\275D';}
+.sun-editor .se-list-layer.se-list-format ul pre {font-size:var(--step-0); color:var(--mg-dark); padding:0; margin:0; background:none; border:0;}
 /* submenu layer --- table selector */
 .sun-editor .se-selector-table {display:none; position:absolute; top:34px; left:1px; z-index:5; padding:5px 0; float:left; margin:2px 0 0; font-size:14px; text-align:left; list-style:none; background-color:#fff; -webkit-background-clip:padding-box; background-clip:padding-box; border:1px solid #ccc; border-radius:4px; -webkit-box-shadow:0 6px 12px rgba(0, 0, 0, .175); box-shadow:0 6px 12px rgba(0, 0, 0, .175);}
 .sun-editor .se-selector-table .se-table-size {font-size:18px; padding:0 5px;}
@@ -271,7 +272,7 @@
 
 /** --- resizing bar */
 .sun-editor .se-resizing-bar {display:flex; width:auto; height:auto; min-height:16px; border-top:1px solid #dadada; padding:0 4px; background-color:#fafafa; cursor:ns-resize;}
-.sun-editor .se-resizing-bar.se-resizing-none {cursor:default;}
+.sun-editor .se-resizing-bar.se-resizing-none {display:none;cursor:default;}
 .sun-editor .se-resizing-back {position:absolute; display:none; cursor:default; top:0; left:0; width:100%; height:100%; z-index:2147483647;}
 /** resizing bar - nabigation */
 .sun-editor .se-resizing-bar .se-navigation {flex:auto; position:relative; width:auto; height:auto; color:#666; margin:0; padding:0; font-size:10px; line-height:1.5; background:transparent;}
