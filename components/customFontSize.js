@@ -40,7 +40,7 @@ const customFontSize = {
     },
 
     setSubmenu: function (core) {
-        const option = core.options;
+        // const option = core.options;
         const lang = core.lang;
         lang.toolbar.fontSize = 'Size';
         const listDiv = core.util.createElement('DIV');

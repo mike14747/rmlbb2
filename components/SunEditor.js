@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import customFontSize from './customFontSize';
@@ -9,15 +9,15 @@ const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false,
 });
 
-const { fontSize, fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align } = typeof window === 'object'
+const { fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align } = typeof window === 'object'
     ? require('suneditor/src/plugins')
     : () => false;
 
-function isEmpty(value) {
-    return (
-        value.trim()?.length === 0 || value === '<p></p>' || value === '<p><br></p>'
-    );
-}
+// function isEmpty(value) {
+//     return (
+//         value.trim()?.length === 0 || value === '<p></p>' || value === '<p><br></p>'
+//     );
+// }
 
 const SunEditorComp = ({ initialContent, setContent }) => {
     const editor = useRef();
@@ -26,9 +26,6 @@ const SunEditorComp = ({ initialContent, setContent }) => {
     const getSunEditorInstance = (sunEditor) => {
         editor.current = sunEditor;
     };
-
-    // const newPre = editor.current.util.createElement('pre');
-    // editor.current.nodeChange(newPre, null, null, null);
 
     const handleChange = (content) => setContent(content);
 
@@ -49,10 +46,9 @@ const SunEditorComp = ({ initialContent, setContent }) => {
                     plugins: [fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align, customFontSize],
                     // textTags: { underline: 'ins' },
                     minHeight: '200px',
-                    // fontSize: ['150%', 14, 24],
+                    // fontSize: [12, 16, 24],
                     buttonList: [
                         ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
-                        // ['blockquote'],
                         ['fontColor', 'hiliteColor', 'horizontalRule'],
                         ['removeFormat'],
                         ['formatBlock', 'fontSize'],
