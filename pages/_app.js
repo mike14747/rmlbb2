@@ -6,6 +6,8 @@ import '../styles/globals.css';
 import '../styles/my_tables.css';
 import '../styles/rich-text.css';
 import '../styles/tiptap.css';
+import '../styles/suneditor.css';
+import '../styles/suneditor-contents.css';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     return (

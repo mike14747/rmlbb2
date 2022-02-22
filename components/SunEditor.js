@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
-import 'suneditor/dist/css/suneditor.min.css';
+import customFontSize from './customFontSize';
+
+// import 'suneditor/dist/css/suneditor.min.css';
 
 const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false,
@@ -44,22 +46,22 @@ const SunEditorComp = ({ initialContent, setContent }) => {
                 setDefaultStyle="font-size: var(--step-0); word-wrap: break-word; white-space: pre-wrap; white-space: break-spaces;"
                 setOptions={{
                     showPathLabel: false,
-                    plugins: [fontSize, fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align],
+                    plugins: [fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align, customFontSize],
                     // textTags: { underline: 'ins' },
                     minHeight: '200px',
-                    fontSize: ['150%', 14, 24],
+                    // fontSize: ['150%', 14, 24],
                     buttonList: [
                         ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
                         // ['blockquote'],
                         ['fontColor', 'hiliteColor', 'horizontalRule'],
                         ['removeFormat'],
-                        ['fontSize', 'formatBlock'],
+                        ['formatBlock', 'fontSize'],
                         ['list', 'align'],
                         ['undo', 'redo'],
                     ],
                     alignItems: ['left', 'center', 'right'],
                     colorList: ['var(--mg-dark)', 'var(--mg-light)', 'var(--theme-color-yellow-pale)', 'var(--mg-yellow)', 'var(--mg-orange-soft)', 'var(--theme-color-orange)', 'var(--theme-color-red)', 'var(--mg-purple)', 'var(--theme-color-green)', 'var(--mg-blue)', 'var(--theme-color-dirt-faded)', 'var(--theme-color-dirt)', 'var(--mg-gray-1)', 'var(--mg-gray-2)', 'var(--mg-gray-3)', 'var(--mg-gray-4)', 'var(--mg-gray-5)', 'var(--mg-gray-6)', 'var(--mg-gray-7)'],
-                    formats: [{ tag: 'p', name: 'Normal' }, { tag: 'blockquote', name: 'Quote' }, { tag: 'pre', name: 'Monospaced' }],
+                    formats: [{ tag: 'p', name: 'Paragraph' }, { tag: 'blockquote', name: 'Quote' }, { tag: 'pre', name: 'Monospaced' }],
                     hrItems: [ { name: 'Horizontal Rule', style: '' } ],
                 }}
             />
