@@ -5,7 +5,21 @@
 /* red color #b94a48 , #f2dede , #eed3d7 */
 
 /** --- suneditor main */
-.sun-editor {width:auto; height:auto; box-sizing:border-box; font-family:Helvetica Neue; border:1px solid #dadada; background-color:#FFF; color:#000; user-select:none; -o-user-select:none; -moz-user-select:none; -khtml-user-select:none; -webkit-user-select:none; -ms-user-select:none;}
+.sun-editor {
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    /* font-family: Helvetica Neue; */
+    border: 1px solid var(--mg-gray-3);
+    background-color: var(--mg-light);
+    color: var(--mg-dark);
+    user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
 .sun-editor * {box-sizing:border-box;  -webkit-user-drag:none; overflow:visible;}
 .sun-editor-common input, .sun-editor-common select, .sun-editor-common textarea, .sun-editor-common button {font-size:14px; line-height:1.5;}
 .sun-editor-common body, .sun-editor-common div, .sun-editor-common dl, .sun-editor-common dt, .sun-editor-common dd, .sun-editor-common ul, .sun-editor-common ol, .sun-editor-common li,
@@ -33,8 +47,8 @@
 /** --- Icons ---------------------------------------------------------- */
 /* default svg */
 .sun-editor button > svg, .sun-editor .se-svg {
-    width: 16px;
-    height: 16px;
+    width: var(--step--1);
+    height: var(--step--1);
     margin: auto;
     fill: currentColor;
     display: block;
@@ -100,9 +114,32 @@
 .sun-editor button {color:#000;}
 
 /** --- se-btn button */
-.sun-editor .se-btn {float:left; width:34px; height:34px; border:0; border-radius:4px; margin:1px !important; padding:0; font-size:var(--step--1); line-height:27px;}
-.sun-editor .se-btn:enabled:hover, .sun-editor .se-btn:enabled:focus {background-color:#e1e1e1; border-color:#d1d1d1; outline:0 none;}
-.sun-editor .se-btn:enabled:active {background-color:#d1d1d1; border-color:#c1c1c1; -webkit-box-shadow:inset 0 3px 5px #c1c1c1; box-shadow:inset 0 3px 5px #c1c1c1;}
+.sun-editor .se-btn {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border: 1px solid var(--mg-gray-5);
+    border-radius: 2px;
+    margin: 0.25rem;
+    padding: 0;
+    font-size: var(--step--1);
+    line-height: 27px;
+    background: var(--theme-color-yellow-pale);
+    box-shadow: 2px 2px 4px var(--mg-gray-4);
+    transition: 0.2s;
+}
+.sun-editor .se-btn:enabled:hover, .sun-editor .se-btn:enabled:focus {
+    background-color: var(--mg-orange-soft);
+    border-color: var(--mg-gray-4);
+    outline: 0 none;
+    box-shadow: 2px 2px 2px var(--mg-gray-4);
+}
+.sun-editor .se-btn:enabled:active {
+    background-color: var(--mg-light);
+    border-color: var(--mg-gray-4);
+    -webkit-box-shadow: inset 1px 1px 2px var(--mg-gray-4);
+    box-shadow: 1px 1px 2px var(--mg-gray-4) inset;
+}
 /** --- primary button */
 .sun-editor .se-btn-primary {color:#000; background-color:#c7deff; border:1px solid #80bdff; border-radius:4px;}
 .sun-editor .se-btn-primary:hover, .sun-editor .se-btn-primary:focus {color:#000; background-color:#80bdff; border-color:#3f9dff; outline:0 none;}
@@ -113,8 +150,14 @@
 .sun-editor input:focus, .sun-editor select:focus, .sun-editor textarea:focus {border:1px solid #80bdff; outline:0; -webkit-box-shadow:0 0 0 0.2rem #c7deff; box-shadow:0 0 0 0.2rem #c7deff; transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
 
 /* se-btn button active*/
-.sun-editor .se-btn:enabled.active {color:#4592ff; outline:0 none;}
-.sun-editor .se-btn:enabled.active:hover, .sun-editor .se-btn:enabled.active:focus {background-color:#e1e1e1; border-color:#d1d1d1; outline:0 none;}
+.sun-editor .se-btn:enabled.active {
+    color: var(--mg-gray-5);
+    background-color: var(--mg-light);
+    border-color: var(--mg-gray-4);
+    outline: 0 none;
+    box-shadow: 1px 1px 2px var(--mg-gray-4) inset;
+}
+.sun-editor .se-btn:enabled.active:hover, .sun-editor .se-btn:enabled.active:focus {background-color: var(--mg-orange-soft); border-color:#d1d1d1; outline:0 none;}
 .sun-editor .se-btn:enabled.active:active {background-color:#d1d1d1; border-color:#c1c1c1; -webkit-box-shadow:inset 0 3px 5px #c1c1c1; box-shadow:inset 0 3px 5px #c1c1c1;}
 /* se-btn button on */
 .sun-editor .se-btn:enabled.on {background-color:#e1e1e1; border-color:#d1d1d1; outline:0 none;}
@@ -136,9 +179,16 @@
 .sun-editor .se-line-breaker-component:hover {opacity:0.9;}
 
 /** --- toolbar ---------------------------------------------------------- */
-.sun-editor .se-toolbar {display:block; position:relative; height:auto; width:100%; overflow:visible; padding:0; margin:0; background-color:#fafafa; outline:1px solid #dadada; z-index:5;}
+.sun-editor .se-toolbar {display:block; position:relative; height:auto; width:100%; overflow:visible; padding:0; margin:0; background-color:#fafafa; outline:none; border-bottom: 1px var(--mg-gray-3) solid; z-index:5;}
 .sun-editor .se-toolbar-cover {position:absolute; display:none; font-size:36px; width:100%; height:100%; top:0; left:0; background-color:#fefefe; opacity:.5; filter:alpha(opacity=50); cursor:not-allowed; z-index:4;}
-.sun-editor .se-toolbar-separator-vertical {display:inline-block; height:0px; width:0px; margin:0px; vertical-align:top;}
+.sun-editor .se-toolbar-separator-vertical {
+    display: inline-block;
+    background: var(--mg-gray-2);
+    height: 26px;
+    width: 1px;
+    margin: 0.5rem 0.25rem;
+    /* vertical-align: top; */
+}
 /* inline toolbar */
 .sun-editor .se-toolbar.se-toolbar-inline {display:none; position:absolute; box-shadow:0 3px 9px rgba(0,0,0,.5); -webkit-box-shadow:0 3px 9px rgba(0,0,0,.5);}
 /* balloon toolbar */
@@ -149,8 +199,16 @@
 
 /** --- tool bar --- module --- button, module, group ----------------------------------------------------------  */
 /* module */
-.sun-editor .se-btn-module {display:inline-block;}
-.sun-editor .se-btn-module-border {border:1px solid #dadada; border-radius:4px; margin-left:1px; margin-right:1px;}
+.sun-editor .se-btn-module {display:inline-block; padding:0;}
+.sun-editor .se-btn-module-border {
+    border: 0;
+    /* border-radius: 4px; */
+    margin: 0;
+}
+
+.sun-editor .se-btn-module-border:last-of-type {
+    margin: 0;
+}
 .sun-editor .se-btn-module-enter {display:block; width:100%; height:0px; margin:0; padding:0; background-color:transparent;}
 /* ---more - layer */
 .sun-editor .se-toolbar-more-layer {margin:0 -3px; background-color:#fafafa;}
@@ -172,7 +230,7 @@
 .sun-editor .se-btn-select.se-btn-tool-size {min-width:100px; max-width:120px;}
 
 /** --- menu tray -------------------------------------------------------------- */
-.sun-editor .se-btn-tray {position:relative; width:100%; height:auto; padding:4px 3px 0 3px; margin:0;}
+.sun-editor .se-btn-tray {position:relative; width:100%; height:auto; padding:4px 3px 0 3px; margin:0; background:var(--mg-gray-1);}
 .sun-editor .se-menu-tray {position:absolute; top:0px; left:0px; width:100%; height:0px;}
 
 /** --- submenu layer ---------------------------------------------------------- */
@@ -245,9 +303,9 @@
 
 /** --- form group - input -------------------------------------------------------------- */
 .sun-editor .se-form-group {display:none !important; width:100%; min-height:40px; height:auto; padding:4px;}
-.sun-editor .se-form-group input {flex:auto; display:inline-block; width:auto; height:33px; font-size:var(--step--1); margin:1px 0 1px 0; padding:0; border-radius:0.25rem; border:1px solid #ccc;}
+.sun-editor .se-form-group input {flex:auto; display:inline-block; width:auto; height:33px; font-size:var(--step--1); margin:1px 0 1px 0; padding:0; border-radius:0.25rem; border:1px solid var(--mg-gray-5);}
 .sun-editor .se-form-group button, .sun-editor .se-submenu-form-group button {float:right; width:34px; height:34px; margin:0 2px !important;}
-.sun-editor .se-form-group button.se-btn, .sun-editor .se-form-group button.se-btn {border:1px solid #ccc;}
+.sun-editor .se-form-group button.se-btn, .sun-editor .se-form-group button.se-btn {border:1px solid var(--mg-gray-5);}
 .sun-editor .se-form-group > div {position:relative;}
 .sun-editor .se-form-group label {display:inline-block; max-width:100%; margin-bottom:5px; font-weight:bold;}
 
@@ -454,11 +512,11 @@
 
 /** --- tooltip */
 .sun-editor .se-tooltip {position:relative; overflow:visible;}
-.sun-editor .se-tooltip .se-tooltip-inner {visibility:hidden; position:absolute; display:block; width:auto; top:120%; left:50%; background:transparent; opacity:0; z-index:1; line-height:1.5; transition:opacity 0.5s; margin:0; padding:0; bottom:auto; float:none; pointer-events:none; backface-visibility:hidden; -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden;}
+.sun-editor .se-tooltip .se-tooltip-inner {visibility:hidden; position:absolute; display:block; width:auto; top:120%; left:50%; background:transparent; opacity:0; z-index:1; line-height:1.5; transition:opacity 0.3s; margin:0; padding:0; bottom:auto; float:none; pointer-events:none; backface-visibility:hidden; -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden;}
 .sun-editor .se-tooltip .se-tooltip-inner .se-tooltip-text {position:relative; display:inline-block; width:auto; left:-50%; font-size:0.9em; margin:0; padding:4px 6px; border-radius:2px; background-color:#333; color:#fff; text-align:center; line-height:unset; white-space:nowrap; cursor:auto;}
 .sun-editor .se-tooltip .se-tooltip-inner .se-tooltip-text::after {content:""; position:absolute; bottom:100%; left:50%; margin-left:-5px; border-width:5px; border-style:solid; border-color:transparent transparent #333 transparent;}
 .sun-editor .se-tooltip:hover .se-tooltip-inner {visibility:visible; opacity:1;}
-.sun-editor .se-tooltip .se-tooltip-inner .se-tooltip-text .se-shortcut {display:block !important;}
+.sun-editor .se-tooltip .se-tooltip-inner .se-tooltip-text .se-shortcut {display:none !important;}
 .sun-editor .se-tooltip .se-tooltip-inner .se-tooltip-text .se-shortcut > .se-shortcut-key {display:inline; font-weight:bold;}
 
 

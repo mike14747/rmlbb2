@@ -56,8 +56,6 @@ const customFontSize = {
         listDiv.className = 'se-submenu se-list-layer se-list-font-size';
 
         let list = '<div class="se-list-inner">' + '<ul class="se-list-basic">';
-        // '<ul class="se-list-basic">' +
-        // '<li><button type="button" class="default_value se-btn-list" title="' + lang.toolbar.default + '">(' + lang.toolbar.default + ')</button></li>';
         for (let i = 0, title, size; i < sizeList.length; i++) {
             size = sizeList[i].size;
             title = sizeList[i].title;
@@ -77,7 +75,7 @@ const customFontSize = {
         if (!element) {
             this.util.changeTxt(this.context.fontSize.targetText, this.hasFocus && 'Default Size');
         } else if (element.style && element.style.fontSize.length > 0) {
-            console.log('element.style:', element.style, 'element.style.fontSize:', element.style.fontSize);
+            // console.log('element.style:', element.style, 'element.style.fontSize:', element.style.fontSize);
             const title = sizeList[sizeList.findIndex((item) => item.size === element.style.fontSize)].title;
             this.util.changeTxt(this.context.fontSize.targetText, title);
             return true;

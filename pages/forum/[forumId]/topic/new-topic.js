@@ -20,7 +20,7 @@ export default function NewTopic() {
     const [forumName, setForumName] = useState(null);
 
     const [title, setTitle] = useState('');
-    const [content, setContent] = useState(null);
+    const [content, setContent] = useState('');
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);

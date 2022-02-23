@@ -58,7 +58,7 @@
         "react-dom": "^17.0.2",
         "react-draft-wysiwyg": "^1.14.7",
         "suneditor": "^2.42.0",
-        "suneditor-react": "^3.3.1",
+        "suneditor-react": "^3.4.0",
         "swr": "^1.0.1"
     }
 }
