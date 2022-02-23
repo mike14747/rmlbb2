@@ -33,6 +33,7 @@ export default function NewTopic() {
 
                 if (res) {
                     setInitialContent(res.content);
+                    setContent(res.content);
                 } else {
                     setInitialContent(null);
                     setError('An error occurred fetching data.');

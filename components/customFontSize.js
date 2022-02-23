@@ -1,7 +1,11 @@
 const sizeList = [
     {
-        title: 'Small',
+        title: 'X-Small',
         size: 'var(--step--2)',
+    },
+    {
+        title: 'Small',
+        size: 'var(--step--1)',
     },
     {
         title: 'Default Size',
@@ -9,6 +13,10 @@ const sizeList = [
     },
     {
         title: 'Large',
+        size: 'var(--step-1)',
+    },
+    {
+        title: 'X-Large',
         size: 'var(--step-2)',
     },
 ];
@@ -69,6 +77,7 @@ const customFontSize = {
         if (!element) {
             this.util.changeTxt(this.context.fontSize.targetText, this.hasFocus && 'Default Size');
         } else if (element.style && element.style.fontSize.length > 0) {
+            console.log('element.style:', element.style, 'element.style.fontSize:', element.style.fontSize);
             const title = sizeList[sizeList.findIndex((item) => item.size === element.style.fontSize)].title;
             this.util.changeTxt(this.context.fontSize.targetText, title);
             return true;
