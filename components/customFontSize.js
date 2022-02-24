@@ -75,7 +75,6 @@ const customFontSize = {
         if (!element) {
             this.util.changeTxt(this.context.fontSize.targetText, this.hasFocus && 'Default Size');
         } else if (element.style && element.style.fontSize.length > 0) {
-            // console.log('element.style:', element.style, 'element.style.fontSize:', element.style.fontSize);
             const title = sizeList[sizeList.findIndex((item) => item.size === element.style.fontSize)].title;
             this.util.changeTxt(this.context.fontSize.targetText, title);
             return true;
