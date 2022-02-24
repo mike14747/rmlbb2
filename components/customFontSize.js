@@ -1,6 +1,6 @@
 const sizeList = [
     {
-        title: 'X-Small',
+        title: 'Tiny',
         size: 'var(--step--2)',
     },
     {
@@ -16,7 +16,7 @@ const sizeList = [
         size: 'var(--step-1)',
     },
     {
-        title: 'X-Large',
+        title: 'Huge',
         size: 'var(--step-2)',
     },
 ];

@@ -1489,3 +1489,7 @@
 .sun-editor hr.__se__solid {
     border-style: solid none none;
 }
+
+.sun-editor .se-submenu.se-list-font-size .se-list-inner .se-list-basic li button.active:after {
+    content: '\2713';
+}
