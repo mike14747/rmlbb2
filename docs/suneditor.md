@@ -9,3 +9,9 @@ listDiv.querySelector('ul').addEventListener('click', this.pickUp.bind(core));
 context.formatBlock._formatList = listDiv.querySelectorAll('li button');
 ```
 
+I've also gotten this error when doing inline formatting of text, then changing the format to blockquote:
+
+formatEl.innerText is undefined
+
+When starting with a new editor, if I click on blockquote without typing anything, after I type the first character, the cursor jumps back to the beginning and moves the first character I typed to the end. All subsequent input is fine but the first character remains at the end.
+
