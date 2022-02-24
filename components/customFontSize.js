@@ -32,23 +32,17 @@ const customFontSize = {
             currentSize: '',
         };
 
-        /** set submenu */
         let listDiv = this.setSubmenu(core);
         let listUl = listDiv.querySelector('ul');
 
-        /** add event listeners */
         listUl.addEventListener('click', this.pickup.bind(core));
         context.fontSize._sizeList = listUl.querySelectorAll('li button');
 
-        /** append target button menu */
         core.initMenuTarget(this.name, targetElement, listDiv);
 
-        /** empty memory */
         listDiv = null, listUl = null;
     },
-
     setSubmenu: function (core) {
-        // const option = core.options;
         const lang = core.lang;
         lang.toolbar.fontSize = 'Size';
         const listDiv = core.util.createElement('DIV');
@@ -67,10 +61,6 @@ const customFontSize = {
 
         return listDiv;
     },
-
-    /**
-    * @Override core
-    */
     active: function (element) {
         if (!element) {
             this.util.changeTxt(this.context.fontSize.targetText, this.hasFocus && 'Default Size');
@@ -82,10 +72,6 @@ const customFontSize = {
 
         return false;
     },
-
-    /**
-    * @Override submenu
-    */
     on: function () {
         const fontSizeContext = this.context.fontSize;
         const sizeList = fontSizeContext._sizeList;
@@ -103,7 +89,6 @@ const customFontSize = {
             fontSizeContext.currentSize = currentSize;
         }
     },
-
     pickup: function (e) {
         if (!/^BUTTON$/i.test(e.target.tagName)) return false;
 
