@@ -9,7 +9,7 @@ const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false,
 });
 
-const { fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align } = typeof window === 'object'
+const { fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align, link } = typeof window === 'object'
     ? require('suneditor/src/plugins')
     : () => false;
 
@@ -36,31 +36,29 @@ const SunEditorComp = ({ initialContent, setContent }) => {
                 defaultValue={initialContent || '<p></p>'}
                 placeholder="...start typing"
                 height="auto"
+                minHeight="200px"
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus={true}
                 setAllPlugins={false}
                 onChange={handleChange}
                 setDefaultStyle="font-size: var(--step-0); word-wrap: break-word; white-space: pre-wrap; white-space: break-spaces;"
                 setOptions={{
+                    linkTargetNewWindow: true,
+                    linkProtocol: 'https://',
+                    // linkRel: ['noreferrer', 'noopener'],
                     showPathLabel: false,
-                    plugins: [fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align, customFontSize],
+                    stickyToolbar: false,
+                    plugins: [fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align, customFontSize, link],
                     // textTags: { underline: 'ins' },
                     minHeight: '200px',
                     // fontSize: [12, 16, 24],
                     buttonList: [
-                        ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
-                        ['formatBlock'],
-                        ['fontSize'],
-                        ['fontColor', 'hiliteColor'],
-                        ['removeFormat'],
-                        ['list', 'align'],
-                        ['horizontalRule'],
-                        ['undo', 'redo'],
+                        ['undo', 'redo', 'bold', 'underline', 'italic', 'strike', 'superscript', 'subscript', 'formatBlock', 'fontSize', 'fontColor', 'hiliteColor', 'removeFormat', 'list', 'align', 'horizontalRule', 'link'],
                     ],
                     alignItems: ['left', 'center', 'right'],
                     colorList: ['var(--mg-dark)', 'var(--mg-light)', 'var(--theme-color-yellow-pale)', 'var(--mg-yellow)', 'var(--mg-orange-soft)', 'var(--theme-color-orange)', 'var(--theme-color-red)', 'var(--mg-purple)', 'var(--theme-color-green)', 'var(--mg-blue)', 'var(--theme-color-dirt-faded)', 'var(--theme-color-dirt)', 'var(--mg-gray-1)', 'var(--mg-gray-2)', 'var(--mg-gray-3)', 'var(--mg-gray-4)', 'var(--mg-gray-5)', 'var(--mg-gray-6)', 'var(--mg-gray-7)'],
                     formats: [{ tag: 'p', name: 'Paragraph' }, { tag: 'blockquote', name: 'Quote' }, { tag: 'pre', name: 'Monospaced' }],
-                    hrItems: [ { name: 'Horizontal Rule', style: '' } ],
+                    hrItems: [{ name: 'Horizontal Rule', style: '' }],
                 }}
             />
         </div>
