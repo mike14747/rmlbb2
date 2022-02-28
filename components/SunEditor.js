@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import customFontSize from './customFontSize';
 
-// import 'suneditor/dist/css/suneditor.min.css';
-
 const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false,
 });
@@ -13,13 +11,8 @@ const { fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, a
     ? require('suneditor/src/plugins')
     : () => false;
 
-// function isEmpty(value) {
-//     return (
-//         value.trim()?.length === 0 || value === '<p></p>' || value === '<p><br></p>'
-//     );
-// }
-
 const SunEditorComp = ({ initialContent, setContent }) => {
+    console.log('initialContent:', initialContent);
     const editor = useRef();
 
     // The sunEditor parameter will be set to the core suneditor instance when this function is called
@@ -58,6 +51,7 @@ const SunEditorComp = ({ initialContent, setContent }) => {
                     formats: [{ tag: 'div', name: 'Normal' }, { tag: 'pre', name: 'Monospaced' }],
                     // { tag: 'p', name: 'Paragraph' }, { tag: 'blockquote', name: 'Quote' },
                     hrItems: [{ name: 'Horizontal Rule', style: '' }],
+                    pasteTagsWhitelist: '',
                 }}
             />
         </div>

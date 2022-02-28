@@ -15,7 +15,7 @@
 
 .forumPageWrapper blockquote {
     position: relative;
-    color: var(--mg-dark);
+    color: var(--mg-gray-6);
     font-size: .83rem;
     font-size: var(--step--1);
     background-color: var(--mg-gray-1);
