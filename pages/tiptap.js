@@ -3,18 +3,18 @@ import Head from 'next/head';
 
 import TiptapEditor from '../components/TiptapEditor';
 export default function Tiptap() {
-    const [content, setContent] = useState(null);
+    const [content, setContent] = useState('');
 
     return (
         <div className="mw-90ch">
             <Head>
                 <title>
-                    RML Baseball - Tiny Editor
+                    RML Baseball - TipTap Editor
                 </title>
             </Head>
 
             <h2 className="page-heading">
-                Tiny Editor
+                TipTap Editor
             </h2>
 
             <TiptapEditor setContent={setContent} />

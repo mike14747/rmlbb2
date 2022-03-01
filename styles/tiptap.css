@@ -11,12 +11,20 @@
 }
 
 .ProseMirror-focused {
-    outline: none
+    outline: none;
+}
+
+.ProseMirror div.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    color: var(--mg-gray-2);
+    float: left;
+    pointer-events: none;
+    height: 0;
 }
 
 .ProseMirror ul,
 .ProseMirror ol {
-    margin: 0 1rem;
+    margin: 1rem;
     padding: 0 1rem;
 }
 
@@ -26,19 +34,13 @@
 }
 
 .ProseMirror pre {
-    background: none;
-    margin-bottom: 1rem;
-    border: 0;
-}
-
-.ProseMirror pre code {
     display: block;
     font-family: Consolas, 'Courier New', Courier, monospace;
-    font-size: 0.833em;
-    font-size: var(--step--1);
+    font-size: 1rem;
+    font-size: var(--step-0);
     color: var(--mg-dark);
     background: none;
-    margin: 0;
+    margin: 0 0 1rem 0;
     /* border: 1px solid var(--mg-gray-1); */
     border: 0;
     word-break: keep-all;
@@ -75,23 +77,12 @@
 .ProseMirror hr {
     border: none;
     border-top: 2px solid var(--mg-gray-3);
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
 .toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* flex-wrap: wrap; */
     border: 1px var(--mg-gray-3) solid;
     border-radius: 0.25rem;
-}
-
-.btn-group-right {
-    display: flex;
-    flex-wrap: nowrap;
-    align-self: flex-start;
-    margin-left: 2rem;
 }
 
 .toolbar button {
@@ -122,6 +113,7 @@
 
 .toolbar button > img {
     width: 32px;
-    height: 32px;
+    width: clamp(24px, 20px + 1vw, 32px);
+    height: auto;
     padding: 0.25rem;
 }

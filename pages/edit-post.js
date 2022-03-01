@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Loading from '../components/Loading';
 import RichTextEditor from '../components/RichTextEditor';
 import SunEditorComp from '../components/SunEditor';
+import TiptapEditor from '../components/TiptapEditor';
 // import parse, { domToReact } from 'html-react-parser';
 // import DOMPurify from 'dompurify';
 
@@ -17,8 +18,8 @@ export default function NewTopic() {
     const router = useRouter();
 
     // const [title, setTitle] = useState('');
-    const [initialContent, setInitialContent] = useState(null);
-    const [content, setContent] = useState(null);
+    const [initialContent, setInitialContent] = useState('');
+    const [content, setContent] = useState('');
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -74,7 +75,7 @@ export default function NewTopic() {
                 } */}
 
                 {initialContent &&
-                    <SunEditorComp initialContent={initialContent} setContent={setContent} />
+                    <TiptapEditor initialContent={initialContent} setContent={setContent} />
                 }
 
                 <aside>

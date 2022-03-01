@@ -88,4 +88,14 @@ There doesn't seem to be an easy way to do dropdowns in the menu.
 
 I still haven't figured out how to do custom schemas.
 
+The underline button inserts the u tag and the strikethrough button inserts the s tag.
+
+---
+
+### Todos
+
+-   Add a link button
+-   Add a font color button
+-   Possibly add a highlight color button
+
 ---
