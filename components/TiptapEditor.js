@@ -20,6 +20,7 @@ const CustomUnderline = Underline.extend({
 });
 
 const CustomCodeBlock = CodeBlock.extend({
+    name: 'customCodeBlock',
     renderHTML({ HTMLAttributes }) {
         return ['pre', HTMLAttributes, 0];
     },
@@ -31,16 +32,18 @@ const CustomPre = Node.create({
 
     addOptions() {
         return {
+            exitOnArrowDown: true,
             HTMLAttributes: {},
         };
     },
     group: 'block',
-    content: 'inline*',
+    // content: 'inline*',
+    content: 'text*',
     parseHTML() {
         return [
             {
                 tag: 'pre',
-                // preserveWhitespace: 'full',
+                preserveWhitespace: 'full',
             },
         ];
     },
@@ -49,8 +52,100 @@ const CustomPre = Node.create({
     },
     addCommands() {
         return {
-            setCustomPre: () => ({ commands }) => {
-                return commands.setNode(this.name);
+            setCustomPre: attributes => ({ commands }) => {
+                return commands.setNode(this.name, attributes);
+            },
+        };
+    },
+    addKeyboardShortcuts() {
+        return {
+            // remove this element when at start of document or it is empty
+            Backspace: () => {
+                console.log('backspace was pressed');
+                const { empty, $anchor } = this.editor.state.selection;
+                const isAtStart = $anchor.pos === 1;
+
+                if (!empty || $anchor.parent.type.name !== this.name) {
+                    return false;
+                }
+
+                if (isAtStart || !$anchor.parent.textContent.length) {
+                    return this.editor.commands.clearNodes();
+                }
+
+                return false;
+            },
+
+            // exit node on triple enter
+            Enter: ({ editor }) => {
+                console.log('enter key was pressed');
+                const { state } = editor;
+                const { selection } = state;
+                const { $from, empty } = selection;
+
+                // console.log('state:', state);
+                // console.log('selection:', selection);
+                // console.log('$from:', $from);
+                // console.log('empty:', empty);
+
+                if (!empty || $from.parent.type !== this.type) {
+                    console.log('!empty || $from.parent.type !== this.type');
+                    return false;
+                }
+
+                const isAtEnd = $from.parentOffset === $from.parent.nodeSize - 2;
+                const endsWithDoubleNewline = $from.parent.textContent.endsWith('\n\n');
+
+                if (!isAtEnd || !endsWithDoubleNewline) {
+                    console.log('!isAtEnd || !endsWithDoubleNewline');
+                    return false;
+                }
+
+                return editor
+                    .chain()
+                    .command(({ tr }) => {
+                        tr.delete($from.pos - 2, $from.pos);
+                        console.log('inside command');
+                        return true;
+                    })
+                    .exitCode()
+                    .run();
+            },
+
+            // exit node on arrow down
+            ArrowDown: ({ editor }) => {
+                console.log('down arrow was pressed');
+                if (!this.options.exitOnArrowDown) {
+                    return false;
+                }
+
+                const { state } = editor;
+                const { selection, doc } = state;
+                const { $from, empty } = selection;
+
+                if (!empty || $from.parent.type !== this.type) {
+                    return false;
+                }
+
+                const isAtEnd = $from.parentOffset === $from.parent.nodeSize - 2;
+
+                if (!isAtEnd) {
+                    return false;
+                }
+
+                const after = $from.after();
+
+                if (after === undefined) {
+                    return false;
+                }
+
+                const nodeAfter = doc.nodeAt(after);
+
+                if (nodeAfter) {
+                    return false;
+                }
+
+                return editor.commands.exitCode();
             },
         };
     },
@@ -136,12 +231,12 @@ const MenuBar = ({ editor }) => {
                 <img src="/images/tiptap/paragraph.svg" alt="Paragraph" title="Paragraph" />
             </button>
 
-            {/* <button
+            <button
                 onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-                className={editor.isActive('codeBlock') ? 'is-active' : ''}
+                className={editor.isActive('customCodeBlock') ? 'is-active' : ''}
             >
                 <img src="/images/tiptap/braces-line.svg" alt="Monospaced" title="Monospaced" />
-            </button> */}
+            </button>
 
             <button
                 onClick={() => editor.chain().focus().setCustomPre().run()}
