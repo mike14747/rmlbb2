@@ -63,7 +63,7 @@ export default function Forum() {
                 </title>
             </Head>
 
-            <article>
+            <article className={styles.forumPageWrapper}>
                 {error && <p className="error">{error}</p>}
 
                 {isLoading && <Loading />}
@@ -96,43 +96,38 @@ export default function Forum() {
 
                         <div className={styles.forumsContainer}>
                             <div className={styles.forumsHeadingRow}>
-                                <div className={styles.forumsHeadingItem}>Topic</div>
-                                <div className={`text-center ${styles.forumsHeadingItem}`}>Replies</div>
-                                <div className={`text-center ${styles.forumsHeadingItem}`}>Views</div>
-                                <div className={styles.forumsHeadingItem}>Last Reply</div>
+                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem1}`}>Topic</div>
+                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem2}`}>Replies</div>
+                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem3}`}>Views</div>
+                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem4}`}>Last Reply</div>
                             </div>
 
                             {topicList.map(topic => (
                                 <div className={styles.forumsDataRow} key={topic._id}>
-                                    <div className={`${styles.forumsDataItem} ${styles.forumsIcon}`}>
-                                        {/* <div>
-                                        <img aria-hidden="true" src="/images/message_icon2.png" alt="Forum" className={styles.messageIcon} />
-                                    </div> */}
-
-                                        <div>
-                                            <p className={styles.forumsName}>
-                                                <Link href={`/forum/${forumId}/topic/${topic._id}`}>
-                                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                    <a><strong>{topic.title}</strong></a>
-                                                </Link>
-                                            </p>
-                                            <p className={styles.forumsDescription}>by {topic.username}<span className="break"></span><span className={styles.on}>{topic.date}</span></p>
-                                        </div>
+                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem1}`}>
+                                        <p className={styles.forumsName}>
+                                            <Link href={`/forum/${forumId}/topic/${topic._id}`}>
+                                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                                <a>{topic.title}</a>
+                                            </Link>
+                                        </p>
+                                        <p className={styles.forumsDescription}><small>by:</small> {topic.username}</p>
+                                        <p className={styles.forumsDescription}>{topic.date}</p>
                                     </div>
-                                    <div className={`text-center ${styles.forumsDataItem}`}>{topic.replies.length}</div>
+                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem2a}`}>{topic.replies.length}</div>
 
-                                    <div className={`text-center ${styles.forumsDataItem}`}>{topic.views}</div>
-                                    <div className={styles.forumsDataItem}>
+                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem3a}`}>{topic.views}</div>
+                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem4}`}>
                                         {topic.lastReply &&
                                             <>
                                                 <p>
                                                     <Link href={`/forum/${forumId}/topic/${topic._id}${topic.lastReply.replyId ? `?reply=${topic.lastReply.replyId}` : ''}`}>
                                                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                        <a><strong>{topic.lastReply.subject}</strong></a>
+                                                        <a>{topic.lastReply.subject}</a>
                                                     </Link>
                                                 </p>
-                                                {topic.lastReply.username && <p className='small'><small>by:</small> {topic.lastReply.username}</p>}
-                                                <p>{topic.lastReply.date}</p>
+                                                {topic.lastReply.username && <p className={styles.forumsDescription}><small>by:</small> {topic.lastReply.username}</p>}
+                                                <p className={styles.forumsDescription}>{topic.lastReply.date}</p>
                                             </>
                                         }
                                     </div>

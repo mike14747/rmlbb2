@@ -1,13 +1,11 @@
 .forumPageWrapper {
-    max-width: 90ch;
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .forumsContainer {
-    width: 100%;
-    max-width: 1000px;
     margin: 0 auto 3rem auto;
-    border: 1px var(--theme-color-green) solid;
+    border: 1px var(--mg-gray-3) solid;
     box-shadow: 3px 3px 6px 0 var(--mg-gray-4);
     overflow: hidden;
 }
@@ -38,18 +36,12 @@
     grid-template-columns: 60% 40%;
 }
 
-.forumsHeadingItem1 {
-}
-
 .forumsHeadingItem2 {
     display: none;
 }
 
 .forumsHeadingItem3 {
     display: none;
-}
-
-.forumsHeadingItem4 {
 }
 
 .forumsDataRow {
@@ -59,14 +51,15 @@
 }
 
 .forumsDataItem {
-    align-self: center;
+    align-self: start;
 }
 
 .forumsDataItem1 {
     grid-area: forum;
 }
 
-.forumsDataItem2 {
+.forumsDataItem2,
+.forumsDataItem2a {
     grid-area: topics;
     font-size: 0.83rem;
     font-size: var(--step--1);
@@ -77,7 +70,13 @@
     color: var(--mg-gray-6);
 }
 
-.forumsDataItem3 {
+.forumsDataItem2a:before {
+    content: 'Replies: ';
+    color: var(--mg-gray-6);
+}
+
+.forumsDataItem3,
+.forumsDataItem3a {
     grid-area: posts;
     font-size: 0.83rem;
     font-size: var(--step--1);
@@ -88,8 +87,12 @@
     color: var(--mg-gray-6);
 }
 
+.forumsDataItem3a:before {
+    content: 'Views: ';
+    color: var(--mg-gray-6);
+}
+
 .forumsDataItem4 {
-    align-self: start;
     grid-area: post;
 }
 
@@ -98,7 +101,7 @@
     font-size: var(--step--1);
     color: var(--mg-dark);
     background-color: var(--theme-color-dirt);
-    border-bottom: 1px var(--theme-color-green) solid;
+    border-bottom: 1px var(--mg-gray-3) solid;
 }
 
 .forumsDataRow {
@@ -199,7 +202,7 @@
     .forumsHeadingRow,
     .forumsDataRow {
         grid-template-columns: 40% 15% 15% 30%;
-        padding: 0.5rem
+        padding: 0.5rem;
     }
 
     .forumsDataRow {
@@ -214,19 +217,13 @@
         display: block;
     }
 
-    .forumsDataItem2:before {
+    .forumsDataItem2:before,
+    .forumsDataItem2a:before,
+    .forumsDataItem3:before,
+    .forumsDataItem3a:before {
         content: '';
-        color: var(--mg-gray-6);
-    }
-
-    .forumsDataItem3:before {
-        content: '';
-        color: var(--mg-gray-6);
     }
 }
 
 @media (min-width: 768px) {
-    .on::before {
-        content: '@ ';
-    }
 }
