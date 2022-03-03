@@ -59,7 +59,7 @@ export default function ForumHome() {
                 </title>
             </Head>
 
-            <article>
+            <article className={styles.forumPageWrapper}>
                 <h2 className={'page-heading ' + styles.forumPageHeadding}>
                     Forum Index
                 </h2>
@@ -71,15 +71,15 @@ export default function ForumHome() {
                 {forums?.length > 0 &&
                     <div className={styles.forumsContainer}>
                         <div className={styles.forumsHeadingRow}>
-                            <div className={styles.forumsHeadingItem}>Forum</div>
-                            <div className={`text-center ${styles.forumsHeadingItem}`}>Topics</div>
-                            <div className={`text-center ${styles.forumsHeadingItem}`}>Posts</div>
-                            <div className={styles.forumsHeadingItem}>Last Post</div>
+                            <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem1}`}>Forum</div>
+                            <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem2}`}>Topics</div>
+                            <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem3}`}>Posts</div>
+                            <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem4}`}>Last Post</div>
                         </div>
 
                         {forums.map(forum => (
                             <div className={styles.forumsDataRow} key={forum._id}>
-                                <div className={`${styles.forumsDataItem} ${styles.forumsTitle}`}>
+                                <div className={`${styles.forumsDataItem} ${styles.forumsTitle} ${styles.forumsDataItem1}`}>
                                     <div>
                                         <ParagraphRound aria-hidden="true" className={`${styles.messageIcon} ${forum.lastPostDaysAgo < 14 ? styles.new : forum.lastPostDaysAgo < 60 ? styles.med : styles.old}`} />
                                     </div>
@@ -88,20 +88,20 @@ export default function ForumHome() {
                                         <p className={styles.forumsName}>
                                             <Link href={`/forum/${forum._id}`}>
                                                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                <a><strong>{forum.name}</strong></a>
+                                                <a>{forum.name}</a>
                                             </Link>
                                         </p>
                                     </div>
                                 </div>
-                                <div className={`text-center ${styles.forumsDataItem}`}>{forum.topics}</div>
-                                <div className={`text-center ${styles.forumsDataItem}`}>{forum.posts}</div>
-                                <div className={styles.forumsDataItem}>
+                                <div className={`${styles.forumsDataItem} ${styles.forumsDataItem2}`}>{forum.topics}</div>
+                                <div className={`${styles.forumsDataItem} ${styles.forumsDataItem3}`}>{forum.posts}</div>
+                                <div className={`${styles.forumsDataItem} ${styles.forumsDataItem4}`}>
                                     {forum.lastPost &&
                                         <>
                                             <p>
                                                 <Link href={`/forum/${forum._id}/topic/${forum.lastPost.topicId}${forum.lastPost.replyId ? `?reply=${forum.lastPost.replyId}` : ''}`}>
                                                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                    <a><strong>{forum.lastPost.subject}</strong></a>
+                                                    <a>{forum.lastPost.subject}</a>
                                                 </Link>
                                             </p>
                                             {forum.lastPost.username && <p className='small'><small>by:</small> {forum.lastPost.username}</p>}
