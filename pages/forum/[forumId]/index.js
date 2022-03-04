@@ -74,25 +74,28 @@ export default function Forum() {
 
                 {topicList?.length > 0 &&
                     <>
-                        <p>
+                        <p className="small">
                             <Link href="/forum">
                                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                 <a>
                                     Forum Index
                                 </a>
                             </Link>
-                            <> &#10139; </>
-                            <Link href={`/forum/${forumId}`}>
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                <a>
-                                    {topicList[0].forumName}
-                                </a>
-                            </Link>
+                            <span className={styles.arrow}> &#10139; {topicList[0].forumName}</span>
                         </p>
 
                         <h2 className={'page-heading ' + styles.forumPageHeadding}>
                             {topicList[0].forumName}
                         </h2>
+
+                        <p className="small">
+                            <Link href={`/forum/${forumId}/topic/new-topic`}>
+                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                <a>
+                                    New Topic
+                                </a>
+                            </Link>
+                        </p>
 
                         <div className={styles.forumsContainer}>
                             <div className={styles.forumsHeadingRow}>

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Loading from '../../../../components/Loading';
 import Button from '../../../../components/Button';
 import FormInput from '../../../../components/FormInput';
-import RichTextEditor from '../../../../components/RichTextEditor';
+import TiptapEditor from '../../../../components/TiptapEditor';
 
 import styles from '../../../../styles/forum.module.css';
 
@@ -48,7 +48,7 @@ export default function NewTopic() {
 
         if (res.status === 200) {
             setTitle('');
-            setContent(null);
+            setContent('');
             setError(null);
             setIsSucessful(true);
             console.log('Success!');
@@ -121,7 +121,7 @@ export default function NewTopic() {
                                 maxLength="50"
                             />
 
-                            <RichTextEditor setContent={setContent} />
+                            <TiptapEditor setContent={setContent} />
 
                             <Button type="submit" size="medium" variant="contained" style="primary">Submit</Button>
                         </form>

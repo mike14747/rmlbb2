@@ -14,7 +14,7 @@
     outline: none;
 }
 
-.ProseMirror div.is-editor-empty:first-child::before {
+.ProseMirror p.is-editor-empty:first-child::before {
     content: attr(data-placeholder);
     color: var(--mg-gray-2);
     float: left;

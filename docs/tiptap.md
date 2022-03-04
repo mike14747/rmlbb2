@@ -99,3 +99,42 @@ The underline button inserts the u tag and the strikethrough button inserts the 
 -   Possibly add a highlight color button
 
 ---
+
+### Using a placeholder
+
+To use a placeholder in the editor, you must first add this npm package:
+
+```bash
+npm i @tiptap/extension-placeholder
+```
+
+Then import it and use it in the editor:
+
+```js
+import Placeholder from '@tiptap/extension-placeholder';
+
+// ...
+
+const editor = useEditor({
+    extensions: [
+        // ...
+        Placeholder.configure({
+            placeholder: '...start typing',
+        }),
+        // ...
+    ],
+    // ...
+});
+```
+
+```css
+.ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    color: var(--mg-gray-2);
+    float: left;
+    pointer-events: none;
+    height: 0;
+}
+```
+
+---
