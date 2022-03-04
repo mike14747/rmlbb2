@@ -1,5 +1,37 @@
 ### MongoDB schema validation
 
+Validation template:
+
+```js
+{
+    $jsonSchema: {
+        title: 'collection-name',
+        description: '',
+        bsonType: 'object',
+        required: [
+            '_id',
+            'someField',
+        ],
+        properties: {
+            _id: {
+                bsonType: 'int',
+                description: '_id must be a unique integer and is required',
+                minimum: 1
+            },
+            someField: {
+                bsonType: 'string',
+                description: 'someField description and is required'
+                minLength: 4,
+                maxLength: 15
+            },
+        },
+        additionalProperties: false
+    }
+}
+```
+
+---
+
 users collection:
 
 ```js
@@ -21,19 +53,20 @@ users collection:
         properties: {
             _id: {
                 bsonType: 'int',
-                description: '_id must be a unique integer and is required'
+                description: '_id must be a unique integer and is required',
+                minimum: 1
             },
             username: {
                 bsonType: 'string',
+                description: 'username must be a string from 4 to 15 characters in length and is required',
                 minLength: 4,
-                maxLength: 15,
-                description: 'username must be a string from 4 to 15 characters in length and is required'
+                maxLength: 15
             },
             password: {
                 bsonType: 'string',
+                description: 'The hashed version of the password must be a string, 60 characters in length and is required',
                 minLength: 60,
-                maxLength: 60,
-                description: 'The hashed version of the password must be a string, 60 characters in length and is required'
+                maxLength: 60
             },
             email: {
                 bsonType: 'string',
@@ -41,11 +74,11 @@ users collection:
             },
             role: {
                 bsonType: 'string',
+                description: 'role is required and must be one of the predetermined string values',
                 'enum': [
                     'user',
                     'admin'
-                ],
-                description: 'role is required and must be one of the predetermined string values'
+                ]
             },
             active: {
                 bsonType: 'bool',
@@ -53,7 +86,8 @@ users collection:
             },
             posts: {
                 bsonType: 'int',
-                description: 'posts must be a positive integer and is required'
+                description: 'posts must be a positive integer and is required',
+                minimum: 0
             },
             registeredDate: {
                 bsonType: 'date',
@@ -65,9 +99,9 @@ users collection:
             },
             resetPasswordToken: {
                 bsonType: 'string',
+                description: 'resetPasswordToken, when included, must be a string and 40 characters in length',
                 minLength: 40,
-                maxLength: 40,
-                description: 'resetPasswordToken, when included, must be a string and 40 characters in length'
+                maxLength: 40
             }
         },
         additionalProperties: true
@@ -95,13 +129,14 @@ forums collection:
         properties: {
             _id: {
                 bsonType: 'int',
-                description: '_id must be a unique integer and is required'
+                description: '_id must be a unique integer and is required',
+                minimum: 1
             },
             name: {
                 bsonType: 'string',
+                description: 'name must be a string from 1 to 50 characters in length and is required',
                 minLength: 1,
-                maxLength: 50,
-                description: 'name must be a string from 1 to 50 characters in length and is required'
+                maxLength: 50
             },
             active: {
                 bsonType: 'bool',
@@ -109,18 +144,18 @@ forums collection:
             },
             order: {
                 bsonType: 'int',
-                minimum: 1,
-                description: 'order must be a positive integer and is required'
+                description: 'order must be a positive integer and is required',
+                minimum: 1
             },
             topics: {
                 bsonType: 'int',
-                minimum: 1,
-                description: 'topics must be a positive integer and is required'
+                description: 'topics must be a positive integer and is required',
+                minimum: 0
             },
             posts: {
                 bsonType: 'int',
-                minimum: 1,
-                description: 'posts must be a positive integer and is required'
+                description: 'posts must be a positive integer and is required',
+                minimum: 0
             },
             lastPost: {
                 bsonType: 'object',
@@ -128,9 +163,11 @@ forums collection:
                 properties: {
                     topicId: {
                         bsonType: 'int',
-                        description: 'topicId must be a positive integer and is required'
+                        description: 'topicId must be a positive integer and is required',
+                        minimum: 1
                     },
                     replyId: {
+                        description: 'replyId must be a positive integer and is required',
                         oneOf: [
                             {
                                 bsonType: 'int',
@@ -139,24 +176,24 @@ forums collection:
                             {
                                 bsonType: 'null'
                             }
-                        ],
-                        description: 'replyId must be a positive integer and is required'
+                        ]
                     },
                     subject: {
                         bsonType: 'string',
+                        description: 'subject must be a string from 1 to 50 characters in length and is required',
                         minLength: 1,
-                        maxLength: 50,
-                        description: 'subject must be a string from 1 to 50 characters in length and is required'
+                        maxLength: 50
                     },
                     username: {
                         bsonType: 'string',
+                        description: 'username must be a string from 4 to 15 characters in length',
                         minLength: 1,
-                        maxLength: 50,
-                        description: 'username must be a string from 4 to 15 characters in length'
+                        maxLength: 50
                     },
                     userId: {
                         bsonType: 'int',
-                        description: 'userId must be a positive integer'
+                        description: 'userId must be a positive integer',
+                        minimum: 1
                     },
                     date: {
                         bsonType: 'date',
@@ -181,3 +218,36 @@ replies collection:
 ```js
 
 ```
+
+---
+
+counters collection:
+
+```js
+{
+    $jsonSchema: {
+        title: 'counters',
+        description: 'Keeps track of the next available _id for the message board at rmlbb.com',
+        bsonType: 'object',
+        required: [
+            '_id',
+            'value',
+        ],
+        properties: {
+            _id: {
+                bsonType: 'string',
+                description: '_id must be a unique string with a singular collection name followed by _id and is required',
+                minLength: 4
+            },
+            value: {
+                bsonType: 'int',
+                description: 'value must be a positive integer and is required',
+                minimum: 1
+            },
+        },
+        additionalProperties: false
+    }
+}
+```
+
+---

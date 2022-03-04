@@ -89,10 +89,11 @@ export default function Forum() {
                         </h2>
 
                         <p className="small">
+                            <>&#128221; </>
                             <Link href={`/forum/${forumId}/topic/new-topic`}>
                                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                 <a>
-                                    New Topic
+                                    <strong>New Topic</strong>
                                 </a>
                             </Link>
                         </p>
