@@ -1,14 +1,10 @@
 ### Need to do
 
-Add a $lookup to get the username for the specific forum page to display it with the original topic... or... add the username to the topic. The latter would mean more would need to happen when a user changes their username.
-
 Figure out a new message board solution that can have our old board imported into it. (in progress)
 
-Add a WYSIWYG that will be used for message board posting. (I think it'll need to be able to output html instead of block content)
+Add a WYSIWYG that will be used for message board posting. (in progress)
 
 Add a "to top" button to all pages.
-
-Style the "To main content" link.
 
 Write tests for all components in /components.
 
@@ -22,13 +18,11 @@ Write schema validations for all MongoDB collections. (in progress)
 
 Add a transition effect for the TopInfo component when it's being closed.
 
-Add a next-id (or nextId) collection in MongoDB.
-
 Figure out an admin way to add users and forums.
 
 Figure out MongoDB transactions since several fields are embedded.
 
-Add link (and maybe unlink) buttons to TiptapEditor. Also color?
+Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
@@ -53,3 +47,9 @@ Update events in sanity.io. (I have a good flow for how to move the existing MyS
 Come up with a working way of filtering out duplicate homepage news item (in case a new item was added while someone was loading more)
 
 Upgrade the mongodb driver from v3.6.6 to v4.3.1 (or higher)
+
+Add a $lookup to get the username for the specific forum page to display it with the original topic... or... add the username to the topic. The latter would mean more would need to happen when a user changes their username. (I did the latter)
+
+Style the "To main content" link. (it's a basic, but acceptable style)
+
+Add a next-id (or nextId) collection in MongoDB. (the collection is named 'counters')
