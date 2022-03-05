@@ -15,9 +15,9 @@ export default NextAuth({
             async authorize(credentials) {
                 const user = await getUserForSignin(credentials.username);
 
-                if (user?.length === 1) {
-                    const matches = await bcryptjs.compare(credentials.password, user[0].password);
-                    if (matches) return { _id: user[0]._id, name: user[0].username };
+                if (user) {
+                    const matches = await bcryptjs.compare(credentials.password, user.password);
+                    if (matches) return { _id: user._id, name: user.username, role: user.role };
                     return null;
                 } else {
                     return null;
@@ -37,12 +37,12 @@ export default NextAuth({
     callbacks: {
         async jwt({ token, user }) {
             if (user?._id) token._id = user._id;
+            if (user?.role) token.role = user.role;
             return token;
         },
         async session({ session, token }) {
-            if (token?._id) {
-                session.user._id = token._id;
-            }
+            if (token?._id) session.user._id = token._id;
+            if (token?.role) session.user.role = token.role;
             return session;
         },
     },
