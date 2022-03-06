@@ -13,53 +13,55 @@ export default function AdminHome() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session || !session.user || !session.user.role || session.user.role !== 'admin') {
-        router.push('/404');
-    }
+    if (!session || !session.user || !session.user.role || session.user.role !== 'admin') router.push('/');
 
     return (
         <>
-            <Head>
-                <title>
-                    RML Baseball - Admin
-                </title>
-            </Head>
+            {session && session?.user?.role === 'admin' &&
+                <>
+                    <Head>
+                        <title>
+                            RML Baseball - Admin
+                        </title>
+                    </Head>
 
-            <article>
-                <h2 className="page-heading">
-                    Admin Home
-                </h2>
+                    <article>
+                        <h2 className="page-heading">
+                            Admin Home
+                        </h2>
 
-                <ul>
-                    <li>
-                        <Link href="/admin/add-user">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>Add new user</a>
-                        </Link>
-                    </li>
+                        <ul>
+                            <li>
+                                <Link href="/admin/add-user">
+                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                    <a>Add new user</a>
+                                </Link>
+                            </li>
 
-                    <li>
-                        <Link href="/admin/edit-user">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>Edit user</a>
-                        </Link>
-                    </li>
+                            <li>
+                                <Link href="/admin/edit-user">
+                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                    <a>Edit user</a>
+                                </Link>
+                            </li>
 
-                    <li>
-                        <Link href="/admin/add-forum">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>Add new forum</a>
-                        </Link>
-                    </li>
+                            <li>
+                                <Link href="/admin/add-forum">
+                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                    <a>Add new forum</a>
+                                </Link>
+                            </li>
 
-                    <li>
-                        <Link href="/admin/edit-forum">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>Edit forum</a>
-                        </Link>
-                    </li>
-                </ul>
-            </article>
+                            <li>
+                                <Link href="/admin/edit-forum">
+                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                    <a>Edit forum</a>
+                                </Link>
+                            </li>
+                        </ul>
+                    </article>
+                </>
+            }
         </>
     );
 }

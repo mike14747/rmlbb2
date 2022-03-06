@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+        "dev": "next dev",
+        "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
         "build": "next build",
         "start": "next start",
         "test": "jest"

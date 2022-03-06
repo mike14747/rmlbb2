@@ -12,23 +12,25 @@ export default function EditForum() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session || !session.user || !session.user.role || session.user.role !== 'admin') {
-        router.push('/404');
-    }
+    if (!session || !session.user || !session.user.role || session.user.role !== 'admin') router.push('/');
 
     return (
         <>
-            <Head>
-                <title>
-                    RML Baseball - Admin
-                </title>
-            </Head>
+            {session && session?.user?.role === 'admin' &&
+                <>
+                    <Head>
+                        <title>
+                            RML Baseball - Admin
+                        </title>
+                    </Head>
 
-            <article>
-                <h2 className="page-heading">
-                    Edit Forum
-                </h2>
-            </article>
+                    <article>
+                        <h2 className="page-heading">
+                            Edit Forum
+                        </h2>
+                    </article>
+                </>
+            }
         </>
     );
 }
