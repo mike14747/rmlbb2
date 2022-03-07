@@ -127,100 +127,102 @@ const Profile = () => {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) {
-        router.push('/login?url=/profile');
+    if (!session) router.push('/login?url=/profile');
+
+    if (session) {
+        return (
+            <>
+                <Head>
+                    <title>
+                        Profile
+                    </title>
+                </Head>
+
+                <article className="mw-75ch">
+                    <h2 className="page-heading">
+                        Profile
+                    </h2>
+
+                    {isLoading && <Loading />}
+
+                    {profileError && <p className={styles.error}>{profileError}</p>}
+
+                    {user &&
+                        <>
+                            <div className={styles.currentContainer}>
+                                <h3 className={styles.currentHeading}>Current profile information:</h3>
+
+                                <p className={styles.profileItem}><span className={styles.description}>Username: </span>{user?.username}</p>
+
+                                <p className={styles.profileItem}><span className={styles.description}>Password is not visible for security reasons.</span></p>
+
+                                <p className={styles.profileItem}><span className={styles.description}>Email: </span>{user?.email}</p>
+
+                                <p className={styles.profileItem}><span className={styles.description}>Posts: </span>{user?.posts}</p>
+
+                                <p className={styles.profileItem}><span className={styles.description}>Registered Date: </span>{user?.registeredDate}</p>
+                            </div>
+
+                            <h3 className={styles.updateHeading}>Update your profile information:</h3>
+
+                            <p className={styles.note}>
+                                <strong>Note:</strong> changing your username and/or password will log you out.
+                            </p>
+
+                            <form className={styles.updateGroup} onSubmit={handleUpdateUsernameSubmit}>
+                                {usernameError && <p className={styles.error}>{usernameError}</p>}
+
+                                <FormInput
+                                    id="newUsername"
+                                    label="New Username"
+                                    name="newUsername"
+                                    type="text"
+                                    value={newUsername}
+                                    required={true}
+                                    handleChange={(e) => setNewUsername(e.target.value)}
+                                    pattern="^[a-zA-Z0-9_-]{4,15}$"
+                                    errorMsg="New Username must be from 4 to 15 characters in length and not include any special characters."
+                                />
+
+                                <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
+                            </form>
+
+                            <PasswordResetForm
+                                handleUpdatePasswordSubmit={handleUpdatePasswordSubmit}
+                                passwordError={passwordError}
+                                newPassword={newPassword}
+                                setNewPassword={setNewPassword}
+                                repeatPassword={repeatPassword}
+                                setrepeatPassword={setrepeatPassword}
+                            />
+
+                            <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
+                                {emailError && <p className={styles.error}>{emailError}</p>}
+
+                                {emailUpdateMsg && <p className={styles.success}>{emailUpdateMsg}</p>}
+
+                                <FormInput
+                                    id="newEmail"
+                                    label="New Email"
+                                    name="newEmail"
+                                    type="email"
+                                    value={newEmail}
+                                    required={true}
+                                    handleChange={(e) => setNewEmail(e.target.value)}
+                                    pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
+                                    errorMsg="Please enter a valid email address."
+                                />
+
+                                <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
+                            </form>
+                        </>
+                    }
+                </article>
+            </>
+        );
     }
 
-    return (
-        <>
-            <Head>
-                <title>
-                    Profile
-                </title>
-            </Head>
-
-            <article className="mw-75ch">
-                <h2 className="page-heading">
-                    Profile
-                </h2>
-
-                {isLoading && <Loading />}
-
-                {profileError && <p className={styles.error}>{profileError}</p>}
-
-                {user &&
-                    <>
-                        <div className={styles.currentContainer}>
-                            <h3 className={styles.currentHeading}>Current profile information:</h3>
-
-                            <p className={styles.profileItem}><span className={styles.description}>Username: </span>{user?.username}</p>
-
-                            <p className={styles.profileItem}><span className={styles.description}>Password is not visible for security reasons.</span></p>
-
-                            <p className={styles.profileItem}><span className={styles.description}>Email: </span>{user?.email}</p>
-
-                            <p className={styles.profileItem}><span className={styles.description}>Posts: </span>{user?.posts}</p>
-
-                            <p className={styles.profileItem}><span className={styles.description}>Registered Date: </span>{user?.registeredDate}</p>
-                        </div>
-
-                        <h3 className={styles.updateHeading}>Update your profile information:</h3>
-
-                        <p className={styles.note}>
-                            <strong>Note:</strong> changing your username and/or password will log you out.
-                        </p>
-
-                        <form className={styles.updateGroup} onSubmit={handleUpdateUsernameSubmit}>
-                            {usernameError && <p className={styles.error}>{usernameError}</p>}
-
-                            <FormInput
-                                id="newUsername"
-                                label="New Username"
-                                name="newUsername"
-                                type="text"
-                                value={newUsername}
-                                required={true}
-                                handleChange={(e) => setNewUsername(e.target.value)}
-                                pattern="^[a-zA-Z0-9_-]{4,15}$"
-                                errorMsg="New Username must be from 4 to 15 characters in length and not include any special characters."
-                            />
-
-                            <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
-                        </form>
-
-                        <PasswordResetForm
-                            handleUpdatePasswordSubmit={handleUpdatePasswordSubmit}
-                            passwordError={passwordError}
-                            newPassword={newPassword}
-                            setNewPassword={setNewPassword}
-                            repeatPassword={repeatPassword}
-                            setrepeatPassword={setrepeatPassword}
-                        />
-
-                        <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
-                            {emailError && <p className={styles.error}>{emailError}</p>}
-
-                            {emailUpdateMsg && <p className={styles.success}>{emailUpdateMsg}</p>}
-
-                            <FormInput
-                                id="newEmail"
-                                label="New Email"
-                                name="newEmail"
-                                type="email"
-                                value={newEmail}
-                                required={true}
-                                handleChange={(e) => setNewEmail(e.target.value)}
-                                pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
-                                errorMsg="Please enter a valid email address."
-                            />
-
-                            <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
-                        </form>
-                    </>
-                }
-            </article>
-        </>
-    );
+    return null;
 };
 
 export default Profile;
