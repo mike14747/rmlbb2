@@ -76,65 +76,67 @@ export default function NewTopic() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) {
-        router.push('/login?url=/forum');
+    if (!session) router.push('/login?url=/forum');
+
+    if (session) {
+        return (
+            <>
+                <Head>
+                    <title>
+                        RML Baseball - New Topic
+                    </title>
+                </Head>
+
+                <article className={styles.forumPageWrapper}>
+                    <h2 className={'page-heading ' + styles.forumPageHeading}>
+                        New Topic
+                    </h2>
+
+                    {isLoading && <Loading />}
+
+                    {error && <p className="error">{error}</p>}
+
+                    {isSuccessful && <p className={styles.success}>Your new topic was successfully added!</p>}
+
+                    {forumName && !isSuccessful &&
+                        <>
+                            <p>
+                                <span className="muted"><small><em>forum: </em></small></span>
+                                <Link href={`/forum/${forumId}`}>
+                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                    <a>{forumName}</a>
+                                </Link>
+                            </p>
+
+                            <form onSubmit={submitTopic}>
+                                <FormInput
+                                    id="title"
+                                    label="Title"
+                                    name="title"
+                                    type="text"
+                                    value={title}
+                                    required={true}
+                                    handleChange={(e) => setTitle(e.target.value)}
+                                    maxLength="50"
+                                />
+
+                                <TiptapEditor setContent={setContent} />
+
+                                <Button type="submit" size="medium" variant="contained" style="primary">Submit</Button>
+                            </form>
+                        </>
+                    }
+
+                    <aside>
+                        <textarea className="editor-textarea"
+                            disabled
+                            value={content}
+                        />
+                    </aside>
+                </article>
+            </>
+        );
     }
 
-    return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - New Topic
-                </title>
-            </Head>
-
-            <section className="mw-90ch">
-                <h2 className="page-heading">
-                    New Topic
-                </h2>
-
-                {isLoading && <Loading />}
-
-                {error && <p className="error">{error}</p>}
-
-                {isSuccessful && <p className={styles.success}>Your new topic was successfully added!</p>}
-
-                {forumName && !isSuccessful &&
-                    <>
-                        <p>
-                            <span className="muted"><small><em>forum: </em></small></span>
-                            <Link href={`/forum/${forumId}`}>
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                <a>{forumName}</a>
-                            </Link>
-                        </p>
-
-                        <form onSubmit={submitTopic}>
-                            <FormInput
-                                id="title"
-                                label="Title"
-                                name="title"
-                                type="text"
-                                value={title}
-                                required={true}
-                                handleChange={(e) => setTitle(e.target.value)}
-                                maxLength="50"
-                            />
-
-                            <TiptapEditor setContent={setContent} />
-
-                            <Button type="submit" size="medium" variant="contained" style="primary">Submit</Button>
-                        </form>
-                    </>
-                }
-
-                <aside>
-                    <textarea className="editor-textarea"
-                        disabled
-                        value={content}
-                    />
-                </aside>
-            </section>
-        </>
-    );
+    return null;
 }

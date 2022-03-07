@@ -52,35 +52,35 @@ export default function Protected() {
 
     if (!session) router.push('/login?url=/protected');
 
-    return (
-        <>
-            {session && (
-                <>
-                    <Head>
-                        <title>RML Baseball - Protected Page</title>
-                    </Head>
+    if (session) {
+        return (
+            <>
+                <Head>
+                    <title>RML Baseball - Protected Page</title>
+                </Head>
 
-                    <article>
-                        <h2 className="page-heading">Protected Page Template</h2>
+                <article>
+                    <h2 className="page-heading">Protected Page Template</h2>
 
-                        {error && <p className="error">{error}</p>}
+                    {error && <p className="error">{error}</p>}
 
-                        {isLoading && <Loading />}
+                    {isLoading && <Loading />}
 
-                        {protectedData?.length > 0 && (
-                            <ul>
-                                {protectedData.map((item, index) => (
-                                    <li key={index}>
-                                        Name: {item.name}, Age: {item.age}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </article>
-                </>
-            )}
-        </>
-    );
+                    {protectedData?.length > 0 && (
+                        <ul>
+                            {protectedData.map((item, index) => (
+                                <li key={index}>
+                                    Name: {item.name}, Age: {item.age}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </article>
+            </>
+        );
+    }
+
+    return null;
 }
 ```
 
@@ -148,21 +148,21 @@ export default function AdminPage() {
 
     if (!session || !session.user || !session.user.role || session.user.role !== 'admin') router.push('/');
 
-    return (
-        <>
-            {session && session?.user?.role === 'admin' && (
-                <>
-                    <Head>
-                        <title>RML Baseball - Admin</title>
-                    </Head>
+    if (session && session?.user?.role === 'admin') {
+        return (
+            <>
+                <Head>
+                    <title>RML Baseball - Admin</title>
+                </Head>
 
-                    <article>
-                        <h2 className="page-heading">Admin Page</h2>
-                    </article>
-                </>
-            )}
-        </>
-    );
+                <article>
+                    <h2 className="page-heading">Admin Page</h2>
+                </article>
+            </>
+        );
+    }
+
+    return null;
 }
 ```
 

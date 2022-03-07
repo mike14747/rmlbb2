@@ -1,0 +1,9 @@
+.adminContainer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.adminPageHeading {
+    font-size: 1.44rem;
+    font-size: var(--step-2);
+}

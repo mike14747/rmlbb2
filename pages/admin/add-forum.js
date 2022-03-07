@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 
-// import styles from '../styles/admin.module.css';
+import styles from '../../styles/admin.module.css';
 
 export default function AddForum() {
     const { data: session, status } = useSession();
@@ -14,23 +14,23 @@ export default function AddForum() {
 
     if (!session || !session.user || !session.user.role || session.user.role !== 'admin') router.push('/');
 
-    return (
-        <>
-            {session && session?.user?.role === 'admin' &&
-                <>
-                    <Head>
-                        <title>
-                            RML Baseball - Admin
-                        </title>
-                    </Head>
+    if (session && session?.user?.role === 'admin') {
+        return (
+            <>
+                <Head>
+                    <title>
+                        RML Baseball - Admin
+                    </title>
+                </Head>
 
-                    <article>
-                        <h2 className="page-heading">
-                            Add Forum
-                        </h2>
-                    </article>
-                </>
-            }
-        </>
-    );
+                <article className={styles.adminContainer}>
+                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                        Add Forum
+                    </h2>
+                </article>
+            </>
+        );
+    }
+
+    return null;
 }

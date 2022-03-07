@@ -48,51 +48,53 @@ const Directory = () => {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) {
-        router.push('/login?url=/directory');
+    if (!session) router.push('/login?url=/directory');
+
+    if (session) {
+        return (
+            <>
+                <Head>
+                    <title>
+                        RML Baseball - Directory
+                    </title>
+                </Head>
+
+                <article>
+                    <h2 className="page-heading">
+                        Directory
+                    </h2>
+
+                    {error && <p className="error">{error}</p>}
+
+                    {isLoading && <Loading />}
+
+                    {managers?.length > 0 &&
+                        <div className={styles.directoryContainer}>
+                            {managers.map(conf => (
+                                <div key={conf.conference} className={styles.conferenceContainer}>
+                                    <h3 className={styles.conferenceHeading}>
+                                        {conf.conference} Conference
+                                    </h3>
+                                    {conf.divisions.map(div => (
+                                        <div key={div.division} className={styles.divisionContainer}>
+                                            <h4 className={styles.divisionHeading}>
+                                                <span className={styles.divisionPrefix}>Division: </span> {div.division}
+                                            </h4>
+                                            {div.teams.map(team => (
+                                                <ManagerCard key={team.team} manager={team} />
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    }
+                </article>
+            </>
+        );
     }
 
-    return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Directory
-                </title>
-            </Head>
-
-            <article>
-                <h2 className="page-heading">
-                    Directory
-                </h2>
-
-                {error && <p className="error">{error}</p>}
-
-                {isLoading && <Loading />}
-
-                {managers?.length > 0 &&
-                    <div className={styles.directoryContainer}>
-                        {managers.map(conf => (
-                            <div key={conf.conference} className={styles.conferenceContainer}>
-                                <h3 className={styles.conferenceHeading}>
-                                    {conf.conference} Conference
-                                </h3>
-                                {conf.divisions.map(div => (
-                                    <div key={div.division} className={styles.divisionContainer}>
-                                        <h4 className={styles.divisionHeading}>
-                                            <span className={styles.divisionPrefix}>Division: </span> {div.division}
-                                        </h4>
-                                        {div.teams.map(team => (
-                                            <ManagerCard key={team.team} manager={team} />
-                                        ))}
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                }
-            </article>
-        </>
-    );
+    return null;
 };
 
 export default Directory;

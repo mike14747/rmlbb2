@@ -55,92 +55,96 @@ export default function Forum() {
         router.push(`/login?url=/forum/${forumId}`);
     }
 
-    return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Forum
-                </title>
-            </Head>
+    if (session) {
+        return (
+            <>
+                <Head>
+                    <title>
+                        RML Baseball - Forum
+                    </title>
+                </Head>
 
-            <article className={styles.forumPageWrapper}>
-                {error && <p className="error">{error}</p>}
+                <article className={styles.forumPageWrapper}>
+                    {error && <p className="error">{error}</p>}
 
-                {isLoading && <Loading />}
+                    {isLoading && <Loading />}
 
-                {!isLoading && (!topicList || topicList.length === 0) &&
-                    <p className="error">An error occurred. Could not find the selected forum.</p>
-                }
+                    {!isLoading && (!topicList || topicList.length === 0) &&
+                        <p className="error">An error occurred. Could not find the selected forum.</p>
+                    }
 
-                {topicList?.length > 0 &&
-                    <>
-                        <p className="small">
-                            <Link href="/forum">
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                <a>
-                                    Forum Index
-                                </a>
-                            </Link>
-                            <span className={styles.arrow}> &#10139; {topicList[0].forumName}</span>
-                        </p>
+                    {topicList?.length > 0 &&
+                        <>
+                            <p className="small">
+                                <Link href="/forum">
+                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                    <a>
+                                        Forum Index
+                                    </a>
+                                </Link>
+                                <span className={styles.arrow}> &#10139; {topicList[0].forumName}</span>
+                            </p>
 
-                        <h2 className={'page-heading ' + styles.forumPageHeadding}>
-                            {topicList[0].forumName}
-                        </h2>
+                            <h2 className={'page-heading ' + styles.forumPageHeading}>
+                                {topicList[0].forumName}
+                            </h2>
 
-                        <p className="small">
-                            <>&#128221; </>
-                            <Link href={`/forum/${forumId}/topic/new-topic`}>
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                <a>
-                                    <strong>New Topic</strong>
-                                </a>
-                            </Link>
-                        </p>
+                            <p className="small">
+                                <>&#128221; </>
+                                <Link href={`/forum/${forumId}/topic/new-topic`}>
+                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                    <a>
+                                        <strong>New Topic</strong>
+                                    </a>
+                                </Link>
+                            </p>
 
-                        <div className={styles.forumsContainer}>
-                            <div className={styles.forumsHeadingRow}>
-                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem1}`}>Topic</div>
-                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem2}`}>Replies</div>
-                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem3}`}>Views</div>
-                                <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem4}`}>Last Reply</div>
-                            </div>
-
-                            {topicList.map(topic => (
-                                <div className={styles.forumsDataRow} key={topic._id}>
-                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem1}`}>
-                                        <p className={styles.forumsName}>
-                                            <Link href={`/forum/${forumId}/topic/${topic._id}`}>
-                                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                <a>{topic.title}</a>
-                                            </Link>
-                                        </p>
-                                        <p className={styles.forumsDescription}><small>by:</small> {topic.username}</p>
-                                        <p className={styles.forumsDescription}>{topic.date}</p>
-                                    </div>
-                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem2a}`}>{topic.replies.length}</div>
-
-                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem3a}`}>{topic.views}</div>
-                                    <div className={`${styles.forumsDataItem} ${styles.forumsDataItem4}`}>
-                                        {topic.lastReply &&
-                                            <>
-                                                <p>
-                                                    <Link href={`/forum/${forumId}/topic/${topic._id}${topic.lastReply.replyId ? `?reply=${topic.lastReply.replyId}` : ''}`}>
-                                                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                        <a>{topic.lastReply.subject}</a>
-                                                    </Link>
-                                                </p>
-                                                {topic.lastReply.username && <p className={styles.forumsDescription}><small>by:</small> {topic.lastReply.username}</p>}
-                                                <p className={styles.forumsDescription}>{topic.lastReply.date}</p>
-                                            </>
-                                        }
-                                    </div>
+                            <div className={styles.forumsContainer}>
+                                <div className={styles.forumsHeadingRow}>
+                                    <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem1}`}>Topic</div>
+                                    <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem2}`}>Replies</div>
+                                    <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem3}`}>Views</div>
+                                    <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem4}`}>Last Reply</div>
                                 </div>
-                            ))}
-                        </div>
-                    </>
-                }
-            </article>
-        </>
-    );
+
+                                {topicList.map(topic => (
+                                    <div className={styles.forumsDataRow} key={topic._id}>
+                                        <div className={`${styles.forumsDataItem} ${styles.forumsDataItem1}`}>
+                                            <p className={styles.forumsName}>
+                                                <Link href={`/forum/${forumId}/topic/${topic._id}`}>
+                                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                                    <a>{topic.title}</a>
+                                                </Link>
+                                            </p>
+                                            <p className={styles.forumsDescription}><small>by:</small> {topic.username}</p>
+                                            <p className={styles.forumsDescription}>{topic.date}</p>
+                                        </div>
+                                        <div className={`${styles.forumsDataItem} ${styles.forumsDataItem2a}`}>{topic.replies.length}</div>
+
+                                        <div className={`${styles.forumsDataItem} ${styles.forumsDataItem3a}`}>{topic.views}</div>
+                                        <div className={`${styles.forumsDataItem} ${styles.forumsDataItem4}`}>
+                                            {topic.lastReply &&
+                                                <>
+                                                    <p>
+                                                        <Link href={`/forum/${forumId}/topic/${topic._id}${topic.lastReply.replyId ? `?reply=${topic.lastReply.replyId}` : ''}`}>
+                                                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                                            <a>{topic.lastReply.subject}</a>
+                                                        </Link>
+                                                    </p>
+                                                    {topic.lastReply.username && <p className={styles.forumsDescription}><small>by:</small> {topic.lastReply.username}</p>}
+                                                    <p className={styles.forumsDescription}>{topic.lastReply.date}</p>
+                                                </>
+                                            }
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    }
+                </article>
+            </>
+        );
+    }
+
+    return null;
 }
