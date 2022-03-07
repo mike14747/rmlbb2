@@ -27,13 +27,13 @@ export default function Protected() {
             setIsLoading(true);
 
             fetch('/api/protected-route', { signal: abortController.signal })
-                .then(res => res.json())
-                .then(data => {
+                .then((res) => res.json())
+                .then((data) => {
                     console.log('data', data);
                     setProtectedData(data);
                     setError(null);
                 })
-                .catch(error => {
+                .catch((error) => {
                     if (error.name === 'AbortError') {
                         console.error('Data fetching was aborted!');
                     } else {
@@ -50,37 +50,37 @@ export default function Protected() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) {
-        router.push('/login?url=/protected');
+    if (!session) router.push('/login?url=/protected');
+
+    if (session) {
+        return (
+            <>
+                <Head>
+                    <title>RML Baseball - Protected Page</title>
+                </Head>
+
+                <article>
+                    <h2 className="page-heading">Protected Page Template</h2>
+
+                    {error && <p className="error">{error}</p>}
+
+                    {isLoading && <Loading />}
+
+                    {protectedData?.length > 0 && (
+                        <ul>
+                            {protectedData.map((item, index) => (
+                                <li key={index}>
+                                    Name: {item.name}, Age: {item.age}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </article>
+            </>
+        );
     }
 
-    return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Protected Page
-                </title>
-            </Head>
-
-            <article>
-                <h2 className="page-heading">
-                    Protected Page Template
-                </h2>
-
-                {error && <p className="error">{error}</p>}
-
-                {isLoading && <Loading />}
-
-                {protectedData?.length > 0 &&
-                    <ul>
-                        {protectedData.map((item, index) => (
-                            <li key={index}>Name: {item.name}, Age: {item.age}</li>
-                        ))}
-                    </ul>
-                }
-            </article>
-        </>
-    );
+    return null;
 }
 ```
 
@@ -118,7 +118,10 @@ This sample doesn't access any external data. It just return s promise with a sm
 ```js
 export async function getProtectedData() {
     return new Promise((resolve, reject) => {
-        resolve([{ name: 'Kevin', age: 65 }, { name: 'Mary', age: 57 }]);
+        resolve([
+            { name: 'Kevin', age: 65 },
+            { name: 'Mary', age: 57 },
+        ]);
     });
 }
 ```
@@ -143,25 +146,23 @@ export default function AdminPage() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session || !session.user || !session.user.role || session.user.role !== 'admin') {
-        router.push('/404');
+    if (!session || !session.user || !session.user.role || session.user.role !== 'admin') router.push('/');
+
+    if (session && session?.user?.role === 'admin') {
+        return (
+            <>
+                <Head>
+                    <title>RML Baseball - Admin</title>
+                </Head>
+
+                <article>
+                    <h2 className="page-heading">Admin Page</h2>
+                </article>
+            </>
+        );
     }
 
-    return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Admin
-                </title>
-            </Head>
-
-            <article>
-                <h2 className="page-heading">
-                    Admin Page
-                </h2>
-            </article>
-        </>
-    );
+    return null;
 }
 ```
 

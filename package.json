@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "next dev",
+        "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
         "build": "next build",
         "start": "next start",
         "test": "jest"
@@ -28,6 +29,7 @@
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^13.2.1",
         "babel-jest": "^27.3.1",
+        "cross-env": "^7.0.3",
         "eslint": "^7.25.0",
         "eslint-config-next": "^11.0.1",
         "identity-obj-proxy": "^3.0.0",

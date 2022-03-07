@@ -23,22 +23,24 @@ export default function Topic() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) {
-        router.push(`/login?url=/forum/topic/${topicId}`);
+    if (!session) router.push(`/login?url=/forum/topic/${topicId}`);
+
+    if (session) {
+        return (
+            <>
+                <Head>
+                    <title>
+                        RML Baseball - Forum
+                    </title>
+                </Head>
+
+                <article>
+                    <p>You have selected a topic and reached that topic&apos;s page.</p>
+                    <p>{topic}</p>
+                </article>
+            </>
+        );
     }
 
-    return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Forum
-                </title>
-            </Head>
-
-            <article>
-                <p>You have selected a topic and reached that topic&apos;s page.</p>
-                <p>{topic}</p>
-            </article>
-        </>
-    );
+    return null;
 }
