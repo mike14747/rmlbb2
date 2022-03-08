@@ -139,10 +139,10 @@ export default function ForgottenUsername() {
                             name="username"
                             type="text"
                             required={true}
-                            pattern="^[a-zA-Z0-9_-]{4,15}$"
                             value={username}
                             handleChange={(e) => setUsername(e.target.value)}
-                            errorMsg="Username is required and must be from 4 to 15 characters in length."
+                            pattern="^(?=.{4,15}$)[a-zA-Z0-9]+(?:[ _-][a-zA-Z0-9]+)*$"
+                            errorMsg="Username must be from 4 to 15 characters in length and not include any special characters other than dashes, spaces and underscores (but only 1 can be used consecutively). Must start and end with a letter or number."
                             step="any"
                         />
 
