@@ -52,7 +52,6 @@ const Profile = () => {
             signOut({ redirect: false });
             setNewUsername('');
             setUsernameError(null);
-            setEmailUpdateMsg('');
         }
     };
 
@@ -71,6 +70,7 @@ const Profile = () => {
             res.status === 400 && setEmailError('An error occurred. New email is not in the proper format.');
             res.status === 401 && setEmailError('An error occurred. You do not have permission to make this update.');
             res.status === 500 && setEmailError('A server error occurred. Please try your update again.');
+            setEmailUpdateMsg('');
         }
         if (res.status === 200) {
             setNewEmail('');
@@ -100,7 +100,6 @@ const Profile = () => {
             setNewPassword('');
             setrepeatPassword('');
             setPasswordError(null);
-            setEmailUpdateMsg('');
         }
     };
 
