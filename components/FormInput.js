@@ -27,7 +27,7 @@ export default function FormInput({ id, label, handleChange, errorMsg, required,
                 />
 
                 {type === 'checkbox' &&
-                    <div role="checkbox" aria-checked={checked} tabIndex="0" aria-labelledby={label} className={styles.fakeCheckbox}></div>
+                    <div role="checkbox" aria-checked={checked || false} tabIndex="0" aria-labelledby={label} className={styles.fakeCheckbox}></div>
                 }
             </label>
 
