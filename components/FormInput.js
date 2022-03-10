@@ -4,27 +4,32 @@ import styles from '../styles/FormInput.module.css';
 
 const sizes = ['small', 'normal'];
 
-export default function FormInput({ id, label, handleChange, errorMsg, required, size, ...rest }) {
+export default function FormInput({ id, label, handleChange, errorMsg, required, size, type, ...rest }) {
     const inputSize = sizes?.includes(size) ? size : 'normal';
+
+    const { checked } = { ...rest };
 
     return (
         <div className={styles.inputWrapper}>
-            {label &&
-                <label htmlFor={id} className={`${styles.label} ${styles[inputSize]}`}>
-                    {label}
-                    {/* you can disable the following line if you don't want to notify the user of fields being required */}
-                    {/* {required && <span className={styles.required}>*required field</span>} */}
-                </label>
-            }
+            <label htmlFor={id} className={`${styles.label} ${styles[inputSize]} ${type === 'checkbox' ? styles.labelCheckbox : ''}`}>
+                {label}
+                {/* you can disable the following line if you don't want to notify the user of fields being required */}
+                {/* {required && <span className={styles.required}>*required field</span>} */}
 
-            <input
-                id={id}
-                className={`${styles.input} ${styles[inputSize]}`}
-                onChange={handleChange}
-                required={required}
-                size="30"
-                {...rest}
-            />
+                <input
+                    id={id}
+                    className={`${styles.input} ${styles[inputSize]}`}
+                    onChange={handleChange}
+                    required={required}
+                    size="30"
+                    type={type}
+                    {...rest}
+                />
+
+                {type === 'checkbox' &&
+                    <div role="checkbox" aria-checked={checked} tabIndex="0" aria-labelledby={label} className={styles.fakeCheckbox}></div>
+                }
+            </label>
 
             {errorMsg &&
                 <p className={styles.errorMessage}>{errorMsg}</p>
@@ -50,15 +55,17 @@ FormInput.propTypes = {
         'tel',
         'url',
         'time',
+        'checkbox',
     ]),
     placeholder: PropTypes.string,
     pattern: PropTypes.string,
     step: PropTypes.string,
+    checked: PropTypes.bool,
 };
 
 FormInput.defaultProps = {
     id: null,
-    label: null,
+    label: '',
     required: null,
     type: 'text',
     placeholder: '',
@@ -66,4 +73,5 @@ FormInput.defaultProps = {
     errorMsg: '',
     pattern: null,
     step: null,
+    checked: null,
 };

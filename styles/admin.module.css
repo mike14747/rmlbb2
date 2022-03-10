@@ -7,3 +7,7 @@
     font-size: 1.44rem;
     font-size: var(--step-2);
 }
+
+.submitButtonWrapper {
+    margin-top: 2rem;
+}
