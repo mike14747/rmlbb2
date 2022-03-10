@@ -3,7 +3,7 @@
 }
 
 label.label,
-label.label + input.input {
+label.label > input.input {
     display: block;
     max-width: 30ch;
     margin: 0;

@@ -88,6 +88,7 @@ export default function AddForum() {
                             checked={active}
                             handleChange={() => setActive(!active)}
                         />
+
                         <div className={styles.submitButtonWrapper}>
                             <Button type="submit" size="medium" variant="contained" style="primary">Submit</Button>
                         </div>

@@ -4,7 +4,7 @@ import Button from '../components/Button';
 
 import styles from '../styles/profile.module.css';
 
-export default function PasswordResetForm({ handleUpdatePasswordSubmit, passwordError, newPassword, setNewPassword, repeatPassword, setrepeatPassword }) {
+export default function PasswordResetForm({ handleUpdatePasswordSubmit, passwordError, newPassword, setNewPassword, repeatPassword, setRepeatPassword }) {
     return (
         <form className={styles.updateGroup} onSubmit={handleUpdatePasswordSubmit}>
             {passwordError && <p className={styles.error}>{passwordError}</p>}
@@ -28,7 +28,7 @@ export default function PasswordResetForm({ handleUpdatePasswordSubmit, password
                 type="password"
                 value={repeatPassword}
                 required={true}
-                handleChange={(e) => setrepeatPassword(e.target.value)}
+                handleChange={(e) => setRepeatPassword(e.target.value)}
                 pattern={newPassword}
                 errorMsg="Passwords do not match."
             />
@@ -44,5 +44,5 @@ PasswordResetForm.propTypes = {
     newPassword: PropTypes.string,
     setNewPassword: PropTypes.func,
     repeatPassword: PropTypes.string,
-    setrepeatPassword: PropTypes.func,
+    setRepeatPassword: PropTypes.func,
 };

@@ -4,6 +4,7 @@ import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
 import FormInput from '../components/FormInput';
+import UsernameFormInput from '../components/NewUsernameFormInput';
 import Button from '../components/Button';
 import PasswordResetForm from '../components/PasswordResetForm';
 
@@ -25,10 +26,10 @@ const Profile = () => {
 
     const [emailUpdateMsg, setEmailUpdateMsg] = useState('');
 
-    const [newUsername, setNewUsername] = useState('');
+    const [username, setUsername] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
-    const [repeatPassword, setrepeatPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
 
     const handleUpdateUsernameSubmit = async (e) => {
         e.preventDefault();
@@ -38,7 +39,7 @@ const Profile = () => {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify({ newUsername }),
+            body: JSON.stringify({ username }),
         });
 
         if (res.status !== 200) {
@@ -50,7 +51,7 @@ const Profile = () => {
 
         if (res.status === 200) {
             signOut({ redirect: false });
-            setNewUsername('');
+            setUsername('');
             setUsernameError(null);
         }
     };
@@ -98,7 +99,7 @@ const Profile = () => {
         if (res.status === 200) {
             signOut({ redirect: false });
             setNewPassword('');
-            setrepeatPassword('');
+            setRepeatPassword('');
             setPasswordError(null);
         }
     };
@@ -171,17 +172,7 @@ const Profile = () => {
                             <form className={styles.updateGroup} onSubmit={handleUpdateUsernameSubmit}>
                                 {usernameError && <p className={styles.error}>{usernameError}</p>}
 
-                                <FormInput
-                                    id="newUsername"
-                                    label="New Username"
-                                    name="newUsername"
-                                    type="text"
-                                    value={newUsername}
-                                    required={true}
-                                    handleChange={(e) => setNewUsername(e.target.value)}
-                                    pattern="^(?=.{4,15}$)[a-zA-Z0-9]+(?:[ _-][a-zA-Z0-9]+)*$"
-                                    errorMsg="Username must be from 4 to 15 characters in length and not include any special characters other than dashes, spaces and underscores (but only 1 can be used consecutively). Must start and end with a letter or number."
-                                />
+                                <UsernameFormInput username={username} setUsername={setUsername} />
 
                                 <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
                             </form>
@@ -192,7 +183,7 @@ const Profile = () => {
                                 newPassword={newPassword}
                                 setNewPassword={setNewPassword}
                                 repeatPassword={repeatPassword}
-                                setrepeatPassword={setrepeatPassword}
+                                setRepeatPassword={setRepeatPassword}
                             />
 
                             <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
