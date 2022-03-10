@@ -72,8 +72,10 @@ npm i
 Include these **environmental variable** in your .env file:
 
 ```txt
-MONGODB_URI=MONGODB_URI=remote_mongodb
-MONGODB_DB=db_name
+NODE_ENV=development
+# ----------
+MONGODB_URI=MONGODB_URI=<remote_mongodb>
+MONGODB_DB=<db_name>
 # ----------
 SANITY_PUBLIC_QUERY_URL=<url>
 SANITY_PUBLIC_MUTATION_URL=<url>
@@ -93,7 +95,10 @@ JWT_SIGNING_PRIVATE_KEY=<key>
 JWT_SECRET=<secret>
 # ----------
 NO_REPLY_EMAIL=<email>
-NO_REPLY_EMAIL_PASSWORD=<password>
+GOOGLE_CLIENT_ID=<client_id>
+GOOGLE_CLIENT_SECRET=<client_secret>
+GOOGLE_REFRESH_TOKEN=<token>
+# ------
 BASE_URL=http://localhost:3000
 # ----------
 INITIAL_NEWS_ITEMS=20
