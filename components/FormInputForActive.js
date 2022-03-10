@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
 
-export default function ActiveFormInput({ active, setActive }) {
+export default function FormInputForActive({ active, setActive }) {
     return (
         <FormInput
             id="active"
@@ -13,7 +13,7 @@ export default function ActiveFormInput({ active, setActive }) {
         />
     );
 }
-ActiveFormInput.propTypes = {
-    active: PropTypes.string,
+FormInputForActive.propTypes = {
+    active: PropTypes.bool,
     setActive: PropTypes.func,
 };

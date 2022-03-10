@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
 
-export default function NewPasswordFormInput({ password, setPassword, repeatPassword, setRepeatPassword }) {
+export default function FormInputForNewPassword({ password, setPassword, repeatPassword, setRepeatPassword }) {
     return (
         <>
             <FormInput
@@ -30,7 +30,7 @@ export default function NewPasswordFormInput({ password, setPassword, repeatPass
         </>
     );
 }
-NewPasswordFormInput.propTypes = {
+FormInputForNewPassword.propTypes = {
     password: PropTypes.string,
     setPassword: PropTypes.func,
     repeatPassword: PropTypes.string,

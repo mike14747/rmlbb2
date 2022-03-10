@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
-import NewUsernameFormInput from '../../components/NewUsernameFormInput';
-import NewPasswordFormInput from '../../components/NewPasswordFormInput';
-import NewEmailFormInput from '../../components/NewEmailFormInput';
-import ActiveFormInput from '../../components/ActiveFormInput';
-import FormInput from '../../components/FormInput';
+import FormInputForUsername from '../../components/FormInputForUsername';
+import FormInputForNewPassword from '../../components/FormInputForNewPassword';
+import FormInputForEmail from '../../components/FormInputForEmail';
+import FormInputForActive from '../../components/FormInputForActive';
 import Button from '../../components/Button';
 
 import styles from '../../styles/admin.module.css';
@@ -83,13 +82,13 @@ export default function AddUser() {
 
                         {newUserMsg && <p className="success2">{newUserMsg}</p>}
 
-                        <NewUsernameFormInput username={username} setUsername={setUsername} />
+                        <FormInputForUsername username={username} setUsername={setUsername} />
 
-                        <NewPasswordFormInput password={password} setPassword={setPassword} repeatPassword={repeatPassword} setRepeatPassword={setRepeatPassword} />
+                        <FormInputForNewPassword password={password} setPassword={setPassword} repeatPassword={repeatPassword} setRepeatPassword={setRepeatPassword} />
 
-                        <NewEmailFormInput email={email} setEmail={setEmail} />
+                        <FormInputForEmail email={email} setEmail={setEmail} />
 
-                        <ActiveFormInput active={active} setActive={setActive} />
+                        <FormInputForActive active={active} setActive={setActive} />
 
                         <div className={styles.submitButtonWrapper}>
                             <Button type="submit" size="medium" variant="contained" style="primary">Submit</Button>

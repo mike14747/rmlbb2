@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
 
-export default function NewEmailFormInput({ email, setEmail }) {
+export default function FormInputForEmail({ email, setEmail }) {
     return (
         <FormInput
             id="email"
@@ -17,7 +17,7 @@ export default function NewEmailFormInput({ email, setEmail }) {
     );
 }
 
-NewEmailFormInput.propTypes = {
+FormInputForEmail.propTypes = {
     email: PropTypes.string,
     setEmail: PropTypes.func,
 };

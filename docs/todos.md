@@ -18,13 +18,13 @@ Write schema validations for all MongoDB collections. (in progress)
 
 Add a transition effect for the TopInfo component when it's being closed.
 
-Figure out an admin way to add users and forums.
-
-Figure out MongoDB transactions since several fields are embedded.
+Figure out an admin way to add users and forums. (that is done, but editing them is in progress)
 
 Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
+
+Add a check in the user serverless function to make sure the reset token is not expired.
 
 ---
 
@@ -38,7 +38,7 @@ Make the TopInfo, Authbar and Footer components not be full width.
 
 Change over the directory and profile pages to the new authentication system.
 
-Save the structure of the SignIn component to my component library as a possible dropdown menu.
+Save the structure of the SignIn component to my component library as a possible dropdown menu. (it's been saved there)
 
 Update managers in sanity.io. (I have a good flow for how to move the existing MySQL manager data to sanity. "/docs/directory.md")
 
@@ -53,3 +53,5 @@ Add a $lookup to get the username for the specific forum page to display it with
 Style the "To main content" link. (it's a basic, but acceptable style)
 
 Add a next-id (or nextId) collection in MongoDB. (the collection is named 'counters')
+
+Figure out MongoDB transactions since several fields are embedded.

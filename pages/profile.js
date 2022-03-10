@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
-import FormInput from '../components/FormInput';
-import UsernameFormInput from '../components/NewUsernameFormInput';
+import FormInputForUsername from '../components/FormInputForUsername';
+import FormInputForNewPassword from '../components/FormInputForNewPassword';
+import FormInputForEmail from '../components/FormInputForEmail';
 import Button from '../components/Button';
-import PasswordResetForm from '../components/PasswordResetForm';
 
 import styles from '../styles/profile.module.css';
 
@@ -27,8 +27,8 @@ const Profile = () => {
     const [emailUpdateMsg, setEmailUpdateMsg] = useState('');
 
     const [username, setUsername] = useState('');
-    const [newEmail, setNewEmail] = useState('');
-    const [newPassword, setNewPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
 
     const handleUpdateUsernameSubmit = async (e) => {
@@ -64,7 +64,7 @@ const Profile = () => {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify({ newEmail }),
+            body: JSON.stringify({ email }),
         });
 
         if (res.status !== 200) {
@@ -74,9 +74,9 @@ const Profile = () => {
             setEmailUpdateMsg('');
         }
         if (res.status === 200) {
-            setNewEmail('');
+            setEmail('');
             setEmailError(null);
-            setEmailUpdateMsg('Your email address has been successfully updated to: ' + newEmail + '!');
+            setEmailUpdateMsg('Your email address has been successfully updated to: ' + email + '!');
         }
     };
 
@@ -88,7 +88,7 @@ const Profile = () => {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify({ newPassword }),
+            body: JSON.stringify({ password }),
         });
 
         if (res.status !== 200) {
@@ -98,7 +98,7 @@ const Profile = () => {
         }
         if (res.status === 200) {
             signOut({ redirect: false });
-            setNewPassword('');
+            setPassword('');
             setRepeatPassword('');
             setPasswordError(null);
         }
@@ -172,36 +172,25 @@ const Profile = () => {
                             <form className={styles.updateGroup} onSubmit={handleUpdateUsernameSubmit}>
                                 {usernameError && <p className={styles.error}>{usernameError}</p>}
 
-                                <UsernameFormInput username={username} setUsername={setUsername} />
+                                <FormInputForUsername username={username} setUsername={setUsername} />
 
                                 <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
                             </form>
 
-                            <PasswordResetForm
-                                handleUpdatePasswordSubmit={handleUpdatePasswordSubmit}
-                                passwordError={passwordError}
-                                newPassword={newPassword}
-                                setNewPassword={setNewPassword}
-                                repeatPassword={repeatPassword}
-                                setRepeatPassword={setRepeatPassword}
-                            />
+                            <form className={styles.updateGroup} onSubmit={handleUpdatePasswordSubmit}>
+                                {passwordError && <p className={styles.error}>{passwordError}</p>}
+
+                                <FormInputForNewPassword password={password} setPassword={setPassword} repeatPassword={repeatPassword} setRepeatPassword={setRepeatPassword} />
+
+                                <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
+                            </form>
 
                             <form className={styles.updateGroup} onSubmit={handleUpdateEmailSubmit}>
                                 {emailError && <p className={styles.error}>{emailError}</p>}
 
                                 {emailUpdateMsg && <p className={styles.success}>{emailUpdateMsg}</p>}
 
-                                <FormInput
-                                    id="newEmail"
-                                    label="New Email"
-                                    name="newEmail"
-                                    type="email"
-                                    value={newEmail}
-                                    required={true}
-                                    handleChange={(e) => setNewEmail(e.target.value)}
-                                    pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
-                                    errorMsg="Please enter a valid email address."
-                                />
+                                <FormInputForEmail email={email} setEmail={setEmail} />
 
                                 <Button type="submit" size="medium" variant="contained" style="primary">Apply</Button>
                             </form>

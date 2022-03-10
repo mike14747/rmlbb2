@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Loading from '../../../../components/Loading';
 import Button from '../../../../components/Button';
-import FormInput from '../../../../components/FormInput';
+import FormInputForTopicTitle from '../../../../components/FormInputForTopicTitle';
 import TiptapEditor from '../../../../components/TiptapEditor';
 
 import styles from '../../../../styles/forum.module.css';
@@ -109,16 +109,7 @@ export default function NewTopic() {
                             </p>
 
                             <form onSubmit={submitTopic}>
-                                <FormInput
-                                    id="title"
-                                    label="Title"
-                                    name="title"
-                                    type="text"
-                                    value={title}
-                                    required={true}
-                                    handleChange={(e) => setTitle(e.target.value)}
-                                    maxLength="50"
-                                />
+                                <FormInputForTopicTitle title={title} setTitle={setTitle} />
 
                                 <TiptapEditor setContent={setContent} />
 

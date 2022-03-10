@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import FormInput from './FormInput';
+import FormInputForUsername from './FormInputForUsername';
+import FormInputForEmail from './FormInputForEmail';
 import Button from './Button';
 
 import styles from '../styles/ForgotLoginInfo.module.css';
@@ -104,17 +105,7 @@ export default function ForgottenUsername() {
                     {success && <p className="success">An email has been sent to the email address you entered.</p>}
 
                     <form method="post" onSubmit={handleUsernameSubmit} className="form">
-                        <FormInput
-                            id="email"
-                            label="Email address"
-                            name="email"
-                            type="email"
-                            required={true}
-                            pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
-                            value={email}
-                            handleChange={(e) => setEmail(e.target.value)}
-                            errorMsg="Please enter a valid email address."
-                        />
+                        <FormInputForEmail email={email} setEmail={setEmail} />
 
                         <Button type="submit">Submit</Button>
                     </form>
@@ -133,30 +124,9 @@ export default function ForgottenUsername() {
                     {success && <p className="success">An email has been sent to the email address you entered.</p>}
 
                     <form method="post" onSubmit={handlePasswordSubmit} className="form">
-                        <FormInput
-                            id="username"
-                            label="Username"
-                            name="username"
-                            type="text"
-                            required={true}
-                            value={username}
-                            handleChange={(e) => setUsername(e.target.value)}
-                            pattern="^(?=.{4,15}$)[a-zA-Z0-9]+(?:[ _-][a-zA-Z0-9]+)*$"
-                            errorMsg="Username must be from 4 to 15 characters in length and not include any special characters other than dashes, spaces and underscores (but only 1 can be used consecutively). Must start and end with a letter or number."
-                            step="any"
-                        />
+                        <FormInputForUsername username={username} setUsername={setUsername} />
 
-                        <FormInput
-                            id="email"
-                            label="Email address"
-                            name="email"
-                            type="email"
-                            required={true}
-                            pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
-                            value={email}
-                            handleChange={(e) => setEmail(e.target.value)}
-                            errorMsg="Please enter a valid email address."
-                        />
+                        <FormInputForEmail email={email} setEmail={setEmail} />
 
                         <Button type="submit">Submit</Button>
                     </form>

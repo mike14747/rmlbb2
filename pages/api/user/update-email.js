@@ -5,10 +5,10 @@ export default async function updateEmail(req, res) {
     if (req.method !== 'POST') res.status(401).end();
     const session = await getSession({ req });
     if (!session) res.status(401).end();
-    if (!req?.body?.newEmail) return res.status(400).end();
+    if (!req?.body?.email) return res.status(400).end();
 
     try {
-        const response = await changeEmail(session.user._id, req.body.newEmail);
+        const response = await changeEmail(session.user._id, req.body.email);
         response?.code ? res.status(response.code).end() : res.status(500).end();
     } catch (error) {
         res.status(500).end();

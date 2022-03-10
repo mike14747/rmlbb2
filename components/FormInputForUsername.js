@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
 
-export default function NewUsernameFormInput({ username, setUsername }) {
+export default function FormInputForUsername({ username, setUsername }) {
     return (
         <FormInput
             id="username"
@@ -16,7 +16,7 @@ export default function NewUsernameFormInput({ username, setUsername }) {
         />
     );
 }
-NewUsernameFormInput.propTypes = {
+FormInputForUsername.propTypes = {
     username: PropTypes.string,
     setUsername: PropTypes.func,
 };
