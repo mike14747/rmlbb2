@@ -18,8 +18,6 @@ Write schema validations for all MongoDB collections. (in progress)
 
 Add a transition effect for the TopInfo component when it's being closed.
 
-Figure out an admin way to add users and forums. (that is done, but editing them is in progress)
-
 Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
@@ -57,3 +55,5 @@ Add a next-id (or nextId) collection in MongoDB. (the collection is named 'count
 Figure out MongoDB transactions since several fields are embedded.
 
 Add a check in the user serverless function to make sure the reset token is not expired.
+
+Figure out an admin way to add users and forums.
