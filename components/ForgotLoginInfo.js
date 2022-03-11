@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FormInputForUsername from './FormInputForUsername';
 import FormInputForEmail from './FormInputForEmail';
 import Button from './Button';
+import Loading from './Loading';
 
 import styles from '../styles/ForgotLoginInfo.module.css';
 
@@ -12,9 +13,13 @@ export default function ForgottenUsername() {
     const [success, setSuccess] = useState(false);
     const [showForgotUsername, setShowForgotUsername] = useState(false);
     const [showForgotPassword, setShowForgotPassword] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleUsernameSubmit = async (e) => {
         e.preventDefault();
+
+        setIsSubmitting(true);
+        setSuccess(false);
 
         const res = await fetch('/api/user/forgot-username', {
             method: 'POST',
@@ -24,8 +29,9 @@ export default function ForgottenUsername() {
             body: JSON.stringify({ email }),
         });
 
+        setIsSubmitting(false);
+
         if (res.status !== 200) {
-            setSuccess(false);
             setError('An error occurred. Make sure you submitted your email address correctly.');
         }
         if (res.status === 200) {
@@ -38,6 +44,9 @@ export default function ForgottenUsername() {
     const handlePasswordSubmit = async (e) => {
         e.preventDefault();
 
+        setIsSubmitting(true);
+        setSuccess(false);
+
         const res = await fetch('/api/user/reset-password', {
             method: 'POST',
             headers: {
@@ -46,8 +55,9 @@ export default function ForgottenUsername() {
             body: JSON.stringify({ username, email }),
         });
 
+        setIsSubmitting(false);
+
         if (res.status !== 200) {
-            setSuccess(false);
             res.status === 400 && setError('An error occurred. Your username and/or email are not valid.');
             res.status === 401 && setError('An error occurred. You do not have permission to make this request.');
             res.status === 500 && setError('A server error occurred. Please try your request again.');
@@ -118,6 +128,8 @@ export default function ForgottenUsername() {
                     <p className="text-left">
                         Enter the username and email address associated with your account and an email will be sent to you with a link to reset your password.
                     </p>
+
+                    {isSubmitting && <Loading />}
 
                     {error && <p className="error">{error}</p>}
 

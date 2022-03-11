@@ -24,7 +24,7 @@ Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
-Add a check in the user serverless function to make sure the reset token is not expired.
+Upgrade next.js to v12.
 
 ---
 
@@ -55,3 +55,5 @@ Style the "To main content" link. (it's a basic, but acceptable style)
 Add a next-id (or nextId) collection in MongoDB. (the collection is named 'counters')
 
 Figure out MongoDB transactions since several fields are embedded.
+
+Add a check in the user serverless function to make sure the reset token is not expired.
