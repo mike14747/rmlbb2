@@ -19,7 +19,6 @@ export default function ForumHome() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log('inside useEffect()');
         const abortController = new AbortController();
 
         if (session) {

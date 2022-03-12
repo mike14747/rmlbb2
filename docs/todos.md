@@ -18,7 +18,7 @@ Write schema validations for all MongoDB collections.
 
 Add a transition effect for the TopInfo component when it's being closed.
 
-Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color?
+Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color and size?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
