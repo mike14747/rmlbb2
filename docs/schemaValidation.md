@@ -86,7 +86,7 @@ users collection:
             },
             posts: {
                 bsonType: 'int',
-                description: 'must be an integer with a value of at least 0 and is required',
+                description: 'must be a non-negative integer and is required',
                 minimum: 0
             },
             registeredDate: {
@@ -149,12 +149,12 @@ forums collection:
             },
             topics: {
                 bsonType: 'int',
-                description: 'must be an integer with a value of at least 0 and is required',
+                description: 'must be a non-negative integer and is required',
                 minimum: 0
             },
             posts: {
                 bsonType: 'int',
-                description: 'must be an integer with a value of at least 0 and is required',
+                description: 'must be a non-negative integer and is required',
                 minimum: 0
             },
             lastPost: {
@@ -272,15 +272,15 @@ topics collection:
             },
             title: {
                 bsonType: 'string',
-                description: 'must be a string from 1 to 50 characters in length and is required',
+                description: 'must be a string from 1 to 100 characters in length and is required',
                 minLength: 1,
-                maxLength: 50
+                maxLength: 100
             },
             content: {
                 bsonType: 'string',
-                description: 'must be a string from 1 to 10000 characters in length and is required,
+                description: 'must be a string from 1 to 10000 characters in length and is required',
                 minLength: 1,
-                maxLength: 10000
+                maxLength: 25000
             },
             forum_id: {
                 bsonType: 'int',
@@ -306,19 +306,27 @@ topics collection:
             },
             date: {
                 bsonType: 'date',
-                description: must be a valid ISO Date'
+                description: 'must be a valid ISO Date'
             },
             lastEditDate: {
-                bsonType: 'date',
-                description: must be a valid ISO Date or null',
-                oneOf: [
-                    {
-                        bsonType: 'date',
-                    },
-                    {
-                        bsonType: 'null'
-                    }
-                ]
+                bsonType: ['date', 'null'],
+                description: 'must be a valid ISO Date but can be null'
+            },
+            views: {
+                bsonType: 'int',
+                description: 'must be a non-negative integer and is required',
+                minimum: 0
+            },
+            replies: {
+                bsonType: 'array',
+                description: 'must be an array of positive integers, but can be an empty array',
+                items: {
+                    bsonType: 'int',
+                    description: 'must be a unique positive integer',
+                    minimum: 1
+                },
+                uniqueItems: true,
+                minItems: 0
             },
             forumActive: {
                 bsonType: 'bool',
@@ -341,7 +349,7 @@ topics collection:
                         bsonType: 'string',
                         description: 'must be a string from 1 to 50 characters in length if it exists',
                         minLength: 1,
-                        maxLength: 50
+                        maxLength: 100
                     },
                     username: {
                         bsonType: 'string',
@@ -384,7 +392,8 @@ replies collection:
             'user_id',
             'username',
             'topic_id',
-            'date'
+            'date',
+            'lastEditDate',
         ],
         properties: {
             _id: {
@@ -396,7 +405,42 @@ replies collection:
                 bsonType: 'string',
                 description: 'must be a string from 1 to 50 characters in length and is required',
                 minLength: 1,
-                maxLength: 50
+                maxLength: 100
+            },
+            content: {
+                bsonType: 'string',
+                description: 'must be a string from 1 to 10000 characters in length and is required',
+                minLength: 1,
+                maxLength: 25000
+            },
+            forum_id: {
+                bsonType: 'int',
+                description: 'must be a unique positive integer and is required',
+                minimum: 1
+            },
+            user_id: {
+                bsonType: 'int',
+                description: 'must be a unique positive integer and is required',
+                minimum: 1
+            },
+            username: {
+                bsonType: 'string',
+                description: 'must be a string from 4 to 15 characters in length and is required',
+                minLength: 4,
+                maxLength: 15
+            },
+            topic_id: {
+                bsonType: 'int',
+                description: 'must be a unique positive integer and is required',
+                minimum: 1
+            },
+            date: {
+                bsonType: 'date',
+                description: 'must be a valid ISO Date'
+            },
+            lastEditDate: {
+                bsonType: ['date', 'null'],
+                description: 'must be a valid ISO Date but can be null'
             },
         },
         additionalProperties: false

@@ -14,7 +14,7 @@ Add news items to sanity.io.
 
 Add file downloads to sanity.io.
 
-Write schema validations for all MongoDB collections. (in progress)
+Write schema validations for all MongoDB collections.
 
 Add a transition effect for the TopInfo component when it's being closed.
 
@@ -57,3 +57,5 @@ Figure out MongoDB transactions since several fields are embedded.
 Add a check in the user serverless function to make sure the reset token is not expired.
 
 Figure out an admin way to add users and forums.
+
+Write schema validations for all MongoDB collections.
