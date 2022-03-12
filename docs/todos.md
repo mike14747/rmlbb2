@@ -22,8 +22,6 @@ Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color and size?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
-Upgrade next.js to v12.
-
 ---
 
 ### Done
@@ -59,3 +57,5 @@ Add a check in the user serverless function to make sure the reset token is not 
 Figure out an admin way to add users and forums.
 
 Write schema validations for all MongoDB collections.
+
+Upgrade next.js to v12.
