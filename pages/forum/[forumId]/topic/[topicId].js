@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Loading from '../../../../components/Loading';
-import parse, { domToReact } from 'html-react-parser';
+import parse from 'html-react-parser';
 import DOMPurify from 'dompurify';
 
 import styles from '../../../../styles/forum.module.css';
