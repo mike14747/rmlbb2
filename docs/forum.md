@@ -16,7 +16,7 @@ Posts are the total number of posts in a forum... which includes:
 -   New topics
 -   Replies to topics
 
-Posts in kind of a combining of topics and replies.
+Posts is kind of a combining of topics and replies.
 
 Examples:
 

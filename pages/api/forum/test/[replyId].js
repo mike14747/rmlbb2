@@ -8,7 +8,7 @@ export default async function getReplyById(req, res) {
 
     if (req.method === 'GET') {
         try {
-            const response = await getOneReply(req.query.replyId);
+            const response = await getOneReply(parseInt(req.query.replyId));
             response ? res.status(200).json(response) : res.status(500).end();
         } catch (error) {
             console.error(error);

@@ -22,6 +22,8 @@ Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color and size?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
+Get a topic showing up on the [topicId] page.
+
 ---
 
 ### Done

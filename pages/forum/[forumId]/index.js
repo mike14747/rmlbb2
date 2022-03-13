@@ -27,16 +27,15 @@ export default function Forum() {
             fetch('/api/forum/' + forumId, { signal: abortController.signal })
                 .then(res => res.json())
                 .then(data => {
-                    console.log('data:', data);
                     setTopicList(data);
                     setError(null);
                     setIsLoading(false);
                 })
                 .catch(error => {
                     if (error.name === 'AbortError') {
-                        console.log('Data fetching was aborted!');
+                        console.error('Data fetching was aborted!');
                     } else {
-                        console.log(error);
+                        console.error(error);
                         setTopicList(null);
                         setError('An error occurred fetching data.');
                         setIsLoading(false);

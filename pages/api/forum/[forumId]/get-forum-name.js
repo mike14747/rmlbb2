@@ -8,7 +8,7 @@ export default async function forumList(req, res) {
 
     if (req.method === 'GET') {
         try {
-            const response = await getForumName(req.query.forumId);
+            const response = await getForumName(parseInt(req.query.forumId));
             response ? res.status(200).json(response) : res.status(500).end();
         } catch (error) {
             console.error(error);

@@ -8,7 +8,7 @@ export default async function forumTopics(req, res) {
 
     if (req.method === 'GET') {
         try {
-            const response = await getForumTopics(req.query.forumId);
+            const response = await getForumTopics(parseInt(req.query.forumId));
             response ? res.status(200).json(response) : res.status(500).end();
         } catch (error) {
             console.error(error);

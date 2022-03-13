@@ -157,6 +157,41 @@
     vertical-align: text-bottom;
 }
 
+.topicContainer {
+    margin: 0 auto 3rem auto;
+    border: 1px var(--mg-gray-3) solid;
+    box-shadow: 3px 3px 6px 0 var(--mg-gray-4);
+    overflow: hidden;
+}
+
+.topicTitle {
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+    color: var(--theme-color-red);
+    margin: 0;
+}
+
+.topicHeading {
+    background-color: var(--mg-gray-1);
+    padding: 1rem;
+    border-bottom: 1px var(--mg-gray-3) solid;
+}
+
+.topicDetails {
+    font-size: 0.83rem;
+    font-size: var(--step--1);
+    color: var(--mg-gray-6);
+    margin: 0;
+}
+
+.topicDate {
+    color: var(--theme-color-green);
+}
+
+.topicBody {
+    padding: 1rem;
+}
+
 .new {
     fill: var(--theme-color-red);
 }
