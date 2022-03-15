@@ -18,6 +18,7 @@ export default function Topic() {
     const topicId = router.query.topicId;
 
     const [topic, setTopic] = useState(null);
+    const [replies, setReplies] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -30,7 +31,8 @@ export default function Topic() {
             fetch('/api/forum/' + forumId + '/topic/' + topicId)
                 .then(res => res.ok ? res.json() : Promise.reject(res.status))
                 .then(data => {
-                    setTopic(data);
+                    setTopic(data.topic);
+                    setReplies(data.replies);
                     setError(null);
                 })
                 .catch(error => {
