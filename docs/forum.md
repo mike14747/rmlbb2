@@ -82,3 +82,44 @@ Other possible parsing packages:
 -   html-to-react (uses htmlparser2 under the hood)
 
 ---
+
+### Query to get topic and replies content
+
+This isn't fully working. The final output is only the topic _id and an array of the replies content objects.
+
+```js
+[
+    {
+        $match: {
+            forum_id: 7,
+            _id: 1424,
+            forumActive: true,
+            active: true,
+        },
+    },
+    {
+        $unwind: {
+            path: '$replies',
+            preserveNullAndEmptyArrays: true,
+        },
+    },
+    {
+        $lookup: {
+            from: 'replies',
+            localField: 'replies',
+            foreignField: '_id',
+            as: 'reply',
+        },
+    },
+    {
+        $group: {
+            _id: '$_id',
+            replieWithContent: {
+                $push: '$reply',
+            },
+        },
+    },
+];
+```
+
+---
