@@ -22,17 +22,21 @@ export default function Topic() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    console.log({ replies });
+
     useEffect(() => {
         const abortController = new AbortController();
 
         if (session) {
             setIsLoading(true);
 
+            console.log('about to fetch data');
+
             fetch('/api/forum/' + forumId + '/topic/' + topicId)
                 .then(res => res.ok ? res.json() : Promise.reject(res.status))
                 .then(data => {
-                    setTopic(data.topic);
-                    setReplies(data.replies);
+                    setTopic(data.topicData);
+                    setReplies(data.repliesData);
                     setError(null);
                 })
                 .catch(error => {
