@@ -56,7 +56,7 @@ export default function Topic() {
                 .finally(() => setIsLoading(false));
             return () => abortController.abort();
         }
-    }, [session, forumId, topicId]);
+    }, [session, forumId, topicId, page]);
 
     if (typeof window !== 'undefined' && loading) return null;
 
