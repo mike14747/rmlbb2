@@ -9,7 +9,7 @@ function setRepliesArr(page, arr) {
         repliesEndIndex = 25 + ((page - 1) * 24);
     }
     const newRepliesArr = arr.slice(repliesStartIndex, repliesEndIndex);
-    console.log({newRepliesArr });
+    console.log({ newRepliesArr });
     return newRepliesArr;
 }
 
