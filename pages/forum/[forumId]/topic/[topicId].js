@@ -16,6 +16,7 @@ export default function Topic() {
     const router = useRouter();
     const forumId = router.query.forumId;
     const topicId = router.query.topicId;
+    const page = router.query?.page;
 
     const [topic, setTopic] = useState(null);
     const [replies, setReplies] = useState(null);
@@ -32,7 +33,9 @@ export default function Topic() {
 
             console.log('about to fetch data');
 
-            fetch('/api/forum/' + forumId + '/topic/' + topicId)
+            const url = `/api/forum/${forumId}/topic/${topicId}${page && `?page=${page}`}`;
+
+            fetch(url)
                 .then(res => res.ok ? res.json() : Promise.reject(res.status))
                 .then(data => {
                     setTopic(data.topicData);

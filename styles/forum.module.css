@@ -136,6 +136,10 @@
     margin-bottom: 0;
 }
 
+.forumsName {
+    font-weight: bolder;
+}
+
 .forumsDescription {
     color: var(--mg-gray-6);
     font-size: 0.833rem;
