@@ -112,7 +112,7 @@ export default function Forum() {
                                             <p className={styles.forumsName}>
                                                 <Link href={`/forum/${forumId}/topic/${topic._id}`}>
                                                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                    <a>{topic.title}</a>
+                                                    <a><strong>{topic.title}</strong></a>
                                                 </Link>
                                             </p>
                                             <p className={styles.forumsDescription}><small>by:</small> {topic.username}</p>
