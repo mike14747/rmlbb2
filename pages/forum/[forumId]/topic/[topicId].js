@@ -31,8 +31,6 @@ export default function Topic() {
         if (session) {
             setIsLoading(true);
 
-            console.log('about to fetch data');
-
             const url = `/api/forum/${forumId}/topic/${topicId}${page && `?page=${page}`}`;
 
             fetch(url)
@@ -54,6 +52,7 @@ export default function Topic() {
                     }
                 })
                 .finally(() => setIsLoading(false));
+
             return () => abortController.abort();
         }
     }, [session, forumId, topicId, page]);
