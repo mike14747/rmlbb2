@@ -2,6 +2,8 @@
 
 Figure out a new message board solution that can have our old board imported into it. (in progress)
 
+Get a topic showing up on the [topicId] page.
+
 Add a WYSIWYG that will be used for message board posting. (in progress)
 
 Add a "to top" button to all pages.
@@ -19,8 +21,6 @@ Add a transition effect for the TopInfo component when it's being closed.
 Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color and size?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
-
-Get a topic showing up on the [topicId] page.
 
 Add a collection for the most recent 5 posts.
 

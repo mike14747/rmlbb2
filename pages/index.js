@@ -6,6 +6,7 @@ import serializers from '../lib/serializers';
 import Sidebar from '../components/Sidebar';
 import { getNewsItems } from '../lib/api/news';
 import { getNextUpcomingEvents } from '../lib/api/events';
+import { getMostRecentPostsForHomepage } from '../lib/api/forum';
 import Loading from '../components/Loading';
 import Button from '../components/Button';
 
@@ -13,7 +14,7 @@ import styles from '../styles/home.module.css';
 
 const initial = parseInt(process.env.INITIAL_NEWS_ITEMS);
 
-const Home = ({ total, initialNewsItems, events }) => {
+const Home = ({ total, initialNewsItems, events, posts }) => {
     const [newsItems, setNewsItems] = useState(initialNewsItems);
     const [totalNewsItems, setTotalNewsItems] = useState(total);
     const [isLoading, setIsLoading] = useState(false);
@@ -90,7 +91,7 @@ const Home = ({ total, initialNewsItems, events }) => {
                     }
                 </article>
 
-                <Sidebar events={events} posts={null} />
+                <Sidebar events={events} posts={posts} />
             </div>
         </>
     );
@@ -100,14 +101,16 @@ Home.propTypes = {
     total: PropTypes.number,
     initialNewsItems: PropTypes.array,
     events: PropTypes.array,
+    posts: PropTypes.array,
 };
 
 export async function getStaticProps() {
     const { total, newsItems: initialNewsItems } = await getNewsItems(0, initial).catch(error => console.log(error));
     const events = await getNextUpcomingEvents().catch(error => console.log(error)) || null;
+    const posts = await getMostRecentPostsForHomepage().catch(error => console.log(error)) || null;
 
     return {
-        props: { total, initialNewsItems, events },
+        props: { total, initialNewsItems, events, posts },
         revalidate: 1, // page regeneration can occur in 1 sec
     };
 }

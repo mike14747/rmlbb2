@@ -12,7 +12,7 @@ const Sidebar = ({ events, posts }) => {
             </div>
 
             <div className={styles.boardSidebarContainer}>
-                <BoardSidebar posts={null} />
+                <BoardSidebar posts={posts} />
             </div>
         </aside>
     );

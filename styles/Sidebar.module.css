@@ -74,6 +74,23 @@ h4.heading {
     margin: 0;
 }
 
+.recentPost {
+    margin-bottom: 1rem;
+}
+
+.recentPost > p {
+    font-size: .833rem;
+    font-size: var(--step--1);
+    color: var(--mg-gray-6);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentPost > p > small {
+    color: var(--mg-gray-5);
+}
 
 @media (min-width: 768px) {
     .sidebar {

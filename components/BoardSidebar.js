@@ -24,6 +24,18 @@ const BoardSidebar = ({ posts }) => {
                         {!posts && <p>An error occurred fetching data.</p>}
 
                         {posts?.length === 0 && <p>There are no recent posts to display. Check back again soon.</p>}
+
+                        {posts?.length > 0 &&
+                            posts.map((post, index) => (
+                                <div className={sidebarStyles.recentPost} key={index}>
+                                    <p><small>Date: </small>{post.date}</p>
+                                    <p><small>Forum: </small>{post.forumName}</p>
+                                    <p><small>Author: </small>{post.username}</p>
+                                    <p><small>Topic: </small>{post.title}</p>
+                                    <p><small>Content: </small>{post.content}</p>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
 
