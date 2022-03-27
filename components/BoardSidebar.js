@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import Link from 'next/link';
+import ParagraphRound from '../assets/paragraphRound.svg';
 
 import styles from '../styles/BoardSidebar.module.css';
 import sidebarStyles from '../styles/Sidebar.module.css';
@@ -29,7 +31,7 @@ const BoardSidebar = ({ posts }) => {
                         {posts?.length > 0 &&
                             posts.map((post, index) => (
                                 <div className={sidebarStyles.recentPost} key={index}>
-                                    <p><small>Date: </small>{post.date}</p>
+                                    <p className={sidebarStyles.recentDate}><small>Date: </small>{post.date}</p>
                                     <p><small>Forum: </small>{post.forumName}</p>
                                     <p><small>Author: </small>{post.username}</p>
                                     <p><small>Topic: </small>{post.title}</p>
@@ -37,6 +39,17 @@ const BoardSidebar = ({ posts }) => {
                                 </div>
                             ))
                         }
+                    </div>
+
+                    <div className={sidebarStyles.viewAll}>
+                        <Link href="/forum">
+                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                            <a>
+                                Go to the Forum
+                            </a>
+                        </Link>
+
+                        <ParagraphRound aria-hidden="true" className={sidebarStyles.icon2} />
                     </div>
                 </div>
 
