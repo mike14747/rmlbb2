@@ -380,71 +380,91 @@ replies collection:
 
 ```js
 {
-    $jsonSchema: {
-        title: 'replies',
-        description: 'Replies documents for the message board at rmlbb.com',
-        bsonType: 'object',
-        required: [
-            '_id',
-            'subject',
-            'content',
-            'forum_id',
-            'user_id',
-            'username',
-            'topic_id',
-            'date',
-            'lastEditDate',
+  $jsonSchema: {
+    title: 'replies',
+    description: 'Replies documents for the message board at rmlbb.com',
+    bsonType: 'object',
+    required: [
+      '_id',
+      'subject',
+      'content',
+      'forum_id',
+      'forumName',
+      'forumActive',
+      'user_id',
+      'username',
+      'topic_id',
+      'topicActive',
+      'date',
+      'lastEditDate'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'int',
+        description: 'must be a unique positive integer and is required',
+        minimum: 1
+      },
+      subject: {
+        bsonType: 'string',
+        description: 'must be a string from 1 to 50 characters in length and is required',
+        minLength: 1,
+        maxLength: 100
+      },
+      content: {
+        bsonType: 'string',
+        description: 'must be a string from 1 to 10000 characters in length and is required',
+        minLength: 1,
+        maxLength: 25000
+      },
+      forum_id: {
+        bsonType: 'int',
+        description: 'must be a unique positive integer and is required',
+        minimum: 1
+      },
+      forumName: {
+        bsonType: 'string',
+        description: 'must be a string from 1 to 50 characters in length and is required',
+        minLength: 1,
+        maxLength: 50
+      },
+      forumActive: {
+        bsonType: 'bool',
+        description: 'must be a boolean and is required',
+      },
+      user_id: {
+        bsonType: 'int',
+        description: 'must be a unique positive integer and is required',
+        minimum: 1
+      },
+      username: {
+        bsonType: 'string',
+        description: 'must be a string from 4 to 15 characters in length and is required',
+        minLength: 4,
+        maxLength: 15
+      },
+      topic_id: {
+        bsonType: 'int',
+        description: 'must be a unique positive integer and is required',
+        minimum: 1
+      },
+      topicActive: {
+        bsonType: 'bool',
+        description: 'must be a boolean and is required',
+      },
+      date: {
+        bsonType: 'date',
+        description: 'must be a valid ISO Date'
+      },
+      lastEditDate: {
+        bsonType: [
+          'date',
+          'null'
         ],
-        properties: {
-            _id: {
-                bsonType: 'int',
-                description: 'must be a unique positive integer and is required',
-                minimum: 1
-            },
-            subject: {
-                bsonType: 'string',
-                description: 'must be a string from 1 to 50 characters in length and is required',
-                minLength: 1,
-                maxLength: 100
-            },
-            content: {
-                bsonType: 'string',
-                description: 'must be a string from 1 to 10000 characters in length and is required',
-                minLength: 1,
-                maxLength: 25000
-            },
-            forum_id: {
-                bsonType: 'int',
-                description: 'must be a unique positive integer and is required',
-                minimum: 1
-            },
-            user_id: {
-                bsonType: 'int',
-                description: 'must be a unique positive integer and is required',
-                minimum: 1
-            },
-            username: {
-                bsonType: 'string',
-                description: 'must be a string from 4 to 15 characters in length and is required',
-                minLength: 4,
-                maxLength: 15
-            },
-            topic_id: {
-                bsonType: 'int',
-                description: 'must be a unique positive integer and is required',
-                minimum: 1
-            },
-            date: {
-                bsonType: 'date',
-                description: 'must be a valid ISO Date'
-            },
-            lastEditDate: {
-                bsonType: ['date', 'null'],
-                description: 'must be a valid ISO Date but can be null'
-            },
-        },
-        additionalProperties: false
-    }
+        description: 'must be a valid ISO Date but can be null'
+      }
+    },
+    additionalProperties: false
+  }
 }
 ```
 
