@@ -22,7 +22,7 @@ Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color and size?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
-Add a collection for the most recent 5 posts.
+Make an admin page to edit forums (specifically to change their active status). This will require a transaction in the serverless function because the active status will need to apply to all topics and replies within tha forum.
 
 ---
 
@@ -63,3 +63,5 @@ Write schema validations for all MongoDB collections.
 Upgrade next.js to v12.
 
 Get a topic showing up on the [topicId] page.
+
+Add a collection for the most recent 5 posts. (I ended up not doing this... instead I added a couple fields to the replies collection documents and wrote an aggregation to get them).
