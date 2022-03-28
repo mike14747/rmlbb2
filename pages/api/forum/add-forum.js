@@ -3,7 +3,7 @@ import { addForum } from '../../../lib/api/forum';
 
 export default async function addNewForum(req, res) {
     const session = await getSession({ req });
-    if (!session) res.status(401).end();
+    if (!session?.user?.role || session.user.role !== 'admin') res.status(401).end();
     if (!req?.body?.name) return res.status(400).end();
 
     if (req.method === 'POST') {

@@ -48,7 +48,7 @@ export default function AddForum() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session || !session.user || !session.user.role || session.user.role !== 'admin') router.push('/');
+    if (!session?.user?.role || session.user.role !== 'admin') router.push('/');
 
     if (session && session?.user?.role === 'admin') {
         return (
