@@ -23,10 +23,10 @@ export default function EditForum() {
     useEffect(() => {
         const abortController = new AbortController();
 
-        if (session) {
+        if (session && session?.user?.role === 'admin') {
             setIsLoading(true);
 
-            fetch('/api/directory', { signal: abortController.signal })
+            fetch('/api/forum', { signal: abortController.signal })
                 .then(res => res.json())
                 .then(data => {
                     setForums(data);
