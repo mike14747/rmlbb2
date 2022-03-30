@@ -54,7 +54,7 @@ export default function EditForum() {
 
         setIsLoading(true);
 
-        const res = await fetch('/api/forum/add-forum', {
+        const res = await fetch('/api/forum/edit-forum-name', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
