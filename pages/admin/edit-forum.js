@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
@@ -16,9 +16,38 @@ export default function EditForum() {
     const router = useRouter();
 
     const [forums, setForums] = useState(null);
-    const [forumError, setForumError] = useState(null);
+    const [error, setError] = useState(null);
     const [forumUpdateMsg, setForumUpdateMsg] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        if (session) {
+            setIsLoading(true);
+
+            fetch('/api/directory', { signal: abortController.signal })
+                .then(res => res.json())
+                .then(data => {
+                    setForums(data);
+                    setError(null);
+                })
+                .catch(error => {
+                    if (error.name === 'AbortError') {
+                        console.log('Data fetching was aborted!');
+                    } else {
+                        console.log(error);
+                        setForums(null);
+                        setError('An error occurred fetching data.');
+                    }
+                })
+                .finally(() => setIsLoading(false));
+        } else {
+            setForums(null);
+        }
+
+        return () => abortController.abort();
+    }, [session]);
 
     const handleNewForumNameSubmit = async (e) => {
         e.preventDefault();
@@ -34,16 +63,16 @@ export default function EditForum() {
         });
 
         if (res.status !== 201) {
-            res.status === 400 && forumError('An error occurred. Forum name did not make it to the server.');
-            res.status === 401 && forumError('An error occurred. You do not have permission for this operation.');
-            res.status === 409 && forumError('An error occurred. The forum name you submitted is already in use.');
-            res.status === 500 && forumError('A server error occurred. Please try your update again.');
+            res.status === 400 && error('An error occurred. Forum name did not make it to the server.');
+            res.status === 401 && error('An error occurred. You do not have permission for this operation.');
+            res.status === 409 && error('An error occurred. The forum name you submitted is already in use.');
+            res.status === 500 && error('A server error occurred. Please try your update again.');
             setForumUpdateMsg('');
         }
 
         if (res.status === 201) {
             // setForumName('');
-            // forumError(null);
+            // error(null);
             // setForumUpdateMsg('The new forum: "' + forumName + '" has been successfully added!');
         }
     };
