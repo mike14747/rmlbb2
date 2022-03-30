@@ -97,6 +97,10 @@ export default function EditForum() {
                     </h2>
 
                     {isLoading && <Loading />}
+
+                    {error && <p className="error2">{error}</p>}
+
+                    {forumUpdateMsg && <p className="success2">{forumUpdateMsg}</p>}
                 </article>
             </>
         );
