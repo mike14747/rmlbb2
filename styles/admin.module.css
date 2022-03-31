@@ -11,3 +11,7 @@
 .submitButtonWrapper {
     margin-top: 2rem;
 }
+
+.forumRow {
+    display: grid;
+}

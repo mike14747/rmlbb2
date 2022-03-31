@@ -26,7 +26,7 @@ export default function EditForum() {
         if (session && session?.user?.role === 'admin') {
             setIsLoading(true);
 
-            fetch('/api/forum', { signal: abortController.signal })
+            fetch('/api/forum/admin-forum-list', { signal: abortController.signal })
                 .then(res => res.json())
                 .then(data => {
                     setForums(data);
@@ -34,9 +34,9 @@ export default function EditForum() {
                 })
                 .catch(error => {
                     if (error.name === 'AbortError') {
-                        console.log('Data fetching was aborted!');
+                        console.error('Data fetching was aborted!');
                     } else {
-                        console.log(error);
+                        console.error(error);
                         setForums(null);
                         setError('An error occurred fetching data.');
                     }
@@ -101,6 +101,14 @@ export default function EditForum() {
                     {error && <p className="error2">{error}</p>}
 
                     {forumUpdateMsg && <p className="success2">{forumUpdateMsg}</p>}
+
+                    {forums &&
+                        forums.map(forum => (
+                            <div className={styles.forumRow} key={forum._id}>
+                                {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'}
+                            </div>
+                        ))
+                    }
                 </article>
             </>
         );
