@@ -105,6 +105,8 @@ export default function EditForum() {
                     {forums &&
                         forums.map(forum => (
                             <div className={styles.forumRow} key={forum._id}>
+                                <FormInputForForumName forumName={forum.name} setForumName={setForums} />
+                                <FormInputForActive active={forum.active} setActive={setForums} />
                                 {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'}
                             </div>
                         ))
