@@ -24,6 +24,8 @@ Figure out a way to break up topics and replies so only X number of them show up
 
 Make an admin page to edit forums (specifically to change their active status). This will require a transaction in the serverless function because the active status will need to apply to all topics and replies within tha forum.
 
+Is there a way to merge some/most/all of the FormInput components into one?
+
 ---
 
 ### Done
