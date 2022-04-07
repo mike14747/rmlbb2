@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import FormInputForForumName from '../../components/FormInputForForumName';
-import FormInputForActive from '../../components/FormInputForActive';
+import FormInputForMultipleActive from '../../components/FormInputForMultipleActive';
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
 
@@ -48,6 +48,10 @@ export default function EditForum() {
 
         return () => abortController.abort();
     }, [session]);
+
+    const toggleActive = (id, active) => setForums(forums.map(forum => forum._id === id ? { ...forum, active } : forum));
+
+    const handleChangeForumName = (id, name) => setForums(forums.map(forum => forum.id === id ? { ...forum, name: name } : forum));
 
     const handleNewForumNameSubmit = async (e) => {
         e.preventDefault();
@@ -105,9 +109,9 @@ export default function EditForum() {
                     {forums &&
                         forums.map(forum => (
                             <div className={styles.forumRow} key={forum._id}>
-                                <FormInputForForumName forumName={forum.name} setForumName={setForums} />
-                                <FormInputForActive active={forum.active} setActive={setForums} />
-                                {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'}
+                                <FormInputForForumName forumName={forum.name} setForumName={handleChangeForumName} />
+                                <FormInputForMultipleActive id={forum._id} active={forum.active} setActive={toggleActive} />
+                                {/* {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'} */}
                             </div>
                         ))
                     }
