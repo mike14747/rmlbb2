@@ -4,7 +4,7 @@ import FormInput from './FormInput';
 export default function FormInputForMultipleActive({ id, active, setActive }) {
     return (
         <FormInput
-            id="id"
+            id={id}
             label="Active"
             name="active"
             type="checkbox"
