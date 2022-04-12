@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
+import { passwordPattern, passwordErrorMsg, repeatPassordErrorMsg } from '../lib/formInputPatterns';
 
 export default function FormInputForNewPassword({ password, setPassword, repeatPassword, setRepeatPassword }) {
     return (
@@ -12,8 +13,8 @@ export default function FormInputForNewPassword({ password, setPassword, repeatP
                 value={password}
                 required={true}
                 handleChange={(e) => setPassword(e.target.value)}
-                pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{8,20}$"
-                errorMsg="Password must be from 8 to 20 characters in length."
+                pattern={passwordPattern}
+                errorMsg={passwordErrorMsg}
             />
 
             <FormInput
@@ -25,7 +26,7 @@ export default function FormInputForNewPassword({ password, setPassword, repeatP
                 required={true}
                 handleChange={(e) => setRepeatPassword(e.target.value)}
                 pattern={password}
-                errorMsg="Passwords do not match."
+                errorMsg={repeatPassordErrorMsg}
             />
         </>
     );
