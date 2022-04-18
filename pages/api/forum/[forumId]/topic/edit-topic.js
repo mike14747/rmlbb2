@@ -1,14 +1,14 @@
 import { getSession } from 'next-auth/react';
-import { addTopic } from '../../../../../lib/api/forum';
+import { editTopic } from '../../../../../lib/api/forum';
 
-export default async function addNewTopic(req, res) {
+export default async function editExistingTopic(req, res) {
     const session = await getSession({ req });
     if (!session) res.status(401).end();
-    if (!req.query.forumId) res.status(400).end();
+    if (!req.query.forumId || !req.query.topicId) res.status(400).end();
 
     if (req.method === 'POST') {
         try {
-            const response = await addTopic(session.user._id, session.user.name, parseInt(req.query.forumId), req.body.title, req.body.content);
+            const response = await editTopic(parseInt(req.query.topicId), session.user._id, req.body.title, req.body.content);
             response?.code ? res.status(response.code).end() : res.status(500).end();
         } catch (error) {
             res.status(500).end();
