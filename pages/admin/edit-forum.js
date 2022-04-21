@@ -57,21 +57,23 @@ export default function EditForum() {
 
     const handleChangeForumName = (id, name) => setUpdatedForums(updatedForums.map(forum => forum._id === id ? { ...forum, name } : forum));
 
-    const handleNewForumNameSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleUpdatedForumSubmit = async (_id, name, active) => {
         setIsLoading(true);
 
-        const res = await fetch('/api/forum/edit-forum-name', {
+        const res = await fetch('/api/forum/edit-forum', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify({}),
+            body: JSON.stringify({
+                _id,
+                name,
+                active,
+            }),
         });
 
         if (res.status !== 201) {
-            res.status === 400 && error('An error occurred. Forum name did not make it to the server.');
+            res.status === 400 && error('An error occurred. Updated forum data did not make it to the server.');
             res.status === 401 && error('An error occurred. You do not have permission for this operation.');
             res.status === 409 && error('An error occurred. The forum name you submitted is already in use.');
             res.status === 500 && error('A server error occurred. Please try your update again.');
@@ -112,14 +114,14 @@ export default function EditForum() {
 
                     {updatedForums &&
                         updatedForums.map((forum, index) => (
-                            <form className={styles.forumRow} key={forum._id}>
+                            <div className={styles.forumRow} key={forum._id}>
                                 <FormInputForForumName id={forum._id} forumName={forum.name} setForumName={handleChangeForumName} />
                                 <FormInputForActive id={forum._id} active={forum.active} setActive={toggleActive} />
                                 {(forums[index].active !== updatedForums[index].active || forums[index].name !== updatedForums[index].name) &&
-                                    <div><Button type="submit" size="medium" variant="contained" style="primary">Update</Button></div>
+                                    <div><Button type="button" size="small" variant="contained" style="primary" onClick={handleUpdatedForumSubmit(forum._id, forum.name, forum.active)}>Update</Button></div>
                                 }
                                 {/* {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'} */}
-                            </form>
+                            </div>
                         ))
                     }
                 </article>
