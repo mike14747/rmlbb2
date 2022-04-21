@@ -16,6 +16,7 @@ export default function EditForum() {
     const router = useRouter();
 
     const [forums, setForums] = useState(null);
+    const [updatedForums, setUpdatedForums] = useState(null);
     const [error, setError] = useState(null);
     const [forumUpdateMsg, setForumUpdateMsg] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +31,7 @@ export default function EditForum() {
                 .then(res => res.json())
                 .then(data => {
                     setForums(data);
+                    setUpdatedForums(data);
                     setError(null);
                 })
                 .catch(error => {
@@ -38,20 +40,22 @@ export default function EditForum() {
                     } else {
                         console.error(error);
                         setForums(null);
+                        setUpdatedForums(null);
                         setError('An error occurred fetching data.');
                     }
                 })
                 .finally(() => setIsLoading(false));
         } else {
             setForums(null);
+            setUpdatedForums(null);
         }
 
         return () => abortController.abort();
     }, [session]);
 
-    const toggleActive = (id, active) => setForums(forums.map(forum => forum._id === id ? { ...forum, active } : forum));
+    const toggleActive = (id, active) => setUpdatedForums(updatedForums.map(forum => forum._id === id ? { ...forum, active } : forum));
 
-    const handleChangeForumName = (id, name) => setForums(forums.map(forum => forum._id === id ? { ...forum, name } : forum));
+    const handleChangeForumName = (id, name) => setUpdatedForums(updatedForums.map(forum => forum._id === id ? { ...forum, name } : forum));
 
     const handleNewForumNameSubmit = async (e) => {
         e.preventDefault();
@@ -106,13 +110,16 @@ export default function EditForum() {
 
                     {forumUpdateMsg && <p className="success2">{forumUpdateMsg}</p>}
 
-                    {forums &&
-                        forums.map(forum => (
-                            <div className={styles.forumRow} key={forum._id}>
+                    {updatedForums &&
+                        updatedForums.map((forum, index) => (
+                            <form className={styles.forumRow} key={forum._id}>
                                 <FormInputForForumName id={forum._id} forumName={forum.name} setForumName={handleChangeForumName} />
                                 <FormInputForActive id={forum._id} active={forum.active} setActive={toggleActive} />
+                                {(forums[index].active !== updatedForums[index].active || forums[index].name !== updatedForums[index].name) &&
+                                    <div><Button type="submit" size="medium" variant="contained" style="primary">Update</Button></div>
+                                }
                                 {/* {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'} */}
-                            </div>
+                            </form>
                         ))
                     }
                 </article>
