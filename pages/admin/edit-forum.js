@@ -72,7 +72,7 @@ export default function EditForum() {
             }),
         });
 
-        if (res.status !== 201) {
+        if (res.status !== 200) {
             res.status === 400 && error('An error occurred. Updated forum data did not make it to the server.');
             res.status === 401 && error('An error occurred. You do not have permission for this operation.');
             res.status === 409 && error('An error occurred. The forum name you submitted is already in use.');
@@ -80,10 +80,10 @@ export default function EditForum() {
             setForumUpdateMsg('');
         }
 
-        if (res.status === 201) {
-            // setForumName('');
-            // error(null);
-            // setForumUpdateMsg('The new forum: "' + forumName + '" has been successfully added!');
+        if (res.status === 200) {
+            setForums(forums.map(forum => forum._id === _id ? { ...forum, name, active } : forum));
+            error(null);
+            setForumUpdateMsg('The forum: "' + name + '" has been successfully updated!');
         }
     };
 
