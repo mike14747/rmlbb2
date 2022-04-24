@@ -58,6 +58,7 @@ export default function EditForum() {
     const handleChangeForumName = (id, name) => setUpdatedForums(updatedForums.map(forum => forum._id === id ? { ...forum, name } : forum));
 
     const handleUpdatedForumSubmit = async (_id, name, active) => {
+        console.log('Changes are attempting to be submitted.');
         setIsLoading(true);
 
         const res = await fetch('/api/forum/edit-forum', {
@@ -73,18 +74,20 @@ export default function EditForum() {
         });
 
         if (res.status !== 200) {
-            res.status === 400 && error('An error occurred. Updated forum data did not make it to the server.');
-            res.status === 401 && error('An error occurred. You do not have permission for this operation.');
-            res.status === 409 && error('An error occurred. The forum name you submitted is already in use.');
-            res.status === 500 && error('A server error occurred. Please try your update again.');
+            res.status === 400 && setError('An error occurred. Updated forum data did not make it to the server.');
+            res.status === 401 && setError('An error occurred. You do not have permission for this operation.');
+            res.status === 409 && setError('An error occurred. The forum name you submitted is already in use.');
+            res.status === 500 && setError('A server error occurred. Please try your update again.');
             setForumUpdateMsg('');
         }
 
         if (res.status === 200) {
             setForums(forums.map(forum => forum._id === _id ? { ...forum, name, active } : forum));
-            error(null);
+            setError(null);
             setForumUpdateMsg('The forum: "' + name + '" has been successfully updated!');
         }
+
+        setIsLoading(false);
     };
 
     if (typeof window !== 'undefined' && loading) return null;
@@ -118,7 +121,7 @@ export default function EditForum() {
                                 <FormInputForForumName id={forum._id} forumName={forum.name} setForumName={handleChangeForumName} />
                                 <FormInputForActive id={forum._id} active={forum.active} setActive={toggleActive} />
                                 {(forums[index].active !== updatedForums[index].active || forums[index].name !== updatedForums[index].name) &&
-                                    <div><Button type="button" size="small" variant="contained" style="primary" onClick={handleUpdatedForumSubmit(forum._id, forum.name, forum.active)}>Update</Button></div>
+                                    <div><Button type="button" size="small" variant="contained" style="primary" onClick={() => handleUpdatedForumSubmit(forum._id, forum.name, forum.active)}>Update</Button></div>
                                 }
                                 {/* {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'} */}
                             </div>
