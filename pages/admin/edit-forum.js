@@ -58,7 +58,7 @@ export default function EditForum() {
     const handleChangeForumName = (id, name) => setUpdatedForums(updatedForums.map(forum => forum._id === id ? { ...forum, name } : forum));
 
     const handleUpdatedForumSubmit = async (_id, name, active) => {
-        console.log('Changes are attempting to be submitted.');
+        // console.log({ _id, name, active });
         setIsLoading(true);
 
         const res = await fetch('/api/forum/edit-forum', {
