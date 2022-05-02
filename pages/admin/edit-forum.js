@@ -118,12 +118,11 @@ export default function EditForum() {
                     {updatedForums &&
                         updatedForums.map((forum, index) => (
                             <div className={styles.forumRow} key={forum._id}>
-                                <FormInputForForumName id={forum._id} forumName={forum.name} setForumName={handleChangeForumName} />
-                                <FormInputForActive id={forum._id} active={forum.active} setActive={toggleActive} />
+                                <div className={styles.gridName}><FormInputForForumName id={forum._id} forumName={forum.name} setForumName={handleChangeForumName} /></div>
+                                <div className={styles.gridActive}><FormInputForActive id={forum._id} active={forum.active} setActive={toggleActive} /></div>
                                 {(forums[index].active !== updatedForums[index].active || forums[index].name !== updatedForums[index].name) &&
-                                    <div><Button type="button" size="small" variant="contained" style="primary" onClick={() => handleUpdatedForumSubmit(forum._id, forum.name, forum.active)}>Update</Button></div>
+                                    <div className={`${styles.updateButtonWrapper} ${styles.gridUpdate}`}><Button type="button" size="small" variant="contained" style="primary" onClick={() => handleUpdatedForumSubmit(forum._id, forum.name, forum.active)}>Update</Button></div>
                                 }
-                                {/* {forum.name} - {forum._id} - {forum.order} - {forum.active ? 'Active' : 'Inactive'} */}
                             </div>
                         ))
                     }
