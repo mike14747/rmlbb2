@@ -73,8 +73,6 @@ export default function EditForum() {
             }),
         });
 
-        res = null;
-
         if (res?.status === 200) {
             setForums(forums.map(forum => forum._id === _id ? { ...forum, name, active } : forum));
             setError(null);
