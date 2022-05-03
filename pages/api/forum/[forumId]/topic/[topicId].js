@@ -19,7 +19,7 @@ export default async function forumTopic(req, res) {
         if (!session) res.status(401).end();
         if (!req.query.forumId || !req.query.topicId) res.status(400).end();
 
-        console.log(req.query?.page);
+        // console.log(req.query?.page);
         const page = parseInt(req.query?.page) || undefined;
 
         try {

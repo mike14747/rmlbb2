@@ -61,7 +61,7 @@ export default function EditForum() {
         // console.log({ _id, name, active });
         setIsLoading(true);
 
-        const res = await fetch('/api/forum/edit-forum', {
+        let res = await fetch('/api/forum/edit-forum', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -73,18 +73,18 @@ export default function EditForum() {
             }),
         });
 
-        if (res.status !== 200) {
-            res.status === 400 && setError('An error occurred. Updated forum data did not make it to the server.');
-            res.status === 401 && setError('An error occurred. You do not have permission for this operation.');
-            res.status === 409 && setError('An error occurred. The forum name you submitted is already in use.');
-            res.status === 500 && setError('A server error occurred. Please try your update again.');
-            setForumUpdateMsg('');
-        }
+        res = null;
 
-        if (res.status === 200) {
+        if (res?.status === 200) {
             setForums(forums.map(forum => forum._id === _id ? { ...forum, name, active } : forum));
             setError(null);
             setForumUpdateMsg('The forum: "' + name + '" has been successfully updated!');
+        } else {
+            res?.status === 400 && setError('An error occurred. Updated forum data did not make it to the server.');
+            res?.status === 401 && setError('An error occurred. You do not have permission for this operation.');
+            res?.status === 409 && setError('An error occurred. The forum name you submitted is already in use.');
+            (!res || !res.status || res.status === 500) && setError('A server error occurred. Please try your update again.');
+            setForumUpdateMsg('');
         }
 
         setIsLoading(false);

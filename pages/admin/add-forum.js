@@ -30,19 +30,17 @@ export default function AddForum() {
             body: JSON.stringify({ name: forumName, active }),
         });
 
-        if (res.status !== 201) {
-            res.status === 400 && setForumNameError('An error occurred. Forum name did not make it to the server.');
-            res.status === 401 && setForumNameError('An error occurred. You do not have permission for this operation.');
-            res.status === 409 && setForumNameError('An error occurred. The forum name you submitted is already in use.');
-            res.status === 500 && setForumNameError('A server error occurred. Please try your update again.');
-            setForumUpdateMsg('');
-        }
-
-        if (res.status === 201) {
+        if (res?.status === 201) {
             setForumName('');
             setForumNameError(null);
             setForumUpdateMsg('The new forum: "' + forumName + '" has been successfully added!');
             setActive(true);
+        } else {
+            res?.status === 400 && setForumNameError('An error occurred. Forum name did not make it to the server.');
+            res?.status === 401 && setForumNameError('An error occurred. You do not have permission for this operation.');
+            res?.status === 409 && setForumNameError('An error occurred. The forum name you submitted is already in use.');
+            (!res || !res.status || res.status === 500) && setForumNameError('A server error occurred. Please try your update again.');
+            setForumUpdateMsg('');
         }
     };
 

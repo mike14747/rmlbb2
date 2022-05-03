@@ -40,15 +40,7 @@ export default function AddUser() {
             }),
         });
 
-        if (res.status !== 201) {
-            res.status === 400 && setNewUserError('An error occurred. New user did not make it to the server.');
-            res.status === 401 && setNewUserError('An error occurred. You do not have permission for this operation.');
-            res.status === 409 && setNewUserError('An error occurred. The username you submitted is already in use.');
-            res.status === 500 && setNewUserError('A server error occurred. Please try your update again.');
-            setNewUsereMsg('');
-        }
-
-        if (res.status === 201) {
+        if (res?.status === 201) {
             setUsername('');
             setPassword('');
             setEmail('');
@@ -56,6 +48,12 @@ export default function AddUser() {
             setNewUserError(null);
             setNewUsereMsg('The new user: "' + username + '" has been successfully added!');
             setActive(true);
+        } else {
+            res?.status === 400 && setNewUserError('An error occurred. New user did not make it to the server.');
+            res?.status === 401 && setNewUserError('An error occurred. You do not have permission for this operation.');
+            res?.status === 409 && setNewUserError('An error occurred. The username you submitted is already in use.');
+            (!res || !res.status || res.status === 500) && setNewUserError('A server error occurred. Please try your update again.');
+            setNewUsereMsg('');
         }
     };
 
