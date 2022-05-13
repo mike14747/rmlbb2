@@ -98,9 +98,9 @@ export default function Topic() {
                                 <span className={styles.arrow}> &#10139; {topic.title}</span>
                             </p>
 
-                            <h2 className={'page-heading ' + styles.forumPageHeading}>
+                            {/* <h2 className={'page-heading ' + styles.forumPageHeading}>
                                 {topic.title}
-                            </h2>
+                            </h2> */}
 
                             <p className="small">
                                 <>&#128221; </>
@@ -126,8 +126,27 @@ export default function Topic() {
                                 <div className={styles.topicBody}>
                                     {parse(DOMPurify.sanitize(topic.content))}
                                 </div>
-
                             </div>
+
+                            {replies?.length > 0 &&
+                                replies.map(reply => (
+                                    <div key={reply._id} className={styles.topicContainer}>
+                                        <div className={styles.topicHeading}>
+                                            <p className={styles.topicTitle}>
+                                                {reply.subject}
+                                            </p>
+
+                                            <p className={styles.topicDetails}>
+                                                by: {reply.username} &#10139; <span className={styles.topicDate}>{reply.date}</span>
+                                            </p>
+                                        </div>
+
+                                        <div className={styles.topicBody}>
+                                            {parse(DOMPurify.sanitize(reply.content))}
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </>
                     }
                 </article>
