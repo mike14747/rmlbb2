@@ -52,7 +52,7 @@ const ScrollTop = () => {
                     }
 
                     .scrollBtn:hover {
-                        color: var(--mg-orange);
+                        color: var(--theme-color-orange);
                         border-right: 0;
                         transition: .3s;
                     }
