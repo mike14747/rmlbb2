@@ -22,7 +22,7 @@ Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color and size?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
-Make an admin page to edit forums (specifically to change their active status). This will require a transaction in the serverless function because the active status will need to apply to all topics and replies within tha forum.
+Make an admin page to edit forums (specifically to change their active status). This will require a transaction in the serverless function because the active status will need to apply to all topics and replies within tha forum. This is done (you can edit the forum name and active status), but I need to update the regex for the forum name to allow for things like " / " to be part of a forum name.
 
 Is there a way to merge some/most/all of the FormInput components into one?
 

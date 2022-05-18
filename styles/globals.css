@@ -37,6 +37,8 @@
     --mg-yellow: #fff44f; /* html lemon */
     --mg-yellow-pale: #ffffd5;
 
+    --mg-dark-faded: rgba(35, 35, 35, 0.75);
+
     /* start font sizes */
 
     --step--2: clamp(0.69rem, 0.65rem + 0.15vw, 0.83rem);
