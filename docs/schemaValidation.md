@@ -272,9 +272,9 @@ topics collection:
             },
             title: {
                 bsonType: 'string',
-                description: 'must be a string from 1 to 100 characters in length and is required',
+                description: 'must be a string from 1 to 50 characters in length and is required',
                 minLength: 1,
-                maxLength: 100
+                maxLength: 50
             },
             content: {
                 bsonType: 'string',
@@ -349,7 +349,7 @@ topics collection:
                         bsonType: 'string',
                         description: 'must be a string from 1 to 50 characters in length if it exists',
                         minLength: 1,
-                        maxLength: 100
+                        maxLength: 50
                     },
                     username: {
                         bsonType: 'string',
@@ -408,7 +408,7 @@ replies collection:
         bsonType: 'string',
         description: 'must be a string from 1 to 50 characters in length and is required',
         minLength: 1,
-        maxLength: 100
+        maxLength: 50
       },
       content: {
         bsonType: 'string',
