@@ -22,6 +22,8 @@ Make an admin page to edit forums (specifically to change their active status). 
 
 Is there a way to merge some/most/all of the FormInput components into one?
 
+Change the http POST methods to PUT on pages/routes that edit content.
+
 ---
 
 ### Done
