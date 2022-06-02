@@ -30,7 +30,7 @@ Button.propTypes = {
     variant: PropTypes.string,
     type: PropTypes.string,
     theme: PropTypes.string,
-    onClick: (props) => props.type !== 'submit' && typeof(props.onClick) !== 'function' && new Error('onClick function is required unless the button type is submit!'),
+    onClick: (props) => props.type !== 'submit' && typeof (props.onClick) !== 'function' && new Error('onClick function is required unless the button type is submit!'),
 };
 
 Button.defaultProps = {
@@ -38,4 +38,5 @@ Button.defaultProps = {
     variant: 'contained',
     type: 'button',
     theme: 'primary',
+    onClick: null,
 };
