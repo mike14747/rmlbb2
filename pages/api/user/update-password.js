@@ -2,10 +2,10 @@ import { getSession } from 'next-auth/react';
 import { changePassword } from '../../../lib/api/user';
 
 export default async function updatePassword(req, res) {
-    if (req.method !== 'POST') res.status(401).end();
+    if (req.method !== 'POST') return res.status(401).end();
     const session = await getSession({ req });
-    if (!session && (!req.body.userId || !req.body.token)) res.status(401).end();
-    if (session && !req?.body?.password) res.status(400).end();
+    if (!session && (!req.body.userId || !req.body.token)) return res.status(401).end();
+    if (session && !req?.body?.password) return res.status(400).end();
 
     try {
         let response;
@@ -14,7 +14,7 @@ export default async function updatePassword(req, res) {
         } else if (req.body.userId && req.body.token) {
             response = await changePassword(parseInt(req.body.userId), req.body.password, req.body.token);
         } else {
-            res.status(400).end();
+            return res.status(400).end();
         }
 
         response?.code ? res.status(response.code).end() : res.status(500).end();

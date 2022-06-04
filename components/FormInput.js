@@ -13,27 +13,28 @@ export default function FormInput({ id, label, handleChange, errorMsg, required,
         <div className={styles.inputWrapper}>
             <label htmlFor={id} className={`${styles.label} ${styles[inputSize]} ${type === 'checkbox' ? styles.labelCheckbox : ''}`}>
                 {label}
-                {/* you can disable the following line if you don't want to notify the user of fields being required */}
-                {/* {required && <span className={styles.required}>*required field</span>} */}
 
-                <input
-                    id={id}
-                    className={`${styles.input} ${styles[inputSize]}`}
-                    onChange={handleChange}
-                    required={required}
-                    size="30"
-                    type={type}
-                    {...rest}
-                />
-
-                {type === 'checkbox' &&
-                    <div role="checkbox" aria-checked={checked || false} tabIndex="0" aria-labelledby={label} className={styles.fakeCheckbox}></div>
-                }
-
-                {errorMsg &&
-                    <p className={styles.errorMessage}>{errorMsg}</p>
-                }
+                {/* you can disable the following line if you don't want to notify the user of fields that are required */}
+                {/* {required && <span className={styles.required}>*required</span>} */}
             </label>
+
+            <input
+                id={id}
+                className={`${styles.input} ${styles[inputSize]}`}
+                onChange={handleChange}
+                required={required}
+                size="30"
+                type={type}
+                {...rest}
+            />
+
+            {type === 'checkbox' &&
+                <div role="checkbox" aria-checked={checked || false} tabIndex="0" aria-labelledby={label} className={styles.fakeCheckbox}></div>
+            }
+
+            {errorMsg &&
+                <p className={styles.errorMessage}>{errorMsg}</p>
+            }
         </div>
     );
 }

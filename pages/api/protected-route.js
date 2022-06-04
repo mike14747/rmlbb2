@@ -2,9 +2,9 @@ import { getSession } from 'next-auth/react';
 import { getProtectedData } from '../../lib/api/protected';
 
 export default async function protectedRoute(req, res) {
-    if (req.method !== 'GET') res.status(401).end();
+    if (req.method !== 'GET') return res.status(401).end();
     const session = await getSession({ req });
-    if (!session) res.status(401).end();
+    if (!session) return res.status(401).end();
 
     try {
         const response = await getProtectedData();
