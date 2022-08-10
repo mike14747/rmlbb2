@@ -36,17 +36,3 @@ p.eventDetails {
     color: var(--mg-gray-6);
     margin: 0;
 }
-
-.viewAll {
-    font-size: .833rem;
-    font-size: var(--step--1);
-    text-align: right;
-    margin-top: 2rem;
-}
-
-.icon {
-    width: 100%;
-    max-width: 60px;
-    height: auto;
-    margin-left: 1rem;
-}

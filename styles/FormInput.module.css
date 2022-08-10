@@ -5,7 +5,7 @@
 label.label,
 label.label > input.input {
     display: block;
-    max-width: 30ch;
+    max-width: 24ch;
     margin: 0;
 }
 
@@ -22,12 +22,12 @@ input.input.normal {
 }
 
 label.label.small {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
 }
 
 input.input.small {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
     padding: 0.5rem;
     border: 1px var(--mg-gray-6) solid;
@@ -40,7 +40,7 @@ input.input:focus {
 }
 
 .errorMessage {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
     color: var(--mg-red-dark);
     display: none;
@@ -56,7 +56,7 @@ input.submit {
 }
 
 label > .required {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
     color: var(--mg-red-dark);
     margin-left: 1rem;
@@ -64,7 +64,7 @@ label > .required {
 
 /* start checkbox styling */
 
-label.label input.input[type="checkbox"] {
+label.label input.input[type='checkbox'] {
     display: none;
 }
 
@@ -94,12 +94,21 @@ label.label input.input[type="checkbox"] {
     outline: 0;
 }
 
-label.label input.input[type="checkbox"]:checked + .fakeCheckbox {
+label.label input.input[type='checkbox']:checked + .fakeCheckbox {
     background-color: var(--theme-color-orange);
 }
 
-label.label input.input[type="checkbox"]:checked + .fakeCheckbox:focus {
+label.label input.input[type='checkbox']:checked + .fakeCheckbox:focus {
     border: 1px var(--mg-gray-6) solid;
 }
 
 /* end checkbox styling */
+
+@media (min-width: 768px) {
+    label.label,
+    label.label > input.input {
+        display: block;
+        max-width: 30ch;
+        margin: 0;
+    }
+}

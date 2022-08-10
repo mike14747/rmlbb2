@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
+import { emailPattern, emailErrorMsg } from '../lib/formInputPatterns';
 
 export default function FormInputForEmail({ email, setEmail }) {
     return (
@@ -11,8 +12,8 @@ export default function FormInputForEmail({ email, setEmail }) {
             value={email}
             required={true}
             handleChange={(e) => setEmail(e.target.value)}
-            pattern="^(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]){1,64}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
-            errorMsg="Please enter a valid email address."
+            pattern={emailPattern}
+            errorMsg={emailErrorMsg}
         />
     );
 }

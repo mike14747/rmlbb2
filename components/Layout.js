@@ -7,6 +7,7 @@ import TopInfo from './TopInfo';
 import Authbar from './Authbar';
 import Header from './Header';
 import Footer from './Footer';
+import ScrollTop from './ScrollTop';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -25,6 +26,7 @@ const Layout = ({ children }) => {
 
             <main id="main" className="main-container">
                 {children}
+                <ScrollTop />
             </main>
 
             <Footer contactEmail={settings?.contactEmail} links={settings?.links} />

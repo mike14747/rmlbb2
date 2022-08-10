@@ -1,14 +1,13 @@
 import { getSession } from 'next-auth/react';
-import { getForumName } from '../../../../lib/api/forum';
+import { getForumListForEdit } from '../../../lib/api/forum';
 
-export default async function forumList(req, res) {
+export default async function adminForumList(req, res) {
     if (req.method !== 'GET') return res.status(401).end();
     const session = await getSession({ req });
-    if (!session) return res.status(401).end();
-    if (!req.query.forumId) return res.status(400).end();
+    if (!session?.user?.role || session.user.role !== 'admin') return res.status(401).end();
 
     try {
-        const response = await getForumName(parseInt(req.query.forumId));
+        const response = await getForumListForEdit();
         response ? res.status(200).json(response) : res.status(500).end();
     } catch (error) {
         console.error(error);

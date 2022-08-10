@@ -43,6 +43,13 @@ export default function AdminHome() {
                                 <a>Add new forum</a>
                             </Link>
                         </li>
+
+                        <li>
+                            <Link href="/admin/edit-forum">
+                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                                <a>Edit forum</a>
+                            </Link>
+                        </li>
                     </ul>
                 </article>
             </>

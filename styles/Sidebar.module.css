@@ -76,6 +76,14 @@ h4.heading {
 
 .recentPost {
     margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px var(--mg-gray-3) solid;
+}
+
+.recentPost:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
 }
 
 .recentPost > p {
@@ -90,6 +98,32 @@ h4.heading {
 
 .recentPost > p > small {
     color: var(--mg-gray-5);
+}
+
+.recentDate {
+    background-color: var(--mg-gray-1);
+}
+
+.viewAll {
+    font-size: .833rem;
+    font-size: var(--step--1);
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.icon {
+    width: 100%;
+    max-width: 60px;
+    height: auto;
+    margin-left: 1rem;
+}
+
+.icon2 {
+    width: 100%;
+    max-width: 30px;
+    height: auto;
+    margin-left: 1rem;
+    fill: var(--theme-color-green);
 }
 
 @media (min-width: 768px) {

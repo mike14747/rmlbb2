@@ -14,28 +14,25 @@ function setRepliesArr(page, arr) {
 }
 
 export default async function forumTopic(req, res) {
-    if (req.method === 'GET') {
-        const session = await getSession({ req });
-        if (!session) res.status(401).end();
-        if (!req.query.forumId || !req.query.topicId) res.status(400).end();
+    if (req.method !== 'GET') return res.status(401).end();
+    const session = await getSession({ req });
+    if (!session) return res.status(401).end();
+    if (!req.query.forumId || !req.query.topicId) return res.status(400).end();
 
-        console.log(req.query?.page);
-        const page = parseInt(req.query?.page) || undefined;
+    // console.log(req.query?.page);
+    const page = parseInt(req.query?.page) || undefined;
 
-        try {
-            const topicData = await getForumTopic(parseInt(req.query.forumId), parseInt(req.query.topicId));
+    try {
+        const topicData = await getForumTopic(parseInt(req.query.forumId), parseInt(req.query.topicId));
 
-            let repliesData = [];
-            if (topicData?.replies?.length > 0) {
-                repliesData = await getTopicReplies(setRepliesArr(page, topicData?.replies));
-            }
-
-            topicData ? res.status(200).json({ topicData, repliesData }) : res.status(400).end();
-        } catch (error) {
-            console.error(error);
-            res.status(500).end();
+        let repliesData = [];
+        if (topicData?.replies?.length > 0) {
+            repliesData = await getTopicReplies(setRepliesArr(page, topicData?.replies));
         }
-    } else {
-        res.status(401).end();
+
+        topicData ? res.status(200).json({ topicData, repliesData }) : res.status(400).end();
+    } catch (error) {
+        console.error(error);
+        res.status(500).end();
     }
 }
