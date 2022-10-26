@@ -19,6 +19,7 @@ export default async function updatePassword(req, res) {
 
         response?.code ? res.status(response.code).end() : res.status(500).end();
     } catch (error) {
+        console.error(error);
         res.status(500).end();
     }
 }
