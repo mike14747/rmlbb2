@@ -6,7 +6,7 @@ import Loading from './Loading';
 
 import styles from '../styles/ForgotLoginInfo.module.css';
 
-export default function ForgottenUsername() {
+export default function ForgotUsername() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
