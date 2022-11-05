@@ -29,11 +29,11 @@ export default NextAuth({
         jwt: true,
         // how many seconds until an idle session expires and is no longer valid
         maxAge: 30 * 24 * 60 * 60, // 30 * 24 * 60 * 60 is 30 days
-        secret: process.env.JWT_SECRET,
     },
     jwt: {
         signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
     },
+    secret: process.env.JWT_SECRET,
     callbacks: {
         async jwt({ token, user }) {
             if (user?._id) token._id = user._id;
