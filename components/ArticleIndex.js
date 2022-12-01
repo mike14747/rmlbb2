@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 
 import styles from '../styles/ArticleIndex.module.css';
-import sidebarStyles from '../styles/Sidebar.module.css';
+// import sidebarStyles from '../styles/Sidebar.module.css';
 
 export default function ArticleIndex({ links }) {
     return (
@@ -15,10 +15,7 @@ export default function ArticleIndex({ links }) {
                         {links.map(article => (
                             <p key={article.slug}>
                                 <Link href={'/articles/' + article.slug}>
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>
-                                        {article.title}
-                                    </a>
+                                    {article.title}
                                 </Link>
                             </p>
                         ))}

@@ -76,10 +76,7 @@ export default function Forum() {
                         <>
                             <p className="small">
                                 <Link href="/forum">
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>
-                                        Forum Index
-                                    </a>
+                                    Forum Index
                                 </Link>
                                 <span className={styles.arrow}> &#10139; {topicList[0].forumName}</span>
                             </p>
@@ -90,11 +87,8 @@ export default function Forum() {
 
                             <p className="small">
                                 <>&#128221; </>
-                                <Link href={`/forum/${forumId}/topic/new-topic`}>
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>
-                                        <strong>New Topic</strong>
-                                    </a>
+                                <Link href={`/forum/${forumId}/topic/new-topic`} passHref>
+                                    <strong>New Topic</strong>
                                 </Link>
                             </p>
 
@@ -110,9 +104,8 @@ export default function Forum() {
                                     <div className={styles.forumsDataRow} key={topic._id}>
                                         <div className={`${styles.forumsDataItem} ${styles.forumsDataItem1}`}>
                                             <p className={styles.forumsName}>
-                                                <Link href={`/forum/${forumId}/topic/${topic._id}`}>
-                                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                    <a><strong>{topic.title}</strong></a>
+                                                <Link href={`/forum/${forumId}/topic/${topic._id}`} passHref>
+                                                    <strong>{topic.title}</strong>
                                                 </Link>
                                             </p>
                                             <p className={styles.forumsDescription}><small>by:</small> {topic.username}</p>
@@ -126,8 +119,7 @@ export default function Forum() {
                                                 <>
                                                     <p>
                                                         <Link href={`/forum/${forumId}/topic/${topic._id}${topic.lastReply.replyId ? `?reply=${topic.lastReply.replyId}` : ''}`}>
-                                                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                            <a>{topic.lastReply.subject}</a>
+                                                            {topic.lastReply.subject}
                                                         </Link>
                                                     </p>
                                                     {topic.lastReply.username && <p className={styles.forumsDescription}><small>by:</small> {topic.lastReply.username}</p>}

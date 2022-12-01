@@ -43,10 +43,7 @@ const BoardSidebar = ({ posts }) => {
 
                     <div className={sidebarStyles.viewAll}>
                         <Link href="/forum">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>
-                                Go to the Forum
-                            </a>
+                            Go to the Forum
                         </Link>
 
                         <ParagraphRound aria-hidden="true" className={sidebarStyles.icon2} />

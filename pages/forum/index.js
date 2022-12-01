@@ -86,8 +86,7 @@ export default function ForumHome() {
                                         <div>
                                             <p className={styles.forumsName}>
                                                 <Link href={`/forum/${forum._id}`}>
-                                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                    <a>{forum.name}</a>
+                                                    {forum.name}
                                                 </Link>
                                             </p>
                                         </div>
@@ -99,8 +98,7 @@ export default function ForumHome() {
                                             <>
                                                 <p>
                                                     <Link href={`/forum/${forum._id}/topic/${forum.lastPost.topicId}${forum.lastPost.replyId ? `?reply=${forum.lastPost.replyId}` : ''}`}>
-                                                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                                        <a>{forum.lastPost.subject}</a>
+                                                        {forum.lastPost.subject}
                                                     </Link>
                                                 </p>
                                                 {forum.lastPost.username && <p className='small'><small>by:</small> {forum.lastPost.username}</p>}

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import styles from '../styles/ManagerCard.module.css';
 
@@ -53,9 +54,9 @@ export default function ManagerCard({ manager }) {
                     </p>
 
                     <p>
-                        <a href={'mailto:' + manager.email1a}>
+                        <Link href={'mailto:' + manager.email1a}>
                             {manager.email1a}
-                        </a>
+                        </Link>
                     </p>
 
                     <p>
@@ -101,9 +102,9 @@ export default function ManagerCard({ manager }) {
                     </p>
 
                     <p>
-                        <a href={'mailto:' + manager.email2a}>
+                        <Link href={'mailto:' + manager.email2a}>
                             {manager.email2a}
-                        </a>
+                        </Link>
                     </p>
 
                     <p>

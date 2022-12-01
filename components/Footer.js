@@ -34,11 +34,8 @@ const Footer = ({ contactEmail, links }) => {
                     }
 
                     <p className={styles.privacy}>
-                        <Link href="/privacy">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a className={styles.link}>
-                                Privacy Policy
-                            </a>
+                        <Link href="/privacy" className={styles.link}>
+                            Privacy Policy
                         </Link>
                     </p>
                 </div>

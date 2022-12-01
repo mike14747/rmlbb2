@@ -80,19 +80,13 @@ export default function Topic() {
                         <>
                             <p className="small">
                                 <Link href="/forum">
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>
-                                        Forum Index
-                                    </a>
+                                    Forum Index
                                 </Link>
 
                                 <span className={styles.arrow}> &#10139; </span>
 
                                 <Link href={`/forum/${forumId}`}>
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>
-                                        {topic.forumName}
-                                    </a>
+                                    {topic.forumName}
                                 </Link>
 
                                 <span className={styles.arrow}> &#10139; {topic.title}</span>
@@ -104,11 +98,8 @@ export default function Topic() {
 
                             <p className="small">
                                 <>&#128221; </>
-                                <Link href={`/forum/${forumId}/topic/new-topic`}>
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>
-                                        <strong>Reply to Topic</strong>
-                                    </a>
+                                <Link href={`/forum/${forumId}/topic/new-topic`} passHref>
+                                    <strong>Reply to Topic</strong>
                                 </Link>
                             </p>
 

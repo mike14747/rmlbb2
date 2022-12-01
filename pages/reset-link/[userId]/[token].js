@@ -68,8 +68,7 @@ export default function Token() {
                     <p>
                         You are already logged in, so you cannot reset your password via the reset link. You must do it via your<> </>
                         <Link href="/profile">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>profile</a>
+                            profile
                         </Link>.
                     </p>
                 }

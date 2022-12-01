@@ -36,10 +36,7 @@ export default function Articles({ content, articlesList }) {
                                 {articlesList.map(article => (
                                     <p key={article.slug}>
                                         <Link href={'/articles/' + article.slug}>
-                                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                            <a>
-                                                {article.title}
-                                            </a>
+                                            {article.title}
                                         </Link>
                                     </p>
                                 ))}

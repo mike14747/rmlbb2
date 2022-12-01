@@ -15,11 +15,8 @@ const TopInfo = ({ topInfo }) => {
                     <p className={styles.content}>
                         {topInfo?.text}
                         <span className={styles.moreInfoSpan}>&#10142;</span>
-                        <Link href="/recruiting">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a className={styles.link}>
-                                more info
-                            </a>
+                        <Link href="/recruiting" className={styles.link}>
+                            more info
                         </Link>
                     </p>
 

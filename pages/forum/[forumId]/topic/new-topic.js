@@ -103,8 +103,7 @@ export default function NewTopic() {
                             <p>
                                 <span className="muted"><small><em>forum: </em></small></span>
                                 <Link href={`/forum/${forumId}`}>
-                                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                    <a>{forumName}</a>
+                                    {forumName}
                                 </Link>
                             </p>
 

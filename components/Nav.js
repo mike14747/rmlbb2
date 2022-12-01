@@ -13,11 +13,8 @@ const Nav = () => {
                 {NavLinks?.length > 0 &&
                     NavLinks.map((item, index) => (
                         <li key={index}>
-                            <Link href={item.href}>
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                <a className={router?.pathname === item.href ? styles.disabled : ''}>
-                                    {item.text}
-                                </a>
+                            <Link href={item.href} className={router?.pathname === item.href ? styles.disabled : ''}>
+                                {item.text}
                             </Link>
                         </li>
                     ))

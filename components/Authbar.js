@@ -17,8 +17,7 @@ const Authbar = () => {
 
             {!session && !loading &&
                 <Link href={`/login?url=${router.pathname}`}>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a>Login</a>
+                    Login
                 </Link>
             }
 
@@ -27,10 +26,7 @@ const Authbar = () => {
                     <span className={styles.username}>
                         <>User: </>
                         <Link href="/profile">
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                            <a>
-                                {session.user.name}
-                            </a>
+                            {session.user.name}
                         </Link>
                     </span>
 

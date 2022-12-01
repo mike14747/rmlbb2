@@ -8,11 +8,8 @@ const Header = () => {
         <header className={'container ' + styles.header}>
             <div className={styles.headerLeft}>
                 <div className={styles.logoContainer}>
-                    <Link href="/">
-                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                        <a>
-                            <img src="/images/logo1.png" alt="RML Baseball" className={styles.logo} />
-                        </a>
+                    <Link href="/" passHref>
+                        <img src="/images/logo1.png" alt="RML Baseball" className={styles.logo} />
                     </Link>
                 </div>
                 <div>

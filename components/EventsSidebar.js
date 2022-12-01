@@ -38,10 +38,7 @@ const EventsSidebar = ({ events }) => {
 
                         <div className={sidebarStyles.viewAll}>
                             <Link href="/events">
-                                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                                <a>
-                                    View all Events
-                                </a>
+                                View all Events
                             </Link>
 
                             <img aria-hidden="true" src="/images/calendar.png" alt="" className={sidebarStyles.icon} />
