@@ -24,6 +24,8 @@ Is there a way to merge some/most/all of the FormInput components into one?
 
 Change the http POST methods to PUT on pages/routes that edit content.
 
+The props for the Button component includes theme and not style, but when I'm using the component, I'm passing style instead. I need to fix all those instances.
+
 ---
 
 ### Done
