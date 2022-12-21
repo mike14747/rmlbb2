@@ -26,6 +26,8 @@ Change the http POST methods to PUT on pages/routes that edit content.
 
 The props for the Button component includes theme and not style, but when I'm using the component, I'm passing style instead. I need to fix all those instances.
 
+Keep the old message forum for viewing only, then add a new blog area.
+
 ---
 
 ### Done
