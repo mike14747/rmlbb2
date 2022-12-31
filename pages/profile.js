@@ -50,7 +50,7 @@ const Profile = () => {
         }
 
         if (res.status === 200) {
-            signOut({ redirect: false });
+            signOut({ callbackUrl: '/' });
             setUsername('');
             setUsernameError(null);
         }
@@ -97,7 +97,7 @@ const Profile = () => {
             res.status === 500 && setPasswordError('A server error occurred. Please try your update again.');
         }
         if (res.status === 200) {
-            signOut({ redirect: false });
+            signOut({ callbackUrl: '/' });
             setPassword('');
             setRepeatPassword('');
             setPasswordError(null);

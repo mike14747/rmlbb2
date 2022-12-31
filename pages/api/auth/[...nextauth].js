@@ -2,38 +2,33 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
 import { getUserForSignin } from '../../../lib/api/user';
-import bcryptjs from 'bcryptjs';
 
 export default NextAuth({
     providers: [
         Credentials({
             name: 'username/password',
+
+            // the credentials property is not needed since we are using a custom login page, but I've left it here anyway
             credentials: {
                 username: { label: 'Username', type: 'text' },
                 password: { label: 'Password', type: 'password' },
             },
-            async authorize(credentials) {
-                const user = await getUserForSignin(credentials.username);
 
-                if (user) {
-                    const matches = await bcryptjs.compare(credentials.password, user.password);
-                    if (matches) return { _id: user._id, name: user.username, role: user.role };
-                    return null;
-                } else {
-                    return null;
-                }
+            async authorize(credentials) {
+                const user = await getUserForSignin(credentials.username, credentials.password);
+
+                return user ? { _id: user._id, name: user.username, role: user.role } : null;
             },
         }),
     ],
     session: {
-        jwt: true,
-        // how many seconds until an idle session expires and is no longer valid
-        maxAge: 30 * 24 * 60 * 60, // 30 * 24 * 60 * 60 is 30 days
+        strategy: 'jwt',
+        maxAge: 90 * (24 * 60 * 60), // 24 * 60 * 60 is 1 day
     },
-    jwt: {
-        signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
+    pages: {
+        signIn: '/login',
     },
-    secret: process.env.JWT_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({ token, user }) {
             if (user?._id) token._id = user._id;

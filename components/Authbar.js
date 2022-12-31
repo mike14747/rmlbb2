@@ -30,7 +30,7 @@ const Authbar = () => {
                         </Link>
                     </span>
 
-                    <Button onClick={() => signOut({ redirect: false })} size="small" variant="text">Logout</Button>
+                    <Button onClick={() => signOut({ callbackUrl: '/' })} size="small" variant="text">Logout</Button>
                 </>
             }
         </div>

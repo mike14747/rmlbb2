@@ -6,7 +6,7 @@ import styles from '../styles/BoardSidebar.module.css';
 import sidebarStyles from '../styles/Sidebar.module.css';
 
 const BoardSidebar = ({ posts }) => {
-    console.table(posts);
+    // console.table(posts);
     return (
         <div className={sidebarStyles.cardContainer}>
             <section className={sidebarStyles.card + ' ' + styles.boardCard}>
