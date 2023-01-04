@@ -48,7 +48,7 @@ const Directory = () => {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) router.push('/login?url=/directory');
+    if (!session) router.push('/login?callbackUrl=/directory');
 
     if (session) {
         return (

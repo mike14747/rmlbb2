@@ -51,7 +51,7 @@ export default function Forum() {
     if (typeof window !== 'undefined' && loading) return null;
 
     if (!session) {
-        router.push(`/login?url=/forum/${forumId}`);
+        router.push(`/login?callbackUrl=/forum/${forumId}`);
     }
 
     if (session) {

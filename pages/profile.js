@@ -127,7 +127,7 @@ const Profile = () => {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) router.push('/login?url=/profile');
+    if (!session) router.push('/login?callbackUrl=/profile');
 
     if (session) {
         return (

@@ -55,7 +55,7 @@ export default function Protected() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) router.push('/login?url=/protected');
+    if (!session) router.push('/login?callbackUrl=/protected');
 
     if (session) {
         return (

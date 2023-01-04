@@ -59,7 +59,7 @@ export default function Topic() {
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) router.push(`/login?url=/forum/topic/${topicId}`);
+    if (!session) router.push(`/login?callbackUrl=/forum/topic/${topicId}`);
 
     if (session) {
         return (

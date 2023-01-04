@@ -16,7 +16,7 @@ const Authbar = () => {
             {loading && <>Loading...</>}
 
             {!session && !loading &&
-                <Link href={`/login?url=${router.pathname}`}>
+                <Link href={`/login?callbackUrl=${router.pathname}`}>
                     Login
                 </Link>
             }

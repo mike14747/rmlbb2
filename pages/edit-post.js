@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Loading from '../components/Loading';
-import RichTextEditor from '../components/RichTextEditor';
-import SunEditorComp from '../components/SunEditor';
+// import RichTextEditor from '../components/RichTextEditor';
+// import SunEditorComp from '../components/SunEditor';
 import TiptapEditor from '../components/TiptapEditor';
 // import parse, { domToReact } from 'html-react-parser';
 // import DOMPurify from 'dompurify';
@@ -48,7 +48,7 @@ export default function NewTopic() {
     if (typeof window !== 'undefined' && loading) return null;
 
     if (!session) {
-        router.push('/login?url=/edit-post');
+        router.push('/login?callbackUrl=/edit-post');
     }
 
     return (

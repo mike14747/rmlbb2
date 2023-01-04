@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
@@ -17,7 +17,7 @@ export default function Sun() {
     if (typeof window !== 'undefined' && loading) return null;
 
     if (!session) {
-        router.push('/login?url=/sun');
+        router.push('/login?callbackUrl=/sun');
     }
 
     return (
