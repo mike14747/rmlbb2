@@ -48,7 +48,7 @@ export default function Login() {
                     </title>
                 </Head>
 
-                <article>
+                <article className="mw-90ch">
                     <h2 className="page-heading">
                         Login
                     </h2>
