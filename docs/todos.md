@@ -1,5 +1,9 @@
 ### Need to do
 
+Implement middleware using **withAuth** for all the protected and admin pages. Do I still want to keep some type of safeguard using **useSession** on the protected pages?
+
+Change all instances of **getSession** on the server to **getToken**.
+
 Figure out a new message board solution that can have our old board imported into it. (in progress)
 
 Add a WYSIWYG that will be used for message board posting. (in progress)
@@ -26,7 +30,7 @@ Change the http POST methods to PUT on pages/routes that edit content.
 
 The props for the Button component includes theme and not style, but when I'm using the component, I'm passing style instead. I need to fix all those instances.
 
-Keep the old message forum for viewing only, then add a new blog area.
+??? Keep the old message forum for viewing only, then add a new blog area ???
 
 Move the h1 tag out of the Header component and into the main tag of each page.
 
@@ -62,11 +66,11 @@ Figure out MongoDB transactions since several fields are embedded.
 
 Add a check in the user serverless function to make sure the reset token is not expired.
 
-Figure out an admin way to add users and forums.
+Figure out an admin way to add users and forums. The admin area should also be able to initiate a password reset link email for users.
 
 Write schema validations for all MongoDB collections.
 
-Upgrade next.js to v12.
+Upgrade next.js to v12. **UPDATE**: next.js has been updated to v13.
 
 Get a topic showing up on the [topicId] page.
 

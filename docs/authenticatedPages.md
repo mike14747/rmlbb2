@@ -1,3 +1,8 @@
+### Note:
+
+These templates are in the process of being updated as of 2023-01-03.
+
+
 ### Protected page template
 
 ```js

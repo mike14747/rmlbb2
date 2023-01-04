@@ -12,7 +12,7 @@ const Authbar = () => {
     const router = useRouter();
 
     return (
-        <div className={'container ' + styles.authbarContainer}>
+        <section className={'container ' + styles.authbarContainer}>
             {loading && <>Loading...</>}
 
             {!session && !loading &&
@@ -23,17 +23,17 @@ const Authbar = () => {
 
             {session &&
                 <>
-                    <span className={styles.username}>
+                    <p className={styles.username}>
                         <>User: </>
                         <Link href="/profile">
                             {session.user.name}
                         </Link>
-                    </span>
+                    </p>
 
                     <Button onClick={() => signOut({ callbackUrl: '/' })} size="small" variant="text">Logout</Button>
                 </>
             }
-        </div>
+        </section>
     );
 };
 

@@ -1,33 +1,29 @@
 import { useState } from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import { signIn } from 'next-auth/react';
 import Head from 'next/head';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import ForgotLoginInfo from '../components/ForgotLoginInfo';
 import Loading from '../components/Loading';
 
-const Login = () => {
-    const { data: session, status } = useSession();
-    const loading = status === 'loading';
+export default function Login() {
+    const { status } = useSession();
 
     const router = useRouter();
-    const redirectUrl = router.query.url || '/';
+    let redirectUrl = router.query.callbackUrl || '/';
+
+    const notRedirectable = ['/reset-link', '/reset-password-success', '/login'];
+    const notRedirectableCheck = notRedirectable.filter(url => redirectUrl.includes(url));
+    if (notRedirectableCheck.length > 0) redirectUrl = '/';
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-    if (typeof window !== 'undefined' && loading) return null;
-
-    if (session) {
-        router.push(redirectUrl);
-    }
-
     const handleSignIn = async (e) => {
         e.preventDefault();
+
         const loginStatus = await signIn('credentials', {
             redirect: false,
             username: username,
@@ -39,18 +35,20 @@ const Login = () => {
         }
     };
 
-    return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Login
-                </title>
-            </Head>
+    if (status === 'loading') return <Loading />;
 
-            {loading && <Loading />}
+    if (status === 'authenticated') router.push(redirectUrl);
 
-            {!loading && status === 'unauthenticated' &&
-                <>
+    if (status === 'unauthenticated') {
+        return (
+            <>
+                <Head>
+                    <title>
+                        RML Baseball - Login
+                    </title>
+                </Head>
+
+                <article>
                     <h2 className="page-heading">
                         Login
                     </h2>
@@ -88,14 +86,8 @@ const Login = () => {
                     </form>
 
                     <ForgotLoginInfo />
-                </>
-            }
-        </>
-    );
-};
-
-Login.propTypes = {
-    showSignin: PropTypes.bool,
-};
-
-export default Login;
+                </article>
+            </>
+        );
+    }
+}

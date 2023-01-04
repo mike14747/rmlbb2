@@ -1,11 +1,18 @@
+import PropTypes from 'prop-types';
 import Link from 'next/link';
+import TopInfo from './TopInfo';
+import Authbar from './Authbar';
 import Nav from './Nav';
 
 import styles from '../styles/Header.module.css';
 
-const Header = () => {
+export default function Header({ topInfoText, topInfoActive }) {
     return (
         <header className={'container ' + styles.header}>
+            <TopInfo topInfo={{ text: topInfoText, active: topInfoActive }} />
+
+            <Authbar />
+
             <div className={styles.headerLeft}>
                 <div className={styles.logoContainer}>
                     <Link href="/" passHref>
@@ -25,6 +32,9 @@ const Header = () => {
             <Nav />
         </header >
     );
-};
+}
 
-export default Header;
+Header.propTypes = {
+    topInfoText: PropTypes.string,
+    topInfoActive: PropTypes.bool,
+};

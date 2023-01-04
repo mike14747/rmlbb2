@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Loading from './Loading';
 import Error from './Error';
 import SkipToMain from './SkipToMain';
-import TopInfo from './TopInfo';
-import Authbar from './Authbar';
 import Header from './Header';
 import Footer from './Footer';
 import ScrollTop from './ScrollTop';
@@ -20,9 +18,8 @@ const Layout = ({ children }) => {
     return (
         <>
             <SkipToMain />
-            <TopInfo topInfo={{ text: settings?.topInfoText, active: settings?.topInfoActive }} />
-            <Authbar />
-            <Header />
+
+            <Header topInfoText={settings.topInfoText} topInfoActive={settings.topInfoActive} />
 
             <main id="main" className="main-container">
                 {children}
