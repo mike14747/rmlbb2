@@ -23,12 +23,12 @@ const Authbar = () => {
 
             {session &&
                 <>
-                    <p className={styles.username}>
+                    <span className={styles.username}>
                         <>User: </>
                         <Link href="/profile">
                             {session.user.name}
                         </Link>
-                    </p>
+                    </span>
 
                     <Button onClick={() => signOut({ callbackUrl: '/' })} size="small" variant="text">Logout</Button>
                 </>

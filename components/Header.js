@@ -8,28 +8,30 @@ import styles from '../styles/Header.module.css';
 
 export default function Header({ topInfoText, topInfoActive }) {
     return (
-        <header className={'container ' + styles.header}>
+        <header className={'container'}>
             <TopInfo topInfo={{ text: topInfoText, active: topInfoActive }} />
 
             <Authbar />
 
-            <div className={styles.headerLeft}>
-                <div className={styles.logoContainer}>
-                    <Link href="/" passHref>
-                        <img src="/images/logo1.png" alt="RML Baseball" className={styles.logo} />
-                    </Link>
+            <div className={styles.header}>
+                <div className={styles.headerLeft}>
+                    <div className={styles.logoContainer}>
+                        <Link href="/" passHref>
+                            <img src="/images/logo1.png" alt="RML Baseball" className={styles.logo} />
+                        </Link>
+                    </div>
+                    <div>
+                        <h1 className={styles.heading}>
+                            RML Baseball
+                        </h1>
+                        <p className={styles.subHeading}>
+                            Since 1978
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <h1 className={styles.heading}>
-                        RML Baseball
-                    </h1>
-                    <p className={styles.subHeading}>
-                        Since 1978
-                    </p>
-                </div>
-            </div>
 
-            <Nav />
+                <Nav />
+            </div>
         </header >
     );
 }
