@@ -10,9 +10,9 @@ const Footer = ({ contactEmail, links }) => {
                 <div className={styles.left}>
                     {links?.length > 0 &&
                         <>
-                            <h5 className={styles.resourcesHeading}>
+                            <h3 className={styles.resourcesHeading}>
                                 RML Resources:
-                            </h5>
+                            </h3>
                             {links.map((link, index) => (
                                 <p key={index}>
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.link}>

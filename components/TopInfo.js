@@ -14,8 +14,7 @@ const TopInfo = ({ topInfo }) => {
                 <aside aria-label="New Managers" className={'container ' + styles.infoContainer}>
                     <p className={styles.content}>
                         {topInfo?.text}
-                        <span className={styles.moreInfoSpan}>&#10142;</span>
-                        <Link href="/recruiting" className={styles.link}>
+                        <Link href="/recruiting" className={styles.link + ' ' + styles.moreInfo}>
                             more info
                         </Link>
                     </p>

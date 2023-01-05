@@ -6,14 +6,7 @@ import { getUserForSignin } from '../../../lib/api/user';
 export default NextAuth({
     providers: [
         Credentials({
-            name: 'username/password',
-
-            // the credentials property is not needed since we are using a custom login page, but I've left it here anyway
-            credentials: {
-                username: { label: 'Username', type: 'text' },
-                password: { label: 'Password', type: 'password' },
-            },
-
+            // I've removed the name and credentials properties since I'm using a custom login page
             async authorize(credentials) {
                 const user = await getUserForSignin(credentials.username, credentials.password);
 

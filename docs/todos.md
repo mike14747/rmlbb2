@@ -32,7 +32,7 @@ The props for the Button component includes theme and not style, but when I'm us
 
 ??? Keep the old message forum for viewing only, then add a new blog area ???
 
-Move the h1 tag out of the Header component and into the main tag of each page.
+Fix all the axe accessibility errors (color contrast and such). **UPDATE**: the only ones left that I know of are in the header (because of a background gradient).
 
 ---
 

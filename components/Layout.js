@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Loading from './Loading';
 import Error from './Error';
 import SkipToMain from './SkipToMain';
+import TopInfo from './TopInfo';
 import Header from './Header';
 import Footer from './Footer';
 import ScrollTop from './ScrollTop';
@@ -19,7 +20,9 @@ const Layout = ({ children }) => {
         <>
             <SkipToMain />
 
-            <Header topInfoText={settings.topInfoText} topInfoActive={settings.topInfoActive} />
+            <TopInfo topInfo={{ text: settings?.topInfoText, active: settings?.topInfoActive }} />
+
+            <Header topInfoText={settings?.topInfoText} topInfoActive={settings?.topInfoActive} />
 
             <main id="main" className="main-container">
                 {children}

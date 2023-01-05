@@ -16,8 +16,13 @@
     margin: 0 1rem 0 0;
 }
 
-.moreInfoSpan {
-    padding: 0 0.5rem 0 1rem;
+.moreInfo {
+    margin: 0 0 0 1rem;
+}
+
+.moreInfo::before {
+    content: "\279E\20";
+    padding: 0;
 }
 
 a.link,
@@ -25,6 +30,12 @@ a.link:link,
 a.link:visited {
     color: var(--mg-light);
     text-decoration: none;
+    transition: 0.3s;
+}
+
+a.link:focus {
+    outline: 2px var(--mg-gray-2) dotted;
+    outline-offset: 0.25rem;
     transition: 0.3s;
 }
 

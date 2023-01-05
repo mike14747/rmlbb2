@@ -8,7 +8,7 @@ button.btn {
 }
 
 button.btn:focus {
-    outline: 1px var(--mg-gray-4) dashed;
+    outline: 1px var(--mg-gray-6) dashed;
 }
 
 button.btn:not(.text):focus {

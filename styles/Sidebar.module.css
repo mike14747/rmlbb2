@@ -89,7 +89,7 @@ h4.heading {
 .recentPost > p {
     font-size: .833rem;
     font-size: var(--step--1);
-    color: var(--mg-gray-6);
+    color: var(--mg-dark);
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -97,7 +97,7 @@ h4.heading {
 }
 
 .recentPost > p > small {
-    color: var(--mg-gray-5);
+    color: var(--theme-color-red);
 }
 
 .recentDate {
