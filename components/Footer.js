@@ -26,11 +26,11 @@ const Footer = ({ contactEmail, links }) => {
 
                 <div className={styles.right}>
                     {contactEmail &&
-                        <p className={styles.contact}>
+                        <address className={styles.contact}>
                             <a href={contactEmail} className={styles.link}>
                                 Contact Us
                             </a>
-                        </p>
+                        </address>
                     }
 
                     <p className={styles.privacy}>

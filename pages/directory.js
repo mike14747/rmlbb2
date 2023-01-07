@@ -46,6 +46,10 @@ const Directory = () => {
         return () => abortController.abort();
     }, [session]);
 
+    function selectConference(conf) {
+        return /^american|national$/i.test(conf) ? conf.toLowerCase() : 'notSpecified';
+    }
+
     if (typeof window !== 'undefined' && loading) return null;
 
     if (!session) router.push('/login?callbackUrl=/directory');
@@ -72,7 +76,7 @@ const Directory = () => {
                         <div className={styles.directoryContainer}>
                             {managers.map(conf => (
                                 <div key={conf.conference} className={styles.conferenceContainer}>
-                                    <h3 className={styles.conferenceHeading}>
+                                    <h3 className={`${styles.conferenceHeading} ${styles[selectConference(conf.conference) + 'Heading']}`}>
                                         {conf.conference} Conference
                                     </h3>
                                     {conf.divisions.map(div => (

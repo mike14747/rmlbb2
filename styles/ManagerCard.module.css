@@ -20,6 +20,10 @@
     border-left: 8px var(--mg-blue) solid;
 }
 
+.notSpecifiedCard {
+    border-left: 8px var(--mg-gray-5) solid;
+}
+
 .heading {
     margin: 0 0 1.5rem 0;
     padding-bottom: 0.50rem;
@@ -64,6 +68,10 @@
 
 .nationalHeading {
     color: var(--mg-blue);
+}
+
+.notSpecifiedHeading {
+    color: var(--mg-gray-5);
 }
 
 .abbrev {

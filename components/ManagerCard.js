@@ -1,124 +1,67 @@
 import PropTypes from 'prop-types';
+import parse from 'html-react-parser';
 
 import styles from '../styles/ManagerCard.module.css';
 
 export default function ManagerCard({ manager }) {
+    if (!manager) return (
+        <div className={`${styles.card} ${styles.notSpecifiedCard}`}>
+            <p className="error">
+                No data found for this manager.
+            </p>
+        </div>
+    );
+
+    const conference = /^american|national$/i.test(manager.conference[0]) ? manager.conference[0].toLowerCase() : 'notSpecified';
+
+    function parseManagers(managers) {
+        let jsxStr = '';
+        for (let i = 1; i <= 2; i++) {
+            jsxStr += '<div className=' + styles.manager + '>';
+            if (managers[`description${i}`]) jsxStr += '<p className=' + styles.description + '>' + managers[`description${i}`] + '</p>';
+            if (managers[`manager${i}`]) jsxStr += '<p>' + managers[`manager${i}`] + '</p>';
+            if (managers[`address${i}a`]) jsxStr += '<p className=' + styles.small + '>' + managers[`address${i}a`] + '</p>';
+            if (managers[`address${i}b`]) jsxStr += '<p className=' + styles.small + '>' + managers[`address${i}b`] + '</p>';
+            if (managers[`city${i}`] || managers[`state${i}`] || managers[`country${i}`] || managers[`zip${i}`]) {
+                jsxStr += '<p className=' + styles.small + '>';
+                if (managers[`city${i}`]) jsxStr += managers[`city${i}`];
+                if (managers[`city${i}`] && managers[`state${i}`]) jsxStr += ', ';
+                if (managers[`state${i}`]) jsxStr += managers[`state${i}`];
+                if ((managers[`city${i}`] || managers[`state${i}`]) && managers[`country${i}`]) jsxStr += ' ';
+                if (managers[`country${i}`]) jsxStr += managers[`country${i}`];
+                if ((managers[`city${i}`] || managers[`state${i}`] || managers[`country${i}`]) && managers[`zip${i}`]) jsxStr += ' ';
+                if (managers[`zip${i}`]) jsxStr += managers[`zip${i}`];
+                jsxStr += '</p>';
+            }
+            if (managers[`phone${i}a`]) jsxStr += '<p>' + managers[`phone${i}a`] + '</p>';
+            if (managers[`phone${i}b`]) jsxStr += '<p>' + managers[`phone${i}b`] + '</p>';
+            if (managers[`email${i}a`]) jsxStr += '<p><a href="mailto:' + managers[`email${i}a`] + '">' + managers[`email${i}a`] + '</a></p>';
+            if (managers[`email${i}b`]) jsxStr += '<p><a href="mailto:' + managers[`email${i}b`] + '">' + managers[`email${i}b`] + '</a></p>';
+            jsxStr += '</div>';
+        }
+        return jsxStr;
+    }
+
     return (
-        <div className={`${styles.card} ${manager.conference[0] === 'American' ? styles.americanCard : styles.nationalCard}`}>
-            <div className={`${styles.heading} ${manager.conference[0] === 'American' ? styles.americanHeading : styles.nationalHeading}`}>
-                <h5>
-                    {manager?.team}
-                    <span className={styles.abbrev}>
-                        ({manager.abbreviation})
-                    </span>
-                </h5>
-            </div>
+        <div className={`${styles.card} ${styles[conference + 'Card']}`}>
+            {manager.team &&
+                <div className={`${styles.heading} ${styles[conference + 'Heading']}`}>
+                    <h5>
+                        {manager.team}
+                        <span className={styles.abbrev}>
+                            ({manager.abbreviation})
+                        </span>
+                    </h5>
+                </div>
+            }
 
             <div className={styles.body}>
-                <div className={styles.manager}>
-                    {manager.description1 &&
-                        <p className={styles.description}>
-                            {manager.description1}
-                        </p>
-                    }
-
-                    <p>
-                        {manager.manager1}
-                    </p>
-
-                    <p className={styles.small}>
-                        {manager.address1a}
-                    </p>
-
-                    <p className={styles.small}>
-                        {manager.address1b}
-                    </p>
-
-                    <p className={styles.small}>
-                        {manager.city1}
-                        {manager.city1 && manager.state1 ? <>, </> : <> </>}
-                        {manager.state1}
-                        <> </>
-                        {manager.country1}
-                        <> </>
-                        {manager.zip1}
-                    </p>
-
-                    <p>
-                        {manager.phone1a}
-                    </p>
-
-                    <p>
-                        {manager.phone1b}
-                    </p>
-
-                    {manager.email1a &&
-                        <p>
-                            <a href={'mailto:' + manager.email1a}>
-                                {manager.email1a}
-                            </a>
-                        </p>
-                    }
-
-                    <p>
-                        {manager.email1b}
-                    </p>
-                </div>
-
-                <div className={styles.manager}>
-                    {manager.description2 &&
-                        <p className={styles.description}>
-                            {manager.description2}
-                        </p>
-                    }
-
-                    <p>
-                        {manager.manager2}
-                    </p>
-
-                    <p className={styles.small}>
-                        {manager.address2a}
-                    </p>
-
-                    <p className={styles.small}>
-                        {manager.address2b}
-                    </p>
-
-                    <p className={styles.small}>
-                        {manager.city2}
-                        <> </>
-                        {manager.state2}
-                        <> </>
-                        {manager.country2}
-                        <> </>
-                        {manager.zip2}
-                    </p>
-
-                    <p>
-                        {manager.phone2a}
-                    </p>
-
-                    <p>
-                        {manager.phone2b}
-                    </p>
-
-                    {manager.email2a &&
-                        <p>
-                            <a href={'mailto:' + manager.email2a}>
-                                {manager.email2a}
-                            </a>
-                        </p>
-                    }
-
-                    <p>
-                        {manager.email2b}
-                    </p>
-                </div>
+                {parse(parseManagers(manager))}
             </div>
 
             <div className={styles.footing}>
                 <p>
-                    {manager?.conference[0]} Conference {manager?.division[0]}
+                    {manager.conference[0]} Conference {manager.division[0]}
                 </p>
             </div>
         </div>
