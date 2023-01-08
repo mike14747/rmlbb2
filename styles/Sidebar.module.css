@@ -97,7 +97,7 @@ h4.heading {
 }
 
 .recentPost > p > small {
-    color: var(--theme-color-red);
+    color: var(--theme-color-green);
 }
 
 .recentDate {
