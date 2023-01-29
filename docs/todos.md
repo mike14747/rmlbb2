@@ -1,10 +1,16 @@
 ### Need to do
 
-Implement middleware using **withAuth** for all the protected and admin pages. Do I still want to keep some type of safeguard using **useSession** on the protected pages?
+Convert the app to **typescript**.
+
+Move all pages/components to the new appDir (version 13).
+
+Implement middleware using **withAuth** for all the protected and admin pages. Do I still want to keep some type of safeguard using **useSession** on the protected pages? Only possibly use middleware after the withAuth issues have been fixed.
 
 Change all instances of **getSession** on the server to **getToken**.
 
 Figure out a new message board solution that can have our old board imported into it. (in progress)
+
+Indent the replies to posts (or some other method) so they are distinct from the original post.
 
 Add a WYSIWYG that will be used for message board posting. (in progress)
 
