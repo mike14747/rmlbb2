@@ -40,6 +40,8 @@ The props for the Button component includes theme and not style, but when I'm us
 
 Fix all the axe accessibility errors (color contrast and such). **UPDATE**: the only ones left that I know of are in the header (because of a background gradient).
 
+Add a current season playing schedule page where you can click on your team and get just that schedule.
+
 ---
 
 ### Done
