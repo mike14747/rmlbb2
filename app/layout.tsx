@@ -8,7 +8,7 @@ import SkipToMain from './components/SkipToMain';
 import { Session } from 'next-auth';
 import { getSettings } from '../lib/api/settings';
 
-import '../styles/my_base.css';
+import '../styles/mg_base.css';
 import '../styles/globals.css';
 import '../styles/my_tables.css';
 import '../styles/rich-text.css';
