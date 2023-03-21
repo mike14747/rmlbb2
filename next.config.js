@@ -44,6 +44,10 @@ const securityHeaders = [
 ];
 
 module.exports = {
+    experimental: {
+        appDir: true,
+    },
+    reactStrictMode: true,
     async headers() {
         return [
             {
