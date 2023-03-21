@@ -1,9 +1,16 @@
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 
 import styles from '../../styles/Footer.module.css';
 
-const Footer = ({ contactEmail, links }) => {
+type Props = {
+    contactEmail: string;
+    links: Array<{
+        url: string;
+        name: string;
+    }>;
+}
+
+const Footer = ({ contactEmail, links }: Props) => {
     return (
         <footer className={'container ' + styles.footer}>
             <div className={styles.upper}>
@@ -46,11 +53,6 @@ const Footer = ({ contactEmail, links }) => {
             </p>
         </footer>
     );
-};
-
-Footer.propTypes = {
-    contactEmail: PropTypes.string,
-    links: PropTypes.array,
 };
 
 export default Footer;
