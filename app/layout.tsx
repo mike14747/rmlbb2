@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import ClientSessionProvider from './components/ClientSessionProvider';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ScrollTop from './components/ScrollTop';
 import SkipToMain from './components/SkipToMain';
+import TopInfo from './components/TopInfo';
 import { Session } from 'next-auth';
 import { getSettings } from '../lib/api/settings';
 
@@ -24,6 +25,18 @@ type RootLayoutProps = {
         newsItemIncrement: number;
     },
 };
+
+type SettingDataType = {
+    numInitialNewsItems: number;
+    newsItemIncrement: number;
+    topInfoText: string;
+    topInfoActive: boolean;
+    contactEmail: string;
+    links: Array<{
+        url: string;
+        name: string;
+    }>
+}
 
 async function getSettingsData() {
     return await getSettings().catch(error => console.log(error.message));
@@ -52,7 +65,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children, session, params }: RootLayoutProps) {
-    const settingsData = await getSettingsData().catch(error => console.log(error.message));
+    const settingsData: SettingDataType = await getSettingsData().catch(error => console.log(error.message));
 
     params.numInitialNewsItems = settingsData?.numInitialNewsItems || 20;
     params.newsItemIncrement = settingsData?.newsItemIncrement || 50;
@@ -62,7 +75,8 @@ export default async function RootLayout({ children, session, params }: RootLayo
             <body id="appWrapper">
                 <ClientSessionProvider session={session}>
                     <SkipToMain />
-                    <Header topInfoText={settingsData?.topInfoText} topInfoActive={settingsData?.topInfoActive} />
+                    <TopInfo topInfo={{ text: settingsData?.topInfoText, active: settingsData?.topInfoActive }} />
+                    <Header />
 
                     <div className="page-container">
                         {children}

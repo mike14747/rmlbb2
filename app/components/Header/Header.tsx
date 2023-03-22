@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Authbar from './Authbar';
 import Nav from './Nav';
 
-import styles from '../../styles/Header.module.css';
+import styles from '../../../styles/Header.module.css';
 
-export default function Header({ topInfoText, topInfoActive }) {
+export default function Header() {
     return (
         <header className={'container'}>
             <Authbar />
@@ -32,8 +31,3 @@ export default function Header({ topInfoText, topInfoActive }) {
         </header >
     );
 }
-
-Header.propTypes = {
-    topInfoText: PropTypes.string,
-    topInfoActive: PropTypes.bool,
-};

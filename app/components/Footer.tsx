@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from '../../styles/Footer.module.css';
 
-type Props = {
+type FooterProps = {
     contactEmail: string;
     links: Array<{
         url: string;
@@ -10,7 +10,7 @@ type Props = {
     }>;
 }
 
-const Footer = ({ contactEmail, links }: Props) => {
+const Footer = ({ contactEmail, links }: FooterProps) => {
     return (
         <footer className={'container ' + styles.footer}>
             <div className={styles.upper}>
