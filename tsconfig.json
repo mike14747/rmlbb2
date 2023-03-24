@@ -8,7 +8,7 @@
         ],
         "allowJs": true,
         "skipLibCheck": true,
-        "strict": false,
+        "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
         "incremental": true,
@@ -23,6 +23,7 @@
                 "name": "next"
             }
         ],
+        "strictNullChecks": true,
         "noEmitOnError": true,
         "removeComments": true,
         "noUnusedParameters": true,

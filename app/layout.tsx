@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+// import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import ClientSessionProvider from './components/ClientSessionProvider';
 import Header from './components/Header/Header';
@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import ScrollTop from './components/ScrollTop';
 import SkipToMain from './components/SkipToMain';
 import TopInfo from './components/TopInfo';
-import { Session } from 'next-auth';
+// import { Session } from 'next-auth';
 import { getSettings } from '../lib/api/settings';
 
 import '../styles/mg_base.css';
@@ -17,10 +17,10 @@ import '../styles/tiptap.css';
 import '../styles/suneditor.css';
 import '../styles/suneditor-contents.css';
 
-type RootLayoutProps = {
-    children: ReactNode;
-    session: Session;
-};
+// type RootLayoutProps = {
+//     children: ReactNode;
+//     session: Session;
+// };
 
 type SettingDataType = {
     numInitialNewsItems: number;
@@ -60,7 +60,8 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function RootLayout({ children, session }: RootLayoutProps) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function RootLayout({ children, session }: any) {
     const settingsData: SettingDataType = await getSettingsData().catch(error => console.log(error.message));
 
     return (
