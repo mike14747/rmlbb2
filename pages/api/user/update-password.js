@@ -10,7 +10,7 @@ export default async function updatePassword(req, res) {
     try {
         let response;
         if (session) {
-            response = await changePassword(session.user._id, req.body.password);
+            response = await changePassword(session.user.id, req.body.password);
         } else if (req.body.userId && req.body.token) {
             response = await changePassword(parseInt(req.body.userId), req.body.password, req.body.token);
         } else {

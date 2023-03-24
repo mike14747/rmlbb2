@@ -8,7 +8,7 @@ export default async function updateUsername(req, res) {
     if (!req?.body?.username) return res.status(400).end();
 
     try {
-        const response = await changeUsername(session.user._id, req.body.username);
+        const response = await changeUsername(session.user.id, req.body.username);
         response?.code ? res.status(response.code).end() : res.status(500).end();
     } catch (error) {
         console.error(error);
