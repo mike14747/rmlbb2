@@ -20,10 +20,6 @@ import '../styles/suneditor-contents.css';
 type RootLayoutProps = {
     children: ReactNode;
     session: Session;
-    params: {
-        numInitialNewsItems: number;
-        newsItemIncrement: number;
-    },
 };
 
 type SettingDataType = {
@@ -64,11 +60,8 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function RootLayout({ children, session, params }: RootLayoutProps) {
+export default async function RootLayout({ children, session }: RootLayoutProps) {
     const settingsData: SettingDataType = await getSettingsData().catch(error => console.log(error.message));
-
-    params.numInitialNewsItems = settingsData?.numInitialNewsItems || 20;
-    params.newsItemIncrement = settingsData?.newsItemIncrement || 50;
 
     return (
         <html lang="en">
