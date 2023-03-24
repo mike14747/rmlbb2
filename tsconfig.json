@@ -23,7 +23,6 @@
                 "name": "next"
             }
         ],
-        "strictNullChecks": true,
         "noEmitOnError": true,
         "removeComments": true,
         "noUnusedParameters": true,
