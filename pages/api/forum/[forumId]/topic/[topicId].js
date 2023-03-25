@@ -1,4 +1,4 @@
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import { getForumTopic, getTopicReplies } from '../../../../../lib/api/forum';
 
 function setRepliesArr(page, arr) {
@@ -15,8 +15,8 @@ function setRepliesArr(page, arr) {
 
 export default async function forumTopic(req, res) {
     if (req.method !== 'GET') return res.status(401).end();
-    const session = await getSession({ req });
-    if (!session) return res.status(401).end();
+    const token = await getToken({ req });
+    if (!token) return res.status(401).end();
     if (!req.query.forumId || !req.query.topicId) return res.status(400).end();
 
     // console.log(req.query?.page);

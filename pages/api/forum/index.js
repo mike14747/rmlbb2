@@ -1,10 +1,10 @@
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import { getForumList } from '../../../lib/api/forum';
 
 export default async function forumList(req, res) {
     if (req.method !== 'GET') return res.status(401).end();
-    const session = await getSession({ req });
-    if (!session) return res.status(401).end();
+    const token = await getToken({ req });
+    if (!token) return res.status(401).end();
 
     try {
         const response = await getForumList();

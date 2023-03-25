@@ -1,12 +1,12 @@
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import { getUserProfile } from '../../../lib/api/user';
 
 export default async function user(req, res) {
     if (req.method !== 'GET') return res.status(401).end();
-    const session = await getSession({ req });
-    if (!session) return res.status(401).end();
+    const token = await getToken({ req });
+    if (!token) return res.status(401).end();
     if (!req.query.username) return res.status(400).end();
-    if (session.user?.name !== req.query.username) return res.status(401).end();
+    if (token?.name !== req.query.username) return res.status(401).end();
 
     try {
         const response = await getUserProfile(req.query.username);
