@@ -1,0 +1,14 @@
+.authbarContainer {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--theme-color-yellow-pale);
+    font-size: .833rem;
+    font-size: var(--step--1);
+    padding: 0.25rem 0.5rem;
+}
+
+.username {
+    margin-left: 0.25rem;
+    margin-right: 1.5rem;
+    padding: 0.25rem 0;
+}

@@ -1,0 +1,10 @@
+.recruitingContainer > ol,
+.recruitingContainer > ul,
+.recruitingContainer > p {
+    margin: 0 auto 1.5rem auto;
+}
+
+.recruitingContainer > p + ol,
+.recruitingContainer > p + ul {
+    margin-top: -1rem;
+}

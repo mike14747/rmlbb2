@@ -1,0 +1,37 @@
+.headingRow {
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+    background-color: var(--mg-gray-1);
+    letter-spacing: 0.50px;
+}
+
+tr.verticalMiddle > td {
+    vertical-align: middle;
+}
+
+.year {
+    font-size: 1rem;
+    font-size: var(--step-0);
+}
+
+.team {
+    font-size: 1rem;
+    font-size: var(--step-0);
+    margin: 0;
+    letter-spacing: 0.50px;
+}
+
+.manager {
+    font-size: .833rem;
+    font-size: var(--step--1);
+    color: var(--mg-gray-6);
+    margin: 0;
+}
+
+.winner {
+    color: var(--theme-color-green);
+}
+
+.runnerUp {
+    color: var(--theme-color-red);
+}

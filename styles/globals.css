@@ -1,0 +1,301 @@
+:root {
+    /* start theme colors specific to this app */
+
+    --theme-color-orange: #ee6611;
+    --theme-color-red: #c11b17;
+    --theme-color-green: #006e33;
+    --theme-color-dirt: #e1cbbd;
+    --theme-color-dirt-faded: #ebe3df;
+    --theme-color-yellow-pale: #ffffee;
+
+    --theme-mb-new1: #A7DA03;
+
+    /* end theme colors specific to this app */
+}
+
+::selection {
+    background-color: var(--theme-color-green);
+    color: var(--mg-light);
+}
+
+#__next,
+#root,
+#appWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+html,
+body {
+    background-image: url('/images/seamless_bg_sand.jpg');
+}
+
+blockquote {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-left: 8px solid var(--theme-color-red);
+    background-color: beige;
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+}
+
+.blockquote-footer {
+    display: block;
+    font-size: 83.3%;
+    font-size: var(--step--1);
+    color: #6c757d;
+    margin-top: 1.5rem;
+}
+
+.blockquote-footer::before {
+    content: '\2014\00A0';
+}
+
+a {
+    color: var(--mg-blue);
+    text-decoration: none;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+a:link {
+    color: var(--mg-blue);
+    text-decoration: none;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+a:visited {
+    color: var(--mg-blue);
+    text-decoration: none;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+a:focus {
+    outline: 2px var(--mg-gray-4) dotted;
+    outline-offset: 0.25rem;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: var(--mg-orange-dark);
+    text-decoration: underline;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+a:active {
+    color: var(--mg-orange-dark);
+    text-decoration: underline;
+}
+
+.large {
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+}
+
+/* use with the <main> element on pages */
+.main-container {
+    flex: 1;
+    width: 100%;
+    min-width: var(--container-min-width);
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--mg-light);
+    padding: 1rem 1rem 2rem 1rem;
+}
+
+/* use with the main <div> element in layout components or with the the outer wrapper in the page content element */
+.page-container {
+    /* enable flex: 1; on the next 3 lines for full or semi-full height websites or comment them out to disable them */
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+   
+    width: 100%;
+    min-width: var(--container-min-width);
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--mg-light);
+    padding: 1rem;
+}
+
+/* use with elements like <header>, <nav> and <footer> */
+.container {
+    width: 100%;
+    min-width: var(--container-min-width);
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* add custom css for site-wide use here */
+
+h2.page-heading {
+    text-align: left;
+    border-bottom: 2px var(--mg-gray-2) solid;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.error {
+    font-size: 1rem;
+    font-size: var(--step-0);
+    color: var(--theme-color-red);
+    text-align: center;
+}
+
+.error2 {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    color: var(--mg-red);
+}
+
+.success {
+    font-size: 1rem;
+    font-size: var(--step-0);
+    color: var(--theme-color-green);
+    text-align: center;
+}
+
+.success2 {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    color: var(--theme-color-green);
+}
+
+.reset-password-success {
+    margin-top: 3rem;
+    font-size: 1.44rem;
+    font-size: var(--step-2);
+    color: var(--theme-color-green);
+    text-align: center;
+}
+
+.break::before {
+    content: '\A';
+    white-space: pre;
+}
+
+.skip-to-main {
+    position: absolute;
+    left: 1rem;
+    background-color: var(--mg-light);
+    font-size: 1rem;
+    font-size: var(--step-0);
+    margin: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    transform: translateY(-120%);
+    transition: transform 0.3s ease-in;
+}
+
+.skip-to-main:focus {
+    transform: translateY(0);
+    outline: 1px var(--mg-gray-5) dashed;
+    outline-offset: 0rem;
+}
+
+/* start global form css */
+
+.form {
+    max-width: 30ch;
+    margin: 0 auto;
+}
+
+.form > label,
+.form > label > input {
+    display: block;
+}
+
+.form > label {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-size: var(--step-0);
+}
+
+.form > label > input {
+    padding: 0.5rem;
+    border: 1px var(--mg-gray-6) solid;
+}
+
+.form > label > input:focus {
+    border: 1px var(--theme-color-orange) solid;
+    outline: 0;
+    box-shadow: 0 0 4px 4px var(--theme-color-dirt);
+}
+
+.btn-container {
+    margin: 2rem 0;
+}
+
+.validation-error {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    color: var(--theme-color-red);
+    text-align: center;
+}
+
+.warning {
+    font-size: 1rem;
+    font-size: var(--step-0);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.warning::before {
+    content: '\26D4';
+    padding-right: 0.5rem;
+}
+
+.editor-textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 1rem;
+    display: block;
+    padding: 0.5rem;
+    min-height: 200px;
+}
+
+/* end global form css */
+
+/* end site-wide custom css */
+
+@media (min-width: 480px) {
+}
+
+@media (min-width: 768px) {
+    .break::before {
+        content: ' ';
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1366px) {
+}

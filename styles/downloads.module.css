@@ -1,0 +1,105 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.typeContainer {
+    flex: 1;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 2rem auto;
+}
+
+.typeContainer:last-of-type {
+    margin-bottom: 0;
+}
+
+.typeContainer > h3 {
+    font-size: 1.44rem;
+    font-size: var(--step-2);
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+.downloadContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    border: 1px var(--mg-gray-2) solid;
+}
+
+.typeContainer > .downloadContainer:last-of-type {
+    margin-bottom: 0;
+}
+
+.downloadInfo > h4 {
+    color: var(--theme-color-green);
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+    margin: 0;
+}
+
+.downloadDesc {
+    color: var(--mg-gray-6);
+    margin: 0;
+}
+
+.filenameText {
+    color: var(--mg-gray-6);
+    font-size: 83.3%;
+    font-size: var(--step--1);
+    margin: 1rem 0 0 0;
+}
+
+.filenameText > a:hover {
+    outline: 1px var(--theme-color-dirt) dashed;
+    outline-offset: 0.25rem;
+    transition: 0.3s;
+}
+
+.downloadIcon {
+    width: clamp(48px, calc(42px + 1vw), 60px);
+    height: auto;
+    padding: 0.75rem;
+    transition: 0.3s;
+}
+
+.downloadIcon:hover {
+    padding: 0.5rem;
+    /* filter: invert(36%) sepia(89%) saturate(995%) hue-rotate(355deg) brightness(108%) contrast(92%); */
+    filter: invert(46%) sepia(77%) saturate(4160%) hue-rotate(3deg) brightness(106%) contrast(87%);
+}
+
+.downloadLink:hover > img {
+    outline: 1px var(--theme-color-dirt) dashed;
+    /* outline-offset: 0.25rem; */
+    transition: 0.3s;
+}
+
+.fileTypeIcon {
+    width: clamp(36px, calc(30px + 1vw), 40px);
+    height: auto;
+    vertical-align: middle;
+    padding: 0 0.50rem 0 0;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .typeContainer {
+        max-width: 566px;
+        margin: 0 1rem;
+    }
+
+    .downloadContainer {
+        margin: 1rem;
+    }
+}

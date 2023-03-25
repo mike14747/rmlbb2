@@ -1,0 +1,7 @@
+.privacyContainer > h3 {
+    color: var(--theme-color-red);
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+    font-weight: normal;
+    margin: 2rem 0 0.75rem 0;
+}

@@ -1,0 +1,114 @@
+.inputWrapper {
+    margin: 1rem 0;
+}
+
+label.label,
+label.label + input.input {
+    display: block;
+    max-width: 24ch;
+    margin: 0;
+}
+
+label.label.normal {
+    font-size: 1rem;
+    font-size: var(--step-0);
+}
+
+input.input.normal {
+    font-size: 1rem;
+    font-size: var(--step-0);
+    padding: 0.5rem;
+    border: 1px var(--mg-gray-6) solid;
+}
+
+label.label.small {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+}
+
+input.input.small {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    padding: 0.5rem;
+    border: 1px var(--mg-gray-6) solid;
+}
+
+input.input:focus {
+    border: 1px var(--theme-color-orange) solid;
+    outline: 0;
+    box-shadow: 0 0 4px 4px var(--theme-color-dirt);
+}
+
+.errorMessage {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    color: var(--mg-red-dark);
+    display: none;
+    margin: 0;
+}
+
+input.input:not(:placeholder-shown):not(:focus):invalid + .errorMessage {
+    display: block;
+}
+
+input.submit {
+    margin: 2rem 0 1rem 0;
+}
+
+label > .required {
+    font-size: 0.833rem;
+    font-size: var(--step--1);
+    color: var(--mg-red-dark);
+    margin-left: 1rem;
+}
+
+/* start checkbox styling */
+
+label.label input.input[type='checkbox'] {
+    display: none;
+}
+
+.labelCheckbox {
+    cursor: pointer;
+}
+
+.fakeCheckbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: var(--step-2);
+    height: var(--step-2);
+    border: 1px var(--mg-gray-6) solid;
+}
+
+.fakeCheckbox::after {
+    content: '\2713';
+    color: var(--mg-light);
+    font-size: var(--step-1);
+}
+
+.fakeCheckbox:focus {
+    border: 1px var(--theme-color-orange) solid;
+    box-shadow: 0 0 4px 4px var(--theme-color-dirt);
+    outline: 0;
+}
+
+label.label input.input[type='checkbox']:checked + .fakeCheckbox {
+    background-color: var(--theme-color-orange);
+}
+
+label.label input.input[type='checkbox']:checked + .fakeCheckbox:focus {
+    border: 1px var(--mg-gray-6) solid;
+}
+
+/* end checkbox styling */
+
+@media (min-width: 768px) {
+    label.label,
+    label.label + input.input {
+        display: block;
+        max-width: 30ch;
+        margin: 0;
+    }
+}
