@@ -1,8 +1,0 @@
-.editorContainer {
-    font-size: 1rem;
-    font-size: var(--step-0);
-    margin: 0 0 1rem 0;
-    padding: 0.5rem;
-    border: 1px var(--mg-gray-3) solid;
-    border-radius: 0.25rem;
-}
