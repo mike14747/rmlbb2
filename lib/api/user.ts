@@ -1,11 +1,11 @@
-import { connectToDatabase } from '../../utils/mongodb';
+// import { connectToDatabase } from '../../utils/mongodb';
 import clientPromise from '../mongodb';
-// import { ObjectId } from 'bson';
 import { mailTransporter } from '../helpers/nodemailerConfig';
 import { formatDateObject } from '../helpers/formatDate';
 import { usernamePattern, emailPattern, passwordPattern } from '../formInputPatterns';
 import { generateRandom, hashPassword } from '../helpers/cryptoUtils';
-// import * as sft from '../../types/serverlessFunctionTypes';
+import * as sft from '../../types/serverlessFunctionTypes';
+import { TransactionOptions, ReadPreference } from 'mongodb';
 
 export async function getUserForSignin(username: string, password: string) {
     // const salt = generateRandom(32);
@@ -17,7 +17,7 @@ export async function getUserForSignin(username: string, password: string) {
 
         const user = await db
             .collection('users')
-            .findOne({ username: username, active: true }, { projection: { _id: 1, username: 1, password: 1, salt: 1, role: 1 } });
+            .findOne<sft.UserSignin>({ username: username, active: true }, { projection: { _id: 1, username: 1, password: 1, salt: 1, role: 1 } });
 
         if (!user) return null;
 
@@ -26,7 +26,7 @@ export async function getUserForSignin(username: string, password: string) {
 
         if (hashedPassword === user.password) {
             return {
-                _id: user._id.toString(),
+                id: user._id.toString(),
                 username: user.username,
                 role: user.role,
             };
@@ -39,14 +39,14 @@ export async function getUserForSignin(username: string, password: string) {
     }
 }
 
-export async function getUserProfile(id: number) {
+export async function getUserProfile(_id: number) {
     try {
         const connection = await clientPromise;
         const db = connection.db();
 
         const user = await db
             .collection('users')
-            .findOne<{ username: string, email: string, id: number, registeredDate: string | null }>({ _id: id, active: true }, { projection: { username: 1, email: 1, posts: 1, registeredDate: 1 } });
+            .findOne<sft.UserProfile>({ _id, active: true }, { projection: { username: 1, email: 1, posts: 1, registeredDate: 1 } });
 
         if (!user) return null;
 
@@ -58,17 +58,18 @@ export async function getUserProfile(id: number) {
     }
 }
 
-export async function changeUsername(id: number, newUsername: string) {
-    if (!id) return { code: 401 };
+export async function changeUsername(_id: number, newUsername: string) {
+    if (!_id) return { code: 401 };
     const pattern = new RegExp(usernamePattern);
     if (!newUsername || !pattern.test(newUsername)) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
 
     // make sure newUsername is not already in use
     const inUseResult = await db
         .collection('users')
-        .find({ _id: id, username: newUsername })
+        .find({ _id, username: newUsername })
         .project({ _id: 1 })
         .limit(1)
         .toArray();
@@ -76,38 +77,44 @@ export async function changeUsername(id: number, newUsername: string) {
     if (inUseResult.length === 1) return { code: 409 };
 
     // update the user's username (and all references to it in other colections) with newUsername using a tranaction
-    const { client } = await connectToDatabase();
-    const session = client.startSession();
+    // const { client } = await connectToDatabase();
+    const session = connection.startSession();
 
     let transactionResult;
 
-    const transactionOptions = {
-        readPreference: 'primary',
+    // const transactionOptions = {
+    //     readPreference: 'primary',
+    //     readConcern: { level: 'local' },
+    //     writeConcern: { w: 'majority' },
+    // };
+
+    const transactionOptions: TransactionOptions = {
         readConcern: { level: 'local' },
         writeConcern: { w: 'majority' },
+        readPreference: ReadPreference.primary,
     };
 
     try {
         transactionResult = await session.withTransaction(async () => {
             await db
                 .collection('users')
-                .updateOne({ _id: id }, { $set: { username: newUsername } }, { session });
+                .updateOne({ _id }, { $set: { username: newUsername } }, { session });
 
-            await db
-                .collection('topics')
-                .updateMany({ user_id: id }, { $set: { username: newUsername } }, { session });
+            // await db
+            //     .collection('topics')
+            //     .updateMany({ user_id: _id }, { $set: { username: newUsername } }, { session });
 
-            await db
-                .collection('replies')
-                .updateMany({ user_id: id }, { $set: { username: newUsername } }, { session });
+            // await db
+            //     .collection('replies')
+            //     .updateMany({ user_id: _id }, { $set: { username: newUsername } }, { session });
 
-            await db
-                .collection('forums')
-                .updateMany({ 'lastPost.userId': id }, { $set: { 'lastPost.username': newUsername } }, { session });
+            // await db
+            //     .collection('forums')
+            //     .updateMany({ 'lastPost.userId': _id }, { $set: { 'lastPost.username': newUsername } }, { session });
 
-            await db
-                .collection('topics')
-                .updateMany({ 'lastReply.userId': id }, { $set: { 'lastReply.username': newUsername } }, { session });
+            // await db
+            //     .collection('topics')
+            //     .updateMany({ 'lastReply.userId': _id }, { $set: { 'lastReply.username': newUsername } }, { session });
         }, transactionOptions);
     } catch (error) {
         console.log(error);
@@ -118,31 +125,33 @@ export async function changeUsername(id: number, newUsername: string) {
     return transactionResult?.ok === 1 ? { code: 200 } : { code: 500 };
 }
 
-export async function changeEmail(id: number, newEmail: string) {
-    if (!id) return { code: 401 };
+export async function changeEmail(_id: number, newEmail: string) {
+    if (!_id) return { code: 401 };
     const pattern = new RegExp(emailPattern);
     if (!newEmail || !pattern.test(newEmail)) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
     const updateResult = await db
         .collection('users')
-        .updateOne({ _id: id }, { $set: { email: newEmail } });
+        .updateOne({ _id }, { $set: { email: newEmail } });
 
     return updateResult?.modifiedCount === 1 ? { code: 200 } : { code: 500 };
 }
 
-export async function changePassword(id: number, password: string, resetPasswordToken = null) {
-    if (!id) return { code: 401 };
+export async function changePassword(_id: number, password: string, resetPasswordToken = null) {
+    if (!_id) return { code: 401 };
     const pattern = new RegExp(passwordPattern);
     if (!password || !pattern.test(password)) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
 
     if (resetPasswordToken) {
         // since a token is being passed, get the expiration date/time of the token if it exists in the db
         const tokenValidCheck = await db
             .collection('users')
-            .find({ _id: id, resetPasswordToken })
+            .find({ _id, resetPasswordToken })
             .project({ resetPasswordExpires: 1 })
             .limit(1)
             .toArray();
@@ -157,7 +166,7 @@ export async function changePassword(id: number, password: string, resetPassword
 
     const updateResult = await db
         .collection('users')
-        .updateOne({ _id: id }, { $set: { password: hashedPassword, salt } });
+        .updateOne({ _id }, { $set: { password: hashedPassword, salt } });
 
     return updateResult?.modifiedCount === 1 ? { code: 200 } : { code: 500 };
 }
@@ -165,7 +174,8 @@ export async function changePassword(id: number, password: string, resetPassword
 export async function forgotUsername(email: string) {
     if (!email) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
     const userData = await db
         .collection('users')
         .find({ email })
@@ -192,14 +202,15 @@ export async function forgotUsername(email: string) {
         }
     } else {
         // email address doesn't match any in the database
-        return { code: 400 };
+        return { code: 404 };
     }
 }
 
 export async function resetPassword(username: string, email: string) {
     if (!username || !email) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
     const user = await db
         .collection('users')
         .find({ username, email })
@@ -237,12 +248,13 @@ export async function resetPassword(username: string, email: string) {
         }
     } else {
         // username and email address doesn't match any user in the database
-        return { code: 400 };
+        return { code: 404 };
     }
 }
 
 // export async function changeAllPasswords() {
-//     const { db } = await connectToDatabase();
+//     const connection = await clientPromise;
+//     const db = connection.db();
 
 //     const bulkOp = db.collection('users').initializeOrderedBulkOp();
 //     const users = [];

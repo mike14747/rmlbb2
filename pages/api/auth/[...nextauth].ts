@@ -18,7 +18,7 @@ export default NextAuth({
                 const { username, password } = credentials;
                 const user = await getUserForSignin(username, password);
 
-                return user ? { id: user._id, name: user.username, role: user.role } : null;
+                return user ? { id: user.id, name: user.username, role: user.role } : null;
             },
         }),
     ],
