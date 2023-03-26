@@ -8,7 +8,7 @@ export default async function updateEmail(req, res) {
     if (!req?.body?.email) return res.status(400).end();
 
     try {
-        const response = await changeEmail(token.id, req.body.email);
+        const response = await changeEmail(parseInt(token.id), req.body.email);
         response?.code ? res.status(response.code).end() : res.status(500).end();
     } catch (error) {
         console.error(error);
