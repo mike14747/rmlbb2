@@ -82,12 +82,6 @@ export async function changeUsername(_id: number, newUsername: string) {
 
     let transactionResult;
 
-    // const transactionOptions = {
-    //     readPreference: 'primary',
-    //     readConcern: { level: 'local' },
-    //     writeConcern: { w: 'majority' },
-    // };
-
     const transactionOptions: TransactionOptions = {
         readConcern: { level: 'local' },
         writeConcern: { w: 'majority' },
@@ -100,21 +94,21 @@ export async function changeUsername(_id: number, newUsername: string) {
                 .collection('users')
                 .updateOne({ _id }, { $set: { username: newUsername } }, { session });
 
-            // await db
-            //     .collection('topics')
-            //     .updateMany({ user_id: _id }, { $set: { username: newUsername } }, { session });
+            await db
+                .collection('topics')
+                .updateMany({ user_id: _id }, { $set: { username: newUsername } }, { session });
 
             // await db
             //     .collection('replies')
             //     .updateMany({ user_id: _id }, { $set: { username: newUsername } }, { session });
 
-            // await db
-            //     .collection('forums')
-            //     .updateMany({ 'lastPost.userId': _id }, { $set: { 'lastPost.username': newUsername } }, { session });
+            await db
+                .collection('forums')
+                .updateMany({ 'lastPost.userId': _id }, { $set: { 'lastPost.username': newUsername } }, { session });
 
-            // await db
-            //     .collection('topics')
-            //     .updateMany({ 'lastReply.userId': _id }, { $set: { 'lastReply.username': newUsername } }, { session });
+            await db
+                .collection('topics')
+                .updateMany({ 'lastReply.userId': _id }, { $set: { 'lastReply.username': newUsername } }, { session });
         }, transactionOptions);
     } catch (error) {
         console.log(error);
