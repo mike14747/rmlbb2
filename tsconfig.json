@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "lib": [
             "dom",
             "dom.iterable",
@@ -21,9 +21,8 @@
         "plugins": [
             {
                 "name": "next"
-            }
+            },
         ],
-        "strictNullChecks": true,
         "noEmitOnError": true,
         "removeComments": true,
         "noUnusedParameters": true,

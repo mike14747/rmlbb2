@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import ClientSessionProvider from './components/ClientSessionProvider';
-// import Header from './components/Header/Header';
-// import Footer from './components/Footer';
-// import ScrollTop from './components/ScrollTop';
-// import SkipToMain from './components/SkipToMain';
+import Header from './components/Header/Header';
+import Footer from './components/Footer';
+import ScrollTop from './components/ScrollTop';
+import SkipToMain from './components/SkipToMain';
 import TopInfo from './components/TopInfo';
 import { Session } from 'next-auth';
 import { getSettings } from '../lib/api/settings';
@@ -35,7 +35,7 @@ type SettingDataType = {
 }
 
 async function getSettingsData() {
-    return await getSettings().catch((error) => console.log(error));
+    return await getSettings().catch(error => console.log(error.message));
 }
 
 export const metadata: Metadata = {
@@ -67,16 +67,16 @@ export default async function RootLayout({ children, session }: RootLayoutProps)
         <html lang="en">
             <body id="appWrapper">
                 <ClientSessionProvider session={session}>
-                    {/* <SkipToMain /> */}
+                    <SkipToMain />
                     <TopInfo topInfo={{ text: settingsData?.topInfoText, active: settingsData?.topInfoActive }} />
-                    {/* <Header /> */}
+                    <Header />
 
                     <div className="page-container">
                         {children}
-                        {/* <ScrollTop /> */}
+                        <ScrollTop />
                     </div>
 
-                    {/* <Footer contactEmail={settingsData?.contactEmail} links={settingsData?.links} /> */}
+                    <Footer contactEmail={settingsData?.contactEmail} links={settingsData?.links} />
                 </ClientSessionProvider>
             </body>
         </html>
