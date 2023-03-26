@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
-import Loading from '../components/Loading';
-import FormInputForUsername from '../components/FormInputForUsername';
-import FormInputForNewPassword from '../components/FormInputForNewPassword';
-import FormInputForEmail from '../components/FormInputForEmail';
-import Button from '../components/Button';
+import Loading from '../../components/Loading';
+import FormInputForUsername from '../../components/FormInputForUsername';
+import FormInputForNewPassword from '../../components/FormInputForNewPassword';
+import FormInputForEmail from '../../components/FormInputForEmail';
+import Button from '../../components/Button';
 
 import styles from '../styles/profile.module.css';
 

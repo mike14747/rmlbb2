@@ -17,7 +17,7 @@ export default function Login() {
     let redirectUrl = searchParams?.get('callbackUrl') || '/';
 
     // set an array of query parameters that are not allowed to be redirected to
-    const notRedirectable = ['/reset-link', '/reset-password-success', '/register', '/login'];
+    const notRedirectable = ['/reset-link', '/reset-password-success', '/login'];
 
     // check to see whether the query parameter is on the not allowed list
     const notRedirectableCheck = notRedirectable.filter(url => redirectUrl.includes(url));

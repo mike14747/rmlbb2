@@ -2,13 +2,13 @@ import { useState } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
-import serializers from '../lib/serializers';
-import Sidebar from '../components/Sidebar';
-import { getNewsItems } from '../lib/api/news';
-import { getNextUpcomingEvents } from '../lib/api/events';
-import { getMostRecentPostsForHomepage } from '../lib/api/forum';
-import Loading from '../components/Loading';
-import Button from '../components/Button';
+import serializers from '../../lib/serializers';
+import Sidebar from '../../components/Sidebar';
+import { getNewsItems } from '../../lib/api/news';
+import { getNextUpcomingEvents } from '../../lib/api/events';
+import { getMostRecentPostsForHomepage } from '../../lib/api/forum';
+import Loading from '../../components/Loading';
+import Button from '../../components/Button';
 
 import styles from '../styles/home.module.css';
 
