@@ -5,8 +5,8 @@ import clientPromise from '../mongodb';
 // import { usernamePattern, emailPattern, passwordPattern } from '../formInputPatterns';
 import { generateRandom, hashPassword } from '../helpers/cryptoUtils';
 
-export async function getUserForSignin(username, password) {
-    const salt =  generateRandom(32);
+export async function getUserForSignin(username: string, password:string) {
+    const salt = generateRandom(32);
     console.log({ password: hashPassword(password, salt), salt });
 
     try {

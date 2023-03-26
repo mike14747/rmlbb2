@@ -20,8 +20,6 @@ declare global {
             GOOGLE_CLIENT_SECRET: string;
             GOOGLE_REFRESH_TOKEN: string;
             BASE_URL: string;
-            INITIAL_NEWS_ITEMS: number;
-            NEWS_ITEMS_INCREMENT: number;
         }
     }
 }
