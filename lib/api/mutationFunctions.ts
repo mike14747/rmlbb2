@@ -1,4 +1,4 @@
-async function deleteAllEvents() {
+export async function deleteAllEvents() {
     const mutations = [
         {
             delete: {
@@ -22,7 +22,7 @@ async function deleteAllEvents() {
 
 // this function is being kept as an example
 // the manager data is now in its own private studio
-async function deleteAllManagers() {
+export async function deleteAllManagers() {
     const mutations = [
         {
             delete: {
@@ -53,7 +53,7 @@ async function deleteAllManagers() {
     return returned;
 }
 
-async function deleteAllNewsItems() {
+export async function deleteAllNewsItems() {
     const mutations = [
         {
             delete: {
@@ -74,9 +74,3 @@ async function deleteAllNewsItems() {
         .catch(error => console.log(error));
     return 'done';
 }
-
-module.exports = {
-    deleteAllEvents,
-    deleteAllManagers,
-    deleteAllNewsItems,
-};

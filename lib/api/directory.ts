@@ -1,6 +1,6 @@
 import { groupManagers } from '../helpers/groupManagers';
 
-async function queryData(query) {
+async function queryData(query: string) {
     if (!query) return null;
 
     const url = `${process.env.SANITY_PRIVATE_QUERY_URL}${query}`;

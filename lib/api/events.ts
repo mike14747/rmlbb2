@@ -17,7 +17,7 @@ function insertFormattedDate(eventsArr, type = 'short') {
     });
 }
 
-async function getEventsData(query, type) {
+async function getEventsData(query: string, type: 'short' | 'long') {
     if (!query) return null;
     const url = `${process.env.SANITY_PUBLIC_QUERY_URL}${query}`;
     const resJSON = await fetch(url).then(res => res.json().catch(error => console.log(error)));

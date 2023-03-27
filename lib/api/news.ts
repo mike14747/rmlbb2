@@ -1,9 +1,7 @@
 import { formatDateString } from '../helpers/formatDate';
 import queryData from '../helpers/queryData';
 
-const inc = parseInt(process.env.NEWS_ITEMS_INCREMENT);
-
-async function getNewsData(query) {
+async function getNewsData(query: string) {
     if (!query) return null;
     const url = `${process.env.SANITY_PUBLIC_QUERY_URL}${query}`;
     const resJSON = await fetch(url).then(res => res.json().catch(error => console.log(error)));
@@ -19,13 +17,13 @@ async function getNewsData(query) {
     };
 }
 
-export async function getNewsItems(start, num = inc) {
+export async function getNewsItems(start: number, num: number) {
     const query = encodeURIComponent(`{"total": count(*[_type == "newsItem"]),"newsItems": *[_type == "newsItem"] | order(date desc, title asc) [${start}...${start + num}]{_id, title, date, content}}`);
     return getNewsData(query);
 }
 
 // this query isn't set correctly yet
-export async function getNewsItemsFromSpecificYear(year) {
+export async function getNewsItemsFromSpecificYear(year: number) {
     const query = encodeURIComponent(`*[_type == "newsItem" && date > "${year - 1}-12-31" && date < "${year + 1}-01-01"] | order(date desc, title asc) {_id, title, date, content}`);
     return getNewsData(query);
 }

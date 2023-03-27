@@ -1,4 +1,4 @@
-async function queryDownloadsData(query) {
+async function queryDownloadsData(query: string) {
     if (!query) return null;
     const url = `${process.env.NEXT_PUBLIC_BASE_FILE_QUERY_URL}${query}`;
     const dataJSON = await fetch(url).then(res => res.json().catch(error => console.log(error)));

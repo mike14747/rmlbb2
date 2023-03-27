@@ -33,7 +33,7 @@ export const getForumListForEdit = async () => {
     return data;
 };
 
-export const getForumTopics = async (forumId) => {
+export const getForumTopics = async (forumId: number) => {
     const { db } = await connectToDatabase();
 
     const data = await db
@@ -164,7 +164,7 @@ export async function getMostRecentPostsForHomepage() {
     return data;
 }
 
-export const getForumTopic = async (forumId, topicId) => {
+export const getForumTopic = async (forumId: number, topicId: number) => {
     const { db } = await connectToDatabase();
 
     const data = await db
@@ -191,7 +191,7 @@ export const getTopicReplies = async (repliesArr) => {
     return data;
 };
 
-export const getForumName = async (forumId) => {
+export const getForumName = async (forumId: number) => {
     const { db } = await connectToDatabase();
 
     const data = await db
@@ -201,7 +201,7 @@ export const getForumName = async (forumId) => {
     return data;
 };
 
-export const addForum = async (name, active = true) => {
+export const addForum = async (name: string, active = true) => {
     if (!name) return { code: 400 };
 
     const { db } = await connectToDatabase();
@@ -237,7 +237,7 @@ export const addForum = async (name, active = true) => {
     return result?.insertedId ? { code: 201 } : { code: 500 };
 };
 
-export const editForum = async (_id, newForumName, newActiveStatus) => {
+export const editForum = async (_id: number, newForumName: string, newActiveStatus: boolean) => {
     const { db } = await connectToDatabase();
 
     // make sure newForumName is not already in use
@@ -285,7 +285,7 @@ export const editForum = async (_id, newForumName, newActiveStatus) => {
     return transactionResult?.ok === 1 ? { code: 200 } : { code: 500 };
 };
 
-export const addTopic = async (userId, username, forumId, forumName, title, content) => {
+export const addTopic = async (userId: number, username: string, forumId: number, forumName: string, title: string, content: string) => {
     if (!userId || !username || !forumId || !forumName || !title || !content) return { code: 400 };
 
     const { db } = await connectToDatabase();
@@ -354,7 +354,7 @@ export const addTopic = async (userId, username, forumId, forumName, title, cont
     return transactionResult?.ok === 1 ? { code: 201 } : { code: 500 };
 };
 
-export const editTopic = async (topicId, userId, title, content) => {
+export const editTopic = async (topicId: number, userId: number, title: string, content: string) => {
     if (!topicId || !userId || !title || !content) return { code: 400 };
 
     const { db } = await connectToDatabase();
@@ -393,7 +393,7 @@ export const editTopic = async (topicId, userId, title, content) => {
     return transactionResult?.ok === 1 ? { code: 200 } : { code: 500 };
 };
 
-export const getOneReply = async (replyId) => {
+export const getOneReply = async (replyId: number) => {
     const { db } = await connectToDatabase();
 
     const data = await db

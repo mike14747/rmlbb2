@@ -5,7 +5,7 @@ export async function getActiveArticlesForIndex() {
     return queryData(query);
 }
 
-export async function getArticleBySlug(slug) {
+export async function getArticleBySlug(slug: string) {
     console.log('slug:', slug);
     const query = encodeURIComponent(`*[ _type == "article" && active == true && slug.current == "${slug}"][0]{title, slug, content}`);
     return queryData(query);
