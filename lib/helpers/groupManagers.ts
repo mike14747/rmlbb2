@@ -1,7 +1,17 @@
-export function groupManagers(managers) {
+import { ManagerObj } from '../../types';
+
+type InitialGroups = {
+    conference: 'American' | 'National';
+    divisions: Array<{
+        division: 'East' | 'Central' | 'West',
+        teams: ManagerObj[],
+    }>
+}
+
+export function groupManagers(managers: ManagerObj[]) {
     if (!managers) return null;
 
-    const initial = [
+    const initial: InitialGroups[] = [
         {
             conference: 'American',
             divisions: [

@@ -1,10 +1,22 @@
 import { formatDateString } from '../helpers/formatDate';
 import queryData from '../helpers/queryData';
 
+type NewsItemsType = {
+    result: {
+        newsItems: Array<{
+            _id: number;
+            title: string;
+            date: string;
+            content: string;
+        }>,
+        total?: number;
+    }
+}
+
 async function getNewsData(query: string) {
     if (!query) return null;
     const url = `${process.env.SANITY_PUBLIC_QUERY_URL}${query}`;
-    const resJSON = await fetch(url).then(res => res.json().catch(error => console.log(error)));
+    const resJSON: NewsItemsType = await fetch(url).then(res => res.json().catch(error => console.log(error)));
     return {
         total: resJSON?.result?.total || null,
         newsItems: resJSON?.result?.newsItems.map(res => {
