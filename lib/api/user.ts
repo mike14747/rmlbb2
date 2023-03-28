@@ -50,7 +50,7 @@ export async function getUserProfile(_id: number) {
 
         if (!user) return null;
 
-        user.registeredDate = formatDateObject(user.registeredDate, 'short');
+        user.registeredDateStr = formatDateObject(user.registeredDate, 'short');
         return user;
     } catch (error) {
         console.log(error);

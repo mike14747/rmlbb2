@@ -128,7 +128,7 @@ export default function Topic() {
                                             </p>
 
                                             <p className={styles.topicDetails}>
-                                                by: {reply.username} &#10139; <span className={styles.topicDate}>{reply.date}</span>
+                                                by: {reply.username} &#10139; <span className={styles.topicDate}>{reply.lastDate}</span>
                                             </p>
                                         </div>
 

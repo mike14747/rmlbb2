@@ -9,7 +9,6 @@ function setRepliesArr(page, arr) {
         repliesEndIndex = 25 + ((page - 1) * 24);
     }
     const newRepliesArr = arr.slice(repliesStartIndex, repliesEndIndex);
-    console.log({ newRepliesArr });
     return newRepliesArr;
 }
 
@@ -19,7 +18,6 @@ export default async function forumTopic(req, res) {
     if (!token) return res.status(401).end();
     if (!req.query.forumId || !req.query.topicId) return res.status(400).end();
 
-    // console.log(req.query?.page);
     const page = parseInt(req.query?.page) || undefined;
 
     try {

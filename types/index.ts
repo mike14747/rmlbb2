@@ -42,6 +42,7 @@ export type UserInfo = {
     id: string;
     username: string;
     email: string;
+    registeredDateStr: string;
 }
 
 export type UserObjProp = {

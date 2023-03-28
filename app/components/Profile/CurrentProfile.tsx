@@ -21,6 +21,8 @@ export default function CurrentProfile({ userObj }: UserObjProp) {
                 <p><span className={styles.description}>Password: </span>************</p>
 
                 <p><span className={styles.description}>Email: </span>{user.email}</p>
+
+                <p><span className={styles.description}>Email: </span>{user.registeredDateStr}</p>
             </div>
 
             <UpdateProfile user={user} setUser={setUser} />

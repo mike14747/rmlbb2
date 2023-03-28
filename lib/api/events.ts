@@ -1,16 +1,17 @@
 import { formatDateString } from '../helpers/formatDate';
+import * as sft from '../../types/serverlessFunctionTypes';
 
 const offset = new Date().getTimezoneOffset();
 const todayStr = new Date(new Date().getTime() - offset * 60000).toISOString().slice(0, 10);
 const todayStrPlusSixtyDays = new Date(new Date().getTime() - (offset * 60000) + (60 * 86400000)).toISOString().slice(0, 10);
 const todayObj = new Date(new Date().getTime() - offset * 60000);
 
-function insertFormattedDate(eventsArr, type = 'short') {
+function insertFormattedDate(eventsArr: sft.EventsArr[], type = 'short') {
     if (!eventsArr) return null;
     return eventsArr.map(event => {
         return {
             eventDate: formatDateString(event.eventDate, type),
-            daysUntil: Math.ceil((new Date(event.eventDate) - todayObj) / (1000 * 60 * 60 * 24)),
+            daysUntil: Math.ceil((+new Date(event.eventDate) - +todayObj) / (1000 * 60 * 60 * 24)),
             event: event.event,
             details: event?.details || '',
         };

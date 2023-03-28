@@ -1,33 +1,12 @@
 import { connectToDatabase } from '../../utils/mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-
-type ForumList = {
-    _id: number;
-    name: string;
-    topics: number;
-    posts: number;
-    lastPost: { date: Date; lastDate?: string };
-    lastPostDaysAgo?: number;
-}
-
-type ForumTopics = {
-    _id: number;
-    title: string;
-    user_id: number;
-    username: string;
-    date: Date;
-    views: number;
-    lastReply: { date: Date; lastDate?: string };
-    forumName: string;
-    replies: number;
-    lastDate?: string;
-}
+import * as sft from '../../types/serverlessFunctionTypes';
 
 export const getForumList = async () => {
     const { db } = await connectToDatabase();
 
-    const data: ForumList[] = await db
+    const data: sft.ForumList[] = await db
         .collection('forums')
         .find({ active: true })
         .project({ _id: 1, name: 1, topics: 1, posts: 1, lastPost: 1 })
@@ -57,7 +36,7 @@ export const getForumListForEdit = async () => {
 export const getForumTopics = async (forumId: number) => {
     const { db } = await connectToDatabase();
 
-    const data: ForumTopics[] = await db
+    const data: sft.ForumTopics[] = await db
         .collection('topics').aggregate([
             {
                 $match: {
@@ -175,9 +154,9 @@ export async function getMostRecentPostsForHomepage() {
                 '$limit': 5,
             },
         ])
-        .map(topic => {
+        .map((topic: sft.RecentPost) => {
             topic.content = topic.content.replace(/(<([^>]+)>)/ig, '').substring(0, 60);
-            topic.lastDate = formatDateObjectWithTime(topic.lastDate, 'short');
+            topic.lastDate = formatDateObjectWithTime(topic.date, 'short');
             return topic;
         })
         .toArray();
@@ -197,17 +176,17 @@ export const getForumTopic = async (forumId: number, topicId: number) => {
     return data;
 };
 
-export const getTopicReplies = async (repliesArr) => {
+export const getTopicReplies = async (repliesArr: number[]) => {
     const { db } = await connectToDatabase();
 
-    const data = await db
+    const data: sft.TopicReplyData[] = await db
         .collection('replies')
         .find({ _id: { $in: repliesArr } })
         .toArray();
 
     data.forEach(reply => {
-        reply.date = formatDateObjectWithTime(reply.date, 'short');
-        if (reply.lastEditDate) reply.lastEditDate = formatDateObjectWithTime(reply.lastEditDate, 'short');
+        reply.lastDate = formatDateObjectWithTime(reply.date, 'short');
+        reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
     });
     return data;
 };
