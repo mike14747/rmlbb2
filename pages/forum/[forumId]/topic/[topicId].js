@@ -110,7 +110,7 @@ export default function Topic() {
                                     </p>
 
                                     <p className={styles.topicDetails}>
-                                        by: {topic.username} &#10139; <span className={styles.topicDate}>{topic.date}</span>
+                                        by: {topic.username} &#10139; <span className={styles.topicDate}>{topic.lastDate}</span>
                                     </p>
                                 </div>
 

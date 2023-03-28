@@ -1,12 +1,33 @@
 import { connectToDatabase } from '../../utils/mongodb';
-
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
+
+type ForumList = {
+    _id: number;
+    name: string;
+    topics: number;
+    posts: number;
+    lastPost: { date: Date; lastDate?: string };
+    lastPostDaysAgo?: number;
+}
+
+type ForumTopics = {
+    _id: number;
+    title: string;
+    user_id: number;
+    username: string;
+    date: Date;
+    views: number;
+    lastReply: { date: Date; lastDate?: string };
+    forumName: string;
+    replies: number;
+    lastDate?: string;
+}
 
 export const getForumList = async () => {
     const { db } = await connectToDatabase();
 
-    const data = await db
+    const data: ForumList[] = await db
         .collection('forums')
         .find({ active: true })
         .project({ _id: 1, name: 1, topics: 1, posts: 1, lastPost: 1 })
@@ -14,8 +35,8 @@ export const getForumList = async () => {
         .toArray();
 
     data.forEach(forum => {
-        forum.lastPostDaysAgo = Math.floor((new Date() - forum.lastPost.date) / (1000 * 60 * 60 * 24));
-        forum.lastPost.date = formatDateObjectWithTime(forum.lastPost.date, 'short');
+        forum.lastPostDaysAgo = forum.lastPost.lastDate ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
+        forum.lastPost.lastDate = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
     });
     return data;
 };
@@ -23,7 +44,7 @@ export const getForumList = async () => {
 export const getForumListForEdit = async () => {
     const { db } = await connectToDatabase();
 
-    const data = await db
+    const data: { _id: number; name: string; active: boolean; order: number; }[] = await db
         .collection('forums')
         .find()
         .project({ _id: 1, name: 1, active: 1, order: 1 })
@@ -36,7 +57,7 @@ export const getForumListForEdit = async () => {
 export const getForumTopics = async (forumId: number) => {
     const { db } = await connectToDatabase();
 
-    const data = await db
+    const data: ForumTopics[] = await db
         .collection('topics').aggregate([
             {
                 $match: {
@@ -79,8 +100,8 @@ export const getForumTopics = async (forumId: number) => {
         .toArray();
 
     data.forEach(topic => {
-        topic.date = formatDateObjectWithTime(topic.date, 'short');
-        if (topic.lastReply) topic.lastReply.date = formatDateObjectWithTime(topic.lastReply.date, 'short');
+        topic.lastDate = formatDateObjectWithTime(topic.date, 'short');
+        if (topic.lastReply) topic.lastReply.lastDate = formatDateObjectWithTime(topic.lastReply.date, 'short');
     });
     return data;
 };
@@ -156,7 +177,7 @@ export async function getMostRecentPostsForHomepage() {
         ])
         .map(topic => {
             topic.content = topic.content.replace(/(<([^>]+)>)/ig, '').substring(0, 60);
-            topic.date = formatDateObjectWithTime(topic.date, 'short');
+            topic.lastDate = formatDateObjectWithTime(topic.lastDate, 'short');
             return topic;
         })
         .toArray();

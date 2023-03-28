@@ -28,10 +28,10 @@ const monthsLong = [
     'December',
 ];
 
-const isValidDate = (value: Date) => value instanceof Date && !isNaN(+value);
+export const isValidDate = (value: Date) => value instanceof Date && !isNaN(+value);
 
 export function formatDateObject(dateObj: Date, type = 'short') {
-    if (!isValidDate(dateObj)) return null;
+    if (!isValidDate(dateObj)) return undefined;
 
     const date = (type === 'short' ? monthsShort[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear() : monthsLong[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear());
 
@@ -39,7 +39,7 @@ export function formatDateObject(dateObj: Date, type = 'short') {
 }
 
 export function formatDateObjectWithTime(dateTimeObj: Date, type = 'short') {
-    if (!isValidDate(dateTimeObj)) return null;
+    if (!isValidDate(dateTimeObj)) return undefined;
 
     const date = (type === 'short' ? monthsShort[dateTimeObj.getMonth()] + ' ' + dateTimeObj.getDate() + ', ' + dateTimeObj.getFullYear() : monthsLong[dateTimeObj.getMonth()] + ' ' + dateTimeObj.getDate() + ', ' + dateTimeObj.getFullYear());
 
