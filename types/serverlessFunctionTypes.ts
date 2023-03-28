@@ -23,7 +23,7 @@ export type ForumList = {
     name: string;
     topics: number;
     posts: number;
-    lastPost: { date: Date; lastDate?: string };
+    lastPost: { date: Date; dateStr?: string };
     lastPostDaysAgo?: number;
 }
 
@@ -34,10 +34,10 @@ export type ForumTopics = {
     username: string;
     date: Date;
     views: number;
-    lastReply: { date: Date; lastDate?: string };
+    lastReply: { date: Date; dateStr?: string };
     forumName: string;
     replies: number;
-    lastDate?: string;
+    dateStr?: string;
 }
 
 export type RecentPost = {
@@ -46,7 +46,7 @@ export type RecentPost = {
     forumName: string;
     username: string;
     date: Date;
-    lastDate?: string;
+    dateStr?: string;
 }
 
 export type TopicReplyData = {
@@ -61,7 +61,7 @@ export type TopicReplyData = {
     topic_id: number;
     topicActive: boolean;
     date: Date;
-    lastDate?: string
+    dateStr?: string
     lastEditDate: Date;
     lastEditDateStr?: string;
 }

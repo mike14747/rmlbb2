@@ -14,8 +14,8 @@ export const getForumList = async () => {
         .toArray();
 
     data.forEach(forum => {
-        forum.lastPostDaysAgo = forum.lastPost.lastDate ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
-        forum.lastPost.lastDate = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
+        forum.lastPostDaysAgo = forum.lastPost.date ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
+        forum.lastPost.dateStr = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
     });
     return data;
 };
@@ -79,8 +79,8 @@ export const getForumTopics = async (forumId: number) => {
         .toArray();
 
     data.forEach(topic => {
-        topic.lastDate = formatDateObjectWithTime(topic.date, 'short');
-        if (topic.lastReply) topic.lastReply.lastDate = formatDateObjectWithTime(topic.lastReply.date, 'short');
+        topic.dateStr = formatDateObjectWithTime(topic.date, 'short');
+        if (topic.lastReply) topic.lastReply.dateStr = formatDateObjectWithTime(topic.lastReply.date, 'short');
     });
     return data;
 };
@@ -156,7 +156,7 @@ export async function getMostRecentPostsForHomepage() {
         ])
         .map((topic: sft.RecentPost) => {
             topic.content = topic.content.replace(/(<([^>]+)>)/ig, '').substring(0, 60);
-            topic.lastDate = formatDateObjectWithTime(topic.date, 'short');
+            topic.dateStr = formatDateObjectWithTime(topic.date, 'short');
             return topic;
         })
         .toArray();
@@ -185,7 +185,7 @@ export const getTopicReplies = async (repliesArr: number[]) => {
         .toArray();
 
     data.forEach(reply => {
-        reply.lastDate = formatDateObjectWithTime(reply.date, 'short');
+        reply.dateStr = formatDateObjectWithTime(reply.date, 'short');
         reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
     });
     return data;

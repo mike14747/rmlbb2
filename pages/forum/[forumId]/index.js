@@ -109,7 +109,7 @@ export default function Forum() {
                                                 </Link>
                                             </p>
                                             <p className={styles.forumsDescription}><small>by:</small> {topic.username}</p>
-                                            <p className={styles.forumsDescription}>{topic.lastDate}</p>
+                                            <p className={styles.forumsDescription}>{topic.dateStr}</p>
                                         </div>
                                         <div className={`${styles.forumsDataItem} ${styles.forumsDataItem2a}`}>{topic.replies.length}</div>
 
@@ -123,7 +123,7 @@ export default function Forum() {
                                                         </Link>
                                                     </p>
                                                     {topic.lastReply.username && <p className={styles.forumsDescription}><small>by:</small> {topic.lastReply.username}</p>}
-                                                    <p className={styles.forumsDescription}>{topic.lastReply.lastDate}</p>
+                                                    <p className={styles.forumsDescription}>{topic.lastReply.dateStr}</p>
                                                 </>
                                             }
                                         </div>
