@@ -8,6 +8,7 @@ import SkipToMain from './components/SkipToMain';
 import TopInfo from './components/TopInfo';
 import { Session } from 'next-auth';
 import { getSettings } from '../lib/api/settings';
+import { SettingDataType } from '../types';
 
 import '../styles/mg_base.css';
 import '../styles/globals.css';
@@ -21,22 +22,6 @@ type RootLayoutProps = {
     children: ReactNode;
     session: Session;
 };
-
-type SettingDataType = {
-    numInitialNewsItems: number;
-    newsItemIncrement: number;
-    topInfoText: string;
-    topInfoActive: boolean;
-    contactEmail: string;
-    links: Array<{
-        url: string;
-        name: string;
-    }>
-}
-
-async function getSettingsData() {
-    return await getSettings().catch(error => console.log(error.message));
-}
 
 export const metadata: Metadata = {
     title: 'RML',
@@ -59,6 +44,10 @@ export const metadata: Metadata = {
         ],
     },
 };
+
+async function getSettingsData() {
+    return await getSettings().catch(error => console.log(error.message));
+}
 
 export default async function RootLayout({ children, session }: RootLayoutProps) {
     const settingsData: SettingDataType = await getSettingsData().catch(error => console.log(error.message));

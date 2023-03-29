@@ -1,3 +1,15 @@
+export type SettingDataType = {
+    numInitialNewsItems: number;
+    newsItemsIncrementNumber: number;
+    topInfoText: string;
+    topInfoActive: boolean;
+    contactEmail: string;
+    links: Array<{
+        url: string;
+        name: string;
+    }>
+}
+
 export type EventsSidebarProps = {
     events: Array<{
         eventDate: string;
