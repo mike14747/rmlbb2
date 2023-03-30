@@ -18,12 +18,8 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Homepage',
 };
 
-async function getSettingsData() {
-    return await getSettings().catch(error => console.log(error.message));
-}
-
 export default async function Home() {
-    const settingsData: SettingDataType = await getSettingsData().catch(error => console.log(error.message));
+    const settingsData: SettingDataType = await getSettings();
     const { numInitialNewsItems, newsItemsIncrementNumber } = settingsData;
 
     return (
@@ -52,6 +48,5 @@ export default async function Home() {
             </aside>
 
         </div>
-
     );
 }
