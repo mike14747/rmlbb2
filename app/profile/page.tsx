@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
 import CurrentProfile from '../components/Profile/CurrentProfile';
 import { getUserProfile } from '../../lib/api/user';
-import { UserInfoModified } from '../../types';
+import { UserInfo } from '../../types';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Profile',
@@ -23,7 +23,7 @@ export default async function Profile() {
 
     if (!user) return <p className="error">An error occurred fetching user profile info.</p>;
 
-    const userObj: UserInfoModified = {
+    const userObj: UserInfo = {
         id: session.id,
         username: user.username,
         email: user.email,

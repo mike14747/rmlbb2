@@ -4,7 +4,7 @@ import { useRef, useState, Dispatch, SetStateAction, FormEvent, RefObject } from
 import Button from '../Button';
 import Loading from '../Loading';
 import FormInputForEmail from '../FormInputForEmail';
-import { UserInfoModified, StatusCodeObj } from '../../../types';
+import { UserInfo, StatusCodeObj } from '../../../types';
 
 import styles from '../../../styles/profile.module.css';
 
@@ -15,7 +15,7 @@ const statusCodeErrorMessages: StatusCodeObj = {
     500: 'A server error occurred. Please try your update again.',
 };
 
-export default function ChangeEmail({ id, setUser }: { id: string, setUser: Dispatch<SetStateAction<UserInfoModified>> }) {
+export default function ChangeEmail({ id, setUser }: { id: string, setUser: Dispatch<SetStateAction<UserInfo>> }) {
     const email = useRef<string>('');
     const [error, setError] = useState<string>('');
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);

@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import UpdateProfile from './UpdateProfile';
-import { UserInfoModified } from '../../../types';
+import { UserInfo } from '../../../types';
 
 import styles from '../../../styles/profile.module.css';
 
-export default function CurrentProfile({ userObj }: { userObj: UserInfoModified}) {
-    const [user, setUser] = useState<UserInfoModified>(userObj);
+export default function CurrentProfile({ userObj }: { userObj: UserInfo}) {
+    const [user, setUser] = useState<UserInfo>(userObj);
 
     return (
         <>

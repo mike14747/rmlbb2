@@ -50,13 +50,6 @@ export interface Token {
 }
 
 export type UserInfo = {
-    username: string;
-    email: string;
-    registeredDate: Date;
-    registeredDateStr: string;
-}
-
-export type UserInfoModified = {
     id: string;
     username: string;
     email: string;
