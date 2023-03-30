@@ -4,16 +4,11 @@ import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
 import CurrentProfile from '../components/Profile/CurrentProfile';
 import { getUserProfile } from '../../lib/api/user';
+import { UserInfoModified } from '../../types';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Profile',
 };
-
-async function getData(id: number) {
-    const data = await getUserProfile(id);
-    if (!data) return null;
-    return JSON.parse(JSON.stringify(data));
-}
 
 export default async function Profile() {
     const session = await getServerSession({
@@ -24,8 +19,16 @@ export default async function Profile() {
         redirect('/login?callbackUrl=/profile');
     }
 
-    const user = await getData(parseInt(session.id));
-    if (user?.username && user?.email) user.id = session.id;
+    const user = await getUserProfile(parseInt(session.id));
+
+    if (!user) return <p className="error">An error occurred fetching user profile info.</p>;
+
+    const userObj: UserInfoModified = {
+        id: session.id,
+        username: user.username,
+        email: user.email,
+        registeredDateStr: user.registeredDateStr,
+    };
 
     return (
         <main id="main">
@@ -35,7 +38,7 @@ export default async function Profile() {
                 </h2>
 
                 {user
-                    ? <CurrentProfile userObj={user} />
+                    ? <CurrentProfile userObj={userObj} />
                     : <p className="error">An error occurred fetching user profile info.</p>
                 }
             </article>

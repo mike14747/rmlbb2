@@ -7,6 +7,7 @@ export type UserSignin = {
 }
 
 export type UserProfile = {
+    id?: string;
     username: string;
     email: string;
     registeredDate: Date;

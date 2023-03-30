@@ -50,14 +50,17 @@ export interface Token {
 }
 
 export type UserInfo = {
-    id: string;
     username: string;
     email: string;
+    registeredDate: Date;
     registeredDateStr: string;
 }
 
-export type UserObjProp = {
-    userObj: UserInfo;
+export type UserInfoModified = {
+    id: string;
+    username: string;
+    email: string;
+    registeredDateStr?: string;
 }
 
 export type ViewButtonState = {

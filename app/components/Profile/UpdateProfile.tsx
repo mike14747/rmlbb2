@@ -5,9 +5,9 @@ import UpdateProfileButtons from './UpdateProfileButtons';
 import ChangeUsername from './ChangeUsername';
 import ChangePassword from './ChangePassword';
 import ChangeEmail from './ChangeEmail';
-import { UserInfo, ViewButtonState } from '../../../types';
+import { UserInfoModified, ViewButtonState } from '../../../types';
 
-export default function UpdateProfile({ user, setUser }: { user: UserInfo, setUser: Dispatch<SetStateAction<UserInfo>> }) {
+export default function UpdateProfile({ user, setUser }: { user: UserInfoModified, setUser: Dispatch<SetStateAction<UserInfoModified>> }) {
     const [viewState, setViewState] = useState<ViewButtonState>({
         showChangeUsername: false,
         showChangePassword: false,

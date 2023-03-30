@@ -45,12 +45,10 @@ export const metadata: Metadata = {
     },
 };
 
-async function getSettingsData() {
-    return await getSettings();
-}
+export const revalidate = 600;
 
 export default async function RootLayout({ children, session }: RootLayoutProps) {
-    const settingsData: SettingDataType = await getSettingsData();
+    const settingsData: SettingDataType = await getSettings();
 
     return (
         <html lang="en">
