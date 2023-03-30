@@ -8,10 +8,11 @@ import NewsItems from './components/NewsItems';
 import { Suspense } from 'react';
 import Loading from './components/Loading';
 import EventsSidebar from './components/Sidebar/EventsSidebar';
+import EventsSidebarContent from './components/Sidebar/EventsSidebarContent';
 import BoardSidebar from './components/Sidebar/BoardSidebar';
 
 import styles from '../styles/home.module.css';
-import sideBartyles from '../styles/Sidebar.module.css';
+import sideBarStyles from '../styles/Sidebar.module.css';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Homepage',
@@ -31,16 +32,19 @@ export default async function Home() {
                 <NewsItems numInitial={numInitialNewsItems} increment={newsItemsIncrementNumber} />
             </main>
 
-            <aside className={sideBartyles.sidebar}>
-                <div className={sideBartyles.eventsSidebarContainer}>
+            <aside className={sideBarStyles.sidebar}>
+                <div className={sideBarStyles.eventsSidebarContainer}>
+                    {/* @ts-expect-error Server Component */}
+                    <EventsSidebar>
+                        <Suspense fallback={<Loading />}>
+                            {/* @ts-expect-error Server Component */}
+                            <EventsSidebarContent />
+                        </Suspense>
+                    </EventsSidebar>
 
-                    <Suspense fallback={<Loading />}>
-                        {/* @ts-expect-error Server Component */}
-                        <EventsSidebar />
-                    </Suspense>
                 </div>
 
-                <div className={sideBartyles.boardSidebarContainer}>
+                <div className={sideBarStyles.boardSidebarContainer}>
                     <Suspense fallback={<Loading />}>
                         <BoardSidebar />
                     </Suspense>
