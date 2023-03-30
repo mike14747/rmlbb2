@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import ParagraphRound from '../../../assets/paragraphRound.svg';
-import { BoardSidebarProps } from '../../../types';
 
 import styles from '../../../styles/BoardSidebar.module.css';
 import sidebarStyles from '../../../styles/Sidebar.module.css';
 
-const BoardSidebar = ({ posts }: BoardSidebarProps) => {
+const BoardSidebar = () => {
     // console.table(posts);
     return (
         <div className={sidebarStyles.cardContainer}>
@@ -25,7 +24,8 @@ const BoardSidebar = ({ posts }: BoardSidebarProps) => {
                     </div>
 
                     <div className={sidebarStyles.body}>
-                        {!posts && <p>An error occurred fetching data.</p>}
+                        <p>Recent posts will go here.</p>
+                        {/* {!posts && <p>An error occurred fetching data.</p>}
 
                         {posts?.length === 0 && <p>There are no recent posts to display. Check back again soon.</p>}
 
@@ -39,7 +39,7 @@ const BoardSidebar = ({ posts }: BoardSidebarProps) => {
                                     <p><small>Content: </small>{post.content}</p>
                                 </div>
                             ))
-                        }
+                        } */}
                     </div>
 
                     <div className={sidebarStyles.viewAll}>

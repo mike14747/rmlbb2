@@ -10,25 +10,24 @@ export type SettingDataType = {
     }>
 }
 
-export type EventsSidebarProps = {
-    events: Array<{
-        eventDate: string;
-        event: string;
-        details: string;
-    }>
-}
+export type Event = {
+    eventDate: string | null;
+    event: string;
+    details: string;
+    daysUntil: number;
+};
 
-export type BoardSidebarProps = {
+export type BoardSidebarData = {
     posts: Array<{
         date: string;
-    forumName: string;
-    username: string;
-    title: string;
-    content: string;
+        forumName: string;
+        username: string;
+        title: string;
+        content: string;
     }>
 }
 
-export type SidebarProps = EventsSidebarProps & BoardSidebarProps;
+export type SidebarProps = Event & BoardSidebarData;
 
 export interface User {
     id: string;

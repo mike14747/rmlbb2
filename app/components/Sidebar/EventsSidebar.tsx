@@ -1,11 +1,25 @@
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { EventsSidebarProps } from '../../../types';
+import EventsSidebarContent from './EventsSidebarContent';
+import { getNextUpcomingEvents } from '../../../lib/api/events';
+import { Event } from '../../../types';
 
 import styles from '../../../styles/EventsSidebar.module.css';
 import sidebarStyles from '../../../styles/Sidebar.module.css';
 
-const EventsSidebar = ({ events }: EventsSidebarProps) => {
+export const revalidate = false;
+
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function getEventsData() {
+    console.log('first console.log');
+    await sleep(2000);
+    console.log('second console.log');
+    return await getNextUpcomingEvents().catch(error => console.log(error.message));
+}
+
+export default async function EventsSidebar() {
+    const eventsData: Promise<void | Event[] | null> = getEventsData();
+    const events = await eventsData;
+
     return (
         <div className={sidebarStyles.cardContainer}>
             <section className={sidebarStyles.card + ' ' + styles.eventsCard}>
@@ -22,37 +36,11 @@ const EventsSidebar = ({ events }: EventsSidebarProps) => {
                         </p>
                     </div>
 
-                    <div className={sidebarStyles.body}>
-                        {!events && <p>An error occurred fetching data.</p>}
+                    {/* @ts-expect-error Server Component */}
+                    <EventsSidebarContent events={events} />
 
-                        {events?.length === 0 && <p>There are no upcoming events to display. Check back again soon.</p>}
-
-                        {events?.length > 0 &&
-                            events.map((event, index) => (
-                                <div key={index} className={styles.eventDiv}>
-                                    <h5 className={styles.eventDate}>{event.eventDate}</h5>
-                                    <p className={styles.eventName}>{event.event}</p>
-                                    {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
-                                </div>
-                            ))
-                        }
-
-                        <div className={sidebarStyles.viewAll}>
-                            <Link href="/events">
-                                View all Events
-                            </Link>
-
-                            <img aria-hidden="true" src="/images/calendar.png" alt="" className={sidebarStyles.icon} />
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>
     );
-};
-
-EventsSidebar.propTypes = {
-    events: PropTypes.array,
-};
-
-export default EventsSidebar;
+}

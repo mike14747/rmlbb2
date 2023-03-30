@@ -1,18 +1,18 @@
 import EventsSidebar from './EventsSidebar';
 import BoardSidebar from './BoardSidebar';
-import { SidebarProps } from '../../../types';
 
 import styles from '../../../styles/Sidebar.module.css';
 
-export default function Sidebar({ events, posts }: SidebarProps) {
+export default function Sidebar() {
     return (
         <aside className={styles.sidebar}>
             <div className={styles.eventsSidebarContainer}>
-                <EventsSidebar events={events} />
+                {/* @ts-expect-error Server Component */}
+                <EventsSidebar />
             </div>
 
             <div className={styles.boardSidebarContainer}>
-                <BoardSidebar posts={posts} />
+                <BoardSidebar />
             </div>
         </aside>
     );
