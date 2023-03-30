@@ -46,11 +46,11 @@ export const metadata: Metadata = {
 };
 
 async function getSettingsData() {
-    return await getSettings().catch(error => console.log(error.message));
+    return await getSettings();
 }
 
 export default async function RootLayout({ children, session }: RootLayoutProps) {
-    const settingsData: SettingDataType = await getSettingsData().catch(error => console.log(error.message));
+    const settingsData: SettingDataType = await getSettingsData();
 
     return (
         <html lang="en">

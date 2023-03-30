@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 async function getData(id: number) {
-    const data = await getUserProfile(id).catch(error => console.log(error.message));
+    const data = await getUserProfile(id);
     if (!data) return null;
     return JSON.parse(JSON.stringify(data));
 }
@@ -24,7 +24,7 @@ export default async function Profile() {
         redirect('/login?callbackUrl=/profile');
     }
 
-    const user = await getData(parseInt(session.id)).catch(error => console.log(error.message));
+    const user = await getData(parseInt(session.id));
     if (user?.username && user?.email) user.id = session.id;
 
     return (

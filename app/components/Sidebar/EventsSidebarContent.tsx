@@ -4,11 +4,8 @@ import styles from '../../../styles/EventsSidebar.module.css';
 
 export const revalidate = 600;
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 export default async function EventsSidebarContent() {
-    await sleep(1000);
-    const events = await getNextUpcomingEvents().catch(error => console.log(error.message));
+    const events = await getNextUpcomingEvents();
 
     if (!events) return <p className="error">An error occurred fetching data.</p>;
 
