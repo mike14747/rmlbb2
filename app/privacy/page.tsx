@@ -1,6 +1,6 @@
 import { PortableText } from '@portabletext/react';
 import { getPrivacyPolicyText } from '../../lib/api/miscPortableText';
-import serializers from '../../lib/serializers';
+import components from '../../lib/helpers/portableText/customComponents';
 import type { Metadata } from 'next';
 
 import styles from '../../styles/privacy.module.css';
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 export default async function Privacy() {
     const content = await getPrivacyPolicyText();
+    // console.log(content.content);
 
     return (
         <article className={styles.privacyContainer + ' mw-90ch'}>
@@ -23,7 +24,7 @@ export default async function Privacy() {
             {content.content &&
                 <PortableText
                     value={content.content}
-                    components={serializers}
+                    components={components}
                 />
             }
         </article>

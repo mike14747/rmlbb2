@@ -27,20 +27,20 @@ async function getEventsData(query: string, type: 'short' | 'long') {
 
 export async function getNextUpcomingEvents() {
     const query = encodeURIComponent(`*[_type == "event" && active == true && eventDate >= "${todayStr}" && eventDate <= "${todayStrPlusSixtyDays}"] | order(eventDate asc){eventDate, event, details}`);
-    return getEventsData(query, 'short');
+    return await getEventsData(query, 'short');
 }
 
 export async function getAllActiveUpcomingEvents() {
     const query = encodeURIComponent(`*[_type == "event" && active == true && eventDate >= "${todayStr}"] | order(eventDate asc){eventDate, event, details}`);
-    return getEventsData(query, 'long');
+    return await getEventsData(query, 'long');
 }
 
 export async function getAllActiveEvents() {
     const query = encodeURIComponent('*[_type == "event" && active == true] | order(eventDate desc){eventDate, event, details}');
-    return getEventsData(query, 'long');
+    return await getEventsData(query, 'long');
 }
 
 export async function getAllActivePastEvents() {
     const query = encodeURIComponent(`*[_type == "event" && active == true && eventDate < "${todayStr}"] | order(eventDate desc){eventDate, event, details}`);
-    return getEventsData(query, 'short');
+    return await getEventsData(query, 'short');
 }
