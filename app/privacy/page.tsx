@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Privacy() {
-    const res = await getPrivacyPolicyText();
+    const privacyData = await getPrivacyPolicyText();
 
     return (
         <article className={styles.privacyContainer + ' mw-90ch'}>
@@ -21,13 +21,13 @@ export default async function Privacy() {
             </h2>
 
             <Suspense fallback={<Spinner size="large" />}>
-                {!res && <p className="error">An error occurred fetching data.</p>}
+                {!privacyData && <p className="error">An error occurred fetching data.</p>}
 
-                {res?.content && res.content.length < 1 && <p>No content was found. Please try again later.</p>}
+                {privacyData?.content && privacyData.content.length < 1 && <p>No content was found. Please try again later.</p>}
 
-                {res?.content && res.content.length > 1 &&
+                {privacyData?.content && privacyData.content.length > 1 &&
                     <PortableText
-                        value={res.content}
+                        value={privacyData.content}
                         components={components}
                     />
                 }

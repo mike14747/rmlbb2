@@ -1,10 +1,16 @@
-import PropTypes from 'prop-types';
-
-import styles from '../styles/SidebarCard.module.css';
+import styles from '../../styles/SidebarCard.module.css';
+import { ReactNode } from 'react';
 
 const colors = ['green', 'orange', 'blue', 'brown'];
 
-export default function SidebarCard({ heading = null, subheading = null, color, children }) {
+type SidebarProps = {
+    heading?: string | null;
+    subheading?: string | null;
+    color: string;
+    children: ReactNode;
+}
+
+export default function SidebarCard({ heading = null, subheading = null, color, children }: SidebarProps) {
     const colorTheme = colors.includes(color) ? color : 'green';
 
     return (
@@ -26,10 +32,3 @@ export default function SidebarCard({ heading = null, subheading = null, color, 
         </div>
     );
 }
-
-SidebarCard.propTypes = {
-    heading: PropTypes.string,
-    subheading: PropTypes.string,
-    color: PropTypes.string,
-    children: PropTypes.any,
-};

@@ -84,3 +84,13 @@ export type EventsArr = {
     event: string;
     eventDate: string;
 }
+
+export type SingleArticle = {
+    title: string;
+    content: PortableContentItem[];
+}
+
+export type ActiveArticleIndex = {
+    title: string;
+    slug: string;
+}

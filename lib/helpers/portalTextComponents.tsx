@@ -8,9 +8,7 @@ const portableTextComponents: PortableTextComponents = {
 
         table: (props) => {
             const rows = props.value || [];
-            console.log(rows.rows);
             const [headingRow, ...rest] = rows.rows;
-            console.log({ headingRow });
             const dataRows = [...rest];
             return (<div className={styles.tableWrapper}>
                 <table className={styles.blockContentTable}>

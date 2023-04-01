@@ -31,7 +31,7 @@ export default async function Home() {
         <div className={styles.homeContainer}>
             <main id="main" className={styles.newsContainer + ' mw-75'}>
                 <Suspense fallback={<Spinner size="large" />}>
-                    <NewsItems initialNewsItems={initialNewsItems || null} numInitial={numInitialNewsItems} increment={newsItemsIncrementNumber} />
+                    <NewsItems initialNewsItems={initialNewsItems} numInitial={numInitialNewsItems} increment={newsItemsIncrementNumber} />
                 </Suspense>
             </main>
 

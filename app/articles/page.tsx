@@ -1,38 +1,37 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
 import Link from 'next/link';
-import BlockContent from '@sanity/block-content-to-react';
+import { PortableText } from '@portabletext/react';
+import components from '../../lib/helpers/portalTextComponents';
 import { getArticlesHomeText } from '../../lib/api/miscPortableText';
-import serializers from '../../lib/serializers';
 import { getActiveArticlesForIndex } from '../../lib/api/articles';
-import SidebarCard from '../../components/SidebarCard';
+import SidebarCard from '../components/SidebarCard';
 
 import styles from '../../styles/article.module.css';
 
-export default function Articles({ content, articlesList }) {
+export default async function Articles() {
+    const articleHomeData = await getArticlesHomeText();
+    const articlesList = await getActiveArticlesForIndex();
+
     return (
         <>
-            <Head>
-                <title>Articles Home</title>
-            </Head>
-
             <div className={styles.articlePageContainer}>
                 <article className={styles.articleContainer + ' mw-90ch'}>
                     <h2 className="page-heading">Articles Home</h2>
 
-                    {!content?.content
+                    {!articleHomeData?.content
                         ? <p className="error">An error occurred fetching data.</p>
-                        : <BlockContent
-                            blocks={content.content}
-                            serializers={serializers}
+                        : <PortableText
+                            value={articleHomeData.content}
+                            components={components}
                         />
                     }
                 </article>
 
                 <div className={styles.articleIndexContainer}>
                     <SidebarCard color="green" heading="Article Index" subheading="...enjoy the reads">
-                        {articlesList?.length > 0
-                            ? <>
+                        {articlesList?.length === 0 && <p className="error">There are no articles.Check back again soon.</p>}
+
+                        {articlesList?.length > 0 &&
+                            <>
                                 {articlesList.map(article => (
                                     <p key={article.slug}>
                                         <Link href={'/articles/' + article.slug}>
@@ -41,26 +40,10 @@ export default function Articles({ content, articlesList }) {
                                     </p>
                                 ))}
                             </>
-                            : <p className="error">There are no articles.Check back again soon.</p>
                         }
                     </SidebarCard>
                 </div>
             </div>
         </>
     );
-}
-
-Articles.propTypes = {
-    content: PropTypes.object,
-    articlesList: PropTypes.array,
-};
-
-export async function getStaticProps() {
-    const content = await getArticlesHomeText();
-    const articlesList = await getActiveArticlesForIndex();
-
-    return {
-        props: { content, articlesList },
-        revalidate: 600, // page regeneration can occur in 10 minutes
-    };
 }
