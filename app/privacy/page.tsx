@@ -1,7 +1,9 @@
 import { PortableText } from '@portabletext/react';
 import { getPrivacyPolicyText } from '../../lib/api/miscPortableText';
-import components from '../../lib/helpers/portableText/customComponents';
+import components from '../../lib/helpers/portalTextComponents';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import Loading from '../components/Loading';
 
 import styles from '../../styles/privacy.module.css';
 
@@ -10,8 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Privacy() {
-    const content = await getPrivacyPolicyText();
-    // console.log(content.content);
+    const res = await getPrivacyPolicyText();
 
     return (
         <article className={styles.privacyContainer + ' mw-90ch'}>
@@ -19,14 +20,18 @@ export default async function Privacy() {
                 Privacy Policy
             </h2>
 
-            {!content.content && <p className="error">An error occurred fetching data.</p>}
+            <Suspense fallback={<Loading />}>
+                {!res && <p className="error">An error occurred fetching data.</p>}
 
-            {content.content &&
-                <PortableText
-                    value={content.content}
-                    components={components}
-                />
-            }
+                {res?.content && res.content.length < 1 && <p>No content was found. Please try again later.</p>}
+
+                {res?.content && res.content.length > 1 &&
+                    <PortableText
+                        value={res.content}
+                        components={components}
+                    />
+                }
+            </Suspense>
         </article>
     );
 }

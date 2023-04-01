@@ -1,21 +1,25 @@
 import queryData from '../helpers/queryData';
 
-export async function getRecruitingContent() {
+export async function getRecruitingContent(): Promise<PortableContent | null> {
     const query = encodeURIComponent('*[_type == "miscPortableText" && title == "Recruiting" && active == true][0]{content}');
-    return await queryData(query);
+    const data: PortableContent = await queryData(query);
+    return data;
 }
 
-export async function getConstitutionContent() {
+export async function getConstitutionContent(): Promise<PortableContent | null> {
     const query = encodeURIComponent('*[_type == "miscPortableText" && title == "Constitution" && active == true][0]{content}');
-    return await queryData(query);
+    const data: PortableContent = await queryData(query);
+    return data;
 }
 
-export async function getArticlesHomeText() {
+export async function getArticlesHomeText(): Promise<PortableContent | null> {
     const query = encodeURIComponent('*[_type == "miscPortableText" && title == "Articles Home" && active == true][0]{content}');
-    return await queryData(query);
+    const data: PortableContent = await queryData(query);
+    return data;
 }
 
-export async function getPrivacyPolicyText() {
+export async function getPrivacyPolicyText(): Promise<PortableContent | null> {
     const query = encodeURIComponent('*[_type == "miscPortableText" && title == "Privacy Policy" && active == true][0]{content}');
-    return await queryData(query);
+    const data = await queryData(query);
+    return data;
 }

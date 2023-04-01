@@ -1,6 +1,6 @@
 import { PortableTextComponents } from '@portabletext/react';
 
-import styles from '../../../styles/blockContent.module.css';
+import styles from '../../styles/blockContent.module.css';
 
 const portableTextComponents: PortableTextComponents = {
     types: {
