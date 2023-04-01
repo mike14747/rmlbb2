@@ -1,7 +1,7 @@
-import Loading from './components/Loading';
+import Spinner from './components/Spinner';
 
 export default function RootLoading() {
     return (
-        <Loading />
+        <Spinner />
     );
 }

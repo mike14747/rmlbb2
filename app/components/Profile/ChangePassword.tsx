@@ -2,7 +2,7 @@
 
 import { useRef, useState, FormEvent } from 'react';
 import Button from '../Button';
-import Loading from '../Loading';
+import Spinner from '../Spinner';
 import FormInputForNewPassword from '../FormInputForNewPassword';
 import processStatusCodeWithSignout from '../../../lib/helpers/processStatusCodeWithSignout';
 import { StatusCodeObj } from '../../../types';
@@ -54,7 +54,7 @@ export default function ChangePassword({ id }: { id: string }) {
             </div>
 
             <form className={styles.updateGroup} onSubmit={handleChangePasswordSubmit}>
-                {isSubmitting && <Loading />}
+                {isSubmitting && <Spinner />}
 
                 {error && <p className={styles.error}>{error}</p>}
 

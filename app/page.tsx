@@ -6,7 +6,7 @@ import { SettingDataType } from '../types';
 import { getSettings } from '../lib/api/settings';
 import NewsItems from './components/NewsItems';
 import { Suspense } from 'react';
-import Loading from './components/Loading';
+import Spinner from './components/Spinner';
 import EventsSidebar from './components/Sidebar/EventsSidebar';
 import EventsSidebarContent from './components/Sidebar/EventsSidebarContent';
 import BoardSidebar from './components/Sidebar/BoardSidebar';
@@ -32,7 +32,7 @@ export default async function Home() {
                 <div className={sideBarStyles.eventsSidebarContainer}>
                     {/* @ts-expect-error Server Component */}
                     <EventsSidebar>
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<Spinner />}>
                             {/* @ts-expect-error Server Component */}
                             <EventsSidebarContent />
                         </Suspense>
@@ -41,7 +41,7 @@ export default async function Home() {
                 </div>
 
                 <div className={sideBarStyles.boardSidebarContainer}>
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<Spinner />}>
                         <BoardSidebar />
                     </Suspense>
                 </div>

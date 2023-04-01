@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import ForgotLoginInfo from '../components/Login/ForgotLoginInfo';
-import Loading from '../components/Loading';
+import Spinner from '../components/Spinner';
 
 export default function Login() {
     const { status } = useSession();
@@ -50,7 +50,7 @@ export default function Login() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 
-    if (status === 'loading') return <Loading />;
+    if (status === 'loading') return <Spinner />;
 
     if (status === 'unauthenticated') {
         return (

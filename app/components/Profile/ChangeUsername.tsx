@@ -2,7 +2,7 @@
 
 import { useRef, useState, FormEvent } from 'react';
 import Button from '../Button';
-import Loading from '../Loading';
+import Spinner from '../Spinner';
 import FormInputForUsername from '../FormInputForUsername';
 import processStatusCodeWithSignout from '../../../lib/helpers/processStatusCodeWithSignout';
 import { StatusCodeObj } from '../../../types';
@@ -50,7 +50,7 @@ export default function ChangeUsername({ id }: { id: string }) {
             </div>
 
             <form className={styles.updateGroup} onSubmit={handleChangeUsernameSubmit}>
-                {isSubmitting && <Loading />}
+                {isSubmitting && <Spinner />}
 
                 {error && <p className={styles.error}>{error}</p>}
 

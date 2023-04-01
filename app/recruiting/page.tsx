@@ -1,24 +1,23 @@
 import { PortableText } from '@portabletext/react';
-import { getConstitutionContent } from '../../lib/api/miscPortableText';
 import components from '../../lib/helpers/portalTextComponents';
+import { getRecruitingContent } from '../../lib/api/miscPortableText';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Spinner from '../components/Spinner';
 
-import styles from '../../styles/constitution.module.css';
-import blockContentStyles from '../../styles/blockContent.module.css';
+import styles from '../../styles/recruiting.module.css';
 
 export const metadata: Metadata = {
-    title: 'RML Baseball - Constitution',
+    title: 'RML Baseball - New Managers',
 };
 
-export default async function Constitution() {
-    const res = await getConstitutionContent();
+export default async function Recruiting() {
+    const res = await getRecruitingContent();
 
     return (
-        <article className={styles.constitutionContainer + ' mw-90ch ' + blockContentStyles.blockContentContainer}>
+        <article className={styles.recruitingContainer + ' mw-90ch'}>
             <h2 className="page-heading">
-                Constitution
+                New Managers
             </h2>
 
             <Suspense fallback={<Spinner />}>

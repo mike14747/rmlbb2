@@ -3,7 +3,7 @@ import { getPrivacyPolicyText } from '../../lib/api/miscPortableText';
 import components from '../../lib/helpers/portalTextComponents';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import Loading from '../components/Loading';
+import Spinner from '../components/Spinner';
 
 import styles from '../../styles/privacy.module.css';
 
@@ -20,7 +20,7 @@ export default async function Privacy() {
                 Privacy Policy
             </h2>
 
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Spinner />}>
                 {!res && <p className="error">An error occurred fetching data.</p>}
 
                 {res?.content && res.content.length < 1 && <p>No content was found. Please try again later.</p>}

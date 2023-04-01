@@ -2,7 +2,7 @@
 
 import { useRef, useState, Dispatch, SetStateAction, FormEvent, RefObject } from 'react';
 import Button from '../Button';
-import Loading from '../Loading';
+import Spinner from '../Spinner';
 import FormInputForEmail from '../FormInputForEmail';
 import { UserInfo, StatusCodeObj } from '../../../types';
 
@@ -63,7 +63,7 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
             {isEmailUpdated && <p className={styles.success}>Your email address has been successfully updated.</p>}
 
             <form ref={emailForm as RefObject<HTMLFormElement>} className={styles.updateGroup} onSubmit={handleChangeEmailSubmit}>
-                {isSubmitting && <Loading />}
+                {isSubmitting && <Spinner />}
 
                 {error && <p className={styles.error}>{error}</p>}
 
