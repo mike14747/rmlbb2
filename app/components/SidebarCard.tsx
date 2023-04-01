@@ -4,8 +4,8 @@ import { ReactNode } from 'react';
 const colors = ['green', 'orange', 'blue', 'brown'];
 
 type SidebarProps = {
-    heading?: string | null;
-    subheading?: string | null;
+    heading: string | null;
+    subheading: string | null;
     color: string;
     children: ReactNode;
 }
