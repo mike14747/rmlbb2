@@ -1,6 +1,5 @@
-type PortableContent = {
-    content: Array<{
-        _key: string;
+type PortableContentItem = {
+    _key: string;
         _type: string
         children: Array<{
             _key: string;
@@ -10,5 +9,8 @@ type PortableContent = {
         }>;
         markDefs: Array<string>;
         style: string;
-    }>;
+}
+
+type PortableContent = {
+    content: Array<PortableContentItem>;
 }

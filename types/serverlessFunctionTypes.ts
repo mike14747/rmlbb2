@@ -67,13 +67,13 @@ export type TopicReplyData = {
     lastEditDateStr?: string;
 }
 
-export type NewsItemsType = {
+export type NewsItemsResultType = {
     result: {
         newsItems: Array<{
-            _id: number;
+            _id: string;
             title: string;
             date: string;
-            content: string;
+            content: PortableContentItem[];
         }>,
         total?: number;
     }

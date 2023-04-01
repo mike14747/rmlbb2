@@ -1,9 +1,8 @@
-// import Sidebar from './components/Sidebar/Sidebar';
+// import { PortableText } from '@portabletext/react';
 import type { Metadata } from 'next';
-// import BlockContent from '@sanity/block-content-to-react';
-// import serializers from '../lib/serializers';
 import { SettingDataType } from '../types';
 import { getSettings } from '../lib/api/settings';
+import { getNewsItems } from '../lib/api/news';
 import NewsItems from './components/NewsItems';
 import { Suspense } from 'react';
 import Spinner from './components/Spinner';
@@ -18,14 +17,22 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Homepage',
 };
 
+async function getInitialNewsItems(num: number) {
+    return await getNewsItems(0, num);
+}
+
 export default async function Home() {
     const settingsData: SettingDataType = await getSettings();
     const { numInitialNewsItems, newsItemsIncrementNumber } = settingsData;
 
+    const initialNewsItems = await getInitialNewsItems(numInitialNewsItems);
+
     return (
         <div className={styles.homeContainer}>
             <main id="main" className={styles.newsContainer + ' mw-75'}>
-                <NewsItems numInitial={numInitialNewsItems} increment={newsItemsIncrementNumber} />
+                <Suspense fallback={<Spinner size="large" />}>
+                    <NewsItems initialNewsItems={initialNewsItems || null} numInitial={numInitialNewsItems} increment={newsItemsIncrementNumber} />
+                </Suspense>
             </main>
 
             <aside className={sideBarStyles.sidebar}>

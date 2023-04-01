@@ -10,6 +10,16 @@ export type SettingDataType = {
     }>
 }
 
+export type NewsItemsType = {
+    newsItems: {
+        id: string;
+        title: string;
+        date: string | null;
+        content: PortableContentItem[];
+    }[];
+    total: number | null;
+} | null
+
 export type Event = {
     eventDate: string | null;
     event: string;
