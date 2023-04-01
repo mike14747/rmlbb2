@@ -20,7 +20,7 @@ export default async function Recruiting() {
                 New Managers
             </h2>
 
-            <Suspense fallback={<Spinner />}>
+            <Suspense fallback={<Spinner size="large" />}>
                 {!res && <p className="error">An error occurred fetching data.</p>}
 
                 {res?.content && res.content.length < 1 && <p>No content was found. Please try again later.</p>}

@@ -62,7 +62,7 @@ export default function ForgotPassword() {
                 Enter the username and email address associated with your account and an email will be sent to you with a link to reset your password.
             </p>
 
-            {isSubmitting && <Spinner />}
+            {isSubmitting && <Spinner size="large" />}
 
             {error && <p className="error">{error}</p>}
 

@@ -50,7 +50,7 @@ export default function ChangeUsername({ id }: { id: string }) {
             </div>
 
             <form className={styles.updateGroup} onSubmit={handleChangeUsernameSubmit}>
-                {isSubmitting && <Spinner />}
+                {isSubmitting && <Spinner size="large" />}
 
                 {error && <p className={styles.error}>{error}</p>}
 

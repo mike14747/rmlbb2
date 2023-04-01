@@ -60,7 +60,7 @@ export default function ForgotUsername() {
                 Enter the email address associated with your account(s) and an email will be sent with the username(s) linked to your email address.
             </p>
 
-            {isSubmitting && <Spinner />}
+            {isSubmitting && <Spinner size="large" />}
 
             {error && <p className="error">{error}</p>}
 

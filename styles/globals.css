@@ -31,7 +31,8 @@
     min-height: 100vh;
 }
 
-#loading {
+#loading,
+#spinner {
     text-align: center;
     margin: 1rem;
 }

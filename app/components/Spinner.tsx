@@ -1,15 +1,28 @@
 import Image from 'next/image';
 
-export default function Loading() {
-    return (
-        <div id="loading">
-            {/* <img src="/images/loading.gif" alt="Loading" /> */}
+type SpinnerSize = {
+    size?: 'large' | 'medium' | 'small';
+}
 
+type SizesObj = {
+    [key: string]: number;
+}
+
+const spinnerSizes: SizesObj = {
+    large: 128,
+    medium: 64,
+    small: 32,
+};
+
+export default function Loading({ size = 'large' }: SpinnerSize) {
+    return (
+        <div className="text-center">
             <Image
                 src="/images/loading.gif"
                 alt="Loading"
-                width={128}
-                height={128}
+                width={spinnerSizes[size]}
+                height={spinnerSizes[size]}
+                style={{ margin: '1rem' }}
             />
         </div>
     );

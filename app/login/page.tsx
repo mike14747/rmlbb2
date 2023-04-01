@@ -50,7 +50,7 @@ export default function Login() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 
-    if (status === 'loading') return <Spinner />;
+    if (status === 'loading') return <Spinner size="large" />;
 
     if (status === 'unauthenticated') {
         return (
