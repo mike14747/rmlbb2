@@ -33,6 +33,12 @@ export default async function AdminHome() {
                     </li>
 
                     <li>
+                        <Link href="/admin/edit-user">
+                            Edit a user
+                        </Link>
+                    </li>
+
+                    <li>
                         <Link href="/admin/add-forum">
                             Add new forum
                         </Link>
@@ -40,7 +46,7 @@ export default async function AdminHome() {
 
                     <li>
                         <Link href="/admin/edit-forum">
-                            Edit forum
+                            Edit a forum
                         </Link>
                     </li>
                 </ul>

@@ -1,20 +1,31 @@
-'use client';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
 
 // import { useState } from 'react';
 // import { useEffect } from 'react';
 // import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+// import { useSession } from 'next-auth/react';
 // import FormInputForUsername from '../../components/FormInputForUsername';
 // import FormInputForNewPassword from '../../components/FormInputForNewPassword';
 // import FormInputForEmail from '../../components/FormInputForEmail';
 // import FormInputForActive from '../../components/Forum/FormInputForActive';
 // import Button from '../../components/Button';
-import Spinner from '../../components/Spinner';
 
 import styles from '../../../styles/admin.module.css';
 
-export default function AddUser() {
-    const { data: session, status } = useSession();
+export const metadata: Metadata = {
+    title: 'RML Baseball - Add User',
+};
+
+export default async function AddUser() {
+    const session = await getServerSession({
+        callbacks: { session: ({ token }) => token },
+    });
+
+    if (!session) {
+        redirect('/login?callbackUrl=/admin');
+    }
 
     // const router = useRouter();
 
@@ -64,9 +75,7 @@ export default function AddUser() {
     //     }
     // };
 
-    if (status === 'loading') return <Spinner size="large" />;
-
-    if (session?.user?.role === 'admin') {
+    if (session.role === 'admin') {
         return (
             <article className={styles.adminContainer}>
                 <h2 className={'page-heading ' + styles.adminPageHeading}>
@@ -92,6 +101,8 @@ export default function AddUser() {
                 </form> */}
 
                 <p>This is the unfinished add-user page.</p>
+
+                <p>You are seeing this page because you are logged in with the role of admin.</p>
             </article>
         );
     }

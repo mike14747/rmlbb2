@@ -1,17 +1,28 @@
-'use client';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
 
 // import { useState, useEffect } from 'react';
 // import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+// import { useSession } from 'next-auth/react';
 // import FormInputForForumName from '../../components/Forum/FormInputForForumName';
 // import FormInputForActive from '../../components/Forum/FormInputForActive';
 // import Button from '../../components/Button';
-import Spinner from '../../components/Spinner';
 
 import styles from '../../../styles/admin.module.css';
 
-export default function EditForum() {
-    const { data: session, status } = useSession();
+export const metadata: Metadata = {
+    title: 'RML Baseball - Edit Forum',
+};
+
+export default async function EditForum() {
+    const session = await getServerSession({
+        callbacks: { session: ({ token }) => token },
+    });
+
+    if (!session) {
+        redirect('/login?callbackUrl=/admin');
+    }
 
     // const router = useRouter();
 
@@ -93,9 +104,7 @@ export default function EditForum() {
     //     setIsLoading(false);
     // };
 
-    if (status === 'loading') return <Spinner size="large" />;
-
-    if (session?.user?.role === 'admin') {
+    if (session.role === 'admin') {
         return (
             <article className={styles.adminContainer}>
                 <h2 className={'page-heading ' + styles.adminPageHeading}>
@@ -121,6 +130,8 @@ export default function EditForum() {
                 } */}
 
                 <p>This is the unfinished edit-forum page.</p>
+
+                <p>You are seeing this page because you are logged in with the role of admin.</p>
             </article>
         );
     }

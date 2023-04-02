@@ -8,7 +8,7 @@ import { getServerSession } from 'next-auth/next';
 import styles from '../../../styles/admin.module.css';
 
 export const metadata: Metadata = {
-    title: 'RML Baseball - Ad Forum',
+    title: 'RML Baseball - Add Forum',
 };
 
 export default async function AddForum() {
@@ -57,7 +57,9 @@ export default async function AddForum() {
                     Add Forum
                 </h2>
 
-                <p>The form to add a forum needs to be turned into a client component.</p>
+                <p>You are seeing the unfinished add forum page.</p>
+
+                <p>You are seeing this page because you are logged in with the role of admin.</p>
 
                 {/* <form className={styles.updateGroup} onSubmit={handleNewForumNameSubmit}>
                     {forumNameError && <p className="error2">{forumNameError}</p>}
