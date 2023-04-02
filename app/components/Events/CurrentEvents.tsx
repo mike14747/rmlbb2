@@ -5,11 +5,9 @@ import styles from '../../../styles/events.module.css';
 export default function CurrentEvents({ currentEventsData }: { currentEventsData: Event[]}) {
     return (
         <>
-            {!currentEventsData && <p className="error">An error occurred fetching data.</p>}
+            {currentEventsData.length === 0 && <p className="text-center">There are no upcoming events to display. Check back again soon.</p>}
 
-            {currentEventsData?.length === 0 && <p className="text-center">There are no upcoming events to display. Check back again soon.</p>}
-
-            {currentEventsData?.length > 0 &&
+            {currentEventsData.length > 0 &&
                 <>
                     <p aria-hidden="true" className={styles.iconLegend}>
                         Urgency icons:<span className={styles.break}></span><span className={styles.td3 + ' ' + styles.urgent}>&#9679;</span> 0-2 | <span className={styles.td3 + ' ' + styles.soon}>&#9679;</span> 3-6 | <span className={styles.td3 + ' ' + styles.normal}>&#9679;</span> 7+ days until event.

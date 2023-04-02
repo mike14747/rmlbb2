@@ -39,7 +39,10 @@ export default async function Events() {
             </h2>
 
             <Suspense fallback={<Spinner />}>
-                <CurrentEvents currentEventsData={currentEventsData || []} />
+                {currentEventsData
+                    ? <CurrentEvents currentEventsData={currentEventsData} />
+                    : <p className="error">An error occurred fetching data.</p>
+                }
             </Suspense>
 
             <PastEvents />
