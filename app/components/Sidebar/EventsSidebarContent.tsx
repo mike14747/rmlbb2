@@ -20,7 +20,7 @@ export default async function EventsSidebarContent() {
         <>
             {events.map((event, index) => (
                 <div key={index} className={styles.eventDiv}>
-                    <h5 className={styles.eventDate}>{event.eventDate}</h5>
+                    <h5 className={styles.eventDate}>{event.eventDateStr}</h5>
                     <p className={styles.eventName}>{event.event}</p>
                     {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
                 </div>

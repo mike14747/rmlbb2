@@ -21,7 +21,7 @@ export type NewsItemsType = {
 } | null
 
 export type Event = {
-    eventDate: string | null;
+    eventDateStr: string | null | undefined;
     event: string;
     details: string;
     daysUntil: number;

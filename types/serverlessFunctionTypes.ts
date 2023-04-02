@@ -79,10 +79,12 @@ export type NewsItemsResultType = {
     }
 }
 
-export type EventsArr = {
+export type EventItem = {
     details: string;
     event: string;
     eventDate: string;
+    eventDateStr: string | null;
+    daysUntil: number;
 }
 
 export type SingleArticle = {

@@ -6,11 +6,11 @@ const todayStr = new Date(new Date().getTime() - offset * 60000).toISOString().s
 const todayStrPlusSixtyDays = new Date(new Date().getTime() - (offset * 60000) + (60 * 86400000)).toISOString().slice(0, 10);
 const todayObj = new Date(new Date().getTime() - offset * 60000);
 
-function insertFormattedDate(eventsArr: sft.EventsArr[], type = 'short') {
+function insertFormattedDate(eventsArr: sft.EventItem[], type = 'short') {
     if (!eventsArr) return null;
     return eventsArr.map(event => {
         return {
-            eventDate: formatDateString(event.eventDate, type),
+            eventDateStr: formatDateString(event.eventDate, type),
             daysUntil: Math.ceil((+new Date(event.eventDate) - +todayObj) / (1000 * 60 * 60 * 24)),
             event: event.event,
             details: event?.details || '',

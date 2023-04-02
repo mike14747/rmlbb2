@@ -1,6 +1,8 @@
+import { Event } from '../../../types';
+
 import styles from '../../../styles/events.module.css';
 
-export default function CurrentEvents({ currentEventsData }) {
+export default function CurrentEvents({ currentEventsData }: { currentEventsData: Event[]}) {
     return (
         <>
             {!currentEventsData && <p className="error">An error occurred fetching data.</p>}
@@ -21,7 +23,7 @@ export default function CurrentEvents({ currentEventsData }) {
                         {currentEventsData.map((event, index) => (
                             <div key={index} className={styles.eventRow}>
                                 <div className={styles.eventDiv}>
-                                    <h5 className={styles.eventDate}>{event.eventDate}</h5>
+                                    <h5 className={styles.eventDate}>{event.eventDateStr}</h5>
                                     <p className={styles.eventName}>{event.event}</p>
                                     {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
                                 </div>
