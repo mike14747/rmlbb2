@@ -14,7 +14,7 @@ const spinnerSizes: SizesObj = {
     small: 32,
 };
 
-export default function Loading({ size = 'large' }: SpinnerSize) {
+export default function Spinner({ size = 'large' }: SpinnerSize) {
     return (
         <div className="text-center">
             <Image

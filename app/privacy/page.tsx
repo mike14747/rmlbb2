@@ -7,6 +7,8 @@ import Spinner from '../components/Spinner';
 
 import styles from '../../styles/privacy.module.css';
 
+export const revalidate = 600;
+
 export const metadata: Metadata = {
     title: 'RML Baseball - Privacy Policy',
 };

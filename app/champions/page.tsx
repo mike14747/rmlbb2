@@ -1,31 +1,34 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { getChampions } from '../lib/api/champions';
+import { getChampions } from '../../lib/api/champions';
+import type { Metadata } from 'next';
+import { Suspense } from 'react';
+import Spinner from '../components/Spinner';
 
-import styles from '../styles/champions.module.css';
+import styles from '../../styles/champions.module.css';
 
-const Champions = ({ champions }) => {
+export const metadata: Metadata = {
+    title: 'RML Baseball - Privacy Policy',
+};
+
+export const revalidate = 600;
+
+export default async function Champions() {
+    const championsData = await getChampions();
+
     return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Champions
-                </title>
-            </Head>
+        <article className="mw-90ch">
+            <h2 className="page-heading">
+                Champions
+            </h2>
 
-            <article className="mw-90ch">
-                <h2 className="page-heading">
-                    Champions
-                </h2>
+            <Suspense fallback={<Spinner size="large" />}>
+                {!championsData && <p className="error">An error occurred fetching data.</p>}
 
-                {!champions && <p className="error">An error occurred fetching data.</p>}
+                {championsData?.length === 0 && <p>There are no champions to display. Check back again soon.</p>}
 
-                {champions?.length === 0 && <p>There are no champions to display. Check back again soon.</p>}
-
-                {champions?.length > 0 &&
+                {championsData?.length > 0 &&
                     <>
                         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-                        <table tabIndex="0" className="table table-bordered table-hover">
+                        <table tabIndex={0} className="table table-bordered table-hover">
                             <thead>
                                 <tr className={styles.headingRow}>
                                     <th>Year</th>
@@ -34,7 +37,7 @@ const Champions = ({ champions }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {champions.map(c => (
+                                {championsData.map(c => (
                                     <tr key={c.year} className={styles.verticalMiddle}>
                                         <td className={styles.year}>
                                             {c.year}
@@ -61,22 +64,7 @@ const Champions = ({ champions }) => {
                         </table>
                     </>
                 }
-            </article>
-        </>
+            </Suspense>
+        </article >
     );
-};
-
-Champions.propTypes = {
-    champions: PropTypes.array,
-};
-
-export async function getStaticProps() {
-    const champions = await getChampions();
-
-    return {
-        props: { champions },
-        revalidate: 600, // page regeneration can occur in 10 minutes
-    };
 }
-
-export default Champions;
