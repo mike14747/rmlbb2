@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-// eslint-disable-next-line camelcase
 import { getServerSession } from 'next-auth/next';
 import CurrentProfile from '../components/Profile/CurrentProfile';
 import { getUserProfile } from '../../lib/api/user';
