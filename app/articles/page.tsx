@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import components from '@/lib/helpers/portalTextComponents';
@@ -10,6 +11,10 @@ import Spinner from '@/components/Spinner';
 import styles from '@/styles/article.module.css';
 
 export const revalidate = 600;
+
+export const metadata: Metadata = {
+    title: 'RML Baseball - Articles Home',
+};
 
 export default async function Articles() {
     const articleHomeData = await getArticlesHomeText();
