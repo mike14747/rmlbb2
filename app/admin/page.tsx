@@ -5,8 +5,6 @@ import Link from 'next/link';
 
 import styles from '@/styles/admin.module.css';
 
-export const revalidate = 600;
-
 export const metadata: Metadata = {
     title: 'RML Baseball - Admin Home',
 };
