@@ -1,8 +1,8 @@
 import { getAllActiveUpcomingEvents } from '@/lib/api/events';
-import CurrentEvents from '../components/Events/CurrentEvents';
-import PastEvents from '../components/Events/PastEvents';
+import CurrentEvents from '@/components/Events/CurrentEvents';
+import PastEvents from '@/components/Events/PastEvents';
 import { Suspense } from 'react';
-import Spinner from '../components/Spinner';
+import Spinner from '@/components/Spinner';
 
 // import styles from '@/styles/events.module.css';
 

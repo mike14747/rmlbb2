@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import FormInput from '../FormInput';
+import FormInput from '@/components/FormInput';
 
 export default function FormInputForActive({ id = null, active, setActive }: { id: number | null; active: boolean; setActive: Dispatch<SetStateAction<boolean>> }) {
     return (

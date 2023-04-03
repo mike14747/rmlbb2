@@ -3,7 +3,7 @@ import { getConstitutionContent } from '@/lib/api/miscPortableText';
 import components from '@/lib/helpers/portalTextComponents';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import Spinner from '../components/Spinner';
+import Spinner from '@/components/Spinner';
 
 import styles from '@/styles/constitution.module.css';
 import blockContentStyles from '@/styles/blockContent.module.css';

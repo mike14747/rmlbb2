@@ -4,7 +4,7 @@ import { useRef, useState, FormEvent } from 'react';
 import FormInputForForumName from './FormInputForForumName';
 import FormInputForActive from './FormInputForActive';
 import Button from '@/components/Button';
-import Spinner from '../Spinner';
+import Spinner from '@/components/Spinner';
 import { StatusCodeObj } from '@/types/index';
 
 import styles from '@/styles/admin.module.css';

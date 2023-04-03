@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
-import CurrentProfile from '../components/Profile/CurrentProfile';
-import { getUserProfile } from '../../lib/api/user';
-import { UserInfo } from '../../types';
+import CurrentProfile from '@/components/Profile/CurrentProfile';
+import { getUserProfile } from '@/lib/api/user';
+import { UserInfo } from '@/types/index';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Profile',

@@ -1,6 +1,6 @@
 import { MutableRefObject, ChangeEvent } from 'react';
-import FormInput from '../FormInput';
-import { forumNamePattern, forumNameErrorMsg } from '../../../lib/formInputPatterns';
+import FormInput from '@/components/FormInput';
+import { forumNamePattern, forumNameErrorMsg } from '@/lib/formInputPatterns';
 
 export default function FormInputForForumName({ id = null, forumName }: { id?: number | null; forumName: MutableRefObject<string> }) {
     return (
