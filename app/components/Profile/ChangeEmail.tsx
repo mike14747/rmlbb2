@@ -38,6 +38,8 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
 
         setIsSubmitting(false);
 
+        if (!res) setError(statusCodeErrorMessages[500]);
+
         if (res?.status === 200) {
             setUser(prev => ({
                 ...prev,
@@ -50,8 +52,6 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
         }
 
         if (res && res.status !== 200) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
-
-        if (!res) setError(statusCodeErrorMessages[500]);
     };
 
     return (
