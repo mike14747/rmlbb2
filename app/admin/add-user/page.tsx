@@ -6,13 +6,13 @@ import { getServerSession } from 'next-auth/next';
 // import { useEffect } from 'react';
 // import { useRouter } from 'next/navigation';
 // import { useSession } from 'next-auth/react';
-// import FormInputForUsername from '../../components/FormInputForUsername';
-// import FormInputForNewPassword from '../../components/FormInputForNewPassword';
-// import FormInputForEmail from '../../components/FormInputForEmail';
-// import FormInputForActive from '../../components/Forum/FormInputForActive';
-// import Button from '../../components/Button';
+// import FormInputForUsername from '@/components/FormInputForUsername';
+// import FormInputForNewPassword from '@/components/FormInputForNewPassword';
+// import FormInputForEmail from '@/components/FormInputForEmail';
+// import FormInputForActive from '@/components/Forum/FormInputForActive';
+// import Button from '@/components/Button';
 
-import styles from '../../../styles/admin.module.css';
+import styles from '@/styles/admin.module.css';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Add User',

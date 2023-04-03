@@ -3,10 +3,10 @@
 import { FormEvent, ChangeEvent, useRef, useState, useEffect } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import FormInput from '../components/FormInput';
-import Button from '../components/Button';
-import ForgotLoginInfo from '../components/Login/ForgotLoginInfo';
-import Spinner from '../components/Spinner';
+import FormInput from '@/components/FormInput';
+import Button from '@/components/Button';
+import ForgotLoginInfo from '@/components/Login/ForgotLoginInfo';
+import Spinner from '@/components/Spinner';
 
 export default function Login() {
     const { status } = useSession();

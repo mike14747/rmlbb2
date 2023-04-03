@@ -1,17 +1,17 @@
 // import { PortableText } from '@portabletext/react';
 import type { Metadata } from 'next';
-import { SettingDataType } from '../types';
-import { getSettings } from '../lib/api/settings';
-import { getNewsItems } from '../lib/api/news';
-import NewsItems from './components/NewsItems';
+import { SettingDataType } from '@/types/index';
+import { getSettings } from '@/lib/api/settings';
+import { getNewsItems } from '@/lib/api/news';
+import NewsItems from '@/components/NewsItems';
 import { Suspense } from 'react';
-import Spinner from './components/Spinner';
-import EventsSidebar from './components/Sidebar/EventsSidebar';
-import EventsSidebarContent from './components/Sidebar/EventsSidebarContent';
-import BoardSidebar from './components/Sidebar/BoardSidebar';
+import Spinner from '@/components/Spinner';
+import EventsSidebar from '@/components/Sidebar/EventsSidebar';
+import EventsSidebarContent from '@/components/Sidebar/EventsSidebarContent';
+import BoardSidebar from '@/components/Sidebar/BoardSidebar';
 
-import styles from '../styles/home.module.css';
-import sideBarStyles from '../styles/Sidebar.module.css';
+import styles from '@/styles/home.module.css';
+import sideBarStyles from '@/styles/Sidebar.module.css';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Homepage',

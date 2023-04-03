@@ -1,13 +1,13 @@
 'use client';
 
 import { useRef, useState, FormEvent } from 'react';
-import Button from '../Button';
-import Spinner from '../Spinner';
-import FormInputForUsername from '../FormInputForUsername';
-import processStatusCodeWithSignout from '../../../lib/helpers/processStatusCodeWithSignout';
-import { StatusCodeObj } from '../../../types';
+import Button from '@/components/Button';
+import Spinner from '@/components/Spinner';
+import FormInputForUsername from '@/components/FormInputForUsername';
+import processStatusCodeWithSignout from '@/lib/helpers/processStatusCodeWithSignout';
+import { StatusCodeObj } from '@/types/index';
 
-import styles from '../../../styles/profile.module.css';
+import styles from '@/styles/profile.module.css';
 
 const statusCodeErrorMessages: StatusCodeObj = {
     400: 'An error occurred. New username is not in the proper format.',

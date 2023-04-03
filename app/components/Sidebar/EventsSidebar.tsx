@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import styles from '../../../styles/EventsSidebar.module.css';
-import sidebarStyles from '../../../styles/Sidebar.module.css';
+import styles from '@/styles/EventsSidebar.module.css';
+import sidebarStyles from '@/styles/Sidebar.module.css';
 
 export default async function EventsSidebar({ children }: { children: ReactNode }) {
     return (

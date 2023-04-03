@@ -7,16 +7,16 @@ import ScrollTop from './components/ScrollTop';
 import SkipToMain from './components/SkipToMain';
 import TopInfo from './components/TopInfo';
 import { Session } from 'next-auth';
-import { getSettings } from '../lib/api/settings';
-import { SettingDataType } from '../types';
+import { getSettings } from '@/lib/api/settings';
+import { SettingDataType } from '@/types/index';
 
-import '../styles/mg_base.css';
-import '../styles/globals.css';
-import '../styles/my_tables.css';
-import '../styles/rich-text.css';
-import '../styles/tiptap.css';
-import '../styles/suneditor.css';
-import '../styles/suneditor-contents.css';
+import '@/styles/mg_base.css';
+import '@/styles/globals.css';
+import '@/styles/my_tables.css';
+import '@/styles/rich-text.css';
+import '@/styles/tiptap.css';
+import '@/styles/suneditor.css';
+import '@/styles/suneditor-contents.css';
 
 type RootLayoutProps = {
     children: ReactNode;

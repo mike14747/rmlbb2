@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import ParagraphRound from '../../../assets/paragraphRound.svg';
+import ParagraphRound from '@/assets/paragraphRound.svg';
 
-import styles from '../../../styles/BoardSidebar.module.css';
-import sidebarStyles from '../../../styles/Sidebar.module.css';
+import styles from '@/styles/BoardSidebar.module.css';
+import sidebarStyles from '@/styles/Sidebar.module.css';
 
 const BoardSidebar = () => {
     // console.table(posts);

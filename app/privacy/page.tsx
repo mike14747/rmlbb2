@@ -1,11 +1,11 @@
 import { PortableText } from '@portabletext/react';
-import { getPrivacyPolicyText } from '../../lib/api/miscPortableText';
-import components from '../../lib/helpers/portalTextComponents';
+import { getPrivacyPolicyText } from '@/lib/api/miscPortableText';
+import components from '@/lib/helpers/portalTextComponents';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import Spinner from '../components/Spinner';
+import Spinner from '@/components/Spinner';
 
-import styles from '../../styles/privacy.module.css';
+import styles from '@/styles/privacy.module.css';
 
 export const revalidate = 600;
 

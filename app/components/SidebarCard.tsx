@@ -1,4 +1,4 @@
-import styles from '../../styles/SidebarCard.module.css';
+import styles from '@/styles/SidebarCard.module.css';
 import { ReactNode } from 'react';
 
 const colors = ['green', 'orange', 'blue', 'brown'];

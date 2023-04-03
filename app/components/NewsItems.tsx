@@ -1,10 +1,10 @@
 'use client';
 
 import { PortableText } from '@portabletext/react';
-import components from '../../lib/helpers/portalTextComponents';
-import { NewsItemsType } from '../../types';
+import components from '@/lib/helpers/portalTextComponents';
+import { NewsItemsType } from '@/types/index';
 
-import styles from '../../styles/home.module.css';
+import styles from '@/styles/home.module.css';
 
 type NewsItemProps = {
     initialNewsItems: NewsItemsType;

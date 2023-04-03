@@ -1,6 +1,6 @@
-import { Event } from '../../../types';
+import { Event } from '@/types/index';
 
-import styles from '../../../styles/events.module.css';
+import styles from '@/styles/events.module.css';
 
 export default function CurrentEvents({ currentEventsData }: { currentEventsData: Event[]}) {
     return (

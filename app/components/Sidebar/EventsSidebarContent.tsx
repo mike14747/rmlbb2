@@ -1,6 +1,6 @@
-import { getNextUpcomingEvents } from '../../../lib/api/events';
+import { getNextUpcomingEvents } from '@/lib/api/events';
 
-import styles from '../../../styles/EventsSidebar.module.css';
+import styles from '@/styles/EventsSidebar.module.css';
 
 export const revalidate = 600;
 

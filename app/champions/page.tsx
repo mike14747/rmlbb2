@@ -1,9 +1,9 @@
-import { getChampions } from '../../lib/api/champions';
+import { getChampions } from '@/lib/api/champions';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import Spinner from '../components/Spinner';
+import Spinner from '@/components/Spinner';
 
-import styles from '../../styles/champions.module.css';
+import styles from '@/styles/champions.module.css';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Privacy Policy',

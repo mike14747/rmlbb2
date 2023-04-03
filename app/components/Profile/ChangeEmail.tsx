@@ -1,12 +1,12 @@
 'use client';
 
 import { useRef, useState, Dispatch, SetStateAction, FormEvent, RefObject } from 'react';
-import Button from '../Button';
-import Spinner from '../Spinner';
-import FormInputForEmail from '../FormInputForEmail';
-import { UserInfo, StatusCodeObj } from '../../../types';
+import Button from '@/components/Button';
+import Spinner from '@/components/Spinner';
+import FormInputForEmail from '@/components/FormInputForEmail';
+import { UserInfo, StatusCodeObj } from '@/types/index';
 
-import styles from '../../../styles/profile.module.css';
+import styles from '@/styles/profile.module.css';
 
 const statusCodeErrorMessages: StatusCodeObj = {
     400: 'An error occurred. New email is not in the proper format.',

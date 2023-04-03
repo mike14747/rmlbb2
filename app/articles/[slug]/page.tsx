@@ -1,11 +1,11 @@
-import { getArticleBySlug, getActiveArticleSlugs } from '../../../lib/api/articles';
+import { getArticleBySlug, getActiveArticleSlugs } from '@/lib/api/articles';
 import { PortableText } from '@portabletext/react';
-import components from '../../../lib/helpers/portalTextComponents';
+import components from '@/lib/helpers/portalTextComponents';
 import { Suspense } from 'react';
-import Spinner from '../../components/Spinner';
+import Spinner from '@/components/Spinner';
 
-import styles from '../../../styles/article.module.css';
-import blockContentStyles from '../../../styles/blockContent.module.css';
+import styles from '@/styles/article.module.css';
+import blockContentStyles from '@/styles/blockContent.module.css';
 
 export async function generateStaticParams() {
     return await getActiveArticleSlugs();

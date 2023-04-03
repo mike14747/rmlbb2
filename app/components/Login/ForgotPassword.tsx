@@ -1,12 +1,12 @@
 'use client';
 
 import { FormEvent, useRef, useState } from 'react';
-import Button from '../Button';
-import FormInputForUsername from '../FormInputForUsername';
-import FormInputForEmail from '../FormInputForEmail';
-import Spinner from '../Spinner';
+import Button from '@/components/Button';
+import FormInputForUsername from '@/components/FormInputForUsername';
+import FormInputForEmail from '@/components/FormInputForEmail';
+import Spinner from '@/components/Spinner';
 
-import styles from '../../../styles/ForgotLoginInfo.module.css';
+import styles from '@/styles/ForgotLoginInfo.module.css';
 
 export default function ForgotPassword() {
     const username = useRef<string>('');

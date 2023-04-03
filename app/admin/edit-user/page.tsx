@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
 // import Link from 'next/link';
 
-import styles from '../../../styles/admin.module.css';
+import styles from '@/styles/admin.module.css';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Edit User',

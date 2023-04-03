@@ -3,7 +3,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import Button from '../Button';
 
-import styles from '../../../styles/ForgotLoginInfo.module.css';
+import styles from '@/styles/ForgotLoginInfo.module.css';
 
 type ForgotLoginButtonsProps = {
     showForgotUsername: boolean;

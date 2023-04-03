@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Button from '../components/Button';
+import Button from '@/components/Button';
 
-import styles from '../../styles/TopInfo.module.css';
+import styles from '@/styles/TopInfo.module.css';
 
 type TopInfoProps = {
     topInfo: {

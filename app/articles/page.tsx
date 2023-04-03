@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
-import components from '../../lib/helpers/portalTextComponents';
-import { getArticlesHomeText } from '../../lib/api/miscPortableText';
-import { getActiveArticlesForIndex } from '../../lib/api/articles';
-import SidebarCard from '../components/SidebarCard';
+import components from '@/lib/helpers/portalTextComponents';
+import { getArticlesHomeText } from '@/lib/api/miscPortableText';
+import { getActiveArticlesForIndex } from '@/lib/api/articles';
+import SidebarCard from '@/components/SidebarCard';
 import { Suspense } from 'react';
-import Spinner from '../components/Spinner';
+import Spinner from '@/components/Spinner';
 
-import styles from '../../styles/article.module.css';
+import styles from '@/styles/article.module.css';
 
 export const revalidate = 600;
 

@@ -5,11 +5,11 @@ import { getServerSession } from 'next-auth/next';
 // import { useState, useEffect } from 'react';
 // import { useRouter } from 'next/navigation';
 // import { useSession } from 'next-auth/react';
-// import FormInputForForumName from '../../components/Forum/FormInputForForumName';
-// import FormInputForActive from '../../components/Forum/FormInputForActive';
-// import Button from '../../components/Button';
+// import FormInputForForumName from '@/components/Forum/FormInputForForumName';
+// import FormInputForActive from '@/components/Forum/FormInputForActive';
+// import Button from '@/components/Button';
 
-import styles from '../../../styles/admin.module.css';
+import styles from '@/styles/admin.module.css';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Edit Forum',

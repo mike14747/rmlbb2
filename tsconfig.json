@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "lib": [
             "dom",
             "dom.iterable",
@@ -32,6 +32,14 @@
             "./types",
             "./node_modules/@types"
         ],
+        "baseUrl": ".",
+        "paths": {
+            "@/styles/*": ["styles/*"],
+            "@/lib/*": ["lib/*"],
+            "@/types/*": ["types/*"],
+            "@/components/*": ["app/components/*"],
+            "@/assets/*": ["assets/*"]
+        }
     },
     "include": [
         "next-env.d.ts",
