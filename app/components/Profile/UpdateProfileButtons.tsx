@@ -13,8 +13,8 @@ type UpdateProfileButtonsProps = {
 
 export default function UpdateProfileButtons({ viewState, setViewState }: UpdateProfileButtonsProps) {
     return (
-        <nav aria-label="Update / Delete your account navigation" className={styles.showButtonNav}>
-            <h3 className={styles.updateButtonsHeading}>Update / Delete your account</h3>
+        <nav aria-label="Update your account navigation" className={styles.showButtonNav}>
+            <h3 className={styles.updateButtonsHeading}>Update your account</h3>
 
             {viewState.showChangeUsername
                 ? <Button onClick={() => {
@@ -25,7 +25,6 @@ export default function UpdateProfileButtons({ viewState, setViewState }: Update
                         showChangeUsername: true,
                         showChangePassword: false,
                         showChangeEmail: false,
-                        showDeleteAccount: false,
                     }));
                 }} type="button" size="small" variant="text" theme="primary">Update Username</Button>
             }
@@ -39,7 +38,6 @@ export default function UpdateProfileButtons({ viewState, setViewState }: Update
                         showChangeUsername: false,
                         showChangePassword: true,
                         showChangeEmail: false,
-                        showDeleteAccount: false,
                     }));
                 }} type="button" size="small" variant="text" theme="primary">Update Password</Button>
             }
@@ -53,7 +51,6 @@ export default function UpdateProfileButtons({ viewState, setViewState }: Update
                         showChangeUsername: false,
                         showChangePassword: false,
                         showChangeEmail: true,
-                        showDeleteAccount: false,
                     }));
                 }} type="button" size="small" variant="text" theme="primary">Update Email</Button>
             }
