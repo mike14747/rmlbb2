@@ -14,7 +14,7 @@ Indent the replies to posts (or some other method) so they are distinct from the
 
 Add a WYSIWYG that will be used for message board posting. (in progress)
 
-Write tests for all components in /components.
+Write tests for all components in /app/components.
 
 Figure out how to get the homepage test working in jest.
 
@@ -41,6 +41,12 @@ The props for the Button component includes theme and not style, but when I'm us
 Fix all the axe accessibility errors (color contrast and such). **UPDATE**: the only ones left that I know of are in the header (because of a background gradient).
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
+
+Finish the events page in the appDir. The past events client component is not done yet.
+
+Move all api routes (except for /pages/api/auth) to the appDir.
+
+Convert the rest of the images to the Image component.
 
 ---
 

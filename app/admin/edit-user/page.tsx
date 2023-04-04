@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
-// import Link from 'next/link';
+import { getAllUsers } from '@/lib/api/user';
+import { Suspense } from 'react';
+import EditUser from '@/components/Admin/EditUser';
+import Spinner from '@/components/Spinner';
 
 import styles from '@/styles/admin.module.css';
 
@@ -18,6 +21,8 @@ export default async function EditUserPage() {
         redirect('/login?callbackUrl=/admin/edit-user');
     }
 
+    const usersData = await getAllUsers();
+
     if (session.role === 'admin') {
         return (
             <article className={styles.adminContainer}>
@@ -25,9 +30,9 @@ export default async function EditUserPage() {
                     Edit User
                 </h2>
 
-                <p>This is the unfinished edit user page.</p>
-
-                <p>You are seeing this page because you are logged in with the role of admin.</p>
+                <Suspense fallback={<Spinner size="large" />}>
+                    <EditUser usersData={usersData} />
+                </Suspense>
             </article>
         );
     }

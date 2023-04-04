@@ -58,6 +58,33 @@ export async function getUserProfile(_id: number) {
     }
 }
 
+export async function getAllUsers() {
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
+
+        const users = await db
+            .collection('users')
+            .find({})
+            .project({ _id: 1, username: 1, email: 1, posts: 1, registeredDate: 1, active: 1 })
+            .toArray();
+
+        if (!users) return null;
+
+        // const posts = goersPostsCollection.find<GoerPost>({}).toArray()
+
+        users.forEach((user) => {
+            user.registeredDateStr = formatDateObject(user.registeredDate, 'short');
+            delete user.registeredDate;
+        });
+
+        return users;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
 async function checkForAvailableUsername(username: string) {
     try {
         const connection = await clientPromise;

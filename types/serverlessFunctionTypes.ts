@@ -16,6 +16,23 @@ export type UserProfile = {
     registeredDateStr?: string;
 }
 
+export type AllUsersItem = {
+    _id: string;
+    username: string;
+    email: string;
+    registeredDateStr: string | undefined;
+    active: boolean;
+}
+
+// export interface AllUsersItem extends Document {
+//     id?: string;
+//     username: string;
+//     email: string;
+//     registeredDate: Date;
+//     registeredDateStr?: string;
+//     active: boolean;
+// }
+
 export type TokenValid = {
     id: number;
     resetPasswordExpires: Date;

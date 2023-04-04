@@ -66,6 +66,14 @@ export type UserInfo = {
     registeredDateStr?: string;
 }
 
+export type AllUsersItem = {
+    _id: string;
+    username: string;
+    email: string;
+    registeredDateStr: string | undefined;
+    active: boolean;
+}
+
 export type ViewButtonState = {
     showChangeUsername: boolean;
     showChangePassword: boolean;
