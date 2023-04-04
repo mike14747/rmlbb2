@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Edit User',
 };
 
-export default async function EditUser() {
+export default async function EditUserPage() {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });

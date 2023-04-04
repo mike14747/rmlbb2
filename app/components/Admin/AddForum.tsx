@@ -24,13 +24,13 @@ export default function AddForum() {
     const [successMessage, setSuccessMessage] = useState<string>('');
     const form = useRef<HTMLFormElement>(null);
 
-    const handleNewForumNameSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         setIsSubmitting(true);
         setSuccessMessage('');
 
-        const res = await fetch('/api/forum/add-forum', {
+        const res = await fetch('/api/admin/add-forum', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -54,17 +54,13 @@ export default function AddForum() {
 
     return (
         <>
-            <p>This is the AddForum component.</p>
+            {isSubmitting && <Spinner size="large" />}
 
-            <p>It is a client component that takes no props.</p>
+            {error && <p className="error2">{error}</p>}
 
-            <form ref={form} className={styles.updateGroup} onSubmit={handleNewForumNameSubmit}>
-                {isSubmitting && <Spinner size="large" />}
+            {successMessage && <p className="success2">{successMessage}</p>}
 
-                {error && <p className="error2">{error}</p>}
-
-                {successMessage && <p className="success2">{successMessage}</p>}
-
+            <form ref={form} className={styles.updateGroup} onSubmit={handleSubmit}>
                 <FormInputForForumName forumName={forumName} />
 
                 <FormInputForActive id={null} active={active} setActive={setActive} />

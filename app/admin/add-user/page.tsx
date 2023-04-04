@@ -1,16 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
-
-// import { useState } from 'react';
-// import { useEffect } from 'react';
-// import { useRouter } from 'next/navigation';
-// import { useSession } from 'next-auth/react';
-// import FormInputForUsername from '@/components/FormInputForUsername';
-// import FormInputForNewPassword from '@/components/FormInputForNewPassword';
-// import FormInputForEmail from '@/components/FormInputForEmail';
-// import FormInputForActive from '@/components/Forum/FormInputForActive';
-// import Button from '@/components/Button';
+import AddUser from '@/components/Admin/AddUser';
 
 import styles from '@/styles/admin.module.css';
 
@@ -18,7 +9,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Add User',
 };
 
-export default async function AddUser() {
+export default async function AddUserPage() {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -27,54 +18,6 @@ export default async function AddUser() {
         redirect('/login?callbackUrl=/admin');
     }
 
-    // const router = useRouter();
-
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [repeatPassword, setRepeatPassword] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [active, setActive] = useState(true);
-    // const [newUserMsg, setNewUsereMsg] = useState('');
-    // const [newUserError, setNewUserError] = useState(null);
-
-    // useEffect(() => {
-    //     if (status === 'authenticated') router.push('/login?callbackUrl=/admin/add-user');
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [status]);
-
-    // const handleNewUserSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     const res = await fetch('/api/user/add-user', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json;charset=utf-8',
-    //         },
-    //         body: JSON.stringify({
-    //             username,
-    //             password,
-    //             email,
-    //             active,
-    //         }),
-    //     });
-
-    //     if (res?.status === 201) {
-    //         setUsername('');
-    //         setPassword('');
-    //         setEmail('');
-    //         setActive(true);
-    //         setNewUserError(null);
-    //         setNewUsereMsg('The new user: "' + username + '" has been successfully added!');
-    //         setActive(true);
-    //     } else {
-    //         res?.status === 400 && setNewUserError('An error occurred. New user did not make it to the server.');
-    //         res?.status === 401 && setNewUserError('An error occurred. You do not have permission for this operation.');
-    //         res?.status === 409 && setNewUserError('An error occurred. The username you submitted is already in use.');
-    //         (!res || !res.status || res.status === 500) && setNewUserError('A server error occurred. Please try your update again.');
-    //         setNewUsereMsg('');
-    //     }
-    // };
-
     if (session.role === 'admin') {
         return (
             <article className={styles.adminContainer}>
@@ -82,27 +25,7 @@ export default async function AddUser() {
                     Add User
                 </h2>
 
-                {/* <form className={styles.updateGroup} onSubmit={handleNewUserSubmit}>
-                    {newUserError && <p className="error2">{newUserError}</p>}
-
-                    {newUserMsg && <p className="success2">{newUserMsg}</p>}
-
-                    <FormInputForUsername username={username} setUsername={setUsername} />
-
-                    <FormInputForNewPassword password={password} setPassword={setPassword} repeatPassword={repeatPassword} setRepeatPassword={setRepeatPassword} />
-
-                    <FormInputForEmail email={email} setEmail={setEmail} />
-
-                    <FormInputForActive active={active} setActive={setActive} />
-
-                    <div className={styles.submitButtonWrapper}>
-                        <Button type="submit" size="medium" variant="contained" style="primary">Submit</Button>
-                    </div>
-                </form> */}
-
-                <p>This is the unfinished add-user page.</p>
-
-                <p>You are seeing this page because you are logged in with the role of admin.</p>
+                <AddUser />
             </article>
         );
     }

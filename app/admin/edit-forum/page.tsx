@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Edit Forum',
 };
 
-export default async function EditForum() {
+export default async function EditForumPage() {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });

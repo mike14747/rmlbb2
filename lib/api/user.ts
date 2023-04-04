@@ -58,6 +58,24 @@ export async function getUserProfile(_id: number) {
     }
 }
 
+async function checkForAvailableUsername(username: string) {
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
+
+        // I could have used a "findOne" in this query, but I wanted to be able to tell the difference between a failed db query and an empty result (null vs empty array when using "find")
+        return await db
+            .collection('users')
+            .find({ username })
+            .project({ _id: 1, username: 1 })
+            .limit(1)
+            .toArray();
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
 export async function changeUsername(_id: number, newUsername: string) {
     if (!_id) return { code: 401 };
     const pattern = new RegExp(usernamePattern);
@@ -126,6 +144,7 @@ export async function changeEmail(_id: number, newEmail: string) {
 
     const connection = await clientPromise;
     const db = connection.db();
+
     const updateResult = await db
         .collection('users')
         .updateOne({ _id }, { $set: { email: newEmail } });
@@ -170,6 +189,7 @@ export async function forgotUsername(email: string) {
 
     const connection = await clientPromise;
     const db = connection.db();
+
     const userData = await db
         .collection('users')
         .find({ email })
@@ -205,6 +225,7 @@ export async function resetPassword(username: string, email: string) {
 
     const connection = await clientPromise;
     const db = connection.db();
+
     const user = await db
         .collection('users')
         .find({ username, email })
@@ -243,6 +264,51 @@ export async function resetPassword(username: string, email: string) {
     } else {
         // username and email address doesn't match any user in the database
         return { code: 404 };
+    }
+}
+
+export async function addUser(username: string, password: string, email: string, active = true) {
+    const pattern1 = new RegExp(usernamePattern);
+    if (!username || !pattern1.test(username)) return { code: 400 };
+
+    const pattern2 = new RegExp(passwordPattern);
+    if (!password || !pattern2.test(password)) return { code: 400 };
+
+    const pattern3 = new RegExp(emailPattern);
+    if (!email || !pattern3.test(email)) return { code: 400 };
+
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
+
+        // first make sure the username isn't already in use
+        const usernameResult = await checkForAvailableUsername(username);
+        if (!usernameResult) return { code: 500 };
+        if (usernameResult.length > 0) return { code: 409 };
+
+        // at this point, the new username must not already be in use, so make the change
+        const salt = generateRandom(32);
+        const hashedPassword = hashPassword(password, salt);
+        if (!hashedPassword) return null;
+
+        const newUser = {
+            username,
+            password: hashedPassword,
+            salt,
+            email,
+            role: 'user',
+            active,
+            registeredDate: new Date(Date.now()),
+        };
+
+        const result = await db
+            .collection('users')
+            .insertOne(newUser);
+
+        return result?.insertedId ? { code: 201 } : { code: 500 };
+    } catch (error) {
+        console.log(error);
+        return { code: 500 };
     }
 }
 

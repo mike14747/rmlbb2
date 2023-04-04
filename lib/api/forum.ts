@@ -3,7 +3,7 @@ import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
 import * as sft from '../../types/serverlessFunctionTypes';
 
-export const getForumList = async () => {
+export async function getForumList() {
     const { db } = await connectToDatabase();
 
     const data: sft.ForumList[] = await db
@@ -18,9 +18,9 @@ export const getForumList = async () => {
         forum.lastPost.dateStr = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
     });
     return data;
-};
+}
 
-export const getForumListForEdit = async () => {
+export async function getForumListForEdit() {
     const { db } = await connectToDatabase();
 
     const data: { _id: number; name: string; active: boolean; order: number; }[] = await db
@@ -31,9 +31,9 @@ export const getForumListForEdit = async () => {
         .toArray();
 
     return data;
-};
+}
 
-export const getForumTopics = async (forumId: number) => {
+export async function getForumTopics(forumId: number) {
     const { db } = await connectToDatabase();
 
     const data: sft.ForumTopics[] = await db
@@ -83,7 +83,7 @@ export const getForumTopics = async (forumId: number) => {
         if (topic.lastReply) topic.lastReply.dateStr = formatDateObjectWithTime(topic.lastReply.date, 'short');
     });
     return data;
-};
+}
 
 export async function getMostRecentPostsForHomepage() {
     const { db } = await connectToDatabase();
@@ -164,7 +164,7 @@ export async function getMostRecentPostsForHomepage() {
     return data;
 }
 
-export const getForumTopic = async (forumId: number, topicId: number) => {
+export async function getForumTopic(forumId: number, topicId: number) {
     const { db } = await connectToDatabase();
 
     const data = await db
@@ -174,9 +174,9 @@ export const getForumTopic = async (forumId: number, topicId: number) => {
     if (data?.date) data.date = formatDateObjectWithTime(data.date, 'short');
 
     return data;
-};
+}
 
-export const getTopicReplies = async (repliesArr: number[]) => {
+export async function getTopicReplies(repliesArr: number[]) {
     const { db } = await connectToDatabase();
 
     const data: sft.TopicReplyData[] = await db
@@ -189,9 +189,9 @@ export const getTopicReplies = async (repliesArr: number[]) => {
         reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
     });
     return data;
-};
+}
 
-export const getForumName = async (forumId: number) => {
+export async function getForumName(forumId: number) {
     const { db } = await connectToDatabase();
 
     const data = await db
@@ -199,9 +199,9 @@ export const getForumName = async (forumId: number) => {
         .findOne({ active: true, _id: forumId }, { projection: { _id: 0, name: 1 } });
 
     return data;
-};
+}
 
-export const addForum = async (name: string, active = true) => {
+export async function addForum(name: string, active = true) {
     if (!name) return { code: 400 };
 
     const { db } = await connectToDatabase();
@@ -235,9 +235,9 @@ export const addForum = async (name: string, active = true) => {
         .insertOne(newForum);
 
     return result?.insertedId ? { code: 201 } : { code: 500 };
-};
+}
 
-export const editForum = async (_id: number, newForumName: string, newActiveStatus: boolean) => {
+export async function editForum(_id: number, newForumName: string, newActiveStatus: boolean) {
     const { db } = await connectToDatabase();
 
     // make sure newForumName is not already in use
@@ -283,9 +283,9 @@ export const editForum = async (_id: number, newForumName: string, newActiveStat
     }
 
     return transactionResult?.ok === 1 ? { code: 200 } : { code: 500 };
-};
+}
 
-export const addTopic = async (userId: number, username: string, forumId: number, forumName: string, title: string, content: string) => {
+export async function addTopic(userId: number, username: string, forumId: number, forumName: string, title: string, content: string) {
     if (!userId || !username || !forumId || !forumName || !title || !content) return { code: 400 };
 
     const { db } = await connectToDatabase();
@@ -352,9 +352,9 @@ export const addTopic = async (userId: number, username: string, forumId: number
     }
 
     return transactionResult?.ok === 1 ? { code: 201 } : { code: 500 };
-};
+}
 
-export const editTopic = async (topicId: number, userId: number, title: string, content: string) => {
+export async function editTopic(topicId: number, userId: number, title: string, content: string) {
     if (!topicId || !userId || !title || !content) return { code: 400 };
 
     const { db } = await connectToDatabase();
@@ -391,9 +391,9 @@ export const editTopic = async (topicId: number, userId: number, title: string, 
     }
 
     return transactionResult?.ok === 1 ? { code: 200 } : { code: 500 };
-};
+}
 
-export const getOneReply = async (replyId: number) => {
+export async function getOneReply(replyId: number) {
     const { db } = await connectToDatabase();
 
     const data = await db
@@ -401,4 +401,4 @@ export const getOneReply = async (replyId: number) => {
         .findOne({ _id: replyId }, { projection: { subject: 1, content: 1 } });
 
     return data;
-};
+}
