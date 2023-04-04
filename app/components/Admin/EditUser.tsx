@@ -1,9 +1,8 @@
 'use client';
 
-// import { AllUsersItem } from '@/types/index';
+import { AllUsersArray } from '@/types/index';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function EditUser({ usersData }: any) {
+export default function EditUser({ usersData }: { usersData: AllUsersArray }) {
     console.log({ usersData });
     return (
         <>

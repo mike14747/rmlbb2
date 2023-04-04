@@ -1,3 +1,5 @@
+import { AllUsersItemPost } from './serverlessFunctionTypes';
+
 export type SettingDataType = {
     numInitialNewsItems: number;
     newsItemsIncrementNumber: number;
@@ -45,11 +47,6 @@ export interface User {
     role: 'user' | 'admin';
 }
 
-// export interface Session {
-//     user: User;
-//     expires: Date;
-// }
-
 export interface Token {
     name: string;
     id: string;
@@ -66,13 +63,7 @@ export type UserInfo = {
     registeredDateStr?: string;
 }
 
-export type AllUsersItem = {
-    _id: string;
-    username: string;
-    email: string;
-    registeredDateStr: string | undefined;
-    active: boolean;
-}
+export type AllUsersArray = AllUsersItemPost[] | null;
 
 export type ViewButtonState = {
     showChangeUsername: boolean;

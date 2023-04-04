@@ -16,7 +16,8 @@ export type UserProfile = {
     registeredDateStr?: string;
 }
 
-export type AllUsersItem = {
+// this is the type that gets output from the getAllUsers serverless function to the client... after it's been modified from the AllUsersItem type
+export type AllUsersItemPost = {
     _id: string;
     username: string;
     email: string;
@@ -24,14 +25,10 @@ export type AllUsersItem = {
     active: boolean;
 }
 
-// export interface AllUsersItem extends Document {
-//     id?: string;
-//     username: string;
-//     email: string;
-//     registeredDate: Date;
-//     registeredDateStr?: string;
-//     active: boolean;
-// }
+// this is the type for the query that comes back from the database on the getAllUsers serverless function... before it gets modified to be ouput to the client
+export type AllUsersItem = AllUsersItemPost & {
+    registeredDate?: Date;
+}
 
 export type TokenValid = {
     id: number;

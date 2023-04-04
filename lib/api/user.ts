@@ -1,4 +1,3 @@
-// import { connectToDatabase } from '../../utils/mongodb';
 import clientPromise from '../mongodb';
 import { mailTransporter } from '../helpers/nodemailerConfig';
 import { formatDateObject } from '../helpers/formatDate';
@@ -63,18 +62,16 @@ export async function getAllUsers() {
         const connection = await clientPromise;
         const db = connection.db();
 
-        const users = await db
+        const users = (await db
             .collection('users')
             .find({})
             .project({ _id: 1, username: 1, email: 1, posts: 1, registeredDate: 1, active: 1 })
-            .toArray();
+            .toArray()) as sft.AllUsersItem[];
 
         if (!users) return null;
 
-        // const posts = goersPostsCollection.find<GoerPost>({}).toArray()
-
         users.forEach((user) => {
-            user.registeredDateStr = formatDateObject(user.registeredDate, 'short');
+            user.registeredDateStr = user.registeredDate ? formatDateObject(user.registeredDate, 'short') : '';
             delete user.registeredDate;
         });
 
@@ -121,8 +118,6 @@ export async function changeUsername(_id: number, newUsername: string) {
     if (!inUseResult) return { code: 500 };
     if (inUseResult.length === 1) return { code: 409 };
 
-    // update the user's username (and all references to it in other colections) with newUsername using a tranaction
-    // const { client } = await connectToDatabase();
     const session = connection.startSession();
 
     let transactionResult;
@@ -143,6 +138,7 @@ export async function changeUsername(_id: number, newUsername: string) {
                 .collection('topics')
                 .updateMany({ user_id: _id }, { $set: { username: newUsername } }, { session });
 
+            // this step is causing a validation error, so I've bypassed it for no
             // await db
             //     .collection('replies')
             //     .updateMany({ user_id: _id }, { $set: { username: newUsername } }, { session });
