@@ -113,3 +113,11 @@ export type ManagerObj = {
     email2a: string;
     email2b: string;
 }
+
+export type DownloadFile = {
+    key: string;
+    name: string;
+    description: string | null;
+    filename: string;
+    ref: string;
+}

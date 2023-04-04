@@ -12,7 +12,7 @@ const Authbar = () => {
 
     return (
         <section className={'container ' + styles.authbarContainer}>
-            {loading && <>Loading...</>}
+            {loading && <span className={styles.username}>Loading...</span>}
 
             {!session && !loading &&
                 <Link href="/login?callbackUrl=/">

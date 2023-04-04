@@ -1,3 +1,5 @@
+import { DownloadFile } from '@/types/index';
+
 export type UserSignin = {
     _id: number;
     username: string;
@@ -103,4 +105,9 @@ export type Champions = {
     championManager: string;
     runnerUpTeam: string;
     runnerUpManager: string;
+}
+
+export type DownloadsList = {
+    files: DownloadFile[];
+    lzps: DownloadFile[];
 }

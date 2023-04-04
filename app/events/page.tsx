@@ -6,6 +6,8 @@ import Spinner from '@/components/Spinner';
 
 // import styles from '@/styles/events.module.css';
 
+export const revalidate = 60;
+
 export default async function Events() {
     // const [pastEvents, setPastEvents] = useState(null);
     // const [showPastEvents, setShowPastEvents] = useState(false);

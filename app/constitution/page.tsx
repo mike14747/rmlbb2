@@ -8,6 +8,8 @@ import Spinner from '@/components/Spinner';
 import styles from '@/styles/constitution.module.css';
 import blockContentStyles from '@/styles/blockContent.module.css';
 
+export const revalidate = 600;
+
 export const metadata: Metadata = {
     title: 'RML Baseball - Constitution',
 };

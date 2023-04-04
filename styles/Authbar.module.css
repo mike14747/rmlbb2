@@ -8,7 +8,7 @@
 }
 
 .username {
-    margin-left: 0.25rem;
-    margin-right: 1.5rem;
+    display: inline;
+    margin: 0 1.5rem 0 0.25rem;
     padding: 0.25rem 0;
 }

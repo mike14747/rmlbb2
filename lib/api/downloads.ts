@@ -1,4 +1,6 @@
-async function queryDownloadsData(query: string) {
+import * as sft from '@/types/serverlessFunctionTypes';
+
+async function queryDownloadsData(query: string): Promise<sft.DownloadsList | null> {
     if (!query) return null;
     const url = `${process.env.NEXT_PUBLIC_BASE_FILE_QUERY_URL}${query}`;
     const dataJSON = await fetch(url).then(res => res.json().catch(error => console.log(error)));
@@ -16,7 +18,7 @@ export async function getDownloadsList() {
                 filename,
                 "ref": file.asset._ref
             },
-                "lzps": lzps[]{
+            "lzps": lzps[]{
                 "key": _key,
                 name,
                 description,
