@@ -1,8 +1,8 @@
 'use client';
 
-import { AllUsersArray } from '@/types/index';
+import { AllUsers } from '@/types/index';
 
-export default function EditUser({ usersData }: { usersData: AllUsersArray }) {
+export default function EditUser({ usersData }: { usersData: AllUsers[] | null }) {
     console.log({ usersData });
     return (
         <>

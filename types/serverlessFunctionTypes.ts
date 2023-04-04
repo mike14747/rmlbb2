@@ -16,18 +16,23 @@ export type UserProfile = {
     registeredDateStr?: string;
 }
 
-// this is the type that gets output from the getAllUsers serverless function to the client... after it's been modified from the AllUsersItem type
-export type AllUsersItemPost = {
+// this type serves as the base AllUsers type that will have a post query property added to it in another type
+// it will also have a different property added before it gets sent to the client for another type
+type AllUsersBase = {
     _id: string;
     username: string;
     email: string;
-    registeredDateStr: string | undefined;
     active: boolean;
 }
 
-// this is the type for the query that comes back from the database on the getAllUsers serverless function... before it gets modified to be ouput to the client
-export type AllUsersItem = AllUsersItemPost & {
-    registeredDate?: Date;
+// this is the type that gets output from the getAllUsers serverless function to the client... after it's been modified
+export type AllUsersToClient = AllUsersBase & {
+    registeredDateStr: string | undefined;
+}
+
+// this is the type for the query that comes back from the database on the getAllUsers serverless function... before it gets modified
+export type AllUsersFromQuery = AllUsersBase & {
+    registeredDate: Date;
 }
 
 export type TokenValid = {

@@ -1,4 +1,4 @@
-import { AllUsersItemPost } from './serverlessFunctionTypes';
+import { AllUsersToClient } from './serverlessFunctionTypes';
 
 export type SettingDataType = {
     numInitialNewsItems: number;
@@ -63,7 +63,7 @@ export type UserInfo = {
     registeredDateStr?: string;
 }
 
-export type AllUsersArray = AllUsersItemPost[] | null;
+export type AllUsers = AllUsersToClient | null;
 
 export type ViewButtonState = {
     showChangeUsername: boolean;

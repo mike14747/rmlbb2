@@ -66,16 +66,21 @@ export async function getAllUsers() {
             .collection('users')
             .find({})
             .project({ _id: 1, username: 1, email: 1, posts: 1, registeredDate: 1, active: 1 })
-            .toArray()) as sft.AllUsersItem[];
+            .toArray()) as sft.AllUsersFromQuery[];
 
         if (!users) return null;
 
-        users.forEach((user) => {
-            user.registeredDateStr = user.registeredDate ? formatDateObject(user.registeredDate, 'short') : '';
-            delete user.registeredDate;
+        const usersData: sft.AllUsersToClient[] = users.map(user => {
+            return {
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                registeredDateStr: formatDateObject(user.registeredDate, 'short'),
+                active: user.active,
+            };
         });
 
-        return users;
+        return usersData;
     } catch (error) {
         console.log(error);
         return null;
