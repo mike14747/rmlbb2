@@ -48,7 +48,7 @@ Move all api routes (except for /pages/api/auth) to the appDir.
 
 Convert the rest of the images to the Image component.
 
-Move the directory and forum pages to the appDir.
+Move the forum pages to the appDir.
 
 ---
 
@@ -97,3 +97,5 @@ Add a "to top" button to all pages.
 Reconcile the difference between the topic title max length between the FormInputForTopicTitle component (50) and MongoDB validation (100). (settled on 50 for all references to topic title and reply subject)
 
 Get a topic showing up on the [topicId] page.
+
+Moved the directory page to the appDir.

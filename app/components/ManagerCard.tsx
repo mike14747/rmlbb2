@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
+import { ManagerObj } from '@/types/manager-types';
 
-import styles from '../styles/ManagerCard.module.css';
+import styles from '@/styles/ManagerCard.module.css';
 
-export default function ManagerCard({ manager }) {
+export default function ManagerCard({ manager }: { manager: ManagerObj}) {
     if (!manager) return (
         <div className={`${styles.card} ${styles.notSpecifiedCard}`}>
             <p className="error">
@@ -14,7 +14,7 @@ export default function ManagerCard({ manager }) {
 
     const conference = /^american|national$/i.test(manager.conference[0]) ? manager.conference[0].toLowerCase() : 'notSpecified';
 
-    function parseManagers(managers) {
+    function parseManagers(managers: ManagerObj & { [key: string]: string | number | [] }) {
         let jsxStr = '';
         for (let i = 1; i <= 2; i++) {
             jsxStr += '<div className=' + styles.manager + '>';
@@ -67,7 +67,3 @@ export default function ManagerCard({ manager }) {
         </div>
     );
 }
-
-ManagerCard.propTypes = {
-    manager: PropTypes.object,
-};

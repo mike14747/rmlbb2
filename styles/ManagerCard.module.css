@@ -26,7 +26,7 @@
 
 .heading {
     margin: 0 0 1.5rem 0;
-    padding-bottom: 0.50rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px var(--mg-gray-3) solid;
 }
 
@@ -44,18 +44,19 @@
 }
 
 .body p.small {
+    color: var(--mg-gray-6);
     font-size: 0.833rem;
-    font-size: var(--step--1-base);
+    font-size: var(--step--1);
 }
 
 .footing {
     margin: 1rem 0 0 0;
-    padding-top: 0.50rem;
+    padding-top: 0.5rem;
     border-top: 1px var(--mg-gray-3) solid;
 }
 
 .footing > p {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
     color: var(--mg-gray-6);
     text-align: center;
@@ -75,20 +76,20 @@
 }
 
 .abbrev {
-    margin-left: 0.50rem;
+    margin-left: 0.5rem;
     font-size: 83.3%;
     color: var(--mg-gray-6);
 }
 
 p.description {
-    font-size: .833rem;
+    font-size: 0.833rem;
     font-size: var(--step--1);
     color: var(--mg-gray-6);
 }
 
 p.description::before {
     content: '\2139';
-    padding-right: 0.50rem;
+    padding-right: 0.5rem;
     background-color: var(--mg-light);
 }
 
