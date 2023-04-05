@@ -1,17 +1,17 @@
 import { formatDateString } from '../helpers/formatDate';
-import * as sft from '../../types/serverlessFunctionTypes';
+import { EventItem } from '@/types/event-types';
 
 const offset = new Date().getTimezoneOffset();
 const todayStr = new Date(new Date().getTime() - offset * 60000).toISOString().slice(0, 10);
-const todayStrPlusSixtyDays = new Date(new Date().getTime() - (offset * 60000) + (60 * 86400000)).toISOString().slice(0, 10);
+const todayStrPlusDays = new Date(new Date().getTime() - (offset * 60000) + (60 * 86400000)).toISOString().slice(0, 10); // today plus 60 days
 const todayObj = new Date(new Date().getTime() - offset * 60000);
 
-function insertFormattedDate(eventsArr: sft.EventItem[], type = 'short') {
+function insertFormattedDate(eventsArr: EventItem[], type = 'short') {
     if (!eventsArr) return null;
     return eventsArr.map(event => {
         return {
-            eventDateStr: formatDateString(event.eventDate, type),
-            daysUntil: Math.ceil((+new Date(event.eventDate) - +todayObj) / (1000 * 60 * 60 * 24)),
+            eventDate: event.eventDate ? formatDateString(event.eventDate, type) : '',
+            daysUntil: event.eventDate ? Math.ceil((+new Date(event.eventDate) - +todayObj) / (1000 * 60 * 60 * 24)) : undefined,
             event: event.event,
             details: event?.details || '',
         };
@@ -26,7 +26,7 @@ async function getEventsData(query: string, type: 'short' | 'long') {
 }
 
 export async function getNextUpcomingEvents() {
-    const query = encodeURIComponent(`*[_type == "event" && active == true && eventDate >= "${todayStr}" && eventDate <= "${todayStrPlusSixtyDays}"] | order(eventDate asc){eventDate, event, details}`);
+    const query = encodeURIComponent(`*[_type == "event" && active == true && eventDate >= "${todayStr}" && eventDate <= "${todayStrPlusDays}"] | order(eventDate asc){eventDate, event, details}`);
     return await getEventsData(query, 'short');
 }
 

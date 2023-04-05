@@ -5,7 +5,7 @@ import FormInputForForumName from './FormInputForForumName';
 import FormInputForActive from './FormInputForActive';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
-import { StatusCodeObj } from '@/types/index';
+import { StatusCodeObj } from '@/types/misc-types';
 
 import styles from '@/styles/admin.module.css';
 

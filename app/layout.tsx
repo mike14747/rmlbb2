@@ -8,7 +8,7 @@ import SkipToMain from './components/SkipToMain';
 import TopInfo from './components/TopInfo';
 import { Session } from 'next-auth';
 import { getSettings } from '@/lib/api/settings';
-import { SettingDataType } from '@/types/index';
+import { SettingDataType } from '@/types/misc-types';
 
 import '@/styles/mg_base.css';
 import '@/styles/globals.css';

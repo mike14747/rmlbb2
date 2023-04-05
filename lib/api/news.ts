@@ -1,11 +1,11 @@
 import { formatDateString } from '../helpers/formatDate';
 import queryData from '../helpers/queryData';
-import * as sft from '../../types/serverlessFunctionTypes';
+import { NewsItemsResultType } from '@/types/news-types';
 
 async function getNewsData(query: string) {
     if (!query) return null;
     const url = `${process.env.SANITY_PUBLIC_QUERY_URL}${query}`;
-    const resJSON: sft.NewsItemsResultType = await fetch(url).then(res => res.json().catch(error => console.log(error)));
+    const resJSON: NewsItemsResultType = await fetch(url).then(res => res.json().catch(error => console.log(error)));
     return {
         total: resJSON?.result?.total || null,
         newsItems: resJSON?.result?.newsItems.map(res => {

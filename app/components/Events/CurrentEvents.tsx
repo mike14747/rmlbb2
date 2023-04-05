@@ -1,8 +1,8 @@
-import { Event } from '@/types/index';
+import { EventItem } from '@/types/event-types';
 
 import styles from '@/styles/events.module.css';
 
-export default function CurrentEvents({ currentEventsData }: { currentEventsData: Event[]}) {
+export default function CurrentEvents({ currentEventsData }: { currentEventsData: EventItem[] }) {
     return (
         <>
             {currentEventsData.length === 0 && <p className="text-center">There are no upcoming events to display. Check back again soon.</p>}
@@ -21,14 +21,19 @@ export default function CurrentEvents({ currentEventsData }: { currentEventsData
                         {currentEventsData.map((event, index) => (
                             <div key={index} className={styles.eventRow}>
                                 <div className={styles.eventDiv}>
-                                    <h5 className={styles.eventDate}>{event.eventDateStr}</h5>
+                                    <h5 className={styles.eventDate}>{event.eventDate}</h5>
                                     <p className={styles.eventName}>{event.event}</p>
                                     {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
                                 </div>
                                 <div className={styles.eventRight}>
-                                    {event.daysUntil >= 7 && <p aria-label="Urgency level" title="Due in 7 or more days" className={styles.normal}>&#9679;</p>}
-                                    {event.daysUntil > 2 && event.daysUntil < 7 && <p aria-label="Urgency level" title="Due in 3 to 6 days" className={styles.soon}>&#9679;</p>}
-                                    {event.daysUntil <= 2 && <p aria-label="Urgency level" title="Due in 2 or less days" className={styles.urgent}>&#9679;</p>}
+                                    {event.daysUntil &&
+                                        <>
+                                            {event.daysUntil >= 7 && <p aria-label="Urgency level" title="Due in 7 or more days" className={styles.normal}>&#9679;</p>}
+                                            {event.daysUntil > 2 && event.daysUntil < 7 && <p aria-label="Urgency level" title="Due in 3 to 6 days" className={styles.soon}>&#9679;</p>}
+                                            {event.daysUntil <= 2 && <p aria-label="Urgency level" title="Due in 2 or less days" className={styles.urgent}>&#9679;</p>}
+                                        </>
+                                    }
+
                                 </div>
                             </div>
                         ))}

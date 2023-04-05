@@ -3,7 +3,7 @@ import { mailTransporter } from '../helpers/nodemailerConfig';
 import { formatDateObject } from '../helpers/formatDate';
 import { usernamePattern, emailPattern, passwordPattern } from '../formInputPatterns';
 import { generateRandom, hashPassword } from '../helpers/cryptoUtils';
-import * as sft from '../../types/serverlessFunctionTypes';
+import { UserSignin, UserProfile, AllUsersDateObj, AllUsersDateStr } from '@/types/user-types';
 import { TransactionOptions, ReadPreference } from 'mongodb';
 
 export async function getUserForSignin(username: string, password: string) {
@@ -16,7 +16,7 @@ export async function getUserForSignin(username: string, password: string) {
 
         const user = await db
             .collection('users')
-            .findOne<sft.UserSignin>({ username: username, active: true }, { projection: { _id: 1, username: 1, password: 1, salt: 1, role: 1 } });
+            .findOne<UserSignin>({ username: username, active: true }, { projection: { _id: 1, username: 1, password: 1, salt: 1, role: 1 } });
 
         if (!user) return null;
 
@@ -45,7 +45,7 @@ export async function getUserProfile(_id: number) {
 
         const user = await db
             .collection('users')
-            .findOne<sft.UserProfile>({ _id, active: true }, { projection: { username: 1, email: 1, posts: 1, registeredDate: 1 } });
+            .findOne<UserProfile>({ _id, active: true }, { projection: { username: 1, email: 1, posts: 1, registeredDate: 1 } });
 
         if (!user) return null;
 
@@ -66,11 +66,11 @@ export async function getAllUsers() {
             .collection('users')
             .find({})
             .project({ _id: 1, username: 1, email: 1, posts: 1, registeredDate: 1, active: 1 })
-            .toArray()) as sft.AllUsersFromQuery[];
+            .toArray()) as AllUsersDateObj[];
 
         if (!users) return null;
 
-        const usersData: sft.AllUsersToClient[] = users.map(user => {
+        const usersData: AllUsersDateStr[] = users.map(user => {
             return {
                 _id: user._id,
                 username: user.username,
@@ -190,12 +190,12 @@ export async function changePassword(_id: number, password: string, resetPasswor
 
     if (resetPasswordToken) {
         // since a token is being passed, get the expiration date/time of the token if it exists in the db
-        const tokenValidCheck = await db
+        const tokenValidCheck = (await db
             .collection('users')
             .find({ _id, resetPasswordToken })
             .project({ resetPasswordExpires: 1 })
             .limit(1)
-            .toArray();
+            .toArray()) as [{ resetPasswordExpires: Date }];
 
         // make sure token is found and is not expired
         if (tokenValidCheck?.length !== 1) return { code: 406 };

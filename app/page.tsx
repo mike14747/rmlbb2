@@ -1,6 +1,6 @@
 // import { PortableText } from '@portabletext/react';
 import type { Metadata } from 'next';
-import { SettingDataType } from '@/types/index';
+import { SettingDataType } from '@/types/misc-types';
 import { getSettings } from '@/lib/api/settings';
 import { getNewsItems } from '@/lib/api/news';
 import NewsItems from '@/components/NewsItems';

@@ -1,4 +1,4 @@
-import { ManagerObj } from '../../types';
+import { ManagerObj } from '@/types/manager-types';
 
 type InitialGroups = {
     conference: 'American' | 'National';

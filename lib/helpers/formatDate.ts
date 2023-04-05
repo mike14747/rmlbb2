@@ -56,7 +56,7 @@ export function formatDateObjectWithTime(dateTimeObj: Date, type = 'short') {
 }
 
 export function formatDateString(dateStr: string, type = 'short') {
-    if (!dateStr || typeof dateStr !== 'string') return null;
-    if (!dateStr.match(/^[0-9]{4}-(([0]{1}[0-9]{1})|([1]{1}[0-2]{1}))-(([0-2]{1}[0-9]{1})|([3]{1}[0-1]{1}))$/)) return null;
+    if (!dateStr || typeof dateStr !== 'string') return undefined;
+    if (!dateStr.match(/^[0-9]{4}-(([0]{1}[0-9]{1})|([1]{1}[0-2]{1}))-(([0-2]{1}[0-9]{1})|([3]{1}[0-1]{1}))$/)) return undefined;
     return ((type === 'short' ? monthsShort : monthsLong)[parseInt(dateStr.slice(5, 7)) - 1] + ' ' + dateStr.slice(8, 10) + ', ' + dateStr.slice(0, 4));
 }

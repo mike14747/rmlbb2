@@ -2,15 +2,9 @@
 
 import { PortableText } from '@portabletext/react';
 import components from '@/lib/helpers/portalTextComponents';
-import { NewsItemsType } from '@/types/index';
+import { NewsItemProps } from '@/types/news-types';
 
 import styles from '@/styles/home.module.css';
-
-type NewsItemProps = {
-    initialNewsItems: NewsItemsType;
-    numInitial: number;
-    increment: number;
-}
 
 export default function NewsItems({ initialNewsItems, numInitial, increment }: NewsItemProps) {
     console.log({ numInitial, increment });

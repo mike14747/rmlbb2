@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
 import CurrentProfile from '@/components/Profile/CurrentProfile';
 import { getUserProfile } from '@/lib/api/user';
-import { UserInfo } from '@/types/index';
+import { UserInfo } from '@/types/user-types';
 
 export const metadata: Metadata = {
     title: 'RML Baseball - Profile',

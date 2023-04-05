@@ -1,12 +1,12 @@
 import { connectToDatabase } from '../../utils/mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-import * as sft from '../../types/serverlessFunctionTypes';
+import { ForumList, ForumTopics, RecentPost, TopicReplyData } from '@/types/forum-types';
 
 export async function getForumList() {
     const { db } = await connectToDatabase();
 
-    const data: sft.ForumList[] = await db
+    const data: ForumList[] = await db
         .collection('forums')
         .find({ active: true })
         .project({ _id: 1, name: 1, topics: 1, posts: 1, lastPost: 1 })
@@ -36,7 +36,7 @@ export async function getForumListForEdit() {
 export async function getForumTopics(forumId: number) {
     const { db } = await connectToDatabase();
 
-    const data: sft.ForumTopics[] = await db
+    const data: ForumTopics[] = await db
         .collection('topics').aggregate([
             {
                 $match: {
@@ -154,7 +154,7 @@ export async function getMostRecentPostsForHomepage() {
                 '$limit': 5,
             },
         ])
-        .map((topic: sft.RecentPost) => {
+        .map((topic: RecentPost) => {
             topic.content = topic.content.replace(/(<([^>]+)>)/ig, '').substring(0, 60);
             topic.dateStr = formatDateObjectWithTime(topic.date, 'short');
             return topic;
@@ -179,7 +179,7 @@ export async function getForumTopic(forumId: number, topicId: number) {
 export async function getTopicReplies(repliesArr: number[]) {
     const { db } = await connectToDatabase();
 
-    const data: sft.TopicReplyData[] = await db
+    const data: TopicReplyData[] = await db
         .collection('replies')
         .find({ _id: { $in: repliesArr } })
         .toArray();

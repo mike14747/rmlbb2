@@ -1,4 +1,4 @@
-type PortableContentItem = {
+export type PortableContentItem = {
     _key: string;
         _type: string
         children: Array<{
@@ -11,6 +11,6 @@ type PortableContentItem = {
         style: string;
 }
 
-type PortableContent = {
+export type PortableContent = {
     content: Array<PortableContentItem>;
 }

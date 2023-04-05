@@ -1,6 +1,6 @@
-import * as sft from '@/types/serverlessFunctionTypes';
+import { DownloadsList } from '@/types/download-types';
 
-async function queryDownloadsData(query: string): Promise<sft.DownloadsList | null> {
+async function queryDownloadsData(query: string): Promise<DownloadsList | null> {
     if (!query) return null;
     const url = `${process.env.NEXT_PUBLIC_BASE_FILE_QUERY_URL}${query}`;
     const dataJSON = await fetch(url).then(res => res.json().catch(error => console.log(error)));

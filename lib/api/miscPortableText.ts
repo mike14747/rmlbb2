@@ -1,4 +1,5 @@
 import queryData from '../helpers/queryData';
+import { PortableContent } from '@/types/sanity-types';
 
 export async function getRecruitingContent(): Promise<PortableContent | null> {
     const query = encodeURIComponent('*[_type == "miscPortableText" && title == "Recruiting" && active == true][0]{content}');

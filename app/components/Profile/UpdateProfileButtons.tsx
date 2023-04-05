@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction } from 'react';
 import Button from '@/components/Button';
-import { ViewButtonState } from '@/types/index';
+import { ViewButtonState } from '@/types/misc-types';
 
 import styles from '@/styles/profile.module.css';
 

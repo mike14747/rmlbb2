@@ -1,8 +1,8 @@
 import queryData from '../helpers/queryData';
-import * as sft from '../../types/serverlessFunctionTypes';
+import { Champions } from '@/types/champion-types';
 
 export async function getChampions() {
     const query = encodeURIComponent('*[ _type == "champion"] | order(year asc){year, championTeam, championManager, runnerUpTeam, runnerUpManager}');
-    const championsData: Promise<sft.Champions[]> = await queryData(query);
+    const championsData: Promise<Champions[]> = await queryData(query);
     return championsData;
 }

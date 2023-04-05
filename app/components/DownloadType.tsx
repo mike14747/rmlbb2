@@ -1,5 +1,5 @@
 import { getFileTypeIcon } from '@/lib/helpers/getFileTypeIcon';
-import { DownloadFile } from '@/types/index';
+import { DownloadFile } from '@/types/download-types';
 import Image from 'next/image';
 
 import styles from '@/styles/downloads.module.css';

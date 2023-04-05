@@ -4,7 +4,8 @@ import { useRef, useState, Dispatch, SetStateAction, FormEvent, RefObject } from
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
 import FormInputForEmail from '@/components/FormInputForEmail';
-import { UserInfo, StatusCodeObj } from '@/types/index';
+import { StatusCodeObj } from '@/types/misc-types';
+import { UserInfo } from '@/types/user-types';
 
 import styles from '@/styles/profile.module.css';
 
