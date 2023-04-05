@@ -48,6 +48,8 @@ Move all api routes (except for /pages/api/auth) to the appDir.
 
 Convert the rest of the images to the Image component.
 
+Move the directory and forum pages to the appDir.
+
 ---
 
 ### Done

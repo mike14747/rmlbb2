@@ -1,101 +1,48 @@
-'use client';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
+import LoginForm from '@/components/Login/LoginForm';
 
-import { FormEvent, ChangeEvent, useRef, useState, useEffect } from 'react';
-import { useSession, signIn } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import FormInput from '@/components/FormInput';
-import Button from '@/components/Button';
-import ForgotLoginInfo from '@/components/Login/ForgotLoginInfo';
-import Spinner from '@/components/Spinner';
+export const metadata: Metadata = {
+    title: 'RML Baseball - Login',
+};
 
-export default function Login() {
-    const { status } = useSession();
+type LoginProps = {
+    searchParams: {
+        callbackUrl?: string
+    }
+}
 
-    const router = useRouter();
-    const searchParams = useSearchParams();
+export default async function Login({ searchParams }: LoginProps) {
+    const session = await getServerSession({
+        callbacks: { session: ({ token }) => token },
+    });
+
     // get the redirect query parameter if there is one... if not, set the homepage as the redirect location
-    let redirectUrl = searchParams?.get('callbackUrl') || '/';
+    let redirectUrl = searchParams.callbackUrl || '/';
+
+    if (session) {
+        redirect(redirectUrl);
+    }
 
     // set an array of query parameters that are not allowed to be redirected to
     const notRedirectable = ['/reset-link', '/reset-password-success', '/login'];
 
     // check to see whether the query parameter is on the not allowed list
     const notRedirectableCheck = notRedirectable.filter(url => redirectUrl.includes(url));
+
     // if a resistricted query parameter is included, redirect to the homepage
     if (notRedirectableCheck.length > 0) redirectUrl = '/';
 
-    const username = useRef<string>('');
-    const password = useRef<string>('');
-    const [error, setError] = useState<string>('');
+    return (
+        <main id="main">
+            <article>
+                <h2 className="page-heading">
+                    Login
+                </h2>
 
-    const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        // use the built-in signIn function of next-auth to try to sign in a user
-        const loginStatus = await signIn('credentials', {
-            username: username.current,
-            password: password.current,
-            redirect: false,
-            // callbackUrl: redirectUrl,
-        });
-
-        // if the user did not successfully log in, set the error that will be displayed
-        if (loginStatus && (!loginStatus.ok || loginStatus.status !== 200)) {
-            setError('Login Failed... check your credentials and try again.');
-        }
-    };
-
-    useEffect(() => {
-        if (status === 'authenticated') router.push(redirectUrl);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [status]);
-
-    if (status === 'loading') return <Spinner size="large" />;
-
-    if (status === 'unauthenticated') {
-        return (
-            <main id="main">
-                <article>
-                    <h2 className="page-heading">
-                        Login
-                    </h2>
-
-                    {error &&
-                        <p className="validation-error">
-                            {error}
-                        </p>
-                    }
-
-                    <form onSubmit={handleSignIn} className="form">
-                        <FormInput
-                            id="username"
-                            label="Username"
-                            name="username"
-                            type="text"
-                            required={false}
-                            handleChange={(e: ChangeEvent<HTMLInputElement>) => username.current = e.target.value}
-                        />
-
-                        <FormInput
-                            id="password"
-                            label="Password"
-                            name="password"
-                            type="password"
-                            required={false}
-                            handleChange={(e: ChangeEvent<HTMLInputElement>) => password.current = e.target.value}
-                        />
-
-                        <div className="btn-container">
-                            <Button type="submit" size="medium" variant="contained">Sign In</Button>
-                        </div>
-                    </form>
-
-                    <ForgotLoginInfo />
-                </article>
-
-            </main>
-        );
-    }
-
-    return null;
+                <LoginForm redirectUrl={redirectUrl} />
+            </article>
+        </main>
+    );
 }

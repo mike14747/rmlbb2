@@ -1,4 +1,3 @@
-// import { PortableText } from '@portabletext/react';
 import type { Metadata } from 'next';
 import { SettingDataType } from '@/types/misc-types';
 import { getSettings } from '@/lib/api/settings';
