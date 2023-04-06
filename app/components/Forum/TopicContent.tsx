@@ -15,6 +15,7 @@ type TopicContentProps = {
 }
 
 export default function TopicContent({ forumId, topicData, repliesData }: TopicContentProps) {
+    console.log({ repliesData });
     return (
         <>
             <p className="small">
