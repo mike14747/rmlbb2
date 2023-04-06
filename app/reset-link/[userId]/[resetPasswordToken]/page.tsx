@@ -1,6 +1,6 @@
 'use client';
 
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 import { useRef, useState, useEffect, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -19,9 +19,9 @@ type PageProps = {
     }
 }
 
-export const metadata: Metadata = {
-    title: 'Biking Log - Reset Password',
-};
+// export const metadata: Metadata = {
+//     title: 'Biking Log - Reset Password',
+// };
 
 const statusCodeErrorMessages: StatusCodeObj = {
     400: 'An error occurred. New password is not in the proper format.',
