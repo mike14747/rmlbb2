@@ -1,9 +1,8 @@
-### Note:
+# Authenticated Pages
 
-These templates are in the process of being updated as of 2023-01-03.
+**NOTE**: These templates are in the process of being updated as of 2023-01-03.
 
-
-### Protected page template
+## Protected page template
 
 ```js
 import { useState, useEffect } from 'react';
@@ -91,7 +90,7 @@ export default function Protected() {
 
 ---
 
-### Protected api template
+## Protected api template
 
 ```js
 import { getSession } from 'next-auth/react';
@@ -114,7 +113,7 @@ export default async function protectedRoute(req, res) {
 
 ---
 
-### Protected /lib/api serverless functions
+## Protected /lib/api serverless functions
 
 These serverless functions only run on the server, so they don't need to be secured. They can be the same as unprotected functions.
 
@@ -133,7 +132,7 @@ export async function getProtectedData() {
 
 ---
 
-### Admin page template
+## Admin page template
 
 ```js
 import { useRouter } from 'next/router';
@@ -164,6 +163,89 @@ export default function AdminPage() {
                     <h2 className="page-heading">Admin Page</h2>
                 </article>
             </>
+        );
+    }
+
+    return null;
+}
+```
+
+---
+
+## next.js v13 version
+
+### Regular protected page
+
+```tsx
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
+import { getSomeServerlessFunction } from '@/lib/api/?';
+import { Suspense } from 'react';
+import Spinner from '@/components/Spinner';
+
+import styles from '@/styles/some.module.css';
+
+export const metadata: Metadata = {
+    title: 'RML Baseball - Page Title',
+};
+
+export default async function Page() {
+    const session = await getServerSession({
+        callbacks: { session: ({ token }) => token },
+    });
+
+    if (!session) {
+        redirect('/login?callbackUrl=/protected-page');
+    }
+
+    const someData = await getSomeServerlessFunction();
+
+    if (!someData) return <p className="error">An error occurred fetching data.</p>;
+
+    return (
+        <main id="main">
+            <article className={styles.forumPageWrapper}>
+                <h2 className={'page-heading ' + styles.forumPageHeading}>Page Heading</h2>
+
+                <Suspense fallback={<Spinner size="large" />}>
+                    {/* render the data either in this page or via another component */}
+                </Suspense>
+            </article>
+        </main>
+    );
+}
+```
+
+### Admin protected page
+
+```tsx
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
+
+import styles from '@/styles/admin.module.css';
+
+export const metadata: Metadata = {
+    title: 'RML Baseball - Admin Page',
+};
+
+export default async function AddForumPage() {
+    const session = await getServerSession({
+        callbacks: { session: ({ token }) => token },
+    });
+
+    if (!session) {
+        redirect('/login?callbackUrl=/admin-page');
+    }
+
+    if (session.role === 'admin') {
+        return (
+            <article className={styles.adminContainer}>
+                <h2 className={'page-heading ' + styles.adminPageHeading}>Admin Page</h2>
+
+                {/* page content */}
+            </article>
         );
     }
 
