@@ -173,7 +173,19 @@ export async function getForumTopic(forumId: number, topicId: number) {
         .collection('topics')
         .findOne({ forum_id: forumId, _id: topicId, forumActive: true, active: true });
 
-    if (data?.date) data.date = formatDateObjectWithTime(data.date, 'short');
+    if (!data) return null;
+
+    data.dateStr = formatDateObjectWithTime(data.date, 'short');
+    delete data.date;
+    if (data.lastReply) {
+        data.lastReply.dateStr = formatDateObjectWithTime(data.lastReply.date, 'short');
+        delete data.lastReply.date;
+    }
+
+    if (data.lastEditDate) {
+        data.lastEditDateStr = formatDateObjectWithTime(data.lastEditDate, 'short');
+        delete data.lastEditDate;
+    }
 
     return data;
 }

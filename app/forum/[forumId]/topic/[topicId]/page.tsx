@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Page Title',
 };
 
-export default async function Topic() {
+type TopicParams = {
+    params: {
+        forumId: string;
+        topicId: string;
+    }
+}
+
+export default async function Topic({ params }: TopicParams) {
+    console.log({ params });
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -21,8 +29,7 @@ export default async function Topic() {
         redirect('/login?callbackUrl=/protected-page');
     }
 
-    const forumId = '7';
-    const topicId = '1490';
+    const { forumId, topicId } = params;
     const page = '1';
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46,7 +53,7 @@ export default async function Topic() {
         <main id="main">
             <article className={styles.forumPageWrapper}>
                 <Suspense fallback={<Spinner size="large" />}>
-                    <TopicContent forumId={forumId} topicData={''} repliesData={''} />
+                    <TopicContent forumId={forumId} topicData={topicData} repliesData={''} />
                 </Suspense>
             </article>
         </main>

@@ -15,6 +15,24 @@ export type ForumList = {
     lastPostDaysAgo?: number;
 }
 
+export type ForumTopic = {
+    _id: number;
+    title: string;
+    user_id: number;
+    username: string;
+    views: number;
+    lastReply?: {
+        replyId: number;
+        subject: string;
+        username: string;
+        userId: number;
+        dateStr?: string
+    };
+    forumName: string;
+    replies: number[];
+    dateStr?: string;
+}
+
 export type ForumTopics = {
     _id: number;
     title: string;

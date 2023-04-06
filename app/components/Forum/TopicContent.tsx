@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-// import parse from 'html-react-parser';
+import parse from 'html-react-parser';
 // import DOMPurify from 'dompurify';
 
 import styles from '@/styles/forum.module.css';
@@ -16,6 +16,7 @@ type TopicContentProps = {
 
 export default function TopicContent({ forumId, topicData, repliesData }: TopicContentProps) {
     console.log({ repliesData });
+    // console.log({ topicData });
     return (
         <>
             <p className="small">
@@ -56,6 +57,7 @@ export default function TopicContent({ forumId, topicData, repliesData }: TopicC
 
                 <div className={styles.topicBody}>
                     {/* {parse(DOMPurify.sanitize(topicData.content))} */}
+                    {parse(topicData.content)}
                 </div>
             </div>
 
