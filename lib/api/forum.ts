@@ -14,8 +14,10 @@ export async function getForumList() {
         .toArray();
 
     data.forEach(forum => {
-        forum.lastPostDaysAgo = forum.lastPost.date ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
-        forum.lastPost.dateStr = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
+        if (forum.lastPost && forum.lastPostDaysAgo) {
+            forum.lastPostDaysAgo = forum.lastPost.date ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
+            forum.lastPost.dateStr = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
+        }
     });
     return data;
 }

@@ -1,14 +1,15 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
-import Head from 'next/head';
 import Link from 'next/link';
-import Loading from '../../../../components/Loading';
-import Button from '../../../../components/Button';
-import FormInputForTopicTitle from '../../../../components/FormInputForTopicTitle';
-import TiptapEditor from '../../../../app/components/Tiptap/TiptapEditor';
+import Spinner from '@/components/Spinner';
+import Button from '@/components/Button';
+import FormInputForTopicTitle from '@/components/Forum/FormInputForTopicTitle';
+import TiptapEditor from '@/components/Tiptap/TiptapEditor';
 
-import styles from '../../../../styles/forum.module.css';
+import styles from '@/styles/forum.module.css';
 
 export default function NewTopic() {
     const { data: session, status } = useSession();
@@ -23,11 +24,11 @@ export default function NewTopic() {
     const [content, setContent] = useState('');
 
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
 
     const [isSuccessful, setIsSucessful] = useState(false);
 
-    const submitTopic = async (e) => {
+    const submitTopic = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         const res = await fetch('/api/forum/' + forumId + '/topic/new-topic', {
@@ -49,7 +50,7 @@ export default function NewTopic() {
         if (res.status === 200) {
             setTitle('');
             setContent('');
-            setError(null);
+            setError('');
             setIsSucessful(true);
             console.log('Success!');
         }
@@ -80,19 +81,13 @@ export default function NewTopic() {
 
     if (session) {
         return (
-            <>
-                <Head>
-                    <title>
-                        RML Baseball - New Topic
-                    </title>
-                </Head>
-
+            <main id="main">
                 <article className={styles.forumPageWrapper}>
                     <h2 className={'page-heading ' + styles.forumPageHeading}>
                         New Topic
                     </h2>
 
-                    {isLoading && <Loading />}
+                    {isLoading && <Spinner />}
 
                     {error && <p className="error">{error}</p>}
 
@@ -110,9 +105,9 @@ export default function NewTopic() {
                             <form onSubmit={submitTopic}>
                                 <FormInputForTopicTitle title={title} setTitle={setTitle} />
 
-                                <TiptapEditor setContent={setContent} />
+                                <TiptapEditor initialContent={''} setContent={setContent} />
 
-                                <Button type="submit" size="medium" variant="contained" style="primary">Submit</Button>
+                                <Button type="submit" size="medium" variant="contained" theme="primary">Submit</Button>
                             </form>
                         </>
                     }
@@ -124,7 +119,7 @@ export default function NewTopic() {
                         />
                     </aside>
                 </article>
-            </>
+            </main>
         );
     }
 

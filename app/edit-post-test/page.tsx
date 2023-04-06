@@ -1,15 +1,16 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import Head from 'next/head';
-import Spinner from '../app/components/Spinner';
-// import RichTextEditor from '../app/components/RichTextEditor';
-// import SunEditorComp from '../app/components/Sun/SunEditor';
-import TiptapEditor from '../app/components/Tiptap/TiptapEditor';
+import Spinner from '@/components/Spinner';
+// import RichTextEditor from '@/components/RichTextEditor';
+// import SunEditorComp from '@/components/Sun/SunEditor';
+import TiptapEditor from '@/components/Tiptap/TiptapEditor';
 // import parse, { domToReact } from 'html-react-parser';
 // import DOMPurify from 'dompurify';
 
-import styles from '../styles/forum.module.css';
+import styles from '@/styles/forum.module.css';
 
 export default function NewTopic() {
     const { data: session, status } = useSession();
@@ -22,7 +23,7 @@ export default function NewTopic() {
     const [content, setContent] = useState('');
 
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         if (session) {
@@ -36,30 +37,25 @@ export default function NewTopic() {
                     setInitialContent(res.content);
                     setContent(res.content);
                 } else {
-                    setInitialContent(null);
+                    setInitialContent('');
                     setError('An error occurred fetching data.');
                 }
                 setIsLoading(false);
             };
             fetchData();
         }
+
+        if (!session) {
+            router.push('/login?callbackUrl=/edit-post');
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session]);
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) {
-        router.push('/login?callbackUrl=/edit-post');
-    }
-
     return (
-        <>
-            <Head>
-                <title>
-                    RML Baseball - Edit Post
-                </title>
-            </Head>
-
-            <section className={styles.forumPageWrapper}>
+        <main id="main">
+            <article className={styles.forumPageWrapper}>
                 <h2 className="page-heading">
                     Edit Post
                 </h2>
@@ -84,7 +80,7 @@ export default function NewTopic() {
                         value={content || ''}
                     />
                 </aside>
-            </section>
-        </>
+            </article>
+        </main>
     );
 }

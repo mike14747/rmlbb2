@@ -3,7 +3,15 @@ export type ForumList = {
     name: string;
     topics: number;
     posts: number;
-    lastPost: { date: Date; dateStr?: string };
+    lastPost?: {
+        topicId: number;
+        replyId: number;
+        subject: string;
+        username: string;
+        userId: number;
+        date: Date;
+        dateStr?: string
+    };
     lastPostDaysAgo?: number;
 }
 
@@ -14,9 +22,16 @@ export type ForumTopics = {
     username: string;
     date: Date;
     views: number;
-    lastReply: { date: Date; dateStr?: string };
+    lastReply?: {
+        replyId: number;
+        subject: string;
+        username: string;
+        userId: number;
+        date: Date;
+        dateStr?: string
+    };
     forumName: string;
-    replies: number;
+    replies: number[];
     dateStr?: string;
 }
 

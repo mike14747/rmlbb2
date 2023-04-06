@@ -1,33 +1,36 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
-import Head from 'next/head';
-import Link from 'next/link';
-import Loading from '../../../../components/Loading';
-import parse from 'html-react-parser';
-import DOMPurify from 'dompurify';
+'use client';
 
-import styles from '../../../../styles/forum.module.css';
+import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import Spinner from '@/components/Spinner';
+// import parse from 'html-react-parser';
+// import DOMPurify from 'dompurify';
+
+import styles from '@/styles/forum.module.css';
 
 export default function Topic() {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
 
     const router = useRouter();
-    const forumId = router.query.forumId;
-    const topicId = router.query.topicId;
-    const page = router.query?.page;
+    const pathname = usePathname();
+    console.log({ pathname });
+
+    const forumId = 7;
+    const topicId = 1490;
+    const page = 1;
 
     const [topic, setTopic] = useState(null);
-    const [replies, setReplies] = useState(null);
+    // const [replies, setReplies] = useState(null);
+    const [, setReplies] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
 
-    console.log({ replies });
+    // console.log({ replies });
 
     useEffect(() => {
-        const abortController = new AbortController();
-
         if (session) {
             setIsLoading(true);
 
@@ -38,7 +41,7 @@ export default function Topic() {
                 .then(data => {
                     setTopic(data.topicData);
                     setReplies(data.repliesData);
-                    setError(null);
+                    setError('');
                 })
                 .catch(error => {
                     setTopic(null);
@@ -52,29 +55,22 @@ export default function Topic() {
                     }
                 })
                 .finally(() => setIsLoading(false));
-
-            return () => abortController.abort();
         }
+
+        if (!session) router.push(`/login?callbackUrl=/forum/topic/${topicId}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session, forumId, topicId, page]);
 
     if (typeof window !== 'undefined' && loading) return null;
 
-    if (!session) router.push(`/login?callbackUrl=/forum/topic/${topicId}`);
-
     if (session) {
         return (
-            <>
-                <Head>
-                    <title>
-                        RML Baseball - Forum
-                    </title>
-                </Head>
-
+            <main id="main">
                 <article className={styles.forumPageWrapper}>
 
                     {error && <p className="error">{error}</p>}
 
-                    {isLoading && <Loading />}
+                    {isLoading && <Spinner size="large" />}
 
                     {topic &&
                         <>
@@ -86,10 +82,10 @@ export default function Topic() {
                                 <span className={styles.arrow}> &#10139; </span>
 
                                 <Link href={`/forum/${forumId}`}>
-                                    {topic.forumName}
+                                    {/* {topic.forumName} */}
                                 </Link>
 
-                                <span className={styles.arrow}> &#10139; {topic.title}</span>
+                                {/* <span className={styles.arrow}> &#10139; {topic.title}</span> */}
                             </p>
 
                             {/* <h2 className={'page-heading ' + styles.forumPageHeading}>
@@ -106,20 +102,20 @@ export default function Topic() {
                             <div className={styles.topicContainer}>
                                 <div className={styles.topicHeading}>
                                     <p className={styles.topicTitle}>
-                                        {topic.title}
+                                        {/* {topic.title} */}
                                     </p>
 
                                     <p className={styles.topicDetails}>
-                                        by: {topic.username} &#10139; <span className={styles.topicDate}>{topic.dateStr}</span>
+                                        {/* by: {topic.username} &#10139; <span className={styles.topicDate}>{topic.dateStr}</span> */}
                                     </p>
                                 </div>
 
                                 <div className={styles.topicBody}>
-                                    {parse(DOMPurify.sanitize(topic.content))}
+                                    {/* {parse(DOMPurify.sanitize(topic.content))} */}
                                 </div>
                             </div>
 
-                            {replies?.length > 0 &&
+                            {/* {replies?.length > 0 &&
                                 replies.map(reply => (
                                     <div key={reply._id} className={styles.topicContainer}>
                                         <div className={styles.topicHeading}>
@@ -137,11 +133,11 @@ export default function Topic() {
                                         </div>
                                     </div>
                                 ))
-                            }
+                            } */}
                         </>
                     }
                 </article>
-            </>
+            </main>
         );
     }
 

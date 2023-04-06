@@ -1,73 +1,40 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
-import Head from 'next/head';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
+import { getForumList } from '@/lib/api/forum';
+import { Suspense } from 'react';
+import Spinner from '@/components/Spinner';
 import Link from 'next/link';
-import Loading from '../../components/Loading';
 import ParagraphRound from '../../assets/paragraphRound.svg';
 
-import styles from '../../styles/forum.module.css';
+import styles from '@/styles/forum.module.css';
 
-export default function ForumHome() {
-    const { data: session, status } = useSession();
-    const loading = status === 'loading';
+export const metadata: Metadata = {
+    title: 'RML Baseball - Message Forum',
+};
 
-    const router = useRouter();
+export default async function ForumHome() {
+    const session = await getServerSession({
+        callbacks: { session: ({ token }) => token },
+    });
 
-    const [forums, setForums] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    if (!session) {
+        redirect('/login?callbackUrl=/forum');
+    }
 
-    useEffect(() => {
-        const abortController = new AbortController();
+    const forumList = await getForumList();
 
-        if (session) {
-            setIsLoading(true);
+    if (!forumList) return <p className="error">An error occurred fetching the forums.</p>;
 
-            fetch('/api/forum', { signal: abortController.signal })
-                .then(res => res.json())
-                .then(data => {
-                    setForums(data);
-                    setError(null);
-                })
-                .catch(error => {
-                    if (error.name === 'AbortError') {
-                        console.error('Data fetching was aborted!');
-                    } else {
-                        console.error(error);
-                        setForums(null);
-                        setError('An error occurred fetching data.');
-                    }
-                })
-                .finally(() => setIsLoading(false));
-        }
+    return (
+        <main id="main">
+            <article className={styles.forumPageWrapper}>
+                <h2 className={'page-heading ' + styles.forumPageHeading}>
+                    Forum Index
+                </h2>
 
-        return () => abortController.abort();
-    }, [session]);
-
-    if (typeof window !== 'undefined' && loading) return null;
-
-    if (!session) router.push('/login?callbackUrl=/forum');
-
-    if (session) {
-        return (
-            <>
-                <Head>
-                    <title>
-                        RML Baseball - Forum
-                    </title>
-                </Head>
-
-                <article className={styles.forumPageWrapper}>
-                    <h2 className={'page-heading ' + styles.forumPageHeading}>
-                        Forum Index
-                    </h2>
-
-                    {error && <p className="error">{error}</p>}
-
-                    {isLoading && <Loading />}
-
-                    {forums?.length > 0 &&
+                <Suspense fallback={<Spinner size="large" />}>
+                    {forumList?.length > 0 &&
                         <div className={styles.forumsContainer}>
                             <div className={styles.forumsHeadingRow}>
                                 <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem1}`}>Forum</div>
@@ -76,11 +43,11 @@ export default function ForumHome() {
                                 <div className={`${styles.forumsHeadingItem} ${styles.forumsHeadingItem4}`}>Last Post</div>
                             </div>
 
-                            {forums.map(forum => (
+                            {forumList.map(forum => (
                                 <div className={styles.forumsDataRow} key={forum._id}>
                                     <div className={`${styles.forumsDataItem} ${styles.forumsTitle} ${styles.forumsDataItem1}`}>
                                         <div>
-                                            <ParagraphRound aria-hidden="true" className={`${styles.messageIcon} ${forum.lastPostDaysAgo < 14 ? styles.new : forum.lastPostDaysAgo < 60 ? styles.med : styles.old}`} />
+                                            {forum.lastPostDaysAgo && <ParagraphRound aria-hidden="true" className={`${styles.messageIcon} ${forum.lastPostDaysAgo < 14 ? styles.new : forum.lastPostDaysAgo < 60 ? styles.med : styles.old}`} />}
                                         </div>
 
                                         <div>
@@ -101,7 +68,7 @@ export default function ForumHome() {
                                                         {forum.lastPost.subject}
                                                     </Link>
                                                 </p>
-                                                {forum.lastPost.username && <p className='small'><small>by:</small> {forum.lastPost.username}</p>}
+                                                <p className='small'><small>by:</small> {forum.lastPost.username}</p>
                                                 <p>{forum.lastPost.dateStr}</p>
                                             </>
                                         }
@@ -111,11 +78,8 @@ export default function ForumHome() {
                             ))}
                         </div>
                     }
-                </article>
-            </>
-        );
-
-    }
-
-    return null;
+                </Suspense>
+            </article>
+        </main>
+    );
 }

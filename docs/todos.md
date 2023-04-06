@@ -48,9 +48,9 @@ Move all api routes (except for /pages/api/auth) to the appDir.
 
 Convert the rest of the images to the Image component.
 
-Move the forum pages to the appDir.
-
 Get rid of the old mongodb connection file (and the /utils folder it's in): '/utils/mongodb.js'. There are still a couple files that use it.
+
+There are a couple forum pages that need to be turned into server components.
 
 ---
 
@@ -103,3 +103,7 @@ Get a topic showing up on the [topicId] page.
 Moved the directory page to the appDir.
 
 Change all instances of **getSession** on the server to **getToken**.
+
+Move the forum pages to the appDir.
+
+Deleted the root components folder after moving all of the components to the appDir.
