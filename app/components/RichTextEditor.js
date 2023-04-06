@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { EditorState, convertToRaw, convertFromHTML, Modifier, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import dynamic from 'next/dynamic';
 
-import styles from '../styles/RichTextEditor.module.css';
+import styles from '../../styles/RichTextEditor.module.css';
 // not using the default 'react-draft-wysiwyg.css', but instead am importing my modified version (rich-text.css) by importing it in _app.js
 
 const Editor = dynamic(
@@ -216,12 +215,3 @@ export default function RichTextEditor({ initialContent, setContent }) {
         </div>
     );
 }
-
-RichTextEditor.propTypes = {
-    initialContent: PropTypes.string,
-    setContent: PropTypes.func.isRequired,
-};
-
-RichTextEditor.defaultProps = {
-    initialContent: '<p></p>',
-};

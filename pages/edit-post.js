@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
-import Loading from '../components/Loading';
-// import RichTextEditor from '../components/RichTextEditor';
-// import SunEditorComp from '../components/SunEditor';
-import TiptapEditor from '../components/TiptapEditor';
+import Spinner from '../app/components/Spinner';
+// import RichTextEditor from '../app/components/RichTextEditor';
+// import SunEditorComp from '../app/components/Sun/SunEditor';
+import TiptapEditor from '../app/components/Tiptap/TiptapEditor';
 // import parse, { domToReact } from 'html-react-parser';
 // import DOMPurify from 'dompurify';
 
@@ -64,7 +64,7 @@ export default function NewTopic() {
                     Edit Post
                 </h2>
 
-                {isLoading && <Loading />}
+                {isLoading && <Spinner size="large" />}
 
                 {error && <p className="error">{error}</p>}
 

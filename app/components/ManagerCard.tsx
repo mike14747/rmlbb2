@@ -14,7 +14,7 @@ export default function ManagerCard({ manager }: { manager: ManagerObj}) {
 
     const conference = /^american|national$/i.test(manager.conference[0]) ? manager.conference[0].toLowerCase() : 'notSpecified';
 
-    function parseManagers(managers: ManagerObj & { [key: string]: string | number | [] }) {
+    function parseManagers(managers: ManagerObj & { [key: string]: string | number }) {
         let jsxStr = '';
         for (let i = 1; i <= 2; i++) {
             jsxStr += '<div className=' + styles.manager + '>';

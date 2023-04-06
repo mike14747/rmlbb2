@@ -1,5 +1,4 @@
 import { useEditor, EditorContent } from '@tiptap/react';
-import PropTypes from 'prop-types';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 // import Superscript from '@tiptap/extension-superscript';
@@ -10,8 +9,9 @@ import CodeBlock from '@tiptap/extension-code-block';
 import Placeholder from '@tiptap/extension-placeholder';
 // import Paragraph from '@tiptap/extension-paragraph';
 import { Node } from '@tiptap/core';
+import Image from 'next/image';
 
-import styles from '../styles/Tiptap.module.css';
+import styles from '../../../styles/Tiptap.module.css';
 
 const CustomUnderline = Underline.extend({
     renderHTML({ HTMLAttributes }) {
@@ -172,28 +172,52 @@ const MenuBar = ({ editor }) => {
                 onClick={() => editor.chain().focus().toggleBold().run()}
                 className={editor.isActive('bold') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/bold.svg" alt="Bold" title="Bold" />
+                <Image
+                    src="/images/tiptap/bold.svg"
+                    alt={'Bold'}
+                    title={'Bold'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleItalic().run()}
                 className={editor.isActive('italic') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/italic.svg" alt="Italic" title="Italic" />
+                <Image
+                    src="/images/tiptap/italic.svg"
+                    alt={'Italic'}
+                    title={'Italic'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
                 className={editor.isActive('underline') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/underline.svg" alt="Underline" title="Underline" />
+                <Image
+                    src="/images/tiptap/underline.svg"
+                    alt={'Underline'}
+                    title={'Underline'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleStrike().run()}
                 className={editor.isActive('strike') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/strikethrough.svg" alt="Strikethrough" title="Strikethrough" />
+                <Image
+                    src="/images/tiptap/strikethrough.svg"
+                    alt={'Strikethrough'}
+                    title={'Strikethrough'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             {/* <button
@@ -214,46 +238,88 @@ const MenuBar = ({ editor }) => {
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
                 className={editor.isActive('bulletList') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/list-unordered.svg" alt="Unordered List" title="Unordered List" />
+                <Image
+                    src="/images/tiptap/list-unordered.svg"
+                    alt={'Unordered List'}
+                    title={'Unordered List'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
                 className={editor.isActive('orderedList') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/list-ordered.svg" alt="Ordered List" title="Ordered List" />
+                <Image
+                    src="/images/tiptap/list-ordered.svg"
+                    alt={'Ordered List'}
+                    title={'Ordered List'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().setParagraph().run()}
                 className={editor.isActive('paragraph') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/paragraph.svg" alt="Paragraph" title="Paragraph" />
+                <Image
+                    src="/images/tiptap/paragraph.svg"
+                    alt={'Paragraph'}
+                    title={'Paragraph'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleCodeBlock().run()}
                 className={editor.isActive('customCodeBlock') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/braces-line.svg" alt="Monospaced" title="Monospaced" />
+                <Image
+                    src="/images/tiptap/braces-line.svg"
+                    alt={'Monospaced'}
+                    title={'Monospaced'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().setCustomPre().run()}
                 className={editor.isActive('customPre') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/braces-line.svg" alt="Monospaced" title="Monospaced" />
+                <Image
+                    src="/images/tiptap/braces-line.svg"
+                    alt={'Monospaced'}
+                    title={'Monospaced'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleBlockquote().run()}
                 className={editor.isActive('blockquote') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/double-quotes-l.svg" alt="Quote" title="Quote" />
+                <Image
+                    src="/images/tiptap/double-quotes-l.svg"
+                    alt={'Quote'}
+                    title={'Quote'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-                <img src="/images/tiptap/separator.svg" alt="Horizontal Line" title="Horizontal Line" />
+                <Image
+                    src="/images/tiptap/separator.svg"
+                    alt={'Horizontal Line'}
+                    title={'Horizontal Line'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             {/* <button
@@ -263,33 +329,59 @@ const MenuBar = ({ editor }) => {
             </button> */}
 
             <button onClick={() => editor.chain().focus().setTextAlign('left').run()} className={editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}>
-                <img src="/images/tiptap/align-left.svg" alt="Align Left" title="Align Left" />
+                <Image
+                    src="/images/tiptap/align-left.svg"
+                    alt={'Align Left'}
+                    title={'Align Left'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button onClick={() => editor.chain().focus().setTextAlign('center').run()} className={editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}>
-                <img src="/images/tiptap/align-center.svg" alt="Align Center" title="Align Center" />
+                <Image
+                    src="/images/tiptap/align-center.svg"
+                    alt={'Align Center'}
+                    title={'Align Center'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button onClick={() => editor.chain().focus().setTextAlign('right').run()} className={editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}>
-                <img src="/images/tiptap/align-right.svg" alt="Align Right" title="Align Right" />
+                <Image
+                    src="/images/tiptap/align-right.svg"
+                    alt={'Align Right'}
+                    title={'Align Right'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button onClick={() => editor.chain().focus().undo().run()}>
-                <img src="/images/tiptap/undo.svg" alt="Undo" title="Undo" />
+                <Image
+                    src="/images/tiptap/undo.svg"
+                    alt={'Undo'}
+                    title={'Undo'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button onClick={() => editor.chain().focus().redo().run()}>
-                <img src="/images/tiptap/redo.svg" alt="Redo" title="Redo" />
+                <Image
+                    src="/images/tiptap/redo.svg"
+                    alt={'Redo'}
+                    title={'Redo'}
+                    width={32}
+                    height={32}
+                />
             </button>
         </div>
     );
 };
 
-MenuBar.propTypes = {
-    editor: PropTypes.object,
-};
-
-const TiptapEditor = ({ initialContent, setContent }) => {
+export default function TiptapEditor({ initialContent, setContent }) {
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -323,11 +415,4 @@ const TiptapEditor = ({ initialContent, setContent }) => {
             <EditorContent editor={editor} />
         </div>
     );
-};
-
-export default TiptapEditor;
-
-TiptapEditor.propTypes = {
-    initialContent: PropTypes.string,
-    setContent: PropTypes.func,
-};
+}

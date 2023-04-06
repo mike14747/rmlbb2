@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Loading from '../../../../components/Loading';
 import Button from '../../../../components/Button';
 import FormInputForTopicTitle from '../../../../components/FormInputForTopicTitle';
-import TiptapEditor from '../../../../components/TiptapEditor';
+import TiptapEditor from '../../../../app/components/Tiptap/TiptapEditor';
 
 import styles from '../../../../styles/forum.module.css';
 

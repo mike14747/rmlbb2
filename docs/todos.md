@@ -1,12 +1,12 @@
-### Need to do
+# TODOS
+
+## Need to do
 
 Convert the app to **typescript**.
 
 Move all pages/components to the new appDir (version 13).
 
 Implement middleware using **withAuth** for all the protected and admin pages. Do I still want to keep some type of safeguard using **useSession** on the protected pages? Only possibly use middleware after the withAuth issues have been fixed.
-
-Change all instances of **getSession** on the server to **getToken**.
 
 Figure out a new message board solution that can have our old board imported into it. (in progress)
 
@@ -38,7 +38,7 @@ The props for the Button component includes theme and not style, but when I'm us
 
 ??? Keep the old message forum for viewing only, then add a new blog area ???
 
-Fix all the axe accessibility errors (color contrast and such). **UPDATE**: the only ones left that I know of are in the header (because of a background gradient).
+Fix all the axe accessibility errors (color contrast and such). **UPDATE**: these seem to have gone away now that I've changed the maximumScale value in layout.tsx to 2.
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
@@ -50,9 +50,11 @@ Convert the rest of the images to the Image component.
 
 Move the forum pages to the appDir.
 
+Get rid of the old mongodb connection file (and the /utils folder it's in): '/utils/mongodb.js'. There are still a couple files that use it.
+
 ---
 
-### Done
+## Done
 
 Get the forgot username/password links working. (done, but required a lot of testing)
 
@@ -99,3 +101,5 @@ Reconcile the difference between the topic title max length between the FormInpu
 Get a topic showing up on the [topicId] page.
 
 Moved the directory page to the appDir.
+
+Change all instances of **getSession** on the server to **getToken**.

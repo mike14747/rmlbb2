@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
+'use client';
+
+import { useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import customFontSize from './customFontSize';
 
@@ -11,9 +12,9 @@ const { fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, a
     ? require('suneditor/src/plugins')
     : () => false;
 
-const SunEditorComp = ({ initialContent, setContent }) => {
-    console.log('initialContent:', initialContent);
+export default function SunEditorComp() {
     const editor = useRef();
+    const [content, setContent] = useState('');
 
     // The sunEditor parameter will be set to the core suneditor instance when this function is called
     const getSunEditorInstance = (sunEditor) => {
@@ -26,7 +27,7 @@ const SunEditorComp = ({ initialContent, setContent }) => {
         <div>
             <SunEditor
                 getSunEditorInstance={getSunEditorInstance}
-                defaultValue={initialContent || '<div><br></div>'}
+                defaultValue={'<div><br></div>'}
                 placeholder="...start typing"
                 height="auto"
                 minHeight="200px"
@@ -54,12 +55,13 @@ const SunEditorComp = ({ initialContent, setContent }) => {
                     pasteTagsWhitelist: '',
                 }}
             />
+
+            <div>
+                <textarea className="editor-textarea"
+                    disabled
+                    value={content}
+                />
+            </div>
         </div>
     );
-};
-export default SunEditorComp;
-
-SunEditorComp.propTypes = {
-    initialContent: PropTypes.string,
-    setContent: PropTypes.func,
-};
+}
