@@ -1,38 +1,51 @@
 import { connectToDatabase } from '../../utils/mongodb';
+import clientPromise from '../mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-import { ForumList, ForumTopics, RecentPost, TopicReplyData } from '@/types/forum-types';
+import { ForumList, ForumTopicFromDB, ForumTopicToClient, ForumTopics, RecentPost } from '@/types/forum-types';
 
 export async function getForumList() {
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const data: ForumList[] = await db
-        .collection('forums')
-        .find({ active: true })
-        .project({ _id: 1, name: 1, topics: 1, posts: 1, lastPost: 1 })
-        .sort({ order: 1 })
-        .toArray();
+        const data = (await db
+            .collection('forums')
+            .find({ active: true })
+            .project({ _id: 1, name: 1, topics: 1, posts: 1, lastPost: 1 })
+            .sort({ order: 1 })
+            .toArray()) as ForumList[];
 
-    data.forEach(forum => {
-        if (forum.lastPost && forum.lastPostDaysAgo) {
-            forum.lastPostDaysAgo = forum.lastPost.date ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
-            forum.lastPost.dateStr = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
-        }
-    });
-    return data;
+        data.forEach(forum => {
+            if (forum.lastPost && forum.lastPostDaysAgo) {
+                forum.lastPostDaysAgo = forum.lastPost.date ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
+                forum.lastPost.dateStr = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
+            }
+        });
+        return data;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function getForumListForEdit() {
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const data: { _id: number; name: string; active: boolean; order: number; }[] = await db
-        .collection('forums')
-        .find()
-        .project({ _id: 1, name: 1, active: 1, order: 1 })
-        .sort({ order: 1 })
-        .toArray();
+        const data = (await db
+            .collection('forums')
+            .find()
+            .project({ _id: 1, name: 1, active: 1, order: 1 })
+            .sort({ order: 1 })
+            .toArray()) as ForumList[];
 
-    return data;
+        return data;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function getForumTopics(forumId: number) {
@@ -167,52 +180,85 @@ export async function getMostRecentPostsForHomepage() {
 }
 
 export async function getForumTopic(forumId: number, topicId: number) {
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const data = await db
-        .collection('topics')
-        .findOne({ forum_id: forumId, _id: topicId, forumActive: true, active: true });
+        const data = await db
+            .collection('topics')
+            .findOne<ForumTopicFromDB>({ forum_id: forumId, _id: topicId, forumActive: true, active: true });
 
-    if (!data) return null;
+        if (!data) return null;
 
-    data.dateStr = formatDateObjectWithTime(data.date, 'short');
-    delete data.date;
-    if (data.lastReply) {
-        data.lastReply.dateStr = formatDateObjectWithTime(data.lastReply.date, 'short');
-        delete data.lastReply.date;
+        const dataFormatted: ForumTopicToClient = {
+            _id: data._id,
+            title: data.title,
+            content: data.content,
+            forumId: data.forumId,
+            forumName: data.forumName,
+            user_id: data.user_id,
+            username: data.username,
+            dateStr: formatDateObjectWithTime(data.date, 'short'),
+            lastEditDateStr: data.lastEditDate ? formatDateObjectWithTime(data.lastEditDate, 'short') : undefined,
+            views: data.views,
+            replies: data.replies,
+            forumActive: data.forumActive,
+            active: data.active,
+            ...(data.lastReply
+                ? {
+                    lastReply: {
+                        replyId: data.lastReply.replyId,
+                        subject: data.lastReply.subject,
+                        username: data.lastReply.username,
+                        userId:  data.lastReply.userId,
+                        dateStr: formatDateObjectWithTime(data.lastReply.date, 'short'),
+                    },
+                }
+                : { lastReply: undefined }),
+        };
+
+        return dataFormatted;
+    } catch (error) {
+        console.log(error);
+        return null;
     }
-
-    if (data.lastEditDate) {
-        data.lastEditDateStr = formatDateObjectWithTime(data.lastEditDate, 'short');
-        delete data.lastEditDate;
-    }
-
-    return data;
 }
 
 export async function getTopicReplies(repliesArr: number[]) {
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const data: TopicReplyData[] = await db
-        .collection('replies')
-        .find({ _id: { $in: repliesArr } })
-        .toArray();
+        const data = await db
+            .collection('replies')
+            .find({ _id: { $in: repliesArr } })
+            .toArray();
 
-    data.forEach(reply => {
-        reply.dateStr = formatDateObjectWithTime(reply.date, 'short');
-        reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
-    });
-    return data;
+        data.forEach(reply => {
+            reply.dateStr = formatDateObjectWithTime(reply.date, 'short');
+            reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
+        });
+        return data;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function getForumName(forumId: number) {
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const data = await db
-        .collection('forums')
-        .findOne({ active: true, _id: forumId }, { projection: { _id: 0, name: 1 } });
+        const data = await db
+            .collection('forums')
+            .findOne({ active: true, _id: forumId }, { projection: { _id: 0, name: 1 } });
 
-    return data;
+        return data;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function addForum(name: string, active = true) {
@@ -408,11 +454,27 @@ export async function editTopic(topicId: number, userId: number, title: string, 
 }
 
 export async function getOneReply(replyId: number) {
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const data = await db
-        .collection('replies')
-        .findOne({ _id: replyId }, { projection: { subject: 1, content: 1 } });
+        const data = await db
+            .collection('replies')
+            .findOne({ _id: replyId }, { projection: { subject: 1, content: 1 } });
 
-    return data;
+        return data;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+
 }
+
+// try {
+//     const connection = await clientPromise;
+//     const db = connection.db();
+
+// } catch (error) {
+//     console.log(error);
+//     return null;
+// }

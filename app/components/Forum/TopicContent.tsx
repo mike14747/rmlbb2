@@ -3,18 +3,17 @@
 import Link from 'next/link';
 import parse from 'html-react-parser';
 // import DOMPurify from 'dompurify';
+import { ForumTopicToClient } from '@/types/forum-types';
 
 import styles from '@/styles/forum.module.css';
 
 type TopicContentProps = {
-    forumId: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    topicData: any;
+    topicData: ForumTopicToClient;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     repliesData: any;
 }
 
-export default function TopicContent({ forumId, topicData, repliesData }: TopicContentProps) {
+export default function TopicContent({ topicData, repliesData }: TopicContentProps) {
     console.log({ repliesData });
     // console.log({ topicData });
     return (
@@ -26,7 +25,7 @@ export default function TopicContent({ forumId, topicData, repliesData }: TopicC
 
                 <span className={styles.arrow}> &#10139; </span>
 
-                <Link href={`/forum/${forumId}`}>
+                <Link href={`/forum/${topicData.forumId}`}>
                     {topicData.forumName}
                 </Link>
 
@@ -39,7 +38,7 @@ export default function TopicContent({ forumId, topicData, repliesData }: TopicC
 
             <p className="small">
                 <>&#128221; </>
-                <Link href={`/forum/${forumId}/topic/new-topic`} passHref>
+                <Link href={`/forum/${topicData.forumId}/topic/new-topic`} passHref>
                     <strong>Reply to Topic</strong>
                 </Link>
             </p>

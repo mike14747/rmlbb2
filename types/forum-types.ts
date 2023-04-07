@@ -15,23 +15,87 @@ export type ForumList = {
     lastPostDaysAgo?: number;
 }
 
-export type ForumTopic = {
+type ForumTopicBase = {
     _id: number;
     title: string;
+    content: string;
+    forumId: number;
+    forumName: string;
     user_id: number;
     username: string;
     views: number;
+    replies: number[];
+    forumActive: boolean;
+    active: boolean;
     lastReply?: {
         replyId: number;
         subject: string;
         username: string;
         userId: number;
-        dateStr?: string
     };
-    forumName: string;
-    replies: number[];
-    dateStr?: string;
 }
+
+export type ForumTopicFromDB = ForumTopicBase & {
+    date: Date;
+    lastEditDate: Date | null;
+    lastReply?: {
+        date: Date;
+    };
+}
+
+// export type ForumTopicFromDB = {
+//     _id: number;
+//     title: string;
+//     content: string;
+//     forumId: number;
+//     forumName: string;
+//     user_id: number;
+//     username: string;
+//     date: Date;
+//     lastEditDate: Date | null;
+//     views: number;
+//     replies: number[];
+//     forumActive: boolean;
+//     active: boolean;
+//     lastReply?: {
+//         replyId: number;
+//         subject: string;
+//         username: string;
+//         userId: number;
+//         date: Date;
+//     };
+// }
+
+export type ForumTopicToClient = ForumTopicBase & {
+    dateStr: string | undefined;
+    lastEditDateStr: string | undefined;
+    lastReply?: {
+        dateStr: string | undefined;
+    };
+}
+
+// export type ForumTopicToClient = {
+//     _id: number;
+//     title: string;
+//     content: string;
+//     forumId: number;
+//     forumName: string;
+//     user_id: number;
+//     username: string;
+//     dateStr: string | undefined;
+//     lastEditDateStr: string | undefined;
+//     views: number;
+//     replies: number[];
+//     forumActive: boolean;
+//     active: boolean;
+//     lastReply?: {
+//         replyId: number;
+//         subject: string;
+//         username: string;
+//         userId: number;
+//         dateStr: string | undefined;
+//     };
+// }
 
 export type ForumTopics = {
     _id: number;

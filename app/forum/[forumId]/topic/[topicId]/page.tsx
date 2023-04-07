@@ -53,7 +53,7 @@ export default async function Topic({ params }: TopicParams) {
         <main id="main">
             <article className={styles.forumPageWrapper}>
                 <Suspense fallback={<Spinner size="large" />}>
-                    <TopicContent forumId={forumId} topicData={topicData} repliesData={''} />
+                    <TopicContent topicData={topicData} repliesData={''} />
                 </Suspense>
             </article>
         </main>
