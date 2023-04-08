@@ -2,7 +2,7 @@ import { connectToDatabase } from '../../utils/mongodb';
 import clientPromise from '../mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-import { ForumList, ForumTopicFromDB, ForumTopicToClient, RecentPost } from '@/types/forum-types';
+import { ForumList, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData } from '@/types/forum-types';
 
 export async function getForumList() {
     try {
@@ -250,15 +250,19 @@ export async function getTopicReplies(repliesArr: number[]) {
         const connection = await clientPromise;
         const db = connection.db();
 
-        const data = await db
+        const data = (await db
             .collection('replies')
             .find({ _id: { $in: repliesArr } })
-            .toArray();
+            .map(reply => {
+                reply.dateStr = formatDateObjectWithTime(reply.date, 'short');
+                delete reply.date;
+                reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
+                delete reply.lastEditDate;
+                return reply;
+            })
+            .toArray()) as unknown as TopicReplyData[];
+            // the "as unknown" was needed to be done because the type I've set was conflicting with WithId<Document>... which was invoked by mongodb because _id was used in a search inside an array
 
-        data.forEach(reply => {
-            reply.dateStr = formatDateObjectWithTime(reply.date, 'short');
-            reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
-        });
         return data;
     } catch (error) {
         console.log(error);

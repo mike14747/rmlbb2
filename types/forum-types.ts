@@ -68,8 +68,6 @@ export type TopicReplyData = {
     username: string;
     topic_id: number;
     topicActive: boolean;
-    date: Date;
-    dateStr?: string
-    lastEditDate: Date;
-    lastEditDateStr?: string;
+    dateStr: string | undefined;
+    lastEditDateStr: string | undefined;
 }

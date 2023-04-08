@@ -3,19 +3,17 @@
 import Link from 'next/link';
 import parse from 'html-react-parser';
 import sanitizeHtml from 'sanitize-html';
-import { ForumTopicToClient } from '@/types/forum-types';
+import { ForumTopicToClient, TopicReplyData } from '@/types/forum-types';
 
 import styles from '@/styles/forum.module.css';
 
 type TopicContentProps = {
     topicData: ForumTopicToClient;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    repliesData: any;
+    repliesData: TopicReplyData[];
 }
 
 export default function TopicContent({ topicData, repliesData }: TopicContentProps) {
-    console.log({ repliesData });
-    console.log({ topicData });
     return (
         <>
             <p className="small">
@@ -59,7 +57,7 @@ export default function TopicContent({ topicData, repliesData }: TopicContentPro
                 </div>
             </div>
 
-            {/* {repliesData?.length > 0 &&
+            {repliesData?.length > 0 &&
                 repliesData.map(reply => (
                     <div key={reply._id} className={styles.topicContainer}>
                         <div className={styles.topicHeading}>
@@ -77,7 +75,7 @@ export default function TopicContent({ topicData, repliesData }: TopicContentPro
                         </div>
                     </div>
                 ))
-            } */}
+            }
         </>
     );
 }
