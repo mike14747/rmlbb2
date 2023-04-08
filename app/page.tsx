@@ -8,6 +8,7 @@ import Spinner from '@/components/Spinner';
 import EventsSidebar from '@/components/Sidebar/EventsSidebar';
 import EventsSidebarContent from '@/components/Sidebar/EventsSidebarContent';
 import BoardSidebar from '@/components/Sidebar/BoardSidebar';
+import BoardSidebarContent from './components/Sidebar/BoardSidebarContent';
 
 import styles from '@/styles/home.module.css';
 import sideBarStyles from '@/styles/Sidebar.module.css';
@@ -47,9 +48,12 @@ export default async function Home() {
                 </div>
 
                 <div className={sideBarStyles.boardSidebarContainer}>
-                    <Suspense fallback={<Spinner size="medium" />}>
-                        <BoardSidebar />
-                    </Suspense>
+                    <BoardSidebar>
+                        <Suspense fallback={<Spinner size="medium" />}>
+                            {/* @ts-expect-error Server Component */}
+                            <BoardSidebarContent />
+                        </Suspense>
+                    </BoardSidebar>
                 </div>
             </aside>
 

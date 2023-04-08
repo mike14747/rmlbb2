@@ -25,8 +25,6 @@ type ForumTopicBase = {
     username: string;
     views: number;
     replies: number[];
-    forumActive: boolean;
-    active: boolean;
     lastReply?: {
         replyId: number;
         subject: string;
@@ -43,29 +41,6 @@ export type ForumTopicFromDB = ForumTopicBase & {
     };
 }
 
-// export type ForumTopicFromDB = {
-//     _id: number;
-//     title: string;
-//     content: string;
-//     forumId: number;
-//     forumName: string;
-//     user_id: number;
-//     username: string;
-//     date: Date;
-//     lastEditDate: Date | null;
-//     views: number;
-//     replies: number[];
-//     forumActive: boolean;
-//     active: boolean;
-//     lastReply?: {
-//         replyId: number;
-//         subject: string;
-//         username: string;
-//         userId: number;
-//         date: Date;
-//     };
-// }
-
 export type ForumTopicToClient = ForumTopicBase & {
     dateStr: string | undefined;
     lastEditDateStr: string | undefined;
@@ -73,29 +48,6 @@ export type ForumTopicToClient = ForumTopicBase & {
         dateStr: string | undefined;
     };
 }
-
-// export type ForumTopicToClient = {
-//     _id: number;
-//     title: string;
-//     content: string;
-//     forumId: number;
-//     forumName: string;
-//     user_id: number;
-//     username: string;
-//     dateStr: string | undefined;
-//     lastEditDateStr: string | undefined;
-//     views: number;
-//     replies: number[];
-//     forumActive: boolean;
-//     active: boolean;
-//     lastReply?: {
-//         replyId: number;
-//         subject: string;
-//         username: string;
-//         userId: number;
-//         dateStr: string | undefined;
-//     };
-// }
 
 export type ForumTopics = {
     _id: number;
@@ -122,7 +74,6 @@ export type RecentPost = {
     content: string;
     forumName: string;
     username: string;
-    date: Date;
     dateStr?: string;
 }
 

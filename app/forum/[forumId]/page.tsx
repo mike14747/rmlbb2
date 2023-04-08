@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
-import { getForumTopics } from '@/lib/api/forum';
+import { getActiveForumTopics } from '@/lib/api/forum';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
 import Link from 'next/link';
@@ -29,7 +29,7 @@ export default async function Forum({ params }: ForumIdParams) {
 
     const forumId = params.forumId;
 
-    const forumTopics = await getForumTopics(parseInt(forumId));
+    const forumTopics = await getActiveForumTopics(parseInt(forumId));
 
     if (!forumTopics) return <p className="error">An error occurred fetching forum topics.</p>;
 

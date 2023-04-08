@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
+// eslint-disable-next-line camelcase
+import { Karla } from 'next/font/google';
 import ClientSessionProvider from './components/ClientSessionProvider';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
@@ -22,6 +24,11 @@ type RootLayoutProps = {
     children: ReactNode;
     session: Session;
 };
+
+const karla = Karla({
+    variable: '--font-openSans',
+    subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
     title: 'RML',
@@ -52,7 +59,7 @@ export default async function RootLayout({ children, session }: RootLayoutProps)
 
     return (
         <html lang="en">
-            <body id="appWrapper">
+            <body id="appWrapper" className={karla.variable}>
                 <ClientSessionProvider session={session}>
                     <SkipToMain />
                     <TopInfo topInfo={{ text: settingsData?.topInfoText, active: settingsData?.topInfoActive }} />

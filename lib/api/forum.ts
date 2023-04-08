@@ -48,7 +48,7 @@ export async function getForumListForEdit() {
     }
 }
 
-export async function getForumTopics(forumId: number) {
+export async function getActiveForumTopics(forumId: number) {
     const { db } = await connectToDatabase();
 
     const data: ForumTopics[] = await db
@@ -101,92 +101,101 @@ export async function getForumTopics(forumId: number) {
 }
 
 export async function getMostRecentPostsForHomepage() {
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const data = await db
-        .collection('topics').aggregate([
-            {
-                '$match': {
-                    'active': true,
-                    'forumActive': true,
+        const data = (await db
+            .collection('topics').aggregate([
+                {
+                    '$match': {
+                        'active': true,
+                        'forumActive': true,
+                    },
                 },
-            },
-            {
-                '$project': {
-                    'title': 1,
-                    'content': 1,
-                    'forumName': 1,
-                    'username': 1,
-                    'date': 1,
+                {
+                    '$project': {
+                        'title': 1,
+                        'content': 1,
+                        'forumName': 1,
+                        'username': 1,
+                        'date': 1,
+                    },
                 },
-            },
-            {
-                '$sort': {
-                    'date': -1,
+                {
+                    '$sort': {
+                        'date': -1,
+                    },
                 },
-            },
-            {
-                '$limit': 5,
-            },
-            {
-                '$unionWith': {
-                    'coll': 'replies',
-                    'pipeline': [
-                        {
-                            '$match': {
-                                'topicActive': true,
-                                'forumActive': true,
+                {
+                    '$limit': 5,
+                },
+                {
+                    '$unionWith': {
+                        'coll': 'replies',
+                        'pipeline': [
+                            {
+                                '$match': {
+                                    'topicActive': true,
+                                    'forumActive': true,
+                                },
+                            }, {
+                                '$project': {
+                                    'title': '$subject',
+                                    'content': 1,
+                                    'forumName': 1,
+                                    'username': 1,
+                                    'date': 1,
+                                },
+                            }, {
+                                '$sort': {
+                                    'date': -1,
+                                },
+                            }, {
+                                '$limit': 5,
                             },
-                        }, {
-                            '$project': {
-                                'title': '$subject',
-                                'content': 1,
-                                'forumName': 1,
-                                'username': 1,
-                                'date': 1,
-                            },
-                        }, {
-                            '$sort': {
-                                'date': -1,
-                            },
-                        }, {
-                            '$limit': 5,
-                        },
-                    ],
+                        ],
+                    },
                 },
-            },
-            {
-                $project: {
-                    _id: 0,
+                {
+                    $project: {
+                        _id: 0,
+                    },
                 },
-            },
-            {
-                '$sort': {
-                    'date': -1,
+                {
+                    '$sort': {
+                        'date': -1,
+                    },
                 },
-            },
-            {
-                '$limit': 5,
-            },
-        ])
-        .map((topic: RecentPost) => {
-            topic.content = topic.content.replace(/(<([^>]+)>)/ig, '').substring(0, 60);
-            topic.dateStr = formatDateObjectWithTime(topic.date, 'short');
-            return topic;
-        })
-        .toArray();
+                {
+                    '$limit': 5,
+                },
+            ])
+            .map(topic => {
+                topic.content = topic.content.replace(/(<([^>]+)>)/ig, '').substring(0, 60);
+                topic.dateStr = formatDateObjectWithTime(topic.date, 'short');
+                delete topic.date;
+                return topic;
+            })
+            .toArray()) as RecentPost[];
 
-    return data;
+        // console.log({ data });
+
+        return data;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
-export async function getForumTopic(forumId: number, topicId: number) {
+export async function getActiveForumTopic(forumId: number, topicId: number) {
     try {
         const connection = await clientPromise;
         const db = connection.db();
 
         const data = await db
             .collection('topics')
-            .findOne<ForumTopicFromDB>({ forum_id: forumId, _id: topicId, forumActive: true, active: true });
+            .findOne<ForumTopicFromDB>({ forum_id: forumId, _id: topicId, forumActive: true, active: true }, { projection: { forumActive: 0, active: 0 } });
 
         if (!data) return null;
 
@@ -202,15 +211,13 @@ export async function getForumTopic(forumId: number, topicId: number) {
             lastEditDateStr: data.lastEditDate ? formatDateObjectWithTime(data.lastEditDate, 'short') : undefined,
             views: data.views,
             replies: data.replies,
-            forumActive: data.forumActive,
-            active: data.active,
             ...(data.lastReply
                 ? {
                     lastReply: {
                         replyId: data.lastReply.replyId,
                         subject: data.lastReply.subject,
                         username: data.lastReply.username,
-                        userId:  data.lastReply.userId,
+                        userId: data.lastReply.userId,
                         dateStr: formatDateObjectWithTime(data.lastReply.date, 'short'),
                     },
                 }

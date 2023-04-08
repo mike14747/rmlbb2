@@ -1,12 +1,11 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 import Link from 'next/link';
 import ParagraphRound from '@/assets/paragraphRound.svg';
 
 import styles from '@/styles/BoardSidebar.module.css';
 import sidebarStyles from '@/styles/Sidebar.module.css';
 
-const BoardSidebar = () => {
-    // console.table(posts);
+export default function BoardSidebar({ children }: { children: ReactNode }) {
     return (
         <div className={sidebarStyles.cardContainer}>
             <section className={sidebarStyles.card + ' ' + styles.boardCard}>
@@ -24,22 +23,7 @@ const BoardSidebar = () => {
                     </div>
 
                     <div className={sidebarStyles.body}>
-                        <p>Recent posts will go here.</p>
-                        {/* {!posts && <p>An error occurred fetching data.</p>}
-
-                        {posts?.length === 0 && <p>There are no recent posts to display. Check back again soon.</p>}
-
-                        {posts?.length > 0 &&
-                            posts.map((post, index) => (
-                                <div className={sidebarStyles.recentPost} key={index}>
-                                    <p className={sidebarStyles.recentDate}><small>Date: </small>{post.date}</p>
-                                    <p><small>Forum: </small>{post.forumName}</p>
-                                    <p><small>Author: </small>{post.username}</p>
-                                    <p><small>Topic: </small>{post.title}</p>
-                                    <p><small>Content: </small>{post.content}</p>
-                                </div>
-                            ))
-                        } */}
+                        {children}
                     </div>
 
                     <div className={sidebarStyles.viewAll}>
@@ -54,10 +38,4 @@ const BoardSidebar = () => {
             </section>
         </div>
     );
-};
-
-BoardSidebar.propTypes = {
-    posts: PropTypes.array,
-};
-
-export default BoardSidebar;
+}

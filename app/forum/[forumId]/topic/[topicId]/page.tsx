@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
-import { getForumTopic, getTopicReplies } from '@/lib/api/forum';
+import { getActiveForumTopic, getTopicReplies } from '@/lib/api/forum';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
 import TopicContent from '@/components/Forum/TopicContent';
@@ -20,7 +20,6 @@ type TopicParams = {
 }
 
 export default async function Topic({ params }: TopicParams) {
-    console.log({ params });
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -44,7 +43,7 @@ export default async function Topic({ params }: TopicParams) {
         return newRepliesArr;
     }
 
-    const topicData = await getForumTopic(parseInt(forumId), parseInt(topicId));
+    const topicData = await getActiveForumTopic(parseInt(forumId), parseInt(topicId));
     const repliesData = await getTopicReplies(setRepliesArr(parseInt(page), topicData?.replies));
 
     if (!topicData || !repliesData) return <p className="error">An error occurred fetching topic data.</p>;
