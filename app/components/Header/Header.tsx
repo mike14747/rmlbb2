@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Authbar from './Authbar';
 import Nav from './Nav';
+import Image from 'next/image';
 
 import styles from '@/styles/Header.module.css';
 
@@ -13,7 +14,14 @@ export default function Header() {
                 <div className={styles.headerLeft}>
                     <div className={styles.logoContainer}>
                         <Link href="/" passHref>
-                            <img src="/images/logo1.png" alt="RML Baseball" className={styles.logo} />
+                            <Image
+                                src="/images/logo1.png"
+                                alt={'RML Baseball'}
+                                title={'RML Baseball'}
+                                width={80}
+                                height={80}
+                                className={styles.logo}
+                            />
                         </Link>
                     </div>
                     <div>

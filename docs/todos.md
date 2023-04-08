@@ -46,8 +46,6 @@ Finish the events page in the appDir. The past events client component is not do
 
 Move all api routes (except for /pages/api/auth) to the appDir.
 
-Convert the rest of the images to the Image component.
-
 There are a couple forum pages that need to be turned into server components.
 
 ---
@@ -109,3 +107,5 @@ Deleted the root components folder after moving all of the components to the app
 Get rid of the old mongodb connection file (and the /utils folder it's in): '/utils/mongodb.js'. There are still a couple files that use it.
 
 Set the default font to **Libre Franklin**
+
+Convert the rest of the images to the Image component.

@@ -224,14 +224,26 @@ const MenuBar = ({ editor }) => {
                 onClick={() => editor.chain().focus().toggleSuperscript().run()}
                 className={editor.isActive('superscript') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/superscript.svg" alt="Superscript" title="Superscript" />
+                <Image
+                    src="/images/tiptap/superscript.svg"
+                    alt={'Superscript'}
+                    title={'Superscript'}
+                    width={32}
+                    height={32}
+                />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleSubscript().run()}
                 className={editor.isActive('subscript') ? 'is-active' : ''}
             >
-                <img src="/images/tiptap/subscript.svg" alt="Subscript" title="Subscript" />
+                <Image
+                    src="/images/tiptap/subscript.svg"
+                    alt={'Subscript'}
+                    title={'Subscript'}
+                    width={32}
+                    height={32}
+                />
             </button> */}
 
             <button
