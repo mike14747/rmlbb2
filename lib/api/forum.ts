@@ -1,8 +1,8 @@
-import { connectToDatabase } from '../../utils/mongodb';
 import clientPromise from '../mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
 import { ForumList, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData } from '@/types/forum-types';
+import { TransactionOptions, ReadPreference } from 'mongodb';
 
 export async function getForumList() {
     try {
@@ -261,7 +261,7 @@ export async function getTopicReplies(repliesArr: number[]) {
                 return reply;
             })
             .toArray()) as unknown as TopicReplyData[];
-            // the "as unknown" was needed to be done because the type I've set was conflicting with WithId<Document>... which was invoked by mongodb because _id was used in a search inside an array
+        // the "as unknown" was needed to be done because the type I've set was conflicting with WithId<Document>... which was invoked by mongodb because _id was used in a search inside an array
 
         return data;
     } catch (error) {
@@ -289,41 +289,48 @@ export async function getForumName(forumId: number) {
 export async function addForum(name: string, active = true) {
     if (!name) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
 
-    const inUseResult = await db
-        .collection('forums')
-        .find({ name: name })
-        .project({ _id: 0, name: 1 })
-        .limit(1)
-        .toArray();
+        const inUseResult = await db
+            .collection('forums')
+            .find({ name: name })
+            .project({ _id: 0, name: 1 })
+            .limit(1)
+            .toArray();
 
-    if (!inUseResult) return { code: 500 };
-    if (inUseResult.length > 0) return { code: 409 };
+        if (!inUseResult) return { code: 500 };
+        if (inUseResult.length > 0) return { code: 409 };
 
-    // at this point, the new forum name is not already in use, so get the next _id from the counters collection
-    const nextId = await getNextId('forum_id');
-    if (!nextId) return { code: 500 };
+        // at this point, the new forum name is not already in use, so get the next _id from the counters collection
+        const nextId = await getNextId('forum_id');
+        if (!nextId) return { code: 500 };
 
-    const newForum = {
-        _id: nextId,
-        name,
-        active,
-        order: 20,
-        topics: 0,
-        posts: 0,
-        lastPost: {},
-    };
+        const newForum = {
+            _id: nextId,
+            name,
+            active,
+            order: 20,
+            topics: 0,
+            posts: 0,
+            lastPost: {},
+        };
 
-    const result = await db
-        .collection('forums')
-        .insertOne(newForum);
+        const result = await db
+            .collection('forums')
+            .insertOne(newForum);
 
-    return result?.insertedId ? { code: 201 } : { code: 500 };
+        return result?.insertedId ? { code: 201 } : { code: 500 };
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
 
 export async function editForum(_id: number, newForumName: string, newActiveStatus: boolean) {
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
 
     // make sure newForumName is not already in use
     const inUseResult = await db
@@ -336,15 +343,14 @@ export async function editForum(_id: number, newForumName: string, newActiveStat
     if (inUseResult.length === 1) return { code: 409 };
 
     // update the forum name (and all references to it in other colections) with newForumName using a tranaction
-    const { client } = await connectToDatabase();
-    const session = client.startSession();
+    const session = connection.startSession();
 
     let transactionResult;
 
-    const transactionOptions = {
-        readPreference: 'primary',
+    const transactionOptions: TransactionOptions = {
         readConcern: { level: 'local' },
         writeConcern: { w: 'majority' },
+        readPreference: ReadPreference.primary,
     };
 
     try {
@@ -373,7 +379,8 @@ export async function editForum(_id: number, newForumName: string, newActiveStat
 export async function addTopic(userId: number, username: string, forumId: number, forumName: string, title: string, content: string) {
     if (!userId || !username || !forumId || !forumName || !title || !content) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
 
     // get the next _id from the counters collection
     const nextId = await getNextId('topic_id');
@@ -408,15 +415,14 @@ export async function addTopic(userId: number, username: string, forumId: number
     };
 
     // add a new topic and update the forum's lastTopic object to include it using a tranaction
-    const { client } = await connectToDatabase();
-    const session = client.startSession();
+    const session = connection.startSession();
 
     let transactionResult;
 
-    const transactionOptions = {
-        readPreference: 'primary',
+    const transactionOptions: TransactionOptions = {
         readConcern: { level: 'local' },
         writeConcern: { w: 'majority' },
+        readPreference: ReadPreference.primary,
     };
 
     try {
@@ -442,20 +448,20 @@ export async function addTopic(userId: number, username: string, forumId: number
 export async function editTopic(topicId: number, userId: number, title: string, content: string) {
     if (!topicId || !userId || !title || !content) return { code: 400 };
 
-    const { db } = await connectToDatabase();
+    const connection = await clientPromise;
+    const db = connection.db();
 
     const currentDate = new Date();
 
     // add a new topic and update the forum's lastTopic object to include it using a tranaction
-    const { client } = await connectToDatabase();
-    const session = client.startSession();
+    const session = connection.startSession();
 
     let transactionResult;
 
-    const transactionOptions = {
-        readPreference: 'primary',
+    const transactionOptions: TransactionOptions = {
         readConcern: { level: 'local' },
         writeConcern: { w: 'majority' },
+        readPreference: ReadPreference.primary,
     };
 
     try {

@@ -2,7 +2,7 @@
 
 ## Need to do
 
-Convert the app to **typescript**.
+Convert the app to **typescript**. **UPDATE**: Only some old /pages/api routes still need to be converted.
 
 Move all pages/components to the new appDir (version 13).
 
