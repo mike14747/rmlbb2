@@ -2,7 +2,7 @@ import { connectToDatabase } from '../../utils/mongodb';
 import clientPromise from '../mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-import { ForumList, ForumTopicFromDB, ForumTopicToClient, ForumTopics, RecentPost } from '@/types/forum-types';
+import { ForumList, ForumTopicFromDB, ForumTopicToClient, RecentPost } from '@/types/forum-types';
 
 export async function getForumList() {
     try {
@@ -46,58 +46,6 @@ export async function getForumListForEdit() {
         console.log(error);
         return null;
     }
-}
-
-export async function getActiveForumTopics(forumId: number) {
-    const { db } = await connectToDatabase();
-
-    const data: ForumTopics[] = await db
-        .collection('topics').aggregate([
-            {
-                $match: {
-                    active: true,
-                    forumActive: true,
-                    forum_id: forumId,
-                },
-            },
-            {
-                $addFields: {
-                    lastDate: {
-                        $cond: {
-                            if: { $gt: ['$lastReply.date', null] },
-                            then: '$lastReply.date',
-                            else: '$date',
-                        },
-                    },
-                },
-            },
-            {
-                $project: {
-                    _id: 1,
-                    title: 1,
-                    user_id: 1,
-                    username: 1,
-                    date: 1,
-                    views: 1,
-                    lastReply: 1,
-                    forumName: 1,
-                    replies: 1,
-                    lastDate: 1,
-                },
-            },
-            {
-                $sort: {
-                    lastDate: -1,
-                },
-            },
-        ])
-        .toArray();
-
-    data.forEach(topic => {
-        topic.dateStr = formatDateObjectWithTime(topic.date, 'short');
-        if (topic.lastReply) topic.lastReply.dateStr = formatDateObjectWithTime(topic.lastReply.date, 'short');
-    });
-    return data;
 }
 
 export async function getMostRecentPostsForHomepage() {
@@ -179,7 +127,73 @@ export async function getMostRecentPostsForHomepage() {
             })
             .toArray()) as RecentPost[];
 
-        // console.log({ data });
+        return data;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export async function getActiveForumTopics(forumId: number) {
+    try {
+        const connection = await clientPromise;
+        const db = connection.db();
+
+        const data = (await db
+            .collection('topics').aggregate([
+                {
+                    $match: {
+                        active: true,
+                        forumActive: true,
+                        forum_id: forumId,
+                    },
+                },
+                {
+                    $addFields: {
+                        lastDate: {
+                            $cond: {
+                                if: { $gt: ['$lastReply.date', null] },
+                                then: '$lastReply.date',
+                                else: '$date',
+                            },
+                        },
+                    },
+                },
+                {
+                    $project: {
+                        _id: 1,
+                        title: 1,
+                        user_id: 1,
+                        username: 1,
+                        date: 1,
+                        views: 1,
+                        lastReply: 1,
+                        forum_id: 1,
+                        forumName: 1,
+                        replies: 1,
+                        lastDate: 1,
+                    },
+                },
+                {
+                    $sort: {
+                        lastDate: -1,
+                    },
+                },
+            ])
+            .map(topic => {
+                topic.dateStr = formatDateObjectWithTime(topic.date, 'short');
+                delete topic.date;
+                topic.lastEditDateStr = topic.lastEditDate ? formatDateObjectWithTime(topic.lastEditDate, 'short') : undefined;
+                delete topic.lastEditDate;
+
+                if (topic.lastReply) {
+                    topic.lastReply.dateStr = formatDateObjectWithTime(topic.lastReply.date, 'short');
+                    delete topic.lastReply.date;
+                }
+
+                return topic;
+            })
+            .toArray()) as ForumTopicToClient[];
 
         return data;
     } catch (error) {
@@ -203,7 +217,7 @@ export async function getActiveForumTopic(forumId: number, topicId: number) {
             _id: data._id,
             title: data.title,
             content: data.content,
-            forumId: data.forumId,
+            forum_id: data.forum_id,
             forumName: data.forumName,
             user_id: data.user_id,
             username: data.username,

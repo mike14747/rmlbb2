@@ -1,4 +1,6 @@
-### When someone adds a new topic
+# Forum
+
+## When someone adds a new topic
 
 What needs to been changed in MongoDB when someone adds a new topic:
 
@@ -7,7 +9,7 @@ What needs to been changed in MongoDB when someone adds a new topic:
 
 ---
 
-### Topics vs Posts Totals in a Forum
+## Topics vs Posts Totals in a Forum
 
 Topics are the total number of new topics in a forum.
 
@@ -26,9 +28,9 @@ Examples:
 
 ---
 
-### Parsing the html for display
+## Parsing the html for display
 
-html-react-parser (uses html-dom-parser under the hood, but doesn't provide a lot of xss protection)
+**html-react-parser** (uses html-dom-parser under the hood, but doesn't provide a lot of xss protection).
 
 ```js
 import parse from 'html-react-parser';
@@ -54,31 +56,13 @@ return parse('<p>...some text...</p>', {
 });
 ```
 
-Using html-react-parser with dompurify
+### Using html-react-parser with sanitize-html
 
 ```js
-import parse, { domToReact } from 'html-react-parser';
-import DOMPurify from 'dompurify';
-import React from 'react';
+import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
 
-export default function html(html, opts = {}) {
-    return parse(DOMPurify.sanitize(html));
-}
+<div className={styles.topicBody}>{parse(sanitizeHtml(topicData.content))}</div>;
 ```
-
-...more on DOMPurify ([https://www.npmjs.com/package/dompurify](https://www.npmjs.com/package/dompurify))
-
-```js
-// basic usage
-let clean = DOMPurify.sanitize(dirty);
-
-// set to only allow html and not SVG or MathML
-let clean = DOMPurify.sanitize(dirty, { USE_PROFILES: { html: true } });
-```
-
-Other possible parsing packages:
-
--   react-html-parser (uses htmlparser2 under the hood, but hasn't been updated for 4 years)
--   html-to-react (uses htmlparser2 under the hood)
 
 ---

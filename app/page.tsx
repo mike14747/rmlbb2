@@ -56,7 +56,6 @@ export default async function Home() {
                     </BoardSidebar>
                 </div>
             </aside>
-
         </div>
     );
 }

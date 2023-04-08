@@ -30,13 +30,6 @@ export default async function EventsSidebar({ children }: { children: ReactNode 
                                 View all Events
                             </Link>
 
-                            {/* <img
-                                aria-hidden="true"
-                                src="/images/calendar.png"
-                                alt=""
-                                className={sidebarStyles.icon}
-                            /> */}
-
                             <Image
                                 aria-hidden="true"
                                 src="/images/calendar.png"

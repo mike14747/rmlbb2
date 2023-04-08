@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import parse from 'html-react-parser';
-// import DOMPurify from 'dompurify';
+import sanitizeHtml from 'sanitize-html';
 import { ForumTopicToClient } from '@/types/forum-types';
 
 import styles from '@/styles/forum.module.css';
@@ -15,7 +15,7 @@ type TopicContentProps = {
 
 export default function TopicContent({ topicData, repliesData }: TopicContentProps) {
     console.log({ repliesData });
-    // console.log({ topicData });
+    console.log({ topicData });
     return (
         <>
             <p className="small">
@@ -25,7 +25,7 @@ export default function TopicContent({ topicData, repliesData }: TopicContentPro
 
                 <span className={styles.arrow}> &#10139; </span>
 
-                <Link href={`/forum/${topicData.forumId}`}>
+                <Link href={`/forum/${topicData.forum_id}`}>
                     {topicData.forumName}
                 </Link>
 
@@ -38,7 +38,7 @@ export default function TopicContent({ topicData, repliesData }: TopicContentPro
 
             <p className="small">
                 <>&#128221; </>
-                <Link href={`/forum/${topicData.forumId}/topic/new-topic`} passHref>
+                <Link href={`/forum/${topicData.forum_id}/topic/new-topic`} passHref>
                     <strong>Reply to Topic</strong>
                 </Link>
             </p>
@@ -55,8 +55,7 @@ export default function TopicContent({ topicData, repliesData }: TopicContentPro
                 </div>
 
                 <div className={styles.topicBody}>
-                    {/* {parse(DOMPurify.sanitize(topicData.content))} */}
-                    {parse(topicData.content)}
+                    {parse(sanitizeHtml(topicData.content))}
                 </div>
             </div>
 
@@ -74,7 +73,7 @@ export default function TopicContent({ topicData, repliesData }: TopicContentPro
                         </div>
 
                         <div className={styles.topicBody}>
-                            {parse(DOMPurify.sanitize(reply.content))}
+                            {parse(sanitizeHtml(reply.content))}
                         </div>
                     </div>
                 ))

@@ -19,7 +19,7 @@ type ForumTopicBase = {
     _id: number;
     title: string;
     content: string;
-    forumId: number;
+    forum_id: number;
     forumName: string;
     user_id: number;
     username: string;
@@ -47,26 +47,6 @@ export type ForumTopicToClient = ForumTopicBase & {
     lastReply?: {
         dateStr: string | undefined;
     };
-}
-
-export type ForumTopics = {
-    _id: number;
-    title: string;
-    user_id: number;
-    username: string;
-    date: Date;
-    views: number;
-    lastReply?: {
-        replyId: number;
-        subject: string;
-        username: string;
-        userId: number;
-        date: Date;
-        dateStr?: string
-    };
-    forumName: string;
-    replies: number[];
-    dateStr?: string;
 }
 
 export type RecentPost = {

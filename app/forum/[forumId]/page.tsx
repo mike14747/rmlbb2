@@ -30,6 +30,7 @@ export default async function Forum({ params }: ForumIdParams) {
     const forumId = params.forumId;
 
     const forumTopics = await getActiveForumTopics(parseInt(forumId));
+    console.log({ forumTopics });
 
     if (!forumTopics) return <p className="error">An error occurred fetching forum topics.</p>;
 

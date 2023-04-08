@@ -7,8 +7,8 @@ import Spinner from '@/components/Spinner';
 // import RichTextEditor from '@/components/RichTextEditor';
 // import SunEditorComp from '@/components/Sun/SunEditor';
 import TiptapEditor from '@/components/Tiptap/TiptapEditor';
-// import parse, { domToReact } from 'html-react-parser';
-// import DOMPurify from 'dompurify';
+// import parse from 'html-react-parser';
+// import sanitizeHtml from 'sanitize-html';
 
 import styles from '@/styles/forum.module.css';
 
@@ -66,7 +66,7 @@ export default function NewTopic() {
 
                 {/* {content &&
                     <>
-                        {parse(DOMPurify.sanitize(content))}
+                        {parse(sanitizeHtml(content))}
                     </>
                 } */}
 
