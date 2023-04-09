@@ -28,9 +28,8 @@ export default function NewTopic({ forumId, forumName }: NewTopicProps) {
     const form = useRef<HTMLFormElement>(null);
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-    const [error, setError] = useState('');
-
-    const [isSuccessful, setIsSucessful] = useState(false);
+    const [error, setError] = useState<string>('');
+    const [isSuccessful, setIsSucessful] = useState<boolean>(false);
 
     const submitTopic = async (e: FormEvent<HTMLFormElement>) => {
         // const submitTopic = async (e: { preventDefault: () => void; }) => {
@@ -40,7 +39,7 @@ export default function NewTopic({ forumId, forumName }: NewTopicProps) {
 
         setIsSubmitting(true);
 
-        // const res = await fetch('/api/forum/' + forumId + '/topic/new-topic', {
+        // const res = await fetch(`/api/forums/${forumId}/topic/new-topic`, {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json;charset=utf-8',
@@ -54,13 +53,13 @@ export default function NewTopic({ forumId, forumName }: NewTopicProps) {
 
         if (!res) setError(statusCodeErrorMessages[500]);
 
-        if (res.status === 200) {
+        if (res.status === 201) {
             setError('');
             setIsSucessful(true);
             if (form.current) form.current.reset();
         }
 
-        if (res.status !== 200) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
+        if (res.status !== 201) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
     };
 
     // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {

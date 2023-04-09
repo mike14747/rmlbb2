@@ -1,5 +1,5 @@
 import { getToken } from 'next-auth/jwt';
-import { getOneReply } from '../../../../lib/api/forum';
+import { getOneReply } from '@/lib/api/forum';
 
 export default async function getReplyById(req, res) {
     if (req.method !== 'GET') return res.status(401).end();

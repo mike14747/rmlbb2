@@ -345,7 +345,7 @@ export async function addUser(username: string, password: string, email: string,
 //     const db = connection.db();
 
 //     const bulkOp = db.collection('users').initializeOrderedBulkOp();
-//     const users = [];
+//     const users: { _id: number; username: string; password: string; }[] = [];
 
 //     await db
 //         .collection('users')
