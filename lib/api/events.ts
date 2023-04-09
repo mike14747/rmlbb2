@@ -1,19 +1,19 @@
 import { formatDateString } from '../helpers/formatDate';
-import { EventItem } from '@/types/event-types';
+import { EventItemQuery } from '@/types/event-types';
 
 const offset = new Date().getTimezoneOffset();
 const todayStr = new Date(new Date().getTime() - offset * 60000).toISOString().slice(0, 10);
 const todayStrPlusDays = new Date(new Date().getTime() - (offset * 60000) + (60 * 86400000)).toISOString().slice(0, 10); // today plus 60 days
 const todayObj = new Date(new Date().getTime() - offset * 60000);
 
-function insertFormattedDate(eventsArr: EventItem[], type = 'short') {
+function insertFormattedDate(eventsArr: EventItemQuery[], type = 'short') {
     if (!eventsArr) return null;
     return eventsArr.map(event => {
         return {
-            eventDate: event.eventDate ? formatDateString(event.eventDate, type) : '',
-            daysUntil: event.eventDate ? Math.ceil((+new Date(event.eventDate) - +todayObj) / (1000 * 60 * 60 * 24)) : undefined,
+            eventDateStr: formatDateString(event.eventDate, type),
+            daysUntil: Math.ceil((+new Date(event.eventDate) - +todayObj) / (1000 * 60 * 60 * 24)),
             event: event.event,
-            details: event?.details || '',
+            details: event.details,
         };
     });
 }

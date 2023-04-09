@@ -1,6 +1,12 @@
-export type EventItem = {
-    eventDate: string | undefined;
+export type EventItemQuery = {
     event: string;
+    eventDate: string;
     details: string;
-    daysUntil: number | undefined;
+}
+
+export type EventItemClient = {
+    event: string;
+    eventDateStr: string | undefined;
+    daysUntil: number;
+    details: string;
 }

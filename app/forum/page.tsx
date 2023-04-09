@@ -5,7 +5,7 @@ import { getForumList } from '@/lib/api/forum';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
 import Link from 'next/link';
-import ParagraphRound from '../../assets/paragraphRound.svg';
+import ParagraphRound from '@/assets/paragraphRound.svg';
 
 import styles from '@/styles/forum.module.css';
 

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 // eslint-disable-next-line camelcase
-import { Libre_Franklin } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import ClientSessionProvider from './components/ClientSessionProvider';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
@@ -28,8 +28,11 @@ type RootLayoutProps = {
 // fonts I like:
 // Open_Sans
 // Libre_Franklin
+// Source_Sans_3
+// Manrope
+// Inter
 
-const defaultFont = Libre_Franklin({
+const defaultFont = Inter({
     variable: '--font-default',
     subsets: ['latin'],
 });

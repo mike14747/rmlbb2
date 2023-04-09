@@ -34,7 +34,6 @@ export function formatDateObject(dateObj: Date, type = 'short') {
     if (!isValidDate(dateObj)) return undefined;
 
     const date = (type === 'short' ? monthsShort[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear() : monthsLong[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear());
-
     return date;
 }
 

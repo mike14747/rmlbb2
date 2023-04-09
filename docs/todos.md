@@ -42,8 +42,6 @@ Fix all the axe accessibility errors (color contrast and such). **UPDATE**: thes
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
-Finish the events page in the appDir. The past events client component is not done yet.
-
 Move all api routes (except for /pages/api/auth) to the appDir.
 
 There are a couple forum pages that need to be turned into server components.
@@ -106,6 +104,8 @@ Deleted the root components folder after moving all of the components to the app
 
 Get rid of the old mongodb connection file (and the /utils folder it's in): '/utils/mongodb.js'. There are still a couple files that use it.
 
-Set the default font to **Libre Franklin**
+Set the default font to **Inter**
 
 Convert the rest of the images to the Image component.
+
+Finish the events page in the appDir... including the past events client component and api route.

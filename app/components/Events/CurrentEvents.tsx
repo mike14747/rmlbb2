@@ -1,8 +1,8 @@
-import { EventItem } from '@/types/event-types';
+import { EventItemClient } from '@/types/event-types';
 
 import styles from '@/styles/events.module.css';
 
-export default function CurrentEvents({ currentEventsData }: { currentEventsData: EventItem[] }) {
+export default function CurrentEvents({ currentEventsData }: { currentEventsData: EventItemClient[] }) {
     return (
         <>
             {currentEventsData.length === 0 && <p className="text-center">There are no upcoming events to display. Check back again soon.</p>}
@@ -21,7 +21,7 @@ export default function CurrentEvents({ currentEventsData }: { currentEventsData
                         {currentEventsData.map((event, index) => (
                             <div key={index} className={styles.eventRow}>
                                 <div className={styles.eventDiv}>
-                                    <h5 className={styles.eventDate}>{event.eventDate}</h5>
+                                    <h5 className={styles.eventDate}>{event.eventDateStr}</h5>
                                     <p className={styles.eventName}>{event.event}</p>
                                     {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
                                 </div>
