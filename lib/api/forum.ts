@@ -277,7 +277,7 @@ export async function getForumName(forumId: number) {
 
         const data = await db
             .collection('forums')
-            .findOne({ active: true, _id: forumId }, { projection: { _id: 0, name: 1 } });
+            .findOne<{ _id: number; name: string }>({ active: true, _id: forumId }, { projection: { _id: 1, name: 1 } });
 
         return data;
     } catch (error) {

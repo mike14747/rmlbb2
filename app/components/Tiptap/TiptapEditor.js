@@ -1,3 +1,5 @@
+'use client';
+
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
@@ -169,6 +171,7 @@ const MenuBar = ({ editor }) => {
     return (
         <div className="toolbar">
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleBold().run()}
                 className={editor.isActive('bold') ? 'is-active' : ''}
             >
@@ -182,6 +185,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleItalic().run()}
                 className={editor.isActive('italic') ? 'is-active' : ''}
             >
@@ -195,6 +199,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
                 className={editor.isActive('underline') ? 'is-active' : ''}
             >
@@ -208,6 +213,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleStrike().run()}
                 className={editor.isActive('strike') ? 'is-active' : ''}
             >
@@ -221,6 +227,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             {/* <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleSuperscript().run()}
                 className={editor.isActive('superscript') ? 'is-active' : ''}
             >
@@ -234,6 +241,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleSubscript().run()}
                 className={editor.isActive('subscript') ? 'is-active' : ''}
             >
@@ -247,6 +255,7 @@ const MenuBar = ({ editor }) => {
             </button> */}
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
                 className={editor.isActive('bulletList') ? 'is-active' : ''}
             >
@@ -260,6 +269,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
                 className={editor.isActive('orderedList') ? 'is-active' : ''}
             >
@@ -273,6 +283,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().setParagraph().run()}
                 className={editor.isActive('paragraph') ? 'is-active' : ''}
             >
@@ -286,6 +297,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleCodeBlock().run()}
                 className={editor.isActive('customCodeBlock') ? 'is-active' : ''}
             >
@@ -299,6 +311,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().setCustomPre().run()}
                 className={editor.isActive('customPre') ? 'is-active' : ''}
             >
@@ -312,6 +325,7 @@ const MenuBar = ({ editor }) => {
             </button>
 
             <button
+                type="button"
                 onClick={() => editor.chain().focus().toggleBlockquote().run()}
                 className={editor.isActive('blockquote') ? 'is-active' : ''}
             >
@@ -324,7 +338,8 @@ const MenuBar = ({ editor }) => {
                 />
             </button>
 
-            <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
+            <button
+                type="button" onClick={() => editor.chain().focus().setHorizontalRule().run()}>
                 <Image
                     src="/images/tiptap/separator.svg"
                     alt={'Horizontal Line'}
@@ -335,12 +350,14 @@ const MenuBar = ({ editor }) => {
             </button>
 
             {/* <button
+                type="button"
                 onClick={() => editor.chain().focus().setMark('textStyle', { fontSize: '100px' }).run()}
             >
                 Big
             </button> */}
 
-            <button onClick={() => editor.chain().focus().setTextAlign('left').run()} className={editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}>
+            <button
+                type="button" onClick={() => editor.chain().focus().setTextAlign('left').run()} className={editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}>
                 <Image
                     src="/images/tiptap/align-left.svg"
                     alt={'Align Left'}
@@ -350,7 +367,8 @@ const MenuBar = ({ editor }) => {
                 />
             </button>
 
-            <button onClick={() => editor.chain().focus().setTextAlign('center').run()} className={editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}>
+            <button
+                type="button" onClick={() => editor.chain().focus().setTextAlign('center').run()} className={editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}>
                 <Image
                     src="/images/tiptap/align-center.svg"
                     alt={'Align Center'}
@@ -360,7 +378,8 @@ const MenuBar = ({ editor }) => {
                 />
             </button>
 
-            <button onClick={() => editor.chain().focus().setTextAlign('right').run()} className={editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}>
+            <button
+                type="button" onClick={() => editor.chain().focus().setTextAlign('right').run()} className={editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}>
                 <Image
                     src="/images/tiptap/align-right.svg"
                     alt={'Align Right'}
@@ -370,7 +389,8 @@ const MenuBar = ({ editor }) => {
                 />
             </button>
 
-            <button onClick={() => editor.chain().focus().undo().run()}>
+            <button
+                type="button" onClick={() => editor.chain().focus().undo().run()}>
                 <Image
                     src="/images/tiptap/undo.svg"
                     alt={'Undo'}
@@ -380,7 +400,8 @@ const MenuBar = ({ editor }) => {
                 />
             </button>
 
-            <button onClick={() => editor.chain().focus().redo().run()}>
+            <button
+                type="button" onClick={() => editor.chain().focus().redo().run()}>
                 <Image
                     src="/images/tiptap/redo.svg"
                     alt={'Redo'}

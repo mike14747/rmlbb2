@@ -1,4 +1,4 @@
-import { EventItem } from './event-types';
+import { EventItemClient } from './event-types';
 
 export type SettingDataType = {
     numInitialNewsItems: number;
@@ -22,7 +22,7 @@ export type BoardSidebarData = {
     }>
 }
 
-export type SidebarProps = EventItem & BoardSidebarData;
+export type SidebarProps = EventItemClient & BoardSidebarData;
 
 export type User = {
     id: string;

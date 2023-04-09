@@ -49,7 +49,7 @@ export default function AddForum() {
             if (form.current) form.current.reset();
         }
 
-        if (res && res.status !== 201) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
+        if (res.status !== 201) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
     };
 
     return (
