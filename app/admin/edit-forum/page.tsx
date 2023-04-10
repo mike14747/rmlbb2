@@ -123,7 +123,7 @@ export default async function EditForumPage() {
                             <div className={styles.gridName}><FormInputForForumName id={forum._id} forumName={forum.name} setForumName={handleChangeForumName} /></div>
                             <div className={styles.gridActive}><FormInputForActive id={forum._id} active={forum.active} setActive={toggleActive} /></div>
                             {(forums[index].active !== updatedForums[index].active || forums[index].name !== updatedForums[index].name) &&
-                                <div className={`${styles.updateButtonWrapper} ${styles.gridUpdate}`}><Button type="button" size="small" variant="contained" style="primary" onClick={() => handleUpdatedForumSubmit(forum._id, forum.name, forum.active)}>Update</Button></div>
+                                <div className={`${styles.updateButtonWrapper} ${styles.gridUpdate}`}><Button type="button" size="small" variant="contained" theme="primary" onClick={() => handleUpdatedForumSubmit(forum._id, forum.name, forum.active)}>Update</Button></div>
                             }
                         </div>
                     ))

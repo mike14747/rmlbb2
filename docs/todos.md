@@ -2,7 +2,7 @@
 
 ## Need to do
 
-Convert the app to **typescript**. **UPDATE**: Only some old /pages/api routes still need to be converted.
+Convert the app to **typescript**. **UPDATE**: Only some routes still need to be converted and the text editor components for Sun and Tiptap.
 
 Move all pages/components to the new appDir (version 13).
 
@@ -33,8 +33,6 @@ Make an admin page to edit forums (specifically to change their active status). 
 Is there a way to merge some/most/all of the FormInput components into one?
 
 Change the http POST methods to PUT on pages/routes that edit content.
-
-The props for the Button component includes theme and not style, but when I'm using the component, I'm passing style instead. I need to fix all those instances.
 
 ??? Keep the old message forum for viewing only, then add a new blog area ???
 
@@ -109,3 +107,7 @@ Finish the events page in the appDir... including the past events client compone
 Move all api routes (except for /pages/api/auth) to the appDir.
 
 Converted all pages in the appDir to server components.
+
+Moved the [...nextauth].js route to the appDir.
+
+The props for the Button component includes theme and not style, but when I'm using the component, I'm passing style instead. I need to fix all those instances.

@@ -22,8 +22,7 @@ const statusCodeErrorMessages: StatusCodeObj = {
 };
 
 export default function NewTopic({ forumId, forumName }: NewTopicProps) {
-    const title = useRef('');
-    // const content = useRef('');
+    const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const form = useRef<HTMLFormElement>(null);
 
@@ -31,8 +30,8 @@ export default function NewTopic({ forumId, forumName }: NewTopicProps) {
     const [error, setError] = useState<string>('');
     const [isSuccessful, setIsSucessful] = useState<boolean>(false);
 
-    const submitTopic = async (e: FormEvent<HTMLFormElement>) => {
-        // const submitTopic = async (e: { preventDefault: () => void; }) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        // const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         console.log('form is being submitted');
@@ -62,13 +61,6 @@ export default function NewTopic({ forumId, forumName }: NewTopicProps) {
         if (res.status !== 201) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
     };
 
-    // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    //     if (event.key === 'Enter') {
-    //         event.preventDefault();
-    //         console.log('enter key was pressed');
-    //     }
-    // };
-
     return (
         <section>
             {isSubmitting && <Spinner />}
@@ -89,13 +81,13 @@ export default function NewTopic({ forumId, forumName }: NewTopicProps) {
                     {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
                     <form
                         ref={form as RefObject<HTMLFormElement>}
-                        onSubmit={submitTopic}
+                        onSubmit={handleSubmit}
                         onKeyDown={(e) => {
                             // prevent the enter key from submitting the form
                             e.key === 'Enter' && e.preventDefault();
                         }}
                     >
-                        <FormInputForTopicTitle title={title} />
+                        <FormInputForTopicTitle title={title} setTitle={setTitle}/>
 
                         <TiptapEditor initialContent={''} setContent={setContent} />
 

@@ -1,9 +1,9 @@
 'use client';
 
-import { MutableRefObject, ChangeEvent } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import FormInput from '@/components/FormInput';
 
-export default function FormInputForTopicTitle({ title }: { title: MutableRefObject<string> }) {
+export default function FormInputForTopicTitle({ title, setTitle }: { title: string; setTitle: Dispatch<SetStateAction<string>> }) {
     return (
         <FormInput
             id="title"
@@ -11,7 +11,8 @@ export default function FormInputForTopicTitle({ title }: { title: MutableRefObj
             name="title"
             type="text"
             required={true}
-            handleChange={(e: ChangeEvent<HTMLInputElement>) => title.current = e.target.value}
+            value={title}
+            handleChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
             maxLength={50}
         />
     );

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, FormEvent } from 'react';
+import { useState, useRef, FormEvent, RefObject } from 'react';
 import Spinner from '@/components/Spinner';
 // import RichTextEditor from '@/components/RichTextEditor';
 // import SunEditorComp from '@/components/Sun/SunEditor';
@@ -9,8 +9,10 @@ import TiptapEditor from '@/components/Tiptap/TiptapEditor';
 // import sanitizeHtml from 'sanitize-html';
 import { ForumTopicToClient } from '@/types/forum-types';
 import { StatusCodeObj } from '@/types/misc-types';
+import Button from '../Button';
+import FormInputForTopicTitle from '@/components/Forum/FormInputForTopicTitle';
 
-// import styles from '@/styles/forum.module.css';
+import styles from '@/styles/forum.module.css';
 
 const statusCodeErrorMessages: StatusCodeObj = {
     400: 'An error occurred. Input(s) are not in the proper format.',
@@ -19,29 +21,29 @@ const statusCodeErrorMessages: StatusCodeObj = {
 };
 
 export default function EditTopicForm({ topicData }: { topicData: ForumTopicToClient }) {
-    // const [title, setTitle] = useState('');
-    const [initialContent, setInitialContent] = useState('');
-    const [content, setContent] = useState('');
+    const [title, setTitle] = useState(topicData.title);
+    const [content, setContent] = useState(topicData.content);
     const form = useRef<HTMLFormElement>(null);
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const [isSuccessful, setIsSucessful] = useState<boolean>(false);
 
-    const submitEdittedTopic = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         // const submitTopic = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         console.log('form is being submitted');
+        console.log('title:', title);
 
         setIsSubmitting(true);
 
-        // const res = await fetch('/api/forums/' + forumId + '/topic/new-topic', {
-        //     method: 'POST',
+        // const res = await fetch(`/api/forums/${topicData.forum_id}/topic/edit-topic`, {
+        //     method: 'PUT',
         //     headers: {
         //         'Content-Type': 'application/json;charset=utf-8',
         //     },
-        //     body: JSON.stringify({ title, content }),
+        //     body: JSON.stringify({ id: topicData._id, title: titlRef.current.value, content }),
         // });
 
         const res = { status: 400 };
@@ -65,20 +67,23 @@ export default function EditTopicForm({ topicData }: { topicData: ForumTopicToCl
 
             {error && <p className="error">{error}</p>}
 
-            {/* {content &&
-                    <>
-                        {parse(sanitizeHtml(content))}
-                    </>
-                } */}
+            {isSuccessful && <p className={styles.success}>Your new topic was successfully added!</p>}
 
-            {initialContent &&
-                <TiptapEditor initialContent={initialContent} setContent={setContent} />
-            }
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+            <form
+                ref={form as RefObject<HTMLFormElement>}
+                onSubmit={handleSubmit}
+                onKeyDown={(e) => {
+                    // prevent the enter key from submitting the form
+                    e.key === 'Enter' && e.preventDefault();
+                }}
+            >
+                <FormInputForTopicTitle title={title} setTitle={setTitle}/>
 
-            <textarea className="editor-textarea"
-                disabled
-                value={content || ''}
-            />
+                <TiptapEditor initialContent={content} setContent={setContent} />
+
+                <Button type="submit" size="medium" variant="contained" theme="primary">Submit</Button>
+            </form>
         </section>
     );
 }
