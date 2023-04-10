@@ -21,7 +21,7 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
     const [error, setError] = useState<string>('');
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [isEmailUpdated, setIsEmailUpdated] = useState<boolean>(false);
-    const emailForm = useRef<HTMLFormElement>(null);
+    const form = useRef<HTMLFormElement>(null);
 
     const handleChangeEmailSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -49,7 +49,7 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
 
             setError('');
             setIsEmailUpdated(true);
-            if (emailForm.current) emailForm.current.reset();
+            if (form.current) form.current.reset();
         }
 
         if (res && res.status !== 200) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
@@ -63,7 +63,7 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
 
             {isEmailUpdated && <p className={styles.success}>Your email address has been successfully updated.</p>}
 
-            <form ref={emailForm as RefObject<HTMLFormElement>} className={styles.updateGroup} onSubmit={handleChangeEmailSubmit}>
+            <form ref={form as RefObject<HTMLFormElement>} className={styles.updateGroup} onSubmit={handleChangeEmailSubmit}>
                 {isSubmitting && <Spinner size="large" />}
 
                 {error && <p className={styles.error}>{error}</p>}
