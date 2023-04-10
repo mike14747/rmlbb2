@@ -42,10 +42,6 @@ Fix all the axe accessibility errors (color contrast and such). **UPDATE**: thes
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
-Move all api routes (except for /pages/api/auth) to the appDir.
-
-There are a couple forum pages that need to be turned into server components.
-
 ---
 
 ## Done
@@ -109,3 +105,7 @@ Set the default font to **Inter**
 Convert the rest of the images to the Image component.
 
 Finish the events page in the appDir... including the past events client component and api route.
+
+Move all api routes (except for /pages/api/auth) to the appDir.
+
+Converted all pages in the appDir to server components.
