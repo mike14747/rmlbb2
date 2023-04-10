@@ -15,9 +15,13 @@ const Authbar = () => {
             {loading && <span className={styles.username}>Loading...</span>}
 
             {!session && !loading &&
-                <Link href="/login?callbackUrl=/">
-                    Login
-                </Link>
+                <>
+                    <span className={styles.username}>
+                        <Link href="/login?callbackUrl=/">
+                            Login
+                        </Link>
+                    </span>
+                </>
             }
 
             {session?.user &&

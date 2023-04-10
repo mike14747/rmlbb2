@@ -1,9 +1,9 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import { getUserForSignin } from '../../../lib/api/user';
+import { getUserForSignin } from '@/lib/api/user';
 
-export default NextAuth({
+const handler = NextAuth({
     providers: [
         Credentials({
             name: 'Credentials',
@@ -43,3 +43,5 @@ export default NextAuth({
         },
     },
 });
+
+export { handler as GET, handler as POST };
