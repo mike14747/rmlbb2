@@ -40,7 +40,7 @@ export default async function NewTopicPage({ params }: NewTopicParams) {
 
                 <Suspense fallback={<Spinner />}>
                     {forumData
-                        ? <NewTopicForm forumId={forumData._id} forumName={forumData.name} />
+                        ? <NewTopicForm userId={session.id} username={session.name} forumId={forumData._id} forumName={forumData.name} />
                         : <p className="error">An error occurred fetching forum data.</p>
                     }
                 </Suspense>

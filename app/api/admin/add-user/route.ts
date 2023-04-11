@@ -6,7 +6,7 @@ import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 export async function POST(request: NextRequest) {
     try {
         const token = await getToken({ req: request });
-        if (token?.role !== 'admin') return NextResponse.json({ error: 'You need to be logged in with the role of admin to access this route.' }, { status: 401 });
+        if (token?.role !== 'admin') return NextResponse.json(null, { status: 401 });
 
         const { username, password, email, active } = await request.json();
         if (!username || !password || !email) return NextResponse.json(null, { status: 400 });

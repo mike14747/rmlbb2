@@ -11,6 +11,8 @@ import { StatusCodeObj } from '@/types/misc-types';
 import styles from '@/styles/forum.module.css';
 
 type NewTopicProps = {
+    userId: string;
+    username: string;
     forumId: number;
     forumName: string;
 }
@@ -21,7 +23,8 @@ const statusCodeErrorMessages: StatusCodeObj = {
     500: 'A server error occurred. Please try your update again.',
 };
 
-export default function NewTopic({ forumId, forumName }: NewTopicProps) {
+export default function NewTopic({ userId, username, forumId, forumName }: NewTopicProps) {
+    console.log({ userId, username });
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const form = useRef<HTMLFormElement>(null);
@@ -43,7 +46,7 @@ export default function NewTopic({ forumId, forumName }: NewTopicProps) {
         //     headers: {
         //         'Content-Type': 'application/json;charset=utf-8',
         //     },
-        //     body: JSON.stringify({ title, content }),
+        //     body: JSON.stringify({ userId, username, forumId, forumName, title, content }),
         // });
 
         const res = { status: 400 };

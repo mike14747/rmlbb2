@@ -43,7 +43,7 @@ export default function EditTopicForm({ topicData }: { topicData: ForumTopicToCl
         //     headers: {
         //         'Content-Type': 'application/json;charset=utf-8',
         //     },
-        //     body: JSON.stringify({ id: topicData._id, title: titlRef.current.value, content }),
+        //     body: JSON.stringify({ id: topicData._id, user_id: topicData.user_id, title, content }),
         // });
 
         const res = { status: 400 };
