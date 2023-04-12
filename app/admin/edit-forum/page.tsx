@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth/next';
 import { getForumListForEdit } from '@/lib/api/forum';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
-import EditForum from '@/components/Admin/EditForum';
+import EditForumList from '@/components/Admin/EditForumList';
 
 import styles from '@/styles/admin.module.css';
 
@@ -30,13 +30,9 @@ export default async function EditForumPage() {
                     Edit Forum
                 </h2>
 
-                <p>This is the unfinished edit-forum page.</p>
-
-                <p>You are seeing this page because you are logged in with the role of admin.</p>
-
                 <Suspense fallback={<Spinner size="large" />}>
                     {forumList
-                        ? <EditForum forumList={forumList} />
+                        ? <EditForumList forumList={forumList} />
                         : <p className="error">An error occurred fetching forum list.</p>
                     }
                 </Suspense>

@@ -78,7 +78,7 @@ export default function EditTopicForm({ topicData }: { topicData: ForumTopicToCl
                     e.key === 'Enter' && e.preventDefault();
                 }}
             >
-                <FormInputForTopicTitle title={title} setTitle={setTitle}/>
+                <FormInputForTopicTitle id={topicData._id} title={title} setTitle={setTitle}/>
 
                 <TiptapEditor initialContent={content} setContent={setContent} />
 

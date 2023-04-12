@@ -3,10 +3,10 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import FormInput from '@/components/FormInput';
 
-export default function FormInputForTopicTitle({ title, setTitle }: { title: string; setTitle: Dispatch<SetStateAction<string>> }) {
+export default function FormInputForTopicTitle({ id = undefined, title, setTitle }: { id?: number; title: string; setTitle: Dispatch<SetStateAction<string>> }) {
     return (
         <FormInput
-            id="title"
+            id={id ? 'title' + id : 'title'}
             label="Title"
             name="title"
             type="text"

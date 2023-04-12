@@ -45,6 +45,17 @@
     margin: 1rem 0 0 2rem;
 }
 
+.editItem {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px var(--mg-gray-3) solid;
+}
+
+.editItem:last-of-type {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
 @media (min-width: 768px) {
     .forumRow {
         grid-template-columns: auto auto 1fr;

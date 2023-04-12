@@ -7,6 +7,8 @@
 This component uses useRef instead of useState, as indicated by the handleChange function.
 
 ```tsx
+'use client';
+
 import { MutableRefObject, ChangeEvent } from 'react';
 import FormInput from './FormInput';
 import { usernamePattern, usernameErrorMsg } from '@/lib/formInputPatterns';
@@ -36,15 +38,17 @@ If there is an id passed to the component, that will be the id of the input fiel
 Changing the "active" state is done by setting changing it to the negation of what it currently is whenever the checkbox is clicked.
 
 ```tsx
+'use client';
+
 import { Dispatch, SetStateAction } from 'react';
 import FormInput from '@/components/FormInput';
 
 export default function FormInputForActive({
-    id = null,
+    id = undefined,
     active,
     setActive,
 }: {
-    id: number | null;
+    id?: number;
     active: boolean;
     setActive: Dispatch<SetStateAction<boolean>>;
 }) {
@@ -66,6 +70,8 @@ export default function FormInputForActive({
 This FormInput component is 2 input fields in one.
 
 ```tsx
+'use client';
+
 import { MutableRefObject, ChangeEvent } from 'react';
 import FormInput from './FormInput';
 import { passwordPattern, passwordErrorMsg } from '@/lib/formInputPatterns';
@@ -115,5 +121,35 @@ if (password.current !== repeatPassword.current) {
 ```
 
 I had to do it this way because I'm using useRef() instead of useState(). If I was using useState(), I could have set the pattern value for the repeatPassword ForumInput as "password" instead of "passwordPattern". But, I would have also needed to include "value" properties to each.
+
+### ForumInput with useState
+
+In this FormInput component, change is being handled by setting state (specifically setTitle() in this case).
+
+This FormInput component uses useState() instead of useRef() because it needs to handle either adding a new topic title and also editing an already existing one.
+
+If there is an id passed to the component, that will be the id of the input field... if not, the id of the input field will be the string "title".
+
+```tsx
+'use client';
+
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import FormInput from '@/components/FormInput';
+
+export default function FormInputForTopicTitle({ title, setTitle }: { title: string; setTitle: Dispatch<SetStateAction<string>> }) {
+    return (
+        <FormInput
+            id="title"
+            label="Title"
+            name="title"
+            type="text"
+            required={true}
+            value={title}
+            handleChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+            maxLength={50}
+        />
+    );
+}
+```
 
 ---

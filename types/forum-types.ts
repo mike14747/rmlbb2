@@ -1,11 +1,11 @@
-export type ForumListForEdit = {
+export type ForumForEdit = {
     _id: number;
     name: string;
     order: number;
     active: boolean;
 }
 
-export type ForumListToClient = {
+export type ForumToClient = {
     _id: number;
     name: string;
     topics: number;

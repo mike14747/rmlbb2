@@ -1,3 +1,5 @@
+'use client';
+
 import { MutableRefObject, ChangeEvent } from 'react';
 import FormInput from './FormInput';
 import { passwordPattern, passwordErrorMsg } from '@/lib/formInputPatterns';

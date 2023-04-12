@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useState, FormEvent, ChangeEvent } from 'react';
-import FormInput from '@/components/FormInput';
-import { forumNamePattern, forumNameErrorMsg } from '@/lib/formInputPatterns';
+import { useRef, useState, FormEvent } from 'react';
+import FormInputForForumName from './FormInputForForumName';
+import FormInputForActive from './FormInputForActive';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
 import { StatusCodeObj } from '@/types/misc-types';
@@ -61,26 +61,9 @@ export default function AddForum() {
             {successMessage && <p className="success2">{successMessage}</p>}
 
             <form ref={form} className={styles.updateGroup} onSubmit={handleSubmit}>
-                <FormInput
-                    id="forumName"
-                    label="Forum Name"
-                    name="forumName"
-                    value={forumName}
-                    type="text"
-                    required={true}
-                    handleChange={(e: ChangeEvent<HTMLInputElement>) => setForumName(e.target.value)}
-                    pattern={forumNamePattern}
-                    errorMsg={forumNameErrorMsg}
-                />
+                <FormInputForForumName forumName={forumName} setForumName={setForumName} />
 
-                <FormInput
-                    id="active"
-                    label="Active"
-                    name="active"
-                    type="checkbox"
-                    checked={active}
-                    handleChange={() => setActive(!active)}
-                />
+                <FormInputForActive active={active} setActive={setActive} />
 
                 <div className={styles.submitButtonWrapper}>
                     <Button type="submit" size="medium" variant="contained" theme="primary">Submit</Button>

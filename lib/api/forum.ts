@@ -1,7 +1,7 @@
 import clientPromise from '../mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-import { ForumListForEdit, ForumListToClient, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData } from '@/types/forum-types';
+import { ForumForEdit, ForumToClient, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData } from '@/types/forum-types';
 import { TransactionOptions, ReadPreference } from 'mongodb';
 
 export async function getForumList() {
@@ -21,7 +21,7 @@ export async function getForumList() {
                 }
                 return forum;
             })
-            .toArray()) as ForumListToClient[];
+            .toArray()) as ForumToClient[];
 
         return data;
     } catch (error) {
@@ -40,7 +40,7 @@ export async function getForumListForEdit() {
             .find()
             .project({ _id: 1, name: 1, active: 1, order: 1 })
             .sort({ order: 1 })
-            .toArray()) as ForumListForEdit[];
+            .toArray()) as ForumForEdit[];
 
         return data;
     } catch (error) {

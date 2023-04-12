@@ -6,7 +6,7 @@ type FormInputProps = {
     id: string;
     label?: string;
     name: string;
-    handleChange?: ChangeEventHandler<HTMLInputElement>; // this property needs to be set back to required after I fix the EditForum component
+    handleChange: ChangeEventHandler<HTMLInputElement>;
     errorMsg?: string;
     required?: boolean;
     size?: 'small' | 'normal';
@@ -19,6 +19,8 @@ type FormInputProps = {
     maxLength?: number;
     readOnly?: boolean;
     disabled?: boolean;
+    min?: number;
+    max?: number;
 }
 
 const sizes = ['small', 'normal'];
