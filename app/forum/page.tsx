@@ -23,7 +23,6 @@ export default async function ForumHome() {
     }
 
     const forumList = await getForumList();
-    if (forumList) console.log(forumList[0].lastPost);
 
     if (!forumList) return <p className="error">An error occurred fetching the forums.</p>;
 
