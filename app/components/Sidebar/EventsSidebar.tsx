@@ -33,7 +33,7 @@ export default async function EventsSidebar({ children }: { children: ReactNode 
                             <Image
                                 aria-hidden="true"
                                 src="/images/calendar.png"
-                                alt="blah"
+                                alt=""
                                 width={0}
                                 height={0}
                                 sizes="100vw"

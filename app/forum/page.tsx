@@ -23,6 +23,7 @@ export default async function ForumHome() {
     }
 
     const forumList = await getForumList();
+    if (forumList) console.log(forumList[0].lastPost);
 
     if (!forumList) return <p className="error">An error occurred fetching the forums.</p>;
 
@@ -69,7 +70,7 @@ export default async function ForumHome() {
                                                     </Link>
                                                 </p>
                                                 <p className='small'><small>by:</small> {forum.lastPost.username}</p>
-                                                <p>{forum.lastPost.dateStr}</p>
+                                                <p><small>{forum.lastPost.dateStr}</small></p>
                                             </>
                                         }
 

@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useState, FormEvent } from 'react';
-import FormInputForForumName from './FormInputForForumName';
-import FormInputForActive from './FormInputForActive';
+import { useRef, useState, FormEvent, ChangeEvent } from 'react';
+import FormInput from '@/components/FormInput';
+import { forumNamePattern, forumNameErrorMsg } from '@/lib/formInputPatterns';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
 import { StatusCodeObj } from '@/types/misc-types';
@@ -17,7 +17,7 @@ const statusCodeErrorMessages: StatusCodeObj = {
 };
 
 export default function AddForum() {
-    const forumName = useRef<string>('');
+    const [forumName, setForumName] = useState<string>('');
     const [active, setActive] = useState<boolean>(true);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [error, setError] = useState('');
@@ -35,7 +35,7 @@ export default function AddForum() {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify({ name: forumName.current, active }),
+            body: JSON.stringify({ name: forumName, active }),
         });
 
         setIsSubmitting(false);
@@ -45,8 +45,8 @@ export default function AddForum() {
         if (res.status === 201) {
             setActive(true);
             setError('');
-            setSuccessMessage(`The new forum "${forumName.current}" has been successfully added!`);
-            if (form.current) form.current.reset();
+            setSuccessMessage(`The new forum "${forumName}" has been successfully added!`);
+            setForumName('');
         }
 
         if (res.status !== 201) setError(statusCodeErrorMessages[res.status] || 'An unknown error occurred');
@@ -61,9 +61,26 @@ export default function AddForum() {
             {successMessage && <p className="success2">{successMessage}</p>}
 
             <form ref={form} className={styles.updateGroup} onSubmit={handleSubmit}>
-                <FormInputForForumName forumName={forumName} />
+                <FormInput
+                    id="forumName"
+                    label="Forum Name"
+                    name="forumName"
+                    value={forumName}
+                    type="text"
+                    required={true}
+                    handleChange={(e: ChangeEvent<HTMLInputElement>) => setForumName(e.target.value)}
+                    pattern={forumNamePattern}
+                    errorMsg={forumNameErrorMsg}
+                />
 
-                <FormInputForActive id={null} active={active} setActive={setActive} />
+                <FormInput
+                    id="active"
+                    label="Active"
+                    name="active"
+                    type="checkbox"
+                    checked={active}
+                    handleChange={() => setActive(!active)}
+                />
 
                 <div className={styles.submitButtonWrapper}>
                     <Button type="submit" size="medium" variant="contained" theme="primary">Submit</Button>

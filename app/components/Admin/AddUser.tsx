@@ -4,7 +4,7 @@ import { useRef, useState, FormEvent } from 'react';
 import FormInputForUsername from '../FormInputForUsername';
 import FormInputForEmail from '../FormInputForEmail';
 import FormInputForNewPassword from '../FormInputForNewPassword';
-import FormInputForActive from './FormInputForActive';
+import FormInput from '../FormInput';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
 import { StatusCodeObj } from '@/types/misc-types';
@@ -72,7 +72,14 @@ export default function AddUser() {
 
                 <FormInputForNewPassword password={password} repeatPassword={repeatPassword} />
 
-                <FormInputForActive id={null} active={active} setActive={setActive} />
+                <FormInput
+                    id="active"
+                    label="Active"
+                    name="active"
+                    type="checkbox"
+                    checked={active}
+                    handleChange={() => setActive(!active)}
+                />
 
                 <div className={styles.submitButtonWrapper}>
                     <Button type="submit" size="medium" variant="contained" theme="primary">Submit</Button>

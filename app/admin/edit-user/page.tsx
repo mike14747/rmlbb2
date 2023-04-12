@@ -21,9 +21,9 @@ export default async function EditUserPage() {
         redirect('/login?callbackUrl=/admin/edit-user');
     }
 
-    const usersData = await getAllUsers();
-
     if (session.role === 'admin') {
+        const usersData = await getAllUsers();
+
         return (
             <article className={styles.adminContainer}>
                 <h2 className={'page-heading ' + styles.adminPageHeading}>

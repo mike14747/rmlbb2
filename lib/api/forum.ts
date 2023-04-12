@@ -1,7 +1,7 @@
 import clientPromise from '../mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-import { ForumList, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData } from '@/types/forum-types';
+import { ForumListForEdit, ForumListToClient, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData } from '@/types/forum-types';
 import { TransactionOptions, ReadPreference } from 'mongodb';
 
 export async function getForumList() {
@@ -14,14 +14,15 @@ export async function getForumList() {
             .find({ active: true })
             .project({ _id: 1, name: 1, topics: 1, posts: 1, lastPost: 1 })
             .sort({ order: 1 })
-            .toArray()) as ForumList[];
+            .map(forum => {
+                if (forum.lastPost.date) {
+                    forum.lastPostDaysAgo = Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24));
+                    forum.lastPost.dateStr = formatDateObjectWithTime(forum.lastPost.date, 'short');
+                }
+                return forum;
+            })
+            .toArray()) as ForumListToClient[];
 
-        data.forEach(forum => {
-            if (forum.lastPost && forum.lastPostDaysAgo) {
-                forum.lastPostDaysAgo = forum.lastPost.date ? Math.floor((+new Date() - +forum.lastPost.date) / (1000 * 60 * 60 * 24)) : undefined;
-                forum.lastPost.dateStr = forum.lastPost.date ? formatDateObjectWithTime(forum.lastPost.date, 'short') : undefined;
-            }
-        });
         return data;
     } catch (error) {
         console.log(error);
@@ -39,7 +40,7 @@ export async function getForumListForEdit() {
             .find()
             .project({ _id: 1, name: 1, active: 1, order: 1 })
             .sort({ order: 1 })
-            .toArray()) as ForumList[];
+            .toArray()) as ForumListForEdit[];
 
         return data;
     } catch (error) {
@@ -328,7 +329,7 @@ export async function addForum(name: string, active = true) {
     }
 }
 
-export async function editForum(_id: number, newForumName: string, newActiveStatus: boolean) {
+export async function editForum(_id: number, newForumName: string, newOrder: number, newActiveStatus: boolean) {
     const connection = await clientPromise;
     const db = connection.db();
 
@@ -339,6 +340,7 @@ export async function editForum(_id: number, newForumName: string, newActiveStat
         .project({ _id: 1 })
         .limit(1)
         .toArray();
+
     if (!inUseResult) return { code: 500 };
     if (inUseResult.length === 1) return { code: 409 };
 
@@ -357,7 +359,7 @@ export async function editForum(_id: number, newForumName: string, newActiveStat
         transactionResult = await session.withTransaction(async () => {
             await db
                 .collection('forums')
-                .updateOne({ _id: _id }, { $set: { name: newForumName, active: newActiveStatus } }, { session });
+                .updateOne({ _id: _id }, { $set: { name: newForumName, order: newOrder, active: newActiveStatus } }, { session });
 
             await db
                 .collection('topics')

@@ -40,6 +40,11 @@ Fix all the axe accessibility errors (color contrast and such). **UPDATE**: thes
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
+Upgrade to next.js v13.3 once these 2 issues are fixed:
+
+1.  Next stops giving me svg loader errors.
+2.  The "error - SyntaxError: Unexpected token u in JSON at position 0 at JSON.parse()" errors are fixed when I try to start the dev server.
+
 ---
 
 ## Done

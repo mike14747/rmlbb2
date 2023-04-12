@@ -1,4 +1,11 @@
-export type ForumList = {
+export type ForumListForEdit = {
+    _id: number;
+    name: string;
+    order: number;
+    active: boolean;
+}
+
+export type ForumListToClient = {
     _id: number;
     name: string;
     topics: number;
@@ -9,10 +16,9 @@ export type ForumList = {
         subject: string;
         username: string;
         userId: number;
-        date: Date;
-        dateStr?: string
+        dateStr?: string | undefined;
     };
-    lastPostDaysAgo?: number;
+    lastPostDaysAgo: number | undefined;
 }
 
 type ForumTopicBase = {

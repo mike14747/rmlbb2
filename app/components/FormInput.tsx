@@ -6,7 +6,7 @@ type FormInputProps = {
     id: string;
     label?: string;
     name: string;
-    handleChange: ChangeEventHandler<HTMLInputElement>;
+    handleChange?: ChangeEventHandler<HTMLInputElement>; // this property needs to be set back to required after I fix the EditForum component
     errorMsg?: string;
     required?: boolean;
     size?: 'small' | 'normal';
