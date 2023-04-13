@@ -18,7 +18,7 @@ const statusCodeErrorMessages: StatusCodeObj = {
     500: 'A server error occurred. Please try your update again.',
 };
 
-export default function AddUser() {
+export default function AddUserForm() {
     const username = useRef<string>('');
     const email = useRef<string>('');
     const password = useRef<string>('');

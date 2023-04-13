@@ -31,8 +31,6 @@ export default function EditForumForm({ forum }: { forum: ForumForEdit }) {
 
         setIsSubmitting(true);
 
-        console.log(forum._id, forumName, order, active);
-
         // const res = await fetch('/api/forum/edit-forum', {
         //     method: 'POST',
         //     headers: {

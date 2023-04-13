@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
 import { getAllUsers } from '@/lib/api/user';
 import { Suspense } from 'react';
-import EditUser from '@/components/Admin/EditUser';
+import EditUserForm from '@/components/Admin/EditUserForm';
 import Spinner from '@/components/Spinner';
 
 import styles from '@/styles/admin.module.css';
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Edit User',
 };
 
-export default async function EditUserPage() {
+export default async function EditUser() {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -31,7 +31,7 @@ export default async function EditUserPage() {
                 </h2>
 
                 <Suspense fallback={<Spinner size="large" />}>
-                    <EditUser usersData={usersData} />
+                    <EditUserForm usersData={usersData} />
                 </Suspense>
             </article>
         );

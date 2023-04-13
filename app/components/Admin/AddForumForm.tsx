@@ -16,7 +16,7 @@ const statusCodeErrorMessages: StatusCodeObj = {
     500: 'A server error occurred. Please try your update again.',
 };
 
-export default function AddForum() {
+export default function AddForumForm() {
     const [forumName, setForumName] = useState<string>('');
     const [active, setActive] = useState<boolean>(true);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);

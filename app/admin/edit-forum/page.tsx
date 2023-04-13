@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth/next';
 import { getForumListForEdit } from '@/lib/api/forum';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
-import EditForumList from '@/components/Admin/EditForumList';
+import EditForumForm from '@/components/Admin/EditForumForm';
 
 import styles from '@/styles/admin.module.css';
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Edit Forum',
 };
 
-export default async function EditForumPage() {
+export default async function EditForum() {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -31,10 +31,14 @@ export default async function EditForumPage() {
                 </h2>
 
                 <Suspense fallback={<Spinner size="large" />}>
-                    {forumList
-                        ? <EditForumList forumList={forumList} />
-                        : <p className="error">An error occurred fetching forum list.</p>
+                    ? {forumList && forumList.length > 0 &&
+                        forumList.map(forum => (
+                            <div key={forum._id} className={styles.editItem}>
+                                <EditForumForm forum={forum} />
+                            </div>
+                        ))
                     }
+                    : <p className="error">An error occurred fetching forum list.</p>
                 </Suspense>
             </article>
         );

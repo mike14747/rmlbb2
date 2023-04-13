@@ -2,7 +2,7 @@
 
 import { AllUsersDateStr } from '@/types/user-types';
 
-export default function EditUser({ usersData }: { usersData: AllUsersDateStr[] | null }) {
+export default function EditUserForm({ usersData }: { usersData: AllUsersDateStr[] | null }) {
     console.log({ usersData });
     return (
         <>

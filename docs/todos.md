@@ -28,15 +28,13 @@ Add 'link' (and maybe 'unlink') buttons to TiptapEditor. Also color and size?
 
 Figure out a way to break up topics and replies so only X number of them show up per page.
 
-Make an admin page to edit forums (specifically to change their active status). This will require a transaction in the serverless function because the active status will need to apply to all topics and replies within tha forum. This is done (you can edit the forum name and active status), but I need to update the regex for the forum name to allow for things like " / " to be part of a forum name.
+Make an admin page to edit forums (specifically to change their active status). This will require a transaction in the serverless function because the active status will need to apply to all topics and replies within tha forum. This is done (you can edit the forum name and active status), but I need to update the regex for the forum name to allow for things like " / " to be part of a forum name. **UPDATE**: This is done, but needs to be testing with the live database.
 
 Is there a way to merge some/most/all of the FormInput components into one?
 
 Change the http POST methods to PUT on pages/routes that edit content.
 
 ??? Keep the old message forum for viewing only, then add a new blog area ???
-
-Fix all the axe accessibility errors (color contrast and such). **UPDATE**: these seem to have gone away now that I've changed the maximumScale value in layout.tsx to 2.
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
@@ -116,3 +114,5 @@ Converted all pages in the appDir to server components.
 Moved the [...nextauth].js route to the appDir.
 
 The props for the Button component includes theme and not style, but when I'm using the component, I'm passing style instead. I need to fix all those instances.
+
+Fix all the axe accessibility errors (color contrast and such). **UPDATE**: these seem to have gone away now that I've changed the maximumScale value in layout.tsx to 2.

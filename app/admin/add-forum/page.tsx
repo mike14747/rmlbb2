@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
-import AddForum from '@/components/Admin/AddForum';
+import AddForumForm from '@/components/Admin/AddForumForm';
 
 import styles from '@/styles/admin.module.css';
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Add Forum',
 };
 
-export default async function AddForumPage() {
+export default async function AddForum() {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -25,7 +25,7 @@ export default async function AddForumPage() {
                     Add Forum
                 </h2>
 
-                <AddForum />
+                <AddForumForm />
             </article>
         );
     }
