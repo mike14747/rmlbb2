@@ -59,18 +59,18 @@ export default function TopicContent({ topicData, repliesData }: TopicContentPro
 
             {repliesData?.length > 0 &&
                 repliesData.map(reply => (
-                    <div key={reply._id} className={styles.topicContainer}>
-                        <div className={styles.topicHeading}>
-                            <p className={styles.topicTitle}>
+                    <div key={reply._id} className={styles.replyContainer}>
+                        <div className={styles.replyHeading}>
+                            <p className={styles.replyTitle}>
                                 {reply.subject}
                             </p>
 
-                            <p className={styles.topicDetails}>
-                                by: {reply.username} &#10139; <span className={styles.topicDate}>{reply.dateStr}</span>
+                            <p className={styles.replyDetails}>
+                                by: {reply.username} &#10139; <span className={styles.replyDate}>{reply.dateStr}</span>
                             </p>
                         </div>
 
-                        <div className={styles.topicBody}>
+                        <div className={styles.replyBody}>
                             {parse(sanitizeHtml(reply.content))}
                         </div>
                     </div>

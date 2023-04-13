@@ -171,25 +171,43 @@
     margin: 0;
 }
 
-.topicHeading {
+.replyContainer {
+    margin: 0 auto 3rem 2rem;
+    border: 1px var(--mg-gray-3) solid;
+    box-shadow: 3px 3px 6px 0 var(--mg-gray-4), -0.75rem 0 0 0 var(--mg-light), -1rem 0 0 0 var(--mg-orange-soft);
+    overflow: hidden;
+}
+
+.replyTitle {
+    font-size: 1.2rem;
+    font-size: var(--step-1);
+    color: var(--theme-color-red);
+    margin: 0;
+}
+
+.topicHeading,
+.replyHeading {
     background-color: var(--mg-gray-1);
-    padding: 1rem;
+    padding: 0.25rem 0.50rem;
     border-bottom: 1px var(--mg-gray-3) solid;
 }
 
-.topicDetails {
-    font-size: 0.83rem;
+.topicDetails,
+.replyDetails {
+    font-size: 0.833rem;
     font-size: var(--step--1);
     color: var(--mg-gray-6);
     margin: 0;
 }
 
-.topicDate {
+.topicDate,
+.replyDate {
     color: var(--theme-color-green);
 }
 
-.topicBody {
-    padding: 1rem;
+.topicBody,
+.replyBody {
+    padding: 1rem 0.50rem 1rem 0.50rem;
 }
 
 .new {
