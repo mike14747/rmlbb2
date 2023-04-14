@@ -37,6 +37,8 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
 
         SetIsLoading(false);
 
+        if (!loginStatus) setError('A network error has occurred.');
+
         // if the user did not successfully log in, set the error that will be displayed
         if (loginStatus && (!loginStatus.ok || loginStatus.status !== 200)) {
             setError('Login Failed... check your credentials and try again.');

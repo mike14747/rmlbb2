@@ -34,11 +34,21 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "@/styles/*": ["styles/*"],
-            "@/lib/*": ["lib/*"],
-            "@/types/*": ["types/*"],
-            "@/components/*": ["app/components/*"],
-            "@/assets/*": ["assets/*"]
+            "@/styles/*": [
+                "styles/*"
+            ],
+            "@/lib/*": [
+                "lib/*"
+            ],
+            "@/types/*": [
+                "types/*"
+            ],
+            "@/components/*": [
+                "app/components/*"
+            ],
+            "@/assets/*": [
+                "assets/*"
+            ]
         }
     },
     "include": [
