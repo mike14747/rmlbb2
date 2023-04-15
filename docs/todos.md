@@ -38,10 +38,7 @@ Change the http POST methods to PUT on pages/routes that edit content.
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
-Upgrade to next.js v13.3 once these 2 issues are fixed:
-
-1.  Next stops giving me svg loader errors.
-2.  The "error - SyntaxError: Unexpected token u in JSON at position 0 at JSON.parse()" errors are fixed when I try to start the dev server.
+I've added a not-found.tsx page in the appDir to serve as the 404 page, but for some reason, the meta data isn't yet working. No page title is being displayed. Based upon the issues at the next.js github page, it sounds like they are considering to add support for it.
 
 ---
 
@@ -116,3 +113,8 @@ Moved the [...nextauth].js route to the appDir.
 The props for the Button component includes theme and not style, but when I'm using the component, I'm passing style instead. I need to fix all those instances.
 
 Fix all the axe accessibility errors (color contrast and such). **UPDATE**: these seem to have gone away now that I've changed the maximumScale value in layout.tsx to 2.
+
+Upgrade to next.js v13.3 once these 2 issues are fixed: **UPDATE**: Both of the below issues have fixes (at least for now).
+
+1.  Next stops giving me svg loader errors.
+2.  The "error - SyntaxError: Unexpected token u in JSON at position 0 at JSON.parse()" errors are fixed when I try to start the dev server.
