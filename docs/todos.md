@@ -38,7 +38,7 @@ Change the http POST methods to PUT on pages/routes that edit content.
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
-I've added a not-found.tsx page in the appDir to serve as the 404 page, but for some reason, the meta data isn't yet working. No page title is being displayed. Based upon the issues at the next.js github page, it sounds like they are considering to add support for it.
+I've added a not-found.tsx page in the appDir to serve as the 404 page, but for some reason, the meta data isn't yet working. No page title is being displayed. Based upon the issues at the next.js github page, it sounds like they are considering to add support for it. **NOTE**: This new not-found page doesn't on vercel.
 
 ---
 
