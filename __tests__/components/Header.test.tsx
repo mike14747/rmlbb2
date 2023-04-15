@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import Header from '../../components/Header';
+import Header from '@/components/Header/Header';
 
 test('Check that the header component renders correctly... excluding the nav', () => {
     render(<Header />);

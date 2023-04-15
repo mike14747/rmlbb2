@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 
-import Nav from '../../components/Nav';
+import Nav from '@/components/Header/Nav';
 
 describe('Test the nav component', () => {
     test('Make sure the nav, navigation list and all the nav links render', () => {

@@ -85,8 +85,33 @@ export async function GET() {
 
 ## Protected routes
 
-```ts
+There aren't many "normal" protected routes in this project. Most protected routes get data directly from the serverless functions via server components.
 
+The ones that do get data from protected api routes mostly required that the token id matches something from a user input or route segment.
+
+The following is not a production api route, but it's an example of what one would look like.
+
+```ts
+import { NextRequest, NextResponse } from 'next/server';
+import { getToken } from 'next-auth/jwt';
+import { getOneReply } from '@/lib/api/forum';
+import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
+
+export async function GET(request: NextRequest, { params }: { params: { replyId: string }}) {
+    try {
+        const token = await getToken({ req: request });
+        if (!token) return NextResponse.json(null, { status: 401 });
+
+        const { replyId } = params;
+
+        const result = await getOneReply(parseInt(replyId));
+        return result
+            ? NextResponse.json(null, { status: 200 })
+            : NextResponse.json(null, { status: 500 });
+    } catch (error) {
+        return handleAPICatchError(error);
+    }
+}
 ```
 
 ---

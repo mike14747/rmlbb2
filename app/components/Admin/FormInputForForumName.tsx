@@ -14,9 +14,9 @@ export default function FormInputForForumName({ id = undefined, forumName, setFo
             value={forumName}
             required={true}
             handleChange={(e: ChangeEvent<HTMLInputElement>) => setForumName(e.target.value)}
+            maxLength={30}
             pattern={forumNamePattern}
             errorMsg={forumNameErrorMsg}
-            maxLength={30}
         />
     );
 }

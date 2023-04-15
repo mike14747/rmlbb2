@@ -1,16 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { changeUsername } from '@/lib/api/user';
-import { IdParams } from '@/types/misc-types';
 import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 
-export async function PUT(request: NextRequest, { params }: IdParams) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
     try {
         const token = await getToken({ req: request });
         if (!token) return NextResponse.json(null, { status: 401 });
 
         const { username } = await request.json();
-        const id = params.id;
+        const { id } = params;
 
         if (!id || !username) return NextResponse.json(null, { status: 400 });
         if (token?.id !== id) return NextResponse.json(null, { status: 401 });

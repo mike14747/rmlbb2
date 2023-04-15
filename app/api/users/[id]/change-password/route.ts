@@ -1,15 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { changePassword } from '@/lib/api/user';
-import { IdParams } from '@/types/misc-types';
 import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 
-export async function PUT(request: NextRequest, { params }: IdParams) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
     try {
         const token = await getToken({ req: request });
 
         const { userId, password, resetPasswordToken } = await request.json();
-        const id = params.id;
+        const { id } = params;
         if (!id || !password) return NextResponse.json(null, { status: 400 });
 
         if (token && token.id === id) {

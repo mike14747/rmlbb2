@@ -1,40 +1,41 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 
-import Events from '../../pages/events';
+import Events from '@/app/events/page';
 
-const events = [
-    {
-        eventDate: '2021-06-11',
-        daysUntil: 10,
-        event: 'Some test event',
-        details: 'details of the test event',
-    },
-    {
-        eventDate: '2021-06-11',
-        daysUntil: 5,
-        event: 'Some coming soon test event',
-        details: 'details of the test event',
-    },
-    {
-        eventDate: '2021-06-11',
-        daysUntil: 1,
-        event: 'Some immediate event',
-        details: 'details of the test event',
-    },
-];
+// const events = [
+//     {
+//         eventDate: '2021-06-11',
+//         daysUntil: 10,
+//         event: 'Some test event',
+//         details: 'details of the test event',
+//     },
+//     {
+//         eventDate: '2021-06-11',
+//         daysUntil: 5,
+//         event: 'Some coming soon test event',
+//         details: 'details of the test event',
+//     },
+//     {
+//         eventDate: '2021-06-11',
+//         daysUntil: 1,
+//         event: 'Some immediate event',
+//         details: 'details of the test event',
+//     },
+// ];
 
-const pastEvents = [
-    {
-        eventDate: '2020-05-19',
-        event: 'Some past test event',
-        details: 'details of the past test event',
-    },
-];
+// const pastEvents = [
+//     {
+//         eventDate: '2020-05-19',
+//         event: 'Some past test event',
+//         details: 'details of the past test event',
+//     },
+// ];
 
 describe('Events page tests', () => {
     test('Make sure the events page renders properly with a mock events prop', () => {
-        render(<Events events={events} />);
+        // @ts-expect-error Server Component
+        render(<Events />);
 
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^events$/i);
         expect(screen.getByRole('article')).toBeInTheDocument();
@@ -52,7 +53,8 @@ describe('Events page tests', () => {
     });
 
     test('Make sure the page renders properly with the events prop being an empty array', () => {
-        render(<Events events={[]} />);
+        // @ts-expect-error Server Component
+        render(<Events />);
 
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^events$/i);
         expect(screen.getByRole('article')).toBeInTheDocument();
@@ -66,7 +68,8 @@ describe('Events page tests', () => {
     });
 
     test('Make sure the events page renders properly with the events prop being null', () => {
-        render(<Events events={null} />);
+        // @ts-expect-error Server Component
+        render(<Events />);
 
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(/^events$/i);
         expect(screen.getByRole('article')).toBeInTheDocument();

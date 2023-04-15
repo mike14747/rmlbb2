@@ -1,45 +1,46 @@
 import { render, screen, within } from '@testing-library/react';
 
-import Home from '../../pages/index';
+import Home from '@/app/page';
 
-const news = [{
-    'content': [
-        {
-            '_key': 'b86c3c2df223',
-            '_type': 'block',
-            'children': [
-                {
-                    '_key': '67725505f01a',
-                    '_type': 'span',
-                    'marks': [],
-                    'text': 'First text block',
-                },
-            ],
-            'markDefs': [],
-            'style': 'normal',
-        },
-        {
-            '_key': 'cf36d75f143d',
-            '_type': 'block',
-            'children': [
-                {
-                    '_key': 'd133bb370ed00',
-                    '_type': 'span',
-                    'marks': [],
-                    'text': 'Second text block',
-                },
-            ],
-            'markDefs': [],
-            'style': 'normal',
-        },
-    ],
-    'date': '2015-12-31',
-    'title': 'Test Title',
-}];
+// const news = [{
+//     'content': [
+//         {
+//             '_key': 'b86c3c2df223',
+//             '_type': 'block',
+//             'children': [
+//                 {
+//                     '_key': '67725505f01a',
+//                     '_type': 'span',
+//                     'marks': [],
+//                     'text': 'First text block',
+//                 },
+//             ],
+//             'markDefs': [],
+//             'style': 'normal',
+//         },
+//         {
+//             '_key': 'cf36d75f143d',
+//             '_type': 'block',
+//             'children': [
+//                 {
+//                     '_key': 'd133bb370ed00',
+//                     '_type': 'span',
+//                     'marks': [],
+//                     'text': 'Second text block',
+//                 },
+//             ],
+//             'markDefs': [],
+//             'style': 'normal',
+//         },
+//     ],
+//     'date': '2015-12-31',
+//     'title': 'Test Title',
+// }];
 
 describe('Homepage news item tests... not including the sidebar', () => {
     test('Check that the homepage renders properly with a mocked news item', () => {
-        render(<Home news={news} />);
+        // @ts-expect-error Server Component
+        render(<Home />);
 
         const article = screen.getByRole('article');
         expect(article).toBeInTheDocument();
@@ -53,7 +54,8 @@ describe('Homepage news item tests... not including the sidebar', () => {
     });
 
     test('Make sure the homepage renders properly with the news prop being an empty array', () => {
-        render(<Home news={[]} />);
+        // @ts-expect-error Server Component
+        render(<Home />);
 
         const article = screen.getByRole('article');
         expect(article).toBeInTheDocument();
@@ -63,7 +65,8 @@ describe('Homepage news item tests... not including the sidebar', () => {
     });
 
     test('Check that the homepage renders properly with the news prop as null', () => {
-        render(<Home news={null} />);
+        // @ts-expect-error Server Component
+        render(<Home />);
 
         const article = screen.getByRole('article');
         expect(article).toBeInTheDocument();
@@ -75,6 +78,7 @@ describe('Homepage news item tests... not including the sidebar', () => {
 
 describe('Homepage upcoming events tests', () => {
     test('', () => {
+        // @ts-expect-error Server Component
         render(<Home />);
     });
 });

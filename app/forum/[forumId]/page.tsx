@@ -27,7 +27,7 @@ export default async function Forum({ params }: ForumIdParams) {
         redirect('/login?callbackUrl=/forum');
     }
 
-    const forumId = params.forumId;
+    const { forumId } = params;
 
     const forumTopics = await getActiveForumTopics(parseInt(forumId));
 

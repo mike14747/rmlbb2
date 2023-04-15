@@ -41,15 +41,13 @@ export default function NewTopic({ userId, username, forumId, forumName }: NewTo
 
         setIsSubmitting(true);
 
-        // const res = await fetch(`/api/forums/${forumId}/topic/new-topic`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json;charset=utf-8',
-        //     },
-        //     body: JSON.stringify({ userId, username, forumId, forumName, title, content }),
-        // });
-
-        const res = { status: 400 };
+        const res = await fetch(`/api/forums/${forumId}/topic/new-topic`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify({ userId, username, forumId, forumName, title, content }),
+        });
 
         setIsSubmitting(false);
 

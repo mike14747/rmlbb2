@@ -502,12 +502,3 @@ export async function getOneReply(replyId: number) {
     }
 
 }
-
-// try {
-//     const connection = await clientPromise;
-//     const db = connection.db();
-
-// } catch (error) {
-//     console.log(error);
-//     return null;
-// }
