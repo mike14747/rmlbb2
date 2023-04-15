@@ -1,8 +1,10 @@
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-    title: 'RML Baseball - Not Found',
-};
+// import type { Metadata } from 'next';
+
+// export const metadata: Metadata = {
+//     title: 'RML Baseball - Not Found',
+// };
 
 export default function NotFound() {
     return (
