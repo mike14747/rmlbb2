@@ -192,8 +192,12 @@ h2.page-heading {
 }
 
 .error-container > h2 {
-    margin: 2rem 0 3rem 0;
+    margin: 2rem 0;
     color: var(--theme-color-red);
+}
+
+.error-container > p:last-child {
+    margin-bottom: 2rem;
 }
 
 .success {
