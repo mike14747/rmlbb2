@@ -22,6 +22,8 @@ export default function CurrentProfile({ userObj }: { userObj: UserInfo}) {
 
                 <p><span className={styles.description}>Email: </span>{user.email}</p>
 
+                <p><span className={styles.description}>Posts: </span>{user.posts}</p>
+
                 <p><span className={styles.description}>Registered Date: </span>{user.registeredDateStr || 'Not on record'}</p>
             </div>
 

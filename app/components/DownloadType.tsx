@@ -9,7 +9,7 @@ type DownloadsProps = {
     label: string;
 }
 
-export default async function DownloadType({ downloads, label }: DownloadsProps) {
+export default function DownloadType({ downloads, label }: DownloadsProps) {
     return (
         <section className={styles.typeContainer}>
             <h3>{label}</h3>

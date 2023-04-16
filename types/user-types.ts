@@ -7,18 +7,18 @@ export type UserSignin = {
 }
 
 export type UserProfile = {
-    id?: string;
     username: string;
     email: string;
+    posts: number;
     registeredDate: Date;
-    registeredDateStr?: string;
 }
 
 export type UserInfo = {
     id: string;
     username: string;
     email: string;
-    registeredDateStr?: string;
+    posts: number;
+    registeredDateStr: string | undefined;
 }
 
 // this type serves as the base AllUsers type that will have a properties added to it in 2 other types in this file... it is not used outside this file

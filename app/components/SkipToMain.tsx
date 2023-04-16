@@ -1,5 +1,3 @@
-'use client';
-
 export default function SkipToMain() {
     return (
         <div className="container relative">

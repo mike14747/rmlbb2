@@ -21,10 +21,6 @@ export default async function Login({ searchParams }: LoginProps) {
     // get the redirect query parameter if there is one... if not, set the homepage as the redirect location
     let redirectUrl = searchParams.callbackUrl || '/';
 
-    if (session) {
-        redirect(redirectUrl);
-    }
-
     // set an array of query parameters that are not allowed to be redirected to
     const notRedirectable = ['/reset-link', '/reset-password-success', '/login'];
 
@@ -33,6 +29,10 @@ export default async function Login({ searchParams }: LoginProps) {
 
     // if a resistricted query parameter is included, redirect to the homepage
     if (notRedirectableCheck.length > 0) redirectUrl = '/';
+
+    if (session) {
+        redirect(redirectUrl);
+    }
 
     return (
         <main id="main">

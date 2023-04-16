@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from '@/styles/EventsSidebar.module.css';
 import sidebarStyles from '@/styles/Sidebar.module.css';
 
-export default async function EventsSidebar({ children }: { children: ReactNode }) {
+export default function EventsSidebar({ children }: { children: ReactNode }) {
     return (
         <div className={sidebarStyles.cardContainer}>
             <section className={sidebarStyles.card + ' ' + styles.eventsCard}>

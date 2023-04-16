@@ -25,12 +25,10 @@ export default async function DownloadsPage() {
 
             <div className={styles.wrapper}>
                 <Suspense fallback={<Spinner size="large" />}>
-                    {/* @ts-expect-error Server Component */}
                     <DownloadType downloads={downloadsData?.files || []} label="Regular Downloads" />
                 </Suspense>
 
                 <Suspense fallback={<Spinner size="large" />}>
-                    {/* @ts-expect-error Server Component */}
                     <DownloadType downloads={downloadsData?.lzps || []} label="LZP Downloads" />
                 </Suspense>
             </div>

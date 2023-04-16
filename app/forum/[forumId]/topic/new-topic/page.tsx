@@ -19,11 +19,11 @@ type NewTopicParams = {
 }
 
 export default async function NewTopicPage({ params }: NewTopicParams) {
-    const { forumId } = params;
-
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
+
+    const { forumId } = params;
 
     if (!session) {
         redirect('/login?callbackUrl=/forum/' + forumId + '/topic/new-topic');

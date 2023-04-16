@@ -4,7 +4,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Current Season',
 };
 
-export default async function CurrentSeason() {
+export default function CurrentSeason() {
     return (
         <article>
             <h2 className="page-heading">

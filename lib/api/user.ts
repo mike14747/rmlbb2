@@ -3,10 +3,12 @@ import { mailTransporter } from '../helpers/nodemailerConfig';
 import { formatDateObject } from '../helpers/formatDate';
 import { usernamePattern, emailPattern, passwordPattern } from '../formInputPatterns';
 import { generateRandom, hashPassword } from '../helpers/cryptoUtils';
-import { UserSignin, UserProfile, AllUsersDateObj, AllUsersDateStr } from '@/types/user-types';
+import { UserSignin, UserProfile, AllUsersDateObj, AllUsersDateStr, UserInfo } from '@/types/user-types';
 import { TransactionOptions, ReadPreference } from 'mongodb';
 
 export async function getUserForSignin(username: string, password: string) {
+    if (!username || !password) return null;
+
     // const salt = generateRandom(32);
     // console.log({ password: hashPassword(password, salt), salt });
 
@@ -39,6 +41,8 @@ export async function getUserForSignin(username: string, password: string) {
 }
 
 export async function getUserProfile(_id: number) {
+    if (!_id) return null;
+
     try {
         const connection = await clientPromise;
         const db = connection.db();
@@ -49,8 +53,15 @@ export async function getUserProfile(_id: number) {
 
         if (!user) return null;
 
-        user.registeredDateStr = formatDateObject(user.registeredDate, 'short');
-        return user;
+        const userData: UserInfo = {
+            id: _id.toString(),
+            username: user.username,
+            email: user.email,
+            posts: user.posts,
+            registeredDateStr: formatDateObject(user.registeredDate, 'short'),
+        };
+
+        return userData;
     } catch (error) {
         console.log(error);
         return null;

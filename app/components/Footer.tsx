@@ -10,7 +10,7 @@ type FooterProps = {
     }>;
 }
 
-const Footer = ({ contactEmail, links }: FooterProps) => {
+export default function Footer({ contactEmail, links }: FooterProps) {
     return (
         <footer className={'container ' + styles.footer}>
             <div className={styles.upper}>
@@ -53,6 +53,4 @@ const Footer = ({ contactEmail, links }: FooterProps) => {
             </p>
         </footer>
     );
-};
-
-export default Footer;
+}

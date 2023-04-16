@@ -27,8 +27,6 @@ export default async function Directory() {
 
     const managersData = await getManagers();
 
-    if (!managersData) return <p className="error">An error occurred fetching manager data.</p>;
-
     return (
         <main id="main">
             <article>
@@ -37,7 +35,7 @@ export default async function Directory() {
                 </h2>
 
                 <Suspense fallback={<Spinner size="large" />}>
-                    {managersData?.length > 0
+                    {managersData && managersData?.length > 0
                         ? <div className={styles.directoryContainer}>
                             {managersData.map(conf => (
                                 <div key={conf.conference} className={styles.conferenceContainer}>

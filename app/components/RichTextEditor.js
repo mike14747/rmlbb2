@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { EditorState, convertToRaw, convertFromHTML, Modifier, ContentState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';

@@ -1,6 +1,5 @@
 'use client';
 
-// import type { Metadata } from 'next';
 import { useRef, useState, useEffect, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import FormInputForNewPassword from '@/components/FormInputForNewPassword';
@@ -14,10 +13,6 @@ type PropsType = {
     userId: string;
     resetPasswordToken: string;
 }
-
-// export const metadata: Metadata = {
-//     title: 'Biking Log - Reset Password',
-// };
 
 const statusCodeErrorMessages: StatusCodeObj = {
     400: 'An error occurred. New password is not in the proper format.',

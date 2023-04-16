@@ -17,15 +17,11 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Homepage',
 };
 
-async function getInitialNewsItems(num: number) {
-    return await getNewsItems(0, num);
-}
-
 export default async function Home() {
     const settingsData: SettingDataType = await getSettings();
     const { numInitialNewsItems, newsItemsIncrementNumber } = settingsData;
 
-    const initialNewsItems = await getInitialNewsItems(numInitialNewsItems);
+    const initialNewsItems = await getNewsItems(0, numInitialNewsItems);
 
     return (
         <div className={styles.homeContainer}>
@@ -37,7 +33,6 @@ export default async function Home() {
 
             <aside className={sideBarStyles.sidebar}>
                 <div className={sideBarStyles.eventsSidebarContainer}>
-                    {/* @ts-expect-error Server Component */}
                     <EventsSidebar>
                         <Suspense fallback={<Spinner size="medium" />}>
                             {/* @ts-expect-error Server Component */}

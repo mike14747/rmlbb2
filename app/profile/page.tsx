@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
 import CurrentProfile from '@/components/Profile/CurrentProfile';
 import { getUserProfile } from '@/lib/api/user';
-import { UserInfo } from '@/types/user-types';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
 
@@ -20,16 +19,7 @@ export default async function Profile() {
         redirect('/login?callbackUrl=/profile');
     }
 
-    const user = await getUserProfile(parseInt(session.id));
-
-    if (!user) return <p className="error">An error occurred fetching user profile info.</p>;
-
-    const userObj: UserInfo = {
-        id: session.id,
-        username: user.username,
-        email: user.email,
-        registeredDateStr: user.registeredDateStr,
-    };
+    const userObj = await getUserProfile(parseInt(session.id));
 
     return (
         <main id="main">
@@ -39,7 +29,7 @@ export default async function Profile() {
                 </h2>
 
                 <Suspense fallback={<Spinner size="large" />}>
-                    {user
+                    {userObj
                         ? <CurrentProfile userObj={userObj} />
                         : <p className="error">An error occurred fetching user profile info.</p>
                     }

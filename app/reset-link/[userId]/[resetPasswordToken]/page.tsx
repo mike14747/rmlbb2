@@ -6,7 +6,7 @@ import Link from 'next/link';
 import styles from '@/styles/profile.module.css';
 
 export const metadata: Metadata = {
-    title: 'Biking Log - Reset Password',
+    title: 'RML Baseball - Reset Password',
 };
 
 type PageProps = {
