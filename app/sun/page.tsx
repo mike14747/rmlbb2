@@ -19,13 +19,15 @@ export default async function Sun() {
     }
 
     return (
-        <article className="mw-90ch">
-            <h2 className="page-heading">
-                Sun Editor
-            </h2>
+        <main id="main">
+            <article className="mw-90ch">
+                <h2 className="page-heading">
+                    Sun Editor
+                </h2>
 
-            <SunEditorComp />
-        </article>
+                <SunEditorComp />
+            </article>
+        </main>
     );
 }
 

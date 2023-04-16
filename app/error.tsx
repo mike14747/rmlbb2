@@ -9,12 +9,12 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
     }, [error]);
 
     return (
-        <div className="error-container">
+        <main id="main" className="error-container">
             <h2>An error occurred!</h2>
 
             <Button type="button" size="medium" variant="contained" theme="danger" onClick={() => reset()}>
                 Try Again
             </Button>
-        </div>
+        </main>
     );
 }

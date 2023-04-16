@@ -25,15 +25,17 @@ export default async function EditUser() {
         const usersData = await getAllUsers();
 
         return (
-            <article className={styles.adminContainer}>
-                <h2 className={'page-heading ' + styles.adminPageHeading}>
-                    Edit User
-                </h2>
+            <main id="main">
+                <article className={styles.adminContainer}>
+                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                        Edit User
+                    </h2>
 
-                <Suspense fallback={<Spinner size="large" />}>
-                    <EditUserForm usersData={usersData} />
-                </Suspense>
-            </article>
+                    <Suspense fallback={<Spinner size="large" />}>
+                        <EditUserForm usersData={usersData} />
+                    </Suspense>
+                </article>
+            </main>
         );
     }
 

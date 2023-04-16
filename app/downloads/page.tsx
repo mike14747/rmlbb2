@@ -16,22 +16,24 @@ export default async function DownloadsPage() {
     const downloadsData = await getDownloadsList();
 
     return (
-        <article>
-            <h2 className="page-heading">
-                Downloads
-            </h2>
+        <main id="main">
+            <article>
+                <h2 className="page-heading">
+                    Downloads
+                </h2>
 
-            {!downloadsData && <p className={styles.error}>An error occurred fetching data.</p>}
+                {!downloadsData && <p className={styles.error}>An error occurred fetching data.</p>}
 
-            <div className={styles.wrapper}>
-                <Suspense fallback={<Spinner size="large" />}>
-                    <DownloadType downloads={downloadsData?.files || []} label="Regular Downloads" />
-                </Suspense>
+                <div className={styles.wrapper}>
+                    <Suspense fallback={<Spinner size="large" />}>
+                        <DownloadType downloads={downloadsData?.files || []} label="Regular Downloads" />
+                    </Suspense>
 
-                <Suspense fallback={<Spinner size="large" />}>
-                    <DownloadType downloads={downloadsData?.lzps || []} label="LZP Downloads" />
-                </Suspense>
-            </div>
-        </article>
+                    <Suspense fallback={<Spinner size="large" />}>
+                        <DownloadType downloads={downloadsData?.lzps || []} label="LZP Downloads" />
+                    </Suspense>
+                </div>
+            </article>
+        </main>
     );
 }

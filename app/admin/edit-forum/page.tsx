@@ -25,22 +25,24 @@ export default async function EditForum() {
         const forumList = await getForumListForEdit();
 
         return (
-            <article className={styles.adminContainer}>
-                <h2 className={'page-heading ' + styles.adminPageHeading}>
-                    Edit Forum
-                </h2>
+            <main id="main">
+                <article className={styles.adminContainer}>
+                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                        Edit Forum
+                    </h2>
 
-                <Suspense fallback={<Spinner size="large" />}>
-                    ? {forumList && forumList.length > 0 &&
-                        forumList.map(forum => (
-                            <div key={forum._id} className={styles.editItem}>
-                                <EditForumForm forum={forum} />
-                            </div>
-                        ))
-                    }
-                    : <p className="error">An error occurred fetching forum list.</p>
-                </Suspense>
-            </article>
+                    <Suspense fallback={<Spinner size="large" />}>
+                        ? {forumList && forumList.length > 0 &&
+                            forumList.map(forum => (
+                                <div key={forum._id} className={styles.editItem}>
+                                    <EditForumForm forum={forum} />
+                                </div>
+                            ))
+                        }
+                        : <p className="error">An error occurred fetching forum list.</p>
+                    </Suspense>
+                </article>
+            </main>
         );
     }
 

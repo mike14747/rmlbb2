@@ -7,7 +7,7 @@ export default function Tiptap() {
     // const [content, setContent] = useState('');
 
     return (
-        <main className="mw-90ch">
+        <main id="main" className="mw-90ch">
             <h2 className="page-heading">
                 TipTap Editor
             </h2>

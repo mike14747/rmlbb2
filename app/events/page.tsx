@@ -10,19 +10,21 @@ export default async function Events() {
     const currentEventsData = await getAllActiveUpcomingEvents();
 
     return (
-        <article className="mw-90ch">
-            <h2 className="page-heading">
-                Events
-            </h2>
+        <main id="main">
+            <article className="mw-90ch">
+                <h2 className="page-heading">
+                    Events
+                </h2>
 
-            <Suspense fallback={<Spinner />}>
-                {currentEventsData
-                    ? <CurrentEvents currentEventsData={currentEventsData} />
-                    : <p className="error">An error occurred fetching data.</p>
-                }
-            </Suspense>
+                <Suspense fallback={<Spinner />}>
+                    {currentEventsData
+                        ? <CurrentEvents currentEventsData={currentEventsData} />
+                        : <p className="error">An error occurred fetching data.</p>
+                    }
+                </Suspense>
 
-            <PastEvents />
-        </article>
+                <PastEvents />
+            </article>
+        </main>
     );
 }

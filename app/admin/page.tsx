@@ -20,37 +20,40 @@ export default async function AdminHome() {
 
     if (session.role === 'admin') {
         return (
-            <article className={styles.adminContainer}>
-                <h2 className={'page-heading ' + styles.adminPageHeading}>
-                    Admin Home
-                </h2>
+            <main id="main">
+                <article className={styles.adminContainer}>
+                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                        Admin Home
+                    </h2>
 
-                <ul>
-                    <li>
-                        <Link href="/admin/add-user">
-                            Add new user
-                        </Link>
-                    </li>
+                    <ul>
+                        <li>
+                            <Link href="/admin/add-user">
+                                Add new user
+                            </Link>
+                        </li>
 
-                    <li>
-                        <Link href="/admin/edit-user">
-                            Edit a user
-                        </Link>
-                    </li>
+                        <li>
+                            <Link href="/admin/edit-user">
+                                Edit a user
+                            </Link>
+                        </li>
 
-                    <li>
-                        <Link href="/admin/add-forum">
-                            Add new forum
-                        </Link>
-                    </li>
+                        <li>
+                            <Link href="/admin/add-forum">
+                                Add new forum
+                            </Link>
+                        </li>
 
-                    <li>
-                        <Link href="/admin/edit-forum">
-                            Edit a forum
-                        </Link>
-                    </li>
-                </ul>
-            </article>
+                        <li>
+                            <Link href="/admin/edit-forum">
+                                Edit a forum
+                            </Link>
+                        </li>
+                    </ul>
+                </article>
+            </main>
+
         );
     }
 

@@ -20,13 +20,15 @@ export default async function AddForum() {
 
     if (session.role === 'admin') {
         return (
-            <article className={styles.adminContainer}>
-                <h2 className={'page-heading ' + styles.adminPageHeading}>
-                    Add Forum
-                </h2>
+            <main id="main">
+                <article className={styles.adminContainer}>
+                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                        Add Forum
+                    </h2>
 
-                <AddForumForm />
-            </article>
+                    <AddForumForm />
+                </article>
+            </main>
         );
     }
 

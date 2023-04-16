@@ -21,7 +21,7 @@ export default async function Articles() {
     const articlesList = await getActiveArticlesForIndex();
 
     return (
-        <>
+        <main id="main">
             <div className={styles.articlePageContainer}>
                 <article className={styles.articleContainer + ' mw-90ch'}>
                     <h2 className="page-heading">Articles Home</h2>
@@ -57,6 +57,6 @@ export default async function Articles() {
                     </SidebarCard>
                 </div>
             </div>
-        </>
+        </main>
     );
 }

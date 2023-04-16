@@ -6,10 +6,12 @@ export const metadata: Metadata = {
 
 export default function CurrentSeason() {
     return (
-        <article>
-            <h2 className="page-heading">
-                Current Season
-            </h2>
-        </article>
+        <main id="main">
+            <article>
+                <h2 className="page-heading">
+                    Current Season
+                </h2>
+            </article>
+        </main>
     );
 }
