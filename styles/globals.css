@@ -236,7 +236,8 @@ h2.page-heading {
 /* start global form css */
 
 .form {
-    max-width: 30ch;
+    width: 100%;
+    max-width: 288px;
     margin: 0 auto;
 }
 

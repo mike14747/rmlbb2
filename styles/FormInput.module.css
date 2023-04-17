@@ -3,13 +3,11 @@
 }
 
 label.label {
-    margin: 0;
+    display: block;
 }
 
-label.label input.input {
-    display: inline-block;
+input.input {
     width: 100%;
-    max-width: 30ch;
     margin: 0;
 }
 

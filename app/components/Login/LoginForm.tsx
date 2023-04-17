@@ -41,7 +41,7 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
 
         // if the user did not successfully log in, set the error that will be displayed
         if (!loginStatus) setError('A network error has occurred.');
-        if (loginStatus && loginStatus.error) setError('Login Failed... check your credentials and try again.');
+        if (loginStatus?.error) setError('Login Failed... check your credentials and try again.');
     };
 
     useEffect(() => {
