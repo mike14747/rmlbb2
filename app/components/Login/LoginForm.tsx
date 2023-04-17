@@ -19,13 +19,14 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
 
     const username = useRef<string>('');
     const password = useRef<string>('');
-    const [isLoading, SetIsLoading] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
 
     const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        SetIsLoading(true);
+        setIsLoading(true);
+        setError('');
 
         // use the built-in signIn function of next-auth to try to sign in a user
         const loginStatus = await signIn('credentials', {
@@ -34,15 +35,13 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
             redirect: false,
             // callbackUrl: redirectUrl,
         });
+        console.log(loginStatus);
 
-        SetIsLoading(false);
-
-        if (!loginStatus) setError('A network error has occurred.');
+        setIsLoading(false);
 
         // if the user did not successfully log in, set the error that will be displayed
-        if (loginStatus && (!loginStatus.ok || loginStatus.status !== 200)) {
-            setError('Login Failed... check your credentials and try again.');
-        }
+        if (!loginStatus) setError('A network error has occurred.');
+        if (loginStatus && loginStatus.error) setError('Login Failed... check your credentials and try again.');
     };
 
     useEffect(() => {
@@ -57,7 +56,7 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
             <>
                 {isLoading && <Spinner size="large" />}
 
-                {error && <p className="validation-error">{error}</p>}
+                {error && <p className="validation-error text-center">{error}</p>}
 
                 <form onSubmit={handleSignIn} className="form">
                     <FormInput

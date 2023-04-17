@@ -36,7 +36,7 @@ export default async function Login({ searchParams }: LoginProps) {
 
     return (
         <main id="main">
-            <article>
+            <article className="mw-90ch">
                 <h2 className="page-heading">
                     Login
                 </h2>

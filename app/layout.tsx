@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 // eslint-disable-next-line camelcase
 import { Inter } from 'next/font/google';
-import ClientSessionProvider from './components/ClientSessionProvider';
-import Header from './components/Header/Header';
-import Footer from './components/Footer';
-import ScrollTop from './components/ScrollTop';
-import SkipToMain from './components/SkipToMain';
-import TopInfo from './components/TopInfo';
+import ClientSessionProvider from '@/components/ClientSessionProvider';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer';
+import ScrollTop from '@/components/ScrollTop';
+import SkipToMain from '@/components/SkipToMain';
+import TopInfo from '@/components/TopInfo';
 import { Session } from 'next-auth';
 import { getSettings } from '@/lib/api/settings';
 import { SettingDataType } from '@/types/misc-types';

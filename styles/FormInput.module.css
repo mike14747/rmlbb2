@@ -2,10 +2,14 @@
     margin: 1rem 0;
 }
 
-label.label,
-label.label + input.input {
+label.label {
+    margin: 0;
+}
+
+label.label input.input {
     display: inline-block;
-    max-width: 24ch;
+    width: 100%;
+    max-width: 30ch;
     margin: 0;
 }
 
@@ -105,10 +109,4 @@ label.label input.input[type='checkbox']:checked + .fakeCheckbox:focus {
 /* end checkbox styling */
 
 @media (min-width: 768px) {
-    label.label,
-    label.label + input.input {
-        display: inline-block;
-        max-width: 30ch;
-        margin: 0;
-    }
 }
