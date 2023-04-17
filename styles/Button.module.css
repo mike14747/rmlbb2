@@ -22,7 +22,7 @@ button.contained.primary {
 
 button.contained.secondary {
     color: var(--mg-light);
-    background-color: var(--theme-color-orange);
+    background-color: var(--mg-orange-dark);
 }
 
 button.contained.danger {
@@ -37,9 +37,9 @@ button.outlined.primary {
 }
 
 button.outlined.secondary {
-    color: var(--theme-color-orange);
+    color: var(--mg-orange-dark);
     background-color: var(--mg-light);
-    border: 1px var(--theme-color-orange) solid;
+    border: 1px var(--mg-orange-dark) solid;
 }
 
 button.outlined.danger {
@@ -108,7 +108,7 @@ button:not(.small).outlined:hover {
 }
 
 button.text:hover {
-    color: var(--theme-color-orange);
+    color: var(--mg-orange-dark);
     outline: 1px var(--mg-gray-3) dashed;
 }
 

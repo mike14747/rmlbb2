@@ -63,7 +63,7 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
 
             {isEmailUpdated && <p className={styles.success}>Your email address has been successfully updated.</p>}
 
-            <form ref={form as RefObject<HTMLFormElement>} className={styles.updateGroup} onSubmit={handleChangeEmailSubmit}>
+            <form ref={form as RefObject<HTMLFormElement>} className={`form ${styles.updateGroup}`} onSubmit={handleChangeEmailSubmit}>
                 {isSubmitting && <Spinner size="large" />}
 
                 {error && <p className={styles.error}>{error}</p>}

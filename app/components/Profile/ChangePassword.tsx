@@ -53,7 +53,7 @@ export default function ChangePassword({ id }: { id: string }) {
                 </p>
             </div>
 
-            <form className={styles.updateGroup} onSubmit={handleChangePasswordSubmit}>
+            <form className={`form ${styles.updateGroup}`} onSubmit={handleChangePasswordSubmit}>
                 {isSubmitting && <Spinner size="large" />}
 
                 {error && <p className={styles.error}>{error}</p>}

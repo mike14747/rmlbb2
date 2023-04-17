@@ -5,6 +5,7 @@
 }
 
 .updateContainer {
+    width: fit-content;
     margin-bottom: 2rem;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -14,6 +15,9 @@
     border: 1px var(--mg-green) solid;
 }
 
+form.updateGroup {
+    margin: 0;
+}
 
 .currentHeading,
 .updateHeading {

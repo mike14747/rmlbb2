@@ -19,40 +19,40 @@ export default function UpdateProfileButtons({ viewState, setViewState }: Update
             {viewState.showChangeUsername
                 ? <Button onClick={() => {
                     setViewState(prev => ({ ...prev, showChangeUsername: false }));
-                }} type="button" size="small" variant="text" theme="primary">&#8594; Hide Update Username</Button>
+                }} type="button" size="small" variant="text" theme="primary">&#8594; Hide Change Username</Button>
                 : <Button onClick={() => {
                     setViewState(() => ({
                         showChangeUsername: true,
                         showChangePassword: false,
                         showChangeEmail: false,
                     }));
-                }} type="button" size="small" variant="text" theme="primary">Update Username</Button>
+                }} type="button" size="small" variant="text" theme="primary">Change Username</Button>
             }
 
             {viewState.showChangePassword
                 ? <Button onClick={() => {
                     setViewState(prev => ({ ...prev, showChangePassword: false }));
-                }} type="button" size="small" variant="text" theme="primary">&#8594; Hide Update Password</Button>
+                }} type="button" size="small" variant="text" theme="primary">&#8594; Hide Change Password</Button>
                 : <Button onClick={() => {
                     setViewState(() => ({
                         showChangeUsername: false,
                         showChangePassword: true,
                         showChangeEmail: false,
                     }));
-                }} type="button" size="small" variant="text" theme="primary">Update Password</Button>
+                }} type="button" size="small" variant="text" theme="primary">Change Password</Button>
             }
 
             {viewState.showChangeEmail
                 ? <Button onClick={() => {
                     setViewState(prev => ({ ...prev, showChangeEmail: false }));
-                }} type="button" size="small" variant="text" theme="primary">&#8594; Hide Update Email</Button>
+                }} type="button" size="small" variant="text" theme="primary">&#8594; Hide Change Email</Button>
                 : <Button onClick={() => {
                     setViewState(() => ({
                         showChangeUsername: false,
                         showChangePassword: false,
                         showChangeEmail: true,
                     }));
-                }} type="button" size="small" variant="text" theme="primary">Update Email</Button>
+                }} type="button" size="small" variant="text" theme="primary">Change Email</Button>
             }
         </nav>
     );

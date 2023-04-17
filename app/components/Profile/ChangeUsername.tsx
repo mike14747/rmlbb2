@@ -49,7 +49,7 @@ export default function ChangeUsername({ id }: { id: string }) {
                 </p>
             </div>
 
-            <form className={styles.updateGroup} onSubmit={handleChangeUsernameSubmit}>
+            <form className={`form ${styles.updateGroup}`} onSubmit={handleChangeUsernameSubmit}>
                 {isSubmitting && <Spinner size="large" />}
 
                 {error && <p className={styles.error}>{error}</p>}
