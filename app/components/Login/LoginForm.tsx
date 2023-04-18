@@ -2,7 +2,7 @@
 
 import { FormEvent, ChangeEvent, useRef, useState, useEffect } from 'react';
 import { useSession, signIn } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import FormInput from '@/components/FormInput';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
@@ -18,8 +18,6 @@ export default function LoginForm() {
     const notRedirectable = ['/reset-link', '/reset-password-success', '/login'];
     const notRedirectableCheck = notRedirectable.filter(url => redirectUrl.includes(url));
     if (notRedirectableCheck.length > 0) redirectUrl = '/';
-
-    const router = useRouter();
 
     const username = useRef<string>('');
     const password = useRef<string>('');
@@ -48,10 +46,7 @@ export default function LoginForm() {
     };
 
     useEffect(() => {
-        if (status === 'authenticated') {
-            console.log({ redirectUrl });
-            router.push(redirectUrl);
-        }
+        if (status === 'authenticated') if (status === 'authenticated') window.location.href = redirectUrl;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 

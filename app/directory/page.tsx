@@ -21,8 +21,6 @@ export default async function Directory() {
         callbacks: { session: ({ token }) => token },
     });
 
-    console.log({ session });
-
     if (!session) {
         redirect('/login?callbackUrl=/directory');
     }
