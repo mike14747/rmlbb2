@@ -2,18 +2,22 @@
 
 import { FormEvent, ChangeEvent, useRef, useState, useEffect } from 'react';
 import { useSession, signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import FormInput from '@/components/FormInput';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
 import ForgotLoginInfo from '@/components/Login/ForgotLoginInfo';
 
-type LoginFormProps = {
-    redirectUrl: string
-}
-
-export default function LoginForm({ redirectUrl }: LoginFormProps) {
+export default function LoginForm() {
     const { status } = useSession();
+
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get('callbackUrl');
+
+    let redirectUrl = callbackUrl || '/';
+    const notRedirectable = ['/reset-link', '/reset-password-success', '/login'];
+    const notRedirectableCheck = notRedirectable.filter(url => redirectUrl.includes(url));
+    if (notRedirectableCheck.length > 0) redirectUrl = '/';
 
     const router = useRouter();
 
@@ -35,7 +39,6 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
             redirect: false,
             // callbackUrl: redirectUrl,
         });
-        console.log(loginStatus);
 
         setIsLoading(false);
 
@@ -45,7 +48,10 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
     };
 
     useEffect(() => {
-        if (status === 'authenticated') router.push(redirectUrl);
+        if (status === 'authenticated') {
+            console.log({ redirectUrl });
+            router.push(redirectUrl);
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 
@@ -56,7 +62,7 @@ export default function LoginForm({ redirectUrl }: LoginFormProps) {
             <>
                 {isLoading && <Spinner size="large" />}
 
-                {error && <p className="validation-error text-center">{error}</p>}
+                {error && <p className="validation-error">{error}</p>}
 
                 <form onSubmit={handleSignIn} className="form">
                     <FormInput

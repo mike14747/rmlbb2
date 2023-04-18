@@ -48,7 +48,7 @@ export async function getUserProfile(_id: number) {
         const db = connection.db();
 
         const user = await db
-            .collection('users')
+            .collection<{ _id: number }>('users')
             .findOne<UserProfile>({ _id, active: true }, { projection: { username: 1, email: 1, posts: 1, registeredDate: 1 } });
 
         if (!user) return null;
@@ -126,7 +126,7 @@ export async function changeUsername(_id: number, newUsername: string) {
 
     // make sure newUsername is not already in use
     const inUseResult = await db
-        .collection('users')
+        .collection<{ _id: number }>('users')
         .find({ _id, username: newUsername })
         .project({ _id: 1 })
         .limit(1)
@@ -147,7 +147,7 @@ export async function changeUsername(_id: number, newUsername: string) {
     try {
         transactionResult = await session.withTransaction(async () => {
             await db
-                .collection('users')
+                .collection<{ _id: number }>('users')
                 .updateOne({ _id }, { $set: { username: newUsername } }, { session });
 
             await db
@@ -185,7 +185,7 @@ export async function changeEmail(_id: number, newEmail: string) {
     const db = connection.db();
 
     const updateResult = await db
-        .collection('users')
+        .collection<{ _id: number }>('users')
         .updateOne({ _id }, { $set: { email: newEmail } });
 
     return updateResult?.modifiedCount === 1 ? { code: 200 } : { code: 500 };
@@ -202,7 +202,7 @@ export async function changePassword(_id: number, password: string, resetPasswor
     if (resetPasswordToken) {
         // since a token is being passed, get the expiration date/time of the token if it exists in the db
         const tokenValidCheck = (await db
-            .collection('users')
+            .collection<{ _id: number }>('users')
             .find({ _id, resetPasswordToken })
             .project({ resetPasswordExpires: 1 })
             .limit(1)
@@ -217,7 +217,7 @@ export async function changePassword(_id: number, password: string, resetPasswor
     const hashedPassword = hashPassword(password, salt);
 
     const updateResult = await db
-        .collection('users')
+        .collection<{ _id: number }>('users')
         .updateOne({ _id }, { $set: { password: hashedPassword, salt } });
 
     return updateResult?.modifiedCount === 1 ? { code: 200 } : { code: 500 };

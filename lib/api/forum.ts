@@ -1,7 +1,7 @@
 import clientPromise from '../mongodb';
 import { formatDateObjectWithTime } from '../helpers/formatDate';
 import { getNextId } from '../helpers/getNextMongoId';
-import { ForumForEdit, ForumToClient, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData } from '@/types/forum-types';
+import { ForumForEdit, ForumToClient, ForumTopicFromDB, ForumTopicToClient, RecentPost, TopicReplyData, TopicReplyQuery } from '@/types/forum-types';
 import { TransactionOptions, ReadPreference } from 'mongodb';
 
 export async function getForumList() {
@@ -209,7 +209,7 @@ export async function getActiveForumTopic(forumId: number, topicId: number) {
         const db = connection.db();
 
         const data = await db
-            .collection('topics')
+            .collection<{ _id: number }>('topics')
             .findOne<ForumTopicFromDB>({ forum_id: forumId, _id: topicId, forumActive: true, active: true }, { projection: { forumActive: 0, active: 0 } });
 
         if (!data) return null;
@@ -252,17 +252,17 @@ export async function getTopicReplies(repliesArr: number[]) {
         const db = connection.db();
 
         const data = (await db
-            .collection('replies')
+            .collection<TopicReplyQuery>('replies')
             .find({ _id: { $in: repliesArr } })
             .map(reply => {
-                reply.dateStr = formatDateObjectWithTime(reply.date, 'short');
+                reply.dateStr = reply.date ? formatDateObjectWithTime(reply.date, 'short') : undefined;
                 delete reply.date;
                 reply.lastEditDateStr = reply.lastEditDate ? formatDateObjectWithTime(reply.lastEditDate, 'short') : undefined;
                 delete reply.lastEditDate;
                 return reply;
             })
             .toArray()) as unknown as TopicReplyData[];
-        // the "as unknown" was needed to be done because the type I've set was conflicting with WithId<Document>... which was invoked by mongodb because _id was used in a search inside an array
+        // the "as unknown as TopicReplyData[]" was needed to be done because the type I've set was conflicting with WithId<Document>... which was invoked by mongodb because _id was used in a search inside an array
 
         return data;
     } catch (error) {
@@ -277,7 +277,7 @@ export async function getForumName(forumId: number) {
         const db = connection.db();
 
         const data = await db
-            .collection('forums')
+            .collection<{ _id: number }>('forums')
             .findOne<{ _id: number; name: string }>({ active: true, _id: forumId }, { projection: { _id: 1, name: 1 } });
 
         return data;
@@ -335,7 +335,7 @@ export async function editForum(_id: number, newForumName: string, newOrder: num
 
     // make sure newForumName is not already in use
     const inUseResult = await db
-        .collection('forums')
+        .collection<{ _id: number }>('forums')
         .find({ _id: { $ne: _id }, name: newForumName })
         .project({ _id: 1 })
         .limit(1)
@@ -358,7 +358,7 @@ export async function editForum(_id: number, newForumName: string, newOrder: num
     try {
         transactionResult = await session.withTransaction(async () => {
             await db
-                .collection('forums')
+                .collection<{ _id: number }>('forums')
                 .updateOne({ _id: _id }, { $set: { name: newForumName, order: newOrder, active: newActiveStatus } }, { session });
 
             await db
@@ -434,7 +434,7 @@ export async function addTopic(userId: number, username: string, forumId: number
                 .insertOne(newTopic, { session });
 
             await db
-                .collection('forums')
+                .collection<{ _id: number }>('forums')
                 .updateOne({ _id: forumId }, { $set: { lastPost: lastPost } }, { session });
 
         }, transactionOptions);
@@ -469,7 +469,7 @@ export async function editTopic(topicId: number, userId: number, title: string, 
     try {
         transactionResult = await session.withTransaction(async () => {
             await db
-                .collection('topics')
+                .collection<{ _id: number }>('topics')
                 .updateOne({ _id: topicId, user_id: userId }, { $set: { title, content, lastEditDate: currentDate } }, { session });
 
             await db
@@ -492,7 +492,7 @@ export async function getOneReply(replyId: number) {
         const db = connection.db();
 
         const data = await db
-            .collection('replies')
+            .collection<{ _id: number }>('replies')
             .findOne({ _id: replyId }, { projection: { subject: 1, content: 1 } });
 
         return data;

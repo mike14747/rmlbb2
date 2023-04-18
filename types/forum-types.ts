@@ -77,3 +77,8 @@ export type TopicReplyData = {
     dateStr: string | undefined;
     lastEditDateStr: string | undefined;
 }
+
+export type TopicReplyQuery = TopicReplyData & {
+    date?: Date;
+    lastEditDate?: Date
+}
