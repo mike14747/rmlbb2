@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
 
 export const metadata: Metadata = {
-    title: 'next-13 - Login',
+    title: 'RML Baseball - Login',
 };
 
 export default function Login() {

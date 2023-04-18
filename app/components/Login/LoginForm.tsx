@@ -8,7 +8,7 @@ import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
 import ForgotLoginInfo from '@/components/Login/ForgotLoginInfo';
 
-export default function LoginForm() {
+function LoginForm() {
     const { status } = useSession();
 
     const searchParams = useSearchParams();
@@ -90,3 +90,5 @@ export default function LoginForm() {
 
     return null;
 }
+
+export default  LoginForm;
