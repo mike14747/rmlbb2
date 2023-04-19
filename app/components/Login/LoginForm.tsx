@@ -12,7 +12,7 @@ function LoginForm() {
     const { status } = useSession();
 
     const searchParams = useSearchParams();
-    let redirectUrl = searchParams.get('callbackUrl') || '/';
+    let redirectUrl = searchParams?.get('callbackUrl') || '/';
     const notRedirectable = ['/reset-link', '/reset-password-success', '/login'];
     const notRedirectableCheck = notRedirectable.filter(url => redirectUrl.includes(url));
     if (notRedirectableCheck.length > 0) redirectUrl = '/';
