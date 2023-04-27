@@ -26,7 +26,7 @@ export default function CurrentEvents({ currentEventsData }: { currentEventsData
                                     {event.details && <p className={styles.eventDetails}> ({event.details})</p>}
                                 </div>
                                 <div className={styles.eventRight}>
-                                    {event.daysUntil &&
+                                    {(event.daysUntil || event.daysUntil === 0) &&
                                         <>
                                             {event.daysUntil >= 7 && <p aria-label="Urgency level" title="Due in 7 or more days" className={styles.normal}>&#9679;</p>}
                                             {event.daysUntil > 2 && event.daysUntil < 7 && <p aria-label="Urgency level" title="Due in 3 to 6 days" className={styles.soon}>&#9679;</p>}
