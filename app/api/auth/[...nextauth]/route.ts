@@ -1,9 +1,9 @@
-import NextAuth, { type NextAuthOptions } from 'next-auth';
+import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
 import { getUserForSignin } from '@/lib/api/user';
 
-export const authOptions: NextAuthOptions = {
+const handler = NextAuth({
     providers: [
         Credentials({
             name: 'Credentials',
@@ -18,7 +18,6 @@ export const authOptions: NextAuthOptions = {
                 const { username, password } = credentials;
                 const user = await getUserForSignin(username, password);
 
-                // I'm adding id, username and role to the user object... which need to also be added to the token and session below in the callback functions
                 return user ? { id: user.id, name: user.username, role: user.role } : null;
             },
         }),
@@ -32,20 +31,18 @@ export const authOptions: NextAuthOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
-        // I'm adding some extra properties to the jwt... this is where you must add them
         async jwt({ token, user }) {
             if (user?.id) token.id = user.id;
             if (user?.name) token.name = user.name;
             if (user?.role) token.role = user.role;
             return token;
         },
-        // I'm adding some extra properties to the session... this is where you must add them
         async session({ session, token }) {
             if (token.id && session.user) session.user.id = token.id;
             if (token.role && session.user) session.user.role = token.role;
             return session;
         },
     },
-};
+});
 
-export default NextAuth(authOptions);
+export { handler as GET, handler as POST };
