@@ -4,7 +4,7 @@ import PastEvents from '@/components/Events/PastEvents';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
 
-export const revalidate = 60;
+// export const revalidate = 60;
 
 export default async function Events() {
     const currentEventsData = await getAllActiveUpcomingEvents();

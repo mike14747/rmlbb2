@@ -2,7 +2,7 @@ import { getNextUpcomingEvents } from '@/lib/api/events';
 
 import styles from '@/styles/EventsSidebar.module.css';
 
-export const revalidate = 600;
+// export const revalidate = 600;
 
 export default async function EventsSidebarContent() {
     const events = await getNextUpcomingEvents();
