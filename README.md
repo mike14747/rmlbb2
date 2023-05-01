@@ -16,14 +16,14 @@
 
 ---
 
-### What is rmlbb2?
+## What is rmlbb2?
 
 -   The new web app for the fantasy baseball league, the RML.
 -   It will soon be replacing the original website that was long ago built in PHP, using 2 MySQL databases (one for the main website and one for the Message Forum) and hosted on a CPanel web host.
 
 ---
 
-### Features
+## Features
 
 -   Built with Next.js and hosted on Vercel.
 -   Uses NextAuth for user authentication and authorization.
@@ -33,7 +33,8 @@
 -   File downloads.
 -   Private message forum (which was custom built from the ground up).
 -   Private member directory.
--   The public pages are nearly all SSG pages. The private pages are static pages that use client-side hydration... which happens upon authenticated.
+-   All pages are server components. They utilize client components to handle user interactivity.
+-   Along the way, I've refactored the app to typescript.
 -   MongoDB (via Atlas) is the data storage solution for the message forum and user data.
 -   Sanity.io CMS is used for the rest of the data. The Sanity dashboard is great for easily updating website content. It was broken up into 3 separate Sanity projects. The free plan at Sanity doesn't allow for having public content mixed with private content in the same project.
     -   The first is for the public website data (block content for several pages, upcoming events list, app settings, etc).
@@ -42,7 +43,7 @@
 
 ---
 
-### Challenges with creating this app
+## Challenges with creating this app
 
 The biggest challenges revolved around converting the old MySQL database data into forms suitable for use in MongoDB and Sanity.io CMS.
 
@@ -60,7 +61,7 @@ I ended up using _react-draft-wysiwyg_ to handle the user posts. The output is s
 
 ---
 
-### How you can use this project?
+## How you can use this project?
 
 -   Clone the GitHub repo.
 -   Install the necessary npm packages.
@@ -69,7 +70,7 @@ I ended up using _react-draft-wysiwyg_ to handle the user posts. The output is s
 npm i
 ```
 
-Include these **environmental variable** in your .env file:
+Include these **environment variables** in your .env file:
 
 ```txt
 NODE_ENV=development
@@ -90,9 +91,8 @@ SANITY_PRIVATE_API_TOKEN=<token>
 NEXT_PUBLIC_BASE_FILE_QUERY_URL=<url>
 NEXT_PUBLIC_BASE_FILE_DOWNLOAD_URL=<url>
 # ----------
-NEXTAUTH_URL=http://localhost:3000
-JWT_SIGNING_PRIVATE_KEY=<key>
-JWT_SECRET=<secret>
+NEXTAUTH_URL='http://localhost:3000'
+NEXTAUTH_SECRET=<secret>
 # ----------
 NO_REPLY_EMAIL=<email>
 GOOGLE_CLIENT_ID=<client_id>
@@ -100,10 +100,6 @@ GOOGLE_CLIENT_SECRET=<client_secret>
 GOOGLE_REFRESH_TOKEN=<token>
 # ------
 BASE_URL=http://localhost:3000
-# ----------
-INITIAL_NEWS_ITEMS=20
-NEWS_ITEMS_INCREMENT=50
-# ----------
 ```
 
 The difficult part about using this project yourself is in setting up the remote data sources (MongoDB and Sanity.io.).
