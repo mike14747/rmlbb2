@@ -11,7 +11,8 @@ import styles from '@/styles/admin.module.css';
 
 const statusCodeErrorMessages: StatusCodeObj = {
     400: 'An error occurred. New forum name is not in the proper format.',
-    401: 'An error occurred. You do not have permission to add a forum.',
+    401: 'An error occurred. You need to be logged in to perform this action.',
+    403: 'An error occurred. You do not have permission to perform this action.',
     409: 'An error occurred. The forum name you submitted is already in use.',
     500: 'A server error occurred. Please try your update again.',
 };
