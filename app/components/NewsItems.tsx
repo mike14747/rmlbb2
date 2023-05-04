@@ -1,7 +1,7 @@
 'use client';
 
 import { PortableText } from '@portabletext/react';
-import components from '@/lib/helpers/portalTextComponents';
+import components from '@/lib/helpers/portableTextComponents';
 import { NewsItemProps } from '@/types/news-types';
 
 import styles from '@/styles/home.module.css';

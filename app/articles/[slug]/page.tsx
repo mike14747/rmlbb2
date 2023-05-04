@@ -1,6 +1,6 @@
 import { getArticleBySlug, getActiveArticleSlugs } from '@/lib/api/articles';
 import { PortableText } from '@portabletext/react';
-import components from '@/lib/helpers/portalTextComponents';
+import components from '@/lib/helpers/portableTextComponents';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
 

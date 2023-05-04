@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
-import components from '@/lib/helpers/portalTextComponents';
+import components from '@/lib/helpers/portableTextComponents';
 import { getArticlesHomeText } from '@/lib/api/miscPortableText';
 import { getActiveArticlesForIndex } from '@/lib/api/articles';
 import SidebarCard from '@/components/SidebarCard';

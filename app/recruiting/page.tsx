@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import components from '@/lib/helpers/portalTextComponents';
+import components from '@/lib/helpers/portableTextComponents';
 import { getRecruitingContent } from '@/lib/api/miscPortableText';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';

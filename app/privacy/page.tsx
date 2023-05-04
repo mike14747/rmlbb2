@@ -1,6 +1,6 @@
 import { PortableText } from '@portabletext/react';
 import { getPrivacyPolicyText } from '@/lib/api/miscPortableText';
-import components from '@/lib/helpers/portalTextComponents';
+import components from '@/lib/helpers/portableTextComponents';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
