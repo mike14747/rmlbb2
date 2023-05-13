@@ -44,7 +44,7 @@ export default async function Champions() {
                                                 {c.year}
                                             </td>
                                             <td className="text-left">
-                                                <p className={styles.winner}>Winner:</p>
+                                                <p className={styles.winner}>Champion:</p>
                                                 <p className={styles.team}>
                                                     {c.championTeam ? c.championTeam : 'n/a'}
                                                 </p>
