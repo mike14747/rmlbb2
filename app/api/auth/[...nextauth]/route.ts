@@ -1,9 +1,10 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions, Session } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+import type { JWT } from 'next-auth/jwt';
 
 import { getUserForSignin } from '@/lib/api/user';
 
-const handler = NextAuth({
+const handler: NextAuthOptions = NextAuth({
     providers: [
         Credentials({
             name: 'Credentials',
@@ -37,7 +38,7 @@ const handler = NextAuth({
             if (user?.role) token.role = user.role;
             return token;
         },
-        async session({ session, token }) {
+        async session({ session, token }: { session: Session; token: JWT }) {
             if (token.id && session.user) session.user.id = token.id;
             if (token.role && session.user) session.user.role = token.role;
             return session;

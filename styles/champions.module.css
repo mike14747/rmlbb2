@@ -2,29 +2,47 @@
     font-size: 1.2rem;
     font-size: var(--step-1);
     background-color: var(--mg-gray-1);
-    letter-spacing: 0.50px;
+    letter-spacing: 0.5px;
 }
 
-tr.verticalMiddle > td {
-    vertical-align: middle;
+tr.rowStyles {
+    border-top: 1px solid var(--mg-gray-2);
 }
 
-.year {
+tr.rowStyles:first-of-type {
+    border-top: 0;
+}
+
+tr.rowStyles > td {
+    vertical-align: top;
+    border: 0;
+    padding: 0.25rem;
+}
+
+tr.rowStyles > td.year {
     font-size: 1rem;
     font-size: var(--step-0);
+    padding-right: 1.5rem;
 }
 
 .team {
     font-size: 1rem;
     font-size: var(--step-0);
     margin: 0;
-    letter-spacing: 0.50px;
+    letter-spacing: 0.5px;
 }
 
 .manager {
-    font-size: .833rem;
+    font-size: var(--step--1-base);
     font-size: var(--step--1);
     color: var(--mg-gray-6);
+    margin: 0;
+}
+
+.winner,
+.runnerUp {
+    font-size: var(--step--1-base);
+    font-size: var(--step--1);
     margin: 0;
 }
 
@@ -34,4 +52,24 @@ tr.verticalMiddle > td {
 
 .runnerUp {
     color: var(--theme-color-red);
+}
+
+@media (min-width: 480px) {
+    tr.rowStyles > td {
+        padding: 0.5rem;
+    }
+
+    tr.rowStyles > td.year {
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    tr.rowStyles > td {
+        padding: 0.75rem;
+    }
+
+    tr.rowStyles > td.year {
+        padding-right: 2.5rem;
+    }
 }
