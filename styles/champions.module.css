@@ -16,7 +16,7 @@ tr.rowStyles:first-of-type {
 tr.rowStyles > td {
     vertical-align: top;
     border: 0;
-    padding: 0.25rem;
+    padding: 0.50rem;
 }
 
 tr.rowStyles > td.year {
@@ -56,7 +56,7 @@ tr.rowStyles > td.year {
 
 @media (min-width: 480px) {
     tr.rowStyles > td {
-        padding: 0.5rem;
+        padding: 0.75rem;
     }
 
     tr.rowStyles > td.year {
@@ -66,7 +66,7 @@ tr.rowStyles > td.year {
 
 @media (min-width: 768px) {
     tr.rowStyles > td {
-        padding: 0.75rem;
+        padding: 1rem;
     }
 
     tr.rowStyles > td.year {
