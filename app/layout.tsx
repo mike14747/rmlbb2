@@ -38,7 +38,7 @@ const defaultFont = Inter({
 });
 
 export const metadata: Metadata = {
-    title: 'RML',
+    title: 'RML Baseball',
     description: 'Replay Money League, Strat-O-Matic Baseball',
     viewport: {
         width: 'device-width',

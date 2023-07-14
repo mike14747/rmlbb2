@@ -34,7 +34,7 @@ export default function EditForumForm({ forum }: { forum: ForumForEdit }) {
         setIsSubmitting(true);
 
         // const res = await fetch('/api/forum/edit-forum', {
-        //     method: 'POST',
+        //     method: 'PUT',
         //     headers: {
         //         'Content-Type': 'application/json;charset=utf-8',
         //     },

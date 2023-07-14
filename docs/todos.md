@@ -4,8 +4,6 @@
 
 Convert the app to **typescript**. **UPDATE**: Only some routes still need to be converted and the text editor components for Sun and Tiptap.
 
-Move all pages/components to the new appDir (version 13).
-
 Implement middleware using **withAuth** for all the protected and admin pages. Do I still want to keep some type of safeguard using **useSession** on the protected pages? Only possibly use middleware after the withAuth issues have been fixed.
 
 Figure out a new message board solution that can have our old board imported into it. (in progress)
@@ -32,13 +30,11 @@ Make an admin page to edit forums (specifically to change their active status). 
 
 Is there a way to merge some/most/all of the FormInput components into one?
 
-Change the http POST methods to PUT on pages/routes that edit content.
-
 ??? Keep the old message forum for viewing only, then add a new blog area ???
 
 Add a current season playing schedule page where you can click on your team and get just that schedule.
 
-I've added a not-found.tsx page in the appDir to serve as the 404 page, but for some reason, the meta data isn't yet working. No page title is being displayed. Based upon the issues at the next.js github page, it sounds like they are considering to add support for it. **NOTE**: This new not-found page doesn't on vercel.
+I've added a not-found.tsx page in the appDir to serve as the 404 page, but for some reason, the meta data isn't yet working. No page title is being displayed. Based upon the issues at the next.js github page, it sounds like they are considering to add support for it. **NOTE**: This new not-found page doesn't on vercel. **UPDATE**: I found a temporary solution in adding a title tag to the return of the component (just before the main tag). It works, but it should be changed once meta data is supported in the not-found page.
 
 ---
 
@@ -118,3 +114,7 @@ Upgrade to next.js v13.3 once these 2 issues are fixed: **UPDATE**: Both of the 
 
 1.  Next stops giving me svg loader errors.
 2.  The "error - SyntaxError: Unexpected token u in JSON at position 0 at JSON.parse()" errors are fixed when I try to start the dev server.
+
+Move all pages/components to the new appDir (version 13).
+
+Change the http POST methods to PUT on pages/routes that edit content.
