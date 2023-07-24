@@ -77,8 +77,8 @@ h1.heading {
 }
 
 @media (min-width: 768px) {
-    .header {
+    /* .header {
         flex-direction: column;
         align-items: initial;
-    }
+    } */
 }

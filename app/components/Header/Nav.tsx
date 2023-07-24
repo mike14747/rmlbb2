@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavLinks from '@/lib/navLinks';
@@ -8,6 +9,11 @@ import styles from '@/styles/Nav.module.css';
 
 const Nav = () => {
     const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+    const hide = () => setIsOpen(false);
+    const show = () => setIsOpen(true);
 
     return (
         <nav className={styles.nav}>
