@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NavLinks from '@/lib/navLinks';
+import Button from '../Button';
 
 import styles from '@/styles/Nav.module.css';
 
@@ -17,11 +18,18 @@ const Nav = () => {
 
     return (
         <nav className={styles.nav}>
-            <ul className={styles.navdropdownContent}>
+            <Button
+                size='small'
+                variant='text'
+                onClick={toggle}
+            >
+                <span className={`${styles.menuButton} ${isOpen ? styles.cross : styles.burger}`}></span>
+            </Button>
+            <ul className={`${styles.navDropdownContent} ${isOpen ? styles.showMenu : ''}`}>
                 {NavLinks?.length > 0 &&
                     NavLinks.map((item, index) => (
                         <li key={index}>
-                            <Link href={item.href} className={pathname === item.href ? styles.disabled : ''}>
+                            <Link href={item.href} className={pathname === item.href ? styles.disabled : ''} onClick={toggle} onBlur={hide} onFocus={show}>
                                 {item.text}
                             </Link>
                         </li>

@@ -6,19 +6,36 @@
     z-index: 3;
 }
 
-.nav::before {
+.menuButton {
+    color: var(--mg-dark);
+    font-weight: normal;
+    font-size: 2.074rem;
+    font-size: var(--step-4);
+    display: inline-block;
+    min-width: 3rem;
+    text-align: 'center';
+}
+
+.cross::before {
+    content: '\0078';
+}
+
+.burger::before {
+    content: '\2630';
+}
+
+/* .nav::before {
     color: var(--mg-dark);
     content: '\2630';
-    /* content: '\0078' */
-    /* the above is for the closing 'x' */
+    content: '\0078';
     font-weight: normal;
     font-size: 2.488rem;
     font-size: var(--step-5);
-    padding: 0 0 0 2.5rem; /* the large padding-left value is assuming the nav 'sandwich' is on the right and it allows for more hover space to the left of it  */
+    padding: 0 0 0 2.5rem;
     cursor: pointer;
-}
+} */
 
-ul.navdropdownContent {
+ul.navDropdownContent {
     display: none;
     position: absolute;
     right: 0.5rem;
@@ -35,7 +52,7 @@ ul.navdropdownContent {
     transition: background-color 0.3s;
 }
 
-ul.navdropdownContent > li > a {
+ul.navDropdownContent > li > a {
     font-size: 1rem;
     font-size: var(--step-0);
     margin: 0;
@@ -48,28 +65,32 @@ ul.navdropdownContent > li > a {
     transition: color 0.3s;
 }
 
-ul.navdropdownContent > li:last-child > a {
+ul.navDropdownContent > li:last-child > a {
     border-bottom: 0;
 }
 
-ul.navdropdownContent > li > a:hover {
+ul.navDropdownContent > li > a:hover {
     background-color: rgba(27, 82, 120, 0.75);
     color: var(--mg-light);
     text-decoration: none;
     transition: color 0.3s, background-color 0.3s;
 }
 
-ul.navdropdownContent > li > a.disabled {
+ul.navDropdownContent > li > a.disabled {
     pointer-events: none;
     color: var(--mg-gray-6);
 }
 
-ul.navdropdownContent > li > a.disabled::before {
+ul.navDropdownContent > li > a.disabled::before {
     content: '';
     margin-left: 1rem;
 }
 
-.nav:hover > ul.navdropdownContent {
+/* .nav:hover > ul.navDropdownContent {
+    display: block;
+} */
+
+ul.showMenu {
     display: block;
 }
 
@@ -89,7 +110,7 @@ ul.navdropdownContent > li > a.disabled::before {
         cursor: initial;
     }
 
-    ul.navdropdownContent {
+    ul.navDropdownContent {
         position: static;
         display: flex;
         align-content: center;
@@ -102,7 +123,7 @@ ul.navdropdownContent > li > a.disabled::before {
         box-shadow: none;
     }
 
-    ul.navdropdownContent > li > a {
+    ul.navDropdownContent > li > a {
         padding: 0.50rem 0 0.75rem 0;
         margin: 0 0.50rem;
         border: 0;
@@ -110,25 +131,25 @@ ul.navdropdownContent > li > a.disabled::before {
         white-space: nowrap;
     }
 
-    ul.navdropdownContent > li > a:hover {
+    ul.navDropdownContent > li > a:hover {
         color: var(--theme-color-orange);
         background-color: transparent;
         cursor: pointer;
     }
 
-    ul.navdropdownContent > li:first-child > a {
+    ul.navDropdownContent > li:first-child > a {
         margin-left: 0.25rem;
     }
 
-    ul.navdropdownContent > li:last-child > a {
+    ul.navDropdownContent > li:last-child > a {
         margin-right: 0.25rem;
     }
 
-    .nav:hover > ul.navdropdownContent {
+    .nav:hover > ul.navDropdownContent {
         display: flex;
     }
 
-    ul.navdropdownContent > li > a::after {
+    ul.navDropdownContent > li > a::after {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -139,28 +160,28 @@ ul.navdropdownContent > li > a.disabled::before {
         transition: width 0.3s, left 0.3s, background-color 1s;
     }
 
-    ul.navdropdownContent > li > a.disabled::after,
-    ul.navdropdownContent > li > a:hover::after {
+    ul.navDropdownContent > li > a.disabled::after,
+    ul.navDropdownContent > li > a:hover::after {
         width: 100%;
         left: 0;
         background-color: var(--theme-color-orange);
         transition: width 0.3s, left 0.3s, background-color 1s;
     }
 
-    ul.navdropdownContent > li > a:hover::after {
+    ul.navDropdownContent > li > a:hover::after {
         background-color: var(--theme-color-orange);
     }
 
-    ul.navdropdownContent > li > a.disabled {
+    ul.navDropdownContent > li > a.disabled {
         pointer-events: none;
         color:rgba(0, 0, 0, 0.60);
     }
 
-    ul.navdropdownContent > li > a.disabled::after {
+    ul.navDropdownContent > li > a.disabled::after {
         background-color: rgba(0, 0, 0, 0.25);
     }
 
-    ul.navdropdownContent > li > a.disabled::before {
+    ul.navDropdownContent > li > a.disabled::before {
         content: '';
         margin-left: 0;
     }
