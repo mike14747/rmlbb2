@@ -6,7 +6,7 @@ import NavLinks from '@/lib/navLinks';
 
 import styles from '@/styles/Nav.module.css';
 
-const Nav = () => {
+export default function Nav() {
     const pathname = usePathname();
 
     return (
@@ -24,6 +24,4 @@ const Nav = () => {
             </ul >
         </nav >
     );
-};
-
-export default Nav;
+}
