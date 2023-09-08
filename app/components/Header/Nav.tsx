@@ -11,7 +11,7 @@ import styles from '@/styles/Nav.module.css';
 export default function Nav() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
-    const navRef = useRef<HTMLUListElement>(null);
+    const navRef = useRef<HTMLDivElement>(null);
 
     const toggle = () => setIsOpen(!isOpen);
     const hide = () => setIsOpen(false);
