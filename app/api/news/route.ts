@@ -11,7 +11,8 @@ export async function GET(request: NextRequest) {
         // const response = await deleteAllNewsItems();
         // return response ? NextResponse.json(null, { status: 200 }) : NextResponse.json(null, { status: 500 });
 
-        return await getNewsItems(parseInt(start), parseInt(num));
+        const data = await getNewsItems(parseInt(start), parseInt(num));
+        return data ? NextResponse.json(data, { status: 200 }) : NextResponse.json(null, { status: 500 });
     } catch (error) {
         return handleAPICatchError(error);
     }

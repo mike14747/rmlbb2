@@ -35,7 +35,6 @@ export default async function Home() {
                 <div className={sideBarStyles.eventsSidebarContainer}>
                     <EventsSidebar>
                         <Suspense fallback={<Spinner size="medium" />}>
-                            {/* @ts-expect-error Server Component */}
                             <EventsSidebarContent />
                         </Suspense>
                     </EventsSidebar>
@@ -45,7 +44,6 @@ export default async function Home() {
                 <div className={sideBarStyles.boardSidebarContainer}>
                     <BoardSidebar>
                         <Suspense fallback={<Spinner size="medium" />}>
-                            {/* @ts-expect-error Server Component */}
                             <BoardSidebarContent />
                         </Suspense>
                     </BoardSidebar>
