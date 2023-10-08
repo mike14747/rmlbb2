@@ -24,31 +24,38 @@ export default async function Home() {
     const initialNewsItems = await getNewsItems(0, numInitialNewsItems);
 
     return (
-        <div className={styles.homeContainer}>
-            <main id="main" className={styles.newsContainer + ' mw-75'}>
-                <Suspense fallback={<Spinner size="large" />}>
-                    <NewsItems initialNewsItems={initialNewsItems} numInitial={numInitialNewsItems} increment={newsItemsIncrementNumber} />
-                </Suspense>
-            </main>
+        <>
+            <h1 className="sr-only">
+                Homepage
+            </h1>
 
-            <aside className={sideBarStyles.sidebar}>
-                <div className={sideBarStyles.eventsSidebarContainer}>
-                    <EventsSidebar>
-                        <Suspense fallback={<Spinner size="medium" />}>
-                            <EventsSidebarContent />
-                        </Suspense>
-                    </EventsSidebar>
+            <div className={styles.homeContainer}>
+                <main id="main" className={styles.newsContainer + ' mw-75'}>
+                    <Suspense fallback={<Spinner size="large" />}>
+                        <NewsItems initialNewsItems={initialNewsItems} numInitial={numInitialNewsItems} increment={newsItemsIncrementNumber} />
+                    </Suspense>
+                </main>
 
-                </div>
+                <aside className={sideBarStyles.sidebar}>
+                    <div className={sideBarStyles.eventsSidebarContainer}>
+                        <EventsSidebar>
+                            <Suspense fallback={<Spinner size="medium" />}>
+                                <EventsSidebarContent />
+                            </Suspense>
+                        </EventsSidebar>
 
-                <div className={sideBarStyles.boardSidebarContainer}>
-                    <BoardSidebar>
-                        <Suspense fallback={<Spinner size="medium" />}>
-                            <BoardSidebarContent />
-                        </Suspense>
-                    </BoardSidebar>
-                </div>
-            </aside>
-        </div>
+                    </div>
+
+                    <div className={sideBarStyles.boardSidebarContainer}>
+                        <BoardSidebar>
+                            <Suspense fallback={<Spinner size="medium" />}>
+                                <BoardSidebarContent />
+                            </Suspense>
+                        </BoardSidebar>
+                    </div>
+                </aside>
+            </div>
+        </>
+
     );
 }

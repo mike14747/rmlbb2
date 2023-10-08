@@ -21,7 +21,7 @@ export default async function Article({ params }: { params: { slug: string } }) 
                     {!articleData && <p className="error">An error occurred fetching data.</p>}
 
                     {articleData.title &&
-                        <h2 className="page-heading">{articleData.title}</h2>
+                        <h1 className="page-heading">{articleData.title}</h1>
                     }
 
                     {articleData.content && articleData.content.length < 1 && <p>No content was found. Please try again later.</p>}

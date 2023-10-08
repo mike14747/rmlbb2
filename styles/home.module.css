@@ -6,7 +6,7 @@
 .newsContainer {
     flex: 1;
     order: 2;
-    padding-right: 1rem;
+    padding-right: 0;
 }
 
 .newsItem {

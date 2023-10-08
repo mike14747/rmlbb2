@@ -42,7 +42,7 @@
     margin-bottom: 1rem;
 }
 
-h3.resourcesHeading {
+.resourcesHeading {
     color: var(--mg-light);
     background-color: var(--mg-gray-6);
     font-size: 1rem;

@@ -37,6 +37,16 @@
     margin-bottom: 0;
 }
 
+.typeHeading {
+    font-size: var(--step-2-base);
+    font-size: var(--step-2);
+}
+
+.fileHeading {
+    font-size: var(--step-1-base);
+    font-size: var(--step-1);
+}
+
 .downloadInfo > h4 {
     color: var(--theme-color-green);
     font-size: 1.2rem;

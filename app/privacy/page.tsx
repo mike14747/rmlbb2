@@ -19,9 +19,9 @@ export default async function Privacy() {
     return (
         <main id="main">
             <article className={styles.privacyContainer + ' mw-90ch'}>
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Privacy Policy
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {!privacyData && <p className="error">An error occurred fetching data.</p>}

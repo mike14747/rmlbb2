@@ -135,7 +135,7 @@ a:active {
     margin-left: auto;
     margin-right: auto;
     background-color: var(--mg-light);
-    padding: 1rem;
+    padding: 0.75rem;
 }
 
 /* use with elements like <header>, <nav> and <footer> */
@@ -153,9 +153,25 @@ a:active {
     margin-right: auto;
 }
 
+/* use this to make elements accessible to screen readers to not visible on a screen... eg: for <h1> tags on a homepage if you don't want them to be visible */
+.sr-only {
+    font-size: 0;
+    width: 1px;
+    height: 1px;
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
 /* add custom css for site-wide use here */
 
-h2.page-heading {
+.page-heading {
+    font-size: var(--step-4-base);
+    font-size: var(--step-4);
     text-align: left;
     border-bottom: 2px var(--mg-gray-2) solid;
     padding-bottom: 1rem;
@@ -285,6 +301,10 @@ h2.page-heading {
 @media (min-width: 768px) {
     .break::before {
         content: ' ';
+    }
+
+    .page-container {
+        padding: 1rem;
     }
 }
 

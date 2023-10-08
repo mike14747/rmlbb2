@@ -60,7 +60,7 @@
     margin: 0 0 2rem 0;
 }
 
-h4.heading {
+.heading {
     font-size: 1rem;
     font-size: var(--step-0);
     font-weight: bolder;

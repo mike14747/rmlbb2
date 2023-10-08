@@ -10,13 +10,13 @@ export default function BoardSidebar({ children }: { children: ReactNode }) {
         <div className={sidebarStyles.cardContainer}>
             <section className={sidebarStyles.card + ' ' + styles.boardCard}>
                 <div className={sidebarStyles.smallScreen}>
-                    <h4 className={sidebarStyles.heading}>Posts</h4>
+                    <h2 className={sidebarStyles.heading}>Posts</h2>
                     <div className={styles.down}></div>
                 </div>
 
                 <div className={sidebarStyles.normalScreen}>
                     <div className={sidebarStyles.head}>
-                        <h4 className={sidebarStyles.heading}>Recent Posts</h4>
+                        <h2 className={sidebarStyles.heading}>Recent Posts</h2>
                         <p className={sidebarStyles.subHeading}>
                             Most recent 5
                         </p>

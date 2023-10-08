@@ -25,9 +25,9 @@ export default function Header() {
                         </Link>
                     </div>
                     <div>
-                        <h1 className={styles.heading}>
+                        <div className={styles.heading}>
                             RML Baseball
-                        </h1>
+                        </div>
                         <p className={styles.subHeading}>
                             Since 1978
                         </p>

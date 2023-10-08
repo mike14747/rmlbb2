@@ -18,9 +18,9 @@ export default async function DownloadsPage() {
     return (
         <main id="main">
             <article>
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Downloads
-                </h2>
+                </h1>
 
                 {!downloadsData && <p className={styles.error}>An error occurred fetching data.</p>}
 

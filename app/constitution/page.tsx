@@ -20,9 +20,9 @@ export default async function Constitution() {
     return (
         <main id="main">
             <article className={styles.constitutionContainer + ' mw-90ch ' + blockContentStyles.blockContentContainer}>
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Constitution
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {!res && <p className="error">An error occurred fetching data.</p>}

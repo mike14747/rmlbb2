@@ -12,11 +12,11 @@ type DownloadsProps = {
 export default function DownloadType({ downloads, label }: DownloadsProps) {
     return (
         <section className={styles.typeContainer}>
-            <h3>{label}</h3>
+            <h2 className={styles.typeHeading}>{label}</h2>
             {downloads.map(file => (
                 <div className={styles.downloadContainer} key={file.key}>
                     <div className={styles.downloadInfo}>
-                        <h4>{file.name}</h4>
+                        <h3 className={styles.fileHeading}>{file.name}</h3>
                         {file.description && <p className={styles.downloadDesc}>{file.description}</p>}
                         <p className={styles.filenameText}>
                             <Image

@@ -22,9 +22,9 @@ export default async function Articles() {
 
     return (
         <main id="main">
-            <div className={styles.articlePageContainer}>
-                <article className={styles.articleContainer + ' mw-90ch'}>
-                    <h2 className="page-heading">Articles Home</h2>
+            <div className={styles.articleHomeContainer}>
+                <article className={styles.articleLeftContainer + ' mw-90ch'}>
+                    <h1 className="page-heading">Articles Home</h1>
 
                     <Suspense fallback={<Spinner size="large" />}>
                         {!articleHomeData?.content

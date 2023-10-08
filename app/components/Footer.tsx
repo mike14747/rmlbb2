@@ -17,9 +17,9 @@ export default function Footer({ contactEmail, links }: FooterProps) {
                 <div className={styles.left}>
                     {links?.length > 0 &&
                         <>
-                            <h3 className={styles.resourcesHeading}>
-                                RML Resources:
-                            </h3>
+                            <h2 className={styles.resourcesHeading}>
+                                RML Resources
+                            </h2>
                             {links.map((link, index) => (
                                 <p key={index}>
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.link}>
