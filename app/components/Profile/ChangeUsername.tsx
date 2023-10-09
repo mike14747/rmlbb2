@@ -42,7 +42,7 @@ export default function ChangeUsername({ id }: { id: string }) {
     return (
         <div className={styles.updateContainer}>
             <div className={styles.updateHeading}>
-                <h3>Change your username:</h3>
+                <h4>Change your username:</h4>
 
                 <p className={styles.note}>
                     <strong>Note:</strong> changing your username will log you out.

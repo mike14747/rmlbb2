@@ -58,7 +58,7 @@ export default function ChangeEmail({ id, setUser }: { id: string, setUser: Disp
     return (
         <div className={styles.updateContainer}>
             <div className={styles.updateHeading}>
-                <h3>Change your email:</h3>
+                <h4>Change your email:</h4>
             </div>
 
             {isEmailUpdated && <p className={styles.success}>Your email address has been successfully updated.</p>}

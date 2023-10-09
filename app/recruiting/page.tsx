@@ -17,9 +17,9 @@ export default async function Recruiting() {
     return (
         <main id="main">
             <article className={styles.recruitingContainer + ' mw-90ch'}>
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     New Managers
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {!res && <p className="error">An error occurred fetching data.</p>}

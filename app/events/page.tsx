@@ -12,9 +12,9 @@ export default async function Events() {
     return (
         <main id="main">
             <article className="mw-90ch">
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Events
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner />}>
                     {currentEventsData

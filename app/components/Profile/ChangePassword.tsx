@@ -46,7 +46,7 @@ export default function ChangePassword({ id }: { id: string }) {
     return (
         <div className={styles.updateContainer}>
             <div className={styles.updateHeading}>
-                <h3>Change your password:</h3>
+                <h4>Change your password:</h4>
 
                 <p className={styles.note}>
                     <strong>Note:</strong> changing your password will log you out.

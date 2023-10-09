@@ -17,7 +17,7 @@ export default function SidebarCard({ heading = null, subheading = null, color, 
         <div className={styles.cardContainer}>
             <div className={`${styles.card} ${styles[`${colorTheme}`]}`}>
                 <div className={styles.headingContainer}>
-                    {heading && <h4 className={styles.heading}>{heading}</h4>}
+                    {heading && <h2 className={styles.heading}>{heading}</h2>}
                     <div className={styles.down}></div>
                 </div>
 

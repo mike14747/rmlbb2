@@ -13,7 +13,7 @@ export default function CurrentProfile({ userObj }: { userObj: UserInfo}) {
         <>
             <div className={styles.currentContainer}>
                 <div className={styles.currentHeading}>
-                    <h3>Current profile information:</h3>
+                    <h2>Current profile information:</h2>
                 </div>
 
                 <p><span className={styles.description}>Username: </span>{user.username}</p>

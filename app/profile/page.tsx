@@ -24,9 +24,9 @@ export default async function Profile() {
     return (
         <main id="main">
             <article className="mw-75ch">
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Profile
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {userObj

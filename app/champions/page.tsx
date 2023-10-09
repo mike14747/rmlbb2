@@ -17,9 +17,9 @@ export default async function Champions() {
     return (
         <main id="main">
             <article className="mw-90ch">
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Champions
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {!championsData && <p className="error">An error occurred fetching data.</p>}
