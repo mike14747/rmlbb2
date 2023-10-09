@@ -22,9 +22,9 @@ export default async function AddUser() {
         return (
             <main id="main">
                 <article className={styles.adminContainer}>
-                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                    <h1 className={'page-heading ' + styles.adminPageHeading}>
                         Add User
-                    </h2>
+                    </h1>
 
                     <AddUserForm />
                 </article>

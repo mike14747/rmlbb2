@@ -22,9 +22,9 @@ export default async function AddForum() {
         return (
             <main id="main">
                 <article className={styles.adminContainer}>
-                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                    <h1 className={'page-heading ' + styles.adminPageHeading}>
                         Add Forum
-                    </h2>
+                    </h1>
 
                     <AddForumForm />
                 </article>

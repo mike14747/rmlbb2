@@ -27,9 +27,9 @@ export default async function EditForum() {
         return (
             <main id="main">
                 <article className={styles.adminContainer}>
-                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                    <h1 className={'page-heading ' + styles.adminPageHeading}>
                         Edit Forum
-                    </h2>
+                    </h1>
 
                     <Suspense fallback={<Spinner size="large" />}>
                         ? {forumList && forumList.length > 0 &&

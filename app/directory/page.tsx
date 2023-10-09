@@ -30,23 +30,23 @@ export default async function Directory() {
     return (
         <main id="main">
             <article>
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Manager Directory
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {managersData && managersData?.length > 0
                         ? <div className={styles.directoryContainer}>
                             {managersData.map(conf => (
                                 <div key={conf.conference} className={styles.conferenceContainer}>
-                                    <h3 className={`${styles.conferenceHeading} ${styles[selectConference(conf.conference) + 'Heading']}`}>
+                                    <h2 className={`${styles.conferenceHeading} ${styles[selectConference(conf.conference) + 'Heading']}`}>
                                         {conf.conference} Conference
-                                    </h3>
+                                    </h2>
                                     {conf.divisions.map(div => (
                                         <div key={div.division} className={styles.divisionContainer}>
-                                            <h4 className={styles.divisionHeading}>
+                                            <h3 className={styles.divisionHeading}>
                                                 <span className={styles.divisionPrefix}>Division: </span> {div.division}
-                                            </h4>
+                                            </h3>
                                             {div.teams.map(team => (
                                                 <ManagerCard key={team.team} manager={team} />
                                             ))}

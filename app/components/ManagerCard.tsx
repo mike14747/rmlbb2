@@ -45,13 +45,13 @@ export default function ManagerCard({ manager }: { manager: ManagerObj}) {
     return (
         <div className={`${styles.card} ${styles[conference + 'Card']}`}>
             {manager.team &&
-                <div className={`${styles.heading} ${styles[conference + 'Heading']}`}>
-                    <h5>
+                <div className={`${styles.headingContainer} ${styles[conference + 'Heading']}`}>
+                    <h4 className={styles.heading}>
                         {manager.team}
                         <span className={styles.abbrev}>
                             ({manager.abbreviation})
                         </span>
-                    </h5>
+                    </h4>
                 </div>
             }
 

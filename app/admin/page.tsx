@@ -22,9 +22,9 @@ export default async function AdminHome() {
         return (
             <main id="main">
                 <article className={styles.adminContainer}>
-                    <h2 className={'page-heading ' + styles.adminPageHeading}>
+                    <h1 className={'page-heading ' + styles.adminPageHeading}>
                         Admin Home
-                    </h2>
+                    </h1>
 
                     <ul>
                         <li>
