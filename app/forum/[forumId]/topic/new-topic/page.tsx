@@ -34,9 +34,9 @@ export default async function NewTopicPage({ params }: NewTopicParams) {
     return (
         <main id="main">
             <article className={styles.forumPageWrapper}>
-                <h2 className={'page-heading ' + styles.forumPageHeading}>
+                <h1 className={'page-heading ' + styles.forumPageHeading}>
                     New Topic
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner />}>
                     {forumData

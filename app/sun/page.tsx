@@ -21,9 +21,9 @@ export default async function Sun() {
     return (
         <main id="main">
             <article className="mw-90ch">
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Sun Editor
-                </h2>
+                </h1>
 
                 <SunEditorComp />
             </article>

@@ -195,7 +195,7 @@ a:active {
     text-align: center;
 }
 
-.error-container > h2 {
+.error-heading {
     margin: 2rem 0;
     color: var(--theme-color-red);
 }

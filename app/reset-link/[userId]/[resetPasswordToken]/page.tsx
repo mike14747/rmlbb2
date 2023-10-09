@@ -25,9 +25,9 @@ export default async function ResetPasswordTokenPage({ params }: PageProps) {
     return (
         <main id="main">
             <article className="mw-75ch">
-                <h2 className={'page-heading ' + styles.resetPageHeading}>
+                <h1 className={'page-heading ' + styles.resetPageHeading}>
                     Reset your password
-                </h2>
+                </h1>
 
                 {session &&
                     <p>

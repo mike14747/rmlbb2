@@ -36,9 +36,9 @@ export default async function EditTopicPage({ params }: EditTopicParams) {
     return (
         <main id="main">
             <article className={styles.forumPageWrapper}>
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Edit Post
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {topicData

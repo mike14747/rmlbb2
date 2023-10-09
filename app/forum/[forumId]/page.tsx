@@ -46,9 +46,9 @@ export default async function Forum({ params }: ForumIdParams) {
                                 <span className={styles.arrow}> &#10139; {forumTopics[0].forumName}</span>
                             </p>
 
-                            <h2 className={'page-heading ' + styles.forumPageHeading}>
+                            <h1 className={'page-heading ' + styles.forumPageHeading}>
                                 {forumTopics[0].forumName}
-                            </h2>
+                            </h1>
 
                             <p className="small">
                                 <>&#128221; </>

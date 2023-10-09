@@ -11,9 +11,9 @@ export default function NotFound() {
 
             <main id="main">
                 <article className="mw-90ch error-container">
-                    <h2>
+                    <h1 className="error-heading">
                         Error 404!
-                    </h2>
+                    </h1>
 
                     <p className="error">An error has occurred.</p>
                     <p className="error">The page you are looking for does not exist!</p>

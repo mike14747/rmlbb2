@@ -29,9 +29,9 @@ export default async function ForumHome() {
     return (
         <main id="main">
             <article className={styles.forumPageWrapper}>
-                <h2 className={'page-heading ' + styles.forumPageHeading}>
+                <h1 className={'page-heading ' + styles.forumPageHeading}>
                     Forum Index
-                </h2>
+                </h1>
 
                 <Suspense fallback={<Spinner size="large" />}>
                     {forumList?.length > 0 &&

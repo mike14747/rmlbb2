@@ -8,9 +8,9 @@ export default function CurrentSeason() {
     return (
         <main id="main">
             <article>
-                <h2 className="page-heading">
+                <h1 className="page-heading">
                     Current Season
-                </h2>
+                </h1>
             </article>
         </main>
     );

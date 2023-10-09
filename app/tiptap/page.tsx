@@ -8,9 +8,9 @@ export default function Tiptap() {
 
     return (
         <main id="main" className="mw-90ch">
-            <h2 className="page-heading">
+            <h1 className="page-heading">
                 TipTap Editor
-            </h2>
+            </h1>
 
             {/* <TiptapEditor initialContent={''} setContent={setContent} />
 

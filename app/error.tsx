@@ -10,7 +10,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
     return (
         <main id="main" className="error-container">
-            <h2>An error occurred!</h2>
+            <h1 className="error-heading">An error occurred!</h1>
 
             <Button type="button" size="medium" variant="contained" theme="danger" onClick={() => reset()}>
                 Try Again
