@@ -13,7 +13,7 @@ export default function Header() {
             <div className={styles.header}>
                 <div className={styles.headerLeft}>
                     <div className={styles.logoContainer}>
-                        <Link href="/" passHref>
+                        <Link href="/" passHref className={styles.logoLink}>
                             <Image
                                 src="/images/logo1.png"
                                 alt={'RML Baseball'}

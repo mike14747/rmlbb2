@@ -1,5 +1,6 @@
 .header {
-    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('/images/header_bg.jpg') center / cover, var(--mg-light);
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url('/images/header_bg.jpg') center / cover, var(--mg-light);
     border-bottom: none;
     display: flex;
     flex-direction: row;
@@ -14,7 +15,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding: 0.50rem 0 0.5rem 0.50rem;
+    padding: 0.5rem 0 0.5rem 0.5rem;
 }
 
 .heading {
@@ -41,13 +42,13 @@
     margin-right: 0.75rem;
     text-align: center;
     padding: 0;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .logoContainer:hover {
     background-color: var(--theme-color-dirt-faded);
     box-shadow: 0 0 0 1px var(--mg-gray-6), 5px 5px 5px 0px var(--mg-gray-5);
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .logo {
@@ -56,14 +57,19 @@
     height: auto;
 }
 
-@keyframes rotate{
-    0%{
+.logoLink {
+    display: inline-block;
+    width: 100%;
+}
+
+@keyframes rotate {
+    0% {
         transform: rotate(0deg);
     }
-    50%{
+    50% {
         transform: rotate(180deg);
     }
-    100%{
+    100% {
         transform: rotate(360deg);
     }
 }
@@ -73,7 +79,6 @@
 }
 
 @media (min-width: 480px) {
-    
 }
 
 @media (min-width: 768px) {
