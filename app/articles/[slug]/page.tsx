@@ -11,6 +11,13 @@ export async function generateStaticParams() {
     return await getActiveArticleSlugs();
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const articleData = await getArticleBySlug(params.slug);
+    return {
+        title: 'RML Baseball - ' + articleData.title,
+    };
+}
+
 export default async function Article({ params }: { params: { slug: string } }) {
     const articleData = await getArticleBySlug(params.slug);
 

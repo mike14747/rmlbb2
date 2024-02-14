@@ -120,3 +120,5 @@ Upgrade to next.js v13.3 once these 2 issues are fixed: **UPDATE**: Both of the 
 Move all pages/components to the new appDir (version 13).
 
 Change the http POST methods to PUT on pages/routes that edit content.
+
+Update all heading tags so they're used in the proper hierarchy.

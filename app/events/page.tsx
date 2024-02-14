@@ -1,8 +1,13 @@
+import type { Metadata } from 'next';
 import { getAllActiveUpcomingEvents } from '@/lib/api/events';
 import CurrentEvents from '@/components/Events/CurrentEvents';
 import PastEvents from '@/components/Events/PastEvents';
 import { Suspense } from 'react';
 import Spinner from '@/components/Spinner';
+
+export const metadata: Metadata = {
+    title: 'RML Baseball - Upcoming Events',
+};
 
 // export const revalidate = 60;
 
