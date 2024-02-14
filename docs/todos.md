@@ -36,6 +36,8 @@ Add a current season playing schedule page where you can click on your team and 
 
 I've added a not-found.tsx page in the appDir to serve as the 404 page, but for some reason, the meta data isn't yet working. No page title is being displayed. Based upon the issues at the next.js github page, it sounds like they are considering to add support for it. **NOTE**: This new not-found page doesn't on vercel. **UPDATE**: I found a temporary solution in adding a title tag to the return of the component (just before the main tag). It works, but it should be changed once meta data is supported in the not-found page.
 
+The **forumNamePattern** and **topicNamePattern** form input patterns need to have their special characters escaped properly.
+
 ---
 
 ## Done
