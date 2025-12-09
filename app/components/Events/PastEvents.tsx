@@ -20,7 +20,11 @@ export default function PastEvents() {
                 const data = await fetch('/api/events/past-events')
                     .then(res => res.json())
                     .catch(error => console.log(error));
-                data ? setPastEvents(data) : setPastEvents(null);
+                if (data) {
+                    setPastEvents(data);
+                } else {
+                    setPastEvents(null);
+                }
                 setIsLoading(false);
             })();
         }
