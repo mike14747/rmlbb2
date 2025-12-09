@@ -34,7 +34,6 @@ export default function BoardSidebar({ children }: { children: ReactNode }) {
                         <ParagraphRound aria-hidden="true" className={sidebarStyles.icon2} />
                     </div>
                 </div>
-
             </section>
         </div>
     );
