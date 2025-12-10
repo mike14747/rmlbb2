@@ -12,14 +12,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Page Title',
 };
 
-type TopicParams = {
-    params: {
-        forumId: string;
-        topicId: string;
-    }
-}
-
-export default async function Topic({ params }: TopicParams) {
+export default async function Topic({ params }: { params: Promise<{ forumId: string, topicId: string }> }) {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -28,7 +21,7 @@ export default async function Topic({ params }: TopicParams) {
         redirect('/login?callbackUrl=/protected-page');
     }
 
-    const { forumId, topicId } = params;
+    const { forumId, topicId } = await params;
     const page = '1';
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

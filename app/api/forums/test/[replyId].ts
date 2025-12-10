@@ -3,12 +3,12 @@ import { getToken } from 'next-auth/jwt';
 import { getOneReply } from '@/lib/api/forum';
 import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 
-export async function GET(request: NextRequest, { params }: { params: { replyId: string }}) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ replyId: string }>}) {
     try {
         const token = await getToken({ req: request });
         if (!token) return NextResponse.json(null, { status: 401 });
 
-        const { replyId } = params;
+        const { replyId } = await params;
 
         const result = await getOneReply(parseInt(replyId));
         return result

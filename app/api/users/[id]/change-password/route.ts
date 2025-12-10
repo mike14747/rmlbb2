@@ -3,12 +3,12 @@ import { getToken } from 'next-auth/jwt';
 import { changePassword } from '@/lib/api/user';
 import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         const token = await getToken({ req: request });
 
         const { userId, password, resetPasswordToken } = await request.json();
-        const { id } = params;
+        const { id } = await params;
         if (!id || !password) return NextResponse.json(null, { status: 400 });
 
         if (token && token.id === id) {

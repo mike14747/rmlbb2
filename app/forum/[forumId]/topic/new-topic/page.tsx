@@ -12,18 +12,12 @@ export const metadata: Metadata = {
     title: 'RML Baseball - New Topic',
 };
 
-type NewTopicParams = {
-    params: {
-        forumId: string;
-    }
-}
-
-export default async function NewTopicPage({ params }: NewTopicParams) {
+export default async function NewTopicPage({ params }: { params: Promise<{ forumId: string }> }) {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
 
-    const { forumId } = params;
+    const { forumId } = await params;
 
     if (!session) {
         redirect('/login?callbackUrl=/forum/' + forumId + '/topic/new-topic');

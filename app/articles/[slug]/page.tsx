@@ -11,15 +11,17 @@ export async function generateStaticParams() {
     return await getActiveArticleSlugs();
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const articleData = await getArticleBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const articleData = await getArticleBySlug(slug);
     return {
         title: 'RML Baseball - ' + articleData.title,
     };
 }
 
-export default async function Article({ params }: { params: { slug: string } }) {
-    const articleData = await getArticleBySlug(params.slug);
+export default async function Article({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const articleData = await getArticleBySlug(slug);
 
     return (
         <main id="main">
