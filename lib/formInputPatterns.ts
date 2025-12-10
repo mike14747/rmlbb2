@@ -1,5 +1,3 @@
-/* eslint-disable no-useless-escape */
-// eslint-disable-next-line quotes
 // const forumNamePattern = "^(?=.{1,25}$)[a-zA-Z0-9]+(?:[/' _-][a-zA-Z0-9]+)*$";
 // eslint-disable-next-line quotes
 export const forumNamePattern = "^[a-zA-Z0-9.#$'*+/=?_`({~-]{1}(?!.*  )[a-zA-Z0-9. !#$%&'*+/=?^_`(){|}~-]{2,28}[a-zA-Z0-9.!#$%&'*+/=?^_`(){|}~-]{1}$";

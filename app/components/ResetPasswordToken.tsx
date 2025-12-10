@@ -37,7 +37,6 @@ export default function ResetPasswordToken({ userId, resetPasswordToken }: Props
         if (isSuccessfullyUpdated) {
             router.push('/reset-password-success');
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSuccessfullyUpdated]);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {

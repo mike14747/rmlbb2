@@ -69,13 +69,12 @@ export default function EditTopicForm({ topicData }: { topicData: ForumTopicToCl
 
             {isSuccessful && <p className={styles.success}>Your new topic was successfully added!</p>}
 
-            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
             <form
                 ref={form as RefObject<HTMLFormElement>}
                 onSubmit={handleSubmit}
                 onKeyDown={(e) => {
                     // prevent the enter key from submitting the form
-                    e.key === 'Enter' && e.preventDefault();
+                    if (e.key === 'Enter') e.preventDefault();
                 }}
             >
                 <FormInputForTopicTitle id={topicData._id} title={title} setTitle={setTitle}/>

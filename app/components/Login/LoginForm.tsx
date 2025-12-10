@@ -45,7 +45,6 @@ function LoginForm() {
 
     useEffect(() => {
         if (status === 'authenticated') if (status === 'authenticated') window.location.href = redirectUrl;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 
     if (status === 'loading') return <Spinner size="large" />;

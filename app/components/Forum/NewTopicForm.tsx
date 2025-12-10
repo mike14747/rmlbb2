@@ -79,16 +79,15 @@ export default function NewTopic({ userId, username, forumId, forumName }: NewTo
                         </Link>
                     </p>
 
-                    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
                     <form
                         ref={form as RefObject<HTMLFormElement>}
                         onSubmit={handleSubmit}
                         onKeyDown={(e) => {
                             // prevent the enter key from submitting the form
-                            e.key === 'Enter' && e.preventDefault();
+                            if (e.key === 'Enter') e.preventDefault();
                         }}
                     >
-                        <FormInputForTopicTitle title={title} setTitle={setTitle}/>
+                        <FormInputForTopicTitle title={title} setTitle={setTitle} />
 
                         <TiptapEditor initialContent={''} setContent={setContent} />
 
@@ -99,6 +98,7 @@ export default function NewTopic({ userId, username, forumId, forumName }: NewTo
 
             <div>
                 <textarea className="editor-textarea"
+                    aria-label="New Topic"
                     disabled
                     value={content}
                 />
