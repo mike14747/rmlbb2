@@ -9,7 +9,6 @@ import styles from '@/styles/forum.module.css';
 
 type TopicContentProps = {
     topicData: ForumTopicToClient;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     repliesData: TopicReplyData[];
 }
 

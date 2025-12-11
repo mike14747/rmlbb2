@@ -3,13 +3,13 @@ import { getToken } from 'next-auth/jwt';
 import { changeUsername } from '@/lib/api/user';
 import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         const token = await getToken({ req: request });
         if (!token) return NextResponse.json(null, { status: 401 });
 
         const { username } = await request.json();
-        const { id } = params;
+        const { id } = await params;
 
         if (!id || !username) return NextResponse.json(null, { status: 400 });
         if (token?.id !== id) return NextResponse.json(null, { status: 401 });

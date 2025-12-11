@@ -26,6 +26,7 @@ export default function Nav() {
         document.addEventListener('mousedown', handler);
 
         return (() => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             document.removeEventListener;
         });
     });

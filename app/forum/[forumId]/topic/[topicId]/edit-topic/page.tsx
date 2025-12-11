@@ -13,15 +13,8 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Edit Topic',
 };
 
-type EditTopicParams = {
-    params: {
-        forumId: string;
-        topicId: string;
-    }
-}
-
-export default async function EditTopicPage({ params }: EditTopicParams) {
-    const { forumId, topicId } = params;
+export default async function EditTopicPage({ params }: { params: Promise<{ forumId: string, topicId: string }> }) {
+    const { forumId, topicId } = await params;
 
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },

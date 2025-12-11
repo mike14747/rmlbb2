@@ -9,19 +9,12 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Reset Password',
 };
 
-type PageProps = {
-    params: {
-        userId: string;
-        resetPasswordToken: string;
-    }
-}
-
-export default async function ResetPasswordTokenPage({ params }: PageProps) {
+export default async function ResetPasswordTokenPage({ params }: { params: Promise<{ userId: string, resetPasswordToken: string }> }) {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
 
-    const { userId, resetPasswordToken } = params;
+    const { userId, resetPasswordToken } = await params;
     return (
         <main id="main">
             <article className="mw-75ch">

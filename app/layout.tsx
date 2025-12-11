@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-// eslint-disable-next-line camelcase
 import { Inter } from 'next/font/google';
 import ClientSessionProvider from '@/components/ClientSessionProvider';
 import Header from '@/components/Header/Header';
@@ -40,11 +39,6 @@ const defaultFont = Inter({
 export const metadata: Metadata = {
     title: 'RML Baseball',
     description: 'Replay Money League, Strat-O-Matic Baseball',
-    viewport: {
-        width: 'device-width',
-        initialScale: 1,
-        maximumScale: 2,
-    },
     icons: {
         icon: [
             {
@@ -57,6 +51,12 @@ export const metadata: Metadata = {
             },
         ],
     },
+};
+
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 2,
 };
 
 export const revalidate = 60;

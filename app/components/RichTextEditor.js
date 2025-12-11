@@ -11,6 +11,8 @@ import styles from '../../styles/RichTextEditor.module.css';
 const Editor = dynamic(
     () => import('react-draft-wysiwyg').then(mod => mod.Editor),
     { ssr: false });
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const htmlToDraft = typeof window === 'object' && require('html-to-draftjs').default;
 
 // import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';

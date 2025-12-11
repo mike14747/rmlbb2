@@ -40,7 +40,8 @@ const customFontSize = {
 
         core.initMenuTarget(this.name, targetElement, listDiv);
 
-        listDiv = null, listUl = null;
+        listDiv = null;
+        listUl = null;
     },
     setSubmenu: function (core) {
         const lang = core.lang;

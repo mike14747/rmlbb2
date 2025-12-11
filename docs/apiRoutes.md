@@ -39,11 +39,11 @@ In the past, you could access them via: "req.query.id".
 Since next.js v13, you need to access them this way:
 
 ```ts
-export async function PUT(request: NextRequest, params: { params: { id: string }}) {
+export async function PUT(request: NextRequest, params: { params: Promise<{ id: string }> }) {
     try {
         // ...
 
-        const { id } = params;
+        const { id } = await params;
 
         // ...
     } catch (error) {
@@ -97,12 +97,12 @@ import { getToken } from 'next-auth/jwt';
 import { getOneReply } from '@/lib/api/forum';
 import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 
-export async function GET(request: NextRequest, { params }: { params: { replyId: string }}) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ replyId: string }> }) {
     try {
         const token = await getToken({ req: request });
         if (!token) return NextResponse.json(null, { status: 401 });
 
-        const { replyId } = params;
+        const { replyId } = await params;
 
         const result = await getOneReply(parseInt(replyId));
         return result
@@ -128,13 +128,13 @@ import { getToken } from 'next-auth/jwt';
 import { changeEmail } from '@/lib/api/user';
 import { handleAPICatchError } from '@/lib/helpers/handleCatchErrors';
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string }}) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         const token = await getToken({ req: request });
         if (!token) return NextResponse.json(null, { status: 401 });
 
         const { email } = await request.json();
-        const id = params.id;
+        const { id } = await params;
 
         if (!id || !email) return NextResponse.json(null, { status: 400 });
         if (token?.id !== id) return NextResponse.json(null, { status: 401 });

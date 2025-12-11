@@ -28,7 +28,6 @@ export default async function Champions() {
 
                     {championsData?.length > 0 &&
                         <>
-                            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
                             <table tabIndex={0} className="table table-hover">
                                 {/* <thead>
                                     <tr className={styles.headingRow}>

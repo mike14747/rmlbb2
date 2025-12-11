@@ -9,6 +9,7 @@ const SunEditor = dynamic(() => import('suneditor-react'), {
 });
 
 const { fontColor, hiliteColor, horizontalRule, blockquote, list, formatBlock, align, link } = typeof window === 'object'
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     ? require('suneditor/src/plugins')
     : () => false;
 
@@ -31,7 +32,6 @@ export default function SunEditorComp() {
                 placeholder="...start typing"
                 height="auto"
                 minHeight="200px"
-                // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus={true}
                 setAllPlugins={false}
                 onChange={handleChange}

@@ -12,13 +12,7 @@ export const metadata: Metadata = {
     title: 'RML Baseball - Message Forum',
 };
 
-type ForumIdParams = {
-    params: {
-        forumId: string;
-    }
-}
-
-export default async function Forum({ params }: ForumIdParams) {
+export default async function Forum({ params }: { params: Promise<{ forumId: string }> }) {
     const session = await getServerSession({
         callbacks: { session: ({ token }) => token },
     });
@@ -27,7 +21,7 @@ export default async function Forum({ params }: ForumIdParams) {
         redirect('/login?callbackUrl=/forum');
     }
 
-    const { forumId } = params;
+    const { forumId } = await params;
 
     const forumTopics = await getActiveForumTopics(parseInt(forumId));
 
