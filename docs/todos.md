@@ -2,6 +2,8 @@
 
 ## Need to do
 
+Start using middleware for next-auth and remove session from layout.tsx. This seems to be a pertinent issue now that my builds are failing with next.js v16 and using session in layout.tsx.
+
 Convert the app to **typescript**. **UPDATE**: Only some routes still need to be converted and the text editor components for Sun and Tiptap.
 
 Implement middleware using **withAuth** for all the protected and admin pages. Do I still want to keep some type of safeguard using **useSession** on the protected pages? Only possibly use middleware after the withAuth issues have been fixed.
